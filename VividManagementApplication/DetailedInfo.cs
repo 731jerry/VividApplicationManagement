@@ -16,6 +16,7 @@ namespace VividManagementApplication
     {
         public string ItemId = "-1";
         public string table = "";
+        public string baseName = "id";
         public string[] queryArray = new string[] { };
         public string controlsPreName = "";
         public Panel detailedPanel = new Panel();
@@ -55,23 +56,29 @@ namespace VividManagementApplication
                 case 1:
                     checkValidateControls = new List<Control>() { tbClient1, tbClient2, tbClient3, tbClient4, tbClient5 };
                     detailedHeightDis = 250;
-                    table = "clients";
                     detailedPanel = DetailedClientPanel;
+
+                    table = "clients";
+                    baseName = "id";
                     queryArray = new string[] { "id", "sex", "type", "name", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
                     controlsPreName = "tbClient";
                     indexCount = 13;
                     mainID = tbClient1.Text;
+
                     canPrint = false;
                     break;
                 case 2:
                     checkValidateControls = new List<Control>() { tbGoods1, tbGoods2, tbGoods3, tbGoods4, tbGoods4 };
                     detailedHeightDis = 250;
-                    table = "goods";
                     detailedPanel = DetailedGoodsPanel;
+
+                    table = "goods";
+                    baseName = "id";
                     queryArray = new string[] { "id", "dengji", "name", "guige", "unit", "storageName", "storageManager", "storageManagerPhone", "storageLocation", "storageAddress", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu" };
                     controlsPreName = "tbGoods";
                     indexCount = 17;
                     mainID = tbGoods1.Text;
+
                     canPrint = false;
                     break;
                 case 3:
@@ -79,17 +86,35 @@ namespace VividManagementApplication
                     checkValidateControls = new List<Control>() { tbDz1 };
                     detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
+
+                    table = "jcdList";
+                    baseName = "jcdID";
+                    queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "discardFlag" };
+                    controlsPreName = "tbDz";
+                    indexCount = 11;
+                    mainID = tbDz2.Text;
+
                     canPrint = true;
-                    danziComboBox.Items.Clear();
-                    danziComboBox.Items.Add("进仓单");
-                    danziComboBox.Items.Add("出仓单");
-                    danziComboBox.SelectedIndex = 0;
+                    if (ItemId.Equals("-1"))
+                    {
+                        danziComboBox.Visible = true;
+                        danziComboBox.Items.Clear();
+                        danziComboBox.Items.Add("进仓单");
+                        danziComboBox.Items.Add("出仓单");
+                        danziComboBox.SelectedIndex = 0;
+                    }
+                    else {
+                        danziComboBox.Visible = false;
+                    }
                     break;
                 case 4:
                     // 采购单 销售单
                     checkValidateControls = new List<Control>() { tbDz1 };
-                    detailedPanel = DetailedDanziPanel;
                     detailedHeightDis = 120;
+                    detailedPanel = DetailedDanziPanel;
+
+
+
                     danziComboBox.Items.Clear();
                     danziComboBox.Items.Add("进仓单");
                     danziComboBox.Items.Add("出仓单");
@@ -99,15 +124,7 @@ namespace VividManagementApplication
                     checkValidateControls = new List<Control>() { tbDz1 };
                     detailedPanel = DetailedDanziPanel;
                     detailedHeightDis = 60;
-
                     break;
-                /*
-                           default:
-                               detailedHeightDis = 60;
-                               detailedPanel = DetailedDanziPanel;
-                               canPrint = true;
-                               break;
-                */
                 case 6:
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
@@ -120,7 +137,7 @@ namespace VividManagementApplication
             {
                 try
                 {
-                    FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, ItemId));
+                    FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray,baseName, ItemId));
                 }
                 catch (Exception ex)
                 {

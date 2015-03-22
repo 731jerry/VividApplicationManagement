@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Web;
+using System.Text.RegularExpressions;
 
 namespace VividManagementApplication
 {
@@ -431,7 +432,18 @@ namespace VividManagementApplication
                             {
                                 if (item is ComboBox)
                                 {
-                                    (item as ComboBox).SelectedIndex = int.Parse(finalValues[i]);
+                                    int intParsed;
+                                    Boolean isInt = int.TryParse(finalValues[i], out intParsed);
+                                    if (isInt && ((item as ComboBox).Items.Count > intParsed))
+                                    {
+                                        // 是数字  
+                                        (item as ComboBox).SelectedIndex = intParsed;
+                                    }
+                                    else
+                                    {
+                                        // 不是数字
+                                        item.Text = finalValues[i];
+                                    }
                                 }
                                 else
                                 {

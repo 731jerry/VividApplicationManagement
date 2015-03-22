@@ -191,7 +191,7 @@ namespace VividManagementApplication
             LocalDbClose();
         }
 
-        public string[] LocalGetOneRowDataById(string table, string[] query, string id)
+        public string[] LocalGetOneRowDataById(string table, string[] query, string baseName, string id)
         {
             // ORDER BY id ASC
             string innerSQL = "";
@@ -204,7 +204,7 @@ namespace VividManagementApplication
             {
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
-            string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE id='" + id + "'";//建表语句  
+            string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE "+baseName+"='" + id + "'";//建表语句  
             LocalDbOpen();
             SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
             cmdCreateTable.CommandText = sql;
