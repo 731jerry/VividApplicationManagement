@@ -40,7 +40,7 @@ namespace VividManagementApplication
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
             //this.StartPosition = FormStartPosition.CenterScreen; 
         }
-
+        
         private void InitDetailedInfoWindow()
         {
             int detailedLocationY = 60;
@@ -71,29 +71,35 @@ namespace VividManagementApplication
                     canPrint = false;
                     break;
                 case 3:
+                    // 进仓单 出仓单
                     detailedHeightDis = 60;
                     detailedPanel = DetailedDanziPanel;
                     canPrint = true;
+                    danziComboBox.Items.Clear();
                     danziComboBox.SelectedIndex = 0;
+                    danziComboBox.Items.Add("进仓单");
+                    danziComboBox.Items.Add("出仓单");
+                    break;
+                case 4:
+                    // 采购单 销售单
+                    detailedPanel = DetailedDanziPanel;
+                    detailedHeightDis = 60;
+                    danziComboBox.Items.Clear();
+                    danziComboBox.Items.Add("进仓单");
+                    danziComboBox.Items.Add("出仓单");
+                    break;
+                case 5:
+                    detailedPanel = DetailedDanziPanel;
+                    detailedHeightDis = 60;
 
                     break;
+     /*
                 default:
                     detailedHeightDis = 60;
                     detailedPanel = DetailedDanziPanel;
                     canPrint = true;
                     break;
-                /*
-            case 4:
-                detailedPanel = DetailedDanziPanel;
-                detailedHeightDis = 60;
-
-                break;
-            case 5:
-                detailedPanel = DetailedDanziPanel;
-                detailedHeightDis = 60;
-
-                break;
-                 */
+     */
                 case 6:
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
@@ -193,7 +199,7 @@ namespace VividManagementApplication
         private void SetPrintPreview(int flag)
         {
             printFlag = flag;
-           
+
             //this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom",this.printDocument1.DefaultPageSettings.PaperSize.Width, 600);
 
             pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
@@ -572,8 +578,9 @@ namespace VividManagementApplication
         // 进仓单 出仓单 采购单 销售单
         private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-             switch (danziComboBox.SelectedIndex)
-             {
+
+            switch (danziComboBox.SelectedIndex)
+            {
                 case 0://进仓单
                     lbDzTitle.Text = "商品（货物）进仓单";
                     //DetailedDanziPanel.Height -= 130;
@@ -583,12 +590,12 @@ namespace VividManagementApplication
                     moreDetaildpPanel.Visible = false;
                     break;
                 case 1://出仓单
-                      lbDzTitle.Text = "商品（货物）出仓单";
+                    lbDzTitle.Text = "商品（货物）出仓单";
                     //DetailedDanziPanel.Height -= 130;
                     //this.Height -= 170;
                     //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
                     //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
-                      moreDetaildpPanel.Visible = false;
+                    moreDetaildpPanel.Visible = false;
                     break;
                 case 2://采购单
                     lbDzTitle.Text = "商品（货物）采购单";
