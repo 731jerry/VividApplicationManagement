@@ -40,7 +40,7 @@ namespace VividManagementApplication
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
             //this.StartPosition = FormStartPosition.CenterScreen; 
         }
-        
+
         private void InitDetailedInfoWindow()
         {
             int detailedLocationY = 60;
@@ -72,34 +72,35 @@ namespace VividManagementApplication
                     break;
                 case 3:
                     // 进仓单 出仓单
-                    detailedHeightDis = 60;
+                    detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
                     canPrint = true;
                     danziComboBox.Items.Clear();
-                    danziComboBox.SelectedIndex = 0;
                     danziComboBox.Items.Add("进仓单");
                     danziComboBox.Items.Add("出仓单");
+                    danziComboBox.SelectedIndex = 0;
                     break;
                 case 4:
                     // 采购单 销售单
                     detailedPanel = DetailedDanziPanel;
-                    detailedHeightDis = 60;
+                    detailedHeightDis = 120;
                     danziComboBox.Items.Clear();
                     danziComboBox.Items.Add("进仓单");
                     danziComboBox.Items.Add("出仓单");
+                    danziComboBox.SelectedIndex = 0;
                     break;
                 case 5:
                     detailedPanel = DetailedDanziPanel;
                     detailedHeightDis = 60;
 
                     break;
-     /*
-                default:
-                    detailedHeightDis = 60;
-                    detailedPanel = DetailedDanziPanel;
-                    canPrint = true;
-                    break;
-     */
+                /*
+                           default:
+                               detailedHeightDis = 60;
+                               detailedPanel = DetailedDanziPanel;
+                               canPrint = true;
+                               break;
+                */
                 case 6:
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
@@ -578,35 +579,43 @@ namespace VividManagementApplication
         // 进仓单 出仓单 采购单 销售单
         private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            switch (danziComboBox.SelectedIndex)
+            if (MainWindow.CURRENT_TAB == 3) //仓储管理
             {
-                case 0://进仓单
-                    lbDzTitle.Text = "商品（货物）进仓单";
-                    //DetailedDanziPanel.Height -= 130;
-                    //this.Height -= 170;
-                    //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
-                    //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
-                    moreDetaildpPanel.Visible = false;
-                    break;
-                case 1://出仓单
-                    lbDzTitle.Text = "商品（货物）出仓单";
-                    //DetailedDanziPanel.Height -= 130;
-                    //this.Height -= 170;
-                    //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
-                    //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
-                    moreDetaildpPanel.Visible = false;
-                    break;
-                case 2://采购单
-                    lbDzTitle.Text = "商品（货物）采购单";
-                    moreDetaildpPanel.Visible = true;
-                    break;
-                case 3://销售单
-                    moreDetaildpPanel.Visible = true;
-                    lbDzTitle.Text = "商品（货物）销售单";
-                    break;
-                default:
-                    break;
+                switch (danziComboBox.SelectedIndex)
+                {
+                    case 0://进仓单
+                        lbDzTitle.Text = "商品（货物）进仓单";
+                        //DetailedDanziPanel.Height -= 130;
+                        //this.Height -= 170;
+                        //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
+                        //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
+                        moreDetaildpPanel.Visible = false;
+                        break;
+                    case 1://出仓单
+                        lbDzTitle.Text = "商品（货物）出仓单";
+                        //DetailedDanziPanel.Height -= 130;
+                        //this.Height -= 170;
+                        //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
+                        //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
+                        moreDetaildpPanel.Visible = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (MainWindow.CURRENT_TAB == 4) //业务管理
+            {
+                switch (danziComboBox.SelectedIndex)
+                {
+                    case 0://采购单
+                        lbDzTitle.Text = "商品（货物）采购单";
+                        moreDetaildpPanel.Visible = true;
+                        break;
+                    case 1://销售单
+                        moreDetaildpPanel.Visible = true;
+                        lbDzTitle.Text = "商品（货物）销售单";
+                        break;
+                }
             }
         }
 
