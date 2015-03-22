@@ -70,6 +70,13 @@ namespace VividManagementApplication
                     mainID = tbGoods1.Text;
                     canPrint = false;
                     break;
+                case 3:
+                    detailedHeightDis = 60;
+                    detailedPanel = DetailedDanziPanel;
+                    canPrint = true;
+                    danziComboBox.SelectedIndex = 0;
+
+                    break;
                 default:
                     detailedHeightDis = 60;
                     detailedPanel = DetailedDanziPanel;
@@ -555,6 +562,46 @@ namespace VividManagementApplication
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, pageHeight - 50);
         }
         #endregion
+
+        //为生成新行添加值
+        private void DetailedDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells[0].Value = "hahah";
+        }
+
+        // 进仓单 出仓单 采购单 销售单
+        private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             switch (danziComboBox.SelectedIndex)
+             {
+                case 0://进仓单
+                    lbDzTitle.Text = "商品（货物）进仓单";
+                    //DetailedDanziPanel.Height -= 130;
+                    //this.Height -= 170;
+                    //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
+                    //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
+                    moreDetaildpPanel.Visible = false;
+                    break;
+                case 1://出仓单
+                      lbDzTitle.Text = "商品（货物）出仓单";
+                    //DetailedDanziPanel.Height -= 130;
+                    //this.Height -= 170;
+                    //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
+                    //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
+                      moreDetaildpPanel.Visible = false;
+                    break;
+                case 2://采购单
+                    lbDzTitle.Text = "商品（货物）采购单";
+                    moreDetaildpPanel.Visible = true;
+                    break;
+                case 3://销售单
+                    moreDetaildpPanel.Visible = true;
+                    lbDzTitle.Text = "商品（货物）销售单";
+                    break;
+                default:
+                    break;
+            }
+        }
 
     }
 }

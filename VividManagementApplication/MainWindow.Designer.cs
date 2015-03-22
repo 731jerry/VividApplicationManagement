@@ -359,6 +359,7 @@
             this.newHtButton.Text = "新建合同";
             this.newHtButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.newHtButton.UseVisualStyleBackColor = true;
+            this.newHtButton.Click += new System.EventHandler(this.newHtButton_Click);
             // 
             // htRadio
             // 
@@ -399,6 +400,7 @@
             this.newPzButton.Text = "新建凭证";
             this.newPzButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.newPzButton.UseVisualStyleBackColor = true;
+            this.newPzButton.Click += new System.EventHandler(this.newPzButton_Click);
             // 
             // cwRadio
             // 
@@ -452,6 +454,7 @@
             this.newCgZsButton.Text = "新建采购/销售单";
             this.newCgZsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.newCgZsButton.UseVisualStyleBackColor = true;
+            this.newCgZsButton.Click += new System.EventHandler(this.newCgZsButton_Click);
             // 
             // ywRadio
             // 
@@ -518,6 +521,7 @@
             this.newJCcButton.Text = "新建进出仓单";
             this.newJCcButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.newJCcButton.UseVisualStyleBackColor = true;
+            this.newJCcButton.Click += new System.EventHandler(this.newJCcButton_Click);
             // 
             // ccRadio
             // 
@@ -558,6 +562,7 @@
             this.newSpButton.Text = "新建";
             this.newSpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.newSpButton.UseVisualStyleBackColor = true;
+            this.newSpButton.Click += new System.EventHandler(this.newSpButton_Click);
             // 
             // spRadio
             // 
@@ -598,6 +603,7 @@
             this.newCxButton.Text = "新建";
             this.newCxButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.newCxButton.UseVisualStyleBackColor = true;
+            this.newCxButton.Click += new System.EventHandler(this.newCxButton_Click);
             // 
             // cxRadio
             // 

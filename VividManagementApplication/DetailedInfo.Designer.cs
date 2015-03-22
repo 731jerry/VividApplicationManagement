@@ -163,15 +163,13 @@
             this.label54 = new System.Windows.Forms.Label();
             this.tbDz8 = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.tbDz5 = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
             this.tbDz4 = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.abDz3 = new System.Windows.Forms.TextBox();
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.danziComboBox = new System.Windows.Forms.ComboBox();
             this.tbDz1 = new System.Windows.Forms.ComboBox();
             this.lbDzTitle = new System.Windows.Forms.Label();
             this.abDz2 = new System.Windows.Forms.TextBox();
@@ -299,6 +297,8 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.DateTextBox = new System.Windows.Forms.TextBox();
+            this.moreDetaildpPanel = new System.Windows.Forms.Panel();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -310,6 +310,7 @@
             this.tabPage3.SuspendLayout();
             this.DetailedHTPanel.SuspendLayout();
             this.PanelHT.SuspendLayout();
+            this.moreDetaildpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DetailedTabView
@@ -332,7 +333,7 @@
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage6.Size = new System.Drawing.Size(817, 570);
+            this.tabPage6.Size = new System.Drawing.Size(817, 602);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "tabPage0";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -634,7 +635,7 @@
             this.tabPage1.Controls.Add(this.DetailedGoodsPanel);
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(817, 570);
+            this.tabPage1.Size = new System.Drawing.Size(817, 602);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -996,24 +997,16 @@
             this.tabPage2.Controls.Add(this.DetailedDanziPanel);
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(817, 570);
+            this.tabPage2.Size = new System.Drawing.Size(817, 602);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // DetailedDanziPanel
             // 
+            this.DetailedDanziPanel.Controls.Add(this.moreDetaildpPanel);
+            this.DetailedDanziPanel.Controls.Add(this.DateTextBox);
             this.DetailedDanziPanel.Controls.Add(this.PanelDZ);
-            this.DetailedDanziPanel.Controls.Add(this.tbDz13);
-            this.DetailedDanziPanel.Controls.Add(this.label46);
-            this.DetailedDanziPanel.Controls.Add(this.tbDz12);
-            this.DetailedDanziPanel.Controls.Add(this.label47);
-            this.DetailedDanziPanel.Controls.Add(this.tbDz11);
-            this.DetailedDanziPanel.Controls.Add(this.label48);
-            this.DetailedDanziPanel.Controls.Add(this.tbDz10);
-            this.DetailedDanziPanel.Controls.Add(this.label49);
-            this.DetailedDanziPanel.Controls.Add(this.tbDz9);
-            this.DetailedDanziPanel.Controls.Add(this.label50);
             this.DetailedDanziPanel.Controls.Add(this.tbDz3);
             this.DetailedDanziPanel.Controls.Add(this.label51);
             this.DetailedDanziPanel.Controls.Add(this.tbDz7);
@@ -1022,15 +1015,13 @@
             this.DetailedDanziPanel.Controls.Add(this.label54);
             this.DetailedDanziPanel.Controls.Add(this.tbDz8);
             this.DetailedDanziPanel.Controls.Add(this.label55);
-            this.DetailedDanziPanel.Controls.Add(this.tbDz5);
-            this.DetailedDanziPanel.Controls.Add(this.label56);
             this.DetailedDanziPanel.Controls.Add(this.tbDz4);
             this.DetailedDanziPanel.Controls.Add(this.label57);
             this.DetailedDanziPanel.Controls.Add(this.label58);
             this.DetailedDanziPanel.Controls.Add(this.abDz3);
             this.DetailedDanziPanel.Controls.Add(this.label59);
             this.DetailedDanziPanel.Controls.Add(this.label60);
-            this.DetailedDanziPanel.Controls.Add(this.comboBox13);
+            this.DetailedDanziPanel.Controls.Add(this.danziComboBox);
             this.DetailedDanziPanel.Controls.Add(this.tbDz1);
             this.DetailedDanziPanel.Controls.Add(this.lbDzTitle);
             this.DetailedDanziPanel.Controls.Add(this.abDz2);
@@ -1038,7 +1029,7 @@
             this.DetailedDanziPanel.Controls.Add(this.tbDz2);
             this.DetailedDanziPanel.Controls.Add(this.label62);
             this.DetailedDanziPanel.Controls.Add(this.label63);
-            this.DetailedDanziPanel.Location = new System.Drawing.Point(6, 6);
+            this.DetailedDanziPanel.Location = new System.Drawing.Point(6, 19);
             this.DetailedDanziPanel.Name = "DetailedDanziPanel";
             this.DetailedDanziPanel.Size = new System.Drawing.Size(780, 544);
             this.DetailedDanziPanel.TabIndex = 70;
@@ -1093,9 +1084,9 @@
             this.PanelDZ.Controls.Add(this.textBox157);
             this.PanelDZ.Controls.Add(this.textBox158);
             this.PanelDZ.Controls.Add(this.textBox159);
-            this.PanelDZ.Location = new System.Drawing.Point(31, 137);
+            this.PanelDZ.Location = new System.Drawing.Point(31, 139);
             this.PanelDZ.Name = "PanelDZ";
-            this.PanelDZ.Size = new System.Drawing.Size(746, 161);
+            this.PanelDZ.Size = new System.Drawing.Size(737, 158);
             this.PanelDZ.TabIndex = 230;
             // 
             // EJCDcb0
@@ -1593,7 +1584,7 @@
             // tbDz13
             // 
             this.tbDz13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz13.Location = new System.Drawing.Point(120, 515);
+            this.tbDz13.Location = new System.Drawing.Point(95, 70);
             this.tbDz13.Name = "tbDz13";
             this.tbDz13.Size = new System.Drawing.Size(97, 26);
             this.tbDz13.TabIndex = 229;
@@ -1602,7 +1593,7 @@
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label46.Location = new System.Drawing.Point(37, 518);
+            this.label46.Location = new System.Drawing.Point(12, 73);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(65, 20);
             this.label46.TabIndex = 228;
@@ -1611,7 +1602,7 @@
             // tbDz12
             // 
             this.tbDz12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz12.Location = new System.Drawing.Point(667, 486);
+            this.tbDz12.Location = new System.Drawing.Point(642, 41);
             this.tbDz12.Name = "tbDz12";
             this.tbDz12.Size = new System.Drawing.Size(97, 26);
             this.tbDz12.TabIndex = 227;
@@ -1620,7 +1611,7 @@
             // 
             this.label47.AutoSize = true;
             this.label47.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label47.Location = new System.Drawing.Point(438, 489);
+            this.label47.Location = new System.Drawing.Point(413, 44);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(247, 20);
             this.label47.TabIndex = 226;
@@ -1629,7 +1620,7 @@
             // tbDz11
             // 
             this.tbDz11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz11.Location = new System.Drawing.Point(305, 486);
+            this.tbDz11.Location = new System.Drawing.Point(280, 41);
             this.tbDz11.Name = "tbDz11";
             this.tbDz11.Size = new System.Drawing.Size(97, 26);
             this.tbDz11.TabIndex = 225;
@@ -1638,7 +1629,7 @@
             // 
             this.label48.AutoSize = true;
             this.label48.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label48.Location = new System.Drawing.Point(36, 489);
+            this.label48.Location = new System.Drawing.Point(11, 44);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(219, 20);
             this.label48.TabIndex = 224;
@@ -1647,7 +1638,7 @@
             // tbDz10
             // 
             this.tbDz10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz10.Location = new System.Drawing.Point(667, 449);
+            this.tbDz10.Location = new System.Drawing.Point(642, 4);
             this.tbDz10.Name = "tbDz10";
             this.tbDz10.Size = new System.Drawing.Size(97, 26);
             this.tbDz10.TabIndex = 223;
@@ -1656,7 +1647,7 @@
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label49.Location = new System.Drawing.Point(438, 452);
+            this.label49.Location = new System.Drawing.Point(413, 7);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(219, 20);
             this.label49.TabIndex = 222;
@@ -1665,7 +1656,7 @@
             // tbDz9
             // 
             this.tbDz9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz9.Location = new System.Drawing.Point(305, 449);
+            this.tbDz9.Location = new System.Drawing.Point(280, 4);
             this.tbDz9.Name = "tbDz9";
             this.tbDz9.Size = new System.Drawing.Size(97, 26);
             this.tbDz9.TabIndex = 221;
@@ -1674,7 +1665,7 @@
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label50.Location = new System.Drawing.Point(36, 452);
+            this.label50.Location = new System.Drawing.Point(11, 7);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(247, 20);
             this.label50.TabIndex = 220;
@@ -1701,7 +1692,7 @@
             // tbDz7
             // 
             this.tbDz7.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz7.Location = new System.Drawing.Point(648, 377);
+            this.tbDz7.Location = new System.Drawing.Point(464, 376);
             this.tbDz7.Name = "tbDz7";
             this.tbDz7.Size = new System.Drawing.Size(117, 26);
             this.tbDz7.TabIndex = 217;
@@ -1710,16 +1701,16 @@
             // 
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label53.Location = new System.Drawing.Point(605, 380);
+            this.label53.Location = new System.Drawing.Point(355, 379);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(37, 20);
+            this.label53.Size = new System.Drawing.Size(103, 20);
             this.label53.TabIndex = 216;
-            this.label53.Text = "普：";
+            this.label53.Text = "发票号码(普)：";
             // 
             // tbDz6
             // 
             this.tbDz6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz6.Location = new System.Drawing.Point(431, 377);
+            this.tbDz6.Location = new System.Drawing.Point(143, 377);
             this.tbDz6.Name = "tbDz6";
             this.tbDz6.Size = new System.Drawing.Size(132, 26);
             this.tbDz6.TabIndex = 215;
@@ -1728,47 +1719,29 @@
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label54.Location = new System.Drawing.Point(388, 380);
+            this.label54.Location = new System.Drawing.Point(34, 380);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(37, 20);
+            this.label54.Size = new System.Drawing.Size(103, 20);
             this.label54.TabIndex = 214;
-            this.label54.Text = "增：";
+            this.label54.Text = "发票号码(增)：";
             // 
             // tbDz8
             // 
             this.tbDz8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz8.Location = new System.Drawing.Point(125, 412);
+            this.tbDz8.Location = new System.Drawing.Point(724, 376);
             this.tbDz8.Name = "tbDz8";
-            this.tbDz8.Size = new System.Drawing.Size(639, 26);
+            this.tbDz8.Size = new System.Drawing.Size(37, 26);
             this.tbDz8.TabIndex = 213;
             // 
             // label55
             // 
             this.label55.AutoSize = true;
             this.label55.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label55.Location = new System.Drawing.Point(34, 416);
+            this.label55.Location = new System.Drawing.Point(621, 380);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(79, 20);
+            this.label55.Size = new System.Drawing.Size(107, 20);
             this.label55.TabIndex = 212;
-            this.label55.Text = "附件凭证：";
-            // 
-            // tbDz5
-            // 
-            this.tbDz5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz5.Location = new System.Drawing.Point(126, 377);
-            this.tbDz5.Name = "tbDz5";
-            this.tbDz5.Size = new System.Drawing.Size(256, 26);
-            this.tbDz5.TabIndex = 211;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label56.Location = new System.Drawing.Point(35, 380);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(79, 20);
-            this.label56.TabIndex = 210;
-            this.label56.Text = "发票号码：";
+            this.label55.Text = "附件凭证张数：";
             // 
             // tbDz4
             // 
@@ -1831,18 +1804,21 @@
             this.label60.TabIndex = 204;
             this.label60.Text = "对方单位：";
             // 
-            // comboBox13
+            // danziComboBox
             // 
-            this.comboBox13.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Items.AddRange(new object[] {
+            this.danziComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.danziComboBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.danziComboBox.FormattingEnabled = true;
+            this.danziComboBox.Items.AddRange(new object[] {
             "进仓单",
-            "出仓单"});
-            this.comboBox13.Location = new System.Drawing.Point(19, 21);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(86, 28);
-            this.comboBox13.TabIndex = 203;
+            "出仓单",
+            "采购单",
+            "销售单"});
+            this.danziComboBox.Location = new System.Drawing.Point(19, 21);
+            this.danziComboBox.Name = "danziComboBox";
+            this.danziComboBox.Size = new System.Drawing.Size(86, 28);
+            this.danziComboBox.TabIndex = 203;
+            this.danziComboBox.SelectedIndexChanged += new System.EventHandler(this.danziComboBox_SelectedIndexChanged);
             // 
             // tbDz1
             // 
@@ -3243,6 +3219,33 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // DateTextBox
+            // 
+            this.DateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DateTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DateTextBox.Location = new System.Drawing.Point(656, 9);
+            this.DateTextBox.Name = "DateTextBox";
+            this.DateTextBox.ReadOnly = true;
+            this.DateTextBox.Size = new System.Drawing.Size(109, 26);
+            this.DateTextBox.TabIndex = 231;
+            // 
+            // moreDetaildpPanel
+            // 
+            this.moreDetaildpPanel.Controls.Add(this.tbDz9);
+            this.moreDetaildpPanel.Controls.Add(this.label50);
+            this.moreDetaildpPanel.Controls.Add(this.label49);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz13);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz10);
+            this.moreDetaildpPanel.Controls.Add(this.label46);
+            this.moreDetaildpPanel.Controls.Add(this.label48);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz12);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz11);
+            this.moreDetaildpPanel.Controls.Add(this.label47);
+            this.moreDetaildpPanel.Location = new System.Drawing.Point(24, 409);
+            this.moreDetaildpPanel.Name = "moreDetaildpPanel";
+            this.moreDetaildpPanel.Size = new System.Drawing.Size(744, 119);
+            this.moreDetaildpPanel.TabIndex = 232;
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -3276,6 +3279,8 @@
             this.DetailedHTPanel.PerformLayout();
             this.PanelHT.ResumeLayout(false);
             this.PanelHT.PerformLayout();
+            this.moreDetaildpPanel.ResumeLayout(false);
+            this.moreDetaildpPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3306,15 +3311,13 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.TextBox tbDz8;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox tbDz5;
-        private System.Windows.Forms.Label label56;
         private System.Windows.Forms.TextBox tbDz4;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.TextBox abDz3;
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.ComboBox comboBox13;
+        private System.Windows.Forms.ComboBox danziComboBox;
         private System.Windows.Forms.ComboBox tbDz1;
         private System.Windows.Forms.Label lbDzTitle;
         private System.Windows.Forms.TextBox abDz2;
@@ -3552,5 +3555,7 @@
         private System.Windows.Forms.TextBox textBox157;
         private System.Windows.Forms.TextBox textBox158;
         private System.Windows.Forms.TextBox textBox159;
+        private System.Windows.Forms.TextBox DateTextBox;
+        private System.Windows.Forms.Panel moreDetaildpPanel;
     }
 }
