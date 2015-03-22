@@ -659,5 +659,15 @@ namespace VividManagementApplication
         }
 
         #endregion
+
+        /// <summary>
+        /// 关闭之前备份数据库
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UploadFiles("备份数据库!");
+        }
     }
 }

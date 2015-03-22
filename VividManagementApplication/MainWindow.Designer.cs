@@ -41,8 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.CommercePanel = new System.Windows.Forms.Panel();
-            this.CommercePictureBox = new System.Windows.Forms.PictureBox();
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
@@ -81,8 +79,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
-            this.CommercePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CommercePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
             this.NavPanel.SuspendLayout();
             this.notificationPanel.SuspendLayout();
@@ -193,7 +189,6 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ContentPanel.Controls.Add(this.CommercePanel);
             this.ContentPanel.Controls.Add(this.backupData);
             this.ContentPanel.Controls.Add(this.refeshButton);
             this.ContentPanel.Controls.Add(this.MainDataGridView);
@@ -206,24 +201,6 @@
             this.ContentPanel.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
             this.ContentPanel.Size = new System.Drawing.Size(902, 664);
             this.ContentPanel.TabIndex = 7;
-            // 
-            // CommercePanel
-            // 
-            this.CommercePanel.Controls.Add(this.CommercePictureBox);
-            this.CommercePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CommercePanel.Location = new System.Drawing.Point(10, 560);
-            this.CommercePanel.Name = "CommercePanel";
-            this.CommercePanel.Size = new System.Drawing.Size(878, 100);
-            this.CommercePanel.TabIndex = 39;
-            // 
-            // CommercePictureBox
-            // 
-            this.CommercePictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommercePictureBox.Location = new System.Drawing.Point(0, 0);
-            this.CommercePictureBox.Name = "CommercePictureBox";
-            this.CommercePictureBox.Size = new System.Drawing.Size(878, 100);
-            this.CommercePictureBox.TabIndex = 0;
-            this.CommercePictureBox.TabStop = false;
             // 
             // backupData
             // 
@@ -257,14 +234,14 @@
             this.MainDataGridView.AllowUserToDeleteRows = false;
             this.MainDataGridView.AllowUserToResizeRows = false;
             this.MainDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MainDataGridView.Location = new System.Drawing.Point(10, 84);
+            this.MainDataGridView.Location = new System.Drawing.Point(10, 75);
             this.MainDataGridView.MultiSelect = false;
             this.MainDataGridView.Name = "MainDataGridView";
             this.MainDataGridView.ReadOnly = true;
             this.MainDataGridView.RowHeadersVisible = false;
             this.MainDataGridView.RowTemplate.Height = 23;
             this.MainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MainDataGridView.Size = new System.Drawing.Size(878, 469);
+            this.MainDataGridView.Size = new System.Drawing.Size(878, 575);
             this.MainDataGridView.TabIndex = 36;
             // 
             // qqButton1
@@ -706,11 +683,10 @@
             this.Name = "MainWindow";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.MainPanel.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
-            this.CommercePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CommercePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).EndInit();
             this.NavPanel.ResumeLayout(false);
             this.NavPanel.PerformLayout();
@@ -746,8 +722,6 @@
         private System.Windows.Forms.Panel notificationPanel;
         private System.Windows.Forms.Label lblSHOWS2;
         private System.Windows.Forms.Label lblSHOWS;
-        private System.Windows.Forms.Panel CommercePanel;
-        private System.Windows.Forms.PictureBox CommercePictureBox;
         private System.Windows.Forms.Timer commerceTimer;
         private System.Windows.Forms.ImageList imageList1;
         private ControlExs.QQButton listHtButton;
