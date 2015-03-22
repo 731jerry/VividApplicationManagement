@@ -51,7 +51,7 @@ namespace VividManagementApplication
             switch (MainWindow.CURRENT_TAB)
             {
                 case 1:
-                    detailedHeightDis = 200;
+                    detailedHeightDis = 250;
                     table = "clients";
                     detailedPanel = DetailedClientPanel;
                     queryArray = new string[] { "id", "sex", "type", "name", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
@@ -61,7 +61,7 @@ namespace VividManagementApplication
                     canPrint = false;
                     break;
                 case 2:
-                    detailedHeightDis = 200;
+                    detailedHeightDis = 250;
                     table = "goods";
                     detailedPanel = DetailedGoodsPanel;
                     queryArray = new string[] { "id", "dengji", "name", "guige", "unit", "storageName", "storageManager", "storageManagerPhone", "storageLocation", "storageAddress", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu" };
@@ -160,7 +160,7 @@ namespace VividManagementApplication
 
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
-            SetPrintPreview(1);
+            //SetPrintPreview(MainWindow.CURRENT_TAB);
         }
 
         #region 打印

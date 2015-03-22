@@ -160,113 +160,6 @@ namespace VividManagementApplication
 
         }
 
-        /*
-        private void CreateNavListView(int categories)
-        {
-            NavListView.Items.Clear();
-            switch (categories)
-            {
-                case 1:
-                    NavListView.LargeImageList = imageList1;
-                    NavListView.Items.Add("创建", 0);
-                    NavListView.Items.Add("列表", 1);
-                    break;
-                case 2:
-                    NavListView.LargeImageList = imageList1;
-                    NavListView.Items.Add("创建", 0);
-                    NavListView.Items.Add("列表", 1);
-                    break;
-                case 3:
-                    NavListView.LargeImageList = imageList1;
-                    NavListView.Items.Add("创建进出仓单", 0);
-                    NavListView.Items.Add("库存信息", 1);
-                    NavListView.Items.Add("进仓单列表", 2);
-                    NavListView.Items.Add("出仓单列表", 2);
-                    break;
-                case 4:
-                    NavListView.LargeImageList = imageList1;
-                    NavListView.Items.Add("创建货物采购/销售单", 0);
-                    NavListView.Items.Add("货物采购/销售单列表", 1);
-                    NavListView.Items.Add("客户对账单", 2);
-                    break;
-                case 5:
-                    NavListView.LargeImageList = imageList1;
-                    NavListView.Items.Add("创建凭证", 0);
-                    NavListView.Items.Add("收付总汇表", 1);
-                    break;
-                case 6:
-                    NavListView.LargeImageList = imageList1;
-                    NavListView.Items.Add("创建合同", 0);
-                    NavListView.Items.Add("合同列表", 1);
-                    break;
-            }
-        }
-
-        void NavButtonClick(object sender, System.EventArgs e)
-        {
-            // Get the clicked button...
-            Button clickedButton = (Button)sender;
-
-            // ... and it's tabindex
-            int clickedButtonTabIndex = clickedButton.TabIndex;
-
-            // Send each button to top or bottom as appropriate
-            foreach (Control ctl in NavPanel.Controls)
-            {
-                if (ctl is Button)
-                {
-                    ctl.BackColor = SystemColors.Control;
-                    Button btn = (Button)ctl;
-                    if (btn.TabIndex > clickedButtonTabIndex)
-                    {
-                        if (btn.Dock != DockStyle.Bottom)
-                        {
-                            btn.Dock = DockStyle.Bottom;
-                            // This is vital to preserve the correct order
-                            btn.BringToFront();
-                        }
-                    }
-                    else
-                    {
-                        if (btn.Dock != DockStyle.Top)
-                        {
-                            btn.Dock = DockStyle.Top;
-                            // This is vital to preserve the correct order
-                            btn.BringToFront();
-                        }
-                    }
-                }
-            }
-
-            clickedButton.BackColor = Color.Gold;
-            CURRENT_TAB = clickedButton.TabIndex; //设置
-            CreateNavListView(int.Parse(clickedButton.Name.Substring(9, 1)));
-            InitDataGridView(); // 初始化
-            NavListView.BringToFront();  // Without this, the buttons will hide the items.
-        }
-        */
-        // Navigate 选择
-        /*
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if ((this.NavListView.SelectedIndices.Count > 0) && (this.NavListView.SelectedItems.Count > 0))
-            {
-                // MessageBox.Show(this.NavListView.SelectedItems[0].Text, this.NavListView.SelectedItems[0].Index.ToString());
-                CURRENT_TAB_ITEM = this.NavListView.SelectedItems[0].Index;
-                if (CURRENT_TAB_ITEM == 0)
-                {
-                    CreateDetailedWindow();
-                }
-                else
-                {
-                    //InitMainListView();
-                    InitDataGridView();
-                }
-                //this.NavListView.SelectedItems.Clear();
-            }
-        }
-        */
-
         private void CreateDetailedWindow()
         {
             DetailedInfo di = new DetailedInfo();
@@ -389,7 +282,8 @@ namespace VividManagementApplication
         private void updateDataTimer_Tick(object sender, EventArgs e)
         {
             updateDataTimer.Enabled = false;
-            DownLoadFile();
+            // 暂时备份
+            //DownLoadFile();
         }
 
         private void tmrShows_Tick(object sender, EventArgs e)
@@ -421,9 +315,9 @@ namespace VividManagementApplication
             //ImageClass.DanRu(new Bitmap(images[0]), CommercePictureBox);
             //CommercePictureBox.Image = images[1];
             //ImageClass.KuoSan(new Bitmap(images[1]), CommercePictureBox);
-            CommercePictureBox.Image = images[0];
+            //CommercePictureBox.Image = images[0];
             //System.Threading.Thread.Sleep(1000);
-            CommercePictureBox.Image = images[1];
+            //CommercePictureBox.Image = images[1];
         }
 
         private void refeshButton_Click(object sender, EventArgs e)
@@ -667,7 +561,7 @@ namespace VividManagementApplication
         /// <param name="e"></param>
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            UploadFiles("备份数据库!");
+            //UploadFiles("备份数据库!");
         }
     }
 }

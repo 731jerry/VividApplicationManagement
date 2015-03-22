@@ -96,6 +96,18 @@
             this.tbGoods1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DetailedDanziPanel = new System.Windows.Forms.Panel();
+            this.moreDetaildpPanel = new System.Windows.Forms.Panel();
+            this.tbDz9 = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.tbDz13 = new System.Windows.Forms.TextBox();
+            this.tbDz10 = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.tbDz12 = new System.Windows.Forms.TextBox();
+            this.tbDz11 = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.DateTextBox = new System.Windows.Forms.TextBox();
             this.PanelDZ = new System.Windows.Forms.Panel();
             this.EJCDcb0 = new System.Windows.Forms.ComboBox();
             this.JCDcbE = new System.Windows.Forms.ComboBox();
@@ -145,16 +157,6 @@
             this.textBox157 = new System.Windows.Forms.TextBox();
             this.textBox158 = new System.Windows.Forms.TextBox();
             this.textBox159 = new System.Windows.Forms.TextBox();
-            this.tbDz13 = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.tbDz12 = new System.Windows.Forms.TextBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.tbDz11 = new System.Windows.Forms.TextBox();
-            this.label48 = new System.Windows.Forms.Label();
-            this.tbDz10 = new System.Windows.Forms.TextBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.tbDz9 = new System.Windows.Forms.TextBox();
-            this.label50 = new System.Windows.Forms.Label();
             this.tbDz3 = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.tbDz7 = new System.Windows.Forms.TextBox();
@@ -297,8 +299,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.DateTextBox = new System.Windows.Forms.TextBox();
-            this.moreDetaildpPanel = new System.Windows.Forms.Panel();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -306,11 +306,11 @@
             this.DetailedGoodsPanel.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.DetailedDanziPanel.SuspendLayout();
+            this.moreDetaildpPanel.SuspendLayout();
             this.PanelDZ.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.DetailedHTPanel.SuspendLayout();
             this.PanelHT.SuspendLayout();
-            this.moreDetaildpPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DetailedTabView
@@ -1034,6 +1034,123 @@
             this.DetailedDanziPanel.Size = new System.Drawing.Size(780, 544);
             this.DetailedDanziPanel.TabIndex = 70;
             // 
+            // moreDetaildpPanel
+            // 
+            this.moreDetaildpPanel.Controls.Add(this.tbDz9);
+            this.moreDetaildpPanel.Controls.Add(this.label50);
+            this.moreDetaildpPanel.Controls.Add(this.label49);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz13);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz10);
+            this.moreDetaildpPanel.Controls.Add(this.label46);
+            this.moreDetaildpPanel.Controls.Add(this.label48);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz12);
+            this.moreDetaildpPanel.Controls.Add(this.tbDz11);
+            this.moreDetaildpPanel.Controls.Add(this.label47);
+            this.moreDetaildpPanel.Location = new System.Drawing.Point(24, 409);
+            this.moreDetaildpPanel.Name = "moreDetaildpPanel";
+            this.moreDetaildpPanel.Size = new System.Drawing.Size(744, 119);
+            this.moreDetaildpPanel.TabIndex = 232;
+            // 
+            // tbDz9
+            // 
+            this.tbDz9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbDz9.Location = new System.Drawing.Point(280, 4);
+            this.tbDz9.Name = "tbDz9";
+            this.tbDz9.Size = new System.Drawing.Size(97, 26);
+            this.tbDz9.TabIndex = 221;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label50.Location = new System.Drawing.Point(11, 7);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(247, 20);
+            this.label50.TabIndex = 220;
+            this.label50.Text = "原前帐，购货方尚欠销货方货款（元）";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label49.Location = new System.Drawing.Point(413, 7);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(219, 20);
+            this.label49.TabIndex = 222;
+            this.label49.Text = "今日（本销货单）新增欠款（元）";
+            // 
+            // tbDz13
+            // 
+            this.tbDz13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbDz13.Location = new System.Drawing.Point(95, 70);
+            this.tbDz13.Name = "tbDz13";
+            this.tbDz13.Size = new System.Drawing.Size(97, 26);
+            this.tbDz13.TabIndex = 229;
+            // 
+            // tbDz10
+            // 
+            this.tbDz10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbDz10.Location = new System.Drawing.Point(642, 4);
+            this.tbDz10.Name = "tbDz10";
+            this.tbDz10.Size = new System.Drawing.Size(97, 26);
+            this.tbDz10.TabIndex = 223;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label46.Location = new System.Drawing.Point(12, 73);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(65, 20);
+            this.label46.TabIndex = 228;
+            this.label46.Text = "赊欠期限";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label48.Location = new System.Drawing.Point(11, 44);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(219, 20);
+            this.label48.TabIndex = 224;
+            this.label48.Text = "购货方今日支付销货方货款（元）";
+            // 
+            // tbDz12
+            // 
+            this.tbDz12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbDz12.Location = new System.Drawing.Point(642, 41);
+            this.tbDz12.Name = "tbDz12";
+            this.tbDz12.Size = new System.Drawing.Size(97, 26);
+            this.tbDz12.TabIndex = 227;
+            // 
+            // tbDz11
+            // 
+            this.tbDz11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbDz11.Location = new System.Drawing.Point(280, 41);
+            this.tbDz11.Name = "tbDz11";
+            this.tbDz11.Size = new System.Drawing.Size(97, 26);
+            this.tbDz11.TabIndex = 225;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label47.Location = new System.Drawing.Point(413, 44);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(247, 20);
+            this.label47.TabIndex = 226;
+            this.label47.Text = "至今日止购货方尚欠销货方货款（元）";
+            // 
+            // DateTextBox
+            // 
+            this.DateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DateTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DateTextBox.Location = new System.Drawing.Point(656, 9);
+            this.DateTextBox.Name = "DateTextBox";
+            this.DateTextBox.ReadOnly = true;
+            this.DateTextBox.Size = new System.Drawing.Size(109, 26);
+            this.DateTextBox.TabIndex = 231;
+            // 
             // PanelDZ
             // 
             this.PanelDZ.Controls.Add(this.EJCDcb0);
@@ -1580,96 +1697,6 @@
             this.textBox159.Size = new System.Drawing.Size(116, 26);
             this.textBox159.TabIndex = 278;
             this.textBox159.Text = "    货    号";
-            // 
-            // tbDz13
-            // 
-            this.tbDz13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz13.Location = new System.Drawing.Point(95, 70);
-            this.tbDz13.Name = "tbDz13";
-            this.tbDz13.Size = new System.Drawing.Size(97, 26);
-            this.tbDz13.TabIndex = 229;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label46.Location = new System.Drawing.Point(12, 73);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(65, 20);
-            this.label46.TabIndex = 228;
-            this.label46.Text = "赊欠期限";
-            // 
-            // tbDz12
-            // 
-            this.tbDz12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz12.Location = new System.Drawing.Point(642, 41);
-            this.tbDz12.Name = "tbDz12";
-            this.tbDz12.Size = new System.Drawing.Size(97, 26);
-            this.tbDz12.TabIndex = 227;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label47.Location = new System.Drawing.Point(413, 44);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(247, 20);
-            this.label47.TabIndex = 226;
-            this.label47.Text = "至今日止购货方尚欠销货方货款（元）";
-            // 
-            // tbDz11
-            // 
-            this.tbDz11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz11.Location = new System.Drawing.Point(280, 41);
-            this.tbDz11.Name = "tbDz11";
-            this.tbDz11.Size = new System.Drawing.Size(97, 26);
-            this.tbDz11.TabIndex = 225;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label48.Location = new System.Drawing.Point(11, 44);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(219, 20);
-            this.label48.TabIndex = 224;
-            this.label48.Text = "购货方今日支付销货方货款（元）";
-            // 
-            // tbDz10
-            // 
-            this.tbDz10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz10.Location = new System.Drawing.Point(642, 4);
-            this.tbDz10.Name = "tbDz10";
-            this.tbDz10.Size = new System.Drawing.Size(97, 26);
-            this.tbDz10.TabIndex = 223;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label49.Location = new System.Drawing.Point(413, 7);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(219, 20);
-            this.label49.TabIndex = 222;
-            this.label49.Text = "今日（本销货单）新增欠款（元）";
-            // 
-            // tbDz9
-            // 
-            this.tbDz9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz9.Location = new System.Drawing.Point(280, 4);
-            this.tbDz9.Name = "tbDz9";
-            this.tbDz9.Size = new System.Drawing.Size(97, 26);
-            this.tbDz9.TabIndex = 221;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label50.Location = new System.Drawing.Point(11, 7);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(247, 20);
-            this.label50.TabIndex = 220;
-            this.label50.Text = "原前帐，购货方尚欠销货方货款（元）";
             // 
             // tbDz3
             // 
@@ -3219,33 +3246,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // DateTextBox
-            // 
-            this.DateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DateTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.DateTextBox.Location = new System.Drawing.Point(656, 9);
-            this.DateTextBox.Name = "DateTextBox";
-            this.DateTextBox.ReadOnly = true;
-            this.DateTextBox.Size = new System.Drawing.Size(109, 26);
-            this.DateTextBox.TabIndex = 231;
-            // 
-            // moreDetaildpPanel
-            // 
-            this.moreDetaildpPanel.Controls.Add(this.tbDz9);
-            this.moreDetaildpPanel.Controls.Add(this.label50);
-            this.moreDetaildpPanel.Controls.Add(this.label49);
-            this.moreDetaildpPanel.Controls.Add(this.tbDz13);
-            this.moreDetaildpPanel.Controls.Add(this.tbDz10);
-            this.moreDetaildpPanel.Controls.Add(this.label46);
-            this.moreDetaildpPanel.Controls.Add(this.label48);
-            this.moreDetaildpPanel.Controls.Add(this.tbDz12);
-            this.moreDetaildpPanel.Controls.Add(this.tbDz11);
-            this.moreDetaildpPanel.Controls.Add(this.label47);
-            this.moreDetaildpPanel.Location = new System.Drawing.Point(24, 409);
-            this.moreDetaildpPanel.Name = "moreDetaildpPanel";
-            this.moreDetaildpPanel.Size = new System.Drawing.Size(744, 119);
-            this.moreDetaildpPanel.TabIndex = 232;
-            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -3255,6 +3255,7 @@
             this.Controls.Add(this.DetailedTabView);
             this.Controls.Add(this.SaveButton);
             this.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1960, 1431);
@@ -3272,6 +3273,8 @@
             this.tabPage2.ResumeLayout(false);
             this.DetailedDanziPanel.ResumeLayout(false);
             this.DetailedDanziPanel.PerformLayout();
+            this.moreDetaildpPanel.ResumeLayout(false);
+            this.moreDetaildpPanel.PerformLayout();
             this.PanelDZ.ResumeLayout(false);
             this.PanelDZ.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -3279,8 +3282,6 @@
             this.DetailedHTPanel.PerformLayout();
             this.PanelHT.ResumeLayout(false);
             this.PanelHT.PerformLayout();
-            this.moreDetaildpPanel.ResumeLayout(false);
-            this.moreDetaildpPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
