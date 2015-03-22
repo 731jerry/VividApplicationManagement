@@ -524,31 +524,37 @@ namespace VividManagementApplication
         #region 新建DetailedWindow
         private void newCxButton_Click(object sender, EventArgs e)
         {
+            CURRENT_TAB = 1;
             CreateDetailedWindow();
         }
 
         private void newSpButton_Click(object sender, EventArgs e)
         {
+            CURRENT_TAB = 2;
             CreateDetailedWindow();
         }
 
         private void newJCcButton_Click(object sender, EventArgs e)
         {
+            CURRENT_TAB = 3;
             CreateDetailedWindow();
         }
 
         private void newCgZsButton_Click(object sender, EventArgs e)
         {
+            CURRENT_TAB = 4;
             CreateDetailedWindow();
         }
 
         private void newPzButton_Click(object sender, EventArgs e)
         {
+            CURRENT_TAB = 5;
             CreateDetailedWindow();
         }
 
         private void newHtButton_Click(object sender, EventArgs e)
         {
+            CURRENT_TAB = 6;
             CreateDetailedWindow();
         }
 
