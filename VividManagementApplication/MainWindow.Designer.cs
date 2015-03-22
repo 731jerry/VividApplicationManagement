@@ -5,6 +5,7 @@
         /// <summary>
         /// 必需的设计器变量。
         /// </summary>
+        /// 改动
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>

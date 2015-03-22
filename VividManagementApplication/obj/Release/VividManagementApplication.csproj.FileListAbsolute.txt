@@ -56,3 +56,6 @@ D:\Dropbox\Progamming\财盈盈账务管理系统\VividManagementApplication\Viv
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Properties.Resources.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
+Z:\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe.config
+Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.exe
+Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.pdb
