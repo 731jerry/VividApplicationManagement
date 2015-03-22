@@ -22,6 +22,7 @@ namespace VividManagementApplication
         public int indexCount = 0;
         public string mainID = "";
         public bool canPrint = false;
+        public List<Control> checkValidateControls;
 
         // 打印标识符
         public int printFlag = 0;
@@ -47,10 +48,12 @@ namespace VividManagementApplication
             int detailedHeightDis = 100;
 
             string[] resultStringArray = new string[] { };
+            checkValidateControls = new List<Control>();
 
             switch (MainWindow.CURRENT_TAB)
             {
                 case 1:
+                    checkValidateControls = new List<Control>() { tbClient1, tbClient2, tbClient3, tbClient4, tbClient5 };
                     detailedHeightDis = 250;
                     table = "clients";
                     detailedPanel = DetailedClientPanel;
@@ -61,6 +64,7 @@ namespace VividManagementApplication
                     canPrint = false;
                     break;
                 case 2:
+                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods2, tbGoods3, tbGoods4, tbGoods4 };
                     detailedHeightDis = 250;
                     table = "goods";
                     detailedPanel = DetailedGoodsPanel;
@@ -72,6 +76,7 @@ namespace VividManagementApplication
                     break;
                 case 3:
                     // 进仓单 出仓单
+                    checkValidateControls = new List<Control>() { tbDz1 };
                     detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
                     canPrint = true;
@@ -82,6 +87,7 @@ namespace VividManagementApplication
                     break;
                 case 4:
                     // 采购单 销售单
+                    checkValidateControls = new List<Control>() { tbDz1 };
                     detailedPanel = DetailedDanziPanel;
                     detailedHeightDis = 120;
                     danziComboBox.Items.Clear();
@@ -90,6 +96,7 @@ namespace VividManagementApplication
                     danziComboBox.SelectedIndex = 0;
                     break;
                 case 5:
+                    checkValidateControls = new List<Control>() { tbDz1 };
                     detailedPanel = DetailedDanziPanel;
                     detailedHeightDis = 60;
 
@@ -140,22 +147,53 @@ namespace VividManagementApplication
         {
             try
             {
-                DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
-                if (ItemId.Equals("-1"))
+                if (isPassValidateControls(checkValidateControls))
                 {
-                    MessageBox.Show("新建成功!", "恭喜");
+                    DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
+                    if (ItemId.Equals("-1"))
+                    {
+                        MessageBox.Show("新建成功!", "恭喜");
+                    }
+                    else
+                    {
+                        MessageBox.Show("保存成功!", "恭喜");
+                    }
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("保存成功!", "恭喜");
+                    MessageBox.Show("请先填入必填项目再保存!", "提示");
                 }
             }
             catch (Exception ex)
             {
                 FormBasicFeatrues.GetInstence().RecordLog(ex, "");
                 MessageBox.Show(ex.Message, "错误");
+                this.Close();
             }
-            this.Close();
+        }
+
+        /// <summary>
+        /// 检测是否有必填
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private Boolean isPassValidateControls(List<Control> cons)
+        {
+            Boolean isPass = false;
+            foreach (Control ct in cons)
+            {
+                if (ct.Text.Equals(""))
+                {
+                    return false;
+                }
+                else
+                {
+                    isPass = true;
+                }
+            }
+            return isPass;
         }
 
         private void PreviewPrintButton_Click(object sender, EventArgs e)
