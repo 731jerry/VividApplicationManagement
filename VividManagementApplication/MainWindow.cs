@@ -406,6 +406,7 @@ namespace VividManagementApplication
         private void listCxButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCxButton;
+            CURRENT_TAB = 1;
             Column1.HeaderText = "客户编号";
             Column2.HeaderText = "客户名称";
             Column3.HeaderText = "联系地址";
@@ -421,6 +422,7 @@ namespace VividManagementApplication
         private void listSpButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSpButton;
+            CURRENT_TAB = 2;
             Column1.HeaderText = "商品编号";
             Column2.HeaderText = "商品名称";
             Column3.HeaderText = "规格";
@@ -436,6 +438,7 @@ namespace VividManagementApplication
         private void listKcButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listKcButton;
+            CURRENT_TAB = 3;
             Column1.HeaderText = "商品编号";
             Column2.HeaderText = "商品名称";
             Column3.HeaderText = "规格";
@@ -451,6 +454,7 @@ namespace VividManagementApplication
         private void listJcdButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listJcdButton;
+            CURRENT_TAB = 3;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "货号";
@@ -465,6 +469,7 @@ namespace VividManagementApplication
         private void listCcdButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCcdButton;
+            CURRENT_TAB = 3;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "货号";
@@ -479,6 +484,7 @@ namespace VividManagementApplication
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCgXsButton;
+            CURRENT_TAB = 4;
             Column1.HeaderText = "日期";
             Column2.HeaderText = "凭证号码";
             Column3.HeaderText = "类型";
@@ -495,12 +501,13 @@ namespace VividManagementApplication
         {
             // 还未完成
             CURRENT_LIST_BUTTON = listKhdzButton;
-
+            CURRENT_TAB = 4;
         }
 
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSfzhButton;
+            CURRENT_TAB = 5;
             Column1.HeaderText = "日期";
             Column2.HeaderText = "凭证号码";
             Column3.HeaderText = "摘要";
@@ -515,9 +522,9 @@ namespace VividManagementApplication
 
         private void listHtButton_Click(object sender, EventArgs e)
         {
-            // 还未完成
+            // 还未完成 合同
             CURRENT_LIST_BUTTON = listHtButton;
-
+            CURRENT_TAB = 6;
         }
         #endregion
 
