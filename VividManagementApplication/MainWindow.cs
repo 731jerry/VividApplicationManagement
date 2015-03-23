@@ -127,7 +127,7 @@ namespace VividManagementApplication
             #endregion
 
             #region 初始化客户列表
-
+            listCxButton.PerformClick();
 
             #endregion
 
@@ -406,6 +406,8 @@ namespace VividManagementApplication
         private void listCxButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCxButton;
+            CURRENT_TAB = 1;
+            mainDGVTitle.Text = listCxButton.Text;
             Column1.HeaderText = "客户编号";
             Column2.HeaderText = "客户名称";
             Column3.HeaderText = "联系地址";
@@ -421,6 +423,8 @@ namespace VividManagementApplication
         private void listSpButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSpButton;
+            CURRENT_TAB = 2;
+            mainDGVTitle.Text = listSpButton.Text;
             Column1.HeaderText = "商品编号";
             Column2.HeaderText = "商品名称";
             Column3.HeaderText = "规格";
@@ -436,6 +440,8 @@ namespace VividManagementApplication
         private void listKcButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listKcButton;
+            CURRENT_TAB = 3;
+            mainDGVTitle.Text = listKcButton.Text;
             Column1.HeaderText = "商品编号";
             Column2.HeaderText = "商品名称";
             Column3.HeaderText = "规格";
@@ -451,6 +457,8 @@ namespace VividManagementApplication
         private void listJcdButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listJcdButton;
+            CURRENT_TAB = 3;
+            mainDGVTitle.Text = listJcdButton.Text;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "货号";
@@ -465,6 +473,8 @@ namespace VividManagementApplication
         private void listCcdButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCcdButton;
+            CURRENT_TAB = 3;
+            mainDGVTitle.Text = listCcdButton.Text;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "货号";
@@ -479,8 +489,10 @@ namespace VividManagementApplication
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCgXsButton;
-            Column1.HeaderText = "日期";
-            Column2.HeaderText = "凭证号码";
+            CURRENT_TAB = 4;
+            mainDGVTitle.Text = listCgXsButton.Text;
+            Column1.HeaderText = "凭证号码";
+            Column2.HeaderText = "日期";
             Column3.HeaderText = "类型";
             Column4.HeaderText = "摘要";
             Column5.HeaderText = "金额";
@@ -488,19 +500,22 @@ namespace VividManagementApplication
             Column7.HeaderText = "√";
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "cgxsYWList", new string[] { "addtime", "cgxsID", "leixing", "clientIDs", "price", "operater", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "cgxsYWList", new string[] { "cgxsID", "addtime", "leixing", "clientIDs", "price", "operater", "discardFlag" });
         }
 
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
             // 还未完成
             CURRENT_LIST_BUTTON = listKhdzButton;
-
+            CURRENT_TAB = 4;
+            mainDGVTitle.Text = listKhdzButton.Text;
         }
 
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSfzhButton;
+            CURRENT_TAB = 5;
+            mainDGVTitle.Text = listSfzhButton.Text;
             Column1.HeaderText = "日期";
             Column2.HeaderText = "凭证号码";
             Column3.HeaderText = "摘要";
@@ -515,9 +530,10 @@ namespace VividManagementApplication
 
         private void listHtButton_Click(object sender, EventArgs e)
         {
-            
             // 还未完成
             CURRENT_LIST_BUTTON = listHtButton;
+            CURRENT_TAB = 6;
+            mainDGVTitle.Text = listHtButton.Text;
             Column1.HeaderText = "合同编号";
             Column2.HeaderText = "签订日期";
             Column3.HeaderText = "合同类型";
