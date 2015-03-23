@@ -177,10 +177,31 @@ namespace VividManagementApplication
                     }
                     break;
                 case 6:
+                    // 合同
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
                     detailedHeightDis = 60;
+
+                    table = "htList";
+                    baseName = "htID";
+                    queryArray = new string[] { "htID", "leixing", "htDate", "companyName", "sum", "discardFlag" };
+                    controlsPreName = "HTtbID";
+                    indexCount = 6;
+                    mainID = HTtbID.Text;
+
                     canPrint = true;
+                    if (ItemId.Equals("-1"))
+                    {
+                        HTcbName.Visible = true;
+                        HTcbName.Items.Clear();
+                        HTcbName.Items.Add("购买合同");
+                        HTcbName.Items.Add("销售合同");
+                        HTcbName.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        HTcbName.Visible = false;
+                    }  
                     break;
             }
 
