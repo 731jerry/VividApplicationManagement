@@ -443,7 +443,7 @@
             this.tbClient2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient2.Name = "tbClient2";
             this.tbClient2.Size = new System.Drawing.Size(107, 28);
-            this.tbClient2.TabIndex = 103;
+            this.tbClient2.TabIndex = 102;
             // 
             // label14
             // 
@@ -463,7 +463,7 @@
             this.tbClient13.Multiline = true;
             this.tbClient13.Name = "tbClient13";
             this.tbClient13.Size = new System.Drawing.Size(645, 109);
-            this.tbClient13.TabIndex = 101;
+            this.tbClient13.TabIndex = 113;
             // 
             // tbClient3
             // 
@@ -477,7 +477,7 @@
             this.tbClient3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient3.Name = "tbClient3";
             this.tbClient3.Size = new System.Drawing.Size(129, 28);
-            this.tbClient3.TabIndex = 88;
+            this.tbClient3.TabIndex = 103;
             // 
             // label3
             // 
@@ -496,7 +496,7 @@
             this.tbClient12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient12.Name = "tbClient12";
             this.tbClient12.Size = new System.Drawing.Size(617, 26);
-            this.tbClient12.TabIndex = 100;
+            this.tbClient12.TabIndex = 112;
             // 
             // tbClient11
             // 
@@ -505,7 +505,7 @@
             this.tbClient11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient11.Name = "tbClient11";
             this.tbClient11.Size = new System.Drawing.Size(617, 26);
-            this.tbClient11.TabIndex = 99;
+            this.tbClient11.TabIndex = 111;
             // 
             // tbClient10
             // 
@@ -514,7 +514,7 @@
             this.tbClient10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient10.Name = "tbClient10";
             this.tbClient10.Size = new System.Drawing.Size(617, 26);
-            this.tbClient10.TabIndex = 98;
+            this.tbClient10.TabIndex = 110;
             // 
             // tbClient9
             // 
@@ -523,7 +523,7 @@
             this.tbClient9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient9.Name = "tbClient9";
             this.tbClient9.Size = new System.Drawing.Size(240, 26);
-            this.tbClient9.TabIndex = 97;
+            this.tbClient9.TabIndex = 109;
             // 
             // tbClient8
             // 
@@ -532,7 +532,7 @@
             this.tbClient8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient8.Name = "tbClient8";
             this.tbClient8.Size = new System.Drawing.Size(277, 26);
-            this.tbClient8.TabIndex = 96;
+            this.tbClient8.TabIndex = 108;
             // 
             // tbClient7
             // 
@@ -541,7 +541,7 @@
             this.tbClient7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient7.Name = "tbClient7";
             this.tbClient7.Size = new System.Drawing.Size(129, 26);
-            this.tbClient7.TabIndex = 95;
+            this.tbClient7.TabIndex = 107;
             // 
             // tbClient6
             // 
@@ -550,7 +550,7 @@
             this.tbClient6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient6.Name = "tbClient6";
             this.tbClient6.Size = new System.Drawing.Size(411, 26);
-            this.tbClient6.TabIndex = 94;
+            this.tbClient6.TabIndex = 106;
             // 
             // tbClient5
             // 
@@ -559,7 +559,7 @@
             this.tbClient5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient5.Name = "tbClient5";
             this.tbClient5.Size = new System.Drawing.Size(129, 26);
-            this.tbClient5.TabIndex = 93;
+            this.tbClient5.TabIndex = 105;
             // 
             // tbClient4
             // 
@@ -568,7 +568,7 @@
             this.tbClient4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient4.Name = "tbClient4";
             this.tbClient4.Size = new System.Drawing.Size(411, 26);
-            this.tbClient4.TabIndex = 92;
+            this.tbClient4.TabIndex = 104;
             // 
             // tbClient1
             // 
@@ -577,7 +577,7 @@
             this.tbClient1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient1.Name = "tbClient1";
             this.tbClient1.Size = new System.Drawing.Size(150, 26);
-            this.tbClient1.TabIndex = 91;
+            this.tbClient1.TabIndex = 101;
             // 
             // label17
             // 
@@ -747,7 +747,7 @@
             this.tbGoods2.Location = new System.Drawing.Point(402, 28);
             this.tbGoods2.Name = "tbGoods2";
             this.tbGoods2.Size = new System.Drawing.Size(133, 26);
-            this.tbGoods2.TabIndex = 177;
+            this.tbGoods2.TabIndex = 202;
             // 
             // label18
             // 
@@ -765,7 +765,7 @@
             this.tbGoods9.Location = new System.Drawing.Point(109, 129);
             this.tbGoods9.Name = "tbGoods9";
             this.tbGoods9.Size = new System.Drawing.Size(654, 26);
-            this.tbGoods9.TabIndex = 175;
+            this.tbGoods9.TabIndex = 209;
             // 
             // label102
             // 
@@ -784,7 +784,7 @@
             this.tbGoods17.Multiline = true;
             this.tbGoods17.Name = "tbGoods17";
             this.tbGoods17.Size = new System.Drawing.Size(654, 114);
-            this.tbGoods17.TabIndex = 173;
+            this.tbGoods17.TabIndex = 217;
             // 
             // tbGoods16
             // 
@@ -792,7 +792,7 @@
             this.tbGoods16.Location = new System.Drawing.Point(609, 227);
             this.tbGoods16.Name = "tbGoods16";
             this.tbGoods16.Size = new System.Drawing.Size(154, 26);
-            this.tbGoods16.TabIndex = 172;
+            this.tbGoods16.TabIndex = 216;
             // 
             // tbGoods15
             // 
@@ -800,7 +800,7 @@
             this.tbGoods15.Location = new System.Drawing.Point(373, 227);
             this.tbGoods15.Name = "tbGoods15";
             this.tbGoods15.Size = new System.Drawing.Size(150, 26);
-            this.tbGoods15.TabIndex = 171;
+            this.tbGoods15.TabIndex = 215;
             // 
             // tbGoods14
             // 
@@ -809,7 +809,7 @@
             this.tbGoods14.Name = "tbGoods14";
             this.tbGoods14.ReadOnly = true;
             this.tbGoods14.Size = new System.Drawing.Size(179, 26);
-            this.tbGoods14.TabIndex = 170;
+            this.tbGoods14.TabIndex = 214;
             // 
             // tbGoods13
             // 
@@ -817,7 +817,7 @@
             this.tbGoods13.Location = new System.Drawing.Point(609, 194);
             this.tbGoods13.Name = "tbGoods13";
             this.tbGoods13.Size = new System.Drawing.Size(154, 26);
-            this.tbGoods13.TabIndex = 169;
+            this.tbGoods13.TabIndex = 213;
             // 
             // tbGoods12
             // 
@@ -825,7 +825,7 @@
             this.tbGoods12.Location = new System.Drawing.Point(373, 194);
             this.tbGoods12.Name = "tbGoods12";
             this.tbGoods12.Size = new System.Drawing.Size(150, 26);
-            this.tbGoods12.TabIndex = 168;
+            this.tbGoods12.TabIndex = 212;
             // 
             // tbGoods11
             // 
@@ -833,7 +833,7 @@
             this.tbGoods11.Location = new System.Drawing.Point(109, 194);
             this.tbGoods11.Name = "tbGoods11";
             this.tbGoods11.Size = new System.Drawing.Size(179, 26);
-            this.tbGoods11.TabIndex = 167;
+            this.tbGoods11.TabIndex = 211;
             // 
             // tbGoods10
             // 
@@ -841,7 +841,7 @@
             this.tbGoods10.Location = new System.Drawing.Point(109, 161);
             this.tbGoods10.Name = "tbGoods10";
             this.tbGoods10.Size = new System.Drawing.Size(654, 26);
-            this.tbGoods10.TabIndex = 166;
+            this.tbGoods10.TabIndex = 210;
             // 
             // tbGoods8
             // 
@@ -849,7 +849,7 @@
             this.tbGoods8.Location = new System.Drawing.Point(634, 96);
             this.tbGoods8.Name = "tbGoods8";
             this.tbGoods8.Size = new System.Drawing.Size(129, 26);
-            this.tbGoods8.TabIndex = 165;
+            this.tbGoods8.TabIndex = 208;
             // 
             // tbGoods7
             // 
@@ -857,7 +857,7 @@
             this.tbGoods7.Location = new System.Drawing.Point(402, 96);
             this.tbGoods7.Name = "tbGoods7";
             this.tbGoods7.Size = new System.Drawing.Size(133, 26);
-            this.tbGoods7.TabIndex = 164;
+            this.tbGoods7.TabIndex = 207;
             // 
             // tbGoods6
             // 
@@ -865,7 +865,7 @@
             this.tbGoods6.Location = new System.Drawing.Point(109, 96);
             this.tbGoods6.Name = "tbGoods6";
             this.tbGoods6.Size = new System.Drawing.Size(196, 26);
-            this.tbGoods6.TabIndex = 163;
+            this.tbGoods6.TabIndex = 206;
             // 
             // tbGoods5
             // 
@@ -873,7 +873,7 @@
             this.tbGoods5.Location = new System.Drawing.Point(634, 63);
             this.tbGoods5.Name = "tbGoods5";
             this.tbGoods5.Size = new System.Drawing.Size(129, 26);
-            this.tbGoods5.TabIndex = 162;
+            this.tbGoods5.TabIndex = 205;
             // 
             // tbGoods4
             // 
@@ -881,7 +881,7 @@
             this.tbGoods4.Location = new System.Drawing.Point(402, 63);
             this.tbGoods4.Name = "tbGoods4";
             this.tbGoods4.Size = new System.Drawing.Size(133, 26);
-            this.tbGoods4.TabIndex = 161;
+            this.tbGoods4.TabIndex = 204;
             // 
             // tbGoods3
             // 
@@ -889,7 +889,7 @@
             this.tbGoods3.Location = new System.Drawing.Point(109, 63);
             this.tbGoods3.Name = "tbGoods3";
             this.tbGoods3.Size = new System.Drawing.Size(196, 26);
-            this.tbGoods3.TabIndex = 160;
+            this.tbGoods3.TabIndex = 203;
             // 
             // label38
             // 
@@ -1050,7 +1050,7 @@
             this.tbGoods1.Location = new System.Drawing.Point(109, 26);
             this.tbGoods1.Name = "tbGoods1";
             this.tbGoods1.Size = new System.Drawing.Size(129, 26);
-            this.tbGoods1.TabIndex = 144;
+            this.tbGoods1.TabIndex = 201;
             // 
             // tabPage2
             // 
@@ -1899,7 +1899,7 @@
             this.danziComboBox.Location = new System.Drawing.Point(19, 21);
             this.danziComboBox.Name = "danziComboBox";
             this.danziComboBox.Size = new System.Drawing.Size(86, 28);
-            this.danziComboBox.TabIndex = 203;
+            this.danziComboBox.TabIndex = 201;
             this.danziComboBox.SelectedIndexChanged += new System.EventHandler(this.danziComboBox_SelectedIndexChanged);
             // 
             // tbDz1
@@ -1910,7 +1910,7 @@
             this.tbDz1.Location = new System.Drawing.Point(110, 60);
             this.tbDz1.Name = "tbDz1";
             this.tbDz1.Size = new System.Drawing.Size(120, 28);
-            this.tbDz1.TabIndex = 200;
+            this.tbDz1.TabIndex = 202;
             // 
             // lbDzTitle
             // 
@@ -1950,7 +1950,7 @@
             this.tbDz2.Name = "tbDz2";
             this.tbDz2.ReadOnly = true;
             this.tbDz2.Size = new System.Drawing.Size(120, 26);
-            this.tbDz2.TabIndex = 99;
+            this.tbDz2.TabIndex = 203;
             // 
             // label62
             // 

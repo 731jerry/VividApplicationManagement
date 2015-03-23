@@ -106,6 +106,7 @@ namespace VividManagementApplication
                     mainID = tbDz2.Text;
 
                     canPrint = true;
+                    moreDetaildpPanel.Visible = false;
                     if (ItemId.Equals("-1"))
                     {
                         danziComboBox.Visible = true;
@@ -133,6 +134,7 @@ namespace VividManagementApplication
                     mainID = tbDz2.Text;
 
                     canPrint = true;
+                    moreDetaildpPanel.Visible = true;
                     if (ItemId.Equals("-1"))
                     {
                         danziComboBox.Visible = true;
@@ -247,6 +249,8 @@ namespace VividManagementApplication
                     {
                         MessageBox.Show("保存成功!", "恭喜");
                     }
+                    // 刷新
+                    MainWindow.CURRENT_LIST_BUTTON.PerformClick();
                     this.Close();
                 }
                 else
@@ -712,19 +716,9 @@ namespace VividManagementApplication
                 {
                     case 0://进仓单
                         lbDzTitle.Text = "商品（货物）进仓单";
-                        //DetailedDanziPanel.Height -= 130;
-                        //this.Height -= 170;
-                        //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
-                        //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
-                        moreDetaildpPanel.Visible = false;
                         break;
                     case 1://出仓单
                         lbDzTitle.Text = "商品（货物）出仓单";
-                        //DetailedDanziPanel.Height -= 130;
-                        //this.Height -= 170;
-                        //PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - 170);
-                        //SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - 170);
-                        moreDetaildpPanel.Visible = false;
                         break;
                     default:
                         break;
@@ -736,10 +730,8 @@ namespace VividManagementApplication
                 {
                     case 0://采购单
                         lbDzTitle.Text = "商品（货物）采购单";
-                        moreDetaildpPanel.Visible = true;
                         break;
                     case 1://销售单
-                        moreDetaildpPanel.Visible = true;
                         lbDzTitle.Text = "商品（货物）销售单";
                         break;
                 }
