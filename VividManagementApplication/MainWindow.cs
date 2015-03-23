@@ -179,9 +179,6 @@ namespace VividManagementApplication
         // 测试
         private void qqButton1_Click(object sender, EventArgs e)
         {
-            //DatabaseConnections.GetInstence().UserLogin("00000","00000");
-            //CreateMainListView();
-
         }
 
         private void backupData_Click(object sender, EventArgs e)
@@ -406,6 +403,7 @@ namespace VividManagementApplication
         {
             CURRENT_LIST_BUTTON = listCxButton;
             CURRENT_TAB = 1;
+            mainDGVTitle.Text = listCxButton.Text;
             Column1.HeaderText = "客户编号";
             Column2.HeaderText = "客户名称";
             Column3.HeaderText = "联系地址";
@@ -422,6 +420,7 @@ namespace VividManagementApplication
         {
             CURRENT_LIST_BUTTON = listSpButton;
             CURRENT_TAB = 2;
+            mainDGVTitle.Text = listSpButton.Text;
             Column1.HeaderText = "商品编号";
             Column2.HeaderText = "商品名称";
             Column3.HeaderText = "规格";
@@ -438,6 +437,7 @@ namespace VividManagementApplication
         {
             CURRENT_LIST_BUTTON = listKcButton;
             CURRENT_TAB = 3;
+            mainDGVTitle.Text = listKcButton.Text;
             Column1.HeaderText = "商品编号";
             Column2.HeaderText = "商品名称";
             Column3.HeaderText = "规格";
@@ -454,6 +454,7 @@ namespace VividManagementApplication
         {
             CURRENT_LIST_BUTTON = listJcdButton;
             CURRENT_TAB = 3;
+            mainDGVTitle.Text = listJcdButton.Text;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "货号";
@@ -469,6 +470,7 @@ namespace VividManagementApplication
         {
             CURRENT_LIST_BUTTON = listCcdButton;
             CURRENT_TAB = 3;
+            mainDGVTitle.Text = listCcdButton.Text;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "货号";
@@ -484,6 +486,7 @@ namespace VividManagementApplication
         {
             CURRENT_LIST_BUTTON = listCgXsButton;
             CURRENT_TAB = 4;
+            mainDGVTitle.Text = listCgXsButton.Text;
             Column1.HeaderText = "日期";
             Column2.HeaderText = "凭证号码";
             Column3.HeaderText = "类型";
@@ -501,12 +504,14 @@ namespace VividManagementApplication
             // 还未完成
             CURRENT_LIST_BUTTON = listKhdzButton;
             CURRENT_TAB = 4;
+            mainDGVTitle.Text = listKhdzButton.Text;
         }
 
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
+            mainDGVTitle.Text = listSfzhButton.Text;
             Column1.HeaderText = "日期";
             Column2.HeaderText = "凭证号码";
             Column3.HeaderText = "摘要";
@@ -524,6 +529,7 @@ namespace VividManagementApplication
             // 还未完成 合同
             CURRENT_LIST_BUTTON = listHtButton;
             CURRENT_TAB = 6;
+            mainDGVTitle.Text = listHtButton.Text;
         }
         #endregion
 

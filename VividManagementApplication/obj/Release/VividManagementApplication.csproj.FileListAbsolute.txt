@@ -62,3 +62,17 @@ Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManage
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\sq\VividManagementApplication.resources.dll
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.sq.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\sq\VividManagementApplication.resources.dll
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe.config
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.exe
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.pdb
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.pdb
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\bin\Release\ControlExs.dll
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\bin\Release\MySql.Data.dll
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DetailedInfo.resources
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Login.resources
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.resources
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Properties.Resources.resources
+D:\Dropbox\Progamming\GitHub\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache

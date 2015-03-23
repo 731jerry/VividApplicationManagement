@@ -106,6 +106,7 @@ namespace VividManagementApplication
                     else {
                         danziComboBox.Visible = false;
                     }
+
                     break;
                 case 4:
                     // 采购单 销售单
@@ -116,8 +117,8 @@ namespace VividManagementApplication
 
 
                     danziComboBox.Items.Clear();
-                    danziComboBox.Items.Add("进仓单");
-                    danziComboBox.Items.Add("出仓单");
+                    danziComboBox.Items.Add("采购单");
+                    danziComboBox.Items.Add("销售单");
                     danziComboBox.SelectedIndex = 0;
                     break;
                 case 5:

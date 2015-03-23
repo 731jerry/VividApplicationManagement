@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
+            this.mainDGVTitle = new System.Windows.Forms.Label();
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
@@ -141,24 +142,30 @@
             // 
             // MainPanel
             // 
-            resources.ApplyResources(this.MainPanel, "MainPanel");
             this.MainPanel.BackColor = System.Drawing.Color.White;
             this.MainPanel.Controls.Add(this.ContentPanel);
             this.MainPanel.Controls.Add(this.NavPanel);
+            resources.ApplyResources(this.MainPanel, "MainPanel");
             this.MainPanel.Name = "MainPanel";
             // 
             // ContentPanel
             // 
-            resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ContentPanel.Controls.Add(this.mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
             this.ContentPanel.Controls.Add(this.refeshButton);
             this.ContentPanel.Controls.Add(this.MainDataGridView);
             this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.DiscardButton);
             this.ContentPanel.Controls.Add(this.ViewButton);
+            resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.Name = "ContentPanel";
+            // 
+            // mainDGVTitle
+            // 
+            resources.ApplyResources(this.mainDGVTitle, "mainDGVTitle");
+            this.mainDGVTitle.Name = "mainDGVTitle";
             // 
             // backupData
             // 
@@ -176,11 +183,11 @@
             // 
             // MainDataGridView
             // 
-            resources.ApplyResources(this.MainDataGridView, "MainDataGridView");
             this.MainDataGridView.AllowUserToAddRows = false;
             this.MainDataGridView.AllowUserToDeleteRows = false;
             this.MainDataGridView.AllowUserToResizeRows = false;
             this.MainDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.MainDataGridView, "MainDataGridView");
             this.MainDataGridView.MultiSelect = false;
             this.MainDataGridView.Name = "MainDataGridView";
             this.MainDataGridView.ReadOnly = true;
@@ -210,7 +217,6 @@
             // 
             // NavPanel
             // 
-            resources.ApplyResources(this.NavPanel, "NavPanel");
             this.NavPanel.BackColor = System.Drawing.Color.Transparent;
             this.NavPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.NavPanel.Controls.Add(this.listHtButton);
@@ -234,6 +240,7 @@
             this.NavPanel.Controls.Add(this.listCxButton);
             this.NavPanel.Controls.Add(this.newCxButton);
             this.NavPanel.Controls.Add(this.cxRadio);
+            resources.ApplyResources(this.NavPanel, "NavPanel");
             this.NavPanel.Name = "NavPanel";
             // 
             // listHtButton
@@ -417,10 +424,10 @@
             // 
             // notificationPanel
             // 
-            resources.ApplyResources(this.notificationPanel, "notificationPanel");
             this.notificationPanel.BackColor = System.Drawing.Color.White;
             this.notificationPanel.Controls.Add(this.lblSHOWS2);
             this.notificationPanel.Controls.Add(this.lblSHOWS);
+            resources.ApplyResources(this.notificationPanel, "notificationPanel");
             this.notificationPanel.Name = "notificationPanel";
             // 
             // lblSHOWS2
@@ -468,6 +475,7 @@
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.MainPanel.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
+            this.ContentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).EndInit();
             this.NavPanel.ResumeLayout(false);
             this.NavPanel.PerformLayout();
@@ -526,6 +534,7 @@
         private ControlExs.QQButton listCxButton;
         private ControlExs.QQButton newCxButton;
         private ControlExs.QQRadioButton cxRadio;
+        private System.Windows.Forms.Label mainDGVTitle;
     }
 }
 
