@@ -87,9 +87,20 @@ namespace VividManagementApplication
                     detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
 
-                    table = "jcdList";
-                    baseName = "jcdID";
-                    queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "discardFlag" };
+                    if (MainWindow.mainDGVTitle.Text.Equals("进仓单列表"))
+                    {
+                        lbDzTitle.Text = "商品（货物）进仓单";
+                        table = "jcdList";
+                        baseName = "jcdID";
+                        queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "discardFlag" };
+                    }
+                    else
+                    {
+                        lbDzTitle.Text = "商品（货物）出仓单";
+                        table = "ccdList";
+                        baseName = "ccdID";
+                        queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "discardFlag" };
+                    }
                     controlsPreName = "tbDz";
                     indexCount = 11;
                     mainID = tbDz2.Text;
@@ -103,10 +114,10 @@ namespace VividManagementApplication
                         danziComboBox.Items.Add("出仓单");
                         danziComboBox.SelectedIndex = 0;
                     }
-                    else {
+                    else
+                    {
                         danziComboBox.Visible = false;
                     }
-
                     break;
                 case 4:
                     // 采购单 销售单
@@ -114,12 +125,26 @@ namespace VividManagementApplication
                     detailedHeightDis = 120;
                     detailedPanel = DetailedDanziPanel;
 
+                    table = "cgxsYWList";
+                    baseName = "cgxsID";
+                    queryArray = new string[] { "cgxsID ", "leixing", "clientIDs", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "total", "discardFlag", "operater" };
+                    controlsPreName = "tbDz";
+                    indexCount = 14;
+                    mainID = tbDz2.Text;
 
-
-                    danziComboBox.Items.Clear();
-                    danziComboBox.Items.Add("采购单");
-                    danziComboBox.Items.Add("销售单");
-                    danziComboBox.SelectedIndex = 0;
+                     canPrint = true;
+                    if (ItemId.Equals("-1"))
+                    {
+                        danziComboBox.Visible = true;
+                        danziComboBox.Items.Clear();
+                        danziComboBox.Items.Add("采购单");
+                        danziComboBox.Items.Add("销售单");
+                        danziComboBox.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        danziComboBox.Visible = false;
+                    }
                     break;
                 case 5:
                     checkValidateControls = new List<Control>() { tbDz1 };
@@ -138,7 +163,7 @@ namespace VividManagementApplication
             {
                 try
                 {
-                    FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray,baseName, ItemId));
+                    FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
                 }
                 catch (Exception ex)
                 {

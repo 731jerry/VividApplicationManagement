@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.mainDGVTitle = new System.Windows.Forms.Label();
+            mainDGVTitle = new System.Windows.Forms.Label();
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
@@ -152,7 +152,7 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ContentPanel.Controls.Add(this.mainDGVTitle);
+            this.ContentPanel.Controls.Add(mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
             this.ContentPanel.Controls.Add(this.refeshButton);
             this.ContentPanel.Controls.Add(this.MainDataGridView);
@@ -164,8 +164,8 @@
             // 
             // mainDGVTitle
             // 
-            resources.ApplyResources(this.mainDGVTitle, "mainDGVTitle");
-            this.mainDGVTitle.Name = "mainDGVTitle";
+            resources.ApplyResources(mainDGVTitle, "mainDGVTitle");
+            mainDGVTitle.Name = "mainDGVTitle";
             // 
             // backupData
             // 
@@ -534,7 +534,7 @@
         private ControlExs.QQButton listCxButton;
         private ControlExs.QQButton newCxButton;
         private ControlExs.QQRadioButton cxRadio;
-        private System.Windows.Forms.Label mainDGVTitle;
+        public static System.Windows.Forms.Label mainDGVTitle;
     }
 }
 
