@@ -524,9 +524,9 @@ namespace VividManagementApplication
             Column4.HeaderText = "对方单位名称";
             Column5.HeaderText = "合同金额（元）";
             Column6.HeaderText = "状态";
-           
-            
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htData", "leixing", "companyName","sum", "discardFlag"});
+
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName","sum", "discardFlag"});
         }
         #endregion
 
