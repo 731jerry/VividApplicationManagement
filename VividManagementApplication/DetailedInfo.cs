@@ -83,7 +83,7 @@ namespace VividManagementApplication
                     break;
                 case 3:
                     // 进仓单 出仓单
-                    checkValidateControls = new List<Control>() { tbDz1 };
+                    checkValidateControls = new List<Control>() { tbDz2 };
                     detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
 
@@ -121,18 +121,18 @@ namespace VividManagementApplication
                     break;
                 case 4:
                     // 采购单 销售单
-                    checkValidateControls = new List<Control>() { tbDz1 };
+                    checkValidateControls = new List<Control>() { tbDz2 };
                     detailedHeightDis = 120;
                     detailedPanel = DetailedDanziPanel;
 
                     table = "cgxsYWList";
                     baseName = "cgxsID";
-                    queryArray = new string[] { "cgxsID ", "leixing", "clientIDs", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "total", "discardFlag", "operater" };
+                    queryArray = new string[] { "cgxsID", "leixing", "clientIDs", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "total", "discardFlag", "operater" };
                     controlsPreName = "tbDz";
                     indexCount = 14;
                     mainID = tbDz2.Text;
 
-                     canPrint = true;
+                    canPrint = true;
                     if (ItemId.Equals("-1"))
                     {
                         danziComboBox.Visible = true;
@@ -147,9 +147,34 @@ namespace VividManagementApplication
                     }
                     break;
                 case 5:
-                    checkValidateControls = new List<Control>() { tbDz1 };
-                    detailedPanel = DetailedDanziPanel;
-                    detailedHeightDis = 60;
+                    // 收款凭证 付款凭证 领款凭证 还款凭证 报销凭证
+                    checkValidateControls = new List<Control>() { tbPz2 };
+                    detailedPanel = DetailedPZPanel;
+                    detailedHeightDis = 250;
+
+                    table = "pzList";
+                    baseName = "pzID";
+                    queryArray = new string[] { "pzID", "leixing", "clientIDs", "companyName", "zhaiyao", "cost", "wayOfPay", "chequeID", "fujianCount", "discardFlag", "operater"};
+                    controlsPreName = "tbPz";
+                    indexCount = 11;
+                    mainID = tbDz2.Text;
+
+                    canPrint = true;
+                    if (ItemId.Equals("-1"))
+                    {
+                        pzComboBox.Visible = true;
+                        pzComboBox.Items.Clear();
+                        pzComboBox.Items.Add("收款凭证");
+                        pzComboBox.Items.Add("付款凭证");
+                        pzComboBox.Items.Add("领款凭证");
+                        pzComboBox.Items.Add("还款凭证");
+                        pzComboBox.Items.Add("报销凭证");
+                        pzComboBox.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        pzComboBox.Visible = false;
+                    }
                     break;
                 case 6:
                     detailedPanel = DetailedHTPanel;
@@ -168,7 +193,7 @@ namespace VividManagementApplication
                 catch (Exception ex)
                 {
                     FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
-                    MessageBox.Show("无法查看详细" + ex.Message, "错误");
+                    MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
                     this.Close();
                 }
             }
@@ -654,7 +679,7 @@ namespace VividManagementApplication
         //为生成新行添加值
         private void DetailedDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
-            e.Row.Cells[0].Value = "hahah";
+
         }
 
         // 进仓单 出仓单 采购单 销售单

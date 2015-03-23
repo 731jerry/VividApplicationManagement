@@ -487,8 +487,8 @@ namespace VividManagementApplication
             CURRENT_LIST_BUTTON = listCgXsButton;
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listCgXsButton.Text;
-            Column1.HeaderText = "日期";
-            Column2.HeaderText = "凭证号码";
+            Column1.HeaderText = "凭证号码";
+            Column2.HeaderText = "日期";
             Column3.HeaderText = "类型";
             Column4.HeaderText = "摘要";
             Column5.HeaderText = "金额";
@@ -496,7 +496,7 @@ namespace VividManagementApplication
             Column7.HeaderText = "√";
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "cgxsYWList", new string[] { "addtime", "cgxsID", "leixing", "clientIDs", "price", "operater", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "cgxsYWList", new string[] { "cgxsID", "addtime", "leixing", "clientIDs", "price", "operater", "discardFlag" });
         }
 
         private void listKhdzButton_Click(object sender, EventArgs e)

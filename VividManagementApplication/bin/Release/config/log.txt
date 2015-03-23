@@ -1,3 +1,57 @@
+2015/3/23 20:49:28-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 218
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 166
+===================================================
+
+2015/3/23 20:45:38-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 218
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 166
+===================================================
+
+2015/3/23 20:33:43-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 218
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 166
+===================================================
+
+2015/3/23 20:32:36-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 218
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 166
+===================================================
+
+2015/3/23 20:31:17-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 218
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 166
+===================================================
+
+2015/3/23 20:28:32-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 218
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 166
+===================================================
+
 3/23/2015 2:23:51 PM-无法查看详细
 ###异常消息Message: SQLite error
 near "FROM": syntax error
