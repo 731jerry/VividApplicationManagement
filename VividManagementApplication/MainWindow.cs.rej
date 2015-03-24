@@ -1,0 +1,9 @@
+diff a/VividManagementApplication/MainWindow.cs b/VividManagementApplication/MainWindow.cs	(rejected hunks)
+@@ -524,7 +524,6 @@
+             Column4.HeaderText = "对方单位名称";
+             Column5.HeaderText = "合同金额（元）";
+             Column6.HeaderText = "状态";
+-           
+ 
+             Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName","sum", "discardFlag"});

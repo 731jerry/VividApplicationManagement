@@ -15,7 +15,8 @@ namespace VividManagementApplication
     public partial class Login : FormEx
     {
         //public UserInfo userInfo { get; private set; }
-
+        // test1
+        // tesa2
         public Login()
         {
             InitializeComponent();
