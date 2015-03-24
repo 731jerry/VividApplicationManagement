@@ -1,3 +1,214 @@
+15/3/23 下午9:05:56-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 z:\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 z:\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:49:29-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:49:23-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:49:17-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:49:14-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:49:05-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:49:02-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:48:59-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:48:45-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:48:20-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:48:17-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/23 下午8:48:10-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/22 下午10:55:19-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/22 下午10:55:15-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+15/3/22 下午10:55:11-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 123
+===================================================
+
+<<<<<<< Updated upstream
 2015/3/22 19:41:47-无法查看详细
 ###异常消息Message: SQLite error
 near "FROM": syntax error
@@ -26,6 +237,9 @@ near "FROM": syntax error
    在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 116
 ===================================================
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 2015/3/22 15:30:29-
 ###异常消息Message: 输入字符串的格式不正确。
 ###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
@@ -33,6 +247,62 @@ near "FROM": syntax error
    在 System.Int32.Parse(String s)
    在 VividManagementApplication.FormBasicFeatrues.GetControlsVaule(String PreName, Panel panelPlatform, Int32 indexCount) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 458
    在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 143
+=======
+15/3/22 下午3:29:41-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 116
+===================================================
+
+15/3/22 下午3:29:10-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 116
+===================================================
+
+15/3/22 下午3:29:07-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 116
+===================================================
+
+15/3/22 下午3:29:04-无法查看详细
+###异常消息Message: SQLite error
+near "FROM": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 211
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 116
+>>>>>>> Stashed changes
 ===================================================
 
 2015/3/21 23:51:26-无法查看详细
