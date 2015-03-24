@@ -515,8 +515,17 @@ namespace VividManagementApplication
 
         private void listHtButton_Click(object sender, EventArgs e)
         {
+            
             // 还未完成
             CURRENT_LIST_BUTTON = listHtButton;
+            Column1.HeaderText = "序";
+            Column2.HeaderText = "签订日期";
+            Column3.HeaderText = "合同类型";
+            Column4.HeaderText = "合同编号";
+            Column5.HeaderText = "对方单位名称";
+            Column6.HeaderText = "合同金额（元）";
+            Column7.HeaderText = "状态";
+            Column8.HeaderText = "操作";
 
         }
         #endregion
