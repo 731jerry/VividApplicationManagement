@@ -29,7 +29,8 @@ namespace VividManagementApplication
             {
                 MessageBox.Show("请与管理员联系", "帐号或者密码错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                // testc  testset
+                // testc  testset test
+                // test
             }
             else
             {
