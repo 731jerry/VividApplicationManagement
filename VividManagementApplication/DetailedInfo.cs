@@ -161,6 +161,9 @@ namespace VividManagementApplication
                     indexCount = 11;
                     mainID = tbDz2.Text;
 
+                    // 添加客户编号
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbPz1);
+
                     canPrint = true;
                     if (ItemId.Equals("-1"))
                     {
@@ -172,11 +175,15 @@ namespace VividManagementApplication
                         pzComboBox.Items.Add("还款凭证");
                         pzComboBox.Items.Add("报销凭证");
                         pzComboBox.SelectedIndex = 0;
+
+                        PzDateTextBox.Text = DateTime.Now.ToLongDateString();
+                        tbPz1.SelectedIndex = 0;
                     }
                     else
                     {
                         pzComboBox.Visible = false;
                     }
+
                     break;
                 case 6:
                     // 合同
@@ -735,6 +742,37 @@ namespace VividManagementApplication
                         lbDzTitle.Text = "商品（货物）销售单";
                         break;
                 }
+            }
+        }
+
+        private void pzComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (pzComboBox.SelectedIndex)
+            {
+                default:
+                    break;
+                case 0:// 收款凭证
+                    lbPzTitle.Text = "收 款 凭 证";
+                    break;
+                case 1:// 付款凭证
+                    lbPzTitle.Text = "付 款 凭 证";
+                    break;
+                case 2:// 领款凭证
+                    lbPzTitle.Text = "领 款 凭 证";
+                    break;
+                case 3:// 还款凭证
+                    lbPzTitle.Text = "还 款 凭 证";
+                    break;
+                case 4:// 报销凭证
+                    lbPzTitle.Text = "报 销 凭 证";
+                    break;
+            }
+        }
+
+        private void addItemsToCombox(List<String> items, ComboBox cb) {
+            foreach (string item in items)
+            {
+                cb.Items.Add(item);  
             }
         }
 

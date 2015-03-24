@@ -515,8 +515,8 @@ namespace VividManagementApplication
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
             mainDGVTitle.Text = listSfzhButton.Text;
-            Column1.HeaderText = "日期";
-            Column2.HeaderText = "凭证号码";
+            Column1.HeaderText = "凭证号码";
+            Column2.HeaderText = "日期";
             Column3.HeaderText = "摘要";
             Column4.HeaderText = "收入金额";
             Column6.HeaderText = "付出金额";

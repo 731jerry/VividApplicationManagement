@@ -258,6 +258,26 @@ namespace VividManagementApplication
             return resultsStringList;
         }
 
+        // 获取表的id
+        public List<string> LocalGetIdsOfTable(string table, string baseName, string order)
+        {
+            string sql = "SELECT " + baseName + " FROM " + table + " " + order;//建表语句  
+            LocalDbOpen();
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            cmdCreateTable.CommandText = sql;
+            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+            List<string> resultsStringList = new List<string>();
+
+            while (reader.Read())
+            {
+                resultsStringList.Add( reader.GetString(0));
+            }
+            reader.Close();
+            LocalDbClose();
+            return resultsStringList;
+        }
+
+
         #endregion
 
     }
