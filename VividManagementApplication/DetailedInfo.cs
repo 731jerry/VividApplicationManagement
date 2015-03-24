@@ -30,7 +30,6 @@ namespace VividManagementApplication
         public int pageWidth;
         public int pageHeight;
 
-        // test for test
         public DetailedInfo()
         {
             InitializeComponent();
