@@ -84,3 +84,6 @@ Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManage
 Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.resources
 Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Properties.Resources.resources
 Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
+Z:\SourceTree\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe.config
+Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.exe
+Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.pdb
