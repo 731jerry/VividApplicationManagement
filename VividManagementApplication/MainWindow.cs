@@ -128,7 +128,6 @@ namespace VividManagementApplication
 
             #region 初始化客户列表
             listCxButton.PerformClick();
-
             #endregion
 
             #region 窗体用户信息初始化
