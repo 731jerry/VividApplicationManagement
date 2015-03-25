@@ -102,3 +102,4 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Properties.Resources.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Setting.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Setting.resources

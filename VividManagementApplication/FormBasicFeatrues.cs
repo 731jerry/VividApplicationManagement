@@ -501,5 +501,28 @@ namespace VividManagementApplication
             System.Media.SoundPlayer media = new System.Media.SoundPlayer(filename);
             media.Play();
         }
+
+        /// <summary>
+        /// 检测是否有必填
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        public Boolean isPassValidateControls(List<Control> cons)
+        {
+            Boolean isPass = false;
+            foreach (Control ct in cons)
+            {
+                if (ct.Text.Equals(""))
+                {
+                    return false;
+                }
+                else
+                {
+                    isPass = true;
+                }
+            }
+            return isPass;
+        }
     }
 }

@@ -251,7 +251,7 @@ namespace VividManagementApplication
         {
             try
             {
-                if (isPassValidateControls(checkValidateControls))
+                if (FormBasicFeatrues.GetInstence().isPassValidateControls(checkValidateControls))
                 {
                     DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
                     if (ItemId.Equals("-1"))
@@ -277,29 +277,6 @@ namespace VividManagementApplication
                 MessageBox.Show(ex.Message, "错误");
                 this.Close();
             }
-        }
-
-        /// <summary>
-        /// 检测是否有必填
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
-        private Boolean isPassValidateControls(List<Control> cons)
-        {
-            Boolean isPass = false;
-            foreach (Control ct in cons)
-            {
-                if (ct.Text.Equals(""))
-                {
-                    return false;
-                }
-                else
-                {
-                    isPass = true;
-                }
-            }
-            return isPass;
         }
 
         private void PreviewPrintButton_Click(object sender, EventArgs e)
