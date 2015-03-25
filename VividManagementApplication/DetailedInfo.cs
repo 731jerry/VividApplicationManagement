@@ -292,6 +292,17 @@ namespace VividManagementApplication
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
             //SetPrintPreview(MainWindow.CURRENT_TAB);
+            this.printPreviewDialog1.Document = this.printDocument1;
+            try
+            {
+                this.printPreviewDialog1.ShowDialog();
+            }
+            catch (Exception excep)
+            {
+                MessageBox.Show(excep.Message, "打印出错", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         #region 打印
