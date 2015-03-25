@@ -408,7 +408,7 @@ namespace VividManagementApplication
             CURRENT_TAB = 1;
             mainDGVTitle.Text = listCxButton.Text;
             Column1.HeaderText = "客户编号";
-            Column2.HeaderText = "客户名称";
+            Column2.HeaderText = "客户名称(公司名称)";
             Column3.HeaderText = "联系地址";
             Column4.HeaderText = "联系人";
             Column5.HeaderText = "联系电话";
@@ -416,7 +416,7 @@ namespace VividManagementApplication
             Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", new string[] { "id", "name", "address", "contact", "phone" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", new string[] { "id", "company", "address", "contact", "phone" });
         }
 
         private void listSpButton_Click(object sender, EventArgs e)

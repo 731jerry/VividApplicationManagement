@@ -412,7 +412,7 @@ namespace VividManagementApplication
             return dgv;
         }
 
-        // 设置
+        // 设置数值
         public void SetControlsVaule(string PreName, Panel panelPlatform, string[] finalValues)
         {
             foreach (Control item in panelPlatform.Controls)
@@ -452,6 +452,18 @@ namespace VividManagementApplication
                             }
                         }
                     }
+                }
+            }
+        }
+
+        // 用List设置数值
+        public void SetControlsVauleByControlList(List<Control> ctList, List<String> valuesList)
+        {
+            if (ctList.Count == valuesList.Count)
+            {
+                for (int i = 0; i < ctList.Count; i++)
+                {
+                    ctList[i].Text = valuesList[i].ToString();
                 }
             }
         }

@@ -776,5 +776,11 @@ namespace VividManagementApplication
             }
         }
 
+        private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzName, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] {"contact","phone","company","address" }, "id", tbPz1.Text).ToList<String>());
+        }
+
+
     }
 }

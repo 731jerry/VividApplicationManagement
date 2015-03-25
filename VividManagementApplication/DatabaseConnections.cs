@@ -277,7 +277,6 @@ namespace VividManagementApplication
             return resultsStringList;
         }
 
-
         #endregion
 
     }
