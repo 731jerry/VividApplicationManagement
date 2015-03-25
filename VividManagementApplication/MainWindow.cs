@@ -412,6 +412,7 @@ namespace VividManagementApplication
             }
         }
 
+        // 客户管理
         private void listCxButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCxButton;
@@ -429,6 +430,7 @@ namespace VividManagementApplication
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", new string[] { "id", "company", "address", "contact", "phone" });
         }
 
+        // 商品管理
         private void listSpButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSpButton;
@@ -446,6 +448,8 @@ namespace VividManagementApplication
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods", new string[] { "id", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
         }
 
+        #region 仓储管理
+        // 库存
         private void listKcButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listKcButton;
@@ -495,6 +499,10 @@ namespace VividManagementApplication
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "ccdList", new string[] { "ccdID", "companyName", "goodsIDs", "goodsName", "guige", "discardFlag" });
         }
 
+        #endregion
+
+        #region 业务管理
+        
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCgXsButton;
@@ -519,6 +527,8 @@ namespace VividManagementApplication
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listKhdzButton.Text;
         }
+
+        #endregion
 
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
