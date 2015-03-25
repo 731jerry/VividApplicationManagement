@@ -60,6 +60,7 @@
             this.tbInfo9 = new System.Windows.Forms.TextBox();
             this.tbInfo10 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.ChangePasswordLabel = new System.Windows.Forms.Label();
             this.PasswordGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -385,11 +386,21 @@
             this.label8.TabIndex = 160;
             this.label8.Text = "QQ：";
             // 
+            // ChangePasswordLabel
+            // 
+            this.ChangePasswordLabel.AutoSize = true;
+            this.ChangePasswordLabel.ForeColor = System.Drawing.Color.Red;
+            this.ChangePasswordLabel.Location = new System.Drawing.Point(118, 219);
+            this.ChangePasswordLabel.Name = "ChangePasswordLabel";
+            this.ChangePasswordLabel.Size = new System.Drawing.Size(0, 12);
+            this.ChangePasswordLabel.TabIndex = 161;
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 452);
+            this.Controls.Add(this.ChangePasswordLabel);
             this.Controls.Add(this.tbInfo10);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.ChangePasswordCheckBox);
@@ -458,5 +469,6 @@
         private System.Windows.Forms.TextBox tbInfo9;
         private System.Windows.Forms.TextBox tbInfo10;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ChangePasswordLabel;
     }
 }

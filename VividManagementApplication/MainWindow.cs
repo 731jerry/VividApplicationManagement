@@ -24,11 +24,22 @@ namespace VividManagementApplication
         public static QQButton CURRENT_LIST_BUTTON;
 
         public static bool IS_LOGED_IN;
-        public static string LOGIN_ID;
-        public static string NAME;
-        public static string NICK_NAME;
+        public static string ID;
+        public static string USER_ID;
+        public static string PASSWORD_HASH;
+        public static string REAL_NAME;
+        public static string WORKLOADS;
+        public static string COMPANY_NAME;
+        public static string COMPANY_OWNER;
+        public static string ADDRESS;
+        public static string BANK_NAME;
+        public static string BANK_CARD;
+        public static string PHONE;
+        public static string FAX;
+        public static string QQ;
+        public static string EMAIL;
+        public static string ADDTIME;
         public static string NOTIFICATION;
-        public static string LAST_LOGON_TIME;
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -131,9 +142,8 @@ namespace VividManagementApplication
             #endregion
 
             #region 窗体用户信息初始化
-            lbUserName.Text = NICK_NAME;
-            lbLastLogonTime.Text = LAST_LOGON_TIME;
-            dataBaseFilePrefix = LOGIN_ID + "_";
+            lbUserName.Text = USER_ID;
+            dataBaseFilePrefix = USER_ID + "_";
 
             // 广告计时器
             //commerceTimer.Enabled = true;

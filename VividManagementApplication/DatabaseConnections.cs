@@ -27,7 +27,7 @@ namespace VividManagementApplication
 
         #region 联网
         // MySQL
-        private const string onlineSqlConnectionCommand = @"server=qdm-011.hichina.com; user id=qdm0110106; password=CYYDB2014; database=qdm0110106_db";
+        private const string onlineSqlConnectionCommand = @"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8";
         private MySqlConnection onlineSqlConnection = new MySqlConnection(onlineSqlConnectionCommand);
 
         public void OnlineDbOpen()
@@ -54,12 +54,10 @@ namespace VividManagementApplication
 
         public void UserLogin(string acc, string psw)
         {
-            MD5 md5Hash = MD5.Create();
-            string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(md5Hash, psw);
+            string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
 
             StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(loginId), loginId, name, nickName, notification, lastLogonTime
-                    FROM caiyyUser WHERE loginId = '");
+                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,addtime,expiretime,notification FROM users WHERE userid = '");
             sbSQL.Append(acc);
             sbSQL.Append(@"'");
             sbSQL.Append(@" AND password = '");
@@ -74,15 +72,47 @@ namespace VividManagementApplication
 
             while (dataReader.Read())
             {
-                MainWindow.IS_LOGED_IN = (int.Parse((dataReader["Count(loginId)"].ToString() == "") ? "0" : dataReader["Count(loginId)"].ToString()) == 1) ? true : false;
-                MainWindow.LOGIN_ID = dataReader["loginId"].ToString();
-                MainWindow.NAME = dataReader["name"].ToString();
-                MainWindow.NICK_NAME = dataReader["nickName"].ToString();
+                MainWindow.IS_LOGED_IN = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
+                MainWindow.ID = dataReader["id"].ToString();
+                MainWindow.USER_ID = dataReader["userid"].ToString();
+                MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
+                MainWindow.REAL_NAME = dataReader["realname"].ToString();
+                MainWindow.WORKLOADS = dataReader["workloads"].ToString();
+                MainWindow.COMPANY_NAME = dataReader["company"].ToString();
+                MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
+                MainWindow.ADDRESS = dataReader["address"].ToString();
+                MainWindow.BANK_NAME = dataReader["bankname"].ToString();
+                MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
+                MainWindow.PHONE = dataReader["phone"].ToString();
+                MainWindow.FAX = dataReader["fax"].ToString();
+                MainWindow.QQ = dataReader["QQ"].ToString();
+                MainWindow.EMAIL = dataReader["email"].ToString();
+                MainWindow.ADDTIME = dataReader["addtime"].ToString();
                 MainWindow.NOTIFICATION = dataReader["notification"].ToString();
-                MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
             }
 
             dataReader.Close();
+            OnlineDbClose();
+        }
+
+        // 修改数据
+        public void OnlineUpdateData(string table, string[] query, string[] value, string id)
+        {
+            string innerSQL = "";
+
+            for (int i = 0; i < query.Length; i++)
+            {
+                innerSQL += query[i] + " = '" + value[i] + "',";
+            }
+            if (!innerSQL.Equals(""))
+            {
+                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+            }
+            OnlineDbOpen();
+            string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
+            MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
+            cmdInsert.ExecuteNonQuery();
             OnlineDbClose();
         }
         #endregion
@@ -204,7 +234,7 @@ namespace VividManagementApplication
             {
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
-            string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE "+baseName+"='" + id + "'";//建表语句  
+            string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
             LocalDbOpen();
             SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
             cmdCreateTable.CommandText = sql;
@@ -270,7 +300,7 @@ namespace VividManagementApplication
 
             while (reader.Read())
             {
-                resultsStringList.Add( reader.GetString(0));
+                resultsStringList.Add(reader.GetString(0));
             }
             reader.Close();
             LocalDbClose();

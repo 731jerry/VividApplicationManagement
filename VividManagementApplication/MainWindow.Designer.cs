@@ -33,9 +33,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.lbLastLogonTime = new System.Windows.Forms.Label();
             this.label112 = new System.Windows.Forms.Label();
-            this.label106 = new System.Windows.Forms.Label();
-            this.label95 = new System.Windows.Forms.Label();
-            this.label98 = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -99,27 +96,6 @@
             this.label112.BackColor = System.Drawing.Color.Transparent;
             this.label112.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label112.Name = "label112";
-            // 
-            // label106
-            // 
-            resources.ApplyResources(this.label106, "label106");
-            this.label106.BackColor = System.Drawing.Color.Transparent;
-            this.label106.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label106.Name = "label106";
-            // 
-            // label95
-            // 
-            resources.ApplyResources(this.label95, "label95");
-            this.label95.BackColor = System.Drawing.Color.Transparent;
-            this.label95.ForeColor = System.Drawing.Color.Red;
-            this.label95.Name = "label95";
-            // 
-            // label98
-            // 
-            resources.ApplyResources(this.label98, "label98");
-            this.label98.BackColor = System.Drawing.Color.Transparent;
-            this.label98.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label98.Name = "label98";
             // 
             // lbUserName
             // 
@@ -473,9 +449,6 @@
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.lbLastLogonTime);
             this.Controls.Add(this.label112);
-            this.Controls.Add(this.label106);
-            this.Controls.Add(this.label95);
-            this.Controls.Add(this.label98);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -499,9 +472,6 @@
 
         private System.Windows.Forms.Label lbLastLogonTime;
         private System.Windows.Forms.Label label112;
-        private System.Windows.Forms.Label label106;
-        private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label98;
         private System.Windows.Forms.Label lbUserName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
