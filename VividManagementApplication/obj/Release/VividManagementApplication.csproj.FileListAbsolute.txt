@@ -101,3 +101,4 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Properties.Resources.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Setting.resources

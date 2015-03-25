@@ -593,5 +593,11 @@ namespace VividManagementApplication
         {
             //UploadFiles("备份数据库!");
         }
+
+        private void settingQQButton_Click(object sender, EventArgs e)
+        {
+            Setting st = new Setting();
+            st.ShowDialog();
+        }
     }
 }
