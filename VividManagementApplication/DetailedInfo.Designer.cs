@@ -113,6 +113,11 @@
             this.DzDateTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.PanelDZ = new System.Windows.Forms.Panel();
+            this.EJCDtb0 = new System.Windows.Forms.TextBox();
+            this.DJCDtb0 = new System.Windows.Forms.TextBox();
+            this.CJCDtb0 = new System.Windows.Forms.TextBox();
+            this.BJCDtb0 = new System.Windows.Forms.TextBox();
+            this.AJCDtb0 = new System.Windows.Forms.TextBox();
             this.JCDcbE = new System.Windows.Forms.ComboBox();
             this.JCDcbD = new System.Windows.Forms.ComboBox();
             this.JCDcbC = new System.Windows.Forms.ComboBox();
@@ -354,11 +359,6 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.EJCDtb0 = new System.Windows.Forms.TextBox();
-            this.DJCDtb0 = new System.Windows.Forms.TextBox();
-            this.CJCDtb0 = new System.Windows.Forms.TextBox();
-            this.BJCDtb0 = new System.Windows.Forms.TextBox();
-            this.AJCDtb0 = new System.Windows.Forms.TextBox();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -1314,6 +1314,56 @@
             this.PanelDZ.Size = new System.Drawing.Size(737, 158);
             this.PanelDZ.TabIndex = 230;
             // 
+            // EJCDtb0
+            // 
+            this.EJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.EJCDtb0.Location = new System.Drawing.Point(116, 130);
+            this.EJCDtb0.Name = "EJCDtb0";
+            this.EJCDtb0.ReadOnly = true;
+            this.EJCDtb0.Size = new System.Drawing.Size(120, 26);
+            this.EJCDtb0.TabIndex = 329;
+            // 
+            // DJCDtb0
+            // 
+            this.DJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DJCDtb0.Location = new System.Drawing.Point(116, 104);
+            this.DJCDtb0.Name = "DJCDtb0";
+            this.DJCDtb0.ReadOnly = true;
+            this.DJCDtb0.Size = new System.Drawing.Size(120, 26);
+            this.DJCDtb0.TabIndex = 328;
+            // 
+            // CJCDtb0
+            // 
+            this.CJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.CJCDtb0.Location = new System.Drawing.Point(116, 78);
+            this.CJCDtb0.Name = "CJCDtb0";
+            this.CJCDtb0.ReadOnly = true;
+            this.CJCDtb0.Size = new System.Drawing.Size(120, 26);
+            this.CJCDtb0.TabIndex = 327;
+            // 
+            // BJCDtb0
+            // 
+            this.BJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.BJCDtb0.Location = new System.Drawing.Point(116, 52);
+            this.BJCDtb0.Name = "BJCDtb0";
+            this.BJCDtb0.ReadOnly = true;
+            this.BJCDtb0.Size = new System.Drawing.Size(120, 26);
+            this.BJCDtb0.TabIndex = 326;
+            // 
+            // AJCDtb0
+            // 
+            this.AJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.AJCDtb0.Location = new System.Drawing.Point(116, 26);
+            this.AJCDtb0.Name = "AJCDtb0";
+            this.AJCDtb0.ReadOnly = true;
+            this.AJCDtb0.Size = new System.Drawing.Size(120, 26);
+            this.AJCDtb0.TabIndex = 325;
+            // 
             // JCDcbE
             // 
             this.JCDcbE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1378,7 +1428,8 @@
             this.EJCDtb6.ReadOnly = true;
             this.EJCDtb6.Size = new System.Drawing.Size(103, 26);
             this.EJCDtb6.TabIndex = 315;
-            this.EJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EJCDtb6.TextChanged += new System.EventHandler(this.calculateSumForDz);
             // 
             // EJCDtb4
             // 
@@ -1389,7 +1440,7 @@
             this.EJCDtb4.ReadOnly = true;
             this.EJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.EJCDtb4.TabIndex = 314;
-            this.EJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // EJCDtb2
             // 
@@ -1417,9 +1468,11 @@
             this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
             this.EJCDtb5.Name = "EJCDtb5";
+            this.EJCDtb5.ReadOnly = true;
             this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
             this.EJCDtb5.TabIndex = 311;
-            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
             // 
             // EJCDtb3
             // 
@@ -1440,7 +1493,8 @@
             this.DJCDtb6.ReadOnly = true;
             this.DJCDtb6.Size = new System.Drawing.Size(103, 26);
             this.DJCDtb6.TabIndex = 309;
-            this.DJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.DJCDtb6.TextChanged += new System.EventHandler(this.calculateSumForDz);
             // 
             // DJCDtb4
             // 
@@ -1451,7 +1505,7 @@
             this.DJCDtb4.ReadOnly = true;
             this.DJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.DJCDtb4.TabIndex = 308;
-            this.DJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // DJCDtb2
             // 
@@ -1479,9 +1533,11 @@
             this.DJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.DJCDtb5.Location = new System.Drawing.Point(559, 104);
             this.DJCDtb5.Name = "DJCDtb5";
+            this.DJCDtb5.ReadOnly = true;
             this.DJCDtb5.Size = new System.Drawing.Size(71, 26);
             this.DJCDtb5.TabIndex = 305;
-            this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
             // 
             // DJCDtb3
             // 
@@ -1502,7 +1558,8 @@
             this.CJCDtb6.ReadOnly = true;
             this.CJCDtb6.Size = new System.Drawing.Size(103, 26);
             this.CJCDtb6.TabIndex = 303;
-            this.CJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CJCDtb6.TextChanged += new System.EventHandler(this.calculateSumForDz);
             // 
             // CJCDtb4
             // 
@@ -1513,6 +1570,7 @@
             this.CJCDtb4.ReadOnly = true;
             this.CJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.CJCDtb4.TabIndex = 302;
+            this.CJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // CJCDtb2
             // 
@@ -1540,9 +1598,11 @@
             this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
             this.CJCDtb5.Name = "CJCDtb5";
+            this.CJCDtb5.ReadOnly = true;
             this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
             this.CJCDtb5.TabIndex = 299;
-            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
             // 
             // CJCDtb3
             // 
@@ -1563,7 +1623,8 @@
             this.BJCDtb6.ReadOnly = true;
             this.BJCDtb6.Size = new System.Drawing.Size(103, 26);
             this.BJCDtb6.TabIndex = 297;
-            this.BJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BJCDtb6.TextChanged += new System.EventHandler(this.calculateSumForDz);
             // 
             // BJCDtb4
             // 
@@ -1574,7 +1635,7 @@
             this.BJCDtb4.ReadOnly = true;
             this.BJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.BJCDtb4.TabIndex = 296;
-            this.BJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // BJCDtb2
             // 
@@ -1602,9 +1663,11 @@
             this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
             this.BJCDtb5.Name = "BJCDtb5";
+            this.BJCDtb5.ReadOnly = true;
             this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
             this.BJCDtb5.TabIndex = 293;
-            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
             // 
             // BJCDtb3
             // 
@@ -1625,7 +1688,8 @@
             this.AJCDtb6.ReadOnly = true;
             this.AJCDtb6.Size = new System.Drawing.Size(103, 26);
             this.AJCDtb6.TabIndex = 291;
-            this.AJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AJCDtb6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AJCDtb6.TextChanged += new System.EventHandler(this.calculateSumForDz);
             // 
             // textBox145
             // 
@@ -1647,7 +1711,7 @@
             this.AJCDtb4.ReadOnly = true;
             this.AJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.AJCDtb4.TabIndex = 289;
-            this.AJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox147
             // 
@@ -1708,9 +1772,11 @@
             this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
             this.AJCDtb5.Name = "AJCDtb5";
+            this.AJCDtb5.ReadOnly = true;
             this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
             this.AJCDtb5.TabIndex = 283;
-            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
             // 
             // AJCDtb3
             // 
@@ -1784,6 +1850,7 @@
             this.tbDz3.Name = "tbDz3";
             this.tbDz3.Size = new System.Drawing.Size(639, 26);
             this.tbDz3.TabIndex = 219;
+            this.tbDz3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label19
             // 
@@ -3921,56 +3988,6 @@
             this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
-            // 
-            // EJCDtb0
-            // 
-            this.EJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.EJCDtb0.Location = new System.Drawing.Point(116, 130);
-            this.EJCDtb0.Name = "EJCDtb0";
-            this.EJCDtb0.ReadOnly = true;
-            this.EJCDtb0.Size = new System.Drawing.Size(120, 26);
-            this.EJCDtb0.TabIndex = 329;
-            // 
-            // DJCDtb0
-            // 
-            this.DJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.DJCDtb0.Location = new System.Drawing.Point(116, 104);
-            this.DJCDtb0.Name = "DJCDtb0";
-            this.DJCDtb0.ReadOnly = true;
-            this.DJCDtb0.Size = new System.Drawing.Size(120, 26);
-            this.DJCDtb0.TabIndex = 328;
-            // 
-            // CJCDtb0
-            // 
-            this.CJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.CJCDtb0.Location = new System.Drawing.Point(116, 78);
-            this.CJCDtb0.Name = "CJCDtb0";
-            this.CJCDtb0.ReadOnly = true;
-            this.CJCDtb0.Size = new System.Drawing.Size(120, 26);
-            this.CJCDtb0.TabIndex = 327;
-            // 
-            // BJCDtb0
-            // 
-            this.BJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.BJCDtb0.Location = new System.Drawing.Point(116, 52);
-            this.BJCDtb0.Name = "BJCDtb0";
-            this.BJCDtb0.ReadOnly = true;
-            this.BJCDtb0.Size = new System.Drawing.Size(120, 26);
-            this.BJCDtb0.TabIndex = 326;
-            // 
-            // AJCDtb0
-            // 
-            this.AJCDtb0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AJCDtb0.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.AJCDtb0.Location = new System.Drawing.Point(116, 26);
-            this.AJCDtb0.Name = "AJCDtb0";
-            this.AJCDtb0.ReadOnly = true;
-            this.AJCDtb0.Size = new System.Drawing.Size(120, 26);
-            this.AJCDtb0.TabIndex = 325;
             // 
             // DetailedInfo
             // 

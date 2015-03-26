@@ -109,6 +109,11 @@ namespace VividManagementApplication
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbDz1);
 
                     // 添加商品编号
+                    JCDcbA.Items.Add("");
+                    JCDcbB.Items.Add("");
+                    JCDcbC.Items.Add("");
+                    JCDcbD.Items.Add("");
+                    JCDcbE.Items.Add("");
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbA);
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbB);
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbC);
@@ -786,12 +791,34 @@ namespace VividManagementApplication
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "id", byIdControl.Text).ToList<String>());
             }
         }
+        /// <summary>
+        /// 清空之后的数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private void clearControlValueByList(List<Control> conList)
+        {
+            foreach (Control con in conList)
+            {
+                con.Text = "";
+            }
+        }
 
         private void JCDcbA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (JCDcbA.SelectedIndex != -1)
             {
-                JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, JCDcbA);
+                if (JCDcbA.Text.Equals(""))
+                {
+                    AJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6 });
+                }
+                else
+                {
+                    AJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, JCDcbA);
+                }
             }
         }
 
@@ -799,7 +826,16 @@ namespace VividManagementApplication
         {
             if (JCDcbB.SelectedIndex != -1)
             {
-                JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, JCDcbB);
+                if (JCDcbB.Text.Equals(""))
+                {
+                    BJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6 });
+                }
+                else
+                {
+                    BJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, JCDcbB);
+                }
             }
         }
 
@@ -807,7 +843,16 @@ namespace VividManagementApplication
         {
             if (JCDcbC.SelectedIndex != -1)
             {
-                JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, JCDcbC);
+                if (JCDcbC.Text.Equals(""))
+                {
+                    CJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6 });
+                }
+                else
+                {
+                    CJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, JCDcbC);
+                }
             }
         }
 
@@ -815,7 +860,16 @@ namespace VividManagementApplication
         {
             if (JCDcbD.SelectedIndex != -1)
             {
-                JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, JCDcbD);
+                if (JCDcbD.Text.Equals(""))
+                {
+                    DJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6 });
+                }
+                else
+                {
+                    DJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, JCDcbD);
+                }
             }
         }
 
@@ -823,7 +877,16 @@ namespace VividManagementApplication
         {
             if (JCDcbE.SelectedIndex != -1)
             {
-                JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, JCDcbE);
+                if (JCDcbE.Text.Equals(""))
+                {
+                    EJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6 });
+                }
+                else
+                {
+                    EJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, JCDcbE);
+                }
             }
         }
 
@@ -838,6 +901,71 @@ namespace VividManagementApplication
             FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "id", tbPz1.Text).ToList<String>());
         }
 
+        /// <summary>
+        /// 计算金钱价格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///
+        private void calculateSmallSum(Control left, Control right, Control result)
+        {
+            int test1, test2;
+            if (left.Text.Equals("") || right.Text.Equals("") || !int.TryParse(left.Text, out test1) || !int.TryParse(right.Text, out test2))
+            {
+
+            }
+            else
+            {
+                result.Text = (int.Parse(left.Text) * int.Parse(right.Text)).ToString();
+            }
+        }
+        private void AJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(AJCDtb4, AJCDtb5, AJCDtb6);
+        }
+
+        private void BJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(BJCDtb4, BJCDtb5, BJCDtb6);
+        }
+
+        private void CJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(CJCDtb4, CJCDtb5, CJCDtb6);
+        }
+
+        private void DJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(DJCDtb4, DJCDtb5, DJCDtb6);
+        }
+
+        private void EJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(EJCDtb4, EJCDtb5, EJCDtb6);
+        }
+
+        /// <summary>
+        /// 计算总共价钱并设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private void SetTotalSum(List<Control> conList, Control resultControl)
+        {
+            int sum = 0;
+            foreach (Control con in conList)
+            {
+                if (!con.Text.Equals(""))
+                {
+                    sum += int.Parse(con.Text);
+                }
+            }
+            resultControl.Text = sum.ToString() + "\t" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
+        }
+        private void calculateSumForDz(object sender, EventArgs e)
+        {
+            SetTotalSum(new List<Control>() { AJCDtb6, BJCDtb6, CJCDtb6, DJCDtb6, EJCDtb6 }, tbDz3);
+        }
 
 
 
