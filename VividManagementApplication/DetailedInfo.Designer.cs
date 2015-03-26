@@ -1441,6 +1441,7 @@
             this.EJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.EJCDtb4.TabIndex = 314;
             this.EJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EJCDtb4.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
             // 
             // EJCDtb2
             // 
@@ -1506,6 +1507,7 @@
             this.DJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.DJCDtb4.TabIndex = 308;
             this.DJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.DJCDtb4.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
             // 
             // DJCDtb2
             // 
@@ -1571,6 +1573,7 @@
             this.CJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.CJCDtb4.TabIndex = 302;
             this.CJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CJCDtb4.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
             // 
             // CJCDtb2
             // 
@@ -1636,6 +1639,7 @@
             this.BJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.BJCDtb4.TabIndex = 296;
             this.BJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BJCDtb4.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
             // 
             // BJCDtb2
             // 
@@ -1712,6 +1716,7 @@
             this.AJCDtb4.Size = new System.Drawing.Size(64, 26);
             this.AJCDtb4.TabIndex = 289;
             this.AJCDtb4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AJCDtb4.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
             // 
             // textBox147
             // 
