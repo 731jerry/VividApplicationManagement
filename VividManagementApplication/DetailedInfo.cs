@@ -281,6 +281,7 @@ namespace VividManagementApplication
 
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
+            SetPrintPreview(7);
             //SetPrintPreview(MainWindow.CURRENT_TAB);
         }
 
@@ -584,7 +585,86 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), 40 + x, 370 + y, 40, 30);
             g.DrawRectangle(new Pen(Color.Black), 40 + x, 400 + y, 40, 30);
              */
+            int htWidth = (pageWidth - 60 * 2) / 7;
+            int htHeight = 37;
+            int a = 40;
+            int b = 230;
+            //第一行 项目名称
+            g.DrawString("商品名称", f4, new SolidBrush(Color.Black), 43 + x + 20, 242 + y);
+            g.DrawString("商品规格", f4, new SolidBrush(Color.Black), 146 + x + 20, 242 + y);
+            g.DrawString("数量", f4, new SolidBrush(Color.Black), 243 + x + 20, 242 + y);
+            g.DrawString("单位", f4, new SolidBrush(Color.Black), 317 + x + 20, 242 + y);
+            g.DrawString("单价", f4, new SolidBrush(Color.Black), 392 + x + 20, 242 + y);
+            g.DrawString("金额", f4, new SolidBrush(Color.Black), 464 + x + 20, 242 + y);
+            g.DrawString("交（提）货日期及地点", f4, new SolidBrush(Color.Black), 555 + x + 20, 242 + y);
+            //第一列
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y+htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 2*htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 3 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 4 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 5 * htHeight, htWidth, htHeight);
+           
+            //第二列
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 2 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 3 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 4 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 5 * htHeight, htWidth, htHeight);
+            //第三列
+            g.DrawRectangle(new Pen(Color.Black), a + 2*htWidth + x, b + y, htWidth-27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + htHeight, htWidth -27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + 2 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth +x, b + y + 3 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + 4 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            //第四列
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 2 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 3 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 4 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            //第五列
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 2 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 3 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 4 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            //第六列
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x-81, b + y, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 2 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 3 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 4 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            //第七列
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x-108, b + y, htWidth+108, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + htHeight, htWidth + 108, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 2 * htHeight, htWidth + 108, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 3 * htHeight, htWidth + 108, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 4 * htHeight, htWidth + 108, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 5 * htHeight, htWidth + 108, htHeight);
 
+            /*
+             * //第八列
+            g.DrawRectangle(new Pen(Color.Black), 40 + 7*htWidth + x, 223 + y, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 2 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 3 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 4 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 5 * htHeight, htWidth, htHeight);
+            //第九列
+            g.DrawRectangle(new Pen(Color.Black), 40 + 8*htWidth + x, 223 + y, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 2 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 3 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 4 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 5 * htHeight, htWidth, htHeight);
+            /*
+            /*
             int fontDisX = 3;
             int fontDisY = 3;
             foreach (Control item in PanelHT.Controls)
@@ -597,7 +677,7 @@ namespace VividManagementApplication
                 if (item is TextBox)
                 {
                     TextBox tx = (item as TextBox);
-                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Location.X + 20 + x + fontDisX, tx.Location.Y + 240 + y + +fontDisY);
+                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Location.X + 36 + x, tx.Location.Y + 240+ y + fontDisY);
                     if (tx.BorderStyle == BorderStyle.FixedSingle)
                     {
                         g.DrawRectangle(new Pen(Color.Black), tx.Left + 20 + x, tx.Top + 240 + y, tx.Width, tx.Height);
@@ -606,10 +686,11 @@ namespace VividManagementApplication
                 if (item is ComboBox)
                 {
                     ComboBox tx = (item as ComboBox);
-                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + 20 + x + fontDisX, tx.Top + 240 + y + fontDisY);
+                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + 40 + x + fontDisX, tx.Top + 240 + y + fontDisY);
                     g.DrawRectangle(new Pen(Color.Black), tx.Left + 20 + x, tx.Top + 240 + y, tx.Width, 25);
                 }
             }
+            */
 
             // 
             g.DrawString("2、质量标准及验收方法：", f4, new SolidBrush(Color.Black), 40 + x, 465 + y);
