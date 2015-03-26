@@ -92,17 +92,17 @@ namespace VividManagementApplication
                         lbDzTitle.Text = "商品（货物）进仓单";
                         table = "jcdList";
                         baseName = "jcdID";
-                        queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "discardFlag" };
+                        queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsName", "jsonData", "discardFlag" };
                     }
                     else
                     {
                         lbDzTitle.Text = "商品（货物）出仓单";
                         table = "ccdList";
                         baseName = "ccdID";
-                        queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "discardFlag" };
+                        queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsName", "jsonData", "discardFlag" };
                     }
                     controlsPreName = "tbDz";
-                    indexCount = 11;
+                    indexCount = 6;
                     mainID = tbDz2.Text;
 
                     // 添加客户编号
@@ -262,13 +262,59 @@ namespace VividManagementApplication
             }
         }
 
+        /// <summary>
+        /// 把Control值转到JSON
+        /// </summary>
+        /// <param name="keyList"></param>
+        /// <param name="conList"></param>
+        /// <returns></returns>
+        private String ControlValueTransitToJson(List<String> keyList, List<List<Control>> conList)
+        {
+            JSONObject jsonRoot = new JSONObject();
+            for (int i = 0; i < conList.Count; i++)
+            {
+                JSONObject jsonObj = new JSONObject();
+                for (int j = 0; j < conList[i].Count; j++)
+                {
+                    jsonObj.Add(keyList[j], conList[i][j].Text);
+                }
+                jsonRoot.Add((i + 1).ToString(), jsonObj);
+            }
+            return JSONConvert.SerializeObject(jsonRoot);
+        }
+
         private void SaveButton_Click(object sender, EventArgs e)
         {
             try
             {
                 if (FormBasicFeatrues.GetInstence().isPassValidateControls(checkValidateControls))
+                //if (true)
                 {
-                    DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
+                    // new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
+                    if (MainWindow.CURRENT_TAB == 3) // 进仓单 出仓单
+                    {
+                        String jsonData = ControlValueTransitToJson(
+                            new List<String>() { "goodsID", "goodsName", "goodsGuige", "goodsDengji", "goodsUnit", "goodsPrice", "goodsAmount", "goodsSum" },
+                            new List<List<Control>>() {
+                                new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
+                                new List<Control> (){JCDcbB, BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6} ,
+                                new List<Control> (){JCDcbC, CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6} ,
+                                new List<Control> (){JCDcbD, DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6} ,
+                                new List<Control> (){JCDcbE, EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6} 
+                                }
+                            );
+
+                        String test = jsonData;
+                        Console.WriteLine(jsonData);
+                    }
+                    else if (MainWindow.CURRENT_TAB == 4) // 采购 销售单
+                    {
+
+                    }
+                    else
+                    {
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
+                    }
                     if (ItemId.Equals("-1"))
                     {
                         MessageBox.Show("新建成功!", "恭喜");
@@ -987,6 +1033,43 @@ namespace VividManagementApplication
                     e.KeyChar = (char)0;   //处理非法字符
                 }
             }
+        }
+
+        private void qqButton1_Click(object sender, EventArgs e)
+        {
+            string jsonText = "[{'a':'aaa','b':'bbb','c':'ccc'},{'a':'aaa2','b':'bbb2','c':'ccc2'}]";
+            //序列化
+            JSONArray _array = new JSONArray();
+            _array.Add("1");
+            _array.Add("2");
+            _array.Add("3");
+            _array.Add("4");
+            JSONObject _object = new JSONObject();//新建json对象作为内嵌
+            _object.Add("oneKey", "one");
+            _object.Add("twoArray", _array);
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.Add("2006");
+            jsonArray.Add("2007");
+            jsonArray.Add("2008");
+            jsonArray.Add("2009");
+            jsonArray.Add("2010");
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.Add("domain", "mzwu.com");
+            jsonObject.Add("two", _object);//添加json对象
+            jsonObject.Add("years", jsonArray);
+            Console.WriteLine("json序列化为字符串");
+            Console.WriteLine(JSONConvert.SerializeObject(jsonObject));//执行序列化
+            //反序列化
+            JSONObject json = JSONConvert.DeserializeObject("{\"domain\":\"mzwu.com\",\"two\":{\"oneKey\":\"one\",\"twoArray\":[1,2,3,4]},\"years\":[2006,2007,2008,2009,2010]}");//执行反序列化
+            if (json != null)
+            {
+                Console.WriteLine("将json结构的字符串反序列化为json对象并调用");
+                Console.WriteLine(json["domain"]);
+                Console.WriteLine(((JSONObject)json["two"])["oneKey"]);
+                Console.WriteLine(((JSONArray)((JSONObject)json["two"])["twoArray"])[0]);
+                Console.WriteLine(((JSONArray)json["years"])[3]);
+            }
+            //Console.ReadLine();
         }
 
 

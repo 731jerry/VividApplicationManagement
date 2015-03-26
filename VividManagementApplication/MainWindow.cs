@@ -474,13 +474,11 @@ namespace VividManagementApplication
             mainDGVTitle.Text = listJcdButton.Text;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
-            Column3.HeaderText = "货号";
-            Column4.HeaderText = "商品名称";
-            Column5.HeaderText = "规格";
-            Column6.HeaderText = "作废标识";
+            Column3.HeaderText = "商品名称";
+            Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "jcdList", new string[] { "jcdID", "companyName", "goodsIDs", "goodsName", "guige", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "jcdList", new string[] { "jcdID", "companyName", "goodsName", "discardFlag" });
         }
 
         private void listCcdButton_Click(object sender, EventArgs e)
@@ -490,19 +488,17 @@ namespace VividManagementApplication
             mainDGVTitle.Text = listCcdButton.Text;
             Column1.HeaderText = "单号";
             Column2.HeaderText = "单位名称";
-            Column3.HeaderText = "货号";
-            Column4.HeaderText = "商品名称";
-            Column5.HeaderText = "规格";
-            Column6.HeaderText = "作废标识";
+            Column3.HeaderText = "商品名称";
+            Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "ccdList", new string[] { "ccdID", "companyName", "goodsIDs", "goodsName", "guige", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4}, "ccdList", new string[] { "ccdID", "companyName", "goodsName", "discardFlag" });
         }
 
         #endregion
 
         #region 业务管理
-        
+
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listCgXsButton;
@@ -561,7 +557,7 @@ namespace VividManagementApplication
             Column6.HeaderText = "状态";
 
             Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName","sum", "discardFlag"});
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName", "sum", "discardFlag" });
         }
         #endregion
 
