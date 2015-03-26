@@ -546,6 +546,7 @@
             this.tbClient7.Name = "tbClient7";
             this.tbClient7.Size = new System.Drawing.Size(129, 26);
             this.tbClient7.TabIndex = 107;
+            this.tbClient7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbClient6
             // 
@@ -797,6 +798,7 @@
             this.tbGoods16.Name = "tbGoods16";
             this.tbGoods16.Size = new System.Drawing.Size(154, 26);
             this.tbGoods16.TabIndex = 216;
+            this.tbGoods16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods15
             // 
@@ -805,6 +807,7 @@
             this.tbGoods15.Name = "tbGoods15";
             this.tbGoods15.Size = new System.Drawing.Size(150, 26);
             this.tbGoods15.TabIndex = 215;
+            this.tbGoods15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods14
             // 
@@ -822,6 +825,7 @@
             this.tbGoods13.Name = "tbGoods13";
             this.tbGoods13.Size = new System.Drawing.Size(154, 26);
             this.tbGoods13.TabIndex = 213;
+            this.tbGoods13.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods12
             // 
@@ -830,6 +834,7 @@
             this.tbGoods12.Name = "tbGoods12";
             this.tbGoods12.Size = new System.Drawing.Size(150, 26);
             this.tbGoods12.TabIndex = 212;
+            this.tbGoods12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods11
             // 
@@ -838,6 +843,7 @@
             this.tbGoods11.Name = "tbGoods11";
             this.tbGoods11.Size = new System.Drawing.Size(179, 26);
             this.tbGoods11.TabIndex = 211;
+            this.tbGoods11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods10
             // 
@@ -854,6 +860,7 @@
             this.tbGoods8.Name = "tbGoods8";
             this.tbGoods8.Size = new System.Drawing.Size(129, 26);
             this.tbGoods8.TabIndex = 208;
+            this.tbGoods8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods7
             // 
@@ -1474,6 +1481,7 @@
             this.EJCDtb5.TabIndex = 311;
             this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
+            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // EJCDtb3
             // 
@@ -1540,6 +1548,7 @@
             this.DJCDtb5.TabIndex = 305;
             this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
+            this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // DJCDtb3
             // 
@@ -1606,6 +1615,7 @@
             this.CJCDtb5.TabIndex = 299;
             this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
+            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // CJCDtb3
             // 
@@ -1672,6 +1682,7 @@
             this.BJCDtb5.TabIndex = 293;
             this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
+            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // BJCDtb3
             // 
@@ -1782,6 +1793,7 @@
             this.AJCDtb5.TabIndex = 283;
             this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
+            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // AJCDtb3
             // 
