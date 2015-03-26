@@ -60,7 +60,7 @@ namespace VividManagementApplication
 
                     table = "clients";
                     baseName = "id";
-                    queryArray = new string[] { "id", "sex", "type", "name", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
+                    queryArray = new string[] { "id", "sex", "type", "company", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
                     controlsPreName = "tbClient";
                     indexCount = 13;
                     mainID = tbClient1.Text;
@@ -104,6 +104,16 @@ namespace VividManagementApplication
                     controlsPreName = "tbDz";
                     indexCount = 11;
                     mainID = tbDz2.Text;
+
+                    // 添加客户编号
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbDz1);
+
+                    // 添加商品编号
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbA);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbB);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbC);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbD);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbE);
 
                     canPrint = true;
                     moreDetaildpPanel.Visible = false;
@@ -162,7 +172,7 @@ namespace VividManagementApplication
 
                     table = "pzList";
                     baseName = "pzID";
-                    queryArray = new string[] { "pzID", "leixing", "clientIDs", "companyName", "zhaiyao", "cost", "wayOfPay", "chequeID", "fujianCount", "discardFlag", "operater"};
+                    queryArray = new string[] { "pzID", "leixing", "clientIDs", "companyName", "zhaiyao", "cost", "wayOfPay", "chequeID", "fujianCount", "discardFlag", "operater" };
                     controlsPreName = "tbPz";
                     indexCount = 11;
                     mainID = tbDz2.Text;
@@ -216,7 +226,7 @@ namespace VividManagementApplication
                     else
                     {
                         HTcbName.Visible = false;
-                    }  
+                    }
                     break;
             }
 
@@ -699,6 +709,11 @@ namespace VividManagementApplication
         // 进仓单 出仓单 采购单 销售单
         private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbA);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbB);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbC);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbD);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbE);
             if (MainWindow.CURRENT_TAB == 3) //仓储管理
             {
                 switch (danziComboBox.SelectedIndex)
@@ -751,13 +766,68 @@ namespace VividManagementApplication
             }
         }
 
-        private void addItemsToCombox(List<String> items, ComboBox cb) {
+        private void addItemsToCombox(List<String> items, ComboBox cb)
+        {
             foreach (string item in items)
             {
-                cb.Items.Add(item);  
+                cb.Items.Add(item);
             }
         }
 
+        // 进仓单 出仓单 
+        private void JCCDSetControlsValue(List<Control> lcs, Control byIdControl)
+        {
+            if (danziComboBox.SelectedIndex == 0)
+            { // 进仓单
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "id", byIdControl.Text).ToList<String>());
+            }
+            else
+            { // 出仓单
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "id", byIdControl.Text).ToList<String>());
+            }
+        }
+
+        private void JCDcbA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbA.SelectedIndex != -1)
+            {
+                JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, JCDcbA);
+            }
+        }
+
+        private void JCDcbB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbB.SelectedIndex != -1)
+            {
+                JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, JCDcbB);
+            }
+        }
+
+        private void JCDcbC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbC.SelectedIndex != -1)
+            {
+                JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, JCDcbC);
+            }
+        }
+
+        private void JCDcbD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbD.SelectedIndex != -1)
+            {
+                JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, JCDcbD);
+            }
+        }
+
+        private void JCDcbE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbE.SelectedIndex != -1)
+            {
+                JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, JCDcbE);
+            }
+        }
+
+        //
         private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
         {
             FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "id", tbDz1.Text).ToList<String>());
@@ -765,10 +835,10 @@ namespace VividManagementApplication
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] {"contact","phone","company","address" }, "id", tbPz1.Text).ToList<String>());
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "id", tbPz1.Text).ToList<String>());
         }
 
-       
+
 
 
     }

@@ -524,5 +524,17 @@ namespace VividManagementApplication
             }
             return isPass;
         }
+
+        /// <summary>
+        /// 重新触发comboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        public void reTriggleCombox(ComboBox cb) {
+            int index = cb.SelectedIndex;
+            cb.SelectedIndex = -1;
+            cb.SelectedIndex = index;
+        }
     }
 }

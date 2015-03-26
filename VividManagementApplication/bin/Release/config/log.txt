@@ -1,3 +1,17 @@
+2015/3/26 14:55:13-无法查看详细
+###异常消息Message: SQLite error
+no such column: name
+###当前异常StackTrace:    at System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   at VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) in \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:line 241
+   at VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() in \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:line 227
+===================================================
+
 2015/3/23 20:49:28-无法查看详细
 ###异常消息Message: 索引超出了数组界限。
 ###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.GetSQLiteType(Int32 i)
