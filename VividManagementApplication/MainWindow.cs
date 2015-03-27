@@ -182,7 +182,7 @@ namespace VividManagementApplication
             //di.ShowIcon = false;
             //di.ItemId = this.MainListView.SelectedItems[0].Text;
             di.ItemId = this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-            di.Text = "新建" + di.ItemId;
+            di.Text = "查看" + di.ItemId;
             di.ShowDialog();
         }
 

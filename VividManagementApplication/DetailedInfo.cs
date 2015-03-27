@@ -118,6 +118,24 @@ namespace VividManagementApplication
                     }
                     else
                     {
+                        if (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表"))
+                        {
+                            lbDzTitle.Text = "商品（货物）进仓单";
+                            lbDzTitle.Text = "商品（货物）进仓单";
+                            table = "jcdList";
+                            baseName = "jcdID";
+                            queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                        }
+                        else
+                        {
+                            lbDzTitle.Text = "商品（货物）出仓单";
+                            lbDzTitle.Text = "商品（货物）出仓单";
+                            table = "ccdList";
+                            baseName = "ccdID";
+                            queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                        }
+                        controlsPreName = "tbDz";
+                        detailedPanel = DetailedDanziPanel;
                         danziComboBox.Visible = false;
                         DiscardCheckBox.Visible = true;
                     }
@@ -153,7 +171,7 @@ namespace VividManagementApplication
                     }
                     else
                     {
-                        danziComboBox.Visible = false;
+                        danziComboBox.Enabled = false;
                     }
                     break;
                 case 5:
@@ -189,7 +207,7 @@ namespace VividManagementApplication
                     }
                     else
                     {
-                        pzComboBox.Visible = false;
+                        pzComboBox.Enabled = false;
                     }
 
                     break;
