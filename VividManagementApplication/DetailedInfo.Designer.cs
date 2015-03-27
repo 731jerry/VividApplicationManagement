@@ -359,6 +359,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -1141,7 +1142,7 @@
             this.tbDz9.Location = new System.Drawing.Point(280, 4);
             this.tbDz9.Name = "tbDz9";
             this.tbDz9.Size = new System.Drawing.Size(97, 26);
-            this.tbDz9.TabIndex = 221;
+            this.tbDz9.TabIndex = 314;
             // 
             // label50
             // 
@@ -1169,7 +1170,7 @@
             this.tbDz13.Location = new System.Drawing.Point(95, 70);
             this.tbDz13.Name = "tbDz13";
             this.tbDz13.Size = new System.Drawing.Size(97, 26);
-            this.tbDz13.TabIndex = 229;
+            this.tbDz13.TabIndex = 318;
             // 
             // tbDz10
             // 
@@ -1177,7 +1178,7 @@
             this.tbDz10.Location = new System.Drawing.Point(642, 4);
             this.tbDz10.Name = "tbDz10";
             this.tbDz10.Size = new System.Drawing.Size(97, 26);
-            this.tbDz10.TabIndex = 223;
+            this.tbDz10.TabIndex = 315;
             // 
             // label46
             // 
@@ -1205,7 +1206,7 @@
             this.tbDz12.Location = new System.Drawing.Point(642, 41);
             this.tbDz12.Name = "tbDz12";
             this.tbDz12.Size = new System.Drawing.Size(97, 26);
-            this.tbDz12.TabIndex = 227;
+            this.tbDz12.TabIndex = 317;
             // 
             // tbDz11
             // 
@@ -1213,7 +1214,7 @@
             this.tbDz11.Location = new System.Drawing.Point(280, 41);
             this.tbDz11.Name = "tbDz11";
             this.tbDz11.Size = new System.Drawing.Size(97, 26);
-            this.tbDz11.TabIndex = 225;
+            this.tbDz11.TabIndex = 316;
             // 
             // label47
             // 
@@ -1379,7 +1380,7 @@
             this.JCDcbE.Location = new System.Drawing.Point(0, 130);
             this.JCDcbE.Name = "JCDcbE";
             this.JCDcbE.Size = new System.Drawing.Size(116, 28);
-            this.JCDcbE.TabIndex = 324;
+            this.JCDcbE.TabIndex = 308;
             this.JCDcbE.SelectedIndexChanged += new System.EventHandler(this.JCDcbE_SelectedIndexChanged);
             // 
             // JCDcbD
@@ -1390,7 +1391,7 @@
             this.JCDcbD.Location = new System.Drawing.Point(0, 104);
             this.JCDcbD.Name = "JCDcbD";
             this.JCDcbD.Size = new System.Drawing.Size(116, 28);
-            this.JCDcbD.TabIndex = 322;
+            this.JCDcbD.TabIndex = 306;
             this.JCDcbD.SelectedIndexChanged += new System.EventHandler(this.JCDcbD_SelectedIndexChanged);
             // 
             // JCDcbC
@@ -1401,7 +1402,7 @@
             this.JCDcbC.Location = new System.Drawing.Point(0, 78);
             this.JCDcbC.Name = "JCDcbC";
             this.JCDcbC.Size = new System.Drawing.Size(116, 28);
-            this.JCDcbC.TabIndex = 320;
+            this.JCDcbC.TabIndex = 304;
             this.JCDcbC.SelectedIndexChanged += new System.EventHandler(this.JCDcbC_SelectedIndexChanged);
             // 
             // JCDcbB
@@ -1412,7 +1413,7 @@
             this.JCDcbB.Location = new System.Drawing.Point(0, 52);
             this.JCDcbB.Name = "JCDcbB";
             this.JCDcbB.Size = new System.Drawing.Size(116, 28);
-            this.JCDcbB.TabIndex = 318;
+            this.JCDcbB.TabIndex = 302;
             this.JCDcbB.SelectedIndexChanged += new System.EventHandler(this.JCDcbB_SelectedIndexChanged);
             // 
             // JCDcbA
@@ -1423,7 +1424,7 @@
             this.JCDcbA.Location = new System.Drawing.Point(0, 26);
             this.JCDcbA.Name = "JCDcbA";
             this.JCDcbA.Size = new System.Drawing.Size(116, 28);
-            this.JCDcbA.TabIndex = 316;
+            this.JCDcbA.TabIndex = 301;
             this.JCDcbA.SelectedIndexChanged += new System.EventHandler(this.JCDcbA_SelectedIndexChanged);
             // 
             // EJCDtb6
@@ -1478,7 +1479,7 @@
             this.EJCDtb5.Name = "EJCDtb5";
             this.EJCDtb5.ReadOnly = true;
             this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.EJCDtb5.TabIndex = 311;
+            this.EJCDtb5.TabIndex = 309;
             this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
             this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -1545,7 +1546,7 @@
             this.DJCDtb5.Name = "DJCDtb5";
             this.DJCDtb5.ReadOnly = true;
             this.DJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.DJCDtb5.TabIndex = 305;
+            this.DJCDtb5.TabIndex = 307;
             this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
             this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -1612,7 +1613,7 @@
             this.CJCDtb5.Name = "CJCDtb5";
             this.CJCDtb5.ReadOnly = true;
             this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.CJCDtb5.TabIndex = 299;
+            this.CJCDtb5.TabIndex = 305;
             this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
             this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -1679,7 +1680,7 @@
             this.BJCDtb5.Name = "BJCDtb5";
             this.BJCDtb5.ReadOnly = true;
             this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.BJCDtb5.TabIndex = 293;
+            this.BJCDtb5.TabIndex = 303;
             this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
             this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -1865,6 +1866,7 @@
             this.tbDz3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz3.Location = new System.Drawing.Point(126, 313);
             this.tbDz3.Name = "tbDz3";
+            this.tbDz3.ReadOnly = true;
             this.tbDz3.Size = new System.Drawing.Size(639, 26);
             this.tbDz3.TabIndex = 219;
             this.tbDz3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1906,7 +1908,8 @@
             this.tbDz7.Location = new System.Drawing.Point(464, 376);
             this.tbDz7.Name = "tbDz7";
             this.tbDz7.Size = new System.Drawing.Size(117, 26);
-            this.tbDz7.TabIndex = 217;
+            this.tbDz7.TabIndex = 312;
+            this.tbDz7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // dzCompany
             // 
@@ -1934,7 +1937,8 @@
             this.tbDz6.Location = new System.Drawing.Point(143, 377);
             this.tbDz6.Name = "tbDz6";
             this.tbDz6.Size = new System.Drawing.Size(132, 26);
-            this.tbDz6.TabIndex = 215;
+            this.tbDz6.TabIndex = 311;
+            this.tbDz6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // label54
             // 
@@ -1952,7 +1956,9 @@
             this.tbDz8.Location = new System.Drawing.Point(724, 376);
             this.tbDz8.Name = "tbDz8";
             this.tbDz8.Size = new System.Drawing.Size(37, 26);
-            this.tbDz8.TabIndex = 213;
+            this.tbDz8.TabIndex = 313;
+            this.tbDz8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            //
             // 
             // label55
             // 
@@ -1970,7 +1976,7 @@
             this.tbDz4.Location = new System.Drawing.Point(125, 345);
             this.tbDz4.Name = "tbDz4";
             this.tbDz4.Size = new System.Drawing.Size(639, 26);
-            this.tbDz4.TabIndex = 209;
+            this.tbDz4.TabIndex = 310;
             // 
             // label57
             // 
@@ -2020,9 +2026,8 @@
             this.tbDz2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz2.Location = new System.Drawing.Point(110, 94);
             this.tbDz2.Name = "tbDz2";
-            this.tbDz2.ReadOnly = true;
             this.tbDz2.Size = new System.Drawing.Size(120, 26);
-            this.tbDz2.TabIndex = 203;
+            this.tbDz2.TabIndex = 300;
             // 
             // label62
             // 
@@ -4006,11 +4011,24 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
+            // DiscardCheckBox
+            // 
+            this.DiscardCheckBox.AutoSize = true;
+            this.DiscardCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.DiscardCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.DiscardCheckBox.Location = new System.Drawing.Point(179, 659);
+            this.DiscardCheckBox.Name = "DiscardCheckBox";
+            this.DiscardCheckBox.Size = new System.Drawing.Size(51, 21);
+            this.DiscardCheckBox.TabIndex = 318;
+            this.DiscardCheckBox.Text = "作废";
+            this.DiscardCheckBox.UseVisualStyleBackColor = false;
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 698);
+            this.Controls.Add(this.DiscardCheckBox);
             this.Controls.Add(this.PreviewPrintButton);
             this.Controls.Add(this.DetailedTabView);
             this.Controls.Add(this.SaveButton);
@@ -4048,6 +4066,7 @@
             this.PanelHT.ResumeLayout(false);
             this.PanelHT.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -4383,5 +4402,6 @@
         private System.Windows.Forms.TextBox CJCDtb0;
         private System.Windows.Forms.TextBox BJCDtb0;
         private System.Windows.Forms.TextBox AJCDtb0;
+        private ControlExs.QQCheckBox DiscardCheckBox;
     }
 }

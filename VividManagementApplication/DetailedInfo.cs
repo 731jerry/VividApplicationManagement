@@ -87,24 +87,6 @@ namespace VividManagementApplication
                     detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
 
-                    if (MainWindow.mainDGVTitle.Text.Equals("进仓单列表"))
-                    {
-                        lbDzTitle.Text = "商品（货物）进仓单";
-                        table = "jcdList";
-                        baseName = "jcdID";
-                        queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsName", "jsonData", "discardFlag" };
-                    }
-                    else
-                    {
-                        lbDzTitle.Text = "商品（货物）出仓单";
-                        table = "ccdList";
-                        baseName = "ccdID";
-                        queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsName", "jsonData", "discardFlag" };
-                    }
-                    controlsPreName = "tbDz";
-                    indexCount = 6;
-                    mainID = tbDz2.Text;
-
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbDz1);
 
@@ -129,10 +111,15 @@ namespace VividManagementApplication
                         danziComboBox.Items.Add("进仓单");
                         danziComboBox.Items.Add("出仓单");
                         danziComboBox.SelectedIndex = 0;
+
+                        DzDateTextBox.Text = DateTime.Now.ToLongDateString();
+                        tbDz1.SelectedIndex = 0;
+                        DiscardCheckBox.Visible = false;
                     }
                     else
                     {
                         danziComboBox.Visible = false;
+                        DiscardCheckBox.Visible = true;
                     }
                     break;
                 case 4:
@@ -252,6 +239,7 @@ namespace VividManagementApplication
             this.Size = new Size(this.Size.Width, this.Size.Height - detailedHeightDis);
             PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - detailedHeightDis);
             SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - detailedHeightDis);
+            DiscardCheckBox.Location = new Point(DiscardCheckBox.Location.X, DiscardCheckBox.Location.Y - detailedHeightDis);
             detailedPanel.Parent = this;
             detailedPanel.Location = new Point(15, 5);
             DetailedTabView.Visible = false;
@@ -303,9 +291,25 @@ namespace VividManagementApplication
                                 new List<Control> (){JCDcbE, EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6} 
                                 }
                             );
-
-                        String test = jsonData;
-                        Console.WriteLine(jsonData);
+                        //
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(
+                            table,
+                            queryArray,
+                            new String[] { 
+                                tbDz1.Text,
+                                tbDz2.Text, 
+                                dzCompany.Text,
+                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                                jsonData,
+                                tbDz3.Text.Split('=')[0],
+                                tbDz4.Text,
+                                tbDz6.Text,
+                                tbDz7.Text,
+                                tbDz8.Text,
+                                (DiscardCheckBox.Checked?"1":"0"),
+                                DateTime.Now.ToString(), 
+                                DateTime.Now.ToString()},
+                            mainID);
                     }
                     else if (MainWindow.CURRENT_TAB == 4) // 采购 销售单
                     {
@@ -767,13 +771,24 @@ namespace VividManagementApplication
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbE);
             if (MainWindow.CURRENT_TAB == 3) //仓储管理
             {
+                controlsPreName = "tbDz";
+                indexCount = 11;
+                mainID = tbDz2.Text;
                 switch (danziComboBox.SelectedIndex)
                 {
                     case 0://进仓单
                         lbDzTitle.Text = "商品（货物）进仓单";
+                        lbDzTitle.Text = "商品（货物）进仓单";
+                        table = "jcdList";
+                        baseName = "jcdID";
+                        queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                         break;
                     case 1://出仓单
                         lbDzTitle.Text = "商品（货物）出仓单";
+                        lbDzTitle.Text = "商品（货物）出仓单";
+                        table = "ccdList";
+                        baseName = "ccdID";
+                        queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                         break;
                     default:
                         break;
@@ -1006,7 +1021,7 @@ namespace VividManagementApplication
                     sum += int.Parse(con.Text);
                 }
             }
-            resultControl.Text = sum.ToString() + "\t" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
+            resultControl.Text = sum.ToString() + "=" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
         }
         private void calculateSumForDz(object sender, EventArgs e)
         {
@@ -1071,7 +1086,6 @@ namespace VividManagementApplication
             }
             //Console.ReadLine();
         }
-
 
 
 

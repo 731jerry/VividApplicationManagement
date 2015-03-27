@@ -221,6 +221,7 @@ namespace VividManagementApplication
             LocalDbClose();
         }
 
+
         public string[] LocalGetOneRowDataById(string table, string[] query, string baseName, string id)
         {
             // ORDER BY id ASC
