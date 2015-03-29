@@ -412,6 +412,17 @@ namespace VividManagementApplication
             return dgv;
         }
 
+        // 缘模原样迁移从属panel
+        public void moveParentPanel(Panel fromP, Panel toP) {
+            foreach (Control item in fromP.Controls)
+            {
+                //int oriX = item.Location.X;
+                //int oriY = item.Location.Y;
+                item.Parent = toP;
+                //item.Location = new Point(oriX+fromP.Location.X,oriY+fromP.Location.Y);
+            }
+        }
+
         // 设置数值
         public void SetControlsVaule(string PreName, Panel panelPlatform, string[] finalValues)
         {

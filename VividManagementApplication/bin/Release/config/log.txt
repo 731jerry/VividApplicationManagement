@@ -1,3 +1,73 @@
+2015/3/29 22:41:29-无法查看详细
+###异常消息Message: SQLite error
+no such column: kxQq
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 242
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 204
+===================================================
+
+2015/3/29 21:53:45-
+###异常消息Message: SQLite error
+table cgdList has no column named motifyTime
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 392
+===================================================
+
+2015/3/29 21:35:37-
+###异常消息Message: SQLite error
+13 values for 6 columns
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 391
+===================================================
+
+2015/3/29 21:29:15-
+###异常消息Message: SQLite error
+near "(": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 391
+===================================================
+
+2015/3/29 21:27:24-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 200
+===================================================
+
+2015/3/29 21:27:17-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 200
+===================================================
+
+2015/3/29 20:34:22-
+###异常消息Message: SQLite error
+13 values for 6 columns
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 418
+===================================================
+
 2015/3/29 16:33:19-无法查看详细
 ###异常消息Message: 给定关键字不在字典中。
 ###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)

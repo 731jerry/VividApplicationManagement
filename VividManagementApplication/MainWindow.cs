@@ -361,15 +361,15 @@ namespace VividManagementApplication
         private void ccRadio_CheckedChanged(object sender, EventArgs e)
         {
             CURRENT_TAB = 3;
-            ableSubButtons(new List<QQButton>() { newJCcButton, listKcButton, listJcdButton, listCcdButton }, ccRadio);
+            ableSubButtons(new List<QQButton>() { listKcButton, listJcdButton, listCcdButton }, ccRadio);
             listKcButton.PerformClick();
         }
 
         private void ywRadio_CheckedChanged(object sender, EventArgs e)
         {
             CURRENT_TAB = 4;
-            ableSubButtons(new List<QQButton>() { newCgZsButton, listCgXsButton, listKhdzButton }, ywRadio);
-            listCgXsButton.PerformClick();
+            ableSubButtons(new List<QQButton>() { newCgZsButton, listCgButton, listXsButton, listKhdzButton }, ywRadio);
+            listCgButton.PerformClick();
         }
 
         private void cwRadio_CheckedChanged(object sender, EventArgs e)
@@ -472,7 +472,7 @@ namespace VividManagementApplication
             CURRENT_LIST_BUTTON = listJcdButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listJcdButton.Text;
-            Column1.HeaderText = "单号";
+            Column1.HeaderText = "凭证号码";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "商品名称";
             Column4.HeaderText = "作废标识";
@@ -486,7 +486,7 @@ namespace VividManagementApplication
             CURRENT_LIST_BUTTON = listCcdButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listCcdButton.Text;
-            Column1.HeaderText = "单号";
+            Column1.HeaderText = "凭证号码";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "商品名称";
             Column4.HeaderText = "作废标识";
@@ -501,21 +501,32 @@ namespace VividManagementApplication
 
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
-            CURRENT_LIST_BUTTON = listCgXsButton;
+            CURRENT_LIST_BUTTON = listCgButton;
             CURRENT_TAB = 4;
-            mainDGVTitle.Text = listCgXsButton.Text;
+            mainDGVTitle.Text = listCgButton.Text;
             Column1.HeaderText = "凭证号码";
-            Column2.HeaderText = "日期";
-            Column3.HeaderText = "类型";
-            Column4.HeaderText = "摘要";
-            Column5.HeaderText = "金额";
-            Column6.HeaderText = "经办人";
-            Column7.HeaderText = "√";
+            Column2.HeaderText = "单位名称";
+            Column3.HeaderText = "商品名称";
+            Column4.HeaderText = "作废标识";
 
-            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "cgxsYWList", new string[] { "cgxsID", "addtime", "leixing", "clientIDs", "price", "operater", "discardFlag" });
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList", new string[] { "cgdID", "companyName", "goodsName", "discardFlag" });
         }
 
+        private void listXsButton_Click(object sender, EventArgs e)
+        {
+            CURRENT_LIST_BUTTON = listCgButton;
+            CURRENT_TAB = 4;
+            mainDGVTitle.Text = listCgButton.Text;
+            Column1.HeaderText = "凭证号码";
+            Column2.HeaderText = "单位名称";
+            Column3.HeaderText = "商品名称";
+            Column4.HeaderText = "作废标识";
+
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList", new string[] { "xsdID", "companyName", "goodsName", "discardFlag" });
+        
+        }
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
             // 还未完成
@@ -574,6 +585,7 @@ namespace VividManagementApplication
             CreateDetailedWindow();
         }
 
+        // 新建进出仓单
         private void newJCcButton_Click(object sender, EventArgs e)
         {
             CURRENT_TAB = 3;
@@ -615,5 +627,6 @@ namespace VividManagementApplication
             Setting st = new Setting();
             st.ShowDialog();
         }
+
     }
 }

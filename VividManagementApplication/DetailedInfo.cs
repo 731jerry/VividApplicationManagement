@@ -111,10 +111,16 @@ namespace VividManagementApplication
                     }
                     break;
                 case 3:
-                    // 进仓单 出仓单
+                case 4:
+                    // 进仓单 出仓单 采购单 销售单
                     checkValidateControls = new List<Control>() { tbDz2 };
-                    detailedHeightDis = 200;
                     detailedPanel = DetailedDanziPanel;
+
+                    controlsPreName = "tbDz";
+                    detailedPanel = DetailedDanziPanel;
+                    indexCount = 6;
+                    danziComboBox.Visible = false;
+                    DiscardCheckBox.Visible = true;
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbDz1);
@@ -132,45 +138,80 @@ namespace VividManagementApplication
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbE);
 
                     canPrint = true;
-                    moreDetaildpPanel.Visible = false;
+
+                    if (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表"))
+                    {
+                        detailedHeightDis = 200;
+                        lbDzTitle.Text = "商品（货物）进仓单";
+                        table = "jcdList";
+                        baseName = "jcdID";
+                        makeControlsInvisibleForJCCD(false);
+                        // moreDetaildpPanel.Visible = false;
+                    }
+                    else if (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("出仓单列表"))
+                    {
+                        detailedHeightDis = 200;
+                        lbDzTitle.Text = "商品（货物）出仓单";
+                        table = "ccdList";
+                        baseName = "ccdID";
+                        makeControlsInvisibleForJCCD(false);
+                        //  moreDetaildpPanel.Visible = false;
+                    }
+                    else if (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("采购单列表"))
+                    {
+                        lbDzTitle.Text = "商品（货物）采购单";
+                        table = "cgdList";
+                        baseName = "cgdID";
+                        makeControlsInvisibleForJCCD(true);
+                        // moreDetaildpPanel.Visible = true;
+                        // FormBasicFeatrues.GetInstence().moveParentPanel(moreDetaildpPanel, detailedPanel);
+                    }
+                    else
+                    {
+                        lbDzTitle.Text = "商品（货物）销售单";
+                        table = "xsdList";
+                        baseName = "xsdID";
+                        makeControlsInvisibleForJCCD(true);
+                        // moreDetaildpPanel.Visible = true;
+                        // FormBasicFeatrues.GetInstence().moveParentPanel(moreDetaildpPanel, detailedPanel);
+                    }
+
+
+                    queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+
                     if (ItemId.Equals("-1"))
                     {
                         danziComboBox.Visible = true;
                         danziComboBox.Items.Clear();
-                        danziComboBox.Items.Add("进仓单");
-                        danziComboBox.Items.Add("出仓单");
+                        danziComboBox.Items.Add("采购单");
+                        danziComboBox.Items.Add("销售单");
                         danziComboBox.SelectedIndex = 0;
 
                         DzDateTextBox.Text = DateTime.Now.ToLongDateString();
                         tbDz1.SelectedIndex = 0;
                         DiscardCheckBox.Visible = false;
+
                     }
                     else
                     {
-                        if (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表"))
-                        {
-                            lbDzTitle.Text = "商品（货物）进仓单";
-                            lbDzTitle.Text = "商品（货物）进仓单";
-                            table = "jcdList";
-                            baseName = "jcdID";
-                            queryArray = new string[] { "clientIDs", "jcdID", "beizhu", "fpPu", "fpZeng", "fpCount" };
-                        }
-                        else
-                        {
-                            lbDzTitle.Text = "商品（货物）出仓单";
-                            lbDzTitle.Text = "商品（货物）出仓单";
-                            table = "ccdList";
-                            baseName = "ccdID";
-                            queryArray = new string[] { "clientIDs", "ccdID", "beizhu", "fpPu", "fpZeng", "fpCount" };
-                        }
-                        controlsPreName = "tbDz";
-                        detailedPanel = DetailedDanziPanel;
-                        indexCount = 6;
-                        danziComboBox.Visible = false;
-                        DiscardCheckBox.Visible = true;
-
                         try
                         {
+                            List<String> queryList = queryArray.ToList();
+                            queryList.Remove("companyName");
+                            queryList.Remove("jsonData");
+                            queryList.Remove("sum");
+                            queryList.Remove("addtime");
+                            queryList.Remove("modifyTime");
+                            if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")))
+                            {
+                                queryList.Remove("kxQq");
+                                queryList.Remove("kxXq");
+                                queryList.Remove("kxJf");
+                                queryList.Remove("kxSq");
+                                queryList.Remove("kxDay");
+                            }
+                            queryArray = queryList.ToArray();
+
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
 
                             String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData" }, baseName, ItemId);
@@ -216,51 +257,6 @@ namespace VividManagementApplication
                         }
                     }
                     break;
-                case 4:
-                    // 采购单 销售单
-                    checkValidateControls = new List<Control>() { tbDz2 };
-                    detailedHeightDis = 120;
-                    detailedPanel = DetailedDanziPanel;
-
-                    table = "cgxsYWList";
-                    baseName = "cgxsID";
-                    queryArray = new string[] { "cgxsID", "leixing", "clientIDs", "companyName", "goodsIDs", "goodsName", "guige", "dengji", "unit", "price", "count", "total", "discardFlag", "operater" };
-                    controlsPreName = "tbDz";
-                    indexCount = 14;
-                    mainID = tbDz2.Text;
-
-                    // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbDz1);
-
-                    canPrint = true;
-                    moreDetaildpPanel.Visible = true;
-                    if (ItemId.Equals("-1"))
-                    {
-                        danziComboBox.Visible = true;
-                        danziComboBox.Items.Clear();
-                        danziComboBox.Items.Add("采购单");
-                        danziComboBox.Items.Add("销售单");
-                        danziComboBox.SelectedIndex = 0;
-
-                        DzDateTextBox.Text = DateTime.Now.ToLongDateString();
-                        tbDz1.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        danziComboBox.Enabled = false;
-
-                        try
-                        {
-                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
-                        }
-                        catch (Exception ex)
-                        {
-                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
-                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
-                            this.Close();
-                        }
-                    }
-                    break;
                 case 5:
                     // 收款凭证 付款凭证 领款凭证 还款凭证 报销凭证
                     checkValidateControls = new List<Control>() { tbPz2 };
@@ -269,7 +265,7 @@ namespace VividManagementApplication
 
                     table = "pzList";
                     baseName = "pzID";
-                    queryArray = new string[] { "pzID", "leixing", "clientIDs", "companyName", "zhaiyao", "cost", "wayOfPay", "chequeID", "fujianCount", "discardFlag", "operater" };
+                    queryArray = new string[] { "pzID", "leixing", "clientID", "companyName", "zhaiyao", "cost", "wayOfPay", "chequeID", "fujianCount", "discardFlag", "operater" };
                     controlsPreName = "tbPz";
                     indexCount = 11;
                     mainID = tbDz2.Text;
@@ -363,6 +359,20 @@ namespace VividManagementApplication
             }
         }
 
+        private void makeControlsInvisibleForJCCD(Boolean isVisable)
+        {
+            label50.Visible = isVisable;
+            label49.Visible = isVisable;
+            label48.Visible = isVisable;
+            label47.Visible = isVisable;
+            label46.Visible = isVisable;
+            tbDz9.Visible = isVisable;
+            tbDz10.Visible = isVisable;
+            tbDz11.Visible = isVisable;
+            tbDz12.Visible = isVisable;
+            tbDz13.Visible = isVisable;
+        }
+
         /// <summary>
         /// 把Control值转到JSON
         /// </summary>
@@ -392,7 +402,7 @@ namespace VividManagementApplication
                 //if (true)
                 {
                     // new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
-                    if (MainWindow.CURRENT_TAB == 3) // 进仓单 出仓单
+                    if ((MainWindow.CURRENT_TAB == 3) || (MainWindow.CURRENT_TAB == 4)) // 进仓单 出仓单
                     {
                         //String jsonData = ControlValueTransitToJson(
                         //    new List<String>() { "goodsID", "goodsName", "goodsGuige", "goodsDengji", "goodsUnit", "goodsPrice", "goodsAmount", "goodsSum" },
@@ -431,17 +441,19 @@ namespace VividManagementApplication
                                 tbDz8.Text,
                                 (DiscardCheckBox.Checked?"1":"0"),
                                 DateTime.Now.ToString(), 
-                                DateTime.Now.ToString()},
+                                DateTime.Now.ToString(),
+                                tbDz9.Text,
+                                tbDz10.Text,
+                                tbDz11.Text,
+                                tbDz12.Text,
+                                tbDz13.Text},
                             mainID);
-                    }
-                    else if (MainWindow.CURRENT_TAB == 4) // 采购 销售单
-                    {
-
                     }
                     else
                     {
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
                     }
+
                     if (ItemId.Equals("-1"))
                     {
                         MessageBox.Show("新建成功!", "恭喜");
@@ -904,14 +916,14 @@ namespace VividManagementApplication
                         lbDzTitle.Text = "商品（货物）进仓单";
                         table = "jcdList";
                         baseName = "jcdID";
-                        queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                        queryArray = new string[] { "clientID", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                         break;
                     case 1://出仓单
                         lbDzTitle.Text = "商品（货物）出仓单";
                         lbDzTitle.Text = "商品（货物）出仓单";
                         table = "ccdList";
                         baseName = "ccdID";
-                        queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                        queryArray = new string[] { "clientID", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                         break;
                     default:
                         break;
@@ -1172,44 +1184,6 @@ namespace VividManagementApplication
                 }
             }
         }
-
-        private void qqButton1_Click(object sender, EventArgs e)
-        {
-            string jsonText = "[{'a':'aaa','b':'bbb','c':'ccc'},{'a':'aaa2','b':'bbb2','c':'ccc2'}]";
-            //序列化
-            JSONArray _array = new JSONArray();
-            _array.Add("1");
-            _array.Add("2");
-            _array.Add("3");
-            _array.Add("4");
-            JSONObject _object = new JSONObject();//新建json对象作为内嵌
-            _object.Add("oneKey", "one");
-            _object.Add("twoArray", _array);
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.Add("2006");
-            jsonArray.Add("2007");
-            jsonArray.Add("2008");
-            jsonArray.Add("2009");
-            jsonArray.Add("2010");
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.Add("domain", "mzwu.com");
-            jsonObject.Add("two", _object);//添加json对象
-            jsonObject.Add("years", jsonArray);
-            Console.WriteLine("json序列化为字符串");
-            Console.WriteLine(JSONConvert.SerializeObject(jsonObject));//执行序列化
-            //反序列化
-            JSONObject json = JSONConvert.DeserializeObject("{\"domain\":\"mzwu.com\",\"two\":{\"oneKey\":\"one\",\"twoArray\":[1,2,3,4]},\"years\":[2006,2007,2008,2009,2010]}");//执行反序列化
-            if (json != null)
-            {
-                Console.WriteLine("将json结构的字符串反序列化为json对象并调用");
-                Console.WriteLine(json["domain"]);
-                Console.WriteLine(((JSONObject)json["two"])["oneKey"]);
-                Console.WriteLine(((JSONArray)((JSONObject)json["two"])["twoArray"])[0]);
-                Console.WriteLine(((JSONArray)json["years"])[3]);
-            }
-            //Console.ReadLine();
-        }
-
 
 
     }
