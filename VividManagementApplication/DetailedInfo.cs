@@ -66,6 +66,21 @@ namespace VividManagementApplication
                     mainID = tbClient1.Text;
 
                     canPrint = false;
+
+                    if (!ItemId.Equals("-1"))
+                    {
+                        try
+                        {
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                        }
+                        catch (Exception ex)
+                        {
+                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
+                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
+                            this.Close();
+                        }
+                    }
+
                     break;
                 case 2:
                     checkValidateControls = new List<Control>() { tbGoods1, tbGoods2, tbGoods3, tbGoods4, tbGoods4 };
@@ -80,6 +95,20 @@ namespace VividManagementApplication
                     mainID = tbGoods1.Text;
 
                     canPrint = false;
+
+                    if (!ItemId.Equals("-1"))
+                    {
+                        try
+                        {
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                        }
+                        catch (Exception ex)
+                        {
+                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
+                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
+                            this.Close();
+                        }
+                    }
                     break;
                 case 3:
                     // 进仓单 出仓单
@@ -124,7 +153,7 @@ namespace VividManagementApplication
                             lbDzTitle.Text = "商品（货物）进仓单";
                             table = "jcdList";
                             baseName = "jcdID";
-                            queryArray = new string[] { "clientIDs", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                            queryArray = new string[] { "clientIDs", "jcdID", "beizhu", "fpPu", "fpZeng", "fpCount" };
                         }
                         else
                         {
@@ -132,12 +161,59 @@ namespace VividManagementApplication
                             lbDzTitle.Text = "商品（货物）出仓单";
                             table = "ccdList";
                             baseName = "ccdID";
-                            queryArray = new string[] { "clientIDs", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                            queryArray = new string[] { "clientIDs", "ccdID", "beizhu", "fpPu", "fpZeng", "fpCount" };
                         }
                         controlsPreName = "tbDz";
                         detailedPanel = DetailedDanziPanel;
+                        indexCount = 6;
                         danziComboBox.Visible = false;
                         DiscardCheckBox.Visible = true;
+
+                        try
+                        {
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData" }, baseName, ItemId);
+                            DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
+                            data[1] = data[1].Replace("\n", "");
+                            data[1] = data[1].Replace(" ", "");
+                            JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化
+                            if (json != null)
+                            {
+                                if ((JSONObject)json["1"] != null)
+                                {
+                                    JCDcbA.Text = ((JSONObject)json["1"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["1"])["goodsID"].ToString();
+                                    AJCDtb5.Text = ((JSONObject)json["1"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["1"])["goodsAmount"].ToString();
+                                }
+                                if ((JSONObject)json["2"] != null)
+                                {
+                                    JCDcbB.Text = ((JSONObject)json["2"])["goodsID"].Equals("") ? "" : ((JSONObject)json["2"])["goodsID"].ToString();
+                                    BJCDtb5.Text = ((JSONObject)json["2"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["2"])["goodsAmount"].ToString();
+                                }
+                                if ((JSONObject)json["3"] != null)
+                                {
+                                    JCDcbC.Text = ((JSONObject)json["3"])["goodsID"].Equals("") ? "" : ((JSONObject)json["3"])["goodsID"].ToString();
+                                    CJCDtb5.Text = ((JSONObject)json["3"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["3"])["goodsAmount"].ToString();
+                                }
+                                if ((JSONObject)json["4"] != null)
+                                {
+                                    JCDcbD.Text = ((JSONObject)json["4"])["goodsID"].Equals("") ? "" : ((JSONObject)json["4"])["goodsID"].ToString();
+                                    DJCDtb5.Text = ((JSONObject)json["4"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["4"])["goodsAmount"].ToString();
+                                }
+                                if ((JSONObject)json["5"] != null)
+                                {
+                                    JCDcbE.Text = ((JSONObject)json["5"])["goodsID"].Equals("") ? "" : ((JSONObject)json["5"])["goodsID"].ToString();
+                                    EJCDtb5.Text = ((JSONObject)json["5"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["5"])["goodsAmount"].ToString();
+                                }
+                            }
+                            json.Clear();
+                        }
+                        catch (Exception ex)
+                        {
+                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
+                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
+                            this.Close();
+                        }
                     }
                     break;
                 case 4:
@@ -172,6 +248,17 @@ namespace VividManagementApplication
                     else
                     {
                         danziComboBox.Enabled = false;
+
+                        try
+                        {
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                        }
+                        catch (Exception ex)
+                        {
+                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
+                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
+                            this.Close();
+                        }
                     }
                     break;
                 case 5:
@@ -208,6 +295,17 @@ namespace VividManagementApplication
                     else
                     {
                         pzComboBox.Enabled = false;
+
+                        try
+                        {
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                        }
+                        catch (Exception ex)
+                        {
+                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
+                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
+                            this.Close();
+                        }
                     }
 
                     break;
@@ -236,22 +334,19 @@ namespace VividManagementApplication
                     else
                     {
                         HTcbName.Visible = false;
+
+                        try
+                        {
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                        }
+                        catch (Exception ex)
+                        {
+                            FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
+                            MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
+                            this.Close();
+                        }
                     }
                     break;
-            }
-
-            if (!ItemId.Equals("-1"))
-            {
-                try
-                {
-                    FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
-                }
-                catch (Exception ex)
-                {
-                    FormBasicFeatrues.GetInstence().RecordLog(ex, "无法查看详细");
-                    MessageBox.Show("无法查看详细 - " + ex.Message, "错误");
-                    this.Close();
-                }
             }
 
             this.Size = new Size(this.Size.Width, this.Size.Height - detailedHeightDis);
@@ -282,7 +377,7 @@ namespace VividManagementApplication
                 JSONObject jsonObj = new JSONObject();
                 for (int j = 0; j < conList[i].Count; j++)
                 {
-                    jsonObj.Add(keyList[j], conList[i][j].Text);
+                    jsonObj.Add(keyList[j], conList[i][j].Text.Equals("") ? "无" : conList[i][j].Text);
                 }
                 jsonRoot.Add((i + 1).ToString(), jsonObj);
             }
@@ -299,14 +394,24 @@ namespace VividManagementApplication
                     // new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
                     if (MainWindow.CURRENT_TAB == 3) // 进仓单 出仓单
                     {
+                        //String jsonData = ControlValueTransitToJson(
+                        //    new List<String>() { "goodsID", "goodsName", "goodsGuige", "goodsDengji", "goodsUnit", "goodsPrice", "goodsAmount", "goodsSum" },
+                        //    new List<List<Control>>() {
+                        //        new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
+                        //        new List<Control> (){JCDcbB, BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6} ,
+                        //        new List<Control> (){JCDcbC, CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6} ,
+                        //        new List<Control> (){JCDcbD, DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6} ,
+                        //        new List<Control> (){JCDcbE, EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6} 
+                        //        }
+                        //    );
                         String jsonData = ControlValueTransitToJson(
-                            new List<String>() { "goodsID", "goodsName", "goodsGuige", "goodsDengji", "goodsUnit", "goodsPrice", "goodsAmount", "goodsSum" },
+                            new List<String>() { "goodsID", "goodsAmount", },
                             new List<List<Control>>() {
-                                new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
-                                new List<Control> (){JCDcbB, BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6} ,
-                                new List<Control> (){JCDcbC, CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6} ,
-                                new List<Control> (){JCDcbD, DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6} ,
-                                new List<Control> (){JCDcbE, EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6} 
+                                new List<Control> (){JCDcbA, AJCDtb5, } ,
+                                new List<Control> (){JCDcbB, BJCDtb5, } ,
+                                new List<Control> (){JCDcbC, CJCDtb5, } ,
+                                new List<Control> (){JCDcbD, DJCDtb5, } ,
+                                new List<Control> (){JCDcbE, EJCDtb5, } 
                                 }
                             );
                         //

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace VividManagementApplication
 {
@@ -19,6 +20,7 @@ namespace VividManagementApplication
         private static readonly string _SEMICOLON = "@semicolon";//分号转义符
         private static readonly string _COMMA = "@comma"; //逗号转义符
         #endregion
+
         #region 字符串转义
         /// <summary>
         /// 字符串转义,将双引号内的:和,分别转成_SEMICOLON和_COMMA
@@ -113,6 +115,7 @@ namespace VividManagementApplication
         /// <returns></returns>
         public static JSONObject DeserializeObject(string text)
         {
+            _json = new JSONObject(); // 先清空
             return _json[Deserialize(text)] as JSONObject;
         }
         /// <summary>

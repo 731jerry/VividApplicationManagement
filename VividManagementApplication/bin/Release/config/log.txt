@@ -1,3 +1,410 @@
+2015/3/29 16:33:19-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 188
+===================================================
+
+2015/3/29 16:14:57-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 191
+===================================================
+
+2015/3/29 16:09:18-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 191
+===================================================
+
+2015/3/29 16:08:23-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 191
+===================================================
+
+2015/3/29 16:08:11-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 191
+===================================================
+
+2015/3/29 16:08:08-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 123
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 181
+===================================================
+
+2015/3/29 16:06:31-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 123
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 181
+===================================================
+
+2015/3/29 16:05:13-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 123
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 181
+===================================================
+
+2015/3/29 16:00:41-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 201
+===================================================
+
+2015/3/29 15:57:54-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 186
+===================================================
+
+2015/3/29 15:55:41-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 191
+===================================================
+
+2015/3/29 15:55:15-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 186
+===================================================
+
+2015/3/29 15:46:08-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:35:46-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:27:04-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:26:57-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:25:46-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:25:43-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:25:20-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:24:20-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:22:15-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:21:25-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:20:23-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:19:14-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:19:11-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:19:08-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 185
+===================================================
+
+2015/3/29 15:18:39-无法查看详细
+###异常消息Message: 未将对象引用设置到对象的实例。
+###当前异常StackTrace:    在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 122
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 181
+===================================================
+
+2015/3/29 15:16:05-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 180
+===================================================
+
+2015/3/29 15:15:41-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 184
+===================================================
+
+2015/3/29 15:15:00-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 184
+===================================================
+
+2015/3/29 15:13:00-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:12:57-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:12:07-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:12:01-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:10:32-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:10:29-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:09:24-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:09:21-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 184
+===================================================
+
+2015/3/29 15:08:29-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 15:08:22-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 184
+===================================================
+
+2015/3/29 14:15:59-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 184
+===================================================
+
+2015/3/29 14:12:15-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 14:12:03-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 14:11:42-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 14:11:32-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 14:11:25-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 184
+===================================================
+
+2015/3/29 13:59:07-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 13:52:58-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 182
+===================================================
+
+2015/3/29 13:50:30-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 182
+===================================================
+
+2015/3/29 13:41:29-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 13:41:14-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 13:41:08-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 182
+===================================================
+
+2015/3/29 13:39:56-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 13:39:46-无法查看详细
+###异常消息Message: 已添加了具有相同键的项。
+###当前异常StackTrace:    在 System.ThrowHelper.ThrowArgumentException(ExceptionResource resource)
+   在 System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   在 System.Collections.Generic.Dictionary`2.Add(TKey key, TValue value)
+   在 VividManagementApplication.JSONConvert.Deserialize(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 98
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
+2015/3/29 13:39:32-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 183
+===================================================
+
+2015/3/29 13:39:27-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\JSONConvert.cs:行号 116
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 179
+===================================================
+
 2015/3/27 15:20:25-无法查看详细
 ###异常消息Message: Input string was not in a correct format.
 ###当前异常StackTrace:    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)

@@ -1958,7 +1958,6 @@
             this.tbDz8.Size = new System.Drawing.Size(37, 26);
             this.tbDz8.TabIndex = 313;
             this.tbDz8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            //
             // 
             // label55
             // 
