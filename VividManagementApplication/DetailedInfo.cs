@@ -597,56 +597,98 @@ namespace VividManagementApplication
             g.DrawString("单价", f4, new SolidBrush(Color.Black), 392 + x + 20, 242 + y);
             g.DrawString("金额", f4, new SolidBrush(Color.Black), 464 + x + 20, 242 + y);
             g.DrawString("交（提）货日期及地点", f4, new SolidBrush(Color.Black), 555 + x + 20, 242 + y);
+            //第二行
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 43 + x + 20, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 146 + x + 20, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 243 + x + 20, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 317 + x + 20, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 555 + x + 20, 279 + y);
+            //第三行
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 43 + x + 20, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 146 + x + 20, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 243 + x + 20, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 317 + x + 20, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 555 + x + 20, 318 + y);
+            //第四行
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 43 + x + 20, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 146 + x + 20, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 243 + x + 20, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 317 + x + 20, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 555 + x + 20, 355 + y);
+            //第五行
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 43 + x + 20, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 146 + x + 20, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 243 + x + 20, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 317 + x + 20, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 555 + x + 20, 392 + y);
+            //第六行
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 43 + x + 20, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 146 + x + 20, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 243 + x + 20, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 317 + x + 20, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 555 + x + 20, 429 + y);
             //第一列
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + x, b + y+htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 2*htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y+htHeight, htWidth, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 2*htHeight-2, htWidth, htHeight+2);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 3 * htHeight, htWidth, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 4 * htHeight, htWidth, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 5 * htHeight, htWidth, htHeight);
+            //g.DrawString(, f4, new SolidBrush(Color.Black), 555 + x + 20, 242 + y);
+
            
             //第二列
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 2 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 3 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 4 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 5 * htHeight, htWidth, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y, htWidth - 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + htHeight, htWidth-2, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 2 * htHeight-2, htWidth - 2, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 3 * htHeight, htWidth - 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 4 * htHeight, htWidth - 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 5 * htHeight, htWidth - 2, htHeight);
             //第三列
-            g.DrawRectangle(new Pen(Color.Black), a + 2*htWidth + x, b + y, htWidth-27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + htHeight, htWidth -27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + 2 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth +x, b + y + 3 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + 4 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2*htWidth + x-2, b + y, htWidth-27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x-2, b + y + htHeight, htWidth -27, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 2 * htHeight-2, htWidth - 27, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 3 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 4 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 5 * htHeight, htWidth - 27, htHeight);
             //第四列
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 2 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 3 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 4 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + htHeight, htWidth - 27+1, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 2 * htHeight-2, htWidth - 27+1, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 3 * htHeight, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 4 * htHeight, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 5 * htHeight, htWidth - 27+1, htHeight);
             //第五列
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 2 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 3 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 4 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + htHeight, htWidth - 27+1, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 2 * htHeight-2, htWidth - 27+1, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 3 * htHeight, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 4 * htHeight, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 5 * htHeight, htWidth - 27+1, htHeight);
             //第六列
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x-81, b + y, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 2 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 3 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 4 * htHeight, htWidth - 27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 5 * htHeight, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x-81, b + y, htWidth - 27+2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + htHeight, htWidth - 27+2, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 2 * htHeight-2, htWidth - 27+2, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 3 * htHeight, htWidth - 27+2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 4 * htHeight, htWidth - 27+2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 5 * htHeight, htWidth - 27+2, htHeight);
             //第七列
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x-108, b + y, htWidth+108, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + htHeight, htWidth + 108, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 2 * htHeight, htWidth + 108, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 3 * htHeight, htWidth + 108, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 4 * htHeight, htWidth + 108, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108, b + y + 5 * htHeight, htWidth + 108, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x-108+2, b + y, htWidth+108-2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + htHeight, htWidth + 108-2, htHeight-2);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 2 * htHeight-2, htWidth + 108-2, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 3 * htHeight, htWidth + 108-2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 4 * htHeight, htWidth + 108-2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 5 * htHeight, htWidth + 108-2, htHeight);
 
             /*
              * //第八列
@@ -757,6 +799,27 @@ namespace VividManagementApplication
             g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 910 + y);
             g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 960 + y);
             g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 990 + y);
+            //框内文字
+            
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x +recWidth/2-20, 740 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 770 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 800 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 850 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 880 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 910 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 960 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 990 + y);
+
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 740 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 770 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 800 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 850 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 880 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 910 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 960 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 990 + y);
+
+
 
             // 水印
             //g.DrawString("合同版本由唯达软件提供提    ", f6, new SolidBrush(Color.Red), 40, 35);
