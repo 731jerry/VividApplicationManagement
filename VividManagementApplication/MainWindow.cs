@@ -550,8 +550,8 @@ namespace VividManagementApplication
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
             mainDGVTitle.Text = listSfzhButton.Text;
-            Column1.HeaderText = "日期";
-            Column2.HeaderText = "凭证号码";
+            Column1.HeaderText = "凭证号码";
+            Column2.HeaderText = "日期";
             Column3.HeaderText = "凭证类型";
             Column4.HeaderText = "对方单位名称";
             Column5.HeaderText = "交易金额";
@@ -560,7 +560,7 @@ namespace VividManagementApplication
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
-                new string[] { "modifyTime", "pzID", "leixing", "companyName", "operateMoney", "remaintingMoney", "discardFlag" });
+                new string[] { "pzID", "modifyTime", "leixing", "companyName", "operateMoney", "remaintingMoney", "discardFlag" });
         }
 
         // 合同列表

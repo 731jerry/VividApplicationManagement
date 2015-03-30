@@ -1,3 +1,26 @@
+2015/3/30 17:12:36-无法查看详细
+###异常消息Message: The given key was not present in the dictionary.
+###当前异常StackTrace:    at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:line 321
+===================================================
+
+2015/3/30 17:11:35-无法查看详细
+###异常消息Message: The given key was not present in the dictionary.
+###当前异常StackTrace:    at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:line 321
+===================================================
+
+2015/3/30 16:32:56-
+###异常消息Message: SQLite error
+18 values for 10 columns
+###当前异常StackTrace:    at System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   at System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   at VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:line 220
+   at VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:line 445
+===================================================
+
 2015/3/29 22:41:29-无法查看详细
 ###异常消息Message: SQLite error
 no such column: kxQq

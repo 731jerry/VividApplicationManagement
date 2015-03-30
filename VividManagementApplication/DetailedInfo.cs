@@ -59,8 +59,8 @@ namespace VividManagementApplication
                     detailedPanel = DetailedClientPanel;
 
                     table = "clients";
-                    baseName = "id";
-                    queryArray = new string[] { "id", "sex", "type", "company", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
+                    baseName = "cllientID";
+                    queryArray = new string[] { baseName, "sex", "type", "company", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
                     controlsPreName = "tbClient";
                     indexCount = 13;
                     mainID = tbClient1.Text;
@@ -88,8 +88,8 @@ namespace VividManagementApplication
                     detailedPanel = DetailedGoodsPanel;
 
                     table = "goods";
-                    baseName = "id";
-                    queryArray = new string[] { "id", "dengji", "name", "guige", "unit", "storageName", "storageManager", "storageManagerPhone", "storageLocation", "storageAddress", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu" };
+                    baseName = "goodID";
+                    queryArray = new string[] { baseName, "dengji", "name", "guige", "unit", "storageName", "storageManager", "storageManagerPhone", "storageLocation", "storageAddress", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu" };
                     controlsPreName = "tbGoods";
                     indexCount = 17;
                     mainID = tbGoods1.Text;
@@ -123,7 +123,7 @@ namespace VividManagementApplication
                     DiscardCheckBox.Visible = true;
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbDz1);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "cllientID", " ORDER BY id ASC "), tbDz1);
 
                     // 添加商品编号
                     JCDcbA.Items.Add("");
@@ -131,11 +131,11 @@ namespace VividManagementApplication
                     JCDcbC.Items.Add("");
                     JCDcbD.Items.Add("");
                     JCDcbE.Items.Add("");
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbA);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbB);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbC);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbD);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "id", " ORDER BY id ASC "), JCDcbE);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbA);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbB);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbC);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbD);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbE);
 
                     canPrint = true;
 
@@ -247,7 +247,6 @@ namespace VividManagementApplication
                                     EJCDtb5.Text = ((JSONObject)json["5"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["5"])["goodsAmount"].ToString();
                                 }
                             }
-                            json.Clear();
                         }
                         catch (Exception ex)
                         {
@@ -265,13 +264,13 @@ namespace VividManagementApplication
 
                     table = "pzList";
                     baseName = "pzID";
-                    queryArray = new string[] { "pzID", "leixing", "clientID", "companyName", "zhaiyao", "cost", "wayOfPay", "chequeID", "fujianCount", "discardFlag", "operater" };
+                    queryArray = new string[] { "pzID", "leixing", "clientID", "companyName", "jsonData", "operateMoney", "remaintingMoney","beizhu", "discardFlag", "addtime", "modifyTime" };
                     controlsPreName = "tbPz";
                     indexCount = 11;
                     mainID = tbDz2.Text;
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "id", " ORDER BY id ASC "), tbPz1);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbPz1);
 
                     canPrint = true;
                     if (ItemId.Equals("-1"))
@@ -294,7 +293,69 @@ namespace VividManagementApplication
 
                         try
                         {
+                            List<String> queryList = queryArray.ToList();
+                            queryList.Remove("leixing");
+                            queryList.Remove("companyName");
+                            queryList.Remove("jsonData");
+                            queryList.Remove("operateMoney");
+                            queryList.Remove("remaintingMoney");
+                            queryList.Remove("sum");
+                            queryList.Remove("addtime");
+                            queryList.Remove("modifyTime");
+                            queryArray = queryList.ToArray();
+
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData" }, baseName, ItemId);
+                            DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
+                            data[1] = data[1].Replace("\n", "");
+                            data[1] = data[1].Replace(" ", "");
+                            JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化 
+                            // "zhaiyao", "operateMoney", "payWay", "payNumber", "payCount"
+                            // PzcbA,APztb0,APztb1,APztb2,APztb3
+                            if (json != null)
+                            {
+                                if ((JSONObject)json["1"] != null)
+                                {
+                                    PzcbA.Text = ((JSONObject)json["1"])["zhaiyao"].ToString().Equals("无") ? "" : ((JSONObject)json["1"])["zhaiyao"].ToString();
+                                    APztb0.Text = ((JSONObject)json["1"])["operateMoney"].ToString().Equals("无") ? "" : ((JSONObject)json["1"])["operateMoney"].ToString();
+                                    APztb1.Text = ((JSONObject)json["1"])["payWay"].ToString().Equals("无") ? "" : ((JSONObject)json["1"])["payWay"].ToString();
+                                    APztb2.Text = ((JSONObject)json["1"])["payNumber"].ToString().Equals("无") ? "" : ((JSONObject)json["1"])["payNumber"].ToString();
+                                    APztb3.Text = ((JSONObject)json["1"])["payCount"].ToString().Equals("无") ? "" : ((JSONObject)json["1"])["payCount"].ToString();
+                                }
+                                if ((JSONObject)json["2"] != null)
+                                {
+                                    PzcbB.Text = ((JSONObject)json["2"])["zhaiyao"].ToString().Equals("无") ? "" : ((JSONObject)json["2"])["zhaiyao"].ToString();
+                                    BPztb0.Text = ((JSONObject)json["2"])["operateMoney"].ToString().Equals("无") ? "" : ((JSONObject)json["2"])["operateMoney"].ToString();
+                                    BPztb1.Text = ((JSONObject)json["2"])["payWay"].ToString().Equals("无") ? "" : ((JSONObject)json["2"])["payWay"].ToString();
+                                    BPztb2.Text = ((JSONObject)json["2"])["payNumber"].ToString().Equals("无") ? "" : ((JSONObject)json["2"])["payNumber"].ToString();
+                                    BPztb3.Text = ((JSONObject)json["2"])["payCount"].ToString().Equals("无") ? "" : ((JSONObject)json["2"])["payCount"].ToString();
+                                }
+                                if ((JSONObject)json["3"] != null)
+                                {
+                                    PzcbC.Text = ((JSONObject)json["3"])["zhaiyao"].ToString().Equals("无") ? "" : ((JSONObject)json["3"])["zhaiyao"].ToString();
+                                    CPztb0.Text = ((JSONObject)json["3"])["operateMoney"].ToString().Equals("无") ? "" : ((JSONObject)json["3"])["operateMoney"].ToString();
+                                    CPztb1.Text = ((JSONObject)json["3"])["payWay"].ToString().Equals("无") ? "" : ((JSONObject)json["3"])["payWay"].ToString();
+                                    CPztb2.Text = ((JSONObject)json["3"])["payNumber"].ToString().Equals("无") ? "" : ((JSONObject)json["3"])["payNumber"].ToString();
+                                    CPztb3.Text = ((JSONObject)json["3"])["payCount"].ToString().Equals("无") ? "" : ((JSONObject)json["3"])["payCount"].ToString();
+                                }
+                                if ((JSONObject)json["4"] != null)
+                                {
+                                    PzcbD.Text = ((JSONObject)json["4"])["zhaiyao"].ToString().Equals("无") ? "" : ((JSONObject)json["4"])["zhaiyao"].ToString();
+                                    DPztb0.Text = ((JSONObject)json["4"])["operateMoney"].ToString().Equals("无") ? "" : ((JSONObject)json["4"])["operateMoney"].ToString();
+                                    DPztb1.Text = ((JSONObject)json["4"])["payWay"].ToString().Equals("无") ? "" : ((JSONObject)json["4"])["payWay"].ToString();
+                                    DPztb2.Text = ((JSONObject)json["4"])["payNumber"].ToString().Equals("无") ? "" : ((JSONObject)json["4"])["payNumber"].ToString();
+                                    DPztb3.Text = ((JSONObject)json["4"])["payCount"].ToString().Equals("无") ? "" : ((JSONObject)json["4"])["payCount"].ToString();
+                                }
+                                if ((JSONObject)json["5"] != null)
+                                {
+                                    PzcbE.Text = ((JSONObject)json["5"])["zhaiyao"].ToString().Equals("无") ? "" : ((JSONObject)json["5"])["zhaiyao"].ToString();
+                                    EPztb0.Text = ((JSONObject)json["5"])["operateMoney"].ToString().Equals("无") ? "" : ((JSONObject)json["5"])["operateMoney"].ToString();
+                                    EPztb1.Text = ((JSONObject)json["5"])["payWay"].ToString().Equals("无") ? "" : ((JSONObject)json["5"])["payWay"].ToString();
+                                    EPztb2.Text = ((JSONObject)json["5"])["payNumber"].ToString().Equals("无") ? "" : ((JSONObject)json["5"])["payNumber"].ToString();
+                                    EPztb3.Text = ((JSONObject)json["5"])["payCount"].ToString().Equals("无") ? "" : ((JSONObject)json["5"])["payCount"].ToString();
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -399,32 +460,20 @@ namespace VividManagementApplication
             try
             {
                 if (FormBasicFeatrues.GetInstence().isPassValidateControls(checkValidateControls))
-                //if (true)
                 {
-                    // new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
                     if ((MainWindow.CURRENT_TAB == 3) || (MainWindow.CURRENT_TAB == 4)) // 进仓单 出仓单
                     {
-                        //String jsonData = ControlValueTransitToJson(
-                        //    new List<String>() { "goodsID", "goodsName", "goodsGuige", "goodsDengji", "goodsUnit", "goodsPrice", "goodsAmount", "goodsSum" },
-                        //    new List<List<Control>>() {
-                        //        new List<Control> (){JCDcbA, AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6} ,
-                        //        new List<Control> (){JCDcbB, BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6} ,
-                        //        new List<Control> (){JCDcbC, CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6} ,
-                        //        new List<Control> (){JCDcbD, DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6} ,
-                        //        new List<Control> (){JCDcbE, EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6} 
-                        //        }
-                        //    );
                         String jsonData = ControlValueTransitToJson(
-                            new List<String>() { "goodsID", "goodsAmount", },
+                            new List<String>() { "goodsID", "goodsAmount" },
                             new List<List<Control>>() {
-                                new List<Control> (){JCDcbA, AJCDtb5, } ,
-                                new List<Control> (){JCDcbB, BJCDtb5, } ,
-                                new List<Control> (){JCDcbC, CJCDtb5, } ,
-                                new List<Control> (){JCDcbD, DJCDtb5, } ,
-                                new List<Control> (){JCDcbE, EJCDtb5, } 
+                                new List<Control> (){JCDcbA, AJCDtb5 } ,
+                                new List<Control> (){JCDcbB, BJCDtb5 } ,
+                                new List<Control> (){JCDcbC, CJCDtb5 } ,
+                                new List<Control> (){JCDcbD, DJCDtb5 } ,
+                                new List<Control> (){JCDcbE, EJCDtb5 } 
                                 }
                             );
-                        //
+                        // 
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(
                             table,
                             queryArray,
@@ -447,6 +496,36 @@ namespace VividManagementApplication
                                 tbDz11.Text,
                                 tbDz12.Text,
                                 tbDz13.Text},
+                            mainID);
+                    }
+                    else if (MainWindow.CURRENT_TAB == 5)  // 凭证
+                    {
+                        String jsonData = ControlValueTransitToJson(
+                                                   new List<String>() { "zhaiyao", "operateMoney", "payWay", "payNumber", "payCount" },
+                                                   new List<List<Control>>() {
+                                new List<Control> (){PzcbA,APztb0,APztb1,APztb2,APztb3 } ,
+                                new List<Control> (){PzcbB,BPztb0,BPztb1,BPztb2,BPztb3 } ,
+                                new List<Control> (){PzcbC,CPztb0,CPztb1,CPztb2,CPztb3 } ,
+                                new List<Control> (){PzcbD,DPztb0,DPztb1,DPztb2,DPztb3 } ,
+                                new List<Control> (){PzcbE,EPztb0,EPztb1,EPztb2,EPztb3 } 
+                                }
+                                                   );
+                        // "pzID", "leixing", "clientID", "companyName", "jsonData", "operateMoney", "remaintingMoney", "discardFlag", "addtime", "modifyTime"
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(
+                            table,
+                            queryArray,
+                            new String[] { 
+                                tbPz2.Text,
+                                pzComboBox.SelectedIndex.ToString(), 
+                                tbPz1.Text,
+                                pzCompany.Text,
+                                jsonData,
+                                tbPz3.Text.Split('=')[0],
+                                "",
+                                tbPz4.Text,
+                                (DiscardCheckBox.Checked?"1":"0"),
+                                DateTime.Now.ToString(), 
+                                DateTime.Now.ToString()},
                             mainID);
                     }
                     else
