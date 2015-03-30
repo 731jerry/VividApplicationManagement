@@ -123,7 +123,7 @@ namespace VividManagementApplication
                     DiscardCheckBox.Visible = true;
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "cllientID", " ORDER BY id ASC "), tbDz1);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbDz1);
 
                     // 添加商品编号
                     JCDcbA.Items.Add("");
@@ -191,6 +191,8 @@ namespace VividManagementApplication
                         tbDz1.SelectedIndex = 0;
                         DiscardCheckBox.Visible = false;
 
+                        // 自动生成ID
+                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                     }
                     else
                     {
@@ -286,6 +288,9 @@ namespace VividManagementApplication
 
                         PzDateTextBox.Text = DateTime.Now.ToLongDateString();
                         tbPz1.SelectedIndex = 0;
+
+                        // 自动生成ID
+                        tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                     }
                     else
                     {
@@ -985,22 +990,22 @@ namespace VividManagementApplication
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbC);
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbD);
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbE);
+
             if (MainWindow.CURRENT_TAB == 3) //仓储管理
             {
                 controlsPreName = "tbDz";
                 indexCount = 11;
                 mainID = tbDz2.Text;
+
                 switch (danziComboBox.SelectedIndex)
                 {
                     case 0://进仓单
-                        lbDzTitle.Text = "商品（货物）进仓单";
                         lbDzTitle.Text = "商品（货物）进仓单";
                         table = "jcdList";
                         baseName = "jcdID";
                         queryArray = new string[] { "clientID", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                         break;
                     case 1://出仓单
-                        lbDzTitle.Text = "商品（货物）出仓单";
                         lbDzTitle.Text = "商品（货物）出仓单";
                         table = "ccdList";
                         baseName = "ccdID";
@@ -1016,9 +1021,19 @@ namespace VividManagementApplication
                 {
                     case 0://采购单
                         lbDzTitle.Text = "商品（货物）采购单";
+                        table = "cgdList";
+                        baseName = "cgdID";
+                        queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                        // 自动生成ID
+                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                         break;
                     case 1://销售单
                         lbDzTitle.Text = "商品（货物）销售单";
+                        table = "xsdList";
+                        baseName = "xsdID";
+                        queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                        // 自动生成ID
+                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                         break;
                 }
             }
@@ -1026,6 +1041,12 @@ namespace VividManagementApplication
 
         private void pzComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            table = "pzList";
+            baseName = "pzID";
+            queryArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
+            controlsPreName = "tbPz";
+            // 自动生成ID
+            tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
             switch (pzComboBox.SelectedIndex)
             {
                 default:

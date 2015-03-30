@@ -326,6 +326,27 @@ namespace VividManagementApplication
                 return false;
             }
         }
+
+        // 自动生成ID
+        public String LocalAutoincreaseID(string table, string baseName)
+        {
+            String maxNumber = "";
+            // SELECT max(jcdID) as max FROM jcdList 
+            // cast(yysid as UNSIGNED INTEGER)
+            string sql = "SELECT max(cast(" + baseName + " as UNSIGNED INTEGER)) as max FROM " + table;//建表语句  
+            LocalDbOpen();
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            cmdCreateTable.CommandText = sql;
+            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+
+            while (reader.Read())
+            {
+                maxNumber = (int.Parse(reader["max"].ToString().Equals("") ? "0" : reader["max"].ToString()) + 1).ToString();
+            }
+
+            LocalDbClose();
+            return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 10, "0");
+        }
         #endregion
 
     }

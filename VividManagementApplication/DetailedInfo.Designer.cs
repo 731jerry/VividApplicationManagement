@@ -2030,6 +2030,7 @@
             this.tbDz2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz2.Location = new System.Drawing.Point(110, 94);
             this.tbDz2.Name = "tbDz2";
+            this.tbDz2.ReadOnly = true;
             this.tbDz2.Size = new System.Drawing.Size(120, 26);
             this.tbDz2.TabIndex = 300;
             // 
@@ -2724,6 +2725,7 @@
             this.tbPz2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbPz2.Location = new System.Drawing.Point(110, 94);
             this.tbPz2.Name = "tbPz2";
+            this.tbPz2.ReadOnly = true;
             this.tbPz2.Size = new System.Drawing.Size(120, 26);
             this.tbPz2.TabIndex = 99;
             // 
