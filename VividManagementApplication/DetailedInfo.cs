@@ -59,7 +59,7 @@ namespace VividManagementApplication
                     detailedPanel = DetailedClientPanel;
 
                     table = "clients";
-                    baseName = "cllientID";
+                    baseName = "clientID";
                     queryArray = new string[] { baseName, "sex", "type", "company", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
                     controlsPreName = "tbClient";
                     indexCount = 13;
@@ -1344,6 +1344,15 @@ namespace VividManagementApplication
         }
         #endregion
 
+        private void TextBoxCheckIfDuplicate_Validated(object sender, EventArgs e)
+        {
+            if (DatabaseConnections.GetInstence().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
+            {
+                MessageBox.Show("您设定的编号已经被占用, 请再次输入", "错误");
+                (sender as TextBox).Text = "";
+                (sender as TextBox).Focus();
+            }
+        }
 
     }
 }

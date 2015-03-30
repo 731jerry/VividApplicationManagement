@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedInfo));
             this.DetailedTabView = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -359,6 +360,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -373,6 +375,7 @@
             this.tabPage4.SuspendLayout();
             this.DetailedHTPanel.SuspendLayout();
             this.PanelHT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // DetailedTabView
@@ -582,6 +585,7 @@
             this.tbClient1.Name = "tbClient1";
             this.tbClient1.Size = new System.Drawing.Size(150, 26);
             this.tbClient1.TabIndex = 101;
+            this.tbClient1.Validated += new System.EventHandler(this.TextBoxCheckIfDuplicate_Validated);
             // 
             // label17
             // 
@@ -1061,6 +1065,7 @@
             this.tbGoods1.Name = "tbGoods1";
             this.tbGoods1.Size = new System.Drawing.Size(129, 26);
             this.tbGoods1.TabIndex = 201;
+            this.tbGoods1.Validated += new System.EventHandler(this.TextBoxCheckIfDuplicate_Validated);
             // 
             // tabPage2
             // 
@@ -4083,6 +4088,10 @@
             this.DiscardCheckBox.Text = "作废";
             this.DiscardCheckBox.UseVisualStyleBackColor = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -4123,6 +4132,7 @@
             this.DetailedHTPanel.PerformLayout();
             this.PanelHT.ResumeLayout(false);
             this.PanelHT.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4460,5 +4470,6 @@
         private System.Windows.Forms.ComboBox CPztb1;
         private System.Windows.Forms.ComboBox BPztb1;
         private System.Windows.Forms.ComboBox APztb1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

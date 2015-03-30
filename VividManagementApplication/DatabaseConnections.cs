@@ -308,6 +308,24 @@ namespace VividManagementApplication
             return resultsStringList;
         }
 
+        // 检测是否重名
+        public Boolean LocalCheckIfDuplicate(string table, string baseName, string id)
+        {
+            string sql = "SELECT " + baseName + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
+            LocalDbOpen();
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            cmdCreateTable.CommandText = sql;
+            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+            LocalDbClose();
+            if (reader.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         #endregion
 
     }

@@ -428,7 +428,7 @@ namespace VividManagementApplication
             Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients",
-                new string[] { "id", "company", "address", "contact", "phone" });
+                new string[] { "clientID", "company", "address", "contact", "phone" });
         }
 
         // 商品管理
@@ -447,7 +447,7 @@ namespace VividManagementApplication
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods", 
-                new string[] { "id", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
+                new string[] { "goodID", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
         }
 
         #region 仓储管理
