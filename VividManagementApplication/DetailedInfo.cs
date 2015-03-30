@@ -1346,13 +1346,18 @@ namespace VividManagementApplication
 
         private void TextBoxCheckIfDuplicate_Validated(object sender, EventArgs e)
         {
-            if (DatabaseConnections.GetInstence().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
+            if (ItemId.Equals("-1") || !ItemId.Equals((sender as TextBox).Text))
             {
-                MessageBox.Show("您设定的编号已经被占用, 请再次输入", "错误");
-                (sender as TextBox).Text = "";
-                (sender as TextBox).Focus();
+                if (DatabaseConnections.GetInstence().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
+                {
+                    MessageBox.Show("您设定的编号已经被占用, 请再次输入", "错误");
+                    (sender as TextBox).Text = ItemId.Equals("-1") ? "" : ItemId;
+                    (sender as TextBox).Focus();
+                }
             }
         }
+
+
 
     }
 }
