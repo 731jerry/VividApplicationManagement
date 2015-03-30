@@ -264,7 +264,7 @@ namespace VividManagementApplication
 
                     table = "pzList";
                     baseName = "pzID";
-                    queryArray = new string[] { "pzID", "leixing", "clientID", "companyName", "jsonData", "operateMoney", "remaintingMoney","beizhu", "discardFlag", "addtime", "modifyTime" };
+                    queryArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
                     controlsPreName = "tbPz";
                     indexCount = 11;
                     mainID = tbDz2.Text;
@@ -289,7 +289,7 @@ namespace VividManagementApplication
                     }
                     else
                     {
-                        pzComboBox.Enabled = false;
+                        pzComboBox.Visible = false;
 
                         try
                         {
@@ -302,12 +302,14 @@ namespace VividManagementApplication
                             queryList.Remove("sum");
                             queryList.Remove("addtime");
                             queryList.Remove("modifyTime");
+                            queryList.Remove("discardFlag");
                             queryArray = queryList.ToArray();
 
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
 
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
+                            DiscardCheckBox.Checked = data[2].Equals("0") ? false : true;
                             data[1] = data[1].Replace("\n", "");
                             data[1] = data[1].Replace(" ", "");
                             JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化 
@@ -515,14 +517,14 @@ namespace VividManagementApplication
                             table,
                             queryArray,
                             new String[] { 
+                                tbPz1.Text,
                                 tbPz2.Text,
                                 pzComboBox.SelectedIndex.ToString(), 
-                                tbPz1.Text,
                                 pzCompany.Text,
                                 jsonData,
-                                tbPz3.Text.Split('=')[0],
+                                SumtbPz.Text.Split('=')[0],
                                 "",
-                                tbPz4.Text,
+                                tbPz3.Text,
                                 (DiscardCheckBox.Checked?"1":"0"),
                                 DateTime.Now.ToString(), 
                                 DateTime.Now.ToString()},
@@ -1245,7 +1247,7 @@ namespace VividManagementApplication
 
         private void calculateSumForPz(object sender, EventArgs e)
         {
-            SetTotalSum(new List<Control>() { APztb0, BPztb0, CPztb0, DPztb0, EPztb0 }, tbPz3);
+            SetTotalSum(new List<Control>() { APztb0, BPztb0, CPztb0, DPztb0, EPztb0 }, SumtbPz);
         }
 
         /// <summary>

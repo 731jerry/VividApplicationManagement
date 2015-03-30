@@ -222,11 +222,11 @@
             this.textBox43 = new System.Windows.Forms.TextBox();
             this.textBox44 = new System.Windows.Forms.TextBox();
             this.pzContact = new System.Windows.Forms.TextBox();
-            this.tbPz3 = new System.Windows.Forms.TextBox();
+            this.SumtbPz = new System.Windows.Forms.TextBox();
             this.pzPhone = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.tbPz4 = new System.Windows.Forms.TextBox();
+            this.tbPz3 = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
@@ -2067,11 +2067,11 @@
             this.DetailedPZPanel.Controls.Add(this.PzDateTextBox);
             this.DetailedPZPanel.Controls.Add(this.panel3);
             this.DetailedPZPanel.Controls.Add(this.pzContact);
-            this.DetailedPZPanel.Controls.Add(this.tbPz3);
+            this.DetailedPZPanel.Controls.Add(this.SumtbPz);
             this.DetailedPZPanel.Controls.Add(this.pzPhone);
             this.DetailedPZPanel.Controls.Add(this.label41);
             this.DetailedPZPanel.Controls.Add(this.label20);
-            this.DetailedPZPanel.Controls.Add(this.tbPz4);
+            this.DetailedPZPanel.Controls.Add(this.tbPz3);
             this.DetailedPZPanel.Controls.Add(this.label40);
             this.DetailedPZPanel.Controls.Add(this.label42);
             this.DetailedPZPanel.Controls.Add(this.label43);
@@ -2580,15 +2580,15 @@
             this.pzContact.Size = new System.Drawing.Size(109, 26);
             this.pzContact.TabIndex = 232;
             // 
-            // tbPz3
+            // SumtbPz
             // 
-            this.tbPz3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbPz3.Location = new System.Drawing.Point(126, 313);
-            this.tbPz3.Name = "tbPz3";
-            this.tbPz3.ReadOnly = true;
-            this.tbPz3.Size = new System.Drawing.Size(639, 26);
-            this.tbPz3.TabIndex = 219;
-            this.tbPz3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SumtbPz.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.SumtbPz.Location = new System.Drawing.Point(126, 313);
+            this.SumtbPz.Name = "SumtbPz";
+            this.SumtbPz.ReadOnly = true;
+            this.SumtbPz.Size = new System.Drawing.Size(639, 26);
+            this.SumtbPz.TabIndex = 219;
+            this.SumtbPz.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pzPhone
             // 
@@ -2621,13 +2621,13 @@
             this.label20.TabIndex = 218;
             this.label20.Text = "总金额：";
             // 
-            // tbPz4
+            // tbPz3
             // 
-            this.tbPz4.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbPz4.Location = new System.Drawing.Point(125, 345);
-            this.tbPz4.Name = "tbPz4";
-            this.tbPz4.Size = new System.Drawing.Size(639, 26);
-            this.tbPz4.TabIndex = 209;
+            this.tbPz3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbPz3.Location = new System.Drawing.Point(125, 345);
+            this.tbPz3.Name = "tbPz3";
+            this.tbPz3.Size = new System.Drawing.Size(639, 26);
+            this.tbPz3.TabIndex = 209;
             // 
             // label40
             // 
@@ -4413,9 +4413,9 @@
         private System.Windows.Forms.TextBox textBox42;
         private System.Windows.Forms.TextBox textBox43;
         private System.Windows.Forms.TextBox textBox44;
-        private System.Windows.Forms.TextBox tbPz3;
+        private System.Windows.Forms.TextBox SumtbPz;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox tbPz4;
+        private System.Windows.Forms.TextBox tbPz3;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.TextBox pzPhone;
