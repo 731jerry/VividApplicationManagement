@@ -427,7 +427,8 @@ namespace VividManagementApplication
             Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", new string[] { "id", "company", "address", "contact", "phone" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients",
+                new string[] { "id", "company", "address", "contact", "phone" });
         }
 
         // 商品管理
@@ -445,7 +446,8 @@ namespace VividManagementApplication
             Column7.HeaderText = "备注";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods", new string[] { "id", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods", 
+                new string[] { "id", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
         }
 
         #region 仓储管理
@@ -464,7 +466,8 @@ namespace VividManagementApplication
             Column7.HeaderText = "单价";
             Column8.HeaderText = "备注";
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods", new string[] { "id", "name", "guige", "dengji", "currentCount", "currntsalesPrice", "beizhu" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods",
+                new string[] { "id", "name", "guige", "dengji", "currentCount", "currntsalesPrice", "beizhu" });
         }
 
         private void listJcdButton_Click(object sender, EventArgs e)
@@ -478,7 +481,8 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "jcdList", new string[] { "jcdID", "companyName", "goodsName", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "jcdList",
+                new string[] { "jcdID", "companyName", "goodsName", "discardFlag" });
         }
 
         private void listCcdButton_Click(object sender, EventArgs e)
@@ -492,7 +496,8 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4}, "ccdList", new string[] { "ccdID", "companyName", "goodsName", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4}, "ccdList",
+                new string[] { "ccdID", "companyName", "goodsName", "discardFlag" });
         }
 
         #endregion
@@ -510,7 +515,8 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList", new string[] { "cgdID", "companyName", "goodsName", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList", 
+                new string[] { "cgdID", "companyName", "goodsName", "discardFlag" });
         }
 
         private void listXsButton_Click(object sender, EventArgs e)
@@ -524,7 +530,8 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList", new string[] { "xsdID", "companyName", "goodsName", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList",
+                new string[] { "xsdID", "companyName", "goodsName", "discardFlag" });
         
         }
         private void listKhdzButton_Click(object sender, EventArgs e)
@@ -537,23 +544,26 @@ namespace VividManagementApplication
 
         #endregion
 
+        // 凭证列表 收付汇总表
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
             mainDGVTitle.Text = listSfzhButton.Text;
-            Column1.HeaderText = "凭证号码";
-            Column2.HeaderText = "日期";
-            Column3.HeaderText = "摘要";
-            Column4.HeaderText = "收入金额";
-            Column6.HeaderText = "付出金额";
-            Column7.HeaderText = "√";
-            Column8.HeaderText = "结存金额";
+            Column1.HeaderText = "日期";
+            Column2.HeaderText = "凭证号码";
+            Column3.HeaderText = "凭证类型";
+            Column4.HeaderText = "对方单位名称";
+            Column5.HeaderText = "交易金额";
+            Column6.HeaderText = "结余金额";
+            Column7.HeaderText = "作废标识";
 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "pzList", new string[] { "addtime", "pzID", "zhaiyao", "cost", "fujianCount", "discardFlag", "discardFlag" });
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
+                new string[] { "modifyTime", "pzID", "leixing", "companyName", "operateMoney", "remaintingMoney", "discardFlag" });
         }
 
+        // 合同列表
         private void listHtButton_Click(object sender, EventArgs e)
         {
             // 还未完成
@@ -567,7 +577,7 @@ namespace VividManagementApplication
             Column5.HeaderText = "合同金额（元）";
             Column6.HeaderText = "状态";
 
-            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName", "sum", "discardFlag" });
         }
         #endregion

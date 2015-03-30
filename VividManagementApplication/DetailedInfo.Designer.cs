@@ -185,10 +185,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PzDateTextBox = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.EPztb1 = new System.Windows.Forms.ComboBox();
             this.PzcbE = new System.Windows.Forms.TextBox();
+            this.DPztb1 = new System.Windows.Forms.ComboBox();
             this.textBox55 = new System.Windows.Forms.TextBox();
+            this.CPztb1 = new System.Windows.Forms.ComboBox();
             this.PzcbD = new System.Windows.Forms.TextBox();
+            this.BPztb1 = new System.Windows.Forms.ComboBox();
             this.textBox57 = new System.Windows.Forms.TextBox();
+            this.APztb1 = new System.Windows.Forms.ComboBox();
             this.PzcbC = new System.Windows.Forms.TextBox();
             this.textBox59 = new System.Windows.Forms.TextBox();
             this.PzcbB = new System.Windows.Forms.TextBox();
@@ -354,11 +359,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
-            this.EPztb1 = new System.Windows.Forms.ComboBox();
-            this.DPztb1 = new System.Windows.Forms.ComboBox();
-            this.CPztb1 = new System.Windows.Forms.ComboBox();
-            this.BPztb1 = new System.Windows.Forms.ComboBox();
-            this.APztb1 = new System.Windows.Forms.ComboBox();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -2152,6 +2152,21 @@
             this.panel3.Size = new System.Drawing.Size(737, 158);
             this.panel3.TabIndex = 230;
             // 
+            // EPztb1
+            // 
+            this.EPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.EPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.EPztb1.FormattingEnabled = true;
+            this.EPztb1.Items.AddRange(new object[] {
+            "现金",
+            "银行卡",
+            "其他"});
+            this.EPztb1.Location = new System.Drawing.Point(384, 130);
+            this.EPztb1.Name = "EPztb1";
+            this.EPztb1.Size = new System.Drawing.Size(68, 28);
+            this.EPztb1.TabIndex = 313;
+            this.EPztb1.SelectedIndexChanged += new System.EventHandler(this.EPztb1_SelectedIndexChanged);
+            // 
             // PzcbE
             // 
             this.PzcbE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -2160,6 +2175,21 @@
             this.PzcbE.Name = "PzcbE";
             this.PzcbE.Size = new System.Drawing.Size(200, 26);
             this.PzcbE.TabIndex = 325;
+            // 
+            // DPztb1
+            // 
+            this.DPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DPztb1.FormattingEnabled = true;
+            this.DPztb1.Items.AddRange(new object[] {
+            "现金",
+            "银行卡",
+            "其他"});
+            this.DPztb1.Location = new System.Drawing.Point(384, 104);
+            this.DPztb1.Name = "DPztb1";
+            this.DPztb1.Size = new System.Drawing.Size(68, 28);
+            this.DPztb1.TabIndex = 312;
+            this.DPztb1.SelectedIndexChanged += new System.EventHandler(this.DPztb1_SelectedIndexChanged);
             // 
             // textBox55
             // 
@@ -2173,6 +2203,21 @@
             this.textBox55.Text = "5";
             this.textBox55.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // CPztb1
+            // 
+            this.CPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.CPztb1.FormattingEnabled = true;
+            this.CPztb1.Items.AddRange(new object[] {
+            "现金",
+            "银行卡",
+            "其他"});
+            this.CPztb1.Location = new System.Drawing.Point(384, 78);
+            this.CPztb1.Name = "CPztb1";
+            this.CPztb1.Size = new System.Drawing.Size(68, 28);
+            this.CPztb1.TabIndex = 311;
+            this.CPztb1.SelectedIndexChanged += new System.EventHandler(this.CPztb1_SelectedIndexChanged);
+            // 
             // PzcbD
             // 
             this.PzcbD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -2181,6 +2226,21 @@
             this.PzcbD.Name = "PzcbD";
             this.PzcbD.Size = new System.Drawing.Size(200, 26);
             this.PzcbD.TabIndex = 323;
+            // 
+            // BPztb1
+            // 
+            this.BPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.BPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.BPztb1.FormattingEnabled = true;
+            this.BPztb1.Items.AddRange(new object[] {
+            "现金",
+            "银行卡",
+            "其他"});
+            this.BPztb1.Location = new System.Drawing.Point(384, 52);
+            this.BPztb1.Name = "BPztb1";
+            this.BPztb1.Size = new System.Drawing.Size(68, 28);
+            this.BPztb1.TabIndex = 310;
+            this.BPztb1.SelectedIndexChanged += new System.EventHandler(this.BPztb1_SelectedIndexChanged);
             // 
             // textBox57
             // 
@@ -2193,6 +2253,21 @@
             this.textBox57.TabIndex = 322;
             this.textBox57.Text = "4";
             this.textBox57.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // APztb1
+            // 
+            this.APztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.APztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.APztb1.FormattingEnabled = true;
+            this.APztb1.Items.AddRange(new object[] {
+            "现金",
+            "银行卡",
+            "其他"});
+            this.APztb1.Location = new System.Drawing.Point(384, 26);
+            this.APztb1.Name = "APztb1";
+            this.APztb1.Size = new System.Drawing.Size(68, 28);
+            this.APztb1.TabIndex = 309;
+            this.APztb1.SelectedIndexChanged += new System.EventHandler(this.APztb1_SelectedIndexChanged);
             // 
             // PzcbC
             // 
@@ -2261,11 +2336,13 @@
             // 
             this.EPztb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EPztb3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.EPztb3.Location = new System.Drawing.Point(630, 130);
+            this.EPztb3.Location = new System.Drawing.Point(656, 130);
             this.EPztb3.Name = "EPztb3";
-            this.EPztb3.Size = new System.Drawing.Size(103, 26);
+            this.EPztb3.ReadOnly = true;
+            this.EPztb3.Size = new System.Drawing.Size(77, 26);
             this.EPztb3.TabIndex = 315;
             this.EPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // EPztb0
             // 
@@ -2275,6 +2352,9 @@
             this.EPztb0.Name = "EPztb0";
             this.EPztb0.Size = new System.Drawing.Size(148, 26);
             this.EPztb0.TabIndex = 312;
+            this.EPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
+            this.EPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // EPztb2
             // 
@@ -2282,18 +2362,21 @@
             this.EPztb2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.EPztb2.Location = new System.Drawing.Point(452, 130);
             this.EPztb2.Name = "EPztb2";
-            this.EPztb2.Size = new System.Drawing.Size(181, 26);
+            this.EPztb2.ReadOnly = true;
+            this.EPztb2.Size = new System.Drawing.Size(207, 26);
             this.EPztb2.TabIndex = 310;
             // 
             // DPztb3
             // 
             this.DPztb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DPztb3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.DPztb3.Location = new System.Drawing.Point(630, 104);
+            this.DPztb3.Location = new System.Drawing.Point(656, 104);
             this.DPztb3.Name = "DPztb3";
-            this.DPztb3.Size = new System.Drawing.Size(103, 26);
+            this.DPztb3.ReadOnly = true;
+            this.DPztb3.Size = new System.Drawing.Size(77, 26);
             this.DPztb3.TabIndex = 309;
             this.DPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.DPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // DPztb0
             // 
@@ -2303,6 +2386,9 @@
             this.DPztb0.Name = "DPztb0";
             this.DPztb0.Size = new System.Drawing.Size(148, 26);
             this.DPztb0.TabIndex = 306;
+            this.DPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.DPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
+            this.DPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // DPztb2
             // 
@@ -2310,18 +2396,21 @@
             this.DPztb2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.DPztb2.Location = new System.Drawing.Point(452, 104);
             this.DPztb2.Name = "DPztb2";
-            this.DPztb2.Size = new System.Drawing.Size(181, 26);
+            this.DPztb2.ReadOnly = true;
+            this.DPztb2.Size = new System.Drawing.Size(207, 26);
             this.DPztb2.TabIndex = 304;
             // 
             // CPztb3
             // 
             this.CPztb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CPztb3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.CPztb3.Location = new System.Drawing.Point(630, 78);
+            this.CPztb3.Location = new System.Drawing.Point(656, 78);
             this.CPztb3.Name = "CPztb3";
-            this.CPztb3.Size = new System.Drawing.Size(103, 26);
+            this.CPztb3.ReadOnly = true;
+            this.CPztb3.Size = new System.Drawing.Size(77, 26);
             this.CPztb3.TabIndex = 303;
             this.CPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.CPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // CPztb0
             // 
@@ -2331,6 +2420,9 @@
             this.CPztb0.Name = "CPztb0";
             this.CPztb0.Size = new System.Drawing.Size(148, 26);
             this.CPztb0.TabIndex = 300;
+            this.CPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
+            this.CPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // CPztb2
             // 
@@ -2338,18 +2430,21 @@
             this.CPztb2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.CPztb2.Location = new System.Drawing.Point(452, 78);
             this.CPztb2.Name = "CPztb2";
-            this.CPztb2.Size = new System.Drawing.Size(181, 26);
+            this.CPztb2.ReadOnly = true;
+            this.CPztb2.Size = new System.Drawing.Size(207, 26);
             this.CPztb2.TabIndex = 298;
             // 
             // BPztb3
             // 
             this.BPztb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.BPztb3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.BPztb3.Location = new System.Drawing.Point(630, 52);
+            this.BPztb3.Location = new System.Drawing.Point(656, 52);
             this.BPztb3.Name = "BPztb3";
-            this.BPztb3.Size = new System.Drawing.Size(103, 26);
+            this.BPztb3.ReadOnly = true;
+            this.BPztb3.Size = new System.Drawing.Size(77, 26);
             this.BPztb3.TabIndex = 297;
             this.BPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // BPztb0
             // 
@@ -2359,6 +2454,9 @@
             this.BPztb0.Name = "BPztb0";
             this.BPztb0.Size = new System.Drawing.Size(148, 26);
             this.BPztb0.TabIndex = 294;
+            this.BPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
+            this.BPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // BPztb2
             // 
@@ -2366,29 +2464,32 @@
             this.BPztb2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.BPztb2.Location = new System.Drawing.Point(452, 52);
             this.BPztb2.Name = "BPztb2";
-            this.BPztb2.Size = new System.Drawing.Size(181, 26);
+            this.BPztb2.ReadOnly = true;
+            this.BPztb2.Size = new System.Drawing.Size(207, 26);
             this.BPztb2.TabIndex = 292;
             // 
             // APztb3
             // 
             this.APztb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.APztb3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.APztb3.Location = new System.Drawing.Point(630, 26);
+            this.APztb3.Location = new System.Drawing.Point(656, 26);
             this.APztb3.Name = "APztb3";
-            this.APztb3.Size = new System.Drawing.Size(103, 26);
+            this.APztb3.ReadOnly = true;
+            this.APztb3.Size = new System.Drawing.Size(77, 26);
             this.APztb3.TabIndex = 291;
             this.APztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.APztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // textBox32
             // 
             this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox32.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.textBox32.Location = new System.Drawing.Point(630, 0);
+            this.textBox32.Location = new System.Drawing.Point(656, 0);
             this.textBox32.Name = "textBox32";
             this.textBox32.ReadOnly = true;
-            this.textBox32.Size = new System.Drawing.Size(103, 26);
+            this.textBox32.Size = new System.Drawing.Size(77, 26);
             this.textBox32.TabIndex = 290;
-            this.textBox32.Text = "  附件（张）";
+            this.textBox32.Text = " 附件（张）";
             // 
             // APztb0
             // 
@@ -2398,6 +2499,9 @@
             this.APztb0.Name = "APztb0";
             this.APztb0.Size = new System.Drawing.Size(148, 26);
             this.APztb0.TabIndex = 286;
+            this.APztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.APztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
+            this.APztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // textBox37
             // 
@@ -2408,7 +2512,7 @@
             this.textBox37.ReadOnly = true;
             this.textBox37.Size = new System.Drawing.Size(68, 26);
             this.textBox37.TabIndex = 285;
-            this.textBox37.Text = "收款方式";
+            this.textBox37.Text = " 收款方式";
             // 
             // textBox38
             // 
@@ -2419,7 +2523,7 @@
             this.textBox38.ReadOnly = true;
             this.textBox38.Size = new System.Drawing.Size(148, 26);
             this.textBox38.TabIndex = 284;
-            this.textBox38.Text = "   收 款 金 额";
+            this.textBox38.Text = "         收 款 金 额";
             // 
             // APztb2
             // 
@@ -2427,7 +2531,8 @@
             this.APztb2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.APztb2.Location = new System.Drawing.Point(452, 26);
             this.APztb2.Name = "APztb2";
-            this.APztb2.Size = new System.Drawing.Size(181, 26);
+            this.APztb2.ReadOnly = true;
+            this.APztb2.Size = new System.Drawing.Size(207, 26);
             this.APztb2.TabIndex = 282;
             // 
             // textBox42
@@ -2437,7 +2542,7 @@
             this.textBox42.Location = new System.Drawing.Point(452, 0);
             this.textBox42.Name = "textBox42";
             this.textBox42.ReadOnly = true;
-            this.textBox42.Size = new System.Drawing.Size(181, 26);
+            this.textBox42.Size = new System.Drawing.Size(207, 26);
             this.textBox42.TabIndex = 280;
             this.textBox42.Text = "     银行结算方式及票号";
             // 
@@ -2480,8 +2585,10 @@
             this.tbPz3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbPz3.Location = new System.Drawing.Point(126, 313);
             this.tbPz3.Name = "tbPz3";
+            this.tbPz3.ReadOnly = true;
             this.tbPz3.Size = new System.Drawing.Size(639, 26);
             this.tbPz3.TabIndex = 219;
+            this.tbPz3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pzPhone
             // 
@@ -3975,56 +4082,6 @@
             this.DiscardCheckBox.TabIndex = 318;
             this.DiscardCheckBox.Text = "作废";
             this.DiscardCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // EPztb1
-            // 
-            this.EPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.EPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.EPztb1.FormattingEnabled = true;
-            this.EPztb1.Location = new System.Drawing.Point(384, 130);
-            this.EPztb1.Name = "EPztb1";
-            this.EPztb1.Size = new System.Drawing.Size(68, 28);
-            this.EPztb1.TabIndex = 313;
-            // 
-            // DPztb1
-            // 
-            this.DPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.DPztb1.FormattingEnabled = true;
-            this.DPztb1.Location = new System.Drawing.Point(384, 104);
-            this.DPztb1.Name = "DPztb1";
-            this.DPztb1.Size = new System.Drawing.Size(68, 28);
-            this.DPztb1.TabIndex = 312;
-            // 
-            // CPztb1
-            // 
-            this.CPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.CPztb1.FormattingEnabled = true;
-            this.CPztb1.Location = new System.Drawing.Point(384, 78);
-            this.CPztb1.Name = "CPztb1";
-            this.CPztb1.Size = new System.Drawing.Size(68, 28);
-            this.CPztb1.TabIndex = 311;
-            // 
-            // BPztb1
-            // 
-            this.BPztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.BPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.BPztb1.FormattingEnabled = true;
-            this.BPztb1.Location = new System.Drawing.Point(384, 52);
-            this.BPztb1.Name = "BPztb1";
-            this.BPztb1.Size = new System.Drawing.Size(68, 28);
-            this.BPztb1.TabIndex = 310;
-            // 
-            // APztb1
-            // 
-            this.APztb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.APztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.APztb1.FormattingEnabled = true;
-            this.APztb1.Location = new System.Drawing.Point(384, 26);
-            this.APztb1.Name = "APztb1";
-            this.APztb1.Size = new System.Drawing.Size(68, 28);
-            this.APztb1.TabIndex = 309;
             // 
             // DetailedInfo
             // 

@@ -1158,9 +1158,15 @@ namespace VividManagementApplication
             }
             resultControl.Text = sum.ToString() + "=" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
         }
+
         private void calculateSumForDz(object sender, EventArgs e)
         {
             SetTotalSum(new List<Control>() { AJCDtb6, BJCDtb6, CJCDtb6, DJCDtb6, EJCDtb6 }, tbDz3);
+        }
+
+        private void calculateSumForPz(object sender, EventArgs e)
+        {
+            SetTotalSum(new List<Control>() { APztb0, BPztb0, CPztb0, DPztb0, EPztb0 }, tbPz3);
         }
 
         /// <summary>
@@ -1184,6 +1190,78 @@ namespace VividManagementApplication
                 }
             }
         }
+        #region 选择现金 银行卡 其他
+
+        private void APztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (APztb1.SelectedIndex == 0)
+            {
+                APztb2.ReadOnly = true;
+                APztb3.ReadOnly = true;
+            }
+            else
+            {
+                APztb2.ReadOnly = false;
+                APztb3.ReadOnly = false;
+            }
+        }
+
+        private void BPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BPztb1.SelectedIndex == 0)
+            {
+                BPztb2.ReadOnly = true;
+                APztb3.ReadOnly = true;
+            }
+            else
+            {
+                BPztb2.ReadOnly = false;
+                BPztb3.ReadOnly = false;
+            }
+        }
+
+        private void CPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CPztb1.SelectedIndex == 0)
+            {
+                CPztb2.ReadOnly = true;
+                CPztb3.ReadOnly = true;
+            }
+            else
+            {
+                CPztb2.ReadOnly = false;
+                CPztb3.ReadOnly = false;
+            }
+        }
+
+        private void DPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DPztb1.SelectedIndex == 0)
+            {
+                DPztb2.ReadOnly = true;
+                DPztb3.ReadOnly = true;
+            }
+            else
+            {
+                DPztb2.ReadOnly = false;
+                DPztb3.ReadOnly = false;
+            }
+        }
+
+        private void EPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EPztb1.SelectedIndex == 0)
+            {
+                EPztb2.ReadOnly = true;
+                EPztb3.ReadOnly = true;
+            }
+            else
+            {
+                EPztb2.ReadOnly = false;
+                EPztb3.ReadOnly = false;
+            }
+        }
+        #endregion
 
 
     }
