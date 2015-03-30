@@ -38,7 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            mainDGVTitle = new System.Windows.Forms.Label();
+            this.mainDGVTitle = new System.Windows.Forms.Label();
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
@@ -46,6 +46,7 @@
             this.DiscardButton = new ControlExs.QQButton();
             this.ViewButton = new ControlExs.QQButton();
             this.NavPanel = new System.Windows.Forms.Panel();
+            this.listXsButton = new ControlExs.QQButton();
             this.listHtButton = new ControlExs.QQButton();
             this.newHtButton = new ControlExs.QQButton();
             this.htRadio = new ControlExs.QQRadioButton();
@@ -53,13 +54,12 @@
             this.newPzButton = new ControlExs.QQButton();
             this.cwRadio = new ControlExs.QQRadioButton();
             this.listKhdzButton = new ControlExs.QQButton();
-            this.listCgXsButton = new ControlExs.QQButton();
+            this.listCgButton = new ControlExs.QQButton();
             this.newCgZsButton = new ControlExs.QQButton();
             this.ywRadio = new ControlExs.QQRadioButton();
             this.listCcdButton = new ControlExs.QQButton();
             this.listJcdButton = new ControlExs.QQButton();
             this.listKcButton = new ControlExs.QQButton();
-            this.newJCcButton = new ControlExs.QQButton();
             this.ccRadio = new ControlExs.QQRadioButton();
             this.listSpButton = new ControlExs.QQButton();
             this.newSpButton = new ControlExs.QQButton();
@@ -129,7 +129,7 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ContentPanel.Controls.Add(mainDGVTitle);
+            this.ContentPanel.Controls.Add(this.mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
             this.ContentPanel.Controls.Add(this.refeshButton);
             this.ContentPanel.Controls.Add(this.MainDataGridView);
@@ -141,8 +141,8 @@
             // 
             // mainDGVTitle
             // 
-            resources.ApplyResources(mainDGVTitle, "mainDGVTitle");
-            mainDGVTitle.Name = "mainDGVTitle";
+            resources.ApplyResources(this.mainDGVTitle, "mainDGVTitle");
+            this.mainDGVTitle.Name = "mainDGVTitle";
             // 
             // backupData
             // 
@@ -196,6 +196,7 @@
             // 
             this.NavPanel.BackColor = System.Drawing.Color.Transparent;
             this.NavPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.NavPanel.Controls.Add(this.listXsButton);
             this.NavPanel.Controls.Add(this.listHtButton);
             this.NavPanel.Controls.Add(this.newHtButton);
             this.NavPanel.Controls.Add(this.htRadio);
@@ -203,13 +204,12 @@
             this.NavPanel.Controls.Add(this.newPzButton);
             this.NavPanel.Controls.Add(this.cwRadio);
             this.NavPanel.Controls.Add(this.listKhdzButton);
-            this.NavPanel.Controls.Add(this.listCgXsButton);
+            this.NavPanel.Controls.Add(this.listCgButton);
             this.NavPanel.Controls.Add(this.newCgZsButton);
             this.NavPanel.Controls.Add(this.ywRadio);
             this.NavPanel.Controls.Add(this.listCcdButton);
             this.NavPanel.Controls.Add(this.listJcdButton);
             this.NavPanel.Controls.Add(this.listKcButton);
-            this.NavPanel.Controls.Add(this.newJCcButton);
             this.NavPanel.Controls.Add(this.ccRadio);
             this.NavPanel.Controls.Add(this.listSpButton);
             this.NavPanel.Controls.Add(this.newSpButton);
@@ -219,6 +219,13 @@
             this.NavPanel.Controls.Add(this.cxRadio);
             resources.ApplyResources(this.NavPanel, "NavPanel");
             this.NavPanel.Name = "NavPanel";
+            // 
+            // listXsButton
+            // 
+            resources.ApplyResources(this.listXsButton, "listXsButton");
+            this.listXsButton.Name = "listXsButton";
+            this.listXsButton.UseVisualStyleBackColor = true;
+            this.listXsButton.Click += new System.EventHandler(this.listXsButton_Click);
             // 
             // listHtButton
             // 
@@ -275,12 +282,12 @@
             this.listKhdzButton.UseVisualStyleBackColor = true;
             this.listKhdzButton.Click += new System.EventHandler(this.listKhdzButton_Click);
             // 
-            // listCgXsButton
+            // listCgButton
             // 
-            resources.ApplyResources(this.listCgXsButton, "listCgXsButton");
-            this.listCgXsButton.Name = "listCgXsButton";
-            this.listCgXsButton.UseVisualStyleBackColor = true;
-            this.listCgXsButton.Click += new System.EventHandler(this.listCgXsButton_Click);
+            resources.ApplyResources(this.listCgButton, "listCgButton");
+            this.listCgButton.Name = "listCgButton";
+            this.listCgButton.UseVisualStyleBackColor = true;
+            this.listCgButton.Click += new System.EventHandler(this.listCgXsButton_Click);
             // 
             // newCgZsButton
             // 
@@ -319,13 +326,6 @@
             this.listKcButton.Name = "listKcButton";
             this.listKcButton.UseVisualStyleBackColor = true;
             this.listKcButton.Click += new System.EventHandler(this.listKcButton_Click);
-            // 
-            // newJCcButton
-            // 
-            resources.ApplyResources(this.newJCcButton, "newJCcButton");
-            this.newJCcButton.Name = "newJCcButton";
-            this.newJCcButton.UseVisualStyleBackColor = true;
-            this.newJCcButton.Click += new System.EventHandler(this.newJCcButton_Click);
             // 
             // ccRadio
             // 
@@ -499,13 +499,12 @@
         private ControlExs.QQButton newPzButton;
         private ControlExs.QQRadioButton cwRadio;
         private ControlExs.QQButton listKhdzButton;
-        private ControlExs.QQButton listCgXsButton;
+        private ControlExs.QQButton listCgButton;
         private ControlExs.QQButton newCgZsButton;
         private ControlExs.QQRadioButton ywRadio;
         private ControlExs.QQButton listCcdButton;
         private ControlExs.QQButton listJcdButton;
         private ControlExs.QQButton listKcButton;
-        private ControlExs.QQButton newJCcButton;
         private ControlExs.QQRadioButton ccRadio;
         private ControlExs.QQButton listSpButton;
         private ControlExs.QQButton newSpButton;
@@ -514,7 +513,8 @@
         private ControlExs.QQButton newCxButton;
         private ControlExs.QQRadioButton cxRadio;
         private ControlExs.QQButton settingQQButton;
-        public static System.Windows.Forms.Label mainDGVTitle;
+        private ControlExs.QQButton listXsButton;
+        public System.Windows.Forms.Label mainDGVTitle;
     }
 }
 
