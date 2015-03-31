@@ -2170,7 +2170,7 @@
             this.EPztb1.Location = new System.Drawing.Point(384, 130);
             this.EPztb1.Name = "EPztb1";
             this.EPztb1.Size = new System.Drawing.Size(68, 28);
-            this.EPztb1.TabIndex = 313;
+            this.EPztb1.TabIndex = 72;
             this.EPztb1.SelectedIndexChanged += new System.EventHandler(this.EPztb1_SelectedIndexChanged);
             // 
             // PzcbE
@@ -2180,7 +2180,7 @@
             this.PzcbE.Location = new System.Drawing.Point(36, 130);
             this.PzcbE.Name = "PzcbE";
             this.PzcbE.Size = new System.Drawing.Size(200, 26);
-            this.PzcbE.TabIndex = 325;
+            this.PzcbE.TabIndex = 70;
             // 
             // DPztb1
             // 
@@ -2194,7 +2194,7 @@
             this.DPztb1.Location = new System.Drawing.Point(384, 104);
             this.DPztb1.Name = "DPztb1";
             this.DPztb1.Size = new System.Drawing.Size(68, 28);
-            this.DPztb1.TabIndex = 312;
+            this.DPztb1.TabIndex = 67;
             this.DPztb1.SelectedIndexChanged += new System.EventHandler(this.DPztb1_SelectedIndexChanged);
             // 
             // textBox55
@@ -2221,7 +2221,7 @@
             this.CPztb1.Location = new System.Drawing.Point(384, 78);
             this.CPztb1.Name = "CPztb1";
             this.CPztb1.Size = new System.Drawing.Size(68, 28);
-            this.CPztb1.TabIndex = 311;
+            this.CPztb1.TabIndex = 62;
             this.CPztb1.SelectedIndexChanged += new System.EventHandler(this.CPztb1_SelectedIndexChanged);
             // 
             // PzcbD
@@ -2231,7 +2231,7 @@
             this.PzcbD.Location = new System.Drawing.Point(36, 104);
             this.PzcbD.Name = "PzcbD";
             this.PzcbD.Size = new System.Drawing.Size(200, 26);
-            this.PzcbD.TabIndex = 323;
+            this.PzcbD.TabIndex = 65;
             // 
             // BPztb1
             // 
@@ -2245,7 +2245,7 @@
             this.BPztb1.Location = new System.Drawing.Point(384, 52);
             this.BPztb1.Name = "BPztb1";
             this.BPztb1.Size = new System.Drawing.Size(68, 28);
-            this.BPztb1.TabIndex = 310;
+            this.BPztb1.TabIndex = 57;
             this.BPztb1.SelectedIndexChanged += new System.EventHandler(this.BPztb1_SelectedIndexChanged);
             // 
             // textBox57
@@ -2272,7 +2272,7 @@
             this.APztb1.Location = new System.Drawing.Point(384, 26);
             this.APztb1.Name = "APztb1";
             this.APztb1.Size = new System.Drawing.Size(68, 28);
-            this.APztb1.TabIndex = 309;
+            this.APztb1.TabIndex = 52;
             this.APztb1.SelectedIndexChanged += new System.EventHandler(this.APztb1_SelectedIndexChanged);
             // 
             // PzcbC
@@ -2282,7 +2282,7 @@
             this.PzcbC.Location = new System.Drawing.Point(36, 78);
             this.PzcbC.Name = "PzcbC";
             this.PzcbC.Size = new System.Drawing.Size(200, 26);
-            this.PzcbC.TabIndex = 321;
+            this.PzcbC.TabIndex = 60;
             // 
             // textBox59
             // 
@@ -2303,7 +2303,7 @@
             this.PzcbB.Location = new System.Drawing.Point(36, 52);
             this.PzcbB.Name = "PzcbB";
             this.PzcbB.Size = new System.Drawing.Size(200, 26);
-            this.PzcbB.TabIndex = 319;
+            this.PzcbB.TabIndex = 55;
             // 
             // textBox61
             // 
@@ -2324,7 +2324,7 @@
             this.PzcbA.Location = new System.Drawing.Point(36, 26);
             this.PzcbA.Name = "PzcbA";
             this.PzcbA.Size = new System.Drawing.Size(200, 26);
-            this.PzcbA.TabIndex = 317;
+            this.PzcbA.TabIndex = 50;
             // 
             // textBox63
             // 
@@ -2346,7 +2346,7 @@
             this.EPztb3.Name = "EPztb3";
             this.EPztb3.ReadOnly = true;
             this.EPztb3.Size = new System.Drawing.Size(77, 26);
-            this.EPztb3.TabIndex = 315;
+            this.EPztb3.TabIndex = 74;
             this.EPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.EPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
@@ -2357,7 +2357,7 @@
             this.EPztb0.Location = new System.Drawing.Point(236, 130);
             this.EPztb0.Name = "EPztb0";
             this.EPztb0.Size = new System.Drawing.Size(148, 26);
-            this.EPztb0.TabIndex = 312;
+            this.EPztb0.TabIndex = 71;
             this.EPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
             this.EPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -2370,7 +2370,7 @@
             this.EPztb2.Name = "EPztb2";
             this.EPztb2.ReadOnly = true;
             this.EPztb2.Size = new System.Drawing.Size(207, 26);
-            this.EPztb2.TabIndex = 310;
+            this.EPztb2.TabIndex = 73;
             // 
             // DPztb3
             // 
@@ -2380,7 +2380,7 @@
             this.DPztb3.Name = "DPztb3";
             this.DPztb3.ReadOnly = true;
             this.DPztb3.Size = new System.Drawing.Size(77, 26);
-            this.DPztb3.TabIndex = 309;
+            this.DPztb3.TabIndex = 69;
             this.DPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.DPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
@@ -2391,7 +2391,7 @@
             this.DPztb0.Location = new System.Drawing.Point(236, 104);
             this.DPztb0.Name = "DPztb0";
             this.DPztb0.Size = new System.Drawing.Size(148, 26);
-            this.DPztb0.TabIndex = 306;
+            this.DPztb0.TabIndex = 66;
             this.DPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.DPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
             this.DPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -2404,7 +2404,7 @@
             this.DPztb2.Name = "DPztb2";
             this.DPztb2.ReadOnly = true;
             this.DPztb2.Size = new System.Drawing.Size(207, 26);
-            this.DPztb2.TabIndex = 304;
+            this.DPztb2.TabIndex = 68;
             // 
             // CPztb3
             // 
@@ -2414,7 +2414,7 @@
             this.CPztb3.Name = "CPztb3";
             this.CPztb3.ReadOnly = true;
             this.CPztb3.Size = new System.Drawing.Size(77, 26);
-            this.CPztb3.TabIndex = 303;
+            this.CPztb3.TabIndex = 64;
             this.CPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.CPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
@@ -2425,7 +2425,7 @@
             this.CPztb0.Location = new System.Drawing.Point(236, 78);
             this.CPztb0.Name = "CPztb0";
             this.CPztb0.Size = new System.Drawing.Size(148, 26);
-            this.CPztb0.TabIndex = 300;
+            this.CPztb0.TabIndex = 61;
             this.CPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.CPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
             this.CPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -2438,7 +2438,7 @@
             this.CPztb2.Name = "CPztb2";
             this.CPztb2.ReadOnly = true;
             this.CPztb2.Size = new System.Drawing.Size(207, 26);
-            this.CPztb2.TabIndex = 298;
+            this.CPztb2.TabIndex = 63;
             // 
             // BPztb3
             // 
@@ -2448,7 +2448,7 @@
             this.BPztb3.Name = "BPztb3";
             this.BPztb3.ReadOnly = true;
             this.BPztb3.Size = new System.Drawing.Size(77, 26);
-            this.BPztb3.TabIndex = 297;
+            this.BPztb3.TabIndex = 59;
             this.BPztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.BPztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
@@ -2459,7 +2459,7 @@
             this.BPztb0.Location = new System.Drawing.Point(236, 52);
             this.BPztb0.Name = "BPztb0";
             this.BPztb0.Size = new System.Drawing.Size(148, 26);
-            this.BPztb0.TabIndex = 294;
+            this.BPztb0.TabIndex = 56;
             this.BPztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.BPztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
             this.BPztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -2472,7 +2472,7 @@
             this.BPztb2.Name = "BPztb2";
             this.BPztb2.ReadOnly = true;
             this.BPztb2.Size = new System.Drawing.Size(207, 26);
-            this.BPztb2.TabIndex = 292;
+            this.BPztb2.TabIndex = 58;
             // 
             // APztb3
             // 
@@ -2482,7 +2482,7 @@
             this.APztb3.Name = "APztb3";
             this.APztb3.ReadOnly = true;
             this.APztb3.Size = new System.Drawing.Size(77, 26);
-            this.APztb3.TabIndex = 291;
+            this.APztb3.TabIndex = 54;
             this.APztb3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.APztb3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
@@ -2504,7 +2504,7 @@
             this.APztb0.Location = new System.Drawing.Point(236, 26);
             this.APztb0.Name = "APztb0";
             this.APztb0.Size = new System.Drawing.Size(148, 26);
-            this.APztb0.TabIndex = 286;
+            this.APztb0.TabIndex = 51;
             this.APztb0.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.APztb0.TextChanged += new System.EventHandler(this.calculateSumForPz);
             this.APztb0.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -2539,7 +2539,7 @@
             this.APztb2.Name = "APztb2";
             this.APztb2.ReadOnly = true;
             this.APztb2.Size = new System.Drawing.Size(207, 26);
-            this.APztb2.TabIndex = 282;
+            this.APztb2.TabIndex = 53;
             // 
             // textBox42
             // 
@@ -2633,7 +2633,7 @@
             this.tbPz3.Location = new System.Drawing.Point(125, 345);
             this.tbPz3.Name = "tbPz3";
             this.tbPz3.Size = new System.Drawing.Size(639, 26);
-            this.tbPz3.TabIndex = 209;
+            this.tbPz3.TabIndex = 75;
             // 
             // label40
             // 
