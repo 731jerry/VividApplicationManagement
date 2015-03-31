@@ -278,6 +278,11 @@
             this.textBox488 = new System.Windows.Forms.TextBox();
             this.tbHTxsfName = new System.Windows.Forms.TextBox();
             this.PanelHT = new System.Windows.Forms.Panel();
+            this.cbHTGoodsA0 = new System.Windows.Forms.TextBox();
+            this.cbHTGoodsE0 = new System.Windows.Forms.TextBox();
+            this.cbHTGoodsB0 = new System.Windows.Forms.TextBox();
+            this.cbHTGoodsD0 = new System.Windows.Forms.TextBox();
+            this.cbHTGoodsC0 = new System.Windows.Forms.TextBox();
             this.textBox537 = new System.Windows.Forms.TextBox();
             this.SumHtTextbox = new System.Windows.Forms.TextBox();
             this.textBox536 = new System.Windows.Forms.TextBox();
@@ -356,11 +361,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
-            this.cbHTGoodsA0 = new System.Windows.Forms.TextBox();
-            this.cbHTGoodsE0 = new System.Windows.Forms.TextBox();
-            this.cbHTGoodsB0 = new System.Windows.Forms.TextBox();
-            this.cbHTGoodsD0 = new System.Windows.Forms.TextBox();
-            this.cbHTGoodsC0 = new System.Windows.Forms.TextBox();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -3255,10 +3255,60 @@
             this.PanelHT.Controls.Add(this.cbHTGoodsC4);
             this.PanelHT.Controls.Add(this.cbHTGoodsC6);
             this.PanelHT.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.PanelHT.Location = new System.Drawing.Point(13, 267);
+            this.PanelHT.Location = new System.Drawing.Point(13, 261);
             this.PanelHT.Name = "PanelHT";
             this.PanelHT.Size = new System.Drawing.Size(785, 175);
             this.PanelHT.TabIndex = 638;
+            // 
+            // cbHTGoodsA0
+            // 
+            this.cbHTGoodsA0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cbHTGoodsA0.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.cbHTGoodsA0.Location = new System.Drawing.Point(101, 25);
+            this.cbHTGoodsA0.Name = "cbHTGoodsA0";
+            this.cbHTGoodsA0.ReadOnly = true;
+            this.cbHTGoodsA0.Size = new System.Drawing.Size(119, 25);
+            this.cbHTGoodsA0.TabIndex = 581;
+            // 
+            // cbHTGoodsE0
+            // 
+            this.cbHTGoodsE0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cbHTGoodsE0.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.cbHTGoodsE0.Location = new System.Drawing.Point(101, 125);
+            this.cbHTGoodsE0.Name = "cbHTGoodsE0";
+            this.cbHTGoodsE0.ReadOnly = true;
+            this.cbHTGoodsE0.Size = new System.Drawing.Size(119, 25);
+            this.cbHTGoodsE0.TabIndex = 585;
+            // 
+            // cbHTGoodsB0
+            // 
+            this.cbHTGoodsB0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cbHTGoodsB0.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.cbHTGoodsB0.Location = new System.Drawing.Point(101, 50);
+            this.cbHTGoodsB0.Name = "cbHTGoodsB0";
+            this.cbHTGoodsB0.ReadOnly = true;
+            this.cbHTGoodsB0.Size = new System.Drawing.Size(119, 25);
+            this.cbHTGoodsB0.TabIndex = 582;
+            // 
+            // cbHTGoodsD0
+            // 
+            this.cbHTGoodsD0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cbHTGoodsD0.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.cbHTGoodsD0.Location = new System.Drawing.Point(101, 100);
+            this.cbHTGoodsD0.Name = "cbHTGoodsD0";
+            this.cbHTGoodsD0.ReadOnly = true;
+            this.cbHTGoodsD0.Size = new System.Drawing.Size(119, 25);
+            this.cbHTGoodsD0.TabIndex = 584;
+            // 
+            // cbHTGoodsC0
+            // 
+            this.cbHTGoodsC0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cbHTGoodsC0.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.cbHTGoodsC0.Location = new System.Drawing.Point(101, 75);
+            this.cbHTGoodsC0.Name = "cbHTGoodsC0";
+            this.cbHTGoodsC0.ReadOnly = true;
+            this.cbHTGoodsC0.Size = new System.Drawing.Size(119, 25);
+            this.cbHTGoodsC0.TabIndex = 583;
             // 
             // textBox537
             // 
@@ -3991,7 +4041,7 @@
             // 
             this.label96.AutoSize = true;
             this.label96.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.label96.Location = new System.Drawing.Point(9, 250);
+            this.label96.Location = new System.Drawing.Point(9, 244);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(419, 12);
             this.label96.TabIndex = 623;
@@ -4121,62 +4171,12 @@
             this.DiscardCheckBox.AutoSize = true;
             this.DiscardCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.DiscardCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.DiscardCheckBox.Location = new System.Drawing.Point(179, 659);
+            this.DiscardCheckBox.Location = new System.Drawing.Point(618, 659);
             this.DiscardCheckBox.Name = "DiscardCheckBox";
             this.DiscardCheckBox.Size = new System.Drawing.Size(51, 21);
             this.DiscardCheckBox.TabIndex = 318;
             this.DiscardCheckBox.Text = "作废";
             this.DiscardCheckBox.UseVisualStyleBackColor = false;
-            // 
-            // cbHTGoodsA0
-            // 
-            this.cbHTGoodsA0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cbHTGoodsA0.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbHTGoodsA0.Location = new System.Drawing.Point(101, 25);
-            this.cbHTGoodsA0.Name = "cbHTGoodsA0";
-            this.cbHTGoodsA0.ReadOnly = true;
-            this.cbHTGoodsA0.Size = new System.Drawing.Size(119, 25);
-            this.cbHTGoodsA0.TabIndex = 581;
-            // 
-            // cbHTGoodsE0
-            // 
-            this.cbHTGoodsE0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cbHTGoodsE0.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbHTGoodsE0.Location = new System.Drawing.Point(101, 125);
-            this.cbHTGoodsE0.Name = "cbHTGoodsE0";
-            this.cbHTGoodsE0.ReadOnly = true;
-            this.cbHTGoodsE0.Size = new System.Drawing.Size(119, 25);
-            this.cbHTGoodsE0.TabIndex = 585;
-            // 
-            // cbHTGoodsB0
-            // 
-            this.cbHTGoodsB0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cbHTGoodsB0.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbHTGoodsB0.Location = new System.Drawing.Point(101, 50);
-            this.cbHTGoodsB0.Name = "cbHTGoodsB0";
-            this.cbHTGoodsB0.ReadOnly = true;
-            this.cbHTGoodsB0.Size = new System.Drawing.Size(119, 25);
-            this.cbHTGoodsB0.TabIndex = 582;
-            // 
-            // cbHTGoodsD0
-            // 
-            this.cbHTGoodsD0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cbHTGoodsD0.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbHTGoodsD0.Location = new System.Drawing.Point(101, 100);
-            this.cbHTGoodsD0.Name = "cbHTGoodsD0";
-            this.cbHTGoodsD0.ReadOnly = true;
-            this.cbHTGoodsD0.Size = new System.Drawing.Size(119, 25);
-            this.cbHTGoodsD0.TabIndex = 584;
-            // 
-            // cbHTGoodsC0
-            // 
-            this.cbHTGoodsC0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cbHTGoodsC0.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbHTGoodsC0.Location = new System.Drawing.Point(101, 75);
-            this.cbHTGoodsC0.Name = "cbHTGoodsC0";
-            this.cbHTGoodsC0.ReadOnly = true;
-            this.cbHTGoodsC0.Size = new System.Drawing.Size(119, 25);
-            this.cbHTGoodsC0.TabIndex = 583;
             // 
             // DetailedInfo
             // 

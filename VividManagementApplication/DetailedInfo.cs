@@ -375,7 +375,7 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
-                    checkValidateControls = new List<Control>() { HTtbID };
+                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfID, tbHTghfID, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
                     detailedHeightDis = 60;
@@ -814,7 +814,7 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
-                    tbHTghfID.SelectedIndex = 0;
+                    //tbHTghfID.SelectedIndex = 0;
                     tbHTghfName.Text = "";
                     tbHTghfAddress.Text = "";
                     tbHTghfPresenter.Text = "";
@@ -837,7 +837,7 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTxsfID);
-                    tbHTxsfID.SelectedIndex = 0;
+                    //tbHTxsfID.SelectedIndex = 0;
                     tbHTxsfName.Text = "";
                     tbHTxsfAddress.Text = "";
                     tbHTxsfPresenter.Text = "";

@@ -42,7 +42,6 @@
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
-            this.qqButton1 = new ControlExs.QQButton();
             this.DiscardButton = new ControlExs.QQButton();
             this.ViewButton = new ControlExs.QQButton();
             this.NavPanel = new System.Windows.Forms.Panel();
@@ -129,11 +128,11 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ContentPanel.Controls.Add(this.settingQQButton);
             this.ContentPanel.Controls.Add(this.mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
             this.ContentPanel.Controls.Add(this.refeshButton);
             this.ContentPanel.Controls.Add(this.MainDataGridView);
-            this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.DiscardButton);
             this.ContentPanel.Controls.Add(this.ViewButton);
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
@@ -171,13 +170,6 @@
             this.MainDataGridView.RowHeadersVisible = false;
             this.MainDataGridView.RowTemplate.Height = 23;
             this.MainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            // 
-            // qqButton1
-            // 
-            resources.ApplyResources(this.qqButton1, "qqButton1");
-            this.qqButton1.Name = "qqButton1";
-            this.qqButton1.UseVisualStyleBackColor = true;
-            this.qqButton1.Click += new System.EventHandler(this.qqButton1_Click);
             // 
             // DiscardButton
             // 
@@ -443,7 +435,6 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.settingQQButton);
             this.Controls.Add(this.notificationPanel);
             this.Controls.Add(this.pbDownFile);
             this.Controls.Add(this.MainPanel);
@@ -480,7 +471,6 @@
         private ControlExs.QQButton ViewButton;
         private ControlExs.QQButton DiscardButton;
         private System.Windows.Forms.Panel ContentPanel;
-        private ControlExs.QQButton qqButton1;
         private System.Windows.Forms.DataGridView MainDataGridView;
         private ControlExs.QQButton refeshButton;
         private ControlExs.QQButton backupData;
