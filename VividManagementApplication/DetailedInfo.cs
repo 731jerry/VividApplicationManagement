@@ -375,13 +375,26 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
+                    checkValidateControls = new List<Control>() { HTtbID };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
                     detailedHeightDis = 60;
 
+                    // 添加商品编号
+                    cbHTGoodsNameA.Items.Add("");
+                    cbHTGoodsNameB.Items.Add("");
+                    cbHTGoodsNameC.Items.Add("");
+                    cbHTGoodsNameD.Items.Add("");
+                    cbHTGoodsNameE.Items.Add("");
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameA);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameB);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameC);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameD);
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameE);
+
                     table = "htList";
                     baseName = "htID";
-                    queryArray = new string[] { "htID", "leixing", "htDate", "companyName", "sum", "discardFlag" };
+                    queryArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime" };
                     controlsPreName = "HTtbID";
                     indexCount = 6;
                     mainID = HTtbID.Text;
@@ -394,14 +407,89 @@ namespace VividManagementApplication
                         HTcbName.Items.Add("购买合同");
                         HTcbName.Items.Add("销售合同");
                         HTcbName.SelectedIndex = 0;
+
+                        HTtbDate.Text = DateTime.Now.ToLongDateString();
+
+                        // 自动生成ID
+                        HTtbID.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                     }
                     else
                     {
-                        HTcbName.Visible = false;
+                        HTcbName.Enabled = false;
 
                         try
                         {
-                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag" }, baseName, ItemId);
+                            DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
+                            HTcbName.SelectedIndex = int.Parse(data[2].ToString());
+                            HTtbID.Text = data[3].ToString();
+                            HTtbDate.Text = Convert.ToDateTime(data[4]).ToLongDateString();
+                            if (HTcbName.SelectedIndex == 0) //购买合同
+                            {
+                                tbHTxsfID.Text = data[5].ToString();
+                                // 自己公司
+                                tbHTghfName.Text = MainWindow.COMPANY_NAME;
+                                tbHTghfAddress.Text = MainWindow.ADDRESS;
+                                tbHTghfPresenter.Text = MainWindow.COMPANY_OWNER;
+                                tbHTghfFax.Text = MainWindow.FAX;
+                                tbHTghfPhone.Text = MainWindow.PHONE;
+                                tbHTghfEmail.Text = MainWindow.EMAIL;
+                                tbHTghfBankName.Text = MainWindow.BANK_NAME;
+                                tbHTghfBankNumber.Text = MainWindow.BANK_CARD;
+                                tbHTghfID.Items.Clear();
+                            }
+                            else
+                            {
+                                tbHTghfID.Text = data[5].ToString();
+                                // 自己公司
+                                tbHTxsfAddress.Text = MainWindow.ADDRESS;
+                                tbHTxsfPresenter.Text = MainWindow.COMPANY_OWNER;
+                                tbHTxsfFax.Text = MainWindow.FAX;
+                                tbHTxsfPhone.Text = MainWindow.PHONE;
+                                tbHTxsfEmail.Text = MainWindow.EMAIL;
+                                tbHTxsfBankName.Text = MainWindow.BANK_NAME;
+                                tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
+                                tbHTxsfID.Items.Clear();
+                            }
+
+                            DiscardCheckBox.Checked = data[6].Equals("0") ? false : true;
+
+                            data[1] = data[1].Replace("\n", "");
+                            data[1] = data[1].Replace(" ", "");
+                            JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化 
+                            if (json != null)
+                            {
+                                if ((JSONObject)json["1"] != null)
+                                {
+                                    cbHTGoodsNameA.Text = ((JSONObject)json["1"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["1"])["goodsID"].ToString();
+                                    cbHTGoodsA5.Text = ((JSONObject)json["1"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["1"])["goodsAmount"].ToString();
+                                    cbHTGoodsA7.Text = ((JSONObject)json["1"])["goodsLocation"].Equals("无") ? "" : ((JSONObject)json["1"])["goodsLocation"].ToString();
+                                }
+                                if ((JSONObject)json["2"] != null)
+                                {
+                                    cbHTGoodsNameB.Text = ((JSONObject)json["2"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["2"])["goodsID"].ToString();
+                                    cbHTGoodsB5.Text = ((JSONObject)json["2"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["2"])["goodsAmount"].ToString();
+                                    cbHTGoodsB7.Text = ((JSONObject)json["2"])["goodsLocation"].Equals("无") ? "" : ((JSONObject)json["2"])["goodsLocation"].ToString();
+                                }
+                                if ((JSONObject)json["3"] != null)
+                                {
+                                    cbHTGoodsNameC.Text = ((JSONObject)json["3"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["3"])["goodsID"].ToString();
+                                    cbHTGoodsC5.Text = ((JSONObject)json["3"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["3"])["goodsAmount"].ToString();
+                                    cbHTGoodsC7.Text = ((JSONObject)json["3"])["goodsLocation"].Equals("无") ? "" : ((JSONObject)json["3"])["goodsLocation"].ToString();
+                                }
+                                if ((JSONObject)json["4"] != null)
+                                {
+                                    cbHTGoodsNameD.Text = ((JSONObject)json["4"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["4"])["goodsID"].ToString();
+                                    cbHTGoodsD5.Text = ((JSONObject)json["4"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["4"])["goodsAmount"].ToString();
+                                    cbHTGoodsD7.Text = ((JSONObject)json["4"])["goodsLocation"].Equals("无") ? "" : ((JSONObject)json["4"])["goodsLocation"].ToString();
+                                }
+                                if ((JSONObject)json["5"] != null)
+                                {
+                                    cbHTGoodsNameE.Text = ((JSONObject)json["5"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["5"])["goodsID"].ToString();
+                                    cbHTGoodsE5.Text = ((JSONObject)json["5"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["5"])["goodsAmount"].ToString();
+                                    cbHTGoodsE7.Text = ((JSONObject)json["5"])["goodsLocation"].Equals("无") ? "" : ((JSONObject)json["5"])["goodsLocation"].ToString();
+                                }
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -535,6 +623,34 @@ namespace VividManagementApplication
                                 DateTime.Now.ToString()},
                             mainID);
                     }
+                    else if (MainWindow.CURRENT_TAB == 6)  // 合同
+                    {
+                        String jsonData = ControlValueTransitToJson(
+                                                       new List<String>() { "goodsID", "goodsAmount", "goodsLocation" },
+                                                       new List<List<Control>>() {
+                                new List<Control> (){cbHTGoodsNameA,cbHTGoodsA5,cbHTGoodsA7 } ,
+                                new List<Control> (){cbHTGoodsNameB,cbHTGoodsB5,cbHTGoodsB7 } ,
+                                new List<Control> (){cbHTGoodsNameC,cbHTGoodsC5,cbHTGoodsC7 } ,
+                                new List<Control> (){cbHTGoodsNameD,cbHTGoodsD5,cbHTGoodsD7 } ,
+                                new List<Control> (){cbHTGoodsNameE,cbHTGoodsE5,cbHTGoodsE7 } 
+                                }
+                                                       );
+                        // "htID", "leixing", "htDate", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime"
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(
+                            table,
+                            queryArray,
+                            new String[] { 
+                                HTtbID.Text,
+                                HTcbName.SelectedIndex.ToString(), 
+                                HTtbDate.Text,
+                                "",
+                                jsonData,
+                                SumHtTextbox.Text.Split('=')[0],
+                                (DiscardCheckBox.Checked?"1":"0"),
+                                DateTime.Now.ToString(), 
+                                DateTime.Now.ToString()},
+                            mainID);
+                    }
                     else
                     {
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
@@ -570,6 +686,518 @@ namespace VividManagementApplication
             SetPrintPreview(7);
             //SetPrintPreview(MainWindow.CURRENT_TAB);
         }
+
+        //为生成新行添加值
+        private void DetailedDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+
+        }
+
+        // 进仓单 出仓单 采购单 销售单
+        private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbA);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbB);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbC);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbD);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbE);
+
+            if (MainWindow.CURRENT_TAB == 3) //仓储管理
+            {
+                controlsPreName = "tbDz";
+                indexCount = 11;
+                mainID = tbDz2.Text;
+
+                switch (danziComboBox.SelectedIndex)
+                {
+                    case 0://进仓单
+                        lbDzTitle.Text = "商品（货物）进仓单";
+                        table = "jcdList";
+                        baseName = "jcdID";
+                        queryArray = new string[] { "clientID", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                        break;
+                    case 1://出仓单
+                        lbDzTitle.Text = "商品（货物）出仓单";
+                        table = "ccdList";
+                        baseName = "ccdID";
+                        queryArray = new string[] { "clientID", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else if (MainWindow.CURRENT_TAB == 4) //业务管理
+            {
+                switch (danziComboBox.SelectedIndex)
+                {
+                    case 0://采购单
+                        lbDzTitle.Text = "商品（货物）采购单";
+                        table = "cgdList";
+                        baseName = "cgdID";
+                        queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                        // 自动生成ID
+                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        break;
+                    case 1://销售单
+                        lbDzTitle.Text = "商品（货物）销售单";
+                        table = "xsdList";
+                        baseName = "xsdID";
+                        queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                        // 自动生成ID
+                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        break;
+                }
+            }
+        }
+
+        // 凭证管理
+        private void pzComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            table = "pzList";
+            baseName = "pzID";
+            queryArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
+            controlsPreName = "tbPz";
+            // 自动生成ID
+            tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+            switch (pzComboBox.SelectedIndex)
+            {
+                default:
+                    break;
+                case 0:// 收款凭证
+                    lbPzTitle.Text = "收 款 凭 证";
+                    break;
+                case 1:// 付款凭证
+                    lbPzTitle.Text = "付 款 凭 证";
+                    break;
+                case 2:// 领款凭证
+                    lbPzTitle.Text = "领 款 凭 证";
+                    break;
+                case 3:// 还款凭证
+                    lbPzTitle.Text = "还 款 凭 证";
+                    break;
+                case 4:// 报销凭证
+                    lbPzTitle.Text = "报 销 凭 证";
+                    break;
+            }
+        }
+
+        // 合同
+        private void HTcbName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            table = "htList";
+            baseName = "htID";
+            queryArray = new string[] { "htID", "leixing", "htDate", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime" };
+            controlsPreName = "HTtbID";
+
+            FormBasicFeatrues.GetInstence().reTriggleCombox(cbHTGoodsNameA);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(cbHTGoodsNameB);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(cbHTGoodsNameC);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(cbHTGoodsNameD);
+            FormBasicFeatrues.GetInstence().reTriggleCombox(cbHTGoodsNameE);
+
+            // 自动生成ID
+            HTtbID.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+            switch (HTcbName.SelectedIndex)
+            {
+                default:
+                    break;
+                case 0:// 购买
+                    tbHTxsfName.Text = MainWindow.COMPANY_NAME;
+                    tbHTxsfAddress.Text = MainWindow.ADDRESS;
+                    tbHTxsfPresenter.Text = MainWindow.COMPANY_OWNER;
+                    tbHTxsfFax.Text = MainWindow.FAX;
+                    tbHTxsfPhone.Text = MainWindow.PHONE;
+                    tbHTxsfEmail.Text = MainWindow.EMAIL;
+                    tbHTxsfBankName.Text = MainWindow.BANK_NAME;
+                    tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
+                    tbHTxsfID.Items.Clear();
+
+                    // 添加客户编号
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
+                    tbHTghfID.SelectedIndex = 0;
+                    tbHTghfName.Text = "";
+                    tbHTghfAddress.Text = "";
+                    tbHTghfPresenter.Text = "";
+                    tbHTghfFax.Text = "";
+                    tbHTghfPhone.Text = "";
+                    tbHTghfEmail.Text = "";
+                    tbHTghfBankName.Text = "";
+                    tbHTghfBankNumber.Text = "";
+                    break;
+                case 1:// 销售
+                    tbHTghfName.Text = MainWindow.COMPANY_NAME;
+                    tbHTghfAddress.Text = MainWindow.ADDRESS;
+                    tbHTghfPresenter.Text = MainWindow.COMPANY_OWNER;
+                    tbHTghfFax.Text = MainWindow.FAX;
+                    tbHTghfPhone.Text = MainWindow.PHONE;
+                    tbHTghfEmail.Text = MainWindow.EMAIL;
+                    tbHTghfBankName.Text = MainWindow.BANK_NAME;
+                    tbHTghfBankNumber.Text = MainWindow.BANK_CARD;
+                    tbHTghfID.Items.Clear();
+
+                    // 添加客户编号
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTxsfID);
+                    tbHTxsfID.SelectedIndex = 0;
+                    tbHTxsfName.Text = "";
+                    tbHTxsfAddress.Text = "";
+                    tbHTxsfPresenter.Text = "";
+                    tbHTxsfFax.Text = "";
+                    tbHTxsfPhone.Text = "";
+                    tbHTxsfEmail.Text = "";
+                    tbHTxsfBankName.Text = "";
+                    tbHTxsfBankNumber.Text = "";
+                    break;
+            }
+        }
+
+        private void tbHTxsfID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
+                    tbHTxsfName, tbHTxsfAddress, tbHTxsfPresenter, tbHTxsfFax, tbHTxsfPhone, tbHTxsfEmail, tbHTxsfBankName, tbHTxsfBankNumber },
+                    DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                    "clients",
+                    new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankInfo", "PrimaryAccount" },
+                    "clientID", tbHTxsfID.Text).ToList<String>());
+        }
+
+        private void tbHTghfID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
+                    tbHTghfName, tbHTghfAddress, tbHTghfPresenter, tbHTghfFax, tbHTghfPhone, tbHTghfEmail, tbHTghfBankName, tbHTghfBankNumber },
+                         DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                         "clients",
+                         new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankInfo", "PrimaryAccount" },
+                         "clientID", tbHTghfID.Text).ToList<String>());
+        }
+
+        private void addItemsToCombox(List<String> items, ComboBox cb)
+        {
+            foreach (string item in items)
+            {
+                cb.Items.Add(item);
+            }
+        }
+
+        // 进仓单 出仓单 
+        private void JCCDSetControlsValue(List<Control> lcs, Control byIdControl)
+        {
+            if (danziComboBox.SelectedIndex == 0)
+            { // 进仓单
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
+            }
+            else
+            { // 出仓单
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
+            }
+        }
+
+        // 合同
+        private void HtSetControlsValue(List<Control> lcs, Control byIdControl)
+        {
+            if (HTcbName.SelectedIndex == 0)
+            { // 购买
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
+            }
+            else
+            { // 销售
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
+            }
+        }
+
+        /// <summary>
+        /// 清空之后的数据
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private void clearControlValueByList(List<Control> conList)
+        {
+            foreach (Control con in conList)
+            {
+                con.Text = "";
+            }
+        }
+
+        private void JCDcbA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbA.SelectedIndex != -1)
+            {
+                if (JCDcbA.Text.Equals(""))
+                {
+                    AJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6 });
+                }
+                else
+                {
+                    AJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, JCDcbA);
+                }
+            }
+        }
+
+        private void JCDcbB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbB.SelectedIndex != -1)
+            {
+                if (JCDcbB.Text.Equals(""))
+                {
+                    BJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6 });
+                }
+                else
+                {
+                    BJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, JCDcbB);
+                }
+            }
+        }
+
+        private void JCDcbC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbC.SelectedIndex != -1)
+            {
+                if (JCDcbC.Text.Equals(""))
+                {
+                    CJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6 });
+                }
+                else
+                {
+                    CJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, JCDcbC);
+                }
+            }
+        }
+
+        private void JCDcbD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbD.SelectedIndex != -1)
+            {
+                if (JCDcbD.Text.Equals(""))
+                {
+                    DJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6 });
+                }
+                else
+                {
+                    DJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, JCDcbD);
+                }
+            }
+        }
+
+        private void JCDcbE_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (JCDcbE.SelectedIndex != -1)
+            {
+                if (JCDcbE.Text.Equals(""))
+                {
+                    EJCDtb5.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6 });
+                }
+                else
+                {
+                    EJCDtb5.ReadOnly = false;
+                    JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, JCDcbE);
+                }
+            }
+        }
+
+        //
+        private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+        }
+
+        private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
+        }
+
+        /// <summary>
+        /// 计算金钱价格
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        ///
+        private void calculateSmallSum(Control left, Control right, Control result)
+        {
+            int test1, test2;
+            if (left.Text.Equals("") || right.Text.Equals("") || !int.TryParse(left.Text, out test1) || !int.TryParse(right.Text, out test2))
+            {
+
+            }
+            else
+            {
+                result.Text = (int.Parse(left.Text) * int.Parse(right.Text)).ToString();
+            }
+        }
+        private void AJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(AJCDtb4, AJCDtb5, AJCDtb6);
+        }
+
+        private void BJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(BJCDtb4, BJCDtb5, BJCDtb6);
+        }
+
+        private void CJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(CJCDtb4, CJCDtb5, CJCDtb6);
+        }
+
+        private void DJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(DJCDtb4, DJCDtb5, DJCDtb6);
+        }
+
+        private void EJCDtb5_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(EJCDtb4, EJCDtb5, EJCDtb6);
+        }
+
+        /// <summary>
+        /// 计算总共价钱并设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private void SetTotalSum(List<Control> conList, Control resultControl)
+        {
+            int sum = 0;
+            foreach (Control con in conList)
+            {
+                if (!con.Text.Equals(""))
+                {
+                    sum += int.Parse(con.Text);
+                }
+            }
+            resultControl.Text = sum.ToString() + "=" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
+        }
+
+        private void calculateSumForDz(object sender, EventArgs e)
+        {
+            SetTotalSum(new List<Control>() { AJCDtb6, BJCDtb6, CJCDtb6, DJCDtb6, EJCDtb6 }, tbDz3);
+        }
+
+        private void calculateSumForPz(object sender, EventArgs e)
+        {
+            SetTotalSum(new List<Control>() { APztb0, BPztb0, CPztb0, DPztb0, EPztb0 }, SumtbPz);
+        }
+
+        private void calculateSumForHt(object sender, EventArgs e)
+        {
+            SetTotalSum(new List<Control>() { cbHTGoodsA6, cbHTGoodsB6, cbHTGoodsC6, cbHTGoodsD6, cbHTGoodsE6 }, SumHtTextbox);
+        }
+
+        /// <summary>
+        /// 只能输入字符
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numberInputOnly_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键
+            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数
+            if (e.KeyChar > 0x20)
+            {
+                try
+                {
+                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
+                }
+                catch
+                {
+                    e.KeyChar = (char)0;   //处理非法字符
+                }
+            }
+        }
+        #region 选择现金 银行卡 其他
+
+        private void APztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (APztb1.SelectedIndex == 0)
+            {
+                APztb2.ReadOnly = true;
+                APztb3.ReadOnly = true;
+            }
+            else
+            {
+                APztb2.ReadOnly = false;
+                APztb3.ReadOnly = false;
+            }
+        }
+
+        private void BPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (BPztb1.SelectedIndex == 0)
+            {
+                BPztb2.ReadOnly = true;
+                APztb3.ReadOnly = true;
+            }
+            else
+            {
+                BPztb2.ReadOnly = false;
+                BPztb3.ReadOnly = false;
+            }
+        }
+
+        private void CPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CPztb1.SelectedIndex == 0)
+            {
+                CPztb2.ReadOnly = true;
+                CPztb3.ReadOnly = true;
+            }
+            else
+            {
+                CPztb2.ReadOnly = false;
+                CPztb3.ReadOnly = false;
+            }
+        }
+
+        private void DPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DPztb1.SelectedIndex == 0)
+            {
+                DPztb2.ReadOnly = true;
+                DPztb3.ReadOnly = true;
+            }
+            else
+            {
+                DPztb2.ReadOnly = false;
+                DPztb3.ReadOnly = false;
+            }
+        }
+
+        private void EPztb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (EPztb1.SelectedIndex == 0)
+            {
+                EPztb2.ReadOnly = true;
+                EPztb3.ReadOnly = true;
+            }
+            else
+            {
+                EPztb2.ReadOnly = false;
+                EPztb3.ReadOnly = false;
+            }
+        }
+        #endregion
+
+        private void TextBoxCheckIfDuplicate_Validated(object sender, EventArgs e)
+        {
+            if (ItemId.Equals("-1") || !ItemId.Equals((sender as TextBox).Text))
+            {
+                if (DatabaseConnections.GetInstence().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
+                {
+                    MessageBox.Show("您设定的编号已经被占用, 请再次输入", "错误");
+                    (sender as TextBox).Text = ItemId.Equals("-1") ? "" : ItemId;
+                    (sender as TextBox).Focus();
+                }
+            }
+        }
+
 
         #region 打印
         // 打印
@@ -888,93 +1516,93 @@ namespace VividManagementApplication
             g.DrawString("1", f4, new SolidBrush(Color.Black), 146 + x + 20, 279 + y);
             g.DrawString("1", f4, new SolidBrush(Color.Black), 243 + x + 20, 279 + y);
             g.DrawString("1", f4, new SolidBrush(Color.Black), 317 + x + 20, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 279 + y);
+            g.DrawString("1", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 279 + y);
             g.DrawString("1", f4, new SolidBrush(Color.Black), 555 + x + 20, 279 + y);
             //第三行
             g.DrawString("2", f4, new SolidBrush(Color.Black), 43 + x + 20, 318 + y);
             g.DrawString("2", f4, new SolidBrush(Color.Black), 146 + x + 20, 318 + y);
             g.DrawString("2", f4, new SolidBrush(Color.Black), 243 + x + 20, 318 + y);
             g.DrawString("2", f4, new SolidBrush(Color.Black), 317 + x + 20, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 318 + y);
+            g.DrawString("2", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 318 + y);
             g.DrawString("2", f4, new SolidBrush(Color.Black), 555 + x + 20, 318 + y);
             //第四行
             g.DrawString("3", f4, new SolidBrush(Color.Black), 43 + x + 20, 355 + y);
             g.DrawString("3", f4, new SolidBrush(Color.Black), 146 + x + 20, 355 + y);
             g.DrawString("3", f4, new SolidBrush(Color.Black), 243 + x + 20, 355 + y);
             g.DrawString("3", f4, new SolidBrush(Color.Black), 317 + x + 20, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 355 + y);
+            g.DrawString("3", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 355 + y);
             g.DrawString("3", f4, new SolidBrush(Color.Black), 555 + x + 20, 355 + y);
             //第五行
             g.DrawString("4", f4, new SolidBrush(Color.Black), 43 + x + 20, 392 + y);
             g.DrawString("4", f4, new SolidBrush(Color.Black), 146 + x + 20, 392 + y);
             g.DrawString("4", f4, new SolidBrush(Color.Black), 243 + x + 20, 392 + y);
             g.DrawString("4", f4, new SolidBrush(Color.Black), 317 + x + 20, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 392 + y);
+            g.DrawString("4", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 392 + y);
             g.DrawString("4", f4, new SolidBrush(Color.Black), 555 + x + 20, 392 + y);
             //第六行
             g.DrawString("5", f4, new SolidBrush(Color.Black), 43 + x + 20, 429 + y);
             g.DrawString("5", f4, new SolidBrush(Color.Black), 146 + x + 20, 429 + y);
             g.DrawString("5", f4, new SolidBrush(Color.Black), 243 + x + 20, 429 + y);
             g.DrawString("5", f4, new SolidBrush(Color.Black), 317 + x + 20, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 392 + x + 20+2, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 464 + x + 20+2, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 429 + y);
+            g.DrawString("5", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 429 + y);
             g.DrawString("5", f4, new SolidBrush(Color.Black), 555 + x + 20, 429 + y);
             //第一列
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + x, b + y+htHeight, htWidth, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 2*htHeight-2, htWidth, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + htHeight, htWidth, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 2 * htHeight - 2, htWidth, htHeight + 2);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 3 * htHeight, htWidth, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 4 * htHeight, htWidth, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 5 * htHeight, htWidth, htHeight);
             //g.DrawString(, f4, new SolidBrush(Color.Black), 555 + x + 20, 242 + y);
 
-           
+
             //第二列
             g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y, htWidth - 2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + htHeight, htWidth-2, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 2 * htHeight-2, htWidth - 2, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + htHeight, htWidth - 2, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 2 * htHeight - 2, htWidth - 2, htHeight + 2);
             g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 3 * htHeight, htWidth - 2, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 4 * htHeight, htWidth - 2, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y + 5 * htHeight, htWidth - 2, htHeight);
             //第三列
-            g.DrawRectangle(new Pen(Color.Black), a + 2*htWidth + x-2, b + y, htWidth-27, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x-2, b + y + htHeight, htWidth -27, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 2 * htHeight-2, htWidth - 27, htHeight+2);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y, htWidth - 27, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + htHeight, htWidth - 27, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 2 * htHeight - 2, htWidth - 27, htHeight + 2);
             g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 3 * htHeight, htWidth - 27, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 4 * htHeight, htWidth - 27, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + 2 * htWidth + x - 2, b + y + 5 * htHeight, htWidth - 27, htHeight);
             //第四列
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y, htWidth - 27+1, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + htHeight, htWidth - 27+1, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 2 * htHeight-2, htWidth - 27+1, htHeight+2);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 3 * htHeight, htWidth - 27+1, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 4 * htHeight, htWidth - 27+1, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27-2, b + y + 5 * htHeight, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27 - 2, b + y, htWidth - 27 + 1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27 - 2, b + y + htHeight, htWidth - 27 + 1, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27 - 2, b + y + 2 * htHeight - 2, htWidth - 27 + 1, htHeight + 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27 - 2, b + y + 3 * htHeight, htWidth - 27 + 1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27 - 2, b + y + 4 * htHeight, htWidth - 27 + 1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 3 * htWidth + x - 27 - 2, b + y + 5 * htHeight, htWidth - 27 + 1, htHeight);
             //第五列
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y, htWidth - 27+1, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + htHeight, htWidth - 27+1, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 2 * htHeight-2, htWidth - 27+1, htHeight+2);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 3 * htHeight, htWidth - 27+1, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 4 * htHeight, htWidth - 27+1, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54-1, b + y + 5 * htHeight, htWidth - 27+1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54 - 1, b + y, htWidth - 27 + 1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54 - 1, b + y + htHeight, htWidth - 27 + 1, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54 - 1, b + y + 2 * htHeight - 2, htWidth - 27 + 1, htHeight + 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54 - 1, b + y + 3 * htHeight, htWidth - 27 + 1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54 - 1, b + y + 4 * htHeight, htWidth - 27 + 1, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 4 * htWidth + x - 54 - 1, b + y + 5 * htHeight, htWidth - 27 + 1, htHeight);
             //第六列
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x-81, b + y, htWidth - 27+2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + htHeight, htWidth - 27+2, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 2 * htHeight-2, htWidth - 27+2, htHeight+2);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 3 * htHeight, htWidth - 27+2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 4 * htHeight, htWidth - 27+2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 5 * htHeight, htWidth - 27+2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y, htWidth - 27 + 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + htHeight, htWidth - 27 + 2, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 2 * htHeight - 2, htWidth - 27 + 2, htHeight + 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 3 * htHeight, htWidth - 27 + 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 4 * htHeight, htWidth - 27 + 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 5 * htWidth + x - 81, b + y + 5 * htHeight, htWidth - 27 + 2, htHeight);
             //第七列
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x-108+2, b + y, htWidth+108-2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + htHeight, htWidth + 108-2, htHeight-2);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 2 * htHeight-2, htWidth + 108-2, htHeight+2);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 3 * htHeight, htWidth + 108-2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 4 * htHeight, htWidth + 108-2, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108+2, b + y + 5 * htHeight, htWidth + 108-2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y, htWidth + 108 - 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + htHeight, htWidth + 108 - 2, htHeight - 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 2 * htHeight - 2, htWidth + 108 - 2, htHeight + 2);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 3 * htHeight, htWidth + 108 - 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 4 * htHeight, htWidth + 108 - 2, htHeight);
+            g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 5 * htHeight, htWidth + 108 - 2, htHeight);
 
             /*
              * //第八列
@@ -1057,44 +1685,46 @@ namespace VividManagementApplication
             // 
             g.DrawString("9、其它条款：(1)本合同未尽事宜皆按中华人民共和国各项法律之规定处理。（2）本合同如有附件，既与正文具有\n同等效力。（3）本合同一经生效，以前有关本合同（本批贸易）的函电、文件与本合同具有抵触的内容均为无效。\n（4）本合同一式二份（双方各执一份），经双方代理人签字（单位须加盖公章或合同章）后生效。双方必须全面履\n行本合同，任何一方不得擅自变更或解除。", f4, new SolidBrush(Color.Black), 40 + x, 635 + y);
 
+            g.DrawString("10、双方代理人签字（单位必须加盖公章或合同章）：", f4, new SolidBrush(Color.Black), 40 + x, 695 + y);
+
             // 框
             int recWidth = (pageWidth - 60 * 2) / 2;
-            int recHeight = 330;
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 700 + y, recWidth, recHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + recWidth + x, 700 + y, recWidth, recHeight);
+            int recHeight = 310;
+            g.DrawRectangle(new Pen(Color.Black), 40 + x, 715 + y, recWidth, recHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + recWidth + x, 715 + y, recWidth, recHeight);
 
             // 框内
             fontSize = g.MeasureString("销  货  方", f45);
-            g.DrawString("销  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2, 710 + y);
-            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10, 740 + y);
-            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10, 770 + y);
-            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10, 800 + y);
-            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10, 850 + y);
-            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10, 880 + y);
-            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10, 910 + y);
-            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10, 960 + y);
-            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10, 990 + y);
+            g.DrawString("销  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2, 725 + y);
+            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10, 750 + y);
+            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10, 785 + y);
+            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10, 815 + y);
+            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10, 865 + y);
+            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10, 895 + y);
+            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10, 925 + y);
+            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10, 975 + y);
+            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10, 1005 + y);
 
             fontSize = g.MeasureString("购  货  方", f45);
-            g.DrawString("购  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2 + recWidth, 710 + y);
-            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 740 + y);
-            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 770 + y);
-            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 800 + y);
-            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 850 + y);
-            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 880 + y);
-            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 910 + y);
-            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 960 + y);
-            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 990 + y);
+            g.DrawString("购  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2 + recWidth, 725 + y);
+            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 750 + y);
+            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 785 + y);
+            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 815 + y);
+            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 865 + y);
+            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 895 + y);
+            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 925 + y);
+            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 975 + y);
+            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 1005 + y);
             //框内文字
-            
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x +recWidth/2-20, 740 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 770 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 800 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 850 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 880 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 910 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 960 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black),  x + recWidth / 2-20, 990 + y);
+
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 740 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 770 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 800 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 850 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 880 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 910 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 960 + y);
+            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 990 + y);
 
             g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 740 + y);
             g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 770 + y);
@@ -1113,413 +1743,131 @@ namespace VividManagementApplication
             //fontSize = g.MeasureString("专业软件定制 888888888", f6);
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, 35);
 
-            g.DrawString("合同版本由唯达软件系统提供   软件定制电话: 0573-8888 8888", f6, new SolidBrush(Color.Red), 40 + x, pageHeight - 85);
+            g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, pageHeight - 90);
             //g.DrawString("共1页 一式两份", f6, new SolidBrush(Color.Red), pageWidth / 2 - 50, pageHeight - 35);
             //fontSize = g.MeasureString("专业软件定制 888888888", f6);
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, pageHeight - 50);
         }
         #endregion
 
-        //为生成新行添加值
-        private void DetailedDataGridView_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        private void cbHTGoodsNameA_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        // 进仓单 出仓单 采购单 销售单
-        private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbA);
-            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbB);
-            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbC);
-            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbD);
-            FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbE);
-
-            if (MainWindow.CURRENT_TAB == 3) //仓储管理
+            if (cbHTGoodsNameA.SelectedIndex != -1)
             {
-                controlsPreName = "tbDz";
-                indexCount = 11;
-                mainID = tbDz2.Text;
-
-                switch (danziComboBox.SelectedIndex)
+                if (cbHTGoodsNameA.Text.Equals(""))
                 {
-                    case 0://进仓单
-                        lbDzTitle.Text = "商品（货物）进仓单";
-                        table = "jcdList";
-                        baseName = "jcdID";
-                        queryArray = new string[] { "clientID", "jcdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
-                        break;
-                    case 1://出仓单
-                        lbDzTitle.Text = "商品（货物）出仓单";
-                        table = "ccdList";
-                        baseName = "ccdID";
-                        queryArray = new string[] { "clientID", "ccdID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
-                        break;
-                    default:
-                        break;
-                }
-            }
-            else if (MainWindow.CURRENT_TAB == 4) //业务管理
-            {
-                switch (danziComboBox.SelectedIndex)
-                {
-                    case 0://采购单
-                        lbDzTitle.Text = "商品（货物）采购单";
-                        table = "cgdList";
-                        baseName = "cgdID";
-                        queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
-                        // 自动生成ID
-                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
-                        break;
-                    case 1://销售单
-                        lbDzTitle.Text = "商品（货物）销售单";
-                        table = "xsdList";
-                        baseName = "xsdID";
-                        queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
-                        // 自动生成ID
-                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
-                        break;
-                }
-            }
-        }
-
-        private void pzComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            table = "pzList";
-            baseName = "pzID";
-            queryArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
-            controlsPreName = "tbPz";
-            // 自动生成ID
-            tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
-            switch (pzComboBox.SelectedIndex)
-            {
-                default:
-                    break;
-                case 0:// 收款凭证
-                    lbPzTitle.Text = "收 款 凭 证";
-                    break;
-                case 1:// 付款凭证
-                    lbPzTitle.Text = "付 款 凭 证";
-                    break;
-                case 2:// 领款凭证
-                    lbPzTitle.Text = "领 款 凭 证";
-                    break;
-                case 3:// 还款凭证
-                    lbPzTitle.Text = "还 款 凭 证";
-                    break;
-                case 4:// 报销凭证
-                    lbPzTitle.Text = "报 销 凭 证";
-                    break;
-            }
-        }
-
-        private void addItemsToCombox(List<String> items, ComboBox cb)
-        {
-            foreach (string item in items)
-            {
-                cb.Items.Add(item);
-            }
-        }
-
-        // 进仓单 出仓单 
-        private void JCCDSetControlsValue(List<Control> lcs, Control byIdControl)
-        {
-            if (danziComboBox.SelectedIndex == 0)
-            { // 进仓单
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "id", byIdControl.Text).ToList<String>());
-            }
-            else
-            { // 出仓单
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "id", byIdControl.Text).ToList<String>());
-            }
-        }
-        /// <summary>
-        /// 清空之后的数据
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
-        private void clearControlValueByList(List<Control> conList)
-        {
-            foreach (Control con in conList)
-            {
-                con.Text = "";
-            }
-        }
-
-        private void JCDcbA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (JCDcbA.SelectedIndex != -1)
-            {
-                if (JCDcbA.Text.Equals(""))
-                {
-                    AJCDtb5.ReadOnly = true;
-                    clearControlValueByList(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6 });
+                    cbHTGoodsA5.ReadOnly = true;
+                    cbHTGoodsA7.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { cbHTGoodsA0, cbHTGoodsA1, cbHTGoodsA2, cbHTGoodsA3, cbHTGoodsA4, cbHTGoodsA5, cbHTGoodsA6, cbHTGoodsA7 });
                 }
                 else
                 {
-                    AJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, JCDcbA);
+                    cbHTGoodsA5.ReadOnly = false;
+                    cbHTGoodsA7.ReadOnly = false;
+                    HtSetControlsValue(new List<Control>() { cbHTGoodsA0, cbHTGoodsA1, cbHTGoodsA2, cbHTGoodsA3, cbHTGoodsA4 }, cbHTGoodsNameA);
                 }
             }
         }
 
-        private void JCDcbB_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHTGoodsNameB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (JCDcbB.SelectedIndex != -1)
+            if (cbHTGoodsNameB.SelectedIndex != -1)
             {
-                if (JCDcbB.Text.Equals(""))
+                if (cbHTGoodsNameB.Text.Equals(""))
                 {
-                    BJCDtb5.ReadOnly = true;
-                    clearControlValueByList(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6 });
+                    cbHTGoodsB5.ReadOnly = true;
+                    cbHTGoodsB7.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { cbHTGoodsB0, cbHTGoodsB1, cbHTGoodsB2, cbHTGoodsB3, cbHTGoodsB4, cbHTGoodsB5, cbHTGoodsB6, cbHTGoodsB7 });
                 }
                 else
                 {
-                    BJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, JCDcbB);
+                    cbHTGoodsB5.ReadOnly = false;
+                    cbHTGoodsB7.ReadOnly = false;
+                    HtSetControlsValue(new List<Control>() { cbHTGoodsB0, cbHTGoodsB1, cbHTGoodsB2, cbHTGoodsB3, cbHTGoodsB4 }, cbHTGoodsNameB);
                 }
             }
         }
 
-        private void JCDcbC_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHTGoodsNameC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (JCDcbC.SelectedIndex != -1)
+            if (cbHTGoodsNameC.SelectedIndex != -1)
             {
-                if (JCDcbC.Text.Equals(""))
+                if (cbHTGoodsNameC.Text.Equals(""))
                 {
-                    CJCDtb5.ReadOnly = true;
-                    clearControlValueByList(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6 });
+                    cbHTGoodsC5.ReadOnly = true;
+                    cbHTGoodsC7.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { cbHTGoodsC0, cbHTGoodsC1, cbHTGoodsC2, cbHTGoodsC3, cbHTGoodsC4, cbHTGoodsC5, cbHTGoodsC6, cbHTGoodsC7 });
                 }
                 else
                 {
-                    CJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, JCDcbC);
+                    cbHTGoodsC5.ReadOnly = false;
+                    cbHTGoodsC7.ReadOnly = false;
+                    HtSetControlsValue(new List<Control>() { cbHTGoodsC0, cbHTGoodsC1, cbHTGoodsC2, cbHTGoodsC3, cbHTGoodsC4 }, cbHTGoodsNameC);
                 }
             }
         }
 
-        private void JCDcbD_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHTGoodsNameD_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (JCDcbD.SelectedIndex != -1)
+            if (cbHTGoodsNameD.SelectedIndex != -1)
             {
-                if (JCDcbD.Text.Equals(""))
+                if (cbHTGoodsNameD.Text.Equals(""))
                 {
-                    DJCDtb5.ReadOnly = true;
-                    clearControlValueByList(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6 });
+                    cbHTGoodsD5.ReadOnly = true;
+                    cbHTGoodsD7.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { cbHTGoodsD0, cbHTGoodsD1, cbHTGoodsD2, cbHTGoodsD3, cbHTGoodsD4, cbHTGoodsD5, cbHTGoodsD6, cbHTGoodsD7 });
                 }
                 else
                 {
-                    DJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, JCDcbD);
+                    cbHTGoodsD5.ReadOnly = false;
+                    cbHTGoodsD7.ReadOnly = false;
+                    HtSetControlsValue(new List<Control>() { cbHTGoodsD0, cbHTGoodsD1, cbHTGoodsD2, cbHTGoodsD3, cbHTGoodsD4 }, cbHTGoodsNameD);
                 }
             }
         }
 
-        private void JCDcbE_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHTGoodsNameE_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (JCDcbE.SelectedIndex != -1)
+            if (cbHTGoodsNameE.SelectedIndex != -1)
             {
-                if (JCDcbE.Text.Equals(""))
+                if (cbHTGoodsNameE.Text.Equals(""))
                 {
-                    EJCDtb5.ReadOnly = true;
-                    clearControlValueByList(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6 });
+                    cbHTGoodsE5.ReadOnly = true;
+                    cbHTGoodsE7.ReadOnly = true;
+                    clearControlValueByList(new List<Control>() { cbHTGoodsE0, cbHTGoodsE1, cbHTGoodsE2, cbHTGoodsE3, cbHTGoodsE4, cbHTGoodsE5, cbHTGoodsE6, cbHTGoodsE7 });
                 }
                 else
                 {
-                    EJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, JCDcbE);
+                    cbHTGoodsE5.ReadOnly = false;
+                    cbHTGoodsE7.ReadOnly = false;
+                    HtSetControlsValue(new List<Control>() { cbHTGoodsE0, cbHTGoodsE1, cbHTGoodsE2, cbHTGoodsE3, cbHTGoodsE4 }, cbHTGoodsNameE);
                 }
             }
         }
 
-        //
-        private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHTGoodsA5_TextChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "id", tbDz1.Text).ToList<String>());
+            calculateSmallSum(cbHTGoodsA4, cbHTGoodsA5, cbHTGoodsA6);
         }
 
-        private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbHTGoodsB5_TextChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "id", tbPz1.Text).ToList<String>());
+            calculateSmallSum(cbHTGoodsB4, cbHTGoodsB5, cbHTGoodsB6);
         }
 
-        /// <summary>
-        /// 计算金钱价格
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        ///
-        private void calculateSmallSum(Control left, Control right, Control result)
+        private void cbHTGoodsC5_TextChanged(object sender, EventArgs e)
         {
-            int test1, test2;
-            if (left.Text.Equals("") || right.Text.Equals("") || !int.TryParse(left.Text, out test1) || !int.TryParse(right.Text, out test2))
-            {
-
-            }
-            else
-            {
-                result.Text = (int.Parse(left.Text) * int.Parse(right.Text)).ToString();
-            }
-        }
-        private void AJCDtb5_TextChanged(object sender, EventArgs e)
-        {
-            calculateSmallSum(AJCDtb4, AJCDtb5, AJCDtb6);
+            calculateSmallSum(cbHTGoodsC4, cbHTGoodsC5, cbHTGoodsC6);
         }
 
-        private void BJCDtb5_TextChanged(object sender, EventArgs e)
+        private void cbHTGoodsD5_TextChanged(object sender, EventArgs e)
         {
-            calculateSmallSum(BJCDtb4, BJCDtb5, BJCDtb6);
+            calculateSmallSum(cbHTGoodsD4, cbHTGoodsD5, cbHTGoodsD6);
         }
 
-        private void CJCDtb5_TextChanged(object sender, EventArgs e)
+        private void cbHTGoodsE5_TextChanged(object sender, EventArgs e)
         {
-            calculateSmallSum(CJCDtb4, CJCDtb5, CJCDtb6);
-        }
-
-        private void DJCDtb5_TextChanged(object sender, EventArgs e)
-        {
-            calculateSmallSum(DJCDtb4, DJCDtb5, DJCDtb6);
-        }
-
-        private void EJCDtb5_TextChanged(object sender, EventArgs e)
-        {
-            calculateSmallSum(EJCDtb4, EJCDtb5, EJCDtb6);
-        }
-
-        /// <summary>
-        /// 计算总共价钱并设置
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        /// 
-        private void SetTotalSum(List<Control> conList, Control resultControl)
-        {
-            int sum = 0;
-            foreach (Control con in conList)
-            {
-                if (!con.Text.Equals(""))
-                {
-                    sum += int.Parse(con.Text);
-                }
-            }
-            resultControl.Text = sum.ToString() + "=" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
-        }
-
-        private void calculateSumForDz(object sender, EventArgs e)
-        {
-            SetTotalSum(new List<Control>() { AJCDtb6, BJCDtb6, CJCDtb6, DJCDtb6, EJCDtb6 }, tbDz3);
-        }
-
-        private void calculateSumForPz(object sender, EventArgs e)
-        {
-            SetTotalSum(new List<Control>() { APztb0, BPztb0, CPztb0, DPztb0, EPztb0 }, SumtbPz);
-        }
-
-        /// <summary>
-        /// 只能输入字符
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void numberInputOnly_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键
-            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数
-            if (e.KeyChar > 0x20)
-            {
-                try
-                {
-                    double.Parse(((TextBox)sender).Text + e.KeyChar.ToString());
-                }
-                catch
-                {
-                    e.KeyChar = (char)0;   //处理非法字符
-                }
-            }
-        }
-        #region 选择现金 银行卡 其他
-
-        private void APztb1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (APztb1.SelectedIndex == 0)
-            {
-                APztb2.ReadOnly = true;
-                APztb3.ReadOnly = true;
-            }
-            else
-            {
-                APztb2.ReadOnly = false;
-                APztb3.ReadOnly = false;
-            }
-        }
-
-        private void BPztb1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (BPztb1.SelectedIndex == 0)
-            {
-                BPztb2.ReadOnly = true;
-                APztb3.ReadOnly = true;
-            }
-            else
-            {
-                BPztb2.ReadOnly = false;
-                BPztb3.ReadOnly = false;
-            }
-        }
-
-        private void CPztb1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (CPztb1.SelectedIndex == 0)
-            {
-                CPztb2.ReadOnly = true;
-                CPztb3.ReadOnly = true;
-            }
-            else
-            {
-                CPztb2.ReadOnly = false;
-                CPztb3.ReadOnly = false;
-            }
-        }
-
-        private void DPztb1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DPztb1.SelectedIndex == 0)
-            {
-                DPztb2.ReadOnly = true;
-                DPztb3.ReadOnly = true;
-            }
-            else
-            {
-                DPztb2.ReadOnly = false;
-                DPztb3.ReadOnly = false;
-            }
-        }
-
-        private void EPztb1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (EPztb1.SelectedIndex == 0)
-            {
-                EPztb2.ReadOnly = true;
-                EPztb3.ReadOnly = true;
-            }
-            else
-            {
-                EPztb2.ReadOnly = false;
-                EPztb3.ReadOnly = false;
-            }
-        }
-        #endregion
-
-        private void TextBoxCheckIfDuplicate_Validated(object sender, EventArgs e)
-        {
-            if (ItemId.Equals("-1") || !ItemId.Equals((sender as TextBox).Text))
-            {
-                if (DatabaseConnections.GetInstence().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
-                {
-                    MessageBox.Show("您设定的编号已经被占用, 请再次输入", "错误");
-                    (sender as TextBox).Text = ItemId.Equals("-1") ? "" : ItemId;
-                    (sender as TextBox).Focus();
-                }
-            }
+            calculateSmallSum(cbHTGoodsE4, cbHTGoodsE5, cbHTGoodsE6);
         }
 
 

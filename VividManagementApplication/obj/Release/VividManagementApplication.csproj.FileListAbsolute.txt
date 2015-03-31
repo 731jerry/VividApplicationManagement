@@ -114,3 +114,4 @@ Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Properties.Resources.resources
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Setting.resources
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache

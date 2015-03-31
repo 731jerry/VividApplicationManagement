@@ -467,7 +467,7 @@ namespace VividManagementApplication
             Column8.HeaderText = "备注";
 
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods",
-                new string[] { "id", "name", "guige", "dengji", "currentCount", "currntsalesPrice", "beizhu" });
+                new string[] { "goodID", "name", "guige", "dengji", "currentCount", "currntsalesPrice", "beizhu" });
         }
 
         private void listJcdButton_Click(object sender, EventArgs e)
@@ -574,8 +574,8 @@ namespace VividManagementApplication
             Column2.HeaderText = "签订日期";
             Column3.HeaderText = "合同类型";
             Column4.HeaderText = "对方单位名称";
-            Column5.HeaderText = "合同金额（元）";
-            Column6.HeaderText = "状态";
+            Column5.HeaderText = "合同金额";
+            Column6.HeaderText = "作废标识";
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName", "sum", "discardFlag" });

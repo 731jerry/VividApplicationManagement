@@ -1,3 +1,40 @@
+2015/3/31 16:16:54-无法查看详细
+###异常消息Message: SQLite error
+no such column: modifyTime
+###当前异常StackTrace:    at System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   at VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:line 242
+   at VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:line 422
+===================================================
+
+2015/3/31 16:16:52-无法查看详细
+###异常消息Message: SQLite error
+no such column: modifyTime
+###当前异常StackTrace:    at System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   at System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   at System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   at System.Data.SQLite.SQLiteDataReader.NextResult()
+   at System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   at VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:line 242
+   at VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:line 422
+===================================================
+
+2015/3/31 16:05:40-无法查看详细
+###异常消息Message: Input string was not in a correct format.
+###当前异常StackTrace:    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:line 442
+   at VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() in c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:line 432
+===================================================
+
 2015/3/30 20:25:48-无法查看详细
 ###异常消息Message: 输入字符串的格式不正确。
 ###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)

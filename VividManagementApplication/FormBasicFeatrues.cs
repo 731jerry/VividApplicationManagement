@@ -139,7 +139,7 @@ namespace VividManagementApplication
             string result = "";
             int gap = 0;
             string temp = "";
-            if (originalString.Length < bit)
+            if (originalString.Length <= bit)
             {
                 gap = bit - originalString.Length;
                 for (int i = 0; i < gap; i++)
