@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
+            this.settingQQButton = new ControlExs.QQButton();
             this.mainDGVTitle = new System.Windows.Forms.Label();
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
@@ -74,7 +75,7 @@
             this.lblSHOWS = new System.Windows.Forms.Label();
             this.commerceTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.settingQQButton = new ControlExs.QQButton();
+            this.qqButton1 = new ControlExs.QQButton();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -128,6 +129,7 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.settingQQButton);
             this.ContentPanel.Controls.Add(this.mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
@@ -137,6 +139,13 @@
             this.ContentPanel.Controls.Add(this.ViewButton);
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.Name = "ContentPanel";
+            // 
+            // settingQQButton
+            // 
+            resources.ApplyResources(this.settingQQButton, "settingQQButton");
+            this.settingQQButton.Name = "settingQQButton";
+            this.settingQQButton.UseVisualStyleBackColor = true;
+            this.settingQQButton.Click += new System.EventHandler(this.settingQQButton_Click);
             // 
             // mainDGVTitle
             // 
@@ -424,12 +433,12 @@
             this.imageList1.Images.SetKeyName(1, "Delete_2_24.png");
             this.imageList1.Images.SetKeyName(2, "AppBox_grid.png");
             // 
-            // settingQQButton
+            // qqButton1
             // 
-            resources.ApplyResources(this.settingQQButton, "settingQQButton");
-            this.settingQQButton.Name = "settingQQButton";
-            this.settingQQButton.UseVisualStyleBackColor = true;
-            this.settingQQButton.Click += new System.EventHandler(this.settingQQButton_Click);
+            resources.ApplyResources(this.qqButton1, "qqButton1");
+            this.qqButton1.Name = "qqButton1";
+            this.qqButton1.UseVisualStyleBackColor = true;
+            this.qqButton1.Click += new System.EventHandler(this.qqButton1_Click_1);
             // 
             // MainWindow
             // 
@@ -505,6 +514,7 @@
         private ControlExs.QQButton settingQQButton;
         private ControlExs.QQButton listXsButton;
         public System.Windows.Forms.Label mainDGVTitle;
+        private ControlExs.QQButton qqButton1;
     }
 }
 

@@ -23,23 +23,23 @@ namespace VividManagementApplication
         public static int CURRENT_TAB = 1;
         public static QQButton CURRENT_LIST_BUTTON;
 
-        public static bool IS_LOGED_IN;
-        public static string ID;
-        public static string USER_ID;
-        public static string PASSWORD_HASH;
-        public static string REAL_NAME;
-        public static string WORKLOADS;
-        public static string COMPANY_NAME;
-        public static string COMPANY_OWNER;
-        public static string ADDRESS;
-        public static string BANK_NAME;
-        public static string BANK_CARD;
-        public static string PHONE;
-        public static string FAX;
-        public static string QQ;
-        public static string EMAIL;
-        public static string ADDTIME;
-        public static string NOTIFICATION;
+        public static bool IS_LOGED_IN = false;
+        public static string ID = "";
+        public static string USER_ID = "";
+        public static string PASSWORD_HASH = "";
+        public static string REAL_NAME = "";
+        public static string WORKLOADS = "";
+        public static string COMPANY_NAME = "";
+        public static string COMPANY_OWNER = "";
+        public static string ADDRESS = "";
+        public static string BANK_NAME = "";
+        public static string BANK_CARD = "";
+        public static string PHONE = "";
+        public static string FAX = "";
+        public static string QQ = "";
+        public static string EMAIL = "";
+        public static string ADDTIME = "";
+        public static string NOTIFICATION = "";
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -446,7 +446,7 @@ namespace VividManagementApplication
             Column7.HeaderText = "备注";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods", 
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods",
                 new string[] { "goodID", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
         }
 
@@ -496,7 +496,7 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4}, "ccdList",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "ccdList",
                 new string[] { "ccdID", "companyName", "goodsName", "discardFlag" });
         }
 
@@ -515,7 +515,7 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList", 
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList",
                 new string[] { "cgdID", "companyName", "goodsName", "discardFlag" });
         }
 
@@ -532,7 +532,7 @@ namespace VividManagementApplication
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList",
                 new string[] { "xsdID", "companyName", "goodsName", "discardFlag" });
-        
+
         }
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
@@ -636,6 +636,11 @@ namespace VividManagementApplication
         {
             Setting st = new Setting();
             st.ShowDialog();
+        }
+
+        private void qqButton1_Click_1(object sender, EventArgs e)
+        {
+            MessageBox.Show(FormBasicFeatrues.GetInstence().addCharIntoString("   ", "购买合同") + "haha");
         }
 
     }

@@ -413,7 +413,8 @@ namespace VividManagementApplication
         }
 
         // 缘模原样迁移从属panel
-        public void moveParentPanel(Panel fromP, Panel toP) {
+        public void moveParentPanel(Panel fromP, Panel toP)
+        {
             foreach (Control item in fromP.Controls)
             {
                 //int oriX = item.Location.X;
@@ -542,10 +543,39 @@ namespace VividManagementApplication
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-        public void reTriggleCombox(ComboBox cb) {
+        public void reTriggleCombox(ComboBox cb)
+        {
             int index = cb.SelectedIndex;
             cb.SelectedIndex = -1;
             cb.SelectedIndex = index;
+        }
+
+        /// <summary>
+        /// 在字中加入特定字符
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        public String addCharIntoString(String addingChar, String oriString)
+        {
+            String newString = "";
+            List<String> newStringList = new List<string>();
+            if (!oriString.Equals("") || oriString != null)
+            {
+                for (int i = 0; i < oriString.Length; i++)
+                {
+                    newStringList.Add(oriString.Substring(i, 1));
+                    if (i < oriString.Length - 1)
+                    {
+                        newStringList.Add(addingChar);
+                    }
+                }
+                foreach (String item in newStringList)
+                {
+                    newString += item;
+                }
+            }
+            return newString;
         }
     }
 }

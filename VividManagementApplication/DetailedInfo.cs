@@ -1443,21 +1443,21 @@ namespace VividManagementApplication
             Font f1 = new Font("宋体", 18, FontStyle.Bold);
             Font f2 = new Font("黑体", 14, FontStyle.Bold);
             Font f3 = new Font("宋体", 12);
-            Font f4 = new Font("华文行楷", 9);
-            Font f45 = new Font("华文行楷", 9, FontStyle.Bold);
-            Font f5 = new Font("华文行楷", 9, FontStyle.Underline);
+            Font f4 = new Font("楷体", 9);//华文行楷
+            Font f45 = new Font("楷体", 9, FontStyle.Bold);//华文行楷
+            Font f5 = new Font("楷体", 9, FontStyle.Underline);//华文行楷
             Font f6 = new Font("楷体", 9);
-            Font f7 = new Font("华文行楷", 10);
+            Font f7 = new Font("楷体", 10);//华文行楷
 
             SizeF fontSize;
 
             //
-            fontSize = g.MeasureString("桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司", f3);
-            g.DrawString("桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司", f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
+            fontSize = g.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3);//桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司
+            g.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
 
             //
-            fontSize = g.MeasureString(HTcbName.Text, f1);//"购 销 合 同"
-            g.DrawString(HTcbName.Text, f1, new SolidBrush(Color.Red), pageWidth / 2 - fontSize.Width / 2 + x, 30 + y);
+            fontSize = g.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString(" ", HTcbName.Text), f1);//"购 销 合 同"
+            g.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString(" ", HTcbName.Text), f1, new SolidBrush(Color.Red), pageWidth / 2 - fontSize.Width / 2 + x, 30 + y);
 
             //
             g.DrawString("购货方：", f4, new SolidBrush(Color.Black), 40 + x, 80 + y);
@@ -1511,46 +1511,63 @@ namespace VividManagementApplication
             g.DrawString("单价", f4, new SolidBrush(Color.Black), 392 + x + 20, 242 + y);
             g.DrawString("金额", f4, new SolidBrush(Color.Black), 464 + x + 20, 242 + y);
             g.DrawString("交（提）货日期及地点", f4, new SolidBrush(Color.Black), 555 + x + 20, 242 + y);
+
+            float LieX1 = 43 + x;
+            float LieX2 = 146 + x;
+            float LieX3 = 243 + x;
+            float LieX4 = 317 + x + 20;
+            float LieX5 = 392 + x + 18;
+            float LieX6 = 464 + x + 18;
+            float LieX7 = 555 + x -10;
+
+            float HangY1 = 279 + y;
+            float HangY2 = 318 + y;
+            float HangY3 = 355 + y;
+            float HangY4 = 392 + y;
+            float HangY5 = 429 + y;
+
             //第二行
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 43 + x + 20, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 146 + x + 20, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 243 + x + 20, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 317 + x + 20, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 279 + y);
-            g.DrawString("1", f4, new SolidBrush(Color.Black), 555 + x + 20, 279 + y);
+            g.DrawString(cbHTGoodsA0.Text, f4, new SolidBrush(Color.Black), LieX1, HangY1);
+            g.DrawString(cbHTGoodsA1.Text, f4, new SolidBrush(Color.Black), LieX2, HangY1);
+            g.DrawString(cbHTGoodsA3.Text, f4, new SolidBrush(Color.Black), LieX3, HangY1);
+            g.DrawString(cbHTGoodsA4.Text, f4, new SolidBrush(Color.Black), LieX4, HangY1);
+            g.DrawString(cbHTGoodsA5.Text, f4, new SolidBrush(Color.Black), LieX5, HangY1);
+            g.DrawString(cbHTGoodsA6.Text, f4, new SolidBrush(Color.Black), LieX6, HangY1);
+            g.DrawString(cbHTGoodsA7.Text, f4, new SolidBrush(Color.Black), LieX7, HangY1);
             //第三行
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 43 + x + 20, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 146 + x + 20, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 243 + x + 20, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 317 + x + 20, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 318 + y);
-            g.DrawString("2", f4, new SolidBrush(Color.Black), 555 + x + 20, 318 + y);
+            g.DrawString(cbHTGoodsB0.Text, f4, new SolidBrush(Color.Black), LieX1, HangY2);
+            g.DrawString(cbHTGoodsB1.Text, f4, new SolidBrush(Color.Black), LieX2, HangY2);
+            g.DrawString(cbHTGoodsB3.Text, f4, new SolidBrush(Color.Black), LieX3, HangY2);
+            g.DrawString(cbHTGoodsB4.Text, f4, new SolidBrush(Color.Black), LieX4, HangY2);
+            g.DrawString(cbHTGoodsB5.Text, f4, new SolidBrush(Color.Black), LieX5, HangY2);
+            g.DrawString(cbHTGoodsB6.Text, f4, new SolidBrush(Color.Black), LieX6, HangY2);
+            g.DrawString(cbHTGoodsB7.Text, f4, new SolidBrush(Color.Black), LieX7, HangY2);
             //第四行
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 43 + x + 20, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 146 + x + 20, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 243 + x + 20, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 317 + x + 20, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 355 + y);
-            g.DrawString("3", f4, new SolidBrush(Color.Black), 555 + x + 20, 355 + y);
+            g.DrawString(cbHTGoodsC0.Text, f4, new SolidBrush(Color.Black), LieX1, HangY3);
+            g.DrawString(cbHTGoodsC1.Text, f4, new SolidBrush(Color.Black), LieX2, HangY3);
+            g.DrawString(cbHTGoodsC3.Text, f4, new SolidBrush(Color.Black), LieX3, HangY3);
+            g.DrawString(cbHTGoodsC4.Text, f4, new SolidBrush(Color.Black), LieX4, HangY3);
+            g.DrawString(cbHTGoodsC5.Text, f4, new SolidBrush(Color.Black), LieX5, HangY3);
+            g.DrawString(cbHTGoodsC6.Text, f4, new SolidBrush(Color.Black), LieX6, HangY3);
+            g.DrawString(cbHTGoodsC7.Text, f4, new SolidBrush(Color.Black), LieX7, HangY3);
             //第五行
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 43 + x + 20, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 146 + x + 20, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 243 + x + 20, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 317 + x + 20, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 392 + y);
-            g.DrawString("4", f4, new SolidBrush(Color.Black), 555 + x + 20, 392 + y);
+            g.DrawString(cbHTGoodsD0.Text, f4, new SolidBrush(Color.Black), LieX1, HangY4);
+            g.DrawString(cbHTGoodsD1.Text, f4, new SolidBrush(Color.Black), LieX2, HangY4);
+            g.DrawString(cbHTGoodsD3.Text, f4, new SolidBrush(Color.Black), LieX3, HangY4);
+            g.DrawString(cbHTGoodsD4.Text, f4, new SolidBrush(Color.Black), LieX4, HangY4);
+            g.DrawString(cbHTGoodsD5.Text, f4, new SolidBrush(Color.Black), LieX5, HangY4);
+            g.DrawString(cbHTGoodsD6.Text, f4, new SolidBrush(Color.Black), LieX6, HangY4);
+            g.DrawString(cbHTGoodsD7.Text, f4, new SolidBrush(Color.Black), LieX7, HangY4);
             //第六行
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 43 + x + 20, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 146 + x + 20, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 243 + x + 20, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 317 + x + 20, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 392 + x + 20 + 2, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 464 + x + 20 + 2, 429 + y);
-            g.DrawString("5", f4, new SolidBrush(Color.Black), 555 + x + 20, 429 + y);
+            g.DrawString(cbHTGoodsE0.Text, f4, new SolidBrush(Color.Black), LieX1, HangY5);
+            g.DrawString(cbHTGoodsE1.Text, f4, new SolidBrush(Color.Black), LieX2, HangY5);
+            g.DrawString(cbHTGoodsE3.Text, f4, new SolidBrush(Color.Black), LieX3, HangY5);
+            g.DrawString(cbHTGoodsE4.Text, f4, new SolidBrush(Color.Black), LieX4, HangY5);
+            g.DrawString(cbHTGoodsE5.Text, f4, new SolidBrush(Color.Black), LieX5, HangY5);
+            g.DrawString(cbHTGoodsE6.Text, f4, new SolidBrush(Color.Black), LieX6, HangY5);
+            g.DrawString(cbHTGoodsE7.Text, f4, new SolidBrush(Color.Black), LieX7, HangY5);
+
+            //
             //第一列
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y, htWidth, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + htHeight, htWidth, htHeight - 2);
@@ -1559,7 +1576,6 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 4 * htHeight, htWidth, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + x, b + y + 5 * htHeight, htWidth, htHeight);
             //g.DrawString(, f4, new SolidBrush(Color.Black), 555 + x + 20, 242 + y);
-
 
             //第二列
             g.DrawRectangle(new Pen(Color.Black), a + htWidth + x, b + y, htWidth - 2, htHeight);
@@ -1693,47 +1709,54 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), 40 + x, 715 + y, recWidth, recHeight);
             g.DrawRectangle(new Pen(Color.Black), 40 + recWidth + x, 715 + y, recWidth, recHeight);
 
+            float KuangY1 = 725 + y;
+            float KuangY2 = 750 + y;
+            float KuangY3 = 785 + y;
+            float KuangY4 = 815 + y;
+            float KuangY5 = 865 + y;
+            float KuangY6 = 895 + y;
+            float KuangY7 = 925 + y;
+            float KuangY8 = 975 + y;
+            float KuangY9 = 1005 + y;
             // 框内
-            fontSize = g.MeasureString("销  货  方", f45);
-            g.DrawString("销  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2, 725 + y);
-            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10, 750 + y);
-            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10, 785 + y);
-            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10, 815 + y);
-            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10, 865 + y);
-            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10, 895 + y);
-            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10, 925 + y);
-            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10, 975 + y);
-            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10, 1005 + y);
-
             fontSize = g.MeasureString("购  货  方", f45);
-            g.DrawString("购  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2 + recWidth, 725 + y);
-            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 750 + y);
-            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 785 + y);
-            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 815 + y);
-            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 865 + y);
-            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 895 + y);
-            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 925 + y);
-            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 975 + y);
-            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, 1005 + y);
+            g.DrawString("购  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2, KuangY1);
+            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY2);
+            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY3);
+            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY4);
+            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY5);
+            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY6);
+            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY7);
+            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY8);
+            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10, KuangY9);
+
+            fontSize = g.MeasureString("销  货  方", f45);
+            g.DrawString("销  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2 + recWidth, KuangY1);
+            g.DrawString("单位名称：（章）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY2);
+            g.DrawString("法人代表：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY3);
+            g.DrawString("地    址：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY4);
+            g.DrawString("电    话：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY5);
+            g.DrawString("传    真：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY6);
+            g.DrawString("代 理 人：\n（签 字）", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY7);
+            g.DrawString("开户银行：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY8);
+            g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY9);
             //框内文字
 
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 740 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 770 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 800 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 850 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 880 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 910 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 960 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20, 990 + y);
+            g.DrawString(tbHTxsfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15, KuangY2);
+            g.DrawString(tbHTxsfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY3);
+            g.DrawString(tbHTxsfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY4);
+            g.DrawString(tbHTxsfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY5);
+            g.DrawString(tbHTxsfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY6);
+            g.DrawString(tbHTxsfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY8);
+            g.DrawString(tbHTxsfBankNumber.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY9);
 
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 740 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 770 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 800 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 850 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 880 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 910 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 960 + y);
-            g.DrawString("7", f4, new SolidBrush(Color.Black), x + recWidth / 2 - 20 + recWidth, 990 + y);
+            g.DrawString(tbHTghfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15 + recWidth, KuangY2);
+            g.DrawString(tbHTghfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY3);
+            g.DrawString(tbHTghfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY4);
+            g.DrawString(tbHTghfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY5);
+            g.DrawString(tbHTghfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY6);
+            g.DrawString(tbHTghfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY8);
+            g.DrawString(tbHTghfBankNumber.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY9);
 
 
 
