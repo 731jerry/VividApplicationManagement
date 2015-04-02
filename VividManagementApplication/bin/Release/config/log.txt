@@ -1,3 +1,31 @@
+2015/4/2 20:43:45-无法查看详细
+###异常消息Message: SQLite error
+no such column: kxQq
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 242
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 217
+===================================================
+
+2015/4/2 20:43:36-无法查看详细
+###异常消息Message: SQLite error
+no such column: kxQq
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteDataReader.NextResult()
+   在 System.Data.SQLite.SQLiteDataReader..ctor(SQLiteCommand cmd, CommandBehavior behave)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteReader()
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 242
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 217
+===================================================
+
 2015/3/31 16:16:54-无法查看详细
 ###异常消息Message: SQLite error
 no such column: modifyTime

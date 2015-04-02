@@ -683,7 +683,29 @@ namespace VividManagementApplication
 
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
-            SetPrintPreview(7);
+            int printFlag = 0;
+            switch (MainWindow.CURRENT_TAB)
+            {
+                default:
+                    break;
+                case 1: // 客户管理
+                    break;
+                case 2: // 商品管理
+                    break;
+                case 3: // 存储管理 进仓单 出仓单
+                    printFlag = 1;
+                    break;
+                case 4: // 业务管理 采购单 销售单 客户对账单
+                    printFlag = 4;
+                    break;
+                case 5:  // 财务管理 凭证 收付汇总表
+                    printFlag = 5;
+                    break;
+                case 6: // 合同
+                    printFlag = 7;
+                    break;
+            }
+            SetPrintPreview(printFlag);
             //SetPrintPreview(MainWindow.CURRENT_TAB);
         }
 
@@ -1222,7 +1244,7 @@ namespace VividManagementApplication
                     //PrintWithDGV(0, 0, panel9, dgvYWDZ, 30, e);
                     break;
                 case 5: // 凭证
-                    //PrintGeneral(0, 0, panelPZ, e);
+                    PrintGeneral(0, 0, DetailedPZPanel, e);
                     break;
                 case 6: // 收付汇总表
                     //PrintWithDGV(0, 0, panelHZB, dgvSFHZB, 30, e);
