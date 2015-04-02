@@ -1456,13 +1456,13 @@ namespace VividManagementApplication
             g.DrawString("桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司", f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
 
             //
-            fontSize = g.MeasureString("购 销 合 同", f1);
-            g.DrawString("购 销 合 同", f1, new SolidBrush(Color.Red), pageWidth / 2 - fontSize.Width / 2 + x, 30 + y);
+            fontSize = g.MeasureString(HTcbName.Text, f1);//"购 销 合 同"
+            g.DrawString(HTcbName.Text, f1, new SolidBrush(Color.Red), pageWidth / 2 - fontSize.Width / 2 + x, 30 + y);
 
             //
             g.DrawString("购货方：", f4, new SolidBrush(Color.Black), 40 + x, 80 + y);
             fontSize = g.MeasureString("购货方：", f4);
-            g.DrawString("财盈盈软件公司", f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 80 + y);
+            g.DrawString(tbHTghfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 80 + y);
 
             g.DrawString("合同编号：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 80 + y);
             fontSize = g.MeasureString("合同编号：", f4);
@@ -1476,7 +1476,7 @@ namespace VividManagementApplication
             // 
             g.DrawString("销货方：", f4, new SolidBrush(Color.Black), 40 + x, 120 + y);
             fontSize = g.MeasureString("销货方：", f4);
-            g.DrawString("桐乡市瑞递曼尔工贸有限公司", f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
+            g.DrawString(tbHTxsfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
 
             g.DrawString("签约地点：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 120 + y);
             fontSize = g.MeasureString("签约地点：", f4);

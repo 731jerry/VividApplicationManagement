@@ -3987,7 +3987,6 @@
             this.HTtbLocation.Name = "HTtbLocation";
             this.HTtbLocation.Size = new System.Drawing.Size(116, 21);
             this.HTtbLocation.TabIndex = 629;
-            this.HTtbLocation.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label126
             // 
