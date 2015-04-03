@@ -1192,7 +1192,7 @@
             // tbDz12
             // 
             this.tbDz12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz12.Location = new System.Drawing.Point(104, 493);
+            this.tbDz12.Location = new System.Drawing.Point(129, 493);
             this.tbDz12.Name = "tbDz12";
             this.tbDz12.Size = new System.Drawing.Size(97, 26);
             this.tbDz12.TabIndex = 328;
@@ -1205,9 +1205,9 @@
             this.label46.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label46.Location = new System.Drawing.Point(35, 496);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(65, 20);
+            this.label46.Size = new System.Drawing.Size(89, 20);
             this.label46.TabIndex = 323;
-            this.label46.Text = "赊欠期限";
+            this.label46.Text = "赊欠期限(天)";
             // 
             // tbDz9
             // 

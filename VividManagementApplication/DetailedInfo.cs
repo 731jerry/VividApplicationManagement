@@ -711,21 +711,22 @@ namespace VividManagementApplication
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
             int printFlag = 0;
-            int pageHeight = 800;
+            int pageHeight = 1200;
             switch (MainWindow.CURRENT_TAB)
             {
                 default:
                     break;
-                case 1: // 客户管理
+                case 1: // 客户管理 无打印
                     break;
-                case 2: // 商品管理
+                case 2: // 商品管理 无打印
                     break;
                 case 3: // 存储管理 进仓单 出仓单
                     printFlag = 1;
                     pageHeight = 600;
                     break;
                 case 4: // 业务管理 采购单 销售单 客户对账单
-                    printFlag = 4;
+                    printFlag = 2;
+                    pageHeight = 600;
                     break;
                 case 5:  // 财务管理 凭证 收付汇总表
                     printFlag = 5;
@@ -1265,10 +1266,11 @@ namespace VividManagementApplication
                     // e.PageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 850, 40);
                     //this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, 600);
 
-                    PrintDZ(0, 30, 0, e);
+                    PrintDZ(0, 30, true, e);
                     break;
                 case 2: // 采购销售单
                     //PrintCGXSD(0, 0, yewuPanel, e);
+                    PrintDZ(0, 30, false, e);
                     break;
                 case 3: // 采购销售列表
                     //PrintWithDGV(0, 0, panel15, dgvCGXS, 30, e);
@@ -1360,7 +1362,7 @@ namespace VividManagementApplication
             }
         }
 
-        private void PrintDZ(int x, int y, int option, System.Drawing.Printing.PrintPageEventArgs e)
+        private void PrintDZ(int x, int y, Boolean isJCCD, System.Drawing.Printing.PrintPageEventArgs e)
         {
             Graphics g = e.Graphics;   //先建立画布
             SizeF fontSize;
@@ -1368,6 +1370,7 @@ namespace VividManagementApplication
             Font f1 = new Font("黑体", 20, FontStyle.Bold);
             Font f2 = new Font("微软雅黑", 9);
             Font f3 = new Font("微软雅黑", 11);
+            Font f4 = new Font("微软雅黑", 8);
 
             int fontDisX = 3;
             int fontDisY = 3;
@@ -1438,13 +1441,37 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, 156 + y + tableY, 617, tbDz3.Height);
             g.DrawString(tbDz3.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY);
 
-            g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
-            g.DrawString("备注：\n" + tbDz4.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
+            if (isJCCD)
+            {
+                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
+                g.DrawString("备注：\n" + tbDz4.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
+            }
+            else
+            {
+                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
 
+                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 226, tbDz8.Height);
+                g.DrawString("原前帐 购货方尚欠销货方货款(元): " + tbDz8.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY+6);
+
+                g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY, 226, tbDz9.Height);
+                g.DrawString("今日(本销货单)新增欠款(元): " + tbDz9.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY+6);
+
+                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY + tbDz8.Height, 226, tbDz10.Height);
+                g.DrawString("购货方今日支付销货方货款(元): " + tbDz10.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + tbDz8.Height+6);
+
+                g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height, 226, tbDz11.Height);
+                g.DrawString("至今日止购货方尚欠销货方货款(元): " + tbDz11.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height+6);
+
+                g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height, 226, tbDz12.Height);
+                g.DrawString("赊欠期限(天): " + tbDz12.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height+6);
+
+                g.DrawString("备注：\n" + tbDz4.Text, tbDz4.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + tableY + tbDz9.Height + tbDz11.Height);
+
+            }
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY, 281, 78);
-            g.DrawString("发票号码：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY);
-            g.DrawString("增：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
-            g.DrawString("普：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
+            g.DrawString("发票号码", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY);
+            g.DrawString("增值税：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
+            g.DrawString("普通发票：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 260 + y + tableY, 281, 26);
             g.DrawString("附件凭证 " + tbDz7.Text + " 张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY);
