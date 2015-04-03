@@ -184,7 +184,7 @@
             this.DetailedPZPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.PzDateTextBox = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pzPanel = new System.Windows.Forms.Panel();
             this.EPztb1 = new System.Windows.Forms.ComboBox();
             this.PzcbE = new System.Windows.Forms.TextBox();
             this.DPztb1 = new System.Windows.Forms.ComboBox();
@@ -371,7 +371,7 @@
             this.PanelDZ.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.DetailedPZPanel.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pzPanel.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.DetailedHTPanel.SuspendLayout();
             this.PanelHT.SuspendLayout();
@@ -2070,7 +2070,7 @@
             // 
             this.DetailedPZPanel.Controls.Add(this.label1);
             this.DetailedPZPanel.Controls.Add(this.PzDateTextBox);
-            this.DetailedPZPanel.Controls.Add(this.panel3);
+            this.DetailedPZPanel.Controls.Add(this.pzPanel);
             this.DetailedPZPanel.Controls.Add(this.pzContact);
             this.DetailedPZPanel.Controls.Add(this.SumtbPz);
             this.DetailedPZPanel.Controls.Add(this.pzPhone);
@@ -2114,48 +2114,48 @@
             this.PzDateTextBox.Size = new System.Drawing.Size(109, 26);
             this.PzDateTextBox.TabIndex = 231;
             // 
-            // panel3
+            // pzPanel
             // 
-            this.panel3.Controls.Add(this.EPztb1);
-            this.panel3.Controls.Add(this.PzcbE);
-            this.panel3.Controls.Add(this.DPztb1);
-            this.panel3.Controls.Add(this.textBox55);
-            this.panel3.Controls.Add(this.CPztb1);
-            this.panel3.Controls.Add(this.PzcbD);
-            this.panel3.Controls.Add(this.BPztb1);
-            this.panel3.Controls.Add(this.textBox57);
-            this.panel3.Controls.Add(this.APztb1);
-            this.panel3.Controls.Add(this.PzcbC);
-            this.panel3.Controls.Add(this.textBox59);
-            this.panel3.Controls.Add(this.PzcbB);
-            this.panel3.Controls.Add(this.textBox61);
-            this.panel3.Controls.Add(this.PzcbA);
-            this.panel3.Controls.Add(this.textBox63);
-            this.panel3.Controls.Add(this.EPztb3);
-            this.panel3.Controls.Add(this.EPztb0);
-            this.panel3.Controls.Add(this.EPztb2);
-            this.panel3.Controls.Add(this.DPztb3);
-            this.panel3.Controls.Add(this.DPztb0);
-            this.panel3.Controls.Add(this.DPztb2);
-            this.panel3.Controls.Add(this.CPztb3);
-            this.panel3.Controls.Add(this.CPztb0);
-            this.panel3.Controls.Add(this.CPztb2);
-            this.panel3.Controls.Add(this.BPztb3);
-            this.panel3.Controls.Add(this.BPztb0);
-            this.panel3.Controls.Add(this.BPztb2);
-            this.panel3.Controls.Add(this.APztb3);
-            this.panel3.Controls.Add(this.textBox32);
-            this.panel3.Controls.Add(this.APztb0);
-            this.panel3.Controls.Add(this.textBox37);
-            this.panel3.Controls.Add(this.textBox38);
-            this.panel3.Controls.Add(this.APztb2);
-            this.panel3.Controls.Add(this.textBox42);
-            this.panel3.Controls.Add(this.textBox43);
-            this.panel3.Controls.Add(this.textBox44);
-            this.panel3.Location = new System.Drawing.Point(31, 139);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(737, 158);
-            this.panel3.TabIndex = 230;
+            this.pzPanel.Controls.Add(this.EPztb1);
+            this.pzPanel.Controls.Add(this.PzcbE);
+            this.pzPanel.Controls.Add(this.DPztb1);
+            this.pzPanel.Controls.Add(this.textBox55);
+            this.pzPanel.Controls.Add(this.CPztb1);
+            this.pzPanel.Controls.Add(this.PzcbD);
+            this.pzPanel.Controls.Add(this.BPztb1);
+            this.pzPanel.Controls.Add(this.textBox57);
+            this.pzPanel.Controls.Add(this.APztb1);
+            this.pzPanel.Controls.Add(this.PzcbC);
+            this.pzPanel.Controls.Add(this.textBox59);
+            this.pzPanel.Controls.Add(this.PzcbB);
+            this.pzPanel.Controls.Add(this.textBox61);
+            this.pzPanel.Controls.Add(this.PzcbA);
+            this.pzPanel.Controls.Add(this.textBox63);
+            this.pzPanel.Controls.Add(this.EPztb3);
+            this.pzPanel.Controls.Add(this.EPztb0);
+            this.pzPanel.Controls.Add(this.EPztb2);
+            this.pzPanel.Controls.Add(this.DPztb3);
+            this.pzPanel.Controls.Add(this.DPztb0);
+            this.pzPanel.Controls.Add(this.DPztb2);
+            this.pzPanel.Controls.Add(this.CPztb3);
+            this.pzPanel.Controls.Add(this.CPztb0);
+            this.pzPanel.Controls.Add(this.CPztb2);
+            this.pzPanel.Controls.Add(this.BPztb3);
+            this.pzPanel.Controls.Add(this.BPztb0);
+            this.pzPanel.Controls.Add(this.BPztb2);
+            this.pzPanel.Controls.Add(this.APztb3);
+            this.pzPanel.Controls.Add(this.textBox32);
+            this.pzPanel.Controls.Add(this.APztb0);
+            this.pzPanel.Controls.Add(this.textBox37);
+            this.pzPanel.Controls.Add(this.textBox38);
+            this.pzPanel.Controls.Add(this.APztb2);
+            this.pzPanel.Controls.Add(this.textBox42);
+            this.pzPanel.Controls.Add(this.textBox43);
+            this.pzPanel.Controls.Add(this.textBox44);
+            this.pzPanel.Location = new System.Drawing.Point(31, 139);
+            this.pzPanel.Name = "pzPanel";
+            this.pzPanel.Size = new System.Drawing.Size(737, 158);
+            this.pzPanel.TabIndex = 230;
             // 
             // EPztb1
             // 
@@ -2203,7 +2203,7 @@
             this.textBox55.Location = new System.Drawing.Point(0, 130);
             this.textBox55.Name = "textBox55";
             this.textBox55.ReadOnly = true;
-            this.textBox55.Size = new System.Drawing.Size(37, 26);
+            this.textBox55.Size = new System.Drawing.Size(36, 26);
             this.textBox55.TabIndex = 324;
             this.textBox55.Text = "5";
             this.textBox55.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2254,7 +2254,7 @@
             this.textBox57.Location = new System.Drawing.Point(0, 104);
             this.textBox57.Name = "textBox57";
             this.textBox57.ReadOnly = true;
-            this.textBox57.Size = new System.Drawing.Size(37, 26);
+            this.textBox57.Size = new System.Drawing.Size(36, 26);
             this.textBox57.TabIndex = 322;
             this.textBox57.Text = "4";
             this.textBox57.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2290,7 +2290,7 @@
             this.textBox59.Location = new System.Drawing.Point(0, 78);
             this.textBox59.Name = "textBox59";
             this.textBox59.ReadOnly = true;
-            this.textBox59.Size = new System.Drawing.Size(37, 26);
+            this.textBox59.Size = new System.Drawing.Size(36, 26);
             this.textBox59.TabIndex = 320;
             this.textBox59.Text = "3";
             this.textBox59.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2311,7 +2311,7 @@
             this.textBox61.Location = new System.Drawing.Point(0, 52);
             this.textBox61.Name = "textBox61";
             this.textBox61.ReadOnly = true;
-            this.textBox61.Size = new System.Drawing.Size(37, 26);
+            this.textBox61.Size = new System.Drawing.Size(36, 26);
             this.textBox61.TabIndex = 318;
             this.textBox61.Text = "2";
             this.textBox61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2332,7 +2332,7 @@
             this.textBox63.Location = new System.Drawing.Point(0, 26);
             this.textBox63.Name = "textBox63";
             this.textBox63.ReadOnly = true;
-            this.textBox63.Size = new System.Drawing.Size(37, 26);
+            this.textBox63.Size = new System.Drawing.Size(36, 26);
             this.textBox63.TabIndex = 316;
             this.textBox63.Text = "1";
             this.textBox63.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2368,7 +2368,7 @@
             this.EPztb2.Location = new System.Drawing.Point(452, 130);
             this.EPztb2.Name = "EPztb2";
             this.EPztb2.ReadOnly = true;
-            this.EPztb2.Size = new System.Drawing.Size(207, 26);
+            this.EPztb2.Size = new System.Drawing.Size(204, 26);
             this.EPztb2.TabIndex = 73;
             // 
             // DPztb3
@@ -2402,7 +2402,7 @@
             this.DPztb2.Location = new System.Drawing.Point(452, 104);
             this.DPztb2.Name = "DPztb2";
             this.DPztb2.ReadOnly = true;
-            this.DPztb2.Size = new System.Drawing.Size(207, 26);
+            this.DPztb2.Size = new System.Drawing.Size(204, 26);
             this.DPztb2.TabIndex = 68;
             // 
             // CPztb3
@@ -2436,7 +2436,7 @@
             this.CPztb2.Location = new System.Drawing.Point(452, 78);
             this.CPztb2.Name = "CPztb2";
             this.CPztb2.ReadOnly = true;
-            this.CPztb2.Size = new System.Drawing.Size(207, 26);
+            this.CPztb2.Size = new System.Drawing.Size(204, 26);
             this.CPztb2.TabIndex = 63;
             // 
             // BPztb3
@@ -2470,7 +2470,7 @@
             this.BPztb2.Location = new System.Drawing.Point(452, 52);
             this.BPztb2.Name = "BPztb2";
             this.BPztb2.ReadOnly = true;
-            this.BPztb2.Size = new System.Drawing.Size(207, 26);
+            this.BPztb2.Size = new System.Drawing.Size(204, 26);
             this.BPztb2.TabIndex = 58;
             // 
             // APztb3
@@ -2494,7 +2494,8 @@
             this.textBox32.ReadOnly = true;
             this.textBox32.Size = new System.Drawing.Size(77, 26);
             this.textBox32.TabIndex = 290;
-            this.textBox32.Text = " 附件（张）";
+            this.textBox32.Text = "附件（张）";
+            this.textBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // APztb0
             // 
@@ -2517,7 +2518,8 @@
             this.textBox37.ReadOnly = true;
             this.textBox37.Size = new System.Drawing.Size(68, 26);
             this.textBox37.TabIndex = 285;
-            this.textBox37.Text = " 收款方式";
+            this.textBox37.Text = "收款方式";
+            this.textBox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox38
             // 
@@ -2528,7 +2530,8 @@
             this.textBox38.ReadOnly = true;
             this.textBox38.Size = new System.Drawing.Size(148, 26);
             this.textBox38.TabIndex = 284;
-            this.textBox38.Text = "         收 款 金 额";
+            this.textBox38.Text = "收 款 金 额";
+            this.textBox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // APztb2
             // 
@@ -2537,7 +2540,7 @@
             this.APztb2.Location = new System.Drawing.Point(452, 26);
             this.APztb2.Name = "APztb2";
             this.APztb2.ReadOnly = true;
-            this.APztb2.Size = new System.Drawing.Size(207, 26);
+            this.APztb2.Size = new System.Drawing.Size(204, 26);
             this.APztb2.TabIndex = 53;
             // 
             // textBox42
@@ -2547,9 +2550,10 @@
             this.textBox42.Location = new System.Drawing.Point(452, 0);
             this.textBox42.Name = "textBox42";
             this.textBox42.ReadOnly = true;
-            this.textBox42.Size = new System.Drawing.Size(207, 26);
+            this.textBox42.Size = new System.Drawing.Size(204, 26);
             this.textBox42.TabIndex = 280;
-            this.textBox42.Text = "     银行结算方式及票号";
+            this.textBox42.Text = "银行结算方式及票号";
+            this.textBox42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox43
             // 
@@ -2570,7 +2574,7 @@
             this.textBox44.Location = new System.Drawing.Point(0, 0);
             this.textBox44.Name = "textBox44";
             this.textBox44.ReadOnly = true;
-            this.textBox44.Size = new System.Drawing.Size(37, 26);
+            this.textBox44.Size = new System.Drawing.Size(36, 26);
             this.textBox44.TabIndex = 278;
             this.textBox44.Text = "序";
             this.textBox44.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -4210,8 +4214,8 @@
             this.tabPage3.ResumeLayout(false);
             this.DetailedPZPanel.ResumeLayout(false);
             this.DetailedPZPanel.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pzPanel.ResumeLayout(false);
+            this.pzPanel.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.DetailedHTPanel.ResumeLayout(false);
             this.DetailedHTPanel.PerformLayout();
@@ -4435,7 +4439,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Panel DetailedPZPanel;
         private System.Windows.Forms.TextBox PzDateTextBox;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pzPanel;
         private System.Windows.Forms.TextBox PzcbE;
         private System.Windows.Forms.TextBox textBox55;
         private System.Windows.Forms.TextBox PzcbD;

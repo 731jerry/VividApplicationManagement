@@ -1,3 +1,24 @@
+2015/4/3 15:17:40-无法查看详细
+###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
+参数名: SelectedIndex
+###当前异常StackTrace:    在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 318
+===================================================
+
+2015/4/3 14:49:57-无法查看详细
+###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
+参数名: SelectedIndex
+###当前异常StackTrace:    在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 318
+===================================================
+
+2015/4/3 14:49:51-无法查看详细
+###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
+参数名: SelectedIndex
+###当前异常StackTrace:    在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 318
+===================================================
+
 2015/4/3 13:51:03-无法查看详细
 ###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
 参数名: SelectedIndex
