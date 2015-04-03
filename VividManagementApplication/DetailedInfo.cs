@@ -684,6 +684,7 @@ namespace VividManagementApplication
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
             int printFlag = 0;
+            int pageHeight = 800;
             switch (MainWindow.CURRENT_TAB)
             {
                 default:
@@ -694,6 +695,7 @@ namespace VividManagementApplication
                     break;
                 case 3: // 存储管理 进仓单 出仓单
                     printFlag = 1;
+                    pageHeight = 600;
                     break;
                 case 4: // 业务管理 采购单 销售单 客户对账单
                     printFlag = 4;
@@ -703,9 +705,10 @@ namespace VividManagementApplication
                     break;
                 case 6: // 合同
                     printFlag = 7;
+                    pageHeight = 1200;
                     break;
             }
-            SetPrintPreview(printFlag);
+            SetPrintPreview(printFlag, pageHeight);
             //SetPrintPreview(MainWindow.CURRENT_TAB);
         }
 
@@ -1232,6 +1235,9 @@ namespace VividManagementApplication
                 default:
                 case 1: // 进出仓单
                     //PrintGeneral(0, 0, panelJCD, e);//panelJCD
+                    // e.PageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 850, 40);
+                    //this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, 600);
+
                     PrintDZ(0, 30, 0, e);
                     break;
                 case 2: // 采购销售单
@@ -1255,11 +1261,11 @@ namespace VividManagementApplication
             }
         }
         // 通用preview
-        private void SetPrintPreview(int flag)
+        private void SetPrintPreview(int flag, int pageHeight)
         {
             printFlag = flag;
 
-            //this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom",this.printDocument1.DefaultPageSettings.PaperSize.Width, 600);
+            this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, pageHeight);
 
             pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
             pageHeight = this.printDocument1.DefaultPageSettings.PaperSize.Height;
@@ -1336,31 +1342,23 @@ namespace VividManagementApplication
             Font f2 = new Font("微软雅黑", 9);
             Font f3 = new Font("微软雅黑", 11);
 
-            string title = lbDzTitle.Text;
-            //测试
-            dzContact.Text = "hahahh ";
-            dzAddress.Text = "hahahh ";
-            tbDz3.Text = "大法师打发";
-            tbDz1.Text = "dffdf11212";
-            tbDz2.Text = "dffdf11212";
-
             int fontDisX = 3;
             int fontDisY = 3;
             int tableX = 50;
             int tableY = 185;
 
-            fontSize = g.MeasureString(title, f1);
-            g.DrawString(title, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y);
+            fontSize = g.MeasureString(lbDzTitle.Text, f1);
+            g.DrawString(lbDzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y);
 
             fontSize = g.MeasureString("TAL：", f2);
             g.DrawString("TAL：", tbDz2.Font, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
             //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
-            g.DrawString("", tbDz1.Font, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
+            g.DrawString(MainWindow.PHONE, tbDz1.Font, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
 
             fontSize = g.MeasureString("FAX：", f2);
             g.DrawString("FAX：", tbDz2.Font, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
             //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
-            g.DrawString("", tbDz2.Font, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
+            g.DrawString(MainWindow.FAX, tbDz2.Font, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
 
             //   以质为根   以诚为本
             fontSize = g.MeasureString("   以质为根   以诚为本", f2);
@@ -1392,7 +1390,7 @@ namespace VividManagementApplication
             g.DrawString("日期：", dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 384 + fontDisX, tableY - 26 * 2 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 111 + 384, tableY - 26 * 2 + y, 238, dzContact.Height);
-            g.DrawString(DateTime.Now.ToLongDateString(), dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 111 + 384 + fontDisX, tableY - 26 * 2 + y + fontDisY);
+            g.DrawString(DzDateTextBox.Text, dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 111 + 384 + fontDisX, tableY - 26 * 2 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x, tableY - 26 + y, 116, dzContact.Height);
             g.DrawString("联系地址：", dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, tableY - 26 + y + fontDisY);
@@ -1414,12 +1412,12 @@ namespace VividManagementApplication
             g.DrawString(tbDz3.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
-            g.DrawString("备注：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
+            g.DrawString("备注：\n" + tbDz4.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY, 281, 78);
             g.DrawString("发票号码：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY);
-            g.DrawString("增：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
-            g.DrawString("普：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
+            g.DrawString("增：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
+            g.DrawString("普：" + tbDz7.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 260 + y + tableY, 281, 26);
             g.DrawString("附件凭证 " + tbDz8.Text + " 张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY);
@@ -1540,7 +1538,7 @@ namespace VividManagementApplication
             float LieX4 = 317 + x + 20;
             float LieX5 = 392 + x + 18;
             float LieX6 = 464 + x + 18;
-            float LieX7 = 555 + x -10;
+            float LieX7 = 555 + x - 10;
 
             float HangY1 = 279 + y;
             float HangY2 = 318 + y;
@@ -1788,7 +1786,8 @@ namespace VividManagementApplication
             //fontSize = g.MeasureString("专业软件定制 888888888", f6);
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, 35);
 
-            g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, pageHeight - 90);
+            //g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, pageHeight - 90);
+            g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, 1045 + y);
             //g.DrawString("共1页 一式两份", f6, new SolidBrush(Color.Red), pageWidth / 2 - 50, pageHeight - 35);
             //fontSize = g.MeasureString("专业软件定制 888888888", f6);
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, pageHeight - 50);
