@@ -1,3 +1,53 @@
+2015/4/3 13:51:03-无法查看详细
+###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
+参数名: SelectedIndex
+###当前异常StackTrace:    在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 318
+===================================================
+
+2015/4/3 13:48:36-无法查看详细
+###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
+参数名: SelectedIndex
+###当前异常StackTrace:    在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 318
+===================================================
+
+2015/4/3 13:48:03-无法查看详细
+###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
+参数名: SelectedIndex
+###当前异常StackTrace:    在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 318
+===================================================
+
+2015/4/3 13:25:03-无法查看详细
+###异常消息Message: 该字符串未被识别为有效的 DateTime。
+###当前异常StackTrace:    在 System.DateTimeParse.Parse(String s, DateTimeFormatInfo dtfi, DateTimeStyles styles)
+   在 System.Convert.ToDateTime(String value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 220
+===================================================
+
+2015/4/3 13:24:02-
+###异常消息Message: SQLite error
+14 values for 12 columns
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 616
+===================================================
+
+2015/4/3 13:17:58-
+###异常消息Message: SQLite error
+table jcdList has no column named kxQq
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 593
+===================================================
+
 2015/4/3 12:09:28-
 ###异常消息Message: SQLite error
 18 values for 8 columns

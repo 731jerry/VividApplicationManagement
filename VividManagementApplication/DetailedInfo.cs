@@ -312,9 +312,10 @@ namespace VividManagementApplication
 
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
 
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag", "leixing" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             DiscardCheckBox.Checked = data[2].Equals("0") ? false : true;
+                            pzComboBox.SelectedIndex = int.Parse(data[3].ToString());
                             data[1] = data[1].Replace("\n", "");
                             data[1] = data[1].Replace(" ", "");
                             JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化 
@@ -522,11 +523,11 @@ namespace VividManagementApplication
             label48.Visible = isVisable;
             label47.Visible = isVisable;
             label46.Visible = isVisable;
+            tbDz8.Visible = isVisable;
             tbDz9.Visible = isVisable;
             tbDz10.Visible = isVisable;
             tbDz11.Visible = isVisable;
             tbDz12.Visible = isVisable;
-            tbDz13.Visible = isVisable;
         }
 
         /// <summary>
@@ -569,29 +570,51 @@ namespace VividManagementApplication
                                 }
                             );
                         // 
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(
-                            table,
-                            queryArray,
-                            new String[] { 
-                                tbDz1.Text,
-                                tbDz2.Text, 
-                                dzCompany.Text,
+                        String[] queryStringArray;
+                        String[] resultStringArray;
+                        if (ItemId.Equals("-1")) // 新建
+                        {
+                            if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")))
+                            {
+                                queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                                resultStringArray = new String[] { 
+                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
-                                jsonData,
-                                tbDz3.Text.Split('=')[0],
-                                tbDz4.Text,
-                                tbDz6.Text,
-                                tbDz7.Text,
-                                tbDz8.Text,
-                                (DiscardCheckBox.Checked?"1":"0"),
-                                DateTime.Now.ToString(), 
-                                DateTime.Now.ToString(),
-                                tbDz9.Text,
-                                tbDz10.Text,
-                                tbDz11.Text,
-                                tbDz12.Text,
-                                tbDz13.Text},
-                            mainID);
+                                jsonData, 
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
+                            }
+                            else
+                            {
+                                queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                                resultStringArray = new String[] { 
+                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
+                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                                jsonData, 
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                            }
+                        }
+                        else
+                        {
+                            if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")))
+                            {
+                                queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "modifyTime" };
+                                resultStringArray = new String[] { 
+                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
+                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                                jsonData, 
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString()};
+                            }
+                            else
+                            { // 采购销售单
+                                queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                                resultStringArray = new String[] { 
+                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
+                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                                jsonData, 
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                            }
+                        }
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
                     else if (MainWindow.CURRENT_TAB == 5)  // 凭证
                     {
@@ -603,25 +626,25 @@ namespace VividManagementApplication
                                 new List<Control> (){PzcbC,CPztb0,CPztb1,CPztb2,CPztb3 } ,
                                 new List<Control> (){PzcbD,DPztb0,DPztb1,DPztb2,DPztb3 } ,
                                 new List<Control> (){PzcbE,EPztb0,EPztb1,EPztb2,EPztb3 } 
-                                }
-                                                   );
+                                });
                         // "pzID", "leixing", "clientID", "companyName", "jsonData", "operateMoney", "remaintingMoney", "discardFlag", "addtime", "modifyTime"
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(
-                            table,
-                            queryArray,
-                            new String[] { 
-                                tbPz1.Text,
-                                tbPz2.Text,
-                                pzComboBox.SelectedIndex.ToString(), 
-                                pzCompany.Text,
-                                jsonData,
-                                SumtbPz.Text.Split('=')[0],
-                                "",
-                                tbPz3.Text,
-                                (DiscardCheckBox.Checked?"1":"0"),
-                                DateTime.Now.ToString(), 
-                                DateTime.Now.ToString()},
-                            mainID);
+                        String[] queryStringArray;
+                        String[] resultStringArray;
+                        if (ItemId.Equals("-1"))
+                        {
+                            queryStringArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
+                            resultStringArray = new String[] {  tbPz1.Text, tbPz2.Text, pzComboBox.SelectedIndex.ToString(),  pzCompany.Text,
+                                jsonData, SumtbPz.Text.Split('=')[0],
+                                "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(), DateTime.Now.ToString()};
+                        }
+                        else
+                        {
+                            queryStringArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "modifyTime" };
+                            resultStringArray = new String[] {  tbPz1.Text, tbPz2.Text, pzComboBox.SelectedIndex.ToString(),  pzCompany.Text,
+                                jsonData, SumtbPz.Text.Split('=')[0],
+                                "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString()};
+                        }
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
                     else if (MainWindow.CURRENT_TAB == 6)  // 合同
                     {
@@ -636,20 +659,24 @@ namespace VividManagementApplication
                                 }
                                                        );
                         // "htID", "leixing", "htDate", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime"
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(
-                            table,
-                            queryArray,
-                            new String[] { 
-                                HTtbID.Text,
-                                HTcbName.SelectedIndex.ToString(), 
-                                HTtbDate.Text,
-                                "",
+
+                        String[] queryStringArray;
+                        String[] resultStringArray;
+                        if (ItemId.Equals("-1"))
+                        {
+                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime" };
+                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, "",
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0],
-                                (DiscardCheckBox.Checked?"1":"0"),
-                                DateTime.Now.ToString(), 
-                                DateTime.Now.ToString()},
-                            mainID);
+                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(),  DateTime.Now.ToString()};
+                        }
+                        else
+                        {
+                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "modtifyTime" };
+                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, "",
+                                jsonData,
+                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString()};
+                        }
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
                     else
                     {
@@ -1416,11 +1443,11 @@ namespace VividManagementApplication
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY, 281, 78);
             g.DrawString("发票号码：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY);
-            g.DrawString("增：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
-            g.DrawString("普：" + tbDz7.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
+            g.DrawString("增：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
+            g.DrawString("普：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 260 + y + tableY, 281, 26);
-            g.DrawString("附件凭证 " + tbDz8.Text + " 张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY);
+            g.DrawString("附件凭证 " + tbDz7.Text + " 张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY);
 
             g.DrawString("对方送货人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY);
             g.DrawString("业务经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY);

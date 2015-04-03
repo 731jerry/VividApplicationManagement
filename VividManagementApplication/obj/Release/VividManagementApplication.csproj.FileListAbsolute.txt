@@ -122,7 +122,6 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.pdb
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\ControlExs.dll
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DetailedInfo.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Login.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.resources
