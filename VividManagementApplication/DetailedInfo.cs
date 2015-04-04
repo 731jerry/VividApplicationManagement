@@ -163,6 +163,7 @@ namespace VividManagementApplication
                         table = "cgdList";
                         baseName = "cgdID";
                         makeControlsInvisibleForJCCD(true);
+                        enableDetailedUnderCaigou(false);
                         // moreDetaildpPanel.Visible = true;
                         // FormBasicFeatrues.GetInstence().moveParentPanel(moreDetaildpPanel, detailedPanel);
                     }
@@ -172,6 +173,7 @@ namespace VividManagementApplication
                         table = "xsdList";
                         baseName = "xsdID";
                         makeControlsInvisibleForJCCD(true);
+                        enableDetailedUnderCaigou(true);
                         // moreDetaildpPanel.Visible = true;
                         // FormBasicFeatrues.GetInstence().moveParentPanel(moreDetaildpPanel, detailedPanel);
                     }
@@ -753,6 +755,20 @@ namespace VividManagementApplication
 
         }
 
+        // 隐藏采购单下面内容
+        private void enableDetailedUnderCaigou(Boolean isEnabled) {
+            label46.Enabled = isEnabled;
+            label47.Enabled = isEnabled;
+            label48.Enabled = isEnabled;
+            label49.Enabled = isEnabled;
+            label50.Enabled = isEnabled;
+            tbDz8.Enabled = isEnabled;
+            tbDz9.Enabled = isEnabled;
+            tbDz10.Enabled = isEnabled;
+            tbDz11.Enabled = isEnabled;
+            tbDz12.Enabled = isEnabled;
+        }
+
         // 进仓单 出仓单 采购单 销售单
         private void danziComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -797,6 +813,7 @@ namespace VividManagementApplication
                         queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
                         // 自动生成ID
                         tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        enableDetailedUnderCaigou(false);
                         break;
                     case 1://销售单
                         lbDzTitle.Text = "商品（货物）销售单";
@@ -805,6 +822,7 @@ namespace VividManagementApplication
                         queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
                         // 自动生成ID
                         tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        enableDetailedUnderCaigou(true);
                         break;
                 }
             }
