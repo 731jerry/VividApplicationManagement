@@ -384,7 +384,8 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
-                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfID, tbHTghfID, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
+                    //checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfID, tbHTghfID, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
+                    checkValidateControls = new List<Control>() { HTtbID };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
                     detailedHeightDis = 60;
@@ -403,7 +404,7 @@ namespace VividManagementApplication
 
                     table = "htList";
                     baseName = "htID";
-                    queryArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime" };
+                    queryArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modifyTime" };
                     controlsPreName = "HTtbID";
                     indexCount = 6;
                     mainID = HTtbID.Text;
@@ -425,10 +426,9 @@ namespace VividManagementApplication
                     else
                     {
                         HTcbName.Enabled = false;
-
                         try
                         {
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag", "option" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             HTcbName.SelectedIndex = int.Parse(data[2].ToString());
                             HTtbID.Text = data[3].ToString();
@@ -462,6 +462,15 @@ namespace VividManagementApplication
                             }
 
                             DiscardCheckBox.Checked = data[6].Equals("0") ? false : true;
+
+                            // 选项
+                            String[] optionArray = data[7].Split(',');
+                            HTcbChoose2.SelectedIndex = int.Parse(optionArray[0]);
+                            HTcbChoose3.SelectedIndex = int.Parse(optionArray[1]);
+                            HTcbChoose4.SelectedIndex = int.Parse(optionArray[2]);
+                            HTcbChoose5.SelectedIndex = int.Parse(optionArray[3]);
+                            HTcbChoose6.SelectedIndex = int.Parse(optionArray[4]);
+                            HTcbChoose7.SelectedIndex = int.Parse(optionArray[5]);
 
                             data[1] = data[1].Replace("\n", "");
                             data[1] = data[1].Replace(" ", "");
@@ -672,17 +681,19 @@ namespace VividManagementApplication
                         String[] resultStringArray;
                         if (ItemId.Equals("-1"))
                         {
-                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modtifyTime" };
-                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, "",
+                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modifyTime", "option" };
+                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, 
+                               (HTcbName.SelectedIndex == 0) ?tbHTghfID.Text:tbHTxsfID.Text,  (HTcbName.SelectedIndex == 0) ?tbHTghfName.Text:tbHTxsfName.Text,
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(),  DateTime.Now.ToString()};
+                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(),  DateTime.Now.ToString(),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                         }
                         else
                         {
-                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "modtifyTime" };
-                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, "",
+                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "modifyTime", "option" };
+                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, 
+                                (HTcbName.SelectedIndex == 0) ?tbHTghfID.Text:tbHTxsfID.Text,  (HTcbName.SelectedIndex == 0) ?tbHTghfName.Text:tbHTxsfName.Text,
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString()};
+                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString(),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                         }
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
@@ -756,7 +767,8 @@ namespace VividManagementApplication
         }
 
         // 隐藏采购单下面内容
-        private void enableDetailedUnderCaigou(Boolean isEnabled) {
+        private void enableDetailedUnderCaigou(Boolean isEnabled)
+        {
             label46.Enabled = isEnabled;
             label47.Enabled = isEnabled;
             label48.Enabled = isEnabled;
@@ -1560,7 +1572,7 @@ namespace VividManagementApplication
             g.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
 
             fontSize = g.MeasureString(lbPzTitle.Text, f1);
-            g.DrawString(lbPzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y+40);
+            g.DrawString(lbPzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y + 40);
 
             g.DrawString("TAL：" + MainWindow.PHONE, f3, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
 
@@ -1642,7 +1654,7 @@ namespace VividManagementApplication
                     if (tx.BorderStyle == BorderStyle.FixedSingle)
                     {
                         //g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY, tx.Width, tx.Height - 4);
-                        g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY-20, tx.Width, tx.Height);
+                        g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY - 20, tx.Width, tx.Height);
                     }
                 }
                 if (item is ComboBox)
@@ -1651,7 +1663,7 @@ namespace VividManagementApplication
                     //g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + x + tableX, tx.Top + y + 3 + tableY);
                     g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + x + tableX + fontDisX, tx.Top + y + tableY + fontDisY);
                     //g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY, tx.Width, tx.Height - 6);
-                    g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY-20, tx.Width, 26);
+                    g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY - 20, tx.Width, 26);
                 }
             }
         }
@@ -1698,7 +1710,7 @@ namespace VividManagementApplication
             g.DrawString("销货方：", f4, new SolidBrush(Color.Black), 40 + x, 120 + y);
             fontSize = g.MeasureString("销货方：", f4);
             g.DrawString(tbHTghfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
-            
+
             g.DrawString("签约地点：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 120 + y);
             fontSize = g.MeasureString("签约地点：", f4);
             g.DrawString(HTtbLocation.Text, f5, new SolidBrush(Color.Black), 150 + pageWidth / 2 + fontSize.Width + x, 120 + y);

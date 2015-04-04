@@ -1,3 +1,41 @@
+2015/4/4 14:47:56-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 468
+===================================================
+
+2015/4/4 14:46:02-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 468
+===================================================
+
+2015/4/4 14:44:40-
+###异常消息Message: SQLite error
+table htList has no column named modtifyTime
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 698
+===================================================
+
+2015/4/4 14:38:07-
+###异常消息Message: SQLite error
+10 values for 11 columns
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 696
+===================================================
+
 2015/4/3 15:17:40-无法查看详细
 ###异常消息Message: InvalidArgument=“0”的值对于“SelectedIndex”无效。
 参数名: SelectedIndex
