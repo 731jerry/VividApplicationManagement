@@ -2702,6 +2702,7 @@
             this.lbPzTitle.Size = new System.Drawing.Size(132, 28);
             this.lbPzTitle.TabIndex = 154;
             this.lbPzTitle.Text = "收  款  凭  证";
+            this.lbPzTitle.Click += new System.EventHandler(this.lbPzTitle_Click);
             // 
             // pzAddress
             // 
