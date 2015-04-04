@@ -433,6 +433,19 @@ namespace VividManagementApplication
                             HTtbDate.Text = Convert.ToDateTime(data[4]).ToLongDateString();
                             if (HTcbName.SelectedIndex == 0) //购买合同
                             {
+                                tbHTghfID.Text = data[5].ToString();
+                                // 自己公司
+                                tbHTxsfAddress.Text = MainWindow.ADDRESS;
+                                tbHTxsfPresenter.Text = MainWindow.COMPANY_OWNER;
+                                tbHTxsfFax.Text = MainWindow.FAX;
+                                tbHTxsfPhone.Text = MainWindow.PHONE;
+                                tbHTxsfEmail.Text = MainWindow.EMAIL;
+                                tbHTxsfBankName.Text = MainWindow.BANK_NAME;
+                                tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
+                                tbHTxsfID.Items.Clear();
+                            }
+                            else
+                            {
                                 tbHTxsfID.Text = data[5].ToString();
                                 // 自己公司
                                 tbHTghfName.Text = MainWindow.COMPANY_NAME;
@@ -444,19 +457,6 @@ namespace VividManagementApplication
                                 tbHTghfBankName.Text = MainWindow.BANK_NAME;
                                 tbHTghfBankNumber.Text = MainWindow.BANK_CARD;
                                 tbHTghfID.Items.Clear();
-                            }
-                            else
-                            {
-                                tbHTghfID.Text = data[5].ToString();
-                                // 自己公司
-                                tbHTxsfAddress.Text = MainWindow.ADDRESS;
-                                tbHTxsfPresenter.Text = MainWindow.COMPANY_OWNER;
-                                tbHTxsfFax.Text = MainWindow.FAX;
-                                tbHTxsfPhone.Text = MainWindow.PHONE;
-                                tbHTxsfEmail.Text = MainWindow.EMAIL;
-                                tbHTxsfBankName.Text = MainWindow.BANK_NAME;
-                                tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
-                                tbHTxsfID.Items.Clear();
                             }
 
                             DiscardCheckBox.Checked = data[6].Equals("0") ? false : true;
@@ -728,15 +728,15 @@ namespace VividManagementApplication
                     break;
                 case 3: // 存储管理 进仓单 出仓单
                     printFlag = 1;
-                    pageHeight = 600;
+                    pageHeight = 560;
                     break;
                 case 4: // 业务管理 采购单 销售单 客户对账单
                     printFlag = 2;
-                    pageHeight = 600;
+                    pageHeight = 560;
                     break;
                 case 5:  // 财务管理 凭证 收付汇总表
                     printFlag = 5;
-                    pageHeight = 600;
+                    pageHeight = 560;
                     break;
                 case 6: // 合同
                     printFlag = 7;
@@ -1386,33 +1386,29 @@ namespace VividManagementApplication
             int tableX = 50;
             int tableY = 185;
 
+            //
+            fontSize = g.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3);//桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司
+            g.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
+
             fontSize = g.MeasureString(lbDzTitle.Text, f1);
-            g.DrawString(lbDzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y);
+            g.DrawString(lbDzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y + 40);
 
-            fontSize = g.MeasureString("TAL：", f5);
-            g.DrawString("TAL：", f3, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
-            //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
-            g.DrawString(MainWindow.PHONE, f5, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
+            g.DrawString("TAL：" + MainWindow.PHONE, f3, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
 
-            fontSize = g.MeasureString("FAX：", f5);
-            g.DrawString("FAX：", f5, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
-            //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
-            g.DrawString(MainWindow.FAX, f5, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
+            g.DrawString("FAX：" + MainWindow.FAX, f5, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
 
             //   以质为根   以诚为本
-            fontSize = g.MeasureString("   以质为根   以诚为本", f5);
-            g.DrawString("   以质为根   以诚为本", f5, new SolidBrush(dzContact.ForeColor), tableX + x, tableY - 26 * 3 + y + fontDisY);
+            fontSize = g.MeasureString("以质为根   以诚为本", f5);
+            g.DrawString("以质为根   以诚为本", f5, new SolidBrush(dzContact.ForeColor), tableX + x, tableY - 26 * 3 + y + fontDisY);
             //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
             g.DrawString("", f5, new SolidBrush(dzContact.ForeColor), tableX + x, tableY - 26 * 3 + y + fontDisY);
 
             fontSize = g.MeasureString("客户编号：", f5);
             g.DrawString("客户编号：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + 733 - fontSize.Width - tbDz1.Size.Width - 5, 50 + y + fontDisY);
-            //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
-            g.DrawString(tbDz1.Text, tbDz1.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 733 - tbDz2.Size.Width + fontDisX, 50 + y + fontDisY);
+            g.DrawString(tbDz1.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 733 - tbDz2.Size.Width + fontDisX, 50 + y + fontDisY);
 
-            fontSize = g.MeasureString("凭证号码：", f2);
+            fontSize = g.MeasureString("凭证号码：", f5);
             g.DrawString("凭证号码：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + 733 - fontSize.Width - tbDz2.Size.Width - 5, 80 + y + fontDisY);
-            //g.DrawRectangle(new Pen(Color.Black), tableX + x + 733 - tbDz2.Size.Width, 80 + y, tbDz2.Size.Width, tbDz2.Height);
             g.DrawString(tbDz2.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 733 - tbDz2.Size.Width + fontDisX, 80 + y + fontDisY);
 
 
@@ -1457,25 +1453,32 @@ namespace VividManagementApplication
             }
             else
             {
-                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
+                if (danziComboBox.SelectedIndex == 0)
+                {
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
+                    g.DrawString("备注：\n" + tbDz4.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
+                }
+                else
+                {
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 452, 104);
 
-                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 226, tbDz8.Height);
-                g.DrawString("原前帐 购货方尚欠销货方货款(元): " + tbDz8.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + 6);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY, 226, tbDz8.Height);
+                    g.DrawString("原前帐 购货方尚欠销货方货款(元): " + tbDz8.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + 6);
 
-                g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY, 226, tbDz9.Height);
-                g.DrawString("今日(本销货单)新增欠款(元): " + tbDz9.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + 6);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY, 226, tbDz9.Height);
+                    g.DrawString("今日(本销货单)新增欠款(元): " + tbDz9.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + 6);
 
-                g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY + tbDz8.Height, 226, tbDz10.Height);
-                g.DrawString("购货方今日支付销货方货款(元): " + tbDz10.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + tbDz8.Height + 6);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY + tbDz8.Height, 226, tbDz10.Height);
+                    g.DrawString("购货方今日支付销货方货款(元): " + tbDz10.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + tbDz8.Height + 6);
 
-                g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height, 226, tbDz11.Height);
-                g.DrawString("至今日止购货方尚欠销货方货款(元): " + tbDz11.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + 6);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height, 226, tbDz11.Height);
+                    g.DrawString("至今日止购货方尚欠销货方货款(元): " + tbDz11.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + 6);
 
-                g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height, 226, tbDz12.Height);
-                g.DrawString("赊欠期限(天): " + tbDz12.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height + 6);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height, 226, tbDz12.Height);
+                    g.DrawString("赊欠期限(天): " + tbDz12.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height + 6);
 
-                g.DrawString("备注：\n" + tbDz4.Text, tbDz4.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + tableY + tbDz9.Height + tbDz11.Height);
-
+                    g.DrawString("备注：\n" + tbDz4.Text, tbDz4.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + tableY + tbDz9.Height + tbDz11.Height);
+                }
             }
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY, 281, 78);
             g.DrawString("发票号码", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY);
@@ -1531,25 +1534,23 @@ namespace VividManagementApplication
             Font f5 = new Font("微软雅黑", 10.5f);
 
             int fontDisX = 3;
-            int fontDisY = 3;
+            int fontDisY = -17;
             int tableX = 50;
-            int tableY = 185;
+            int tableY = 165;
+
+            fontSize = g.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3);//桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司
+            g.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
 
             fontSize = g.MeasureString(lbPzTitle.Text, f1);
-            g.DrawString(lbPzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y);
+            g.DrawString(lbPzTitle.Text, f1, new SolidBrush(Color.Black), pageWidth / 2 - fontSize.Width / 2 + x, y+40);
 
-            fontSize = g.MeasureString("TAL：", f5);
-            g.DrawString("TAL：", f3, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
-            g.DrawString(MainWindow.PHONE, f5, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
+            g.DrawString("TAL：" + MainWindow.PHONE, f3, new SolidBrush(dzContact.ForeColor), tableX + x, 50 + y + fontDisY);
 
-            fontSize = g.MeasureString("FAX：", f5);
-            g.DrawString("FAX：", f5, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
-            g.DrawString(MainWindow.FAX, f5, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
+            g.DrawString("FAX：" + MainWindow.FAX, f5, new SolidBrush(dzContact.ForeColor), tableX + x, 80 + y + fontDisY);
 
             //   以质为根   以诚为本
             fontSize = g.MeasureString("以质为根   以诚为本", f5);
             g.DrawString("以质为根   以诚为本", f5, new SolidBrush(dzContact.ForeColor), tableX + x, tableY - 26 * 3 + y + fontDisY);
-            g.DrawString("", f5, new SolidBrush(dzContact.ForeColor), tableX + x, tableY - 26 * 3 + y + fontDisY);
 
             fontSize = g.MeasureString("客户编号：", f5);
             g.DrawString("客户编号：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + 733 - fontSize.Width - tbPz2.Size.Width - 5, 50 + y + fontDisY);
@@ -1572,16 +1573,16 @@ namespace VividManagementApplication
             g.DrawString("日期：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + 384 + fontDisX, tableY - 26 * 2 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 111 + 384, tableY - 26 * 2 + y, 238, dzContact.Height);
-            g.DrawString(PzDateTextBox.Text,f5, new SolidBrush(dzContact.ForeColor), tableX + x + 111 + 384 + fontDisX, tableY - 26 * 2 + y + fontDisY);
+            g.DrawString(PzDateTextBox.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 111 + 384 + fontDisX, tableY - 26 * 2 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x, tableY - 26 + y, 116, dzContact.Height);
-            g.DrawString("联系地址：",f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, tableY - 26 + y + fontDisY);
+            g.DrawString("联系地址：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, tableY - 26 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, tableY - 26 + y, 268, dzAddress.Height);
             g.DrawString(pzAddress.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, tableY - 26 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 384, tableY - 26 + y, 111, dzContact.Height);
-            g.DrawString("联系电话：",f5, new SolidBrush(dzContact.ForeColor), tableX + x + 384 + fontDisX, tableY - 26 + y + fontDisY);
+            g.DrawString("联系电话：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + 384 + fontDisX, tableY - 26 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 111 + 384, tableY - 26 + y, 238, dzPhone.Height);
             g.DrawString(pzPhone.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 111 + 384 + fontDisX, tableY - 26 + y + fontDisY);
@@ -1623,7 +1624,7 @@ namespace VividManagementApplication
                     if (tx.BorderStyle == BorderStyle.FixedSingle)
                     {
                         //g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY, tx.Width, tx.Height - 4);
-                        g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY, tx.Width, tx.Height);
+                        g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY-20, tx.Width, tx.Height);
                     }
                 }
                 if (item is ComboBox)
@@ -1632,7 +1633,7 @@ namespace VividManagementApplication
                     //g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + x + tableX, tx.Top + y + 3 + tableY);
                     g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + x + tableX + fontDisX, tx.Top + y + tableY + fontDisY);
                     //g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY, tx.Width, tx.Height - 6);
-                    g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY, tx.Width, 26);
+                    g.DrawRectangle(new Pen(Color.Black), tx.Left + x + tableX, tx.Top + y + tableY-20, tx.Width, 26);
                 }
             }
         }
@@ -1653,7 +1654,6 @@ namespace VividManagementApplication
             Font f7 = new Font("楷体", 10);//华文行楷
 
             SizeF fontSize;
-
             //
             fontSize = g.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3);//桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司
             g.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), f3, new SolidBrush(Color.Blue), pageWidth / 2 - fontSize.Width / 2 + x, y);
@@ -1665,7 +1665,7 @@ namespace VividManagementApplication
             //
             g.DrawString("购货方：", f4, new SolidBrush(Color.Black), 40 + x, 80 + y);
             fontSize = g.MeasureString("购货方：", f4);
-            g.DrawString(tbHTghfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 80 + y);
+            g.DrawString(tbHTxsfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 80 + y);
 
             g.DrawString("合同编号：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 80 + y);
             fontSize = g.MeasureString("合同编号：", f4);
@@ -1679,8 +1679,8 @@ namespace VividManagementApplication
             // 
             g.DrawString("销货方：", f4, new SolidBrush(Color.Black), 40 + x, 120 + y);
             fontSize = g.MeasureString("销货方：", f4);
-            g.DrawString(tbHTxsfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
-
+            g.DrawString(tbHTghfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
+            
             g.DrawString("签约地点：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 120 + y);
             fontSize = g.MeasureString("签约地点：", f4);
             g.DrawString(HTtbLocation.Text, f5, new SolidBrush(Color.Black), 150 + pageWidth / 2 + fontSize.Width + x, 120 + y);
@@ -1896,31 +1896,31 @@ namespace VividManagementApplication
             //g.DrawString("7、货款结算方式及期限：", f4, new SolidBrush(Color.Black), 40 + x, 580 + y);
             //fontSize = g.MeasureString("7、货款结算方式及期限：", f4);
             string tempString = ("7、货款结算方式及期限：" + HTcbChoose7.Text);
-            g.DrawString((tempString.Length > 51) ? tempString.Insert(51, "\n") : tempString, f4, new SolidBrush(Color.Black), 40 + x, 565 + y);
+            g.DrawString((tempString.Length > 55) ? tempString.Insert(55, "\n") : tempString, f4, new SolidBrush(Color.Black), 40 + x, 565 + y);
             Console.WriteLine("####" + HTcbChoose7.Text.Length);
             // 
-            g.DrawString("8、违约责任：如本合同执行过程中发生纠纷，双方应本着友好合作的态度进行协商解决，遇协商不成时，遵照国家\n相关法律法规及法定程序，任何一方均有权提请销货方所在地的人民法院对有争议的事项依法做出裁决。", f4, new SolidBrush(Color.Black), 40 + x, 600 + y);
+            g.DrawString("8、违约责任：如本合同执行过程中发生纠纷，双方应本着友好合作的态度进行协商解决，遇协商不成时，遵照国家相关法律\n法规及法定程序，任何一方均有权提请销货方所在地的人民法院对有争议的事项依法做出裁决。", f4, new SolidBrush(Color.Black), 40 + x, 600 + y);
 
             // 
-            g.DrawString("9、其它条款：(1)本合同未尽事宜皆按中华人民共和国各项法律之规定处理。（2）本合同如有附件，既与正文具有\n同等效力。（3）本合同一经生效，以前有关本合同（本批贸易）的函电、文件与本合同具有抵触的内容均为无效。\n（4）本合同一式二份（双方各执一份），经双方代理人签字（单位须加盖公章或合同章）后生效。双方必须全面履\n行本合同，任何一方不得擅自变更或解除。", f4, new SolidBrush(Color.Black), 40 + x, 635 + y);
+            g.DrawString("9、其它条款：(1)本合同未尽事宜皆按中华人民共和国各项法律之规定处理。（2）本合同如有附件，既与正文具有同等效力。\n（3）本合同一经生效，以前有关本合同（本批贸易）的函电、文件与本合同具有抵触的内容均为无效。（4）本合同一式二份\n（双方各执一份），经双方代理人签字（单位须加盖公章或合同章）后生效。双方必须全面履行本合同，任何一方不得擅自变\n更或解除。", f4, new SolidBrush(Color.Black), 40 + x, 635 + y);
 
-            g.DrawString("10、双方代理人签字（单位必须加盖公章或合同章）：", f4, new SolidBrush(Color.Black), 40 + x, 695 + y);
+            g.DrawString("10、双方代理人签字（单位必须加盖公章或合同章）：", f4, new SolidBrush(Color.Black), 40 + x, 700 + y);
 
             // 框
             int recWidth = (pageWidth - 60 * 2) / 2;
-            int recHeight = 310;
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 715 + y, recWidth, recHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + recWidth + x, 715 + y, recWidth, recHeight);
+            int recHeight = 320;
+            g.DrawRectangle(new Pen(Color.Black), 40 + x, 720 + y, recWidth, recHeight);
+            g.DrawRectangle(new Pen(Color.Black), 40 + recWidth + x, 720 + y, recWidth, recHeight);
 
-            float KuangY1 = 725 + y;
-            float KuangY2 = 750 + y;
-            float KuangY3 = 785 + y;
-            float KuangY4 = 815 + y;
-            float KuangY5 = 865 + y;
-            float KuangY6 = 895 + y;
-            float KuangY7 = 925 + y;
-            float KuangY8 = 975 + y;
-            float KuangY9 = 1005 + y;
+            float KuangY1 = 735 + y;
+            float KuangY2 = 760 + y;
+            float KuangY3 = 795 + y;
+            float KuangY4 = 825 + y;
+            float KuangY5 = 875 + y;
+            float KuangY6 = 905 + y;
+            float KuangY7 = 935 + y;
+            float KuangY8 = 985 + y;
+            float KuangY9 = 1015 + y;
             // 框内
             fontSize = g.MeasureString("购  货  方", f45);
             g.DrawString("购  货  方", f45, new SolidBrush(Color.Black), 40 + x + recWidth / 2 - fontSize.Width / 2, KuangY1);
