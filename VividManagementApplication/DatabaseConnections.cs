@@ -170,7 +170,7 @@ namespace VividManagementApplication
         }
 
         // 修改数据
-        public void LocalUpdateData(string table, string[] query, string[] value, string id)
+        public void LocalUpdateData(string table, string[] query, string[] value, string baseName, string id)
         {
             string innerSQL = "";
 
@@ -184,7 +184,7 @@ namespace VividManagementApplication
             }
             LocalDbOpen();
             SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
-            cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
+            cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
             cmdInsert.ExecuteNonQuery();
             LocalDbClose();
         }
