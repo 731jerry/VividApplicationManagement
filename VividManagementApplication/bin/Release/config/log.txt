@@ -1,3 +1,90 @@
+2015/4/4 15:30:36-
+###异常消息Message: SQLite error
+near "(": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalUpdateData(String table, String[] query, String[] value, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 702
+===================================================
+
+2015/4/4 15:26:23-
+###异常消息Message: SQLite error
+near ",": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 698
+===================================================
+
+2015/4/4 15:22:46-
+###异常消息Message: SQLite error
+near "WHERE": syntax error
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 698
+===================================================
+
+2015/4/4 15:16:25-无法查看详细
+###异常消息Message: 指定的转换无效。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.VerifyType(Int32 i, DbType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetString(Int32 i)
+   在 VividManagementApplication.DatabaseConnections.LocalGetIdsOfTable(String table, String baseName, String order) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 304
+   在 VividManagementApplication.DetailedInfo.HTcbName_SelectedIndexChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 915
+   在 System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 433
+===================================================
+
+2015/4/4 15:13:51-无法查看详细
+###异常消息Message: 指定的转换无效。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.VerifyType(Int32 i, DbType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetString(Int32 i)
+   在 VividManagementApplication.DatabaseConnections.LocalGetIdsOfTable(String table, String baseName, String order) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 304
+   在 VividManagementApplication.DetailedInfo.HTcbName_SelectedIndexChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 915
+   在 System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 433
+===================================================
+
+2015/4/4 15:09:03-无法查看详细
+###异常消息Message: 指定的转换无效。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.VerifyType(Int32 i, DbType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetString(Int32 i)
+   在 VividManagementApplication.DatabaseConnections.LocalGetIdsOfTable(String table, String baseName, String order) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 304
+   在 VividManagementApplication.DetailedInfo.HTcbName_SelectedIndexChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 915
+   在 System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 433
+===================================================
+
+2015/4/4 15:08:56-无法查看详细
+###异常消息Message: 指定的转换无效。
+###当前异常StackTrace:    在 System.Data.SQLite.SQLiteDataReader.VerifyType(Int32 i, DbType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetString(Int32 i)
+   在 VividManagementApplication.DatabaseConnections.LocalGetIdsOfTable(String table, String baseName, String order) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 304
+   在 VividManagementApplication.DetailedInfo.HTcbName_SelectedIndexChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 915
+   在 System.Windows.Forms.ComboBox.OnSelectedIndexChanged(EventArgs e)
+   在 System.Windows.Forms.ComboBox.set_SelectedIndex(Int32 value)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 433
+===================================================
+
+2015/4/4 15:07:46-
+###异常消息Message: Abort due to constraint violation
+clients.company may not be NULL
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Reset(SQLiteStatement stmt)
+   在 System.Data.SQLite.SQLite3.Step(SQLiteStatement stmt)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 220
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 702
+===================================================
+
 2015/4/4 14:47:56-无法查看详细
 ###异常消息Message: 输入字符串的格式不正确。
 ###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)

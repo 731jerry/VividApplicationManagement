@@ -190,6 +190,27 @@ namespace VividManagementApplication
         }
 
         // 插入或更新数据
+        public void LocalUpdateData(string table, string[] query, string[] value, string baseName, string id)
+        {
+            string querySQL = "";
+
+            for (int i = 0; i < query.Length; i++)
+            {
+                querySQL += query[i] + "='"+value[i]+"',";
+            }
+            if (!querySQL.Equals(""))
+            {
+                querySQL = querySQL.Substring(0, querySQL.Length - 1); // 去掉最后的逗号
+            }
+
+            LocalDbOpen();
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            cmdInsert.CommandText = "Update  " + table +" SET "+ querySQL + " WHERE " + baseName + " = '" + id + "'";
+            cmdInsert.ExecuteNonQuery();
+            LocalDbClose();
+        }
+
+        // 插入或更新数据
         public void LocalReplaceIntoData(string table, string[] query, string[] value, string id)
         {
             string innerQuerySQL = "";

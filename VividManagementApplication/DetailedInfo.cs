@@ -696,6 +696,15 @@ namespace VividManagementApplication
                                 SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString(),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                         }
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
+                        // 保存法人信息
+                        if (HTcbName.SelectedIndex == 0)
+                        {
+                            DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTghfPresenter.Text }, "clientID", tbHTghfID.Text);
+                        }
+                        else
+                        {
+                            DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTxsfPresenter.Text }, "clientID", tbHTxsfID.Text);
+                        }
                     }
                     else
                     {
