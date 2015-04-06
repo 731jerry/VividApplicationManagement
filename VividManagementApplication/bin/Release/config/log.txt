@@ -1,3 +1,10 @@
+2015/4/6 14:31:39-无法查看详细
+###异常消息Message: 给定关键字不在字典中。
+###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   在 VividManagementApplication.JSONConvert.DeserializeObject(String text) 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\JSONConvert.cs:行号 119
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 224
+===================================================
+
 <<<<<<< HEAD
 15/4/4 下午3:09:02-无法查看详细
 ###异常消息Message: 未将对象引用设置到对象的实例。

@@ -260,59 +260,6 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="qqButton1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="qqButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAzhJREFUSEut
-        lmlIFHEYxsddTZOggwgMsUgrU1PLTTE6TSO7jCgwXV1bNbVsUTMzM03spGNJigqTNC1Z1MwUKzNLjcrw
-        wDNEIkxEwtt120ynp3eG/4c+z/qDF+Z4eH7wwn8Y7n8aD6+S0Viz29mFit1blc7tXTFeRrqOZY9nByp0
-        6VC7D051vcfA2e2oCfXm/fz8ley1abC1NPWf2YaB836oUW3CVW0WVNEabPXdG8pi0qHy9Z1H3fg2lSvq
-        QxQoq3yJwoYGRKalIfV0NApCFmpYVBoksGsNWjPcFOyCEwd341BEBHLf16K6thg/Hjmi65IML9UWqSwu
-        DZJsu3do42imVosd+wOQmhCEsSdzgb4sTFY4oSNTlKSwuDRU/r4bg5VB4xdvXEFHzgbjTIUcM2VmQO8V
-        TJStRtsFUZLM4tI4udfb6U7k6m/d161grPTU86KEA3o0mCh1QMt5UZLE4tKgAru3Mebfvl61hKHcXc+X
-        yzBdyuFvZyDGiuzQdE6UJLK4NKhgOUm+t1+0xGSpk37mhQxTz0jSvBOjOht8OSNKElhcGoKkOkb+vTXD
-        Avoie/30czMYiznwDZ4YebIYn5NESRyLS4MKVlRHyXtb0swxUWhrmKJVTeo4zNSvxFDeAnw8JUpMOydU
-        4ECSvsYUc4zlLzH8LuFIxmG6Zil+5ljjQ7woMe3bRQWr3kTJ+78kyzCau8Dwi1Y1+pQkr+dj4IEl6jSi
-        5DiLS4MKHKuOyQeEtQw/tDYIqxop4PCn3Ao92etQl+KISrVFNItLgyQuVZHyn/VxZvzQ/TlGYVVD+Rz6
-        8mzQptOiKuOA8a5yi4LFpUES11cR8sGaWI6vu2A/3XLLFs3aReh6fhuNBddwS7n/OotKhyTrX4XLB3XH
-        nJEfE4jCuFB8epCB7oq7yNEo+28G75OxqHRIongRPm+4JEmNkoQwFCeo0PT4Msovx/Pph/13s5hpFKjs
-        HbXKPdnZ0UfGdYlqvjQ5ElnpifDx9ipjkdmBVmJNExbu79Ou8PCAr+8uPnzX9sXstSSEHc+hmUcjFK2g
-        caFRuNkv03i6rn0XsNnbtHNBCBJzGkFkRSP87ggjSIVnBMf9A0PJqGU1lzuxAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="qqButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="qqButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 14</value>
-  </data>
-  <data name="qqButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 49</value>
-  </data>
-  <data name="qqButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
-  <data name="qqButton1.Text" xml:space="preserve">
-    <value>测试</value>
-  </data>
-  <data name="qqButton1.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="&gt;&gt;qqButton1.Name" xml:space="preserve">
-    <value>qqButton1</value>
-  </data>
-  <data name="&gt;&gt;qqButton1.Type" xml:space="preserve">
-    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;qqButton1.Parent" xml:space="preserve">
-    <value>ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;qqButton1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="settingQQButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -335,6 +282,7 @@
         caFRuNkv03i6rn0XsNnbtHNBCBJzGkFkRSP87ggjSIVnBMf9A0PJqGU1lzuxAAAAAElFTkSuQmCC
 </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="settingQQButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -363,7 +311,7 @@
     <value>ContentPanel</value>
   </data>
   <data name="&gt;&gt;settingQQButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="mainDGVTitle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -399,7 +347,7 @@
     <value>ContentPanel</value>
   </data>
   <data name="&gt;&gt;mainDGVTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="backupData.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -448,7 +396,7 @@
     <value>ContentPanel</value>
   </data>
   <data name="&gt;&gt;backupData.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="refeshButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -473,7 +421,7 @@
 </value>
   </data>
   <data name="refeshButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>161, 12</value>
+    <value>87, 11</value>
   </data>
   <data name="refeshButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 49</value>
@@ -497,7 +445,7 @@
     <value>ContentPanel</value>
   </data>
   <data name="&gt;&gt;refeshButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="MainDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 76</value>
@@ -518,56 +466,7 @@
     <value>ContentPanel</value>
   </data>
   <data name="&gt;&gt;MainDataGridView.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="DiscardButton.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="DiscardButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAzhJREFUSEut
-        lmlIFHEYxsddTZOggwgMsUgrU1PLTTE6TSO7jCgwXV1bNbVsUTMzM03spGNJigqTNC1Z1MwUKzNLjcrw
-        wDNEIkxEwtt120ynp3eG/4c+z/qDF+Z4eH7wwn8Y7n8aD6+S0Viz29mFit1blc7tXTFeRrqOZY9nByp0
-        6VC7D051vcfA2e2oCfXm/fz8ley1abC1NPWf2YaB836oUW3CVW0WVNEabPXdG8pi0qHy9Z1H3fg2lSvq
-        QxQoq3yJwoYGRKalIfV0NApCFmpYVBoksGsNWjPcFOyCEwd341BEBHLf16K6thg/Hjmi65IML9UWqSwu
-        DZJsu3do42imVosd+wOQmhCEsSdzgb4sTFY4oSNTlKSwuDRU/r4bg5VB4xdvXEFHzgbjTIUcM2VmQO8V
-        TJStRtsFUZLM4tI4udfb6U7k6m/d161grPTU86KEA3o0mCh1QMt5UZLE4tKgAru3Mebfvl61hKHcXc+X
-        yzBdyuFvZyDGiuzQdE6UJLK4NKhgOUm+t1+0xGSpk37mhQxTz0jSvBOjOht8OSNKElhcGoKkOkb+vTXD
-        Avoie/30czMYiznwDZ4YebIYn5NESRyLS4MKVlRHyXtb0swxUWhrmKJVTeo4zNSvxFDeAnw8JUpMOydU
-        4ECSvsYUc4zlLzH8LuFIxmG6Zil+5ljjQ7woMe3bRQWr3kTJ+78kyzCau8Dwi1Y1+pQkr+dj4IEl6jSi
-        5DiLS4MKHKuOyQeEtQw/tDYIqxop4PCn3Ao92etQl+KISrVFNItLgyQuVZHyn/VxZvzQ/TlGYVVD+Rz6
-        8mzQptOiKuOA8a5yi4LFpUES11cR8sGaWI6vu2A/3XLLFs3aReh6fhuNBddwS7n/OotKhyTrX4XLB3XH
-        nJEfE4jCuFB8epCB7oq7yNEo+28G75OxqHRIongRPm+4JEmNkoQwFCeo0PT4Msovx/Pph/13s5hpFKjs
-        HbXKPdnZ0UfGdYlqvjQ5ElnpifDx9ipjkdmBVmJNExbu79Ou8PCAr+8uPnzX9sXstSSEHc+hmUcjFK2g
-        caFRuNkv03i6rn0XsNnbtHNBCBJzGkFkRSP87ggjSIVnBMf9A0PJqGU1lzuxAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="DiscardButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 11</value>
-  </data>
-  <data name="DiscardButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 49</value>
-  </data>
-  <data name="DiscardButton.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="DiscardButton.Text" xml:space="preserve">
-    <value>作废</value>
-  </data>
-  <data name="DiscardButton.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageAboveText</value>
-  </data>
-  <data name="&gt;&gt;DiscardButton.Name" xml:space="preserve">
-    <value>DiscardButton</value>
-  </data>
-  <data name="&gt;&gt;DiscardButton.Type" xml:space="preserve">
-    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;DiscardButton.Parent" xml:space="preserve">
-    <value>ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;DiscardButton.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>4</value>
   </data>
   <data name="ViewButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -616,7 +515,7 @@
     <value>ContentPanel</value>
   </data>
   <data name="&gt;&gt;ViewButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>5</value>
   </data>
   <data name="ContentPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -2471,7 +2370,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA0
-        CwAAAk1TRnQBSQFMAgEBAwEAAfABAAHwAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAfgBAAH4AQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

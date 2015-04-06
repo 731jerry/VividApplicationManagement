@@ -43,7 +43,6 @@
             this.backupData = new ControlExs.QQButton();
             this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
-            this.DiscardButton = new ControlExs.QQButton();
             this.ViewButton = new ControlExs.QQButton();
             this.NavPanel = new System.Windows.Forms.Panel();
             this.listXsButton = new ControlExs.QQButton();
@@ -75,7 +74,6 @@
             this.lblSHOWS = new System.Windows.Forms.Label();
             this.commerceTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.qqButton1 = new ControlExs.QQButton();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -129,13 +127,11 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.settingQQButton);
             this.ContentPanel.Controls.Add(this.mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
             this.ContentPanel.Controls.Add(this.refeshButton);
             this.ContentPanel.Controls.Add(this.MainDataGridView);
-            this.ContentPanel.Controls.Add(this.DiscardButton);
             this.ContentPanel.Controls.Add(this.ViewButton);
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.Name = "ContentPanel";
@@ -179,12 +175,6 @@
             this.MainDataGridView.RowHeadersVisible = false;
             this.MainDataGridView.RowTemplate.Height = 23;
             this.MainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            // 
-            // DiscardButton
-            // 
-            resources.ApplyResources(this.DiscardButton, "DiscardButton");
-            this.DiscardButton.Name = "DiscardButton";
-            this.DiscardButton.UseVisualStyleBackColor = true;
             // 
             // ViewButton
             // 
@@ -433,13 +423,6 @@
             this.imageList1.Images.SetKeyName(1, "Delete_2_24.png");
             this.imageList1.Images.SetKeyName(2, "AppBox_grid.png");
             // 
-            // qqButton1
-            // 
-            resources.ApplyResources(this.qqButton1, "qqButton1");
-            this.qqButton1.Name = "qqButton1";
-            this.qqButton1.UseVisualStyleBackColor = true;
-            this.qqButton1.Click += new System.EventHandler(this.qqButton1_Click_1);
-            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -478,7 +461,6 @@
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Panel NavPanel;
         private ControlExs.QQButton ViewButton;
-        private ControlExs.QQButton DiscardButton;
         private System.Windows.Forms.Panel ContentPanel;
         private System.Windows.Forms.DataGridView MainDataGridView;
         private ControlExs.QQButton refeshButton;
@@ -514,7 +496,6 @@
         private ControlExs.QQButton settingQQButton;
         private ControlExs.QQButton listXsButton;
         public System.Windows.Forms.Label mainDGVTitle;
-        private ControlExs.QQButton qqButton1;
     }
 }
 
