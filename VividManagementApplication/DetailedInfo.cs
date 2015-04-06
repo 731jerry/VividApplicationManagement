@@ -84,7 +84,7 @@ namespace VividManagementApplication
 
                     break;
                 case 2:
-                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods2, tbGoods3, tbGoods4, tbGoods4 };
+                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods2, tbGoods3, tbGoods4, tbGoods5, tbGoods11, tbGoods12, tbGoods14, tbGoods15 };
                     detailedHeightDis = 250;
                     detailedPanel = DetailedGoodsPanel;
 
@@ -2212,10 +2212,23 @@ namespace VividManagementApplication
             calculateSmallSum(cbHTGoodsE4, cbHTGoodsE5, cbHTGoodsE6);
         }
 
-        private void lbPzTitle_Click(object sender, EventArgs e)
+        private void tbGoods11_TextChanged(object sender, EventArgs e)
         {
-
+            calculateSmallSum(tbGoods11, tbGoods12, tbGoods13);
         }
+
+        private void tbGoods12_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(tbGoods11, tbGoods12, tbGoods13);
+        }
+
+        private void tbGoods15_TextChanged(object sender, EventArgs e)
+        {
+            calculateSmallSum(tbGoods14, tbGoods15, tbGoods16);
+        }
+
+
+
 
 
 

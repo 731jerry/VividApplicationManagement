@@ -798,6 +798,7 @@
             this.tbGoods16.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbGoods16.Location = new System.Drawing.Point(609, 227);
             this.tbGoods16.Name = "tbGoods16";
+            this.tbGoods16.ReadOnly = true;
             this.tbGoods16.Size = new System.Drawing.Size(154, 26);
             this.tbGoods16.TabIndex = 216;
             this.tbGoods16.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -809,6 +810,7 @@
             this.tbGoods15.Name = "tbGoods15";
             this.tbGoods15.Size = new System.Drawing.Size(150, 26);
             this.tbGoods15.TabIndex = 215;
+            this.tbGoods15.TextChanged += new System.EventHandler(this.tbGoods15_TextChanged);
             this.tbGoods15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods14
@@ -825,6 +827,7 @@
             this.tbGoods13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbGoods13.Location = new System.Drawing.Point(609, 194);
             this.tbGoods13.Name = "tbGoods13";
+            this.tbGoods13.ReadOnly = true;
             this.tbGoods13.Size = new System.Drawing.Size(154, 26);
             this.tbGoods13.TabIndex = 213;
             this.tbGoods13.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -836,6 +839,7 @@
             this.tbGoods12.Name = "tbGoods12";
             this.tbGoods12.Size = new System.Drawing.Size(150, 26);
             this.tbGoods12.TabIndex = 212;
+            this.tbGoods12.TextChanged += new System.EventHandler(this.tbGoods12_TextChanged);
             this.tbGoods12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods11
@@ -845,6 +849,7 @@
             this.tbGoods11.Name = "tbGoods11";
             this.tbGoods11.Size = new System.Drawing.Size(179, 26);
             this.tbGoods11.TabIndex = 211;
+            this.tbGoods11.TextChanged += new System.EventHandler(this.tbGoods11_TextChanged);
             this.tbGoods11.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbGoods10
@@ -922,9 +927,9 @@
             this.label37.ForeColor = System.Drawing.Color.Red;
             this.label37.Location = new System.Drawing.Point(294, 231);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(79, 20);
+            this.label37.Size = new System.Drawing.Size(85, 20);
             this.label37.TabIndex = 158;
-            this.label37.Text = "当前售价：";
+            this.label37.Text = "*当前售价：";
             // 
             // label36
             // 
@@ -942,9 +947,9 @@
             this.label35.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label35.Location = new System.Drawing.Point(294, 198);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(79, 20);
+            this.label35.Size = new System.Drawing.Size(85, 20);
             this.label35.TabIndex = 157;
-            this.label35.Text = "进货单价：";
+            this.label35.Text = "*进货单价：";
             // 
             // label34
             // 
@@ -993,9 +998,9 @@
             this.label27.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label27.Location = new System.Drawing.Point(18, 198);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 20);
+            this.label27.Size = new System.Drawing.Size(85, 20);
             this.label27.TabIndex = 151;
-            this.label27.Text = "期初数量：";
+            this.label27.Text = "*期初数量：";
             // 
             // label28
             // 
@@ -2702,7 +2707,6 @@
             this.lbPzTitle.Size = new System.Drawing.Size(132, 28);
             this.lbPzTitle.TabIndex = 154;
             this.lbPzTitle.Text = "收  款  凭  证";
-            this.lbPzTitle.Click += new System.EventHandler(this.lbPzTitle_Click);
             // 
             // pzAddress
             // 
