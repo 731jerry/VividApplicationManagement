@@ -463,11 +463,13 @@ namespace VividManagementApplication
             Column4.HeaderText = "等级";
             Column5.HeaderText = "单位";
             Column6.HeaderText = "库存数量";
-            Column7.HeaderText = "单价";
+            Column7.HeaderText = "进货单价";
             Column8.HeaderText = "备注";
 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods",
-                new string[] { "goodID", "name", "guige", "dengji", "currentCount", "currntsalesPrice", "beizhu" });
+                new string[] { "goodID", "name", "guige", "dengji", "currentCount", "purchasePrice", "beizhu" });
         }
 
         private void listJcdButton_Click(object sender, EventArgs e)
