@@ -207,13 +207,16 @@ namespace VividManagementApplication
                             queryList.Remove("sum");
                             queryList.Remove("addtime");
                             queryList.Remove("modifyTime");
-                            if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")))
+                            queryList.Remove("discardFlag");
+                            if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("出仓单列表")))
                             {
                                 queryList.Remove("kxQq");
                                 queryList.Remove("kxXq");
                                 queryList.Remove("kxJf");
                                 queryList.Remove("kxSq");
                                 queryList.Remove("kxDay");
+                                SaveButton.Visible = false;
+                                DiscardCheckBox.Visible = false;
                             }
                             queryArray = queryList.ToArray();
 
@@ -627,24 +630,50 @@ namespace VividManagementApplication
                         String[] resultStringArray;
                         if (ItemId.Equals("-1")) // 新建
                         {
-                            if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("出仓单列表")))
+                            //if ((MainWindow.CURRENT_LIST_BUTTON.Text.Equals("进仓单列表")) || (MainWindow.CURRENT_LIST_BUTTON.Text.Equals("出仓单列表")))
+                            //{
+                            //    queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                            //    resultStringArray = new String[] { 
+                            //    tbDz1.Text,tbDz2.Text, dzCompany.Text, 
+                            //    AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                            //    jsonData, 
+                            //    tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
+                            //}
+                            //else
+                            //{
+
+                            #region 保存到进出仓单
+                            String tableDZ = "";
+                            String baseNameDZ = "";
+
+                            if (danziComboBox.SelectedIndex == 0) // 采购单 - 进仓单
                             {
-                                queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
-                                resultStringArray = new String[] { 
-                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
+                                tableDZ = "jcdList";
+                                baseNameDZ = "jcdID";
+                            }
+                            else
+                            { // 销售单 - 出仓单
+                                tableDZ = "ccdList";
+                                baseNameDZ = "ccdID";
+                            }
+
+                            String[] queryStringArrayDZ = new String[] { "clientID", baseNameDZ, "cgxsID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
+                            String[] resultStringArrayDZ = new String[] { 
+                                tbDz1.Text, DatabaseConnections.GetInstence().LocalAutoincreaseID(tableDZ, baseNameDZ), tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                 jsonData, 
                                 tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
-                            }
-                            else
-                            {
-                                queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
-                                resultStringArray = new String[] { 
+
+                            DatabaseConnections.GetInstence().LocalReplaceIntoData(tableDZ, queryStringArrayDZ, resultStringArrayDZ, mainID);
+                            #endregion
+
+                            queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
+                            resultStringArray = new String[] { 
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                 jsonData, 
                                 tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
-                            }
+                            //}
                         }
                         else
                         {

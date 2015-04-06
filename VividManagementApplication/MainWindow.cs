@@ -521,7 +521,7 @@ namespace VividManagementApplication
 
         private void listXsButton_Click(object sender, EventArgs e)
         {
-            CURRENT_LIST_BUTTON = listCgButton;
+            CURRENT_LIST_BUTTON = listXsButton;
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listCgButton.Text;
             Column1.HeaderText = "凭证号码";

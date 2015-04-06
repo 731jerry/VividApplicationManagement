@@ -1,3 +1,30 @@
+2015/4/6 17:16:56-无法查看详细
+###异常消息Message: 值不能为 null。
+参数名: String
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 227
+===================================================
+
+2015/4/6 17:13:48-无法查看详细
+###异常消息Message: 值不能为 null。
+参数名: String
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 227
+===================================================
+
+2015/4/6 17:13:25-无法查看详细
+###异常消息Message: 值不能为 null。
+参数名: String
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 227
+===================================================
+
 2015/4/6 14:31:39-无法查看详细
 ###异常消息Message: 给定关键字不在字典中。
 ###当前异常StackTrace:    在 System.Collections.Generic.Dictionary`2.get_Item(TKey key)
