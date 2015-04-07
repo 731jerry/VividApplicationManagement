@@ -586,14 +586,6 @@ namespace VividManagementApplication
                 new string[] { "xsdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
 
         }
-        private void listKhdzButton_Click(object sender, EventArgs e)
-        {
-            // 还未完成
-            CURRENT_LIST_BUTTON = listKhdzButton;
-            CURRENT_TAB = 4;
-            mainDGVTitle.Text = listKhdzButton.Text;
-        }
-
         #endregion
 
         // 凭证列表 收付汇总表
@@ -619,6 +611,15 @@ namespace VividManagementApplication
                     "operateMoney", 
                     "remaintingMoney", 
                     "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
+        }
+
+        // 客户对账单
+        private void listKhdzButton_Click(object sender, EventArgs e)
+        {
+            // 还未完成
+            CURRENT_LIST_BUTTON = listKhdzButton;
+            CURRENT_TAB = 4;
+            mainDGVTitle.Text = listKhdzButton.Text;
         }
 
         // 合同列表
