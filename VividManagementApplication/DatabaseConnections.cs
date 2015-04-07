@@ -170,13 +170,20 @@ namespace VividManagementApplication
         }
 
         // 修改数据
-        public void LocalUpdateData(string table, string[] query, string[] value, string baseName, string id)
+        public void LocalUpdateData(string table, string[] query, string[] value, Boolean isValueString, string baseName, string id)
         {
             string innerSQL = "";
 
             for (int i = 0; i < query.Length; i++)
             {
-                innerSQL += query[i] + " = '" + value[i] + "',";
+                if (isValueString)
+                {
+                    innerSQL += query[i] + " = '" + value[i] + "',";
+                }
+                else
+                {
+                    innerSQL += query[i] + " = " + value[i] + ",";
+                }
             }
             if (!innerSQL.Equals(""))
             {

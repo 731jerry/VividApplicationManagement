@@ -166,6 +166,10 @@ namespace VividManagementApplication
                         baseName = "cgdID";
                         makeControlsInvisibleForJCCD(true);
                         enableDetailedUnderCaigou(false);
+                        danziComboBox.Items.Clear();
+                        danziComboBox.Items.Add("采购单");
+                        danziComboBox.Items.Add("销售单");
+                        danziComboBox.SelectedIndex = 0;
                         // moreDetaildpPanel.Visible = true;
                         // FormBasicFeatrues.GetInstence().moveParentPanel(moreDetaildpPanel, detailedPanel);
                     }
@@ -176,6 +180,10 @@ namespace VividManagementApplication
                         baseName = "xsdID";
                         makeControlsInvisibleForJCCD(true);
                         enableDetailedUnderCaigou(true);
+                        danziComboBox.Items.Clear();
+                        danziComboBox.Items.Add("采购单");
+                        danziComboBox.Items.Add("销售单");
+                        danziComboBox.SelectedIndex = 1;
                         // moreDetaildpPanel.Visible = true;
                         // FormBasicFeatrues.GetInstence().moveParentPanel(moreDetaildpPanel, detailedPanel);
                     }
@@ -641,6 +649,7 @@ namespace VividManagementApplication
                                 new List<Control> (){JCDcbE, EJCDtb5 } 
                                 }
                             );
+
                         // 
                         String[] queryStringArray;
                         String[] resultStringArray;
@@ -661,16 +670,19 @@ namespace VividManagementApplication
                             #region 保存到进出仓单
                             String tableDZ = "";
                             String baseNameDZ = "";
+                            String operatorDZ = "";
 
                             if (danziComboBox.SelectedIndex == 0) // 采购单 - 进仓单
                             {
                                 tableDZ = "jcdList";
                                 baseNameDZ = "jcdID";
+                                operatorDZ = "+";
                             }
                             else
                             { // 销售单 - 出仓单
                                 tableDZ = "ccdList";
                                 baseNameDZ = "ccdID";
+                                operatorDZ = "-";
                             }
 
                             String[] queryStringArrayDZ = new String[] { "clientID", baseNameDZ, "cgxsID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
@@ -681,6 +693,29 @@ namespace VividManagementApplication
                                 tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
 
                             DatabaseConnections.GetInstence().LocalReplaceIntoData(tableDZ, queryStringArrayDZ, resultStringArrayDZ, mainID);
+                            #endregion
+
+                            #region 更新到库存信息
+                            if (!JCDcbA.Text.Equals("") && !AJCDtb5.Text.Equals(""))
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + AJCDtb5.Text }, false, "goodID", JCDcbA.Text);
+                            }
+                            if (!JCDcbB.Text.Equals("") && !BJCDtb5.Text.Equals(""))
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + BJCDtb5.Text }, false, "goodID", JCDcbB.Text);
+                            }
+                            if (!JCDcbC.Text.Equals("") && !CJCDtb5.Text.Equals(""))
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + CJCDtb5.Text }, false, "goodID", JCDcbC.Text);
+                            }
+                            if (!JCDcbD.Text.Equals("") && !DJCDtb5.Text.Equals(""))
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + DJCDtb5.Text }, false, "goodID", JCDcbD.Text);
+                            }
+                            if (!JCDcbE.Text.Equals("") && !EJCDtb5.Text.Equals(""))
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + EJCDtb5.Text }, false, "goodID", JCDcbE.Text);
+                            }
                             #endregion
 
                             queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
@@ -716,24 +751,53 @@ namespace VividManagementApplication
                                 //resultStringArray = new String[] { tbDz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                             }
 
-                            #region 作废标记 保存到进出仓单
-                            String tableDZModi = "";
-                            String baseNameDZModi = "cgxsID";
-
-                            if (danziComboBox.SelectedIndex == 0) // 采购单 - 进仓单
+                            if (DiscardCheckBox.Checked)
                             {
-                                tableDZModi = "jcdList";
-                            }
-                            else
-                            { // tableDZModi - 出仓单
-                                tableDZModi = "ccdList";
-                            }
+                                #region 作废标记 保存到进出仓单
+                                String tableDZModi = "";
+                                String baseNameDZModi = "cgxsID";
+                                String operatorDZModi = "";
 
-                            String[] queryStringArrayDZModi = new String[] { "discardFlag", "modifyTime" };
-                            String[] resultStringArrayDZModi = new String[] { (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
+                                if (danziComboBox.SelectedIndex == 0) // 采购单 - 进仓单
+                                {
+                                    tableDZModi = "jcdList";
+                                    operatorDZModi = "-";
+                                }
+                                else
+                                { // tableDZModi - 出仓单
+                                    tableDZModi = "ccdList";
+                                    operatorDZModi = "+";
+                                }
 
-                            DatabaseConnections.GetInstence().LocalUpdateData(tableDZModi, queryStringArrayDZModi, resultStringArrayDZModi, baseNameDZModi, tbDz2.Text);
-                            #endregion
+                                String[] queryStringArrayDZModi = new String[] { "discardFlag", "modifyTime" };
+                                String[] resultStringArrayDZModi = new String[] { (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
+
+                                DatabaseConnections.GetInstence().LocalUpdateData(tableDZModi, queryStringArrayDZModi, resultStringArrayDZModi, true, baseNameDZModi, tbDz2.Text);
+                                #endregion
+
+                                #region 作废标记 更新到库存信息
+                                if (!JCDcbA.Text.Equals("") && !AJCDtb5.Text.Equals(""))
+                                {
+                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + AJCDtb5.Text }, false, "goodID", JCDcbA.Text);
+                                }
+                                if (!JCDcbB.Text.Equals("") && !BJCDtb5.Text.Equals(""))
+                                {
+                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + BJCDtb5.Text }, false, "goodID", JCDcbB.Text);
+                                }
+                                if (!JCDcbC.Text.Equals("") && !CJCDtb5.Text.Equals(""))
+                                {
+                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + CJCDtb5.Text }, false, "goodID", JCDcbC.Text);
+                                }
+                                if (!JCDcbD.Text.Equals("") && !DJCDtb5.Text.Equals(""))
+                                {
+                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + DJCDtb5.Text }, false, "goodID", JCDcbD.Text);
+                                }
+                                if (!JCDcbE.Text.Equals("") && !EJCDtb5.Text.Equals(""))
+                                {
+                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + EJCDtb5.Text }, false, "goodID", JCDcbE.Text);
+                                }
+                                #endregion
+                            }
                         }
 
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
@@ -796,11 +860,11 @@ namespace VividManagementApplication
                             // 保存法人信息
                             if (HTcbName.SelectedIndex == 0)
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTghfPresenter.Text }, "clientID", tbHTghfID.Text);
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTghfPresenter.Text }, true, "clientID", tbHTghfID.Text);
                             }
                             else
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTxsfPresenter.Text }, "clientID", tbHTxsfID.Text);
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTxsfPresenter.Text }, true, "clientID", tbHTxsfID.Text);
                             }
                         }
                         else

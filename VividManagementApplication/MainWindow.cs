@@ -469,7 +469,7 @@ namespace VividManagementApplication
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods",
-                new string[] { "goodID", "name", "guige", "dengji", "currentCount", "purchasePrice", "beizhu" });
+                new string[] { "goodID", "name", "guige", "dengji","unit", "currentCount", "purchasePrice", "beizhu" });
         }
 
         private void listJcdButton_Click(object sender, EventArgs e)
