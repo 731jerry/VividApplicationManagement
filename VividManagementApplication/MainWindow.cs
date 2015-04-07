@@ -40,7 +40,7 @@ namespace VividManagementApplication
         public static string EMAIL = "";
         public static string ADDTIME = "";
         public static string NOTIFICATION = "";
-        public static string COMPANY_BALANCE = ""; // 公司结余暂存
+        public static int COMPANY_BALANCE = 0; // 公司结余暂存
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -206,8 +206,8 @@ namespace VividManagementApplication
             string fileName = System.Environment.CurrentDirectory + @"\data\data.db";
             try
             {
-                FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/00000000/" + dataBaseFilePrefix + "data.txt");
                 //FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/" + dataBaseFilePrefix + "data.txt");
+                FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/" + USER_ID + "/" + dataBaseFilePrefix + "data.txt");
                 MessageBox.Show(moreInfo + "数据库备份成功!", "成功!");
             }
             catch (Exception ex)
@@ -399,7 +399,7 @@ namespace VividManagementApplication
         DataGridViewTextBoxColumn Column7 = new DataGridViewTextBoxColumn();
         DataGridViewTextBoxColumn Column8 = new DataGridViewTextBoxColumn();
 
-        private void CreateMainDataGridView(DataGridViewColumn[] dgvcArray, string table, string[] queryArray)
+        private void CreateMainDataGridView(DataGridViewColumn[] dgvcArray, string table, int discardFlagIndex, string[] queryArray)
         {
             string order = " ORDER BY id ASC ";
             this.MainDataGridView.Columns.Clear();
@@ -410,7 +410,56 @@ namespace VividManagementApplication
             for (int i = 0; i < resultsList.Count; i++)
             {
                 this.MainDataGridView.Rows.Add(resultsList[i]);
+                if (discardFlagIndex != -1)
+                {
+                    if (!resultsList[i][discardFlagIndex].Equals("否"))
+                    {
+                        this.MainDataGridView.Rows[i].DefaultCellStyle.BackColor = Color.LightGray;
+                        this.MainDataGridView.Rows[i].DefaultCellStyle.ForeColor = Color.Gray;
+                    }
+                }
             }
+            this.MainDataGridView.Columns[1].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+        }
+
+        // 收支汇总表
+        private void CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, string table, string[] queryArray)
+        {
+            string order = " ORDER BY id ASC "; // 顺序
+            this.MainDataGridView.Columns.Clear();
+            this.MainDataGridView.Rows.Clear();
+            int tempBalance = COMPANY_BALANCE;
+
+            this.MainDataGridView.Columns.AddRange(dgvcArray);
+            List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetData(table, queryArray, order);
+
+            for (int i = 0; i < resultsList.Count; i++)
+            {
+                if (resultsList[i][6].Equals("否"))
+                {
+                    if ((resultsList[i][2].Equals("收款凭证")) || resultsList[i][2].Equals("还款凭证"))
+                    {
+                        tempBalance += int.Parse(resultsList[i][4]);
+                    }
+                    else
+                    {
+                        tempBalance -= int.Parse(resultsList[i][4]);
+                    }
+                    resultsList[i][5] = tempBalance.ToString();
+                }
+
+            }
+            resultsList.Reverse();
+            for (int j = 0; j < resultsList.Count; j++)
+            {
+                this.MainDataGridView.Rows.Add(resultsList[j]);
+                if (!resultsList[j][6].Equals("否"))
+                {
+                    this.MainDataGridView.Rows[j].DefaultCellStyle.BackColor = Color.LightGray;
+                    this.MainDataGridView.Rows[j].DefaultCellStyle.ForeColor = Color.Gray;
+                }
+            }
+            // this.MainDataGridView.Columns[2].HeaderCell.SortGlyphDirection = SortOrder.Descending;
         }
 
         // 客户管理
@@ -428,7 +477,7 @@ namespace VividManagementApplication
             Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients",-1,
                 new string[] { "clientID", "company", "address", "contact", "phone" });
         }
 
@@ -447,7 +496,7 @@ namespace VividManagementApplication
             Column7.HeaderText = "备注";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods",-1,
                 new string[] { "goodID", "name", "guige", "dengji", "unit", "currntsalesPrice", "beizhu" });
         }
 
@@ -469,8 +518,8 @@ namespace VividManagementApplication
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods",
-                new string[] { "goodID", "name", "guige", "dengji","unit", "currentCount", "purchasePrice", "beizhu" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods",-1,
+                new string[] { "goodID", "name", "guige", "dengji", "unit", "currentCount", "purchasePrice", "beizhu" });
         }
 
         private void listJcdButton_Click(object sender, EventArgs e)
@@ -484,7 +533,7 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "jcdList",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "jcdList",3,
                 new string[] { "jcdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
@@ -499,7 +548,7 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "ccdList",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "ccdList",3,
                 new string[] { "ccdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
@@ -518,7 +567,7 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList",3,
                 new string[] { "cgdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
@@ -533,7 +582,7 @@ namespace VividManagementApplication
             Column4.HeaderText = "作废标识";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList",
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList",3,
                 new string[] { "xsdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
 
         }
@@ -562,7 +611,7 @@ namespace VividManagementApplication
             Column7.HeaderText = "作废标识";
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
+            CreateMainDataGridViewPZ(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
                 new string[] { "pzID", 
                     "modifyTime", 
                     "case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'", 
@@ -587,7 +636,8 @@ namespace VividManagementApplication
             Column6.HeaderText = "作废标识";
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName", "sum", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", 5,
+                new string[] { "htID", "htDate", "leixing", "companyName", "sum", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
         #endregion
 

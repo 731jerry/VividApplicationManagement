@@ -377,7 +377,20 @@ namespace VividManagementApplication
 
                             String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag", "leixing" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
-                            DiscardCheckBox.Checked = data[2].Equals("0") ? false : true;
+                            if (int.Parse(data[2]) == 0)
+                            {
+                                DiscardCheckBox.Checked = false;
+                                DiscardCheckBox.Visible = true;
+                                DiscardLabel.Visible = false;
+                                SaveButton.Visible = true;
+                            }
+                            else
+                            {
+                                DiscardCheckBox.Checked = true;
+                                DiscardCheckBox.Visible = false;
+                                DiscardLabel.Visible = true;
+                                SaveButton.Visible = false;
+                            }
                             pzComboBox.SelectedIndex = int.Parse(data[3].ToString());
                             data[1] = data[1].Replace("\n", "");
                             data[1] = data[1].Replace(" ", "");
@@ -1029,8 +1042,11 @@ namespace VividManagementApplication
             baseName = "pzID";
             queryArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
             controlsPreName = "tbPz";
-            // 自动生成ID
-            tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+            if (ItemId.Equals("-1"))
+            {
+                // 自动生成ID
+                tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+            }
             switch (pzComboBox.SelectedIndex)
             {
                 default:
