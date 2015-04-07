@@ -484,7 +484,7 @@ namespace VividManagementApplication
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "jcdList",
-                new string[] { "jcdID", "companyName", "goodsName", "discardFlag" });
+                new string[] { "jcdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
         private void listCcdButton_Click(object sender, EventArgs e)
@@ -499,7 +499,7 @@ namespace VividManagementApplication
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "ccdList",
-                new string[] { "ccdID", "companyName", "goodsName", "discardFlag" });
+                new string[] { "ccdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
         #endregion
@@ -518,7 +518,7 @@ namespace VividManagementApplication
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "cgdList",
-                new string[] { "cgdID", "companyName", "goodsName", "discardFlag" });
+                new string[] { "cgdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
         private void listXsButton_Click(object sender, EventArgs e)
@@ -533,7 +533,7 @@ namespace VividManagementApplication
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "xsdList",
-                new string[] { "xsdID", "companyName", "goodsName", "discardFlag" });
+                new string[] { "xsdID", "companyName", "goodsName", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
 
         }
         private void listKhdzButton_Click(object sender, EventArgs e)
@@ -562,7 +562,7 @@ namespace VividManagementApplication
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
-                new string[] { "pzID", "modifyTime", "leixing", "companyName", "operateMoney", "remaintingMoney", "discardFlag" });
+                new string[] { "pzID", "modifyTime", "leixing", "companyName", "operateMoney", "remaintingMoney", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
         // 合同列表
@@ -580,7 +580,7 @@ namespace VividManagementApplication
             Column6.HeaderText = "作废标识";
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName", "sum", "discardFlag" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", new string[] { "htID", "htDate", "leixing", "companyName", "sum", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
         #endregion
 

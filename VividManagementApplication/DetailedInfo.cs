@@ -224,8 +224,22 @@ namespace VividManagementApplication
 
                             String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
-                            DiscardCheckBox.Checked = (int.Parse(data[2]) == 0) ? false : true;
-                            DiscardLabel.Visible = (int.Parse(data[2]) == 0) ? false : true;
+                            if (int.Parse(data[2]) == 0)
+                            {
+                                DiscardCheckBox.Checked = false;
+                                DiscardCheckBox.Visible = true;
+                                DiscardLabel.Visible = false;
+                                SaveButton.Visible = true;
+                            }
+                            else
+                            {
+                                DiscardCheckBox.Checked = true;
+                                DiscardCheckBox.Visible = false;
+                                DiscardLabel.Visible = true;
+                                SaveButton.Visible = false;
+                            }
+                            //DiscardCheckBox.Checked = (int.Parse(data[2]) == 0) ? false : true;
+                            //DiscardLabel.Visible = (int.Parse(data[2]) == 0) ? false : true;
                             data[1] = data[1].Replace("\n", "");
                             data[1] = data[1].Replace(" ", "");
                             JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化

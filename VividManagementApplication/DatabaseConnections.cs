@@ -279,7 +279,7 @@ namespace VividManagementApplication
             {
                 for (int i = 0; i < query.Length; i++)
                 {
-                    resultsStringArray[i] = reader[query[i]].ToString();
+                    resultsStringArray[i] = reader[i].ToString();
                 }
                 resultsStringList.Add(resultsStringArray);
                 resultsStringArray = new string[query.Length];
