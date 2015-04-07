@@ -40,6 +40,7 @@ namespace VividManagementApplication
         public static string EMAIL = "";
         public static string ADDTIME = "";
         public static string NOTIFICATION = "";
+        public static string COMPANY_BALANCE = ""; // 公司结余暂存
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -562,7 +563,13 @@ namespace VividManagementApplication
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
-                new string[] { "pzID", "modifyTime", "leixing", "companyName", "operateMoney", "remaintingMoney", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
+                new string[] { "pzID", 
+                    "modifyTime", 
+                    "case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'", 
+                    "companyName", 
+                    "operateMoney", 
+                    "remaintingMoney", 
+                    "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
         }
 
         // 合同列表

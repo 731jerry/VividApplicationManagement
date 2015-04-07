@@ -89,6 +89,7 @@ namespace VividManagementApplication
                 MainWindow.EMAIL = dataReader["email"].ToString();
                 MainWindow.ADDTIME = dataReader["addtime"].ToString();
                 MainWindow.NOTIFICATION = dataReader["notification"].ToString();
+                MainWindow.COMPANY_BALANCE = dataReader["companyBalance"].ToString();
                 //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
             }
 
