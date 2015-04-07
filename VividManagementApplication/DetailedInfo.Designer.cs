@@ -361,6 +361,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
+            this.DiscardLabel = new System.Windows.Forms.Label();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -4186,11 +4187,24 @@
             this.DiscardCheckBox.Text = "作废";
             this.DiscardCheckBox.UseVisualStyleBackColor = false;
             // 
+            // DiscardLabel
+            // 
+            this.DiscardLabel.AutoSize = true;
+            this.DiscardLabel.Font = new System.Drawing.Font("微软雅黑", 11F);
+            this.DiscardLabel.ForeColor = System.Drawing.Color.Red;
+            this.DiscardLabel.Location = new System.Drawing.Point(185, 657);
+            this.DiscardLabel.Name = "DiscardLabel";
+            this.DiscardLabel.Size = new System.Drawing.Size(114, 20);
+            this.DiscardLabel.TabIndex = 319;
+            this.DiscardLabel.Text = "此表单已被作废";
+            this.DiscardLabel.Visible = false;
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 698);
+            this.Controls.Add(this.DiscardLabel);
             this.Controls.Add(this.DiscardCheckBox);
             this.Controls.Add(this.PreviewPrintButton);
             this.Controls.Add(this.DetailedTabView);
@@ -4565,5 +4579,6 @@
         private System.Windows.Forms.TextBox cbHTGoodsB0;
         private System.Windows.Forms.TextBox cbHTGoodsD0;
         private System.Windows.Forms.TextBox cbHTGoodsC0;
+        private System.Windows.Forms.Label DiscardLabel;
     }
 }

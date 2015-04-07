@@ -225,6 +225,7 @@ namespace VividManagementApplication
                             String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             DiscardCheckBox.Checked = (int.Parse(data[2]) == 0) ? false : true;
+                            DiscardLabel.Visible = (int.Parse(data[2]) == 0) ? false : true;
                             data[1] = data[1].Replace("\n", "");
                             data[1] = data[1].Replace(" ", "");
                             JSONObject json = JSONConvert.DeserializeObject(data[1]);//执行反序列化
@@ -561,6 +562,7 @@ namespace VividManagementApplication
             PreviewPrintButton.Location = new Point(PreviewPrintButton.Location.X, PreviewPrintButton.Location.Y - detailedHeightDis);
             SaveButton.Location = new Point(SaveButton.Location.X, SaveButton.Location.Y - detailedHeightDis);
             DiscardCheckBox.Location = new Point(DiscardCheckBox.Location.X, DiscardCheckBox.Location.Y - detailedHeightDis);
+            DiscardLabel.Location = new Point(DiscardLabel.Location.X, DiscardLabel.Location.Y - detailedHeightDis);
             detailedPanel.Parent = this;
             detailedPanel.Location = new Point(15, 5);
             DetailedTabView.Visible = false;
@@ -699,7 +701,27 @@ namespace VividManagementApplication
                                 //queryStringArray = new String[] { baseName, "discardFlag", "modifyTime" };
                                 //resultStringArray = new String[] { tbDz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                             }
+
+                            #region 作废标记 保存到进出仓单
+                            String tableDZModi = "";
+                            String baseNameDZModi = "cgxsID";
+
+                            if (danziComboBox.SelectedIndex == 0) // 采购单 - 进仓单
+                            {
+                                tableDZModi = "jcdList";
+                            }
+                            else
+                            { // tableDZModi - 出仓单
+                                tableDZModi = "ccdList";
+                            }
+
+                            String[] queryStringArrayDZModi = new String[] { "discardFlag", "modifyTime" };
+                            String[] resultStringArrayDZModi = new String[] { (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
+
+                            DatabaseConnections.GetInstence().LocalUpdateData(tableDZModi, queryStringArrayDZModi, resultStringArrayDZModi, baseNameDZModi, tbDz2.Text);
+                            #endregion
                         }
+
                         DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
                     else if (MainWindow.CURRENT_TAB == 5)  // 凭证
