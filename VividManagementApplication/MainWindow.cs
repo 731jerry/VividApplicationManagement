@@ -645,6 +645,9 @@ namespace VividManagementApplication
 
         }
 
+        private String clientIDFromFilter = "";
+        private String clientNameFromFilter = "";
+
         // 客户对账单
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
@@ -657,6 +660,9 @@ namespace VividManagementApplication
 
             if (flt.FilterOKClickedIndex == 1) // OK键
             {
+                clientIDFromFilter = flt.clientID.Text;
+                clientNameFromFilter = flt.clientName.Text;
+
                 CURRENT_LIST_BUTTON = listKhdzButton;
                 CURRENT_TAB = 4;
                 mainDGVTitle.Text = listKhdzButton.Text;
@@ -800,8 +806,9 @@ namespace VividManagementApplication
         bool bFirstPage = false; //Used to check whether we are printing first page
         bool bNewPage = false;// Used to check whether we are printing a new page
         int iHeaderHeight = 0; //Used for the header height
-        int totalPageNumber = 0;
-
+        int pageIndex = 0;// 页码
+        int totalPageNumber = 0; // 总页码
+        
         #region Print Button Click Event
         /// <summary>
         /// 打印DataGridView
@@ -812,22 +819,11 @@ namespace VividManagementApplication
         {
             //SetPrintPreview(1, 1200);
 
-            //Open the print preview dialog
-            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
-            objPPdialog.Document = printDocument1;
-            this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
-            objPPdialog.ShowDialog();
-        }
-
-        // preview
-        private void SetPrintPreview(int flag, int pageHeight)
-        {
-            //printFlag = flag;
-
-            this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, pageHeight);
-
-            // pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
-            // pageHeight = this.printDocument1.DefaultPageSettings.PaperSize.Height;
+            ////Open the print preview dialog
+            //PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+            //objPPdialog.Document = printDocument1;
+            //this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
+            //objPPdialog.ShowDialog();
 
             //注意指定其Document(获取或设置要预览的文档)属性
             this.printPreviewDialog1.Document = this.printDocument1;
@@ -835,31 +831,6 @@ namespace VividManagementApplication
             this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
             this.printPreviewDialog1.ShowDialog();
         }
-
-        /// <summary>
-        /// Handles the print button click event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void btnPrint_Click(object sender, EventArgs e)
-        //{
-        //    //Open the print dialog
-        //    PrintDialog printDialog = new PrintDialog();
-        //    printDialog.Document = printDocument1;
-        //    printDialog.UseEXDialog = true;
-
-        //    //Get the document
-        //    if (DialogResult.OK == printDialog.ShowDialog())
-        //    {
-        //        printDocument1.DocumentName = "Test Page Print";
-        //        printDocument1.Print();
-        //    }
-
-        //    //Open the print preview dialog
-        //    //PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
-        //    //objPPdialog.Document = printDocument1;
-        //    //objPPdialog.ShowDialog();
-        //}
         #endregion
 
         #region Begin Print Event Handler
@@ -893,7 +864,7 @@ namespace VividManagementApplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
@@ -915,7 +886,6 @@ namespace VividManagementApplication
                 //Whether more pages have to print or not
                 bool bMorePagesToPrint = false;
                 int iTmpWidth = 0;
-                int page = 0;// 页码
 
                 //For the first page to print set the cell width and header height
                 if (bFirstPage)
@@ -940,10 +910,10 @@ namespace VividManagementApplication
                 {
                     DataGridViewRow GridRow = MainDataGridView.Rows[iRow];
                     //Set the cell height
-                    iCellHeight = GridRow.Height + 5;
+                    iCellHeight = GridRow.Height + 8; // 表格高度 原本是5
                     int iCount = 0;
-                    //Check whether the current page settings allo more rows to print
-                    if (iTopMargin + iCellHeight >= e.MarginBounds.Height + e.MarginBounds.Top)
+                    //Check whether the current page settings allow more rows to print
+                    if (iTopMargin + iCellHeight >= e.MarginBounds.Height + e.MarginBounds.Top + 38) // 表格长度 原本为0
                     {
                         bNewPage = true;
                         bFirstPage = false;
@@ -955,30 +925,36 @@ namespace VividManagementApplication
                         if (bNewPage)
                         {
                             String titleString = mainDGVTitle.Text;
-                            String leftString = "Customer Summary";
+                            String leftString = "客户ID:" + clientIDFromFilter + "   客户名称:" + clientNameFromFilter;
                             String rightString = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
 
                             // 标题
-                            //测试
-                            MainWindow.COMPANY_NAME = "桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司";
+                            //MainWindow.COMPANY_NAME = "桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司"; //测试
                             SizeF fontSize = e.Graphics.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), new Font("微软雅黑", 13));//桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司
                             e.Graphics.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), new Font("微软雅黑", 13), new SolidBrush(Color.Blue), this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2, 30);
 
-                            fontSize = e.Graphics.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", titleString), new Font("微软雅黑", 12));
-                            e.Graphics.DrawString(titleString, new Font(new Font("微软雅黑", 11), FontStyle.Bold),
+                            fontSize = e.Graphics.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString(" ", titleString), new Font("微软雅黑", 15));
+                            e.Graphics.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString(" ", titleString), new Font(new Font("微软雅黑", 15), FontStyle.Bold),
                                     Brushes.Black, this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2, 70);
 
                             // 页码
-                            e.Graphics.DrawString(page.ToString(), new Font(MainDataGridView.Font, FontStyle.Bold),
-                                   Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
-                                   e.Graphics.MeasureString(page.ToString(), new Font(MainDataGridView.Font,
-                                   FontStyle.Bold), e.MarginBounds.Width).Height - 5);
+                            pageIndex++;
+                            fontSize = e.Graphics.MeasureString("- " + pageIndex.ToString() + " -", new Font("微软雅黑", 12));
+                            e.Graphics.DrawString("- " + pageIndex.ToString() + " -", new Font(MainDataGridView.Font, FontStyle.Bold),
+                                   Brushes.Black, this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2,
+                                   this.printDocument1.DefaultPageSettings.PaperSize.Height - 45);
+
+                            // 页脚
+                            fontSize = e.Graphics.MeasureString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", new Font("微软雅黑", 7));
+                            e.Graphics.DrawString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", new Font("微软雅黑", 7), new SolidBrush(Color.Red),
+                                this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2,
+                                this.printDocument1.DefaultPageSettings.PaperSize.Height - 65);
 
                             //Draw Header
                             e.Graphics.DrawString(leftString, new Font(MainDataGridView.Font, FontStyle.Bold),
                                     Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
                                     e.Graphics.MeasureString(leftString, new Font(MainDataGridView.Font,
-                                    FontStyle.Bold), e.MarginBounds.Width).Height - 13);
+                                    FontStyle.Bold), e.MarginBounds.Width).Height + 15);
 
                             //Draw Date
                             e.Graphics.DrawString(rightString, new Font(MainDataGridView.Font, FontStyle.Bold),
@@ -986,10 +962,10 @@ namespace VividManagementApplication
                                     e.Graphics.MeasureString(rightString, new Font(MainDataGridView.Font,
                                     FontStyle.Bold), e.MarginBounds.Width).Width), e.MarginBounds.Top -
                                     e.Graphics.MeasureString(leftString, new Font(new Font(MainDataGridView.Font,
-                                    FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height - 13);
+                                    FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height + 15);
 
                             //Draw Columns                 
-                            iTopMargin = e.MarginBounds.Top;
+                            iTopMargin = e.MarginBounds.Top + 20; // 表格位置 原本为0
                             foreach (DataGridViewColumn GridCol in MainDataGridView.Columns)
                             {
                                 e.Graphics.FillRectangle(new SolidBrush(Color.LightGray),
@@ -1034,7 +1010,6 @@ namespace VividManagementApplication
                 //If more lines exist, print another page.
                 if (bMorePagesToPrint)
                 {
-                    page++;
                     e.HasMorePages = true;
                 }
                 else
@@ -1044,7 +1019,7 @@ namespace VividManagementApplication
             }
             catch (Exception exc)
             {
-                MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exc.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion
