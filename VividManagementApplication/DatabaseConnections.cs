@@ -57,7 +57,7 @@ namespace VividManagementApplication
             string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
 
             StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,addtime,expiretime,notification FROM users WHERE userid = '");
+                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,addtime,expiretime,notification,companyBalance FROM users WHERE userid = '");
             sbSQL.Append(acc);
             sbSQL.Append(@"'");
             sbSQL.Append(@" AND password = '");
