@@ -130,16 +130,10 @@ namespace VividManagementApplication
             this.Left = (Screen.PrimaryScreen.WorkingArea.Width - Width) / 2;
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
 
-            cxRadio.Checked = true;
-
             #region 登录
             Login loginWindow = new Login();
             this.Visible = false;
             loginWindow.ShowDialog(this);
-            #endregion
-
-            #region 初始化客户列表
-            listCxButton.PerformClick();
             #endregion
 
             #region 窗体用户信息初始化
@@ -168,15 +162,22 @@ namespace VividManagementApplication
             }
             #endregion
 
+            #region 初始化客户列表
+            cxRadio.Checked = false;
+            cxRadio.Checked = true;
+            //cxRadio.PerformClick();
+            listCxButton.PerformClick();
+            #endregion
         }
 
         private void CreateDetailedWindow()
         {
             DetailedInfo di = new DetailedInfo();
             //di.ShowIcon = false;
-            di.Text = "新建";
+            di.Text = "新建" + CURRENT_LIST_BUTTON.Text;
             di.ShowDialog();
         }
+
         private void ViewButton_Click(object sender, EventArgs e)
         {
             if (MainDataGridView.Rows.Count > 0)
@@ -190,19 +191,10 @@ namespace VividManagementApplication
             }
         }
 
-        // 测试
-        private void qqButton1_Click(object sender, EventArgs e)
-        {
-            //DatabaseConnections.GetInstence().UserLogin("00000","00000");
-            //CreateMainListView();
-
-        }
-
         private void backupData_Click(object sender, EventArgs e)
         {
             UploadFiles("手动备份数据库！");
         }
-
 
         public void UploadFiles(string moreInfo)
         {
@@ -323,7 +315,7 @@ namespace VividManagementApplication
 
         private void commerceTimer_Tick(object sender, EventArgs e)
         {
-            Image[] images = new Image[2] { Image.FromFile(System.Environment.CurrentDirectory + @"\config\commerce\commerce1.png"), Image.FromFile(System.Environment.CurrentDirectory + @"\config\commerce\commerce2.png") };
+            //Image[] images = new Image[2] { Image.FromFile(System.Environment.CurrentDirectory + @"\config\commerce\commerce1.png"), Image.FromFile(System.Environment.CurrentDirectory + @"\config\commerce\commerce2.png") };
             //CommercePictureBox.Image = images[0];
             //ImageClass.DanRu(new Bitmap(images[0]), CommercePictureBox);
             //CommercePictureBox.Image = images[1];
@@ -489,6 +481,7 @@ namespace VividManagementApplication
         private void listCxButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listCxButton;
             CURRENT_TAB = 1;
             mainDGVTitle.Text = listCxButton.Text;
@@ -509,6 +502,7 @@ namespace VividManagementApplication
         private void listSpButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listSpButton;
             CURRENT_TAB = 2;
             mainDGVTitle.Text = listSpButton.Text;
@@ -530,6 +524,7 @@ namespace VividManagementApplication
         private void listKcButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = false;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listKcButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listKcButton.Text;
@@ -551,6 +546,7 @@ namespace VividManagementApplication
         private void listJcdButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listJcdButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listJcdButton.Text;
@@ -567,6 +563,7 @@ namespace VividManagementApplication
         private void listCcdButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listCcdButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listCcdButton.Text;
@@ -587,6 +584,7 @@ namespace VividManagementApplication
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listCgButton;
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listCgButton.Text;
@@ -603,6 +601,7 @@ namespace VividManagementApplication
         private void listXsButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listXsButton;
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listCgButton.Text;
@@ -622,6 +621,7 @@ namespace VividManagementApplication
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = false;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
             mainDGVTitle.Text = listSfzhButton.Text;
@@ -652,6 +652,7 @@ namespace VividManagementApplication
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
             ViewButton.Enabled = false;
+            PrintButton.Enabled = true;
             this.MainDataGridView.Rows.Clear();
             this.MainDataGridView.Columns.Clear();
 
@@ -790,11 +791,6 @@ namespace VividManagementApplication
             st.ShowDialog();
         }
 
-        private void qqButton1_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show(FormBasicFeatrues.GetInstence().addCharIntoString("   ", "购买合同") + "haha");
-        }
-
         #region DataGridView打印
 
         StringFormat strFormat; //Used to format the grid rows.
@@ -808,7 +804,7 @@ namespace VividManagementApplication
         int iHeaderHeight = 0; //Used for the header height
         int pageIndex = 0;// 页码
         int totalPageNumber = 0; // 总页码
-        
+
         #region Print Button Click Event
         /// <summary>
         /// 打印DataGridView
@@ -824,12 +820,18 @@ namespace VividManagementApplication
             //objPPdialog.Document = printDocument1;
             //this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
             //objPPdialog.ShowDialog();
-
-            //注意指定其Document(获取或设置要预览的文档)属性
-            this.printPreviewDialog1.Document = this.printDocument1;
-            //ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
-            this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
-            this.printPreviewDialog1.ShowDialog();
+            if (MainDataGridView.Rows.Count > 0)
+            {
+                //注意指定其Document(获取或设置要预览的文档)属性
+                this.printPreviewDialog1.Document = this.printDocument1;
+                //ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
+                this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
+                this.printPreviewDialog1.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("表格数据缺失, 不能打印", "错误");
+            }
         }
         #endregion
 
@@ -925,7 +927,7 @@ namespace VividManagementApplication
                         if (bNewPage)
                         {
                             String titleString = mainDGVTitle.Text;
-                            String leftString = "客户ID:" + clientIDFromFilter + "   客户名称:" + clientNameFromFilter;
+                            String leftString = "客户ID:" + clientIDFromFilter + "\t客户名称:" + clientNameFromFilter;
                             String rightString = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
 
                             // 标题

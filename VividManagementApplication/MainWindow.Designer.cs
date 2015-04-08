@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
+            this.PrintButton = new ControlExs.QQButton();
             this.settingQQButton = new ControlExs.QQButton();
             this.mainDGVTitle = new System.Windows.Forms.Label();
             this.backupData = new ControlExs.QQButton();
@@ -74,7 +75,6 @@
             this.lblSHOWS = new System.Windows.Forms.Label();
             this.commerceTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.PrintButton = new ControlExs.QQButton();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -140,6 +140,13 @@
             this.ContentPanel.Controls.Add(this.ViewButton);
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.Name = "ContentPanel";
+            // 
+            // PrintButton
+            // 
+            resources.ApplyResources(this.PrintButton, "PrintButton");
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // settingQQButton
             // 
@@ -428,13 +435,6 @@
             this.imageList1.Images.SetKeyName(0, "Update_24.png");
             this.imageList1.Images.SetKeyName(1, "Delete_2_24.png");
             this.imageList1.Images.SetKeyName(2, "AppBox_grid.png");
-            // 
-            // PrintButton
-            // 
-            resources.ApplyResources(this.PrintButton, "PrintButton");
-            this.PrintButton.Name = "PrintButton";
-            this.PrintButton.UseVisualStyleBackColor = true;
-            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // printDialog1
             // 
