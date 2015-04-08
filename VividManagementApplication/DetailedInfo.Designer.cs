@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedInfo));
             this.DetailedTabView = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -126,25 +127,21 @@
             this.EJCDtb4 = new System.Windows.Forms.TextBox();
             this.EJCDtb2 = new System.Windows.Forms.TextBox();
             this.EJCDtb1 = new System.Windows.Forms.TextBox();
-            this.EJCDtb5 = new System.Windows.Forms.TextBox();
             this.EJCDtb3 = new System.Windows.Forms.TextBox();
             this.DJCDtb6 = new System.Windows.Forms.TextBox();
             this.DJCDtb4 = new System.Windows.Forms.TextBox();
             this.DJCDtb2 = new System.Windows.Forms.TextBox();
             this.DJCDtb1 = new System.Windows.Forms.TextBox();
-            this.DJCDtb5 = new System.Windows.Forms.TextBox();
             this.DJCDtb3 = new System.Windows.Forms.TextBox();
             this.CJCDtb6 = new System.Windows.Forms.TextBox();
             this.CJCDtb4 = new System.Windows.Forms.TextBox();
             this.CJCDtb2 = new System.Windows.Forms.TextBox();
             this.CJCDtb1 = new System.Windows.Forms.TextBox();
-            this.CJCDtb5 = new System.Windows.Forms.TextBox();
             this.CJCDtb3 = new System.Windows.Forms.TextBox();
             this.BJCDtb6 = new System.Windows.Forms.TextBox();
             this.BJCDtb4 = new System.Windows.Forms.TextBox();
             this.BJCDtb2 = new System.Windows.Forms.TextBox();
             this.BJCDtb1 = new System.Windows.Forms.TextBox();
-            this.BJCDtb5 = new System.Windows.Forms.TextBox();
             this.BJCDtb3 = new System.Windows.Forms.TextBox();
             this.AJCDtb6 = new System.Windows.Forms.TextBox();
             this.textBox145 = new System.Windows.Forms.TextBox();
@@ -154,7 +151,6 @@
             this.AJCDtb1 = new System.Windows.Forms.TextBox();
             this.textBox150 = new System.Windows.Forms.TextBox();
             this.textBox151 = new System.Windows.Forms.TextBox();
-            this.AJCDtb5 = new System.Windows.Forms.TextBox();
             this.AJCDtb3 = new System.Windows.Forms.TextBox();
             this.textBox156 = new System.Windows.Forms.TextBox();
             this.textBox157 = new System.Windows.Forms.TextBox();
@@ -362,6 +358,12 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.DiscardLabel = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AJCDtb5 = new ControlExs.QQTextBox();
+            this.BJCDtb5 = new ControlExs.QQTextBox();
+            this.CJCDtb5 = new ControlExs.QQTextBox();
+            this.DJCDtb5 = new ControlExs.QQTextBox();
+            this.EJCDtb5 = new ControlExs.QQTextBox();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -1279,6 +1281,11 @@
             // 
             // PanelDZ
             // 
+            this.PanelDZ.Controls.Add(this.EJCDtb5);
+            this.PanelDZ.Controls.Add(this.DJCDtb5);
+            this.PanelDZ.Controls.Add(this.CJCDtb5);
+            this.PanelDZ.Controls.Add(this.BJCDtb5);
+            this.PanelDZ.Controls.Add(this.AJCDtb5);
             this.PanelDZ.Controls.Add(this.EJCDtb0);
             this.PanelDZ.Controls.Add(this.DJCDtb0);
             this.PanelDZ.Controls.Add(this.CJCDtb0);
@@ -1293,25 +1300,21 @@
             this.PanelDZ.Controls.Add(this.EJCDtb4);
             this.PanelDZ.Controls.Add(this.EJCDtb2);
             this.PanelDZ.Controls.Add(this.EJCDtb1);
-            this.PanelDZ.Controls.Add(this.EJCDtb5);
             this.PanelDZ.Controls.Add(this.EJCDtb3);
             this.PanelDZ.Controls.Add(this.DJCDtb6);
             this.PanelDZ.Controls.Add(this.DJCDtb4);
             this.PanelDZ.Controls.Add(this.DJCDtb2);
             this.PanelDZ.Controls.Add(this.DJCDtb1);
-            this.PanelDZ.Controls.Add(this.DJCDtb5);
             this.PanelDZ.Controls.Add(this.DJCDtb3);
             this.PanelDZ.Controls.Add(this.CJCDtb6);
             this.PanelDZ.Controls.Add(this.CJCDtb4);
             this.PanelDZ.Controls.Add(this.CJCDtb2);
             this.PanelDZ.Controls.Add(this.CJCDtb1);
-            this.PanelDZ.Controls.Add(this.CJCDtb5);
             this.PanelDZ.Controls.Add(this.CJCDtb3);
             this.PanelDZ.Controls.Add(this.BJCDtb6);
             this.PanelDZ.Controls.Add(this.BJCDtb4);
             this.PanelDZ.Controls.Add(this.BJCDtb2);
             this.PanelDZ.Controls.Add(this.BJCDtb1);
-            this.PanelDZ.Controls.Add(this.BJCDtb5);
             this.PanelDZ.Controls.Add(this.BJCDtb3);
             this.PanelDZ.Controls.Add(this.AJCDtb6);
             this.PanelDZ.Controls.Add(this.textBox145);
@@ -1321,7 +1324,6 @@
             this.PanelDZ.Controls.Add(this.AJCDtb1);
             this.PanelDZ.Controls.Add(this.textBox150);
             this.PanelDZ.Controls.Add(this.textBox151);
-            this.PanelDZ.Controls.Add(this.AJCDtb5);
             this.PanelDZ.Controls.Add(this.AJCDtb3);
             this.PanelDZ.Controls.Add(this.textBox156);
             this.PanelDZ.Controls.Add(this.textBox157);
@@ -1481,19 +1483,6 @@
             this.EJCDtb1.Size = new System.Drawing.Size(148, 26);
             this.EJCDtb1.TabIndex = 312;
             // 
-            // EJCDtb5
-            // 
-            this.EJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
-            this.EJCDtb5.Name = "EJCDtb5";
-            this.EJCDtb5.ReadOnly = true;
-            this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.EJCDtb5.TabIndex = 309;
-            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
-            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            // 
             // EJCDtb3
             // 
             this.EJCDtb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1547,19 +1536,6 @@
             this.DJCDtb1.ReadOnly = true;
             this.DJCDtb1.Size = new System.Drawing.Size(148, 26);
             this.DJCDtb1.TabIndex = 306;
-            // 
-            // DJCDtb5
-            // 
-            this.DJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.DJCDtb5.Location = new System.Drawing.Point(559, 104);
-            this.DJCDtb5.Name = "DJCDtb5";
-            this.DJCDtb5.ReadOnly = true;
-            this.DJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.DJCDtb5.TabIndex = 307;
-            this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
-            this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // DJCDtb3
             // 
@@ -1615,19 +1591,6 @@
             this.CJCDtb1.Size = new System.Drawing.Size(148, 26);
             this.CJCDtb1.TabIndex = 300;
             // 
-            // CJCDtb5
-            // 
-            this.CJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
-            this.CJCDtb5.Name = "CJCDtb5";
-            this.CJCDtb5.ReadOnly = true;
-            this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.CJCDtb5.TabIndex = 305;
-            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
-            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            // 
             // CJCDtb3
             // 
             this.CJCDtb3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -1681,19 +1644,6 @@
             this.BJCDtb1.ReadOnly = true;
             this.BJCDtb1.Size = new System.Drawing.Size(148, 26);
             this.BJCDtb1.TabIndex = 294;
-            // 
-            // BJCDtb5
-            // 
-            this.BJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
-            this.BJCDtb5.Name = "BJCDtb5";
-            this.BJCDtb5.ReadOnly = true;
-            this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.BJCDtb5.TabIndex = 303;
-            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
-            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // BJCDtb3
             // 
@@ -1792,19 +1742,6 @@
             this.textBox151.Size = new System.Drawing.Size(148, 26);
             this.textBox151.TabIndex = 284;
             this.textBox151.Text = "      规    格";
-            // 
-            // AJCDtb5
-            // 
-            this.AJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
-            this.AJCDtb5.Name = "AJCDtb5";
-            this.AJCDtb5.ReadOnly = true;
-            this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.AJCDtb5.TabIndex = 283;
-            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
-            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // AJCDtb3
             // 
@@ -4199,6 +4136,91 @@
             this.DiscardLabel.Text = "此表单已被作废";
             this.DiscardLabel.Visible = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // AJCDtb5
+            // 
+            this.AJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.AJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AJCDtb5.EmptyTextTip = "";
+            this.AJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
+            this.AJCDtb5.Name = "AJCDtb5";
+            this.AJCDtb5.ReadOnly = true;
+            this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.AJCDtb5.TabIndex = 330;
+            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
+            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // BJCDtb5
+            // 
+            this.BJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.BJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BJCDtb5.EmptyTextTip = "";
+            this.BJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
+            this.BJCDtb5.Name = "BJCDtb5";
+            this.BJCDtb5.ReadOnly = true;
+            this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.BJCDtb5.TabIndex = 331;
+            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
+            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // CJCDtb5
+            // 
+            this.CJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.CJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CJCDtb5.EmptyTextTip = "";
+            this.CJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
+            this.CJCDtb5.Name = "CJCDtb5";
+            this.CJCDtb5.ReadOnly = true;
+            this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.CJCDtb5.TabIndex = 332;
+            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
+            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // DJCDtb5
+            // 
+            this.DJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.DJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DJCDtb5.EmptyTextTip = "";
+            this.DJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.DJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DJCDtb5.Location = new System.Drawing.Point(559, 104);
+            this.DJCDtb5.Name = "DJCDtb5";
+            this.DJCDtb5.ReadOnly = true;
+            this.DJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.DJCDtb5.TabIndex = 333;
+            this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
+            this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // EJCDtb5
+            // 
+            this.EJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.EJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EJCDtb5.EmptyTextTip = "";
+            this.EJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
+            this.EJCDtb5.Name = "EJCDtb5";
+            this.EJCDtb5.ReadOnly = true;
+            this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.EJCDtb5.TabIndex = 334;
+            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
+            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -4420,25 +4442,21 @@
         private System.Windows.Forms.TextBox EJCDtb4;
         private System.Windows.Forms.TextBox EJCDtb2;
         private System.Windows.Forms.TextBox EJCDtb1;
-        private System.Windows.Forms.TextBox EJCDtb5;
         private System.Windows.Forms.TextBox EJCDtb3;
         private System.Windows.Forms.TextBox DJCDtb6;
         private System.Windows.Forms.TextBox DJCDtb4;
         private System.Windows.Forms.TextBox DJCDtb2;
         private System.Windows.Forms.TextBox DJCDtb1;
-        private System.Windows.Forms.TextBox DJCDtb5;
         private System.Windows.Forms.TextBox DJCDtb3;
         private System.Windows.Forms.TextBox CJCDtb6;
         private System.Windows.Forms.TextBox CJCDtb4;
         private System.Windows.Forms.TextBox CJCDtb2;
         private System.Windows.Forms.TextBox CJCDtb1;
-        private System.Windows.Forms.TextBox CJCDtb5;
         private System.Windows.Forms.TextBox CJCDtb3;
         private System.Windows.Forms.TextBox BJCDtb6;
         private System.Windows.Forms.TextBox BJCDtb4;
         private System.Windows.Forms.TextBox BJCDtb2;
         private System.Windows.Forms.TextBox BJCDtb1;
-        private System.Windows.Forms.TextBox BJCDtb5;
         private System.Windows.Forms.TextBox BJCDtb3;
         private System.Windows.Forms.TextBox AJCDtb6;
         private System.Windows.Forms.TextBox textBox145;
@@ -4448,7 +4466,6 @@
         private System.Windows.Forms.TextBox AJCDtb1;
         private System.Windows.Forms.TextBox textBox150;
         private System.Windows.Forms.TextBox textBox151;
-        private System.Windows.Forms.TextBox AJCDtb5;
         private System.Windows.Forms.TextBox AJCDtb3;
         private System.Windows.Forms.TextBox textBox156;
         private System.Windows.Forms.TextBox textBox157;
@@ -4580,5 +4597,11 @@
         private System.Windows.Forms.TextBox cbHTGoodsD0;
         private System.Windows.Forms.TextBox cbHTGoodsC0;
         private System.Windows.Forms.Label DiscardLabel;
+        private ControlExs.QQTextBox EJCDtb5;
+        private ControlExs.QQTextBox DJCDtb5;
+        private ControlExs.QQTextBox CJCDtb5;
+        private ControlExs.QQTextBox BJCDtb5;
+        private ControlExs.QQTextBox AJCDtb5;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

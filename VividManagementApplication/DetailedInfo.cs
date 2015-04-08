@@ -696,6 +696,15 @@ namespace VividManagementApplication
                                 tableDZ = "ccdList";
                                 baseNameDZ = "ccdID";
                                 operatorDZ = "-";
+                                if (int.Parse(AJCDtb5.Text.Equals("") ? "0" : AJCDtb5.Text) > int.Parse((AJCDtb5.EmptyTextTip.Equals("") ? "0:0" : AJCDtb5.EmptyTextTip).Split(':')[1])
+                                    || int.Parse(BJCDtb5.Text.Equals("") ? "0" : BJCDtb5.Text) > int.Parse((BJCDtb5.EmptyTextTip.Equals("") ? "0:0" : BJCDtb5.EmptyTextTip).Split(':')[1])
+                                    || int.Parse(CJCDtb5.Text.Equals("") ? "0" : CJCDtb5.Text) > int.Parse((CJCDtb5.EmptyTextTip.Equals("") ? "0:0" : CJCDtb5.EmptyTextTip).Split(':')[1])
+                                    || int.Parse(DJCDtb5.Text.Equals("") ? "0" : DJCDtb5.Text) > int.Parse((DJCDtb5.EmptyTextTip.Equals("") ? "0:0" : DJCDtb5.EmptyTextTip).Split(':')[1])
+                                    || int.Parse(EJCDtb5.Text.Equals("") ? "0" : EJCDtb5.Text) > int.Parse((EJCDtb5.EmptyTextTip.Equals("") ? "0:0" : EJCDtb5.EmptyTextTip).Split(':')[1]))
+                                {
+                                    MessageBox.Show("此商品库存数量不足！请修改数量！", "错误");
+                                    return;
+                                }
                             }
 
                             String[] queryStringArrayDZ = new String[] { "clientID", baseNameDZ, "cgxsID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
@@ -1167,15 +1176,17 @@ namespace VividManagementApplication
         }
 
         // 进仓单 出仓单 
-        private void JCCDSetControlsValue(List<Control> lcs, Control byIdControl)
+        private void JCCDSetControlsValue(List<Control> lcs, QQTextBox hintControl, Control byIdControl)
         {
             if (danziComboBox.SelectedIndex == 0)
             { // 进仓单
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
+                //hintControl.EmptyTextTip = "最大:" + DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
             }
             else
             { // 出仓单
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
+                hintControl.EmptyTextTip = "库存:" + DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
             }
         }
 
@@ -1218,7 +1229,7 @@ namespace VividManagementApplication
                 else
                 {
                     AJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, JCDcbA);
+                    JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, AJCDtb5, JCDcbA);
                 }
             }
         }
@@ -1235,7 +1246,7 @@ namespace VividManagementApplication
                 else
                 {
                     BJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, JCDcbB);
+                    JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, BJCDtb5, JCDcbB);
                 }
             }
         }
@@ -1252,7 +1263,7 @@ namespace VividManagementApplication
                 else
                 {
                     CJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, JCDcbC);
+                    JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, CJCDtb5, JCDcbC);
                 }
             }
         }
@@ -1269,7 +1280,7 @@ namespace VividManagementApplication
                 else
                 {
                     DJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, JCDcbD);
+                    JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, DJCDtb5, JCDcbD);
                 }
             }
         }
@@ -1286,7 +1297,7 @@ namespace VividManagementApplication
                 else
                 {
                     EJCDtb5.ReadOnly = false;
-                    JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, JCDcbE);
+                    JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, EJCDtb5, JCDcbE);
                 }
             }
         }
