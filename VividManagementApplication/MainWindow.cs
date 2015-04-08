@@ -167,6 +167,9 @@ namespace VividManagementApplication
             cxRadio.Checked = true;
             //cxRadio.PerformClick();
             listCxButton.PerformClick();
+            ViewButton.Enabled = false;
+            refeshButton.Enabled = false;
+            PrintButton.Enabled = false;
             #endregion
         }
 
@@ -480,6 +483,7 @@ namespace VividManagementApplication
         // 客户管理
         private void listCxButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listCxButton;
@@ -501,6 +505,7 @@ namespace VividManagementApplication
         // 商品管理
         private void listSpButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listSpButton;
@@ -523,6 +528,7 @@ namespace VividManagementApplication
         // 库存
         private void listKcButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = false;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listKcButton;
@@ -545,6 +551,7 @@ namespace VividManagementApplication
 
         private void listJcdButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listJcdButton;
@@ -562,6 +569,7 @@ namespace VividManagementApplication
 
         private void listCcdButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listCcdButton;
@@ -583,6 +591,7 @@ namespace VividManagementApplication
 
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listCgButton;
@@ -600,6 +609,7 @@ namespace VividManagementApplication
 
         private void listXsButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listXsButton;
@@ -620,7 +630,8 @@ namespace VividManagementApplication
         // 凭证列表 收付汇总表
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
-            ViewButton.Enabled = false;
+            refeshButton.Enabled = true;
+            ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
@@ -651,6 +662,7 @@ namespace VividManagementApplication
         // 客户对账单
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = false;
             PrintButton.Enabled = true;
             this.MainDataGridView.Rows.Clear();
@@ -670,35 +682,44 @@ namespace VividManagementApplication
                 Column1.HeaderText = "凭证号码";
                 Column2.HeaderText = "日期";
                 Column3.HeaderText = "凭证类型";
-                Column4.HeaderText = "交易金额";
-                Column5.HeaderText = "结余金额";
+                Column4.HeaderText = "摘要";
+                Column5.HeaderText = "交易金额";
+                Column6.HeaderText = "结余金额";
+
+                Column1.Width = 200;
+                Column2.Width = 200;
+                Column3.Width = 100;
+                Column4.Width = 100;
+                Column5.Width = 100;
+                Column6.Width = 100;
 
                 Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
                 int tempBalance = COMPANY_BALANCE;
 
-                DataGridViewColumn[] dgvcArray = new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 };
+                DataGridViewColumn[] dgvcArray = new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 };
                 this.MainDataGridView.Columns.AddRange(dgvcArray);
                 ClearDataGridViewColumnSortOrder(dgvcArray.Length);
                 List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetDataFromOriginalSQL(
                     "SELECT pzID, cast (modifyTime as VARCHAR) as modifyTime"
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
+                    + ",zhaiyao"
                     + ",operateMoney,remaintingMoney FROM pzList WHERE clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
                     + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToShortDateString() + "' AND '" + flt.toDate.Value.ToShortDateString() + "')"
                     + " ORDER BY modifyTime ASC",
-                    new String[] { "pzID", "modifyTime", "leixing", "operateMoney", "remaintingMoney" });
+                    new String[] { "pzID", "modifyTime", "leixing", "zhaiyao", "operateMoney", "remaintingMoney" });
 
                 for (int i = 0; i < resultsList.Count; i++)
                 {
                     if ((resultsList[i][2].Equals("收款凭证")) || resultsList[i][2].Equals("还款凭证"))
                     {
-                        tempBalance += int.Parse(resultsList[i][3]);
+                        tempBalance += int.Parse(resultsList[i][4]);
                     }
                     else
                     {
-                        tempBalance -= int.Parse(resultsList[i][3]);
+                        tempBalance -= int.Parse(resultsList[i][4]);
                     }
-                    resultsList[i][4] = tempBalance.ToString();
+                    resultsList[i][5] = tempBalance.ToString();
                 }
                 resultsList.Reverse();
                 for (int j = 0; j < resultsList.Count; j++)
@@ -718,7 +739,9 @@ namespace VividManagementApplication
         // 合同列表
         private void listHtButton_Click(object sender, EventArgs e)
         {
+            refeshButton.Enabled = true;
             ViewButton.Enabled = true;
+            PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listHtButton;
             CURRENT_TAB = 6;
             mainDGVTitle.Text = listHtButton.Text;
