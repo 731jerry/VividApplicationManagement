@@ -74,6 +74,10 @@
             this.lblSHOWS = new System.Windows.Forms.Label();
             this.commerceTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.PrintButton = new ControlExs.QQButton();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -127,6 +131,7 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ContentPanel.Controls.Add(this.PrintButton);
             this.ContentPanel.Controls.Add(this.settingQQButton);
             this.ContentPanel.Controls.Add(this.mainDGVTitle);
             this.ContentPanel.Controls.Add(this.backupData);
@@ -424,6 +429,27 @@
             this.imageList1.Images.SetKeyName(1, "Delete_2_24.png");
             this.imageList1.Images.SetKeyName(2, "AppBox_grid.png");
             // 
+            // PrintButton
+            // 
+            resources.ApplyResources(this.PrintButton, "PrintButton");
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printPreviewDialog1
+            // 
+            resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -497,6 +523,10 @@
         private ControlExs.QQButton settingQQButton;
         private ControlExs.QQButton listXsButton;
         public System.Windows.Forms.Label mainDGVTitle;
+        private ControlExs.QQButton PrintButton;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
 

@@ -13,7 +13,7 @@ using System.Drawing.Drawing2D;
 using System.Web;
 using System.Net;
 using System.IO;
-
+using System.Collections;
 using MengYu.Image;
 
 namespace VividManagementApplication
@@ -402,7 +402,8 @@ namespace VividManagementApplication
         DataGridViewTextBoxColumn Column7 = new DataGridViewTextBoxColumn();
         DataGridViewTextBoxColumn Column8 = new DataGridViewTextBoxColumn();
 
-        private void ClearDataGridViewColumnSortOrder(int count) {
+        private void ClearDataGridViewColumnSortOrder(int count)
+        {
             for (int i = 0; i < count; i++)
             {
                 this.MainDataGridView.Columns[i].HeaderCell.SortGlyphDirection = SortOrder.None;
@@ -787,6 +788,268 @@ namespace VividManagementApplication
         {
             MessageBox.Show(FormBasicFeatrues.GetInstence().addCharIntoString("   ", "购买合同") + "haha");
         }
+
+        #region DataGridView打印
+
+        StringFormat strFormat; //Used to format the grid rows.
+        ArrayList arrColumnLefts = new ArrayList();//Used to save left coordinates of columns
+        ArrayList arrColumnWidths = new ArrayList();//Used to save column widths
+        int iCellHeight = 0; //Used to get/set the datagridview cell height
+        int iTotalWidth = 0; //
+        int iRow = 0;//Used as counter
+        bool bFirstPage = false; //Used to check whether we are printing first page
+        bool bNewPage = false;// Used to check whether we are printing a new page
+        int iHeaderHeight = 0; //Used for the header height
+        int totalPageNumber = 0;
+
+        #region Print Button Click Event
+        /// <summary>
+        /// 打印DataGridView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintButton_Click(object sender, EventArgs e)
+        {
+            //SetPrintPreview(1, 1200);
+
+            //Open the print preview dialog
+            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+            objPPdialog.Document = printDocument1;
+            this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
+            objPPdialog.ShowDialog();
+        }
+
+        // preview
+        private void SetPrintPreview(int flag, int pageHeight)
+        {
+            //printFlag = flag;
+
+            this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, pageHeight);
+
+            // pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
+            // pageHeight = this.printDocument1.DefaultPageSettings.PaperSize.Height;
+
+            //注意指定其Document(获取或设置要预览的文档)属性
+            this.printPreviewDialog1.Document = this.printDocument1;
+            //ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
+            this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
+            this.printPreviewDialog1.ShowDialog();
+        }
+
+        /// <summary>
+        /// Handles the print button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //private void btnPrint_Click(object sender, EventArgs e)
+        //{
+        //    //Open the print dialog
+        //    PrintDialog printDialog = new PrintDialog();
+        //    printDialog.Document = printDocument1;
+        //    printDialog.UseEXDialog = true;
+
+        //    //Get the document
+        //    if (DialogResult.OK == printDialog.ShowDialog())
+        //    {
+        //        printDocument1.DocumentName = "Test Page Print";
+        //        printDocument1.Print();
+        //    }
+
+        //    //Open the print preview dialog
+        //    //PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+        //    //objPPdialog.Document = printDocument1;
+        //    //objPPdialog.ShowDialog();
+        //}
+        #endregion
+
+        #region Begin Print Event Handler
+        /// <summary>
+        /// Handles the begin print event of print document
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            try
+            {
+                strFormat = new StringFormat();
+                strFormat.Alignment = StringAlignment.Near;
+                strFormat.LineAlignment = StringAlignment.Center;
+                strFormat.Trimming = StringTrimming.EllipsisCharacter;
+
+                arrColumnLefts.Clear();
+                arrColumnWidths.Clear();
+                iCellHeight = 0;
+                iRow = 0;
+                bFirstPage = true;
+                bNewPage = true;
+
+                // Calculating Total Widths
+                iTotalWidth = 0;
+                foreach (DataGridViewColumn dgvGridCol in MainDataGridView.Columns)
+                {
+                    iTotalWidth += dgvGridCol.Width;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+        #region Print Page Event
+        /// <summary>
+        /// Handles the print page event of print document
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            try
+            {
+                //Set the left margin
+                int iLeftMargin = e.MarginBounds.Left;
+                //Set the top margin
+                int iTopMargin = e.MarginBounds.Top;
+                //Whether more pages have to print or not
+                bool bMorePagesToPrint = false;
+                int iTmpWidth = 0;
+                int page = 0;// 页码
+
+                //For the first page to print set the cell width and header height
+                if (bFirstPage)
+                {
+                    foreach (DataGridViewColumn GridCol in MainDataGridView.Columns)
+                    {
+                        iTmpWidth = (int)(Math.Floor((double)((double)GridCol.Width /
+                                       (double)iTotalWidth * (double)iTotalWidth *
+                                       ((double)e.MarginBounds.Width / (double)iTotalWidth))));
+
+                        iHeaderHeight = (int)(e.Graphics.MeasureString(GridCol.HeaderText,
+                                    GridCol.InheritedStyle.Font, iTmpWidth).Height) + 11;
+
+                        // Save width and height of headres
+                        arrColumnLefts.Add(iLeftMargin);
+                        arrColumnWidths.Add(iTmpWidth);
+                        iLeftMargin += iTmpWidth;
+                    }
+                }
+                //Loop till all the grid rows not get printed
+                while (iRow <= MainDataGridView.Rows.Count - 1)
+                {
+                    DataGridViewRow GridRow = MainDataGridView.Rows[iRow];
+                    //Set the cell height
+                    iCellHeight = GridRow.Height + 5;
+                    int iCount = 0;
+                    //Check whether the current page settings allo more rows to print
+                    if (iTopMargin + iCellHeight >= e.MarginBounds.Height + e.MarginBounds.Top)
+                    {
+                        bNewPage = true;
+                        bFirstPage = false;
+                        bMorePagesToPrint = true;
+                        break;
+                    }
+                    else
+                    {
+                        if (bNewPage)
+                        {
+                            String titleString = mainDGVTitle.Text;
+                            String leftString = "Customer Summary";
+                            String rightString = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
+
+                            // 标题
+                            //测试
+                            MainWindow.COMPANY_NAME = "桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司";
+                            SizeF fontSize = e.Graphics.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), new Font("微软雅黑", 13));//桐 乡 市 瑞 递 曼 尔 工 贸 有 限 公 司
+                            e.Graphics.DrawString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", MainWindow.COMPANY_NAME), new Font("微软雅黑", 13), new SolidBrush(Color.Blue), this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2, 30);
+
+                            fontSize = e.Graphics.MeasureString(FormBasicFeatrues.GetInstence().addCharIntoString("  ", titleString), new Font("微软雅黑", 12));
+                            e.Graphics.DrawString(titleString, new Font(new Font("微软雅黑", 11), FontStyle.Bold),
+                                    Brushes.Black, this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2, 70);
+
+                            // 页码
+                            e.Graphics.DrawString(page.ToString(), new Font(MainDataGridView.Font, FontStyle.Bold),
+                                   Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
+                                   e.Graphics.MeasureString(page.ToString(), new Font(MainDataGridView.Font,
+                                   FontStyle.Bold), e.MarginBounds.Width).Height - 5);
+
+                            //Draw Header
+                            e.Graphics.DrawString(leftString, new Font(MainDataGridView.Font, FontStyle.Bold),
+                                    Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
+                                    e.Graphics.MeasureString(leftString, new Font(MainDataGridView.Font,
+                                    FontStyle.Bold), e.MarginBounds.Width).Height - 13);
+
+                            //Draw Date
+                            e.Graphics.DrawString(rightString, new Font(MainDataGridView.Font, FontStyle.Bold),
+                                    Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width -
+                                    e.Graphics.MeasureString(rightString, new Font(MainDataGridView.Font,
+                                    FontStyle.Bold), e.MarginBounds.Width).Width), e.MarginBounds.Top -
+                                    e.Graphics.MeasureString(leftString, new Font(new Font(MainDataGridView.Font,
+                                    FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height - 13);
+
+                            //Draw Columns                 
+                            iTopMargin = e.MarginBounds.Top;
+                            foreach (DataGridViewColumn GridCol in MainDataGridView.Columns)
+                            {
+                                e.Graphics.FillRectangle(new SolidBrush(Color.LightGray),
+                                    new Rectangle((int)arrColumnLefts[iCount], iTopMargin,
+                                    (int)arrColumnWidths[iCount], iHeaderHeight));
+
+                                e.Graphics.DrawRectangle(Pens.Black,
+                                    new Rectangle((int)arrColumnLefts[iCount], iTopMargin,
+                                    (int)arrColumnWidths[iCount], iHeaderHeight));
+
+                                e.Graphics.DrawString(GridCol.HeaderText, GridCol.InheritedStyle.Font,
+                                    new SolidBrush(GridCol.InheritedStyle.ForeColor),
+                                    new RectangleF((int)arrColumnLefts[iCount], iTopMargin,
+                                    (int)arrColumnWidths[iCount], iHeaderHeight), strFormat);
+                                iCount++;
+                            }
+                            bNewPage = false;
+                            iTopMargin += iHeaderHeight;
+                        }
+                        iCount = 0;
+                        //Draw Columns Contents                
+                        foreach (DataGridViewCell Cel in GridRow.Cells)
+                        {
+                            if (Cel.Value != null)
+                            {
+                                e.Graphics.DrawString(Cel.Value.ToString(), Cel.InheritedStyle.Font,
+                                            new SolidBrush(Cel.InheritedStyle.ForeColor),
+                                            new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
+                                            (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
+                            }
+                            //Drawing Cells Borders 
+                            e.Graphics.DrawRectangle(Pens.Black, new Rectangle((int)arrColumnLefts[iCount],
+                                    iTopMargin, (int)arrColumnWidths[iCount], iCellHeight));
+
+                            iCount++;
+                        }
+                    }
+                    iRow++;
+                    iTopMargin += iCellHeight;
+                }
+
+                //If more lines exist, print another page.
+                if (bMorePagesToPrint)
+                {
+                    page++;
+                    e.HasMorePages = true;
+                }
+                else
+                {
+                    e.HasMorePages = false;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
+        #endregion
 
 
     }
