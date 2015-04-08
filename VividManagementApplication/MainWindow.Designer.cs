@@ -175,6 +175,7 @@
             this.MainDataGridView.RowHeadersVisible = false;
             this.MainDataGridView.RowTemplate.Height = 23;
             this.MainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MainDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MainDataGridView_CellMouseDoubleClick);
             // 
             // ViewButton
             // 

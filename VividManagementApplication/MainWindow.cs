@@ -402,6 +402,13 @@ namespace VividManagementApplication
         DataGridViewTextBoxColumn Column7 = new DataGridViewTextBoxColumn();
         DataGridViewTextBoxColumn Column8 = new DataGridViewTextBoxColumn();
 
+        private void ClearDataGridViewColumnSortOrder(int count) {
+            for (int i = 0; i < count; i++)
+            {
+                this.MainDataGridView.Columns[i].HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+        }
+
         private void CreateMainDataGridView(DataGridViewColumn[] dgvcArray, string table, int discardFlagIndex, string[] queryArray)
         {
             string order = " ORDER BY id ASC ";
@@ -409,6 +416,7 @@ namespace VividManagementApplication
             this.MainDataGridView.Rows.Clear();
 
             this.MainDataGridView.Columns.AddRange(dgvcArray);
+            ClearDataGridViewColumnSortOrder(dgvcArray.Length);
             List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetData(table, queryArray, order);
             for (int i = 0; i < resultsList.Count; i++)
             {
@@ -422,7 +430,7 @@ namespace VividManagementApplication
                     }
                 }
             }
-            this.MainDataGridView.Columns[1].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+            this.MainDataGridView.Columns[0].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
         }
 
         // 收支汇总表
@@ -434,6 +442,7 @@ namespace VividManagementApplication
             int tempBalance = COMPANY_BALANCE;
 
             this.MainDataGridView.Columns.AddRange(dgvcArray);
+            ClearDataGridViewColumnSortOrder(dgvcArray.Length);
             List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetData(table, queryArray, order);
 
             for (int i = 0; i < resultsList.Count; i++)
@@ -465,6 +474,16 @@ namespace VividManagementApplication
             // this.MainDataGridView.Columns[2].HeaderCell.SortGlyphDirection = SortOrder.Descending;
         }
 
+        // DataGridView双击
+
+        private void MainDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (ViewButton.Enabled && e.RowIndex != -1)
+            {
+                ViewButton.PerformClick();
+            }
+        }
+
         // 客户管理
         private void listCxButton_Click(object sender, EventArgs e)
         {
@@ -473,7 +492,7 @@ namespace VividManagementApplication
             CURRENT_TAB = 1;
             mainDGVTitle.Text = listCxButton.Text;
             Column1.HeaderText = "客户编号";
-            Column2.HeaderText = "客户名称(公司名称)";
+            Column2.HeaderText = "公司名称";
             Column3.HeaderText = "联系地址";
             Column4.HeaderText = "联系人";
             Column5.HeaderText = "联系电话";
@@ -650,7 +669,9 @@ namespace VividManagementApplication
 
                 int tempBalance = COMPANY_BALANCE;
 
-                this.MainDataGridView.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
+                DataGridViewColumn[] dgvcArray = new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 };
+                this.MainDataGridView.Columns.AddRange(dgvcArray);
+                ClearDataGridViewColumnSortOrder(dgvcArray.Length);
                 List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetDataFromOriginalSQL(
                     "SELECT pzID, cast (modifyTime as VARCHAR) as modifyTime"
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
@@ -766,6 +787,7 @@ namespace VividManagementApplication
         {
             MessageBox.Show(FormBasicFeatrues.GetInstence().addCharIntoString("   ", "购买合同") + "haha");
         }
+
 
     }
 }
