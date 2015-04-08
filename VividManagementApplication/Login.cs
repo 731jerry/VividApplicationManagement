@@ -104,5 +104,10 @@ namespace VividManagementApplication
         {
 
         }
+
+        private void Login_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(390, 343);
+        }
     }
 }

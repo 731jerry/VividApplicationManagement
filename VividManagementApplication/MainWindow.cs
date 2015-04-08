@@ -173,6 +173,11 @@ namespace VividManagementApplication
             #endregion
         }
 
+        // MainWindow 窗口固定
+        private void MainWindow_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(1061, 688);
+        }
         private void CreateDetailedWindow()
         {
             DetailedInfo di = new DetailedInfo();
@@ -1048,6 +1053,7 @@ namespace VividManagementApplication
             }
         }
         #endregion
+
 
         #endregion
 
