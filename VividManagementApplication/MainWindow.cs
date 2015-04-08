@@ -179,12 +179,15 @@ namespace VividManagementApplication
         }
         private void ViewButton_Click(object sender, EventArgs e)
         {
-            DetailedInfo di = new DetailedInfo();
-            //di.ShowIcon = false;
-            //di.ItemId = this.MainListView.SelectedItems[0].Text;
-            di.ItemId = this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-            di.Text = "查看" + di.ItemId;
-            di.ShowDialog();
+            if (MainDataGridView.Rows.Count > 0)
+            {
+                DetailedInfo di = new DetailedInfo();
+                //di.ShowIcon = false;
+                //di.ItemId = this.MainListView.SelectedItems[0].Text;
+                di.ItemId = this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                di.Text = "查看" + di.ItemId;
+                di.ShowDialog();
+            }
         }
 
         // 测试
@@ -465,6 +468,7 @@ namespace VividManagementApplication
         // 客户管理
         private void listCxButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listCxButton;
             CURRENT_TAB = 1;
             mainDGVTitle.Text = listCxButton.Text;
@@ -484,6 +488,7 @@ namespace VividManagementApplication
         // 商品管理
         private void listSpButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listSpButton;
             CURRENT_TAB = 2;
             mainDGVTitle.Text = listSpButton.Text;
@@ -504,6 +509,7 @@ namespace VividManagementApplication
         // 库存
         private void listKcButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = false;
             CURRENT_LIST_BUTTON = listKcButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listKcButton.Text;
@@ -524,6 +530,7 @@ namespace VividManagementApplication
 
         private void listJcdButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listJcdButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listJcdButton.Text;
@@ -539,6 +546,7 @@ namespace VividManagementApplication
 
         private void listCcdButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listCcdButton;
             CURRENT_TAB = 3;
             mainDGVTitle.Text = listCcdButton.Text;
@@ -558,6 +566,7 @@ namespace VividManagementApplication
 
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listCgButton;
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listCgButton.Text;
@@ -573,6 +582,7 @@ namespace VividManagementApplication
 
         private void listXsButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listXsButton;
             CURRENT_TAB = 4;
             mainDGVTitle.Text = listCgButton.Text;
@@ -591,6 +601,7 @@ namespace VividManagementApplication
         // 凭证列表 收付汇总表
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = false;
             CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
             mainDGVTitle.Text = listSfzhButton.Text;
@@ -617,6 +628,7 @@ namespace VividManagementApplication
         // 客户对账单
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
+            ViewButton.Enabled = false;
             this.MainDataGridView.Rows.Clear();
             this.MainDataGridView.Columns.Clear();
 
@@ -642,7 +654,7 @@ namespace VividManagementApplication
                 List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetDataFromOriginalSQL(
                     "SELECT pzID, cast (modifyTime as VARCHAR) as modifyTime"
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
-                    + ",operateMoney,remaintingMoney FROM pzList WHERE clientID = '"+flt.clientID.Text+"' AND discardFlag = 0"
+                    + ",operateMoney,remaintingMoney FROM pzList WHERE clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
                     + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToShortDateString() + "' AND '" + flt.toDate.Value.ToShortDateString() + "')"
                     + " ORDER BY modifyTime ASC",
                     new String[] { "pzID", "modifyTime", "leixing", "operateMoney", "remaintingMoney" });
@@ -677,7 +689,7 @@ namespace VividManagementApplication
         // 合同列表
         private void listHtButton_Click(object sender, EventArgs e)
         {
-            // 还未完成
+            ViewButton.Enabled = true;
             CURRENT_LIST_BUTTON = listHtButton;
             CURRENT_TAB = 6;
             mainDGVTitle.Text = listHtButton.Text;
