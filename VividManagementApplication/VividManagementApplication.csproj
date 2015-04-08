@@ -63,6 +63,12 @@
     <Compile Include="DetailedInfo.Designer.cs">
       <DependentUpon>DetailedInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Filter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filter.Designer.cs">
+      <DependentUpon>Filter.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBasicFeatrues.cs" />
     <Compile Include="ImageClass.cs" />
     <Compile Include="JSONConvert.cs" />
@@ -88,6 +94,9 @@
     </Compile>
     <EmbeddedResource Include="DetailedInfo.resx">
       <DependentUpon>DetailedInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter.resx">
+      <DependentUpon>Filter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

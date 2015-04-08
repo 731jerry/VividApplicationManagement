@@ -475,7 +475,14 @@ namespace VividManagementApplication
             {
                 for (int i = 0; i < ctList.Count; i++)
                 {
-                    ctList[i].Text = valuesList[i].ToString();
+                    if (ctList[i] is ComboBox)
+                    {
+                        (ctList[i] as ComboBox).Items.Add(valuesList[i].ToString());
+                    }
+                    else
+                    {
+                        ctList[i].Text = valuesList[i].ToString();
+                    }
                 }
             }
         }

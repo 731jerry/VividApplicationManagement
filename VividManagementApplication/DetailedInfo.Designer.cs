@@ -351,19 +351,19 @@
             this.label118 = new System.Windows.Forms.Label();
             this.label137 = new System.Windows.Forms.Label();
             this.HTcbName = new System.Windows.Forms.ComboBox();
-            this.PreviewPrintButton = new ControlExs.QQButton();
-            this.SaveButton = new ControlExs.QQButton();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.DiscardLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.AJCDtb5 = new ControlExs.QQTextBox();
-            this.BJCDtb5 = new ControlExs.QQTextBox();
-            this.CJCDtb5 = new ControlExs.QQTextBox();
-            this.DJCDtb5 = new ControlExs.QQTextBox();
+            this.DiscardCheckBox = new ControlExs.QQCheckBox();
+            this.PreviewPrintButton = new ControlExs.QQButton();
             this.EJCDtb5 = new ControlExs.QQTextBox();
+            this.DJCDtb5 = new ControlExs.QQTextBox();
+            this.CJCDtb5 = new ControlExs.QQTextBox();
+            this.BJCDtb5 = new ControlExs.QQTextBox();
+            this.AJCDtb5 = new ControlExs.QQTextBox();
+            this.SaveButton = new ControlExs.QQButton();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -4068,32 +4068,6 @@
             this.HTcbName.TabIndex = 582;
             this.HTcbName.SelectedIndexChanged += new System.EventHandler(this.HTcbName_SelectedIndexChanged);
             // 
-            // PreviewPrintButton
-            // 
-            this.PreviewPrintButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.PreviewPrintButton.Image = ((System.Drawing.Image)(resources.GetObject("PreviewPrintButton.Image")));
-            this.PreviewPrintButton.Location = new System.Drawing.Point(32, 653);
-            this.PreviewPrintButton.Name = "PreviewPrintButton";
-            this.PreviewPrintButton.Size = new System.Drawing.Size(101, 30);
-            this.PreviewPrintButton.TabIndex = 21;
-            this.PreviewPrintButton.Text = "打印/预览";
-            this.PreviewPrintButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.PreviewPrintButton.UseVisualStyleBackColor = true;
-            this.PreviewPrintButton.Click += new System.EventHandler(this.PreviewPrintButton_Click);
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
-            this.SaveButton.Location = new System.Drawing.Point(727, 653);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(91, 30);
-            this.SaveButton.TabIndex = 22;
-            this.SaveButton.Text = "保存";
-            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
@@ -4112,18 +4086,6 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // DiscardCheckBox
-            // 
-            this.DiscardCheckBox.AutoSize = true;
-            this.DiscardCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.DiscardCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.DiscardCheckBox.Location = new System.Drawing.Point(618, 659);
-            this.DiscardCheckBox.Name = "DiscardCheckBox";
-            this.DiscardCheckBox.Size = new System.Drawing.Size(51, 21);
-            this.DiscardCheckBox.TabIndex = 318;
-            this.DiscardCheckBox.Text = "作废";
-            this.DiscardCheckBox.UseVisualStyleBackColor = false;
-            // 
             // DiscardLabel
             // 
             this.DiscardLabel.AutoSize = true;
@@ -4141,53 +4103,46 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // AJCDtb5
+            // DiscardCheckBox
             // 
-            this.AJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.AJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AJCDtb5.EmptyTextTip = "";
-            this.AJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
-            this.AJCDtb5.Name = "AJCDtb5";
-            this.AJCDtb5.ReadOnly = true;
-            this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.AJCDtb5.TabIndex = 330;
-            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
-            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            this.DiscardCheckBox.AutoSize = true;
+            this.DiscardCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.DiscardCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.DiscardCheckBox.Location = new System.Drawing.Point(618, 659);
+            this.DiscardCheckBox.Name = "DiscardCheckBox";
+            this.DiscardCheckBox.Size = new System.Drawing.Size(51, 21);
+            this.DiscardCheckBox.TabIndex = 318;
+            this.DiscardCheckBox.Text = "作废";
+            this.DiscardCheckBox.UseVisualStyleBackColor = false;
             // 
-            // BJCDtb5
+            // PreviewPrintButton
             // 
-            this.BJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.BJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BJCDtb5.EmptyTextTip = "";
-            this.BJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
-            this.BJCDtb5.Name = "BJCDtb5";
-            this.BJCDtb5.ReadOnly = true;
-            this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.BJCDtb5.TabIndex = 331;
-            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
-            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            this.PreviewPrintButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.PreviewPrintButton.Image = ((System.Drawing.Image)(resources.GetObject("PreviewPrintButton.Image")));
+            this.PreviewPrintButton.Location = new System.Drawing.Point(32, 653);
+            this.PreviewPrintButton.Name = "PreviewPrintButton";
+            this.PreviewPrintButton.Size = new System.Drawing.Size(101, 30);
+            this.PreviewPrintButton.TabIndex = 21;
+            this.PreviewPrintButton.Text = "打印/预览";
+            this.PreviewPrintButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.PreviewPrintButton.UseVisualStyleBackColor = true;
+            this.PreviewPrintButton.Click += new System.EventHandler(this.PreviewPrintButton_Click);
             // 
-            // CJCDtb5
+            // EJCDtb5
             // 
-            this.CJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.CJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CJCDtb5.EmptyTextTip = "";
-            this.CJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
-            this.CJCDtb5.Name = "CJCDtb5";
-            this.CJCDtb5.ReadOnly = true;
-            this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.CJCDtb5.TabIndex = 332;
-            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
-            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            this.EJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.EJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EJCDtb5.EmptyTextTip = "";
+            this.EJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
+            this.EJCDtb5.Name = "EJCDtb5";
+            this.EJCDtb5.ReadOnly = true;
+            this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.EJCDtb5.TabIndex = 334;
+            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
+            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // DJCDtb5
             // 
@@ -4205,21 +4160,66 @@
             this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
             this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
-            // EJCDtb5
+            // CJCDtb5
             // 
-            this.EJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.EJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EJCDtb5.EmptyTextTip = "";
-            this.EJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
-            this.EJCDtb5.Name = "EJCDtb5";
-            this.EJCDtb5.ReadOnly = true;
-            this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.EJCDtb5.TabIndex = 334;
-            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
-            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            this.CJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.CJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CJCDtb5.EmptyTextTip = "";
+            this.CJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
+            this.CJCDtb5.Name = "CJCDtb5";
+            this.CJCDtb5.ReadOnly = true;
+            this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.CJCDtb5.TabIndex = 332;
+            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
+            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // BJCDtb5
+            // 
+            this.BJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.BJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BJCDtb5.EmptyTextTip = "";
+            this.BJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
+            this.BJCDtb5.Name = "BJCDtb5";
+            this.BJCDtb5.ReadOnly = true;
+            this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.BJCDtb5.TabIndex = 331;
+            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
+            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // AJCDtb5
+            // 
+            this.AJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.AJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AJCDtb5.EmptyTextTip = "";
+            this.AJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
+            this.AJCDtb5.Name = "AJCDtb5";
+            this.AJCDtb5.ReadOnly = true;
+            this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.AJCDtb5.TabIndex = 330;
+            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
+            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
+            this.SaveButton.Location = new System.Drawing.Point(727, 653);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(91, 30);
+            this.SaveButton.TabIndex = 22;
+            this.SaveButton.Text = "保存";
+            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // DetailedInfo
             // 
@@ -4238,6 +4238,7 @@
             this.MaximumSize = new System.Drawing.Size(1960, 1431);
             this.MinimizeBox = false;
             this.Name = "DetailedInfo";
+            this.ShowInTaskbar = false;
             this.Text = "DetailedInfo";
             this.Load += new System.EventHandler(this.DetailedInfo_Load);
             this.DetailedTabView.ResumeLayout(false);

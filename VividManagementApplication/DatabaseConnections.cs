@@ -261,11 +261,12 @@ namespace VividManagementApplication
             LocalDbClose();
             return resultsStringArray;
         }
+
         // 列出数据
-        public List<string[]> LocalGetData(string table, string[] query, string order)
+        public List<String[]> LocalGetData(String table, String[] query, String order)
         {
             // ORDER BY id ASC
-            string innerSQL = "";
+            String innerSQL = "";
 
             for (int i = 0; i < query.Length; i++)
             {
@@ -275,13 +276,13 @@ namespace VividManagementApplication
             {
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
-            string sql = "SELECT " + innerSQL + " FROM " + table + " " + order;//建表语句  
+            String sql = "SELECT " + innerSQL + " FROM " + table + " " + order;//建表语句  
             LocalDbOpen();
             SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
             cmdCreateTable.CommandText = sql;
             System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            string[] resultsStringArray = new string[query.Length];
-            List<string[]> resultsStringList = new List<string[]>();
+            String[] resultsStringArray = new String[query.Length];
+            List<String[]> resultsStringList = new List<String[]>();
 
             while (reader.Read())
             {
@@ -290,7 +291,31 @@ namespace VividManagementApplication
                     resultsStringArray[i] = reader[i].ToString();
                 }
                 resultsStringList.Add(resultsStringArray);
-                resultsStringArray = new string[query.Length];
+                resultsStringArray = new String[query.Length];
+            }
+            reader.Close();
+            LocalDbClose();
+            return resultsStringList;
+        }
+
+        // 最原始的列出数据
+        public List<String[]> LocalGetDataFromOriginalSQL(String sql, String [] query)
+        {
+            LocalDbOpen();
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            cmdCreateTable.CommandText = sql;
+            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+            String[] resultsStringArray = new String[query.Length];
+            List<String[]> resultsStringList = new List<String[]>();
+
+            while (reader.Read())
+            {
+                for (int i = 0; i < query.Length; i++)
+                {
+                    resultsStringArray[i] = reader[i].ToString();
+                }
+                resultsStringList.Add(resultsStringArray);
+                resultsStringArray = new String[query.Length];
             }
             reader.Close();
             LocalDbClose();
