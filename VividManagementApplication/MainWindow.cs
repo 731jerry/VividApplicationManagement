@@ -40,6 +40,7 @@ namespace VividManagementApplication
         public static string EMAIL = "";
         public static string ADDTIME = "";
         public static string NOTIFICATION = "";
+        public static DateTime EXPIRETIME = new DateTime();
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
 
         string dataBaseFilePrefix;
@@ -167,9 +168,13 @@ namespace VividManagementApplication
             cxRadio.Checked = true;
             //cxRadio.PerformClick();
             listCxButton.PerformClick();
-            ViewButton.Enabled = false;
-            refeshButton.Enabled = false;
-            PrintButton.Enabled = false;
+            //ViewButton.Enabled = false;
+            //refeshButton.Enabled = false;
+            //PrintButton.Enabled = false;
+            #endregion
+
+            #region 初始化登录信息
+            lbExpireTime.Text = EXPIRETIME.ToLongDateString();
             #endregion
         }
 
@@ -182,7 +187,7 @@ namespace VividManagementApplication
         {
             DetailedInfo di = new DetailedInfo();
             //di.ShowIcon = false;
-            di.Text = "新建" + CURRENT_LIST_BUTTON.Text;
+            di.Text = "新建";
             di.ShowDialog();
         }
 

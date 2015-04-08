@@ -47,6 +47,28 @@ namespace VividManagementApplication
             return sBuilder.ToString();
         }
 
+        #region TimeStamp和DateTime转换
+        
+        public System.DateTime ConvertTimeStampToDateTime(double timestamp)
+        {
+            //create a new datetime value based on the unix epoch
+            System.DateTime converted = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            //add the timestamp to the value
+            System.DateTime newdatetime = converted.AddSeconds(timestamp);
+            //return the value in string format
+            return newdatetime.ToLocalTime();
+        }
+
+        public double ConvertDateTimeToTimestamp(System.DateTime value)
+        {
+            //create timespan by subtracting the value provided from
+            //the unix epoch
+            System.TimeSpan span = (value - new System.DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
+            //return the total seconds (which is a unix timestamp)
+            return (double)span.TotalSeconds;
+        }
+        #endregion
+
         #region 打印
 
         public int PrintPageHeight = 1169;//打印的默认高度

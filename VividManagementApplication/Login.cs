@@ -31,28 +31,16 @@ namespace VividManagementApplication
             }
             else
             {
-                //DatabaseConnections.GetInstence().USERID = cbAccount.Text;
-
-                /* 保存密码
-                if (RemPsw.Checked)
+                if (FormBasicFeatrues.GetInstence().ConvertDateTimeToTimestamp(MainWindow.EXPIRETIME) < FormBasicFeatrues.GetInstence().ConvertDateTimeToTimestamp(DateTime.Now))
                 {
-                    string configFilePath = System.Environment.CurrentDirectory + @"\config\" + cbAccount.Text.Trim() + @".cyy";
-                    using (FileStream fs = File.Create(configFilePath))
-                    {
-                        string tmp = cbAccount.Text.Trim() + "!";
-
-                        tmp += true ? tbPassword.Text.Trim() : "?";
-
-                        byte[] info = new UTF8Encoding(true).GetBytes(tmp);
-                        fs.Write(info, 0, info.Length);
-                    }
-                    File.SetAttributes(configFilePath, FileAttributes.Hidden);
+                    MessageBox.Show("您的账户以到期, 请与管理员联系", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                */
-                this.Visible = false;
-
-                (Owner as MainWindow).Visible = true;
-                this.Close();
+                else
+                {
+                    this.Visible = false;
+                    (Owner as MainWindow).Visible = true;
+                    this.Close();
+                }
             }
         }
 

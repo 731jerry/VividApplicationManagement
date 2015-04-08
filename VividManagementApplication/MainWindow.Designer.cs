@@ -31,7 +31,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.lbLastLogonTime = new System.Windows.Forms.Label();
+            this.lbExpireTime = new System.Windows.Forms.Label();
             this.label112 = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -85,12 +85,12 @@
             this.notificationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbLastLogonTime
+            // lbExpireTime
             // 
-            resources.ApplyResources(this.lbLastLogonTime, "lbLastLogonTime");
-            this.lbLastLogonTime.BackColor = System.Drawing.Color.Transparent;
-            this.lbLastLogonTime.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lbLastLogonTime.Name = "lbLastLogonTime";
+            resources.ApplyResources(this.lbExpireTime, "lbExpireTime");
+            this.lbExpireTime.BackColor = System.Drawing.Color.Transparent;
+            this.lbExpireTime.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lbExpireTime.Name = "lbExpireTime";
             // 
             // label112
             // 
@@ -457,7 +457,7 @@
             this.Controls.Add(this.notificationPanel);
             this.Controls.Add(this.pbDownFile);
             this.Controls.Add(this.MainPanel);
-            this.Controls.Add(this.lbLastLogonTime);
+            this.Controls.Add(this.lbExpireTime);
             this.Controls.Add(this.label112);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.label4);
@@ -482,7 +482,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lbLastLogonTime;
+        private System.Windows.Forms.Label lbExpireTime;
         private System.Windows.Forms.Label label112;
         private System.Windows.Forms.Label lbUserName;
         private System.Windows.Forms.Label label4;

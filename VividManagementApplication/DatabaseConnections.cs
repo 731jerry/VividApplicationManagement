@@ -57,7 +57,7 @@ namespace VividManagementApplication
             string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
 
             StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,addtime,expiretime,notification,companyBalance FROM users WHERE userid = '");
+                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(addtime as char) as addtime,VMA_expiretime,notification,companyBalance FROM users WHERE userid = '");
             sbSQL.Append(acc);
             sbSQL.Append(@"'");
             sbSQL.Append(@" AND password = '");
@@ -73,24 +73,28 @@ namespace VividManagementApplication
             while (dataReader.Read())
             {
                 MainWindow.IS_LOGED_IN = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
-                MainWindow.ID = dataReader["id"].ToString();
-                MainWindow.USER_ID = dataReader["userid"].ToString();
-                MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
-                MainWindow.REAL_NAME = dataReader["realname"].ToString();
-                MainWindow.WORKLOADS = dataReader["workloads"].ToString();
-                MainWindow.COMPANY_NAME = dataReader["company"].ToString();
-                MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
-                MainWindow.ADDRESS = dataReader["address"].ToString();
-                MainWindow.BANK_NAME = dataReader["bankname"].ToString();
-                MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
-                MainWindow.PHONE = dataReader["phone"].ToString();
-                MainWindow.FAX = dataReader["fax"].ToString();
-                MainWindow.QQ = dataReader["QQ"].ToString();
-                MainWindow.EMAIL = dataReader["email"].ToString();
-                MainWindow.ADDTIME = dataReader["addtime"].ToString();
-                MainWindow.NOTIFICATION = dataReader["notification"].ToString();
-                MainWindow.COMPANY_BALANCE = int.Parse(dataReader["companyBalance"].ToString());
-                //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                if (MainWindow.IS_LOGED_IN)
+                {
+                    MainWindow.ID = dataReader["id"].ToString();
+                    MainWindow.USER_ID = dataReader["userid"].ToString();
+                    MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
+                    MainWindow.REAL_NAME = dataReader["realname"].ToString();
+                    MainWindow.WORKLOADS = dataReader["workloads"].ToString();
+                    MainWindow.COMPANY_NAME = dataReader["company"].ToString();
+                    MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
+                    MainWindow.ADDRESS = dataReader["address"].ToString();
+                    MainWindow.BANK_NAME = dataReader["bankname"].ToString();
+                    MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
+                    MainWindow.PHONE = dataReader["phone"].ToString();
+                    MainWindow.FAX = dataReader["fax"].ToString();
+                    MainWindow.QQ = dataReader["QQ"].ToString();
+                    MainWindow.EMAIL = dataReader["email"].ToString();
+                    MainWindow.ADDTIME = dataReader["addtime"].ToString();
+                    MainWindow.NOTIFICATION = dataReader["notification"].ToString();
+                    MainWindow.EXPIRETIME = DateTime.Parse(dataReader["VMA_expiretime"].ToString());
+                    MainWindow.COMPANY_BALANCE = int.Parse(dataReader["companyBalance"].ToString());
+                    //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                }
             }
 
             dataReader.Close();
@@ -299,7 +303,7 @@ namespace VividManagementApplication
         }
 
         // 最原始的列出数据
-        public List<String[]> LocalGetDataFromOriginalSQL(String sql, String [] query)
+        public List<String[]> LocalGetDataFromOriginalSQL(String sql, String[] query)
         {
             LocalDbOpen();
             SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
