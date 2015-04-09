@@ -113,6 +113,11 @@
             this.DzDateTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.PanelDZ = new System.Windows.Forms.Panel();
+            this.EJCDtb5 = new ControlExs.QQTextBox();
+            this.DJCDtb5 = new ControlExs.QQTextBox();
+            this.CJCDtb5 = new ControlExs.QQTextBox();
+            this.BJCDtb5 = new ControlExs.QQTextBox();
+            this.AJCDtb5 = new ControlExs.QQTextBox();
             this.EJCDtb0 = new System.Windows.Forms.TextBox();
             this.DJCDtb0 = new System.Windows.Forms.TextBox();
             this.CJCDtb0 = new System.Windows.Forms.TextBox();
@@ -358,11 +363,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.PreviewPrintButton = new ControlExs.QQButton();
-            this.EJCDtb5 = new ControlExs.QQTextBox();
-            this.DJCDtb5 = new ControlExs.QQTextBox();
-            this.CJCDtb5 = new ControlExs.QQTextBox();
-            this.BJCDtb5 = new ControlExs.QQTextBox();
-            this.AJCDtb5 = new ControlExs.QQTextBox();
             this.SaveButton = new ControlExs.QQButton();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -584,6 +584,7 @@
             this.tbClient1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbClient1.Location = new System.Drawing.Point(107, 24);
             this.tbClient1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient1.MaxLength = 10;
             this.tbClient1.Name = "tbClient1";
             this.tbClient1.Size = new System.Drawing.Size(150, 26);
             this.tbClient1.TabIndex = 101;
@@ -1069,6 +1070,7 @@
             // 
             this.tbGoods1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbGoods1.Location = new System.Drawing.Point(109, 26);
+            this.tbGoods1.MaxLength = 10;
             this.tbGoods1.Name = "tbGoods1";
             this.tbGoods1.Size = new System.Drawing.Size(129, 26);
             this.tbGoods1.TabIndex = 201;
@@ -1333,6 +1335,86 @@
             this.PanelDZ.Name = "PanelDZ";
             this.PanelDZ.Size = new System.Drawing.Size(737, 158);
             this.PanelDZ.TabIndex = 230;
+            // 
+            // EJCDtb5
+            // 
+            this.EJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.EJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EJCDtb5.EmptyTextTip = "";
+            this.EJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
+            this.EJCDtb5.Name = "EJCDtb5";
+            this.EJCDtb5.ReadOnly = true;
+            this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.EJCDtb5.TabIndex = 334;
+            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
+            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // DJCDtb5
+            // 
+            this.DJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.DJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DJCDtb5.EmptyTextTip = "";
+            this.DJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.DJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DJCDtb5.Location = new System.Drawing.Point(559, 104);
+            this.DJCDtb5.Name = "DJCDtb5";
+            this.DJCDtb5.ReadOnly = true;
+            this.DJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.DJCDtb5.TabIndex = 333;
+            this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
+            this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // CJCDtb5
+            // 
+            this.CJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.CJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CJCDtb5.EmptyTextTip = "";
+            this.CJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
+            this.CJCDtb5.Name = "CJCDtb5";
+            this.CJCDtb5.ReadOnly = true;
+            this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.CJCDtb5.TabIndex = 332;
+            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
+            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // BJCDtb5
+            // 
+            this.BJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.BJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BJCDtb5.EmptyTextTip = "";
+            this.BJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
+            this.BJCDtb5.Name = "BJCDtb5";
+            this.BJCDtb5.ReadOnly = true;
+            this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.BJCDtb5.TabIndex = 331;
+            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
+            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // AJCDtb5
+            // 
+            this.AJCDtb5.BackColor = System.Drawing.SystemColors.Control;
+            this.AJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AJCDtb5.EmptyTextTip = "";
+            this.AJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
+            this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
+            this.AJCDtb5.Name = "AJCDtb5";
+            this.AJCDtb5.ReadOnly = true;
+            this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
+            this.AJCDtb5.TabIndex = 330;
+            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
+            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // EJCDtb0
             // 
@@ -4127,86 +4209,6 @@
             this.PreviewPrintButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PreviewPrintButton.UseVisualStyleBackColor = true;
             this.PreviewPrintButton.Click += new System.EventHandler(this.PreviewPrintButton_Click);
-            // 
-            // EJCDtb5
-            // 
-            this.EJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.EJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EJCDtb5.EmptyTextTip = "";
-            this.EJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.EJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.EJCDtb5.Location = new System.Drawing.Point(559, 130);
-            this.EJCDtb5.Name = "EJCDtb5";
-            this.EJCDtb5.ReadOnly = true;
-            this.EJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.EJCDtb5.TabIndex = 334;
-            this.EJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EJCDtb5.TextChanged += new System.EventHandler(this.EJCDtb5_TextChanged);
-            this.EJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            // 
-            // DJCDtb5
-            // 
-            this.DJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.DJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DJCDtb5.EmptyTextTip = "";
-            this.DJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.DJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.DJCDtb5.Location = new System.Drawing.Point(559, 104);
-            this.DJCDtb5.Name = "DJCDtb5";
-            this.DJCDtb5.ReadOnly = true;
-            this.DJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.DJCDtb5.TabIndex = 333;
-            this.DJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.DJCDtb5.TextChanged += new System.EventHandler(this.DJCDtb5_TextChanged);
-            this.DJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            // 
-            // CJCDtb5
-            // 
-            this.CJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.CJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CJCDtb5.EmptyTextTip = "";
-            this.CJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.CJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.CJCDtb5.Location = new System.Drawing.Point(559, 78);
-            this.CJCDtb5.Name = "CJCDtb5";
-            this.CJCDtb5.ReadOnly = true;
-            this.CJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.CJCDtb5.TabIndex = 332;
-            this.CJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.CJCDtb5.TextChanged += new System.EventHandler(this.CJCDtb5_TextChanged);
-            this.CJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            // 
-            // BJCDtb5
-            // 
-            this.BJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.BJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BJCDtb5.EmptyTextTip = "";
-            this.BJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.BJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.BJCDtb5.Location = new System.Drawing.Point(559, 52);
-            this.BJCDtb5.Name = "BJCDtb5";
-            this.BJCDtb5.ReadOnly = true;
-            this.BJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.BJCDtb5.TabIndex = 331;
-            this.BJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.BJCDtb5.TextChanged += new System.EventHandler(this.BJCDtb5_TextChanged);
-            this.BJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
-            // 
-            // AJCDtb5
-            // 
-            this.AJCDtb5.BackColor = System.Drawing.SystemColors.Control;
-            this.AJCDtb5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.AJCDtb5.EmptyTextTip = "";
-            this.AJCDtb5.EmptyTextTipColor = System.Drawing.Color.DarkGray;
-            this.AJCDtb5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.AJCDtb5.Location = new System.Drawing.Point(559, 26);
-            this.AJCDtb5.Name = "AJCDtb5";
-            this.AJCDtb5.ReadOnly = true;
-            this.AJCDtb5.Size = new System.Drawing.Size(71, 26);
-            this.AJCDtb5.TabIndex = 330;
-            this.AJCDtb5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AJCDtb5.TextChanged += new System.EventHandler(this.AJCDtb5_TextChanged);
-            this.AJCDtb5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // SaveButton
             // 

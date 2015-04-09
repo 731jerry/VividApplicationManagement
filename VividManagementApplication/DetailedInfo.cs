@@ -68,8 +68,12 @@ namespace VividManagementApplication
                     canPrint = false;
                     DiscardCheckBox.Visible = false;
 
-                    if (!ItemId.Equals("-1"))
+                    if (ItemId.Equals("-1"))
                     {
+                        // 自动生成ID
+                        tbClient1.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        ItemId = tbClient1.Text;
+                    }else{
                         try
                         {
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
@@ -98,7 +102,13 @@ namespace VividManagementApplication
                     canPrint = false;
                     DiscardCheckBox.Visible = false;
 
-                    if (!ItemId.Equals("-1"))
+                    if (ItemId.Equals("-1"))
+                    {
+                        // 自动生成ID
+                        tbGoods1.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        ItemId = tbGoods1.Text;
+                    }
+                    else
                     {
                         try
                         {
