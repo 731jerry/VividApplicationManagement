@@ -23,6 +23,7 @@ namespace VividManagementApplication
         public static int CURRENT_TAB = 1;
         public static QQButton CURRENT_LIST_BUTTON;
 
+        public static bool IS_PASSWORD_CORRECT = false;
         public static bool IS_LOGED_IN = false;
         public static string ID = "";
         public static string USER_ID = "";

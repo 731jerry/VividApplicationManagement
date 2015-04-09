@@ -72,8 +72,8 @@ namespace VividManagementApplication
 
             while (dataReader.Read())
             {
-                MainWindow.IS_LOGED_IN = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
-                if (MainWindow.IS_LOGED_IN)
+                MainWindow.IS_PASSWORD_CORRECT = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
+                if (MainWindow.IS_PASSWORD_CORRECT)
                 {
                     MainWindow.ID = dataReader["id"].ToString();
                     MainWindow.USER_ID = dataReader["userid"].ToString();
