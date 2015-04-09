@@ -97,5 +97,6 @@ namespace VividManagementApplication
         {
             this.Size = new Size(390, 343);
         }
+
     }
 }
