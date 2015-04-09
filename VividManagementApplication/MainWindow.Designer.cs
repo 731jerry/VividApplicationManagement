@@ -462,7 +462,6 @@
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
-            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);

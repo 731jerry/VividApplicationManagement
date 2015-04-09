@@ -67,8 +67,8 @@ namespace VividManagementApplication
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
             DrawFromAlphaMainPart(this, e.Graphics);
+            base.OnPaint(e);
         }
 
         #endregion
@@ -129,6 +129,7 @@ namespace VividManagementApplication
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Left = (Screen.PrimaryScreen.WorkingArea.Width - Width) / 2;
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
 
@@ -184,6 +185,7 @@ namespace VividManagementApplication
         {
             this.Size = new Size(1061, 688);
         }
+        
         private void CreateDetailedWindow()
         {
             DetailedInfo di = new DetailedInfo();
@@ -1059,6 +1061,7 @@ namespace VividManagementApplication
             }
         }
         #endregion
+
 
 
         #endregion

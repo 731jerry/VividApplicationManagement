@@ -91,6 +91,7 @@
             // 
             this.cbAccount.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.cbAccount.Location = new System.Drawing.Point(132, 199);
+            this.cbAccount.MaxLength = 8;
             this.cbAccount.Name = "cbAccount";
             this.cbAccount.Size = new System.Drawing.Size(157, 25);
             this.cbAccount.TabIndex = 0;
