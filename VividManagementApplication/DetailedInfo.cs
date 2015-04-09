@@ -73,7 +73,9 @@ namespace VividManagementApplication
                         // 自动生成ID
                         tbClient1.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                         ItemId = tbClient1.Text;
-                    }else{
+                    }
+                    else
+                    {
                         try
                         {
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
@@ -110,6 +112,7 @@ namespace VividManagementApplication
                     }
                     else
                     {
+                        tbGoods11.ReadOnly = true;
                         try
                         {
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
@@ -2352,6 +2355,7 @@ namespace VividManagementApplication
         private void tbGoods11_TextChanged(object sender, EventArgs e)
         {
             calculateSmallSum(tbGoods11, tbGoods12, tbGoods13);
+            tbGoods14.Text = tbGoods11.Text;
         }
 
         private void tbGoods12_TextChanged(object sender, EventArgs e)
