@@ -177,6 +177,7 @@ namespace VividManagementApplication
 
             #region 初始化登录信息
             lbExpireTime.Text = EXPIRETIME.ToLongDateString();
+            keepOnlineTimer.Enabled = true;
             #endregion
         }
 
@@ -185,7 +186,7 @@ namespace VividManagementApplication
         {
             this.Size = new Size(1061, 688);
         }
-        
+
         private void CreateDetailedWindow()
         {
             DetailedInfo di = new DetailedInfo();
@@ -818,6 +819,7 @@ namespace VividManagementApplication
         /// <param name="e"></param>
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
             //UploadFiles("备份数据库!");
         }
 
@@ -1062,7 +1064,16 @@ namespace VividManagementApplication
         }
         #endregion
 
+        #endregion
 
+        #region 用户实时在线
+        private void keepOnlineTimer_Tick(object sender, EventArgs e)
+        {
+            if (MainWindow.IS_LOGED_IN)
+            {
+                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 1, VMA_lastlogontime = NOW(), VMA_logonmins = VMA_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
+            }
+        }
 
         #endregion
 

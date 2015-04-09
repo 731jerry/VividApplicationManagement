@@ -78,6 +78,7 @@
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.keepOnlineTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -450,6 +451,11 @@
             resources.ApplyResources(this.printPreviewDialog1, "printPreviewDialog1");
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             // 
+            // keepOnlineTimer
+            // 
+            this.keepOnlineTimer.Interval = 60000;
+            this.keepOnlineTimer.Tick += new System.EventHandler(this.keepOnlineTimer_Tick);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -528,6 +534,7 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.Timer keepOnlineTimer;
     }
 }
 

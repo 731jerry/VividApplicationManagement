@@ -120,6 +120,16 @@ namespace VividManagementApplication
             cmdInsert.ExecuteNonQuery();
             OnlineDbClose();
         }
+
+        // 修改原始数据
+        public void OnlineUpdateDataFromOriginalSQL(String sql)
+        {
+            OnlineDbOpen();
+            MySqlCommand cmdInsert = new MySqlCommand(sql, onlineSqlConnection);
+            cmdInsert.ExecuteNonQuery();
+            OnlineDbClose();
+        }
+
         #endregion
 
         #region 本地
