@@ -23,26 +23,28 @@ namespace VividManagementApplication
         public static int CURRENT_TAB = 1;
         public static QQButton CURRENT_LIST_BUTTON;
 
-        public static bool IS_PASSWORD_CORRECT = false;
-        public static bool IS_LOGED_IN = false;
-        public static string ID = "";
-        public static string USER_ID = "";
-        public static string PASSWORD_HASH = "";
-        public static string REAL_NAME = "";
-        public static string WORKLOADS = "";
-        public static string COMPANY_NAME = "";
-        public static string COMPANY_OWNER = "";
-        public static string ADDRESS = "";
-        public static string BANK_NAME = "";
-        public static string BANK_CARD = "";
-        public static string PHONE = "";
-        public static string FAX = "";
-        public static string QQ = "";
-        public static string EMAIL = "";
-        public static string ADDTIME = "";
-        public static string NOTIFICATION = "";
+        public static Boolean IS_PASSWORD_CORRECT = false;
+        public static Boolean IS_LOGED_IN = false;
+        public static String ID = "";
+        public static String USER_ID = "";
+        public static String PASSWORD_HASH = "";
+        public static String REAL_NAME = "";
+        public static String WORKLOADS = "";
+        public static String COMPANY_NAME = "";
+        public static String COMPANY_OWNER = "";
+        public static String ADDRESS = "";
+        public static String BANK_NAME = "";
+        public static String BANK_CARD = "";
+        public static String PHONE = "";
+        public static String FAX = "";
+        public static String QQ = "";
+        public static String EMAIL = "";
+        public static String ADDTIME = "";
+        public static String NOTIFICATION = "";
         public static DateTime EXPIRETIME = new DateTime();
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
+
+        public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "/data/data.db";
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -139,46 +141,57 @@ namespace VividManagementApplication
             loginWindow.ShowDialog(this);
             #endregion
 
-            #region 窗体用户信息初始化
-            lbUserName.Text = USER_ID;
-            dataBaseFilePrefix = USER_ID + "_";
-
-            // 广告计时器
-            //commerceTimer.Enabled = true;
-            // 更新数据库计时器
-            updateDataTimer.Enabled = true;
-            #endregion
-
-            #region 窗体滚动通知初始化
-            tmrShows.Enabled = true;
-
-            lblSHOWS.Text = NOTIFICATION;
-            lblSHOWS2.Text = NOTIFICATION;
-
-            if (lblSHOWS.Width < notificationPanel.Width)
+            if (MainWindow.IS_LOGED_IN)
             {
-                lblSHOWS2.Left = lblSHOWS.Left + notificationPanel.Width;
-            }
-            else
-            {
-                lblSHOWS2.Left = lblSHOWS.Left + lblSHOWS.Width;
-            }
-            #endregion
+                #region 初始化数据库
+                if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
+                {
+                    DatabaseConnections.GetInstence().LocalCreateDatabase();
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                }
+                #endregion
 
-            #region 初始化客户列表
-            cxRadio.Checked = false;
-            cxRadio.Checked = true;
-            //cxRadio.PerformClick();
-            listCxButton.PerformClick();
-            //ViewButton.Enabled = false;
-            //refeshButton.Enabled = false;
-            //PrintButton.Enabled = false;
-            #endregion
+                #region 窗体用户信息初始化
+                lbUserName.Text = USER_ID;
+                dataBaseFilePrefix = USER_ID + "_";
 
-            #region 初始化登录信息
-            lbExpireTime.Text = EXPIRETIME.ToLongDateString();
-            keepOnlineTimer.Enabled = true;
-            #endregion
+                // 广告计时器
+                //commerceTimer.Enabled = true;
+                // 更新数据库计时器
+                updateDataTimer.Enabled = true;
+                #endregion
+
+                #region 窗体滚动通知初始化
+                tmrShows.Enabled = true;
+
+                lblSHOWS.Text = NOTIFICATION;
+                lblSHOWS2.Text = NOTIFICATION;
+
+                if (lblSHOWS.Width < notificationPanel.Width)
+                {
+                    lblSHOWS2.Left = lblSHOWS.Left + notificationPanel.Width;
+                }
+                else
+                {
+                    lblSHOWS2.Left = lblSHOWS.Left + lblSHOWS.Width;
+                }
+                #endregion
+
+                #region 初始化客户列表
+                cxRadio.Checked = false;
+                cxRadio.Checked = true;
+                //cxRadio.PerformClick();
+                listCxButton.PerformClick();
+                //ViewButton.Enabled = false;
+                //refeshButton.Enabled = false;
+                //PrintButton.Enabled = false;
+                #endregion
+
+                #region 初始化登录信息
+                lbExpireTime.Text = EXPIRETIME.ToLongDateString();
+                keepOnlineTimer.Enabled = true;
+                #endregion
+            }
         }
 
         // MainWindow 窗口固定
@@ -819,8 +832,11 @@ namespace VividManagementApplication
         /// <param name="e"></param>
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
-            //UploadFiles("备份数据库!");
+            if (MainWindow.IS_LOGED_IN)
+            {
+                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
+                //UploadFiles("备份数据库!");
+            }
         }
 
         private void settingQQButton_Click(object sender, EventArgs e)

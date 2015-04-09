@@ -133,7 +133,51 @@ namespace VividManagementApplication
         #endregion
 
         #region 本地
-        private SQLiteConnection localSqlConnectionCommand = new SQLiteConnection("Data Source =" + Environment.CurrentDirectory + "/data/data.db");
+        private SQLiteConnection localSqlConnectionCommand = new SQLiteConnection("Data Source =" +MainWindow.LOCAL_DATABASE_LOCATION);
+
+        public void LocalCreateDatabase()
+        {
+            LocalDbOpen();
+            string sql = @" --
+                                -- File generated with SQLiteStudio v3.0.3 on 周四 4月 9 14:58:30 2015
+                                --
+                                -- Text encoding used: GBK
+                                --
+                                --PRAGMA foreign_keys = off;
+                                --BEGIN TRANSACTION;
+
+                                -- Table: goods
+                                CREATE TABLE IF NOT EXISTS goods (id INTEGER PRIMARY KEY AUTOINCREMENT, goodId VARCHAR UNIQUE, name VARCHAR (250), guige VARCHAR (250), unit VARCHAR (50), dengji VARCHAR (50), storageName VARCHAR (50), storageManager VARCHAR (100), storageManagerPhone VARCHAR (50), storageLocation VARCHAR (50), storageAddress VARCHAR (250), initalCount VARCHAR DEFAULT (0), purchasePrice VARCHAR (50), purchaseTotal VARCHAR (100), currentCount VARCHAR (100), currentTotal VARCHAR (150), currntsalesPrice VARCHAR (100), beizhu VARCHAR (250), addtime VARCHAR (50), modifyDate VARCHAR (50));
+
+                                -- Table: clients
+                                CREATE TABLE IF NOT EXISTS clients (id INTEGER PRIMARY KEY AUTOINCREMENT, clientID VARCHAR UNIQUE, contact VARCHAR (50), sex VARCHAR, type VARCHAR, company VARCHAR (20), companyOwner VARCHAR, address VARCHAR (250), phone VARCHAR (250), fax VARCHAR, taxNumber VARCHAR (100), email VARCHAR (250), bankInfo VARCHAR (250), otherContacts VARCHAR (250), PrimaryAccount VARCHAR (250), beizhu VARCHAR (250), addtime VARCHAR (50), modifyDate VARCHAR (50));
+
+                                -- Table: cgdList
+                                CREATE TABLE IF NOT EXISTS cgdList (id INTEGER PRIMARY KEY AUTOINCREMENT, cgdID VARCHAR UNIQUE, clientID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, kxQq VARCHAR, kxXq VARCHAR, kxJf VARCHAR, kxSq VARCHAR, kxDay VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
+
+                                -- Table: xsdList
+                                CREATE TABLE IF NOT EXISTS xsdList (id INTEGER PRIMARY KEY AUTOINCREMENT, xsdID VARCHAR UNIQUE, clientID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, kxQq VARCHAR, kxXq VARCHAR, kxJf VARCHAR, kxSq VARCHAR, kxDay VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
+
+                                -- Table: htList
+                                CREATE TABLE IF NOT EXISTS htList (id INTEGER PRIMARY KEY AUTOINCREMENT, htID VARCHAR UNIQUE, leixing VARCHAR, htDate VARCHAR, clientID VARCHAR, companyName VARCHAR, jsonData VARCHAR (255), sum VARCHAR, option VARCHAR, discardFlag INT (2), addtime VARCHAR, modifyTime VARCHAR);
+
+                                -- Table: ccdList
+                                CREATE TABLE IF NOT EXISTS ccdList (id INTEGER PRIMARY KEY AUTOINCREMENT, ccdID VARCHAR UNIQUE, clientID VARCHAR, cgxsID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
+
+                                -- Table: jcdList
+                                CREATE TABLE IF NOT EXISTS jcdList (id INTEGER PRIMARY KEY AUTOINCREMENT, jcdID VARCHAR UNIQUE, clientID VARCHAR, cgxsID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
+
+                                -- Table: pzList
+                                CREATE TABLE IF NOT EXISTS pzList (id INTEGER PRIMARY KEY AUTOINCREMENT, pzID VARCHAR UNIQUE, leixing VARCHAR, clientID VARCHAR, companyName VARCHAR, zhaiyao VARCHAR (100), jsonData VARCHAR (255), operateMoney VARCHAR, remaintingMoney VARCHAR, beizhu VARCHAR, discardFlag INT (2), addtime DATETIME, modifyTime DATETIME);
+
+                                -- Table: config
+                                CREATE TABLE IF NOT EXISTS config (id INTEGER PRIMARY KEY AUTOINCREMENT, configKey VARCHAR, configValue VARCHAR);
+
+                                --COMMIT TRANSACTION;";//建表语句  
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
+            LocalDbClose();
+        }
 
         public void LocalDbOpen()
         {
@@ -151,11 +195,6 @@ namespace VividManagementApplication
                 System.Windows.Forms.MessageBox.Show(ex.Message, "无法打开本地数据库连接！");
                 return;
             }
-            /*
-            string sql = "CREATE TABLE IF NOT EXISTS clients(id integer PRIMARY KEY NOT NULL, name varchar(20), sex varchar(2));";//建表语句  
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
-            cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
-             */
         }
 
         public void LocalDbClose()
