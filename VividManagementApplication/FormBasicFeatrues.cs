@@ -48,7 +48,7 @@ namespace VividManagementApplication
         }
 
         #region TimeStamp和DateTime转换
-        
+
         public System.DateTime ConvertTimeStampToDateTime(double timestamp)
         {
             //create a new datetime value based on the unix epoch
@@ -605,6 +605,93 @@ namespace VividManagementApplication
                 }
             }
             return newString;
+        }
+
+        /// <summary>
+        /// 获取远程文件中的字符
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        public String getOnlineFile(String fileUrl)
+        {
+            WebClient wcClient = new WebClient();
+            long fileLength = 0;
+            String updateFileUrl = fileUrl;
+
+            WebRequest webReq = WebRequest.Create(updateFileUrl);
+            WebResponse webRes = null;
+            Stream srm = null;
+            StreamReader srmReader = null;
+            String ss = "";
+            try
+            {
+                webRes = webReq.GetResponse();
+                fileLength = webRes.ContentLength;
+
+                srm = webRes.GetResponseStream();
+                srmReader = new StreamReader(srm);
+
+                byte[] bufferbyte = new byte[fileLength];
+                int allByte = (int)bufferbyte.Length;
+                int startByte = 0;
+                while (fileLength > 0)
+                {
+                    Application.DoEvents();
+                    int downByte = srm.Read(bufferbyte, startByte, allByte);
+                    if (downByte == 0) { break; };
+                    startByte += downByte;
+                    allByte -= downByte;
+
+                    float part = (float)startByte / 1024;
+                    float total = (float)bufferbyte.Length / 1024;
+                    int percent = Convert.ToInt32((part / total) * 100);
+
+                }
+                ss = Encoding.Default.GetString(bufferbyte).Trim();
+
+                srm.Close();
+                srmReader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("获取信息异常: " + ex.Message);
+                //throw;
+                return "";
+            }
+            return ss;
+        }
+
+
+        /// <summary>
+        /// 比较版本是否需要更新
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        public bool compareVersion(string currentVersion, string newVersion, int versionBit)
+        {
+            string[] currentVersionArray = currentVersion.Split('.');
+            string[] newVersionArray = newVersion.Split('.');
+
+            for (int i = 0; i < currentVersionArray.Length; i++)
+            {
+                if (currentVersionArray[i].Length < versionBit)
+                {
+                    currentVersionArray[i] = "0" + currentVersionArray[i];
+                }
+                if (newVersionArray[i].Length < versionBit)
+                {
+                    newVersionArray[i] = "0" + newVersionArray[i];
+                }
+            }
+            string currentVersionString = currentVersionArray[0] + currentVersionArray[1] + currentVersionArray[2];
+            string newVersionString = newVersionArray[0] + newVersionArray[1] + newVersionArray[2];
+            if (int.Parse(currentVersionString) < int.Parse(newVersionString))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -45,6 +45,16 @@ namespace VividManagementApplication
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "/data/data.db";
+        public static String ONLINE_DATABASE_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/";
+
+        Microsoft.Win32.RegistryKey productKey;
+
+        public static String CURRENT_APP_NAME = ""; //财盈盈账务管理系统
+        public static String CURRENT_APP_VERSION_NAME = ""; // 商贸版
+        public static String CURRENT_APP_VERSION_ID = ""; // 1.0.1
+        public static String UPDATE_APP_URL_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Update/"; // 最新版本app地址
+        public static String UPDATE_VERSION_URL = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Update/version.txt"; // 更新app版本的文件地址
+        public static String UPDATE_VERSION_LOG_URL = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Update/versionlog.txt"; // 更新app版本记录的文件地址
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -135,9 +145,29 @@ namespace VividManagementApplication
             this.Left = (Screen.PrimaryScreen.WorkingArea.Width - Width) / 2;
             this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
 
+            #region 软件版本
+            productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\财盈盈账务管理系统\");
+            String loginWindowLabel = "登录";
+            try
+            {
+                CURRENT_APP_NAME = productKey.GetValue("DisplayName").ToString();
+                CURRENT_APP_VERSION_NAME = productKey.GetValue("VersionName").ToString(); ;
+                CURRENT_APP_VERSION_ID = productKey.GetValue("DisplayVersion").ToString();
+
+                loginWindowLabel = CURRENT_APP_NAME + "(" + CURRENT_APP_VERSION_NAME + ")v" + CURRENT_APP_VERSION_ID;
+
+                MainWindowLabel.Text = CURRENT_APP_VERSION_NAME + " v" + CURRENT_APP_VERSION_ID;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+            #endregion
+
             #region 登录
             Login loginWindow = new Login();
             this.Visible = false;
+            loginWindow.Text = loginWindowLabel;
             loginWindow.ShowDialog(this);
             #endregion
 
@@ -228,11 +258,11 @@ namespace VividManagementApplication
 
         public void UploadFiles(string moreInfo)
         {
-            string fileName = System.Environment.CurrentDirectory + @"\data\data.db";
+            string fileName = LOCAL_DATABASE_LOCATION;
             try
             {
                 //FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/" + dataBaseFilePrefix + "data.txt");
-                FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/" + USER_ID + "/" + dataBaseFilePrefix + "data.txt");
+                FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", ONLINE_DATABASE_LOCATION_DIR + USER_ID + "/" + dataBaseFilePrefix + "data.txt");
                 MessageBox.Show(moreInfo + "数据库备份成功!", "成功!");
             }
             catch (Exception ex)
@@ -245,7 +275,7 @@ namespace VividManagementApplication
         StreamReader srmReader;
         public void DownLoadFile()
         {
-            string urlName = "http://www.vividapp.net/Project/VMA/Users/" + USER_ID + "/" + dataBaseFilePrefix + "data.txt";
+            string urlName = ONLINE_DATABASE_LOCATION_DIR + USER_ID + "/" + dataBaseFilePrefix + "data.txt";
             //string urlName = "http://www.caiyingying.com/products/caiYY/backup/" + dataBaseFilePrefix + "data.txt";
             //string urlName = "http://www.caiyingying.com/products/caiYY/backup/test.txt";
             try
@@ -286,7 +316,7 @@ namespace VividManagementApplication
 
                 }
 
-                using (FileStream fs = new FileStream(System.Environment.CurrentDirectory + @"\data\data.db", FileMode.Create, FileAccess.Write))
+                using (FileStream fs = new FileStream(LOCAL_DATABASE_LOCATION, FileMode.Create, FileAccess.Write))
                 {
                     fs.Write(bufferbyte, 0, bufferbyte.Length);
                 }

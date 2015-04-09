@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using System.IO;
 using ControlExs;
 
@@ -94,12 +93,53 @@ namespace VividManagementApplication
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+           // UpdateTimer.Enabled = true;
         }
 
         private void Login_Resize(object sender, EventArgs e)
         {
             this.Size = new Size(390, 343);
+        }
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateTimer.Enabled = false;
+            // 检测是否有最新版本
+            string updateVersion = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_URL);
+
+            if (!updateVersion.Equals(""))
+            {
+                bool ok = false;
+                if (!MainWindow.CURRENT_APP_VERSION_NAME.Equals(""))
+                {
+                    string localVersionString = "";
+                    if (MainWindow.CURRENT_APP_VERSION_ID.Split('.').Length == 2)
+                    {
+                        localVersionString = MainWindow.CURRENT_APP_VERSION_ID + ".0";
+                    }
+                    else
+                    {
+                        localVersionString = MainWindow.CURRENT_APP_VERSION_ID;
+                    }
+
+                    if (FormBasicFeatrues.GetInstence().compareVersion(localVersionString, updateVersion, 2))
+                    {
+                        ok = true;
+                    }
+
+                    if (ok)
+                    {
+                        string updateLog = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_LOG_URL);
+                        if (!updateLog.Equals(""))
+                        {
+                            update ud = new update(MainWindow.UPDATE_APP_URL_DIR + MainWindow.CURRENT_APP_NAME + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
+                            ud.ShowDialog(this);
+                        }
+
+                    }
+                }
+
+            }
         }
 
     }
