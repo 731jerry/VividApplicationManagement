@@ -5,7 +5,7 @@
 !define VERSION_NAME "商贸版"
 !define PRODUCT_NAME_ENG "VMA"
 !define APP_NAME "VividManagementApplication"
-!define PRODUCT_VERSION "1.0.0"
+!define PRODUCT_VERSION "1.0.2"
 !define PRODUCT_PUBLISHER "唯达科技有限公司"
 !define INSTALL_LOCATION "c:\VMA"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
