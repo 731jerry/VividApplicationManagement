@@ -52,9 +52,9 @@ namespace VividManagementApplication
         public static String CURRENT_APP_NAME = ""; //财盈盈账务管理系统
         public static String CURRENT_APP_VERSION_NAME = ""; // 商贸版
         public static String CURRENT_APP_VERSION_ID = ""; // 1.0.1
-        public static String UPDATE_APP_URL_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Update/"; // 最新版本app地址
-        public static String UPDATE_VERSION_URL = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Update/version.txt"; // 更新app版本的文件地址
-        public static String UPDATE_VERSION_LOG_URL = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Update/versionlog.txt"; // 更新app版本记录的文件地址
+        public static String UPDATE_APP_URL_DIR = "http://www.vividapp.net/Project/VMA/Update/"; // 最新版本app地址
+        public static String UPDATE_VERSION_URL = "http://www.vividapp.net/Project/VMA/Update/version.txt"; // 更新app版本的文件地址
+        public static String UPDATE_VERSION_LOG_URL = "http://www.vividapp.net/Project/VMA/Update/versionlog.txt"; // 更新app版本记录的文件地址
 
         string dataBaseFilePrefix;
         public MainWindow()
