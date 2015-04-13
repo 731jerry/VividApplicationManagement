@@ -143,7 +143,7 @@ namespace VividManagementApplication
                         if (!updateLog.Equals(""))
                         {
                             //this.Visible = false;
-                            update ud = new update(MainWindow.UPDATE_APP_URL_DIR + MainWindow.CURRENT_APP_NAME + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
+                            update ud = new update(MainWindow.UPDATE_APP_URL_DIR + "-" + MainWindow.CURRENT_APP_NAME + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
                             ud.ShowDialog(this);
                         }
                     }
