@@ -93,7 +93,7 @@ namespace VividManagementApplication
 
         private void Login_Load(object sender, EventArgs e)
         {
-           // UpdateTimer.Enabled = true;
+            UpdateTimer.Enabled = true;
         }
 
         private void Login_Resize(object sender, EventArgs e)
@@ -104,12 +104,27 @@ namespace VividManagementApplication
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
             UpdateTimer.Enabled = false;
+
+            LoadCyy.Enabled = false;
+            String windowText = this.Text;
+            this.Text = "正在检查更新。。。";
+
+            //Console.WriteLine("1 " + DateTime.Now.ToString());
             // 检测是否有最新版本
-            string updateVersion = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_URL);
+            List<String> updateVersionString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_version");
+            //Console.WriteLine("2 " + DateTime.Now.ToString());
+            List<String> updateVersionLogString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_version_log");
+            //Console.WriteLine("3 " + DateTime.Now.ToString());
+            List<String> updateAppURLString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_app_url");
+            //Console.WriteLine("4 " + DateTime.Now.ToString());
+
+            String updateVersion = updateVersionString[0];
+            String updateLog = updateVersionLogString[0];
+            MainWindow.UPDATE_APP_URL_DIR = updateAppURLString[0];
+            //string updateVersion = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_URL);
 
             if (!updateVersion.Equals(""))
             {
-                bool ok = false;
                 if (!MainWindow.CURRENT_APP_VERSION_NAME.Equals(""))
                 {
                     string localVersionString = "";
@@ -124,23 +139,18 @@ namespace VividManagementApplication
 
                     if (FormBasicFeatrues.GetInstence().compareVersion(localVersionString, updateVersion, 2))
                     {
-                        ok = true;
-                    }
-
-                    if (ok)
-                    {
-                        string updateLog = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_LOG_URL);
+                        //string updateLog = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_LOG_URL);
                         if (!updateLog.Equals(""))
                         {
+                            //this.Visible = false;
                             update ud = new update(MainWindow.UPDATE_APP_URL_DIR + MainWindow.CURRENT_APP_NAME + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
                             ud.ShowDialog(this);
                         }
-
                     }
                 }
-
             }
+            this.Text = windowText;
+            LoadCyy.Enabled = true;
         }
-
     }
 }

@@ -130,6 +130,39 @@ namespace VividManagementApplication
             OnlineDbClose();
         }
 
+        public List<String> OnlineGetOneRowDataById(String table, List<String> query, String baseName, String id)
+        {
+            // ORDER BY id ASC
+            String innerSQL = "";
+
+            for (int i = 0; i < query.Count; i++)
+            {
+                innerSQL += query[i] + ",";
+            }
+            if (!innerSQL.Equals(""))
+            {
+                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+            }
+            String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
+            OnlineDbOpen();
+            MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
+            cmdCreateTable.CommandText = sql;
+            MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+            //String[] resultsStringArray = new String[query.Count];
+            List<String> resultsStringList = new List<string>();
+
+            while (dataReader.Read())
+            {
+                for (int i = 0; i < query.Count; i++)
+                {
+                    resultsStringList.Add(dataReader[query[i]].ToString());
+                }
+            }
+            dataReader.Close();
+            OnlineDbClose();
+            return resultsStringList;
+        }
+
         #endregion
 
         #region 本地
