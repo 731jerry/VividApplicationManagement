@@ -447,21 +447,23 @@
             this.tbClient2.Items.AddRange(new object[] {
             "男",
             "女"});
-            this.tbClient2.Location = new System.Drawing.Point(375, 23);
+            this.tbClient2.Location = new System.Drawing.Point(353, 22);
             this.tbClient2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient2.Name = "tbClient2";
-            this.tbClient2.Size = new System.Drawing.Size(107, 28);
+            this.tbClient2.Size = new System.Drawing.Size(45, 28);
             this.tbClient2.TabIndex = 102;
+            this.tbClient2.Visible = false;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label14.Location = new System.Drawing.Point(298, 27);
+            this.label14.Location = new System.Drawing.Point(276, 26);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 20);
             this.label14.TabIndex = 102;
             this.label14.Text = "*性别：";
+            this.label14.Visible = false;
             // 
             // tbClient13
             // 

@@ -26,7 +26,7 @@ namespace VividManagementApplication
 
             if (!MainWindow.IS_PASSWORD_CORRECT)
             {
-                MessageBox.Show("请与管理员联系", "帐号或者密码错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("帐号或者密码错误, 请与管理员联系", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -143,7 +143,7 @@ namespace VividManagementApplication
                         if (!updateLog.Equals(""))
                         {
                             //this.Visible = false;
-                            update ud = new update(MainWindow.UPDATE_APP_URL_DIR + "-" + MainWindow.CURRENT_APP_NAME + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
+                            update ud = new update(MainWindow.UPDATE_APP_URL_DIR + MainWindow.CURRENT_APP_NAME + "-" + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
                             ud.ShowDialog(this);
                         }
                     }
