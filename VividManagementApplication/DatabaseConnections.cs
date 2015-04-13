@@ -57,7 +57,7 @@ namespace VividManagementApplication
             string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
 
             StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(addtime as char) as addtime,VMA_expiretime,notification,companyBalance FROM users WHERE userid = '");
+                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(addtime as char) as addtime,VMA_expiretime,VMA_isonline,notification,companyBalance FROM users WHERE userid = '");
             sbSQL.Append(acc);
             sbSQL.Append(@"'");
             sbSQL.Append(@" AND password = '");
@@ -91,6 +91,7 @@ namespace VividManagementApplication
                     MainWindow.EMAIL = dataReader["email"].ToString();
                     MainWindow.ADDTIME = dataReader["addtime"].ToString();
                     MainWindow.NOTIFICATION = dataReader["notification"].ToString();
+                    MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["VMA_isonline"].ToString().Equals("") ? "0" : dataReader["VMA_isonline"].ToString()) == 0) ? false : true;
                     MainWindow.EXPIRETIME = DateTime.Parse(dataReader["VMA_expiretime"].ToString());
                     MainWindow.COMPANY_BALANCE = int.Parse(dataReader["companyBalance"].ToString());
                     //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
@@ -166,7 +167,7 @@ namespace VividManagementApplication
         #endregion
 
         #region 本地
-        private SQLiteConnection localSqlConnectionCommand = new SQLiteConnection("Data Source =" +MainWindow.LOCAL_DATABASE_LOCATION);
+        private SQLiteConnection localSqlConnectionCommand = new SQLiteConnection("Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION);
 
         public void LocalCreateDatabase()
         {

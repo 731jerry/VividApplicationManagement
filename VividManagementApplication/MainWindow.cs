@@ -25,6 +25,7 @@ namespace VividManagementApplication
 
         public static Boolean IS_PASSWORD_CORRECT = false;
         public static Boolean IS_LOGED_IN = false;
+        public static Boolean IS_USER_ONLINE = false;
         public static String ID = "";
         public static String USER_ID = "";
         public static String PASSWORD_HASH = "";
@@ -44,8 +45,13 @@ namespace VividManagementApplication
         public static DateTime EXPIRETIME = new DateTime();
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
 
-        public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "/data/data.db";
-        public static String ONLINE_DATABASE_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/";
+        public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
+        public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
+        public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/VMA/Users/";
+        public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/VMA/Users/";
+        public static String ONLINE_FTP_HOSTNAME = "121.42.154.95";
+        public static String ONLINE_FTP_USERNAME = "vividappftp";
+        public static String ONLINE_FTP_PASSWORD = "vividappftp";
 
         Microsoft.Win32.RegistryKey productKey;
 
@@ -156,11 +162,11 @@ namespace VividManagementApplication
 
                 loginWindowLabel = CURRENT_APP_NAME + "(" + CURRENT_APP_VERSION_NAME + ")v" + CURRENT_APP_VERSION_ID;
 
-                MainWindowLabel.Text = CURRENT_APP_VERSION_NAME + " v" + CURRENT_APP_VERSION_ID;
+                MainWindowLabel.Text = CURRENT_APP_NAME + " " + CURRENT_APP_VERSION_NAME + "v" + CURRENT_APP_VERSION_ID;
             }
             catch (Exception exc)
             {
-                
+
             }
             #endregion
 
@@ -183,7 +189,7 @@ namespace VividManagementApplication
 
                 #region 窗体用户信息初始化
                 lbUserName.Text = USER_ID;
-                dataBaseFilePrefix = USER_ID + "_";
+                dataBaseFilePrefix = USER_ID + "_data.txt";
 
                 // 广告计时器
                 //commerceTimer.Enabled = true;
@@ -262,7 +268,8 @@ namespace VividManagementApplication
             try
             {
                 //FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/" + dataBaseFilePrefix + "data.txt");
-                FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", ONLINE_DATABASE_LOCATION_DIR + USER_ID + "/" + dataBaseFilePrefix + "data.txt");
+                FormBasicFeatrues.GetInstence().UpLoadFileOld(fileName, "", ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                //FormBasicFeatrues.GetInstence().UploadFile(new FileInfo(fileName), ONLINE_DATABASE_BASIC_LOCATION_DIR, dataBaseFilePrefix, ONLINE_FTP_HOSTNAME, ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD);
                 MessageBox.Show(moreInfo + "数据库备份成功!", "成功!");
             }
             catch (Exception ex)
@@ -275,7 +282,7 @@ namespace VividManagementApplication
         StreamReader srmReader;
         public void DownLoadFile()
         {
-            string urlName = ONLINE_DATABASE_LOCATION_DIR + USER_ID + "/" + dataBaseFilePrefix + "data.txt";
+            string urlName = ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix;
             //string urlName = "http://www.caiyingying.com/products/caiYY/backup/" + dataBaseFilePrefix + "data.txt";
             //string urlName = "http://www.caiyingying.com/products/caiYY/backup/test.txt";
             try
@@ -348,7 +355,8 @@ namespace VividManagementApplication
         {
             updateDataTimer.Enabled = false;
             // 暂时备份
-            //DownLoadFile();
+            DownLoadFile();
+            //FormBasicFeatrues.GetInstence().DownloadFile();
         }
 
         private void tmrShows_Tick(object sender, EventArgs e)
@@ -865,7 +873,7 @@ namespace VividManagementApplication
             if (MainWindow.IS_LOGED_IN)
             {
                 DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
-                //UploadFiles("备份数据库!");
+                UploadFiles("备份数据库!");
             }
         }
 

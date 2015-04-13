@@ -26,7 +26,7 @@ namespace VividManagementApplication
 
             if (!MainWindow.IS_PASSWORD_CORRECT)
             {
-                MessageBox.Show("帐号或者密码错误, 请与管理员联系", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("帐号或者密码错误, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -36,10 +36,17 @@ namespace VividManagementApplication
                 }
                 else
                 {
-                    MainWindow.IS_LOGED_IN = true;
-                    this.Visible = false;
-                    (Owner as MainWindow).Visible = true;
-                    //this.Close();
+                    if (MainWindow.IS_USER_ONLINE)
+                    {
+                        MessageBox.Show("此用户已在某处登录, 因为用户数据隐私的问题, 此版本不允许重复登录, 如有错误, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        MainWindow.IS_LOGED_IN = true;
+                        this.Visible = false;
+                        (Owner as MainWindow).Visible = true;
+                        //this.Close();
+                    }
                 }
             }
         }
