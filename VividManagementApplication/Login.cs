@@ -26,13 +26,13 @@ namespace VividManagementApplication
 
             if (!MainWindow.IS_PASSWORD_CORRECT)
             {
-                MessageBox.Show("帐号或者密码错误, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("帐号或者密码错误, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (FormBasicFeatrues.GetInstence().ConvertDateTimeToTimestamp(MainWindow.EXPIRETIME) < FormBasicFeatrues.GetInstence().ConvertDateTimeToTimestamp(DateTime.Now))
                 {
-                    MessageBox.Show("您的账户以到期, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("您的账户以到期, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
