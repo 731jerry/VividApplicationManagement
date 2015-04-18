@@ -35,7 +35,6 @@
             this.label112 = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.MainWindowLabel = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.PrintButton = new ControlExs.QQButton();
@@ -112,13 +111,6 @@
             resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Name = "label4";
-            // 
-            // MainWindowLabel
-            // 
-            resources.ApplyResources(this.MainWindowLabel, "MainWindowLabel");
-            this.MainWindowLabel.BackColor = System.Drawing.Color.Transparent;
-            this.MainWindowLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.MainWindowLabel.Name = "MainWindowLabel";
             // 
             // MainPanel
             // 
@@ -467,11 +459,11 @@
             this.Controls.Add(this.label112);
             this.Controls.Add(this.lbUserName);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.MainWindowLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.MainPanel.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
             this.ContentPanel.PerformLayout();
@@ -491,7 +483,6 @@
         private System.Windows.Forms.Label label112;
         private System.Windows.Forms.Label lbUserName;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label MainWindowLabel;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.Panel NavPanel;
         private ControlExs.QQButton ViewButton;

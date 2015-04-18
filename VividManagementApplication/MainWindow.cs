@@ -18,7 +18,7 @@ using MengYu.Image;
 
 namespace VividManagementApplication
 {
-    public partial class MainWindow : FormEx
+    public partial class MainWindow : Form
     {
         public static int CURRENT_TAB = 1;
         public static QQButton CURRENT_LIST_BUTTON;
@@ -70,86 +70,88 @@ namespace VividManagementApplication
 
         #region Override
 
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                if (!DesignMode)
-                {
-                    cp.ExStyle |= (int)WindowStyle.WS_CLIPCHILDREN;
-                }
-                return cp;
-            }
-        }
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        if (!DesignMode)
+        //        {
+        //            cp.ExStyle |= (int)WindowStyle.WS_CLIPCHILDREN;
+        //        }
+        //        return cp;
+        //    }
+        //}
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            DrawFromAlphaMainPart(this, e.Graphics);
-            base.OnPaint(e);
-        }
+        //protected override void OnPaint(PaintEventArgs e)
+        //{
+        //    DrawFromAlphaMainPart(this, e.Graphics);
+        //    base.OnPaint(e);
+        //}
 
         #endregion
 
         #region Private
 
-        /// <summary>
-        /// 绘制窗体主体部分白色透明层
-        /// </summary>
-        /// <param name="form"></param>
-        /// <param name="g"></param>
-        public static void DrawFromAlphaMainPart(Form form, Graphics g)
-        {
-            Color[] colors = 
-            {
-                Color.FromArgb(5, Color.White),
-                Color.FromArgb(60, Color.White),
-                Color.FromArgb(145, Color.White),
-                Color.FromArgb(150, Color.White),
-                Color.FromArgb(60, Color.White),
-                Color.FromArgb(5, Color.White)
-            };
+        ///// <summary>
+        ///// 绘制窗体主体部分白色透明层
+        ///// </summary>
+        ///// <param name="form"></param>
+        ///// <param name="g"></param>
+        //public static void DrawFromAlphaMainPart(Form form, Graphics g)
+        //{
+        //    Color[] colors = 
+        //    {
+        //        Color.FromArgb(5, Color.White),
+        //        Color.FromArgb(60, Color.White),
+        //        Color.FromArgb(145, Color.White),
+        //        Color.FromArgb(150, Color.White),
+        //        Color.FromArgb(60, Color.White),
+        //        Color.FromArgb(5, Color.White)
+        //    };
 
-            float[] pos = 
-            {
-                0.0f,
-                0.04f,
-                0.10f,
-                0.90f,
-                0.97f,
-                1.0f      
-            };
+        //    float[] pos = 
+        //    {
+        //        0.0f,
+        //        0.04f,
+        //        0.10f,
+        //        0.90f,
+        //        0.97f,
+        //        1.0f      
+        //    };
 
-            ColorBlend colorBlend = new ColorBlend(6);
-            colorBlend.Colors = colors;
-            colorBlend.Positions = pos;
+        //    ColorBlend colorBlend = new ColorBlend(6);
+        //    colorBlend.Colors = colors;
+        //    colorBlend.Positions = pos;
 
-            RectangleF destRect = new RectangleF(0, 0, form.Width, form.Height);
-            using (LinearGradientBrush lBrush = new LinearGradientBrush(destRect, colors[0], colors[5], LinearGradientMode.Vertical))
-            {
-                lBrush.InterpolationColors = colorBlend;
-                g.FillRectangle(lBrush, destRect);
-            }
-        }
+        //    RectangleF destRect = new RectangleF(0, 0, form.Width, form.Height);
+        //    using (LinearGradientBrush lBrush = new LinearGradientBrush(destRect, colors[0], colors[5], LinearGradientMode.Vertical))
+        //    {
+        //        lBrush.InterpolationColors = colorBlend;
+        //        g.FillRectangle(lBrush, destRect);
+        //    }
+        //}
 
 
-        private void SetStyles()
-        {
-            SetStyle(ControlStyles.UserPaint, true);
-            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
-            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            SetStyle(ControlStyles.ResizeRedraw, true);
-            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            UpdateStyles();
-        }
+        //private void SetStyles()
+        //{
+        //    SetStyle(ControlStyles.UserPaint, true);
+        //    SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+        //    SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+        //    SetStyle(ControlStyles.ResizeRedraw, true);
+        //    SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+        //    UpdateStyles();
+        //}
 
         #endregion
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
             //this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Left = (Screen.PrimaryScreen.WorkingArea.Width - Width) / 2;
-            this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
+            //this.Left = (Screen.PrimaryScreen.WorkingArea.Width - Width) / 2;
+            //this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
+
+            this.Visible = false;
 
             #region 软件版本
             productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\财盈盈账务管理系统\");
@@ -162,7 +164,7 @@ namespace VividManagementApplication
 
                 loginWindowLabel = CURRENT_APP_NAME + "(" + CURRENT_APP_VERSION_NAME + ")v" + CURRENT_APP_VERSION_ID;
 
-                MainWindowLabel.Text = CURRENT_APP_NAME + " " + CURRENT_APP_VERSION_NAME + "v" + CURRENT_APP_VERSION_ID;
+                this.Text = CURRENT_APP_NAME + " " + CURRENT_APP_VERSION_NAME + "v" + CURRENT_APP_VERSION_ID;
             }
             catch (Exception exc)
             {
@@ -227,6 +229,10 @@ namespace VividManagementApplication
                 lbExpireTime.Text = EXPIRETIME.ToLongDateString();
                 keepOnlineTimer.Enabled = true;
                 #endregion
+            }
+            else {
+                this.Visible = false;
+                this.Close();
             }
         }
 

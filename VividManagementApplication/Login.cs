@@ -11,7 +11,7 @@ using ControlExs;
 
 namespace VividManagementApplication
 {
-    public partial class Login : FormEx
+    public partial class Login : Form
     {
         //public UserInfo userInfo { get; private set; }
 
@@ -82,13 +82,6 @@ namespace VividManagementApplication
             }
         }
         */
-        private void Login_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!MainWindow.IS_LOGED_IN)
-            {
-                Application.Exit(e);
-            }
-        }
 
         private void Psw_KeyPress(object sender, KeyPressEventArgs e)
         {
