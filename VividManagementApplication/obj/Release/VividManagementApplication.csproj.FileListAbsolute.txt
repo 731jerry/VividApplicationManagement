@@ -50,7 +50,6 @@ D:\Dropbox\Progamming\财盈盈账务管理系统\VividManagementApplication\Viv
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\ControlExs.dll
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\MySql.Data.dll
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
-\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.DetailedInfo.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Login.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.MainWindow.resources

@@ -33,22 +33,26 @@
             this.DetailedTabView = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.DetailedClientPanel = new System.Windows.Forms.Panel();
-            this.tbClient2 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.tbClient9 = new System.Windows.Forms.TextBox();
+            this.tbClient8 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.tbClient2 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.tbClient13 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbClient15 = new System.Windows.Forms.TextBox();
             this.tbClient3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tbClient14 = new System.Windows.Forms.TextBox();
             this.tbClient12 = new System.Windows.Forms.TextBox();
             this.tbClient11 = new System.Windows.Forms.TextBox();
             this.tbClient10 = new System.Windows.Forms.TextBox();
-            this.tbClient9 = new System.Windows.Forms.TextBox();
-            this.tbClient8 = new System.Windows.Forms.TextBox();
             this.tbClient7 = new System.Windows.Forms.TextBox();
             this.tbClient6 = new System.Windows.Forms.TextBox();
             this.tbClient5 = new System.Windows.Forms.TextBox();
             this.tbClient4 = new System.Windows.Forms.TextBox();
             this.tbClient1 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -408,22 +412,26 @@
             // 
             // DetailedClientPanel
             // 
+            this.DetailedClientPanel.Controls.Add(this.tbClient9);
+            this.DetailedClientPanel.Controls.Add(this.tbClient8);
+            this.DetailedClientPanel.Controls.Add(this.label23);
+            this.DetailedClientPanel.Controls.Add(this.label44);
             this.DetailedClientPanel.Controls.Add(this.tbClient2);
-            this.DetailedClientPanel.Controls.Add(this.label14);
+            this.DetailedClientPanel.Controls.Add(this.label22);
             this.DetailedClientPanel.Controls.Add(this.tbClient13);
+            this.DetailedClientPanel.Controls.Add(this.label14);
+            this.DetailedClientPanel.Controls.Add(this.tbClient15);
             this.DetailedClientPanel.Controls.Add(this.tbClient3);
             this.DetailedClientPanel.Controls.Add(this.label3);
+            this.DetailedClientPanel.Controls.Add(this.tbClient14);
             this.DetailedClientPanel.Controls.Add(this.tbClient12);
             this.DetailedClientPanel.Controls.Add(this.tbClient11);
             this.DetailedClientPanel.Controls.Add(this.tbClient10);
-            this.DetailedClientPanel.Controls.Add(this.tbClient9);
-            this.DetailedClientPanel.Controls.Add(this.tbClient8);
             this.DetailedClientPanel.Controls.Add(this.tbClient7);
             this.DetailedClientPanel.Controls.Add(this.tbClient6);
             this.DetailedClientPanel.Controls.Add(this.tbClient5);
             this.DetailedClientPanel.Controls.Add(this.tbClient4);
             this.DetailedClientPanel.Controls.Add(this.tbClient1);
-            this.DetailedClientPanel.Controls.Add(this.label17);
             this.DetailedClientPanel.Controls.Add(this.label16);
             this.DetailedClientPanel.Controls.Add(this.label6);
             this.DetailedClientPanel.Controls.Add(this.label7);
@@ -439,41 +447,96 @@
             this.DetailedClientPanel.Size = new System.Drawing.Size(780, 400);
             this.DetailedClientPanel.TabIndex = 0;
             // 
+            // tbClient9
+            // 
+            this.tbClient9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient9.Location = new System.Drawing.Point(520, 125);
+            this.tbClient9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient9.Name = "tbClient9";
+            this.tbClient9.Size = new System.Drawing.Size(240, 26);
+            this.tbClient9.TabIndex = 109;
+            this.tbClient9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
+            // 
+            // tbClient8
+            // 
+            this.tbClient8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient8.Location = new System.Drawing.Point(103, 125);
+            this.tbClient8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient8.Name = "tbClient8";
+            this.tbClient8.Size = new System.Drawing.Size(275, 26);
+            this.tbClient8.TabIndex = 108;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label23.Location = new System.Drawing.Point(442, 128);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(73, 20);
+            this.label23.TabIndex = 121;
+            this.label23.Text = "QQ号码：";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label44.Location = new System.Drawing.Point(12, 128);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(77, 20);
+            this.label44.TabIndex = 120;
+            this.label44.Text = "传真FAX：";
+            // 
             // tbClient2
             // 
-            this.tbClient2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbClient2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient2.FormattingEnabled = true;
-            this.tbClient2.Items.AddRange(new object[] {
-            "男",
-            "女"});
-            this.tbClient2.Location = new System.Drawing.Point(353, 22);
+            this.tbClient2.Location = new System.Drawing.Point(368, 24);
             this.tbClient2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient2.MaxLength = 10;
             this.tbClient2.Name = "tbClient2";
-            this.tbClient2.Size = new System.Drawing.Size(45, 28);
+            this.tbClient2.Size = new System.Drawing.Size(150, 26);
             this.tbClient2.TabIndex = 102;
-            this.tbClient2.Visible = false;
+            this.tbClient2.MouseEnter += new System.EventHandler(this.tbClient2_MouseEnter);
+            this.tbClient2.MouseLeave += new System.EventHandler(this.tbClient2_MouseLeave);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label22.ForeColor = System.Drawing.Color.Green;
+            this.label22.Location = new System.Drawing.Point(271, 27);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(93, 20);
+            this.label22.TabIndex = 118;
+            this.label22.Text = "管账宝帐号：";
+            // 
+            // tbClient13
+            // 
+            this.tbClient13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient13.Location = new System.Drawing.Point(520, 193);
+            this.tbClient13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient13.Name = "tbClient13";
+            this.tbClient13.Size = new System.Drawing.Size(240, 26);
+            this.tbClient13.TabIndex = 113;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label14.Location = new System.Drawing.Point(276, 26);
+            this.label14.Location = new System.Drawing.Point(430, 196);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 20);
-            this.label14.TabIndex = 102;
-            this.label14.Text = "*性别：";
-            this.label14.Visible = false;
+            this.label14.Size = new System.Drawing.Size(85, 20);
+            this.label14.TabIndex = 114;
+            this.label14.Text = "*银行帐号：";
             // 
-            // tbClient13
+            // tbClient15
             // 
-            this.tbClient13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient13.Location = new System.Drawing.Point(115, 263);
-            this.tbClient13.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbClient13.Multiline = true;
-            this.tbClient13.Name = "tbClient13";
-            this.tbClient13.Size = new System.Drawing.Size(645, 109);
-            this.tbClient13.TabIndex = 113;
+            this.tbClient15.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient15.Location = new System.Drawing.Point(125, 261);
+            this.tbClient15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient15.Multiline = true;
+            this.tbClient15.Name = "tbClient15";
+            this.tbClient15.Size = new System.Drawing.Size(635, 101);
+            this.tbClient15.TabIndex = 115;
             // 
             // tbClient3
             // 
@@ -482,7 +545,8 @@
             this.tbClient3.FormattingEnabled = true;
             this.tbClient3.Items.AddRange(new object[] {
             "A 供应商",
-            "B 销售商"});
+            "B 销售商",
+            "C 其他"});
             this.tbClient3.Location = new System.Drawing.Point(631, 23);
             this.tbClient3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient3.Name = "tbClient3";
@@ -493,56 +557,47 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label3.Location = new System.Drawing.Point(527, 27);
+            this.label3.Location = new System.Drawing.Point(540, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 20);
             this.label3.TabIndex = 87;
             this.label3.Text = "*客户类型：";
             // 
+            // tbClient14
+            // 
+            this.tbClient14.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient14.Location = new System.Drawing.Point(125, 227);
+            this.tbClient14.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient14.Name = "tbClient14";
+            this.tbClient14.Size = new System.Drawing.Size(635, 26);
+            this.tbClient14.TabIndex = 114;
+            // 
             // tbClient12
             // 
             this.tbClient12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient12.Location = new System.Drawing.Point(143, 229);
+            this.tbClient12.Location = new System.Drawing.Point(125, 193);
             this.tbClient12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient12.Name = "tbClient12";
-            this.tbClient12.Size = new System.Drawing.Size(617, 26);
+            this.tbClient12.Size = new System.Drawing.Size(253, 26);
             this.tbClient12.TabIndex = 112;
             // 
             // tbClient11
             // 
             this.tbClient11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient11.Location = new System.Drawing.Point(143, 195);
+            this.tbClient11.Location = new System.Drawing.Point(520, 159);
             this.tbClient11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient11.Name = "tbClient11";
-            this.tbClient11.Size = new System.Drawing.Size(617, 26);
+            this.tbClient11.Size = new System.Drawing.Size(240, 26);
             this.tbClient11.TabIndex = 111;
             // 
             // tbClient10
             // 
             this.tbClient10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient10.Location = new System.Drawing.Point(143, 161);
+            this.tbClient10.Location = new System.Drawing.Point(125, 159);
             this.tbClient10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient10.Name = "tbClient10";
-            this.tbClient10.Size = new System.Drawing.Size(617, 26);
+            this.tbClient10.Size = new System.Drawing.Size(253, 26);
             this.tbClient10.TabIndex = 110;
-            // 
-            // tbClient9
-            // 
-            this.tbClient9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient9.Location = new System.Drawing.Point(520, 127);
-            this.tbClient9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbClient9.Name = "tbClient9";
-            this.tbClient9.Size = new System.Drawing.Size(240, 26);
-            this.tbClient9.TabIndex = 109;
-            // 
-            // tbClient8
-            // 
-            this.tbClient8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient8.Location = new System.Drawing.Point(143, 127);
-            this.tbClient8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbClient8.Name = "tbClient8";
-            this.tbClient8.Size = new System.Drawing.Size(277, 26);
-            this.tbClient8.TabIndex = 108;
             // 
             // tbClient7
             // 
@@ -557,10 +612,10 @@
             // tbClient6
             // 
             this.tbClient6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient6.Location = new System.Drawing.Point(107, 91);
+            this.tbClient6.Location = new System.Drawing.Point(103, 91);
             this.tbClient6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient6.Name = "tbClient6";
-            this.tbClient6.Size = new System.Drawing.Size(411, 26);
+            this.tbClient6.Size = new System.Drawing.Size(415, 26);
             this.tbClient6.TabIndex = 106;
             // 
             // tbClient5
@@ -575,38 +630,28 @@
             // tbClient4
             // 
             this.tbClient4.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient4.Location = new System.Drawing.Point(107, 59);
+            this.tbClient4.Location = new System.Drawing.Point(103, 59);
             this.tbClient4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient4.Name = "tbClient4";
-            this.tbClient4.Size = new System.Drawing.Size(411, 26);
+            this.tbClient4.Size = new System.Drawing.Size(415, 26);
             this.tbClient4.TabIndex = 104;
             // 
             // tbClient1
             // 
             this.tbClient1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient1.Location = new System.Drawing.Point(107, 24);
+            this.tbClient1.Location = new System.Drawing.Point(103, 24);
             this.tbClient1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient1.MaxLength = 10;
             this.tbClient1.Name = "tbClient1";
-            this.tbClient1.Size = new System.Drawing.Size(150, 26);
+            this.tbClient1.Size = new System.Drawing.Size(154, 26);
             this.tbClient1.TabIndex = 101;
             this.tbClient1.Validated += new System.EventHandler(this.TextBoxCheckIfDuplicate_Validated);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label17.Location = new System.Drawing.Point(12, 198);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(107, 20);
-            this.label17.TabIndex = 90;
-            this.label17.Text = "其它联系方式：";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label16.Location = new System.Drawing.Point(428, 130);
+            this.label16.Location = new System.Drawing.Point(436, 162);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(79, 20);
             this.label16.TabIndex = 89;
@@ -616,7 +661,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label6.Location = new System.Drawing.Point(12, 261);
+            this.label6.Location = new System.Drawing.Point(40, 261);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 86;
@@ -627,47 +672,47 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(12, 232);
+            this.label7.Location = new System.Drawing.Point(12, 230);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 20);
             this.label7.TabIndex = 85;
-            this.label7.Text = "指定对私帐号：";
+            this.label7.Text = "对私结算账户：";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label8.Location = new System.Drawing.Point(12, 164);
+            this.label8.Location = new System.Drawing.Point(34, 196);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(107, 20);
+            this.label8.Size = new System.Drawing.Size(85, 20);
             this.label8.TabIndex = 84;
-            this.label8.Text = "开户行及帐号：";
+            this.label8.Text = "*开户银行：";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label9.Location = new System.Drawing.Point(536, 94);
+            this.label9.Location = new System.Drawing.Point(540, 94);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(79, 20);
+            this.label9.Size = new System.Drawing.Size(85, 20);
             this.label9.TabIndex = 83;
-            this.label9.Text = "联系电话：";
+            this.label9.Text = "*联系电话：";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label10.Location = new System.Drawing.Point(543, 62);
+            this.label10.Location = new System.Drawing.Point(540, 62);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 20);
+            this.label10.Size = new System.Drawing.Size(85, 20);
             this.label10.TabIndex = 82;
-            this.label10.Text = "*联系人：";
+            this.label10.Text = "*法人代表：";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label11.Location = new System.Drawing.Point(12, 130);
+            this.label11.Location = new System.Drawing.Point(12, 162);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 20);
             this.label11.TabIndex = 81;
@@ -679,9 +724,9 @@
             this.label12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label12.Location = new System.Drawing.Point(12, 94);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 20);
+            this.label12.Size = new System.Drawing.Size(85, 20);
             this.label12.TabIndex = 80;
-            this.label12.Text = "联系地址：";
+            this.label12.Text = "*联系地址：";
             // 
             // label13
             // 
@@ -4299,22 +4344,18 @@
         private ControlExs.QQButton PreviewPrintButton;
         private ControlExs.QQButton SaveButton;
         private System.Windows.Forms.Panel DetailedClientPanel;
-        private System.Windows.Forms.ComboBox tbClient2;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox tbClient13;
+        private System.Windows.Forms.TextBox tbClient15;
         private System.Windows.Forms.ComboBox tbClient3;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbClient14;
         private System.Windows.Forms.TextBox tbClient12;
         private System.Windows.Forms.TextBox tbClient11;
         private System.Windows.Forms.TextBox tbClient10;
-        private System.Windows.Forms.TextBox tbClient9;
-        private System.Windows.Forms.TextBox tbClient8;
         private System.Windows.Forms.TextBox tbClient7;
         private System.Windows.Forms.TextBox tbClient6;
         private System.Windows.Forms.TextBox tbClient5;
         private System.Windows.Forms.TextBox tbClient4;
         private System.Windows.Forms.TextBox tbClient1;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -4608,5 +4649,13 @@
         private ControlExs.QQTextBox BJCDtb5;
         private ControlExs.QQTextBox AJCDtb5;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.TextBox tbClient2;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tbClient13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox tbClient9;
+        private System.Windows.Forms.TextBox tbClient8;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label44;
     }
 }

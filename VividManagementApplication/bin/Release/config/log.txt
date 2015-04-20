@@ -1,3 +1,14 @@
+2015/4/20 19:37:19-
+###异常消息Message: SQLite error
+table clients has no column named gzbID
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 315
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 919
+===================================================
+
 2015/4/8 16:52:21-
 ###异常消息Message: 未将对象引用设置到对象的实例。
 ###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 918

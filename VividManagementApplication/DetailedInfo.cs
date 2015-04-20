@@ -54,15 +54,15 @@ namespace VividManagementApplication
             switch (MainWindow.CURRENT_TAB)
             {
                 case 1:
-                    checkValidateControls = new List<Control>() { tbClient1, tbClient2, tbClient3, tbClient4, tbClient5 };
+                    checkValidateControls = new List<Control>() { tbClient1, tbClient3, tbClient4, tbClient5, tbClient6, tbClient7, tbClient12, tbClient13 };
                     detailedHeightDis = 250;
                     detailedPanel = DetailedClientPanel;
 
                     table = "clients";
                     baseName = "clientID";
-                    queryArray = new string[] { baseName, "sex", "type", "company", "contact", "address", "phone", "taxNumber", "email", "bankInfo", "otherContacts", "PrimaryAccount", "beizhu" };
+                    queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "beizhu" };
                     controlsPreName = "tbClient";
-                    indexCount = 13;
+                    indexCount = 15;
                     mainID = tbClient1.Text;
 
                     canPrint = false;
@@ -2367,6 +2367,18 @@ namespace VividManagementApplication
         {
             calculateSmallSum(tbGoods14, tbGoods15, tbGoods16);
         }
+
+        ToolTip tbClient2Tooltip = new ToolTip();
+        private void tbClient2_MouseEnter(object sender, EventArgs e)
+        {
+            tbClient2Tooltip.Show("拥有管账宝帐号的用户可以相互远程签单!", tbClient2);
+        }
+
+        private void tbClient2_MouseLeave(object sender, EventArgs e)
+        {
+            tbClient2Tooltip.Hide(tbClient2);
+        }
+
 
 
 
