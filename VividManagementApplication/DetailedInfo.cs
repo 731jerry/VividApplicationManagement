@@ -38,9 +38,6 @@ namespace VividManagementApplication
         private void DetailedInfo_Load(object sender, EventArgs e)
         {
             InitDetailedInfoWindow();
-            this.Left = (Screen.PrimaryScreen.WorkingArea.Width - Width) / 2;
-            this.Top = (Screen.PrimaryScreen.WorkingArea.Height - Height) / 2;
-            //this.StartPosition = FormStartPosition.CenterScreen; 
         }
 
         private void InitDetailedInfoWindow()
@@ -139,6 +136,11 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbDz1);
+                    if (tbDz1.Items.Count == 0)
+                    {
+                        MessageBox.Show("请先输入客户信息!", "提示");
+                        break;
+                    }
 
                     // 添加商品编号
                     JCDcbA.Items.Add("");
@@ -342,6 +344,11 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbPz1);
+                    if (tbPz1.Items.Count < 1)
+                    {
+                        MessageBox.Show("请先输入客户信息!", "提示");
+                        break;
+                    }
 
                     canPrint = true;
                     if (ItemId.Equals("-1"))
@@ -619,6 +626,7 @@ namespace VividManagementApplication
             {
                 PreviewPrintButton.Visible = false;
             }
+
         }
 
         private void makeControlsInvisibleForJCCD(Boolean isVisable)
@@ -1166,7 +1174,7 @@ namespace VividManagementApplication
                     tbHTxsfName, tbHTxsfAddress, tbHTxsfPresenter, tbHTxsfFax, tbHTxsfPhone, tbHTxsfEmail, tbHTxsfBankName, tbHTxsfBankNumber },
                     DatabaseConnections.GetInstence().LocalGetOneRowDataById(
                     "clients",
-                    new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankInfo", "PrimaryAccount" },
+                    new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                     "clientID", tbHTxsfID.Text).ToList<String>());
         }
 
@@ -1176,7 +1184,7 @@ namespace VividManagementApplication
                     tbHTghfName, tbHTghfAddress, tbHTghfPresenter, tbHTghfFax, tbHTghfPhone, tbHTghfEmail, tbHTghfBankName, tbHTghfBankNumber },
                          DatabaseConnections.GetInstence().LocalGetOneRowDataById(
                          "clients",
-                         new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankInfo", "PrimaryAccount" },
+                         new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                          "clientID", tbHTghfID.Text).ToList<String>());
         }
 
@@ -1318,12 +1326,12 @@ namespace VividManagementApplication
         //
         private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
         }
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "contact", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
         }
 
         /// <summary>

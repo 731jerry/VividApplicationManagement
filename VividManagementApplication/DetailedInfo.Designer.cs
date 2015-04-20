@@ -4287,6 +4287,7 @@
             this.MinimizeBox = false;
             this.Name = "DetailedInfo";
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetailedInfo";
             this.Load += new System.EventHandler(this.DetailedInfo_Load);
             this.DetailedTabView.ResumeLayout(false);

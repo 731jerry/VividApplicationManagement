@@ -2,10 +2,10 @@
 
 ; 安装程序初始定义常量
 !define PRODUCT_NAME "管账宝"
-!define VERSION_NAME "商贸版"
+!define VERSION_NAME "精华版"
 !define PRODUCT_NAME_ENG "GZB"
 !define APP_NAME "管账宝"
-!define PRODUCT_VERSION "1.1.0"
+!define PRODUCT_VERSION "1.1.1"
 !define PRODUCT_PUBLISHER "唯达科技有限公司"
 !define INSTALL_LOCATION "c:\GZB"
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"

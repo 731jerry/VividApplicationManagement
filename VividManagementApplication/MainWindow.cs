@@ -535,7 +535,7 @@ namespace VividManagementApplication
             Column3.HeaderText = "规格";
             Column4.HeaderText = "等级";
             Column5.HeaderText = "单位";
-            Column6.HeaderText = "单价";
+            Column6.HeaderText = "销售单价";
             Column7.HeaderText = "备注";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -559,13 +559,12 @@ namespace VividManagementApplication
             Column4.HeaderText = "等级";
             Column5.HeaderText = "单位";
             Column6.HeaderText = "库存数量";
-            Column7.HeaderText = "进货单价";
-            Column8.HeaderText = "备注";
+            Column7.HeaderText = "备注";
 
             Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 }, "goods", -1,
-                new string[] { "goodID", "name", "guige", "dengji", "unit", "currentCount", "purchasePrice", "beizhu" });
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "goods", -1,
+                new string[] { "goodID", "name", "guige", "dengji", "unit", "currentCount", "beizhu" });
         }
 
         private void listJcdButton_Click(object sender, EventArgs e)
