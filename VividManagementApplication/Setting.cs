@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
-
+using System.IO;
 namespace VividManagementApplication
 {
     public partial class Setting : Form
@@ -135,6 +135,63 @@ namespace VividManagementApplication
         private void CancelQQButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+       
+        Bitmap bitmap;
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            if (bitmap != null)
+            {
+                e.Graphics.DrawImage(bitmap, 0, 0, this.pictureBox1.Width, this.pictureBox1.Height);
+                this.pictureBox1.Image = bitmap;
+                byte[] temp = BitmapToBytes(bitmap);
+                label2.Text = Convert.ToBase64String(temp);
+            }
+        }
+       
+        //byte[] 转换 Bitmap
+        public static Bitmap BytesToBitmap(byte[] Bytes)
+        {
+            MemoryStream stream = null;
+            try
+            {
+                stream = new MemoryStream(Bytes);
+                return new Bitmap((Image)new Bitmap(stream));
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                stream.Close();
+            }
+        }
+
+        //Bitmap转byte[]  
+        public static byte[] BitmapToBytes(Bitmap Bitmap)
+        {
+            MemoryStream ms = null;
+            try
+            {
+                ms = new MemoryStream();
+                Bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                byte[] byteImage = new Byte[ms.Length];
+                byteImage = ms.ToArray();
+                return byteImage;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                ms.Close();
+            }
         }
     }
 }

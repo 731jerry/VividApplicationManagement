@@ -61,7 +61,11 @@
             this.tbInfo10 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.ChangePasswordLabel = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.PasswordGroupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbInfo6
@@ -70,7 +74,7 @@
             this.tbInfo6.Location = new System.Drawing.Point(120, 111);
             this.tbInfo6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo6.Name = "tbInfo6";
-            this.tbInfo6.Size = new System.Drawing.Size(436, 26);
+            this.tbInfo6.Size = new System.Drawing.Size(451, 26);
             this.tbInfo6.TabIndex = 6;
             // 
             // tbInfo1
@@ -79,7 +83,7 @@
             this.tbInfo1.Location = new System.Drawing.Point(120, 17);
             this.tbInfo1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo1.Name = "tbInfo1";
-            this.tbInfo1.Size = new System.Drawing.Size(436, 26);
+            this.tbInfo1.Size = new System.Drawing.Size(451, 26);
             this.tbInfo1.TabIndex = 1;
             // 
             // label12
@@ -106,7 +110,7 @@
             // 
             this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
-            this.SaveButton.Location = new System.Drawing.Point(29, 406);
+            this.SaveButton.Location = new System.Drawing.Point(33, 441);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(91, 28);
             this.SaveButton.TabIndex = 24;
@@ -119,7 +123,7 @@
             // 
             this.CancelQQButton.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.CancelQQButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelQQButton.Image")));
-            this.CancelQQButton.Location = new System.Drawing.Point(465, 406);
+            this.CancelQQButton.Location = new System.Drawing.Point(480, 441);
             this.CancelQQButton.Name = "CancelQQButton";
             this.CancelQQButton.Size = new System.Drawing.Size(91, 28);
             this.CancelQQButton.TabIndex = 25;
@@ -134,7 +138,7 @@
             this.tbInfo3.Location = new System.Drawing.Point(394, 48);
             this.tbInfo3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo3.Name = "tbInfo3";
-            this.tbInfo3.Size = new System.Drawing.Size(162, 26);
+            this.tbInfo3.Size = new System.Drawing.Size(177, 26);
             this.tbInfo3.TabIndex = 3;
             // 
             // label1
@@ -153,7 +157,7 @@
             this.tbInfo8.Location = new System.Drawing.Point(394, 142);
             this.tbInfo8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo8.Name = "tbInfo8";
-            this.tbInfo8.Size = new System.Drawing.Size(162, 26);
+            this.tbInfo8.Size = new System.Drawing.Size(177, 26);
             this.tbInfo8.TabIndex = 8;
             // 
             // label2
@@ -191,7 +195,7 @@
             this.tbInfo5.Location = new System.Drawing.Point(394, 79);
             this.tbInfo5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo5.Name = "tbInfo5";
-            this.tbInfo5.Size = new System.Drawing.Size(162, 26);
+            this.tbInfo5.Size = new System.Drawing.Size(177, 26);
             this.tbInfo5.TabIndex = 5;
             // 
             // label4
@@ -264,7 +268,7 @@
             this.PasswordGroupBox.Enabled = false;
             this.PasswordGroupBox.Location = new System.Drawing.Point(32, 242);
             this.PasswordGroupBox.Name = "PasswordGroupBox";
-            this.PasswordGroupBox.Size = new System.Drawing.Size(524, 138);
+            this.PasswordGroupBox.Size = new System.Drawing.Size(281, 172);
             this.PasswordGroupBox.TabIndex = 143;
             this.PasswordGroupBox.TabStop = false;
             // 
@@ -273,12 +277,12 @@
             this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
             this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ChangePasswordQQButton.Location = new System.Drawing.Point(419, 45);
+            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 127);
             this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
-            this.ChangePasswordQQButton.Size = new System.Drawing.Size(68, 49);
+            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 33);
             this.ChangePasswordQQButton.TabIndex = 23;
             this.ChangePasswordQQButton.Text = "修改";
-            this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ChangePasswordQQButton.UseVisualStyleBackColor = true;
             this.ChangePasswordQQButton.Click += new System.EventHandler(this.ChangePasswordQQButton_Click);
             // 
@@ -288,7 +292,7 @@
             this.NewPasswordTextBox2.Location = new System.Drawing.Point(118, 94);
             this.NewPasswordTextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewPasswordTextBox2.Name = "NewPasswordTextBox2";
-            this.NewPasswordTextBox2.Size = new System.Drawing.Size(184, 26);
+            this.NewPasswordTextBox2.Size = new System.Drawing.Size(147, 26);
             this.NewPasswordTextBox2.TabIndex = 22;
             this.NewPasswordTextBox2.UseSystemPasswordChar = true;
             // 
@@ -309,7 +313,7 @@
             this.NewPasswordTextBox.Location = new System.Drawing.Point(118, 60);
             this.NewPasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewPasswordTextBox.Name = "NewPasswordTextBox";
-            this.NewPasswordTextBox.Size = new System.Drawing.Size(184, 26);
+            this.NewPasswordTextBox.Size = new System.Drawing.Size(147, 26);
             this.NewPasswordTextBox.TabIndex = 21;
             this.NewPasswordTextBox.UseSystemPasswordChar = true;
             // 
@@ -330,7 +334,7 @@
             this.OldPasswordTextBox.Location = new System.Drawing.Point(118, 26);
             this.OldPasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OldPasswordTextBox.Name = "OldPasswordTextBox";
-            this.OldPasswordTextBox.Size = new System.Drawing.Size(184, 26);
+            this.OldPasswordTextBox.Size = new System.Drawing.Size(147, 26);
             this.OldPasswordTextBox.TabIndex = 20;
             this.OldPasswordTextBox.UseSystemPasswordChar = true;
             // 
@@ -373,7 +377,7 @@
             this.tbInfo10.Location = new System.Drawing.Point(394, 176);
             this.tbInfo10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo10.Name = "tbInfo10";
-            this.tbInfo10.Size = new System.Drawing.Size(162, 26);
+            this.tbInfo10.Size = new System.Drawing.Size(177, 26);
             this.tbInfo10.TabIndex = 10;
             // 
             // label8
@@ -395,11 +399,30 @@
             this.ChangePasswordLabel.Size = new System.Drawing.Size(0, 12);
             this.ChangePasswordLabel.TabIndex = 161;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Location = new System.Drawing.Point(329, 242);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(242, 172);
+            this.groupBox1.TabIndex = 162;
+            this.groupBox1.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(18, 60);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(207, 100);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 452);
+            this.ClientSize = new System.Drawing.Size(597, 488);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ChangePasswordLabel);
             this.Controls.Add(this.tbInfo10);
             this.Controls.Add(this.label8);
@@ -431,6 +454,8 @@
             this.Text = "用户信息设置";
             this.PasswordGroupBox.ResumeLayout(false);
             this.PasswordGroupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -470,5 +495,7 @@
         private System.Windows.Forms.TextBox tbInfo10;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label ChangePasswordLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
