@@ -1411,7 +1411,7 @@ namespace VividManagementApplication
         private void numberInputOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 0x20) e.KeyChar = (char)0;  //禁止空格键
-            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length == 0)) return;   //处理负数
+            if ((e.KeyChar == 0x2D) && (((TextBox)sender).Text.Length >= 0)) return;   //处理负数
             if (e.KeyChar > 0x20)
             {
                 try

@@ -607,7 +607,6 @@
             this.tbClient7.Name = "tbClient7";
             this.tbClient7.Size = new System.Drawing.Size(129, 26);
             this.tbClient7.TabIndex = 107;
-            this.tbClient7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // tbClient6
             // 

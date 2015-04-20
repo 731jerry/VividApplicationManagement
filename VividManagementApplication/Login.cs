@@ -136,7 +136,7 @@ namespace VividManagementApplication
 
                 if (!updateVersion.Equals(""))
                 {
-                    if (!MainWindow.CURRENT_APP_VERSION_NAME.Equals(""))
+                    if (!MainWindow.CURRENT_APP_VERSION_NAME.Equals("") && !MainWindow.CURRENT_APP_VERSION_ID.Equals("-1"))
                     {
                         string localVersionString = "";
                         if (MainWindow.CURRENT_APP_VERSION_ID.Split('.').Length == 2)
