@@ -42,8 +42,8 @@ namespace VividManagementApplication
             catch (Exception ex)
             {
                 //RecordLog("无法打开连接!\r\nTargetSite: " + ex.TargetSite + "\r\n" + ex.ToString());
-                System.Windows.Forms.MessageBox.Show(ex.Message, "无法打开数据库连接！");
-                return;
+                //System.Windows.Forms.MessageBox.Show(ex.Message, "无法打开数据库连接！");
+                throw;
             }
         }
 

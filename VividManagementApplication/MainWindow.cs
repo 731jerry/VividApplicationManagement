@@ -230,7 +230,8 @@ namespace VividManagementApplication
                 keepOnlineTimer.Enabled = true;
                 #endregion
             }
-            else {
+            else
+            {
                 this.Visible = false;
                 this.Close();
             }
@@ -265,23 +266,46 @@ namespace VividManagementApplication
 
         private void backupData_Click(object sender, EventArgs e)
         {
-            UploadFiles("手动备份数据库！");
+            pbUploadDownloadFile.Visible = true;
+            UploadFiles("手动同步数据库！");
         }
 
         public void UploadFiles(string moreInfo)
         {
-            string fileName = LOCAL_DATABASE_LOCATION;
+            
             try
             {
                 //FormBasicFeatrues.GetInstence().UpLoadFile(fileName, "", "ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/" + dataBaseFilePrefix + "data.txt");
-                FormBasicFeatrues.GetInstence().UpLoadFileOld(fileName, "", ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                //FormBasicFeatrues.GetInstence().UpLoadFileOld(fileName, "", ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                UploadFile(LOCAL_DATABASE_LOCATION, "", ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
                 //FormBasicFeatrues.GetInstence().UploadFile(new FileInfo(fileName), ONLINE_DATABASE_BASIC_LOCATION_DIR, dataBaseFilePrefix, ONLINE_FTP_HOSTNAME, ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD);
-                MessageBox.Show(moreInfo + "数据库备份成功!", "成功!");
+                //MessageBox.Show(moreInfo + "数据库同步成功!", "成功!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "上传文件出现异常");
+                MessageBox.Show(ex.Message, "同步文件出现异常");
             }
+        }
+
+        public void UploadFile(string fileNamePath, string fileName, string uriString)
+        {
+            WebClient webClient = new WebClient();
+            webClient.UploadFile(uriString, "STOR", fileNamePath);
+            webClient.UploadProgressChanged += new System.Net.UploadProgressChangedEventHandler(webClient_UploadFileProgressChanged);
+            webClient.UploadFileCompleted += new System.Net.UploadFileCompletedEventHandler(webClient_UploadFileCompleted);
+
+        }
+        private void webClient_UploadFileProgressChanged(object sender, System.Net.UploadProgressChangedEventArgs e)
+        {
+            pbUploadDownloadFile.Value = e.ProgressPercentage;
+            //progressBar1.Value = e.ProgressPercentage;
+            //this.label1.Text = "已完成：" + progressBar1.Value.ToString() + "%";
+        }
+
+        private void webClient_UploadFileCompleted(Object sender, UploadFileCompletedEventArgs e)
+        {
+            MessageBox.Show("ok");
+            //this.Close();
         }
 
         Stream srm;
@@ -300,11 +324,11 @@ namespace VividManagementApplication
                 WebRequest webReq = WebRequest.Create(urlName);
                 WebResponse webRes = webReq.GetResponse();
 
-                pbDownFile.Visible = true;
+                pbUploadDownloadFile.Visible = true;
                 fileLength = webRes.ContentLength;
 
-                pbDownFile.Value = 0;
-                pbDownFile.Maximum = (int)fileLength;
+                pbUploadDownloadFile.Value = 0;
+                pbUploadDownloadFile.Maximum = (int)fileLength;
 
                 srm = webRes.GetResponseStream();
                 srmReader = new StreamReader(srm);
@@ -319,7 +343,7 @@ namespace VividManagementApplication
                     if (downByte == 0) { break; };
                     startByte += downByte;
                     allByte -= downByte;
-                    pbDownFile.Value += downByte;
+                    pbUploadDownloadFile.Value += downByte;
 
                     //Text = "数据库更新 [" + Convert.ToInt32(pbDownFile.Value / (float)pbDownFile.Maximum * 100) + "%]";
 
@@ -337,15 +361,15 @@ namespace VividManagementApplication
                 webRes.Close();
                 srm.Close();
                 srmReader.Close();
-                pbDownFile.Visible = false;
+                pbUploadDownloadFile.Visible = false;
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
-                MessageBox.Show("数据库更新成功!", "成功");
+                MessageBox.Show("数据库同步成功!", "成功");
             }
             catch (WebException webE)
             {
                 if (webE.Status == WebExceptionStatus.ProtocolError)
                 {
-                    UploadFiles("初次备份, ");
+                    UploadFiles("初次同步, ");
                 }
             }
             catch (Exception e)
@@ -879,7 +903,7 @@ namespace VividManagementApplication
             if (MainWindow.IS_LOGED_IN)
             {
                 DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
-                UploadFiles("备份数据库!");
+                UploadFiles("同步数据库!");
             }
         }
 

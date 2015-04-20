@@ -66,7 +66,7 @@
             this.listCxButton = new ControlExs.QQButton();
             this.newCxButton = new ControlExs.QQButton();
             this.cxRadio = new ControlExs.QQRadioButton();
-            this.pbDownFile = new System.Windows.Forms.ProgressBar();
+            this.pbUploadDownloadFile = new System.Windows.Forms.ProgressBar();
             this.updateDataTimer = new System.Windows.Forms.Timer(this.components);
             this.tmrShows = new System.Windows.Forms.Timer(this.components);
             this.notificationPanel = new System.Windows.Forms.Panel();
@@ -382,10 +382,10 @@
             this.cxRadio.UseVisualStyleBackColor = false;
             this.cxRadio.CheckedChanged += new System.EventHandler(this.cxRadio_CheckedChanged);
             // 
-            // pbDownFile
+            // pbUploadDownloadFile
             // 
-            resources.ApplyResources(this.pbDownFile, "pbDownFile");
-            this.pbDownFile.Name = "pbDownFile";
+            resources.ApplyResources(this.pbUploadDownloadFile, "pbUploadDownloadFile");
+            this.pbUploadDownloadFile.Name = "pbUploadDownloadFile";
             // 
             // updateDataTimer
             // 
@@ -453,7 +453,7 @@
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.notificationPanel);
-            this.Controls.Add(this.pbDownFile);
+            this.Controls.Add(this.pbUploadDownloadFile);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.lbExpireTime);
             this.Controls.Add(this.label112);
@@ -490,7 +490,7 @@
         private System.Windows.Forms.DataGridView MainDataGridView;
         private ControlExs.QQButton refeshButton;
         private ControlExs.QQButton backupData;
-        private System.Windows.Forms.ProgressBar pbDownFile;
+        private System.Windows.Forms.ProgressBar pbUploadDownloadFile;
         private System.Windows.Forms.Timer updateDataTimer;
         private System.Windows.Forms.Timer tmrShows;
         private System.Windows.Forms.Panel notificationPanel;

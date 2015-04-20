@@ -14,7 +14,7 @@ namespace VividManagementApplication
     public partial class Login : Form
     {
         //public UserInfo userInfo { get; private set; }
-
+        private String windowText = "";
         public Login()
         {
             InitializeComponent();
@@ -22,7 +22,17 @@ namespace VividManagementApplication
 
         private void LoadCyy_Click(object sender, EventArgs e)
         {
-            DatabaseConnections.GetInstence().UserLogin(cbAccount.Text, tbPassword.Text);
+            this.Text = "正在登录...";
+            try
+            {
+                DatabaseConnections.GetInstence().UserLogin(cbAccount.Text, tbPassword.Text);
+            }
+            catch (Exception exc)
+            {
+                this.Text = windowText;
+                MessageBox.Show("登录错误!" + exc.Message, "错误");
+                return;
+            }
 
             if (!MainWindow.IS_PASSWORD_CORRECT)
             {
@@ -94,6 +104,7 @@ namespace VividManagementApplication
         private void Login_Load(object sender, EventArgs e)
         {
             UpdateTimer.Enabled = true;
+            windowText = this.Text;
         }
 
         private void Login_Resize(object sender, EventArgs e)
@@ -106,48 +117,53 @@ namespace VividManagementApplication
             UpdateTimer.Enabled = false;
 
             LoadCyy.Enabled = false;
-            String windowText = this.Text;
-            this.Text = "正在检查更新。。。";
-
-            //Console.WriteLine("1 " + DateTime.Now.ToString());
-            // 检测是否有最新版本
-            List<String> updateVersionString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_version");
-            //Console.WriteLine("2 " + DateTime.Now.ToString());
-            List<String> updateVersionLogString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_version_log");
-            //Console.WriteLine("3 " + DateTime.Now.ToString());
-            List<String> updateAppURLString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_app_url");
-            //Console.WriteLine("4 " + DateTime.Now.ToString());
-
-            String updateVersion = updateVersionString[0];
-            String updateLog = updateVersionLogString[0];
-            MainWindow.UPDATE_APP_URL_DIR = updateAppURLString[0];
-            //string updateVersion = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_URL);
-
-            if (!updateVersion.Equals(""))
+            this.Text = "正在检测更新...";
+            try
             {
-                if (!MainWindow.CURRENT_APP_VERSION_NAME.Equals(""))
-                {
-                    string localVersionString = "";
-                    if (MainWindow.CURRENT_APP_VERSION_ID.Split('.').Length == 2)
-                    {
-                        localVersionString = MainWindow.CURRENT_APP_VERSION_ID + ".0";
-                    }
-                    else
-                    {
-                        localVersionString = MainWindow.CURRENT_APP_VERSION_ID;
-                    }
+                //Console.WriteLine("1 " + DateTime.Now.ToString());
+                // 检测是否有最新版本
+                List<String> updateVersionString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_version");
+                //Console.WriteLine("2 " + DateTime.Now.ToString());
+                List<String> updateVersionLogString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_version_log");
+                //Console.WriteLine("3 " + DateTime.Now.ToString());
+                List<String> updateAppURLString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "VMA_update_app_url");
+                //Console.WriteLine("4 " + DateTime.Now.ToString());
 
-                    if (FormBasicFeatrues.GetInstence().compareVersion(localVersionString, updateVersion, 2))
+                String updateVersion = updateVersionString[0];
+                String updateLog = updateVersionLogString[0];
+                MainWindow.UPDATE_APP_URL_DIR = updateAppURLString[0];
+                //string updateVersion = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_URL);
+
+                if (!updateVersion.Equals(""))
+                {
+                    if (!MainWindow.CURRENT_APP_VERSION_NAME.Equals(""))
                     {
-                        //string updateLog = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_LOG_URL);
-                        if (!updateLog.Equals(""))
+                        string localVersionString = "";
+                        if (MainWindow.CURRENT_APP_VERSION_ID.Split('.').Length == 2)
                         {
-                            //this.Visible = false;
-                            update ud = new update(MainWindow.UPDATE_APP_URL_DIR + MainWindow.CURRENT_APP_NAME + "-" + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
-                            ud.ShowDialog(this);
+                            localVersionString = MainWindow.CURRENT_APP_VERSION_ID + ".0";
+                        }
+                        else
+                        {
+                            localVersionString = MainWindow.CURRENT_APP_VERSION_ID;
+                        }
+
+                        if (FormBasicFeatrues.GetInstence().compareVersion(localVersionString, updateVersion, 2))
+                        {
+                            //string updateLog = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_LOG_URL);
+                            if (!updateLog.Equals(""))
+                            {
+                                //this.Visible = false;
+                                update ud = new update(MainWindow.UPDATE_APP_URL_DIR + MainWindow.CURRENT_APP_NAME + "-" + MainWindow.CURRENT_APP_VERSION_NAME + "v" + updateVersion + ".exe", updateVersion, updateLog);
+                                ud.ShowDialog(this);
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception exe)
+            {
+                MessageBox.Show("检测最新版本失败!" + exe.Message, "错误");
             }
             this.Text = windowText;
             LoadCyy.Enabled = true;
