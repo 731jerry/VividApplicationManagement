@@ -50,6 +50,7 @@ namespace VividManagementApplication
         public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/VMA/Users/";
         public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/VMA/Users/";
         public static String ONLINE_FTP_HOSTNAME = "121.42.154.95";
+        public static String ONLINE_FTP_DOMAIN = "vividapp.net";
         public static String ONLINE_FTP_USERNAME = "vividappftp";
         public static String ONLINE_FTP_PASSWORD = "vividappftp";
 
@@ -185,7 +186,7 @@ namespace VividManagementApplication
                 if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
                 {
                     DatabaseConnections.GetInstence().LocalCreateDatabase();
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                    //File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 }
                 #endregion
 
@@ -279,73 +280,22 @@ namespace VividManagementApplication
 
         String UploadMoreInfo;
 
-        // 上传
-        public void UploadFileWithNotice(String moreInfo)
-        {
-            UploadMoreInfo = moreInfo;
-            try
-            {
-                UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "同步文件出现异常");
-            }
-        }
-
-        public void UploadFile(String fileNamePath, String uriString)
-        {
-            pbUploadDownloadFile.Visible = true;
-            WebClient client = new WebClient();
-            Uri uri = new Uri(uriString);
-            client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
-            client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
-            client.UploadFileAsync(uri, "STOR", fileNamePath);
-            client.Proxy = WebRequest.DefaultWebProxy;
-            client.Proxy.Credentials = new NetworkCredential("vividappftp", "vividappftp", "www.vividapp.net");
-
-        }
-        private void UploadProgressCallback(object sender, System.Net.UploadProgressChangedEventArgs e)
-        {
-            pbUploadDownloadFile.Value = e.ProgressPercentage;
-        }
-
-        private void UploadFileCompleteCallback(Object sender, UploadFileCompletedEventArgs e)
-        {
-            if (e.Error != null)
-            {
-                MessageBox.Show(e.Error.Message + e.Error);   //正常捕获
-            }
-            else
-            {
-                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
-                pbUploadDownloadFile.Visible = false;
-            }
-        }
-
         // 下载
-        public void DownloadFileWithNotice()
+        private void DownloadFileWithNotice()
         {
-            try
+            if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
             {
                 DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
             }
-            catch (WebException webE)
+            else
             {
-                if (webE.Status == WebExceptionStatus.ProtocolError)
-                {
-                    UploadFileWithNotice("初次同步, ");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "同步文件出现异常");
+                UploadFileWithNotice("初次同步, ");
             }
         }
 
-        public void DownloadFile(String uriString, String fileNamePath)
+        private void DownloadFile(String uriString, String fileNamePath)
         {
-            pbUploadDownloadFile.Visible = true;
+            visibleUploadDownloadGroup(true);
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
@@ -367,11 +317,80 @@ namespace VividManagementApplication
             else
             {
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
-                pbUploadDownloadFile.Visible = false;
                 MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                visibleUploadDownloadGroup(false);
             }
         }
 
+        // 上传
+        private void UploadFileWithNotice(String moreInfo)
+        {
+            UploadMoreInfo = moreInfo;
+            if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
+            {
+                UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+            }
+        }
+
+        private void UploadFile(String fileNamePath, String uriString)
+        {
+            visibleUploadDownloadGroup(true);
+            WebClient client = new WebClient();
+            Uri uri = new Uri(uriString);
+            client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
+            client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
+            client.UploadFileAsync(uri, "STOR", fileNamePath);
+            // client.Proxy = WebRequest.DefaultWebProxy;
+            //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
+
+        }
+        private void UploadProgressCallback(object sender, System.Net.UploadProgressChangedEventArgs e)
+        {
+            pbUploadDownloadFile.Value = e.ProgressPercentage;
+        }
+
+        private void UploadFileCompleteCallback(Object sender, UploadFileCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message + e.Error);   //正常捕获
+            }
+            else
+            {
+                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                visibleUploadDownloadGroup(false);
+            }
+        }
+
+        // 检测远程文件是否存在
+        private bool UriExists(string url)
+        {
+            try
+            {
+                new System.Net.WebClient().OpenRead(url);
+                return true;
+            }
+            catch (System.Net.WebException)
+            {
+                return false;
+            }
+        }
+
+        // 获取本地文件大小
+        private long getLocalFileSize(String filePath)
+        {
+            FileInfo fi = new FileInfo(filePath);
+            return fi.Length;
+        }
+
+        // 提示消息能否看到
+        private void visibleUploadDownloadGroup(Boolean visible)
+        {
+            pbUploadDownloadFile.Visible = visible;
+            pbUploadDownloadFile.Value = 0;
+            pbUploadDownloadLabel.Visible = visible;
+            //pbUploadDownloadLabel.Text = notice;
+        }
         #endregion
 
         private void tmrShows_Tick(object sender, EventArgs e)

@@ -78,6 +78,7 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.keepOnlineTimer = new System.Windows.Forms.Timer(this.components);
+            this.pbUploadDownloadLabel = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -448,10 +449,18 @@
             this.keepOnlineTimer.Interval = 60000;
             this.keepOnlineTimer.Tick += new System.EventHandler(this.keepOnlineTimer_Tick);
             // 
+            // pbUploadDownloadLabel
+            // 
+            resources.ApplyResources(this.pbUploadDownloadLabel, "pbUploadDownloadLabel");
+            this.pbUploadDownloadLabel.BackColor = System.Drawing.Color.Transparent;
+            this.pbUploadDownloadLabel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pbUploadDownloadLabel.Name = "pbUploadDownloadLabel";
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pbUploadDownloadLabel);
             this.Controls.Add(this.notificationPanel);
             this.Controls.Add(this.pbUploadDownloadFile);
             this.Controls.Add(this.MainPanel);
@@ -526,6 +535,7 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Timer keepOnlineTimer;
+        private System.Windows.Forms.Label pbUploadDownloadLabel;
     }
 }
 
