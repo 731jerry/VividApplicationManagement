@@ -55,7 +55,7 @@ namespace VividManagementApplication
         public static String ONLINE_FTP_PASSWORD = "vividappftp";
 
         Microsoft.Win32.RegistryKey productKey;
-        public static String PRODUCT_REG_KEY = @"Software\VividApp\GZB\管账宝\";
+        public static String PRODUCT_REG_KEY = @"Software\VividApp\GZB\";
 
         public static String CURRENT_APP_NAME = "管账宝"; //财盈盈账务管理系统
         public static String CURRENT_APP_VERSION_NAME = "精华版"; // 商贸版

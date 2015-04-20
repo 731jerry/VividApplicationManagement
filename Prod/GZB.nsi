@@ -5,12 +5,12 @@
 !define VERSION_NAME "商贸版"
 !define PRODUCT_NAME_ENG "GZB"
 !define APP_NAME "管账宝"
-!define PRODUCT_VERSION "1.0.5"
+!define PRODUCT_VERSION "1.1.0"
 !define PRODUCT_PUBLISHER "唯达科技有限公司"
 !define INSTALL_LOCATION "c:\GZB"
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
 !define PRODUCT_WEB_SITE "http://www.vividapp.net"
-!define PRODUCT_UNINST_KEY "Software\VividApp\${PRODUCT_NAME_ENG}\${PRODUCT_NAME}"
+!define PRODUCT_UNINST_KEY "Software\VividApp\${PRODUCT_NAME_ENG}\"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 SetCompressor lzma
