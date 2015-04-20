@@ -90,7 +90,7 @@ namespace VividManagementApplication
 
                     break;
                 case 2:
-                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods2, tbGoods3, tbGoods4, tbGoods5, tbGoods11, tbGoods12, tbGoods14, tbGoods15 };
+                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods3, tbGoods4, tbGoods5 };
                     detailedHeightDis = 250;
                     detailedPanel = DetailedGoodsPanel;
 

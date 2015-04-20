@@ -135,8 +135,8 @@ namespace VividManagementApplication
 
                 if (dgv != null)
                 {
-                    int iX = 35;
-                    int iY = 140;
+                    //int iX = 35;
+                    //int iY = 140;
                     //PrintDataGridView.Print(dgv, true, e, ref iX, ref iY);
                 }
             }

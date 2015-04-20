@@ -811,11 +811,11 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label18.Location = new System.Drawing.Point(317, 32);
+            this.label18.Location = new System.Drawing.Point(323, 31);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(85, 20);
+            this.label18.Size = new System.Drawing.Size(79, 20);
             this.label18.TabIndex = 176;
-            this.label18.Text = "*商品等级：";
+            this.label18.Text = "商品等级：";
             // 
             // tbGoods9
             // 
@@ -829,7 +829,7 @@
             // 
             this.label102.AutoSize = true;
             this.label102.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label102.Location = new System.Drawing.Point(18, 133);
+            this.label102.Location = new System.Drawing.Point(24, 132);
             this.label102.Name = "label102";
             this.label102.Size = new System.Drawing.Size(79, 20);
             this.label102.TabIndex = 174;
@@ -933,7 +933,7 @@
             this.tbGoods6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbGoods6.Location = new System.Drawing.Point(109, 96);
             this.tbGoods6.Name = "tbGoods6";
-            this.tbGoods6.Size = new System.Drawing.Size(196, 26);
+            this.tbGoods6.Size = new System.Drawing.Size(179, 26);
             this.tbGoods6.TabIndex = 206;
             // 
             // tbGoods5
@@ -957,7 +957,7 @@
             this.tbGoods3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbGoods3.Location = new System.Drawing.Point(109, 63);
             this.tbGoods3.Name = "tbGoods3";
-            this.tbGoods3.Size = new System.Drawing.Size(196, 26);
+            this.tbGoods3.Size = new System.Drawing.Size(179, 26);
             this.tbGoods3.TabIndex = 203;
             // 
             // label38
@@ -978,9 +978,9 @@
             this.label37.ForeColor = System.Drawing.Color.Red;
             this.label37.Location = new System.Drawing.Point(294, 231);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(85, 20);
+            this.label37.Size = new System.Drawing.Size(79, 20);
             this.label37.TabIndex = 158;
-            this.label37.Text = "*当前售价：";
+            this.label37.Text = "当前售价：";
             // 
             // label36
             // 
@@ -998,9 +998,9 @@
             this.label35.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label35.Location = new System.Drawing.Point(294, 198);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(85, 20);
+            this.label35.Size = new System.Drawing.Size(79, 20);
             this.label35.TabIndex = 157;
-            this.label35.Text = "*进货单价：";
+            this.label35.Text = "进货单价：";
             // 
             // label34
             // 
@@ -1026,7 +1026,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label25.Location = new System.Drawing.Point(18, 264);
+            this.label25.Location = new System.Drawing.Point(24, 263);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(79, 20);
             this.label25.TabIndex = 153;
@@ -1037,7 +1037,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(18, 231);
+            this.label26.Location = new System.Drawing.Point(24, 230);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(79, 20);
             this.label26.TabIndex = 152;
@@ -1047,17 +1047,17 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label27.Location = new System.Drawing.Point(18, 198);
+            this.label27.Location = new System.Drawing.Point(24, 197);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(85, 20);
+            this.label27.Size = new System.Drawing.Size(79, 20);
             this.label27.TabIndex = 151;
-            this.label27.Text = "*期初数量：";
+            this.label27.Text = "期初数量：";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label28.Location = new System.Drawing.Point(314, 100);
+            this.label28.Location = new System.Drawing.Point(303, 100);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(93, 20);
             this.label28.TabIndex = 150;
@@ -1077,7 +1077,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label30.Location = new System.Drawing.Point(18, 165);
+            this.label30.Location = new System.Drawing.Point(24, 164);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(79, 20);
             this.label30.TabIndex = 148;
@@ -1087,7 +1087,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label31.Location = new System.Drawing.Point(18, 100);
+            this.label31.Location = new System.Drawing.Point(24, 100);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(79, 20);
             this.label31.TabIndex = 147;
@@ -1119,7 +1119,7 @@
             this.tbGoods1.Location = new System.Drawing.Point(109, 26);
             this.tbGoods1.MaxLength = 10;
             this.tbGoods1.Name = "tbGoods1";
-            this.tbGoods1.Size = new System.Drawing.Size(129, 26);
+            this.tbGoods1.Size = new System.Drawing.Size(179, 26);
             this.tbGoods1.TabIndex = 201;
             this.tbGoods1.Validated += new System.EventHandler(this.TextBoxCheckIfDuplicate_Validated);
             // 
