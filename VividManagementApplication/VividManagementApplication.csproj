@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsFTP.cs" />
     <Compile Include="DatabaseConnections.cs" />
     <Compile Include="DetailedInfo.cs">
       <SubType>Form</SubType>
