@@ -186,8 +186,8 @@ namespace VividManagementApplication
                 if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
                 {
                     DatabaseConnections.GetInstence().LocalCreateDatabase();
-                    //File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 }
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 #endregion
 
                 #region 窗体用户信息初始化
