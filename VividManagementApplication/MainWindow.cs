@@ -46,22 +46,23 @@ namespace VividManagementApplication
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
-        public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/VMA/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
-        public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/VMA/Users/";
-        public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/VMA/Users/";
+        public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
+        public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/GZB/Users/";
+        public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/GZB/Users/";
         public static String ONLINE_FTP_HOSTNAME = "121.42.154.95";
         public static String ONLINE_FTP_DOMAIN = "vividapp.net";
         public static String ONLINE_FTP_USERNAME = "vividappftp";
         public static String ONLINE_FTP_PASSWORD = "vividappftp";
 
         Microsoft.Win32.RegistryKey productKey;
+        public static String PRODUCT_REG_KEY = @"Software\VividApp\GZB\管账宝\";
 
-        public static String CURRENT_APP_NAME = "财盈盈账务管理系统"; //财盈盈账务管理系统
-        public static String CURRENT_APP_VERSION_NAME = "商贸版"; // 商贸版
+        public static String CURRENT_APP_NAME = "管账宝"; //财盈盈账务管理系统
+        public static String CURRENT_APP_VERSION_NAME = "精华版"; // 商贸版
         public static String CURRENT_APP_VERSION_ID = "1.0.0"; // 1.0.1
-        public static String UPDATE_APP_URL_DIR = "http://www.vividapp.net/Project/VMA/Update/"; // 最新版本app地址
-        public static String UPDATE_VERSION_URL = "http://www.vividapp.net/Project/VMA/Update/version.txt"; // 更新app版本的文件地址
-        public static String UPDATE_VERSION_LOG_URL = "http://www.vividapp.net/Project/VMA/Update/versionlog.txt"; // 更新app版本记录的文件地址
+        public static String UPDATE_APP_URL_DIR = "http://www.vividapp.net/Project/GZB/Update/"; // 最新版本app地址
+        public static String UPDATE_VERSION_URL = "http://www.vividapp.net/Project/GZB/Update/version.txt"; // 更新app版本的文件地址
+        public static String UPDATE_VERSION_LOG_URL = "http://www.vividapp.net/Project/GZB/Update/versionlog.txt"; // 更新app版本记录的文件地址
 
         string dataBaseFilePrefix;
         public MainWindow()
@@ -74,7 +75,7 @@ namespace VividManagementApplication
             this.Visible = false;
 
             #region 软件版本
-            productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall\财盈盈账务管理系统\");
+            productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);
             String loginWindowLabel = "登录";
             try
             {
@@ -826,7 +827,7 @@ namespace VividManagementApplication
             if (MainWindow.IS_LOGED_IN)
             {
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
+                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
                 UploadFileWithNotice("关闭前同步数据库!");
             }
         }
@@ -1079,7 +1080,7 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET VMA_isonline = 1, VMA_lastlogontime = NOW(), VMA_logonmins = VMA_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
+                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW(), GZB_logonmins = GZB_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
             }
         }
 

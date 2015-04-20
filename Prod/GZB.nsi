@@ -1,16 +1,16 @@
 ; 该脚本使用 HM VNISEdit 脚本编辑器向导产生
 
 ; 安装程序初始定义常量
-!define PRODUCT_NAME "财盈盈账务管理系统"
+!define PRODUCT_NAME "管账宝"
 !define VERSION_NAME "商贸版"
-!define PRODUCT_NAME_ENG "VMA"
-!define APP_NAME "VividManagementApplication"
-!define PRODUCT_VERSION "1.0.4"
+!define PRODUCT_NAME_ENG "GZB"
+!define APP_NAME "管账宝"
+!define PRODUCT_VERSION "1.0.5"
 !define PRODUCT_PUBLISHER "唯达科技有限公司"
-!define INSTALL_LOCATION "c:\VMA"
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\${APP_NAME}.exe"
+!define INSTALL_LOCATION "c:\GZB"
+!define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
 !define PRODUCT_WEB_SITE "http://www.vividapp.net"
-!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+!define PRODUCT_UNINST_KEY "Software\VividApp\${PRODUCT_NAME_ENG}\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 SetCompressor lzma
@@ -142,10 +142,10 @@ Var OLD_PATH
 
 Function un.onInit.backup
   ClearErrors
-  ReadRegStr $UNINSTALL_PROG ${PRODUCT_UNINST_ROOT_KEY} ${PRODUCT_UNINST_KEY} "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+  ReadRegStr $UNINSTALL_PROG ${PRODUCT_UNINST_ROOT_KEY} ${PRODUCT_UNINST_KEY} "Software\VividApp\${PRODUCT_NAME_ENG}"
   IfErrors  done
 
-  ReadRegStr $OLD_VER ${PRODUCT_UNINST_ROOT_KEY} ${PRODUCT_UNINST_KEY} "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
+  ReadRegStr $OLD_VER ${PRODUCT_UNINST_ROOT_KEY} ${PRODUCT_UNINST_KEY} "Software\VividApp\${PRODUCT_NAME_ENG}"
   MessageBox MB_YESNOCANCEL|MB_ICONQUESTION \
     "检测到本机已经安装 $(^Name) ${PRODUCT_VERSION}?\
     $\n$\n是否先卸载已安装的版本?" \

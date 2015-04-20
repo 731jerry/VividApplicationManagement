@@ -92,6 +92,7 @@ namespace VividManagementApplication
                 if (MessageBox.Show("(" + urlName + ")错误信息:" + e.Message, "更新出现错误", MessageBoxButtons.OK) == DialogResult.OK)
                 {
                     Application.Exit();
+                    //return;
                 }
             }
         }
