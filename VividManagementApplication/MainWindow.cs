@@ -234,14 +234,14 @@ namespace VividManagementApplication
         {
             if (e.Error != null)
             {
-                MessageBox.Show(e.Error.Message + e.Error);   //正常捕获
+                MessageBox.Show(e.Error.Message);   //正常捕获
             }
             else
             {
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
                 MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
-                visibleUploadDownloadGroup(false);
             }
+            visibleUploadDownloadGroup(false);
         }
 
         // 上传
@@ -275,13 +275,13 @@ namespace VividManagementApplication
         {
             if (e.Error != null)
             {
-                MessageBox.Show(e.Error.Message + e.Error);   //正常捕获
+                MessageBox.Show(e.Error.Message);   //正常捕获
             }
             else
             {
                 MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
-                visibleUploadDownloadGroup(false);
             }
+            visibleUploadDownloadGroup(false);
         }
 
         // 检测远程文件是否存在

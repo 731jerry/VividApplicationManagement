@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using ControlExs;
+using System.Threading;
 
 namespace VividManagementApplication
 {
@@ -18,6 +19,7 @@ namespace VividManagementApplication
         public Login()
         {
             InitializeComponent();
+            Control.CheckForIllegalCrossThreadCalls = false;//这一行是关键 
         }
 
         private void LoadCyy_Click(object sender, EventArgs e)
@@ -103,19 +105,20 @@ namespace VividManagementApplication
 
         private void Login_Load(object sender, EventArgs e)
         {
-            UpdateTimer.Enabled = true;
+            //UpdateTimer.Enabled = true;
             windowText = this.Text;
+
+            Thread t = new Thread(new ParameterizedThreadStart(checkUpadteAppWithObj));
+            t.Start();
         }
 
-        private void Login_Resize(object sender, EventArgs e)
+        private void checkUpadteAppWithObj(object obj)
         {
-            this.Size = new Size(390, 343);
+            checkUpdateApp();
         }
 
-        private void UpdateTimer_Tick(object sender, EventArgs e)
+        private void checkUpdateApp()
         {
-            UpdateTimer.Enabled = false;
-
             LoadCyy.Enabled = false;
             this.Text = "正在检测更新...";
             try
@@ -168,5 +171,17 @@ namespace VividManagementApplication
             this.Text = windowText;
             LoadCyy.Enabled = true;
         }
+
+        private void Login_Resize(object sender, EventArgs e)
+        {
+            this.Size = new Size(390, 343);
+        }
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)
+        {
+            UpdateTimer.Enabled = false;
+            checkUpdateApp();
+        }
+
     }
 }

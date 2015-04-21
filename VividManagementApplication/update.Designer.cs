@@ -100,7 +100,6 @@
             this.Text = "软件自动更新";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.update_FormClosing);
             this.Load += new System.EventHandler(this.update_Load);
-            this.VisibleChanged += new System.EventHandler(this.update_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

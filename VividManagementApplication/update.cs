@@ -34,6 +34,37 @@ namespace VividManagementApplication
             updateLabel.Text = "正在更新版本" + version + ", 请勿关闭更新并稍等...";
         }
 
+
+        private void DownloadFile(String uriString, String fileNamePath)
+        {
+            WebClient client = new WebClient();
+            Uri uri = new Uri(uriString);
+            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
+            client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleteCallback);
+            client.DownloadFileAsync(uri, fileNamePath);
+
+        }
+        private void DownloadProgressCallback(object sender, System.Net.DownloadProgressChangedEventArgs e)
+        {
+            pbDownFile.Value = e.ProgressPercentage;
+            updateLabel.Text = "更新进度 [" + Convert.ToInt32(e.BytesReceived / (float)e.TotalBytesToReceive * 100) + "%]";
+        }
+
+        private void DownloadFileCompleteCallback(Object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message + e.Error);   //正常捕获
+            }
+            else
+            {
+                this.Close();
+                Application.Exit();
+
+                Process.Start(System.Environment.CurrentDirectory + @"\new.exe");
+            }
+        }
+
         public void GetNewVersion()
         {
             try
@@ -97,11 +128,6 @@ namespace VividManagementApplication
             }
         }
 
-        private void update_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void update_Load(object sender, EventArgs e)
         {
             timer1.Enabled = true;
@@ -110,7 +136,8 @@ namespace VividManagementApplication
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Enabled = false;
-            GetNewVersion();
+            //GetNewVersion();
+            DownloadFile(urlName, System.Environment.CurrentDirectory + @"\new.exe");
         }
 
         private void update_FormClosing(object sender, FormClosingEventArgs e)
