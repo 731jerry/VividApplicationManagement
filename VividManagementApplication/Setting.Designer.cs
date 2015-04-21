@@ -62,16 +62,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.ChangePasswordLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SignPictureBox = new System.Windows.Forms.PictureBox();
+            this.SignqqButton = new ControlExs.QQButton();
             this.PasswordGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SignPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tbInfo6
             // 
             this.tbInfo6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo6.Location = new System.Drawing.Point(120, 111);
+            this.tbInfo6.Location = new System.Drawing.Point(120, 120);
             this.tbInfo6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo6.Name = "tbInfo6";
             this.tbInfo6.Size = new System.Drawing.Size(451, 26);
@@ -80,7 +81,7 @@
             // tbInfo1
             // 
             this.tbInfo1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo1.Location = new System.Drawing.Point(120, 17);
+            this.tbInfo1.Location = new System.Drawing.Point(120, 18);
             this.tbInfo1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo1.Name = "tbInfo1";
             this.tbInfo1.Size = new System.Drawing.Size(451, 26);
@@ -90,7 +91,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label12.Location = new System.Drawing.Point(29, 114);
+            this.label12.Location = new System.Drawing.Point(29, 124);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(85, 20);
             this.label12.TabIndex = 116;
@@ -100,7 +101,7 @@
             // 
             this.label39.AutoSize = true;
             this.label39.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label39.Location = new System.Drawing.Point(29, 17);
+            this.label39.Location = new System.Drawing.Point(29, 18);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(85, 20);
             this.label39.TabIndex = 114;
@@ -110,9 +111,9 @@
             // 
             this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
-            this.SaveButton.Location = new System.Drawing.Point(33, 441);
+            this.SaveButton.Location = new System.Drawing.Point(33, 478);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(91, 28);
+            this.SaveButton.Size = new System.Drawing.Size(91, 30);
             this.SaveButton.TabIndex = 24;
             this.SaveButton.Text = "保存";
             this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -123,9 +124,9 @@
             // 
             this.CancelQQButton.Font = new System.Drawing.Font("微软雅黑", 9F);
             this.CancelQQButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelQQButton.Image")));
-            this.CancelQQButton.Location = new System.Drawing.Point(480, 441);
+            this.CancelQQButton.Location = new System.Drawing.Point(480, 478);
             this.CancelQQButton.Name = "CancelQQButton";
-            this.CancelQQButton.Size = new System.Drawing.Size(91, 28);
+            this.CancelQQButton.Size = new System.Drawing.Size(91, 30);
             this.CancelQQButton.TabIndex = 25;
             this.CancelQQButton.Text = "取消";
             this.CancelQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -135,7 +136,7 @@
             // tbInfo3
             // 
             this.tbInfo3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo3.Location = new System.Drawing.Point(394, 48);
+            this.tbInfo3.Location = new System.Drawing.Point(394, 52);
             this.tbInfo3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo3.Name = "tbInfo3";
             this.tbInfo3.Size = new System.Drawing.Size(177, 26);
@@ -145,7 +146,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label1.Location = new System.Drawing.Point(303, 51);
+            this.label1.Location = new System.Drawing.Point(303, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 20);
             this.label1.TabIndex = 129;
@@ -154,7 +155,7 @@
             // tbInfo8
             // 
             this.tbInfo8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo8.Location = new System.Drawing.Point(394, 142);
+            this.tbInfo8.Location = new System.Drawing.Point(394, 154);
             this.tbInfo8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo8.Name = "tbInfo8";
             this.tbInfo8.Size = new System.Drawing.Size(177, 26);
@@ -164,7 +165,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label2.Location = new System.Drawing.Point(303, 145);
+            this.label2.Location = new System.Drawing.Point(303, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 20);
             this.label2.TabIndex = 133;
@@ -173,7 +174,7 @@
             // tbInfo7
             // 
             this.tbInfo7.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo7.Location = new System.Drawing.Point(120, 142);
+            this.tbInfo7.Location = new System.Drawing.Point(120, 154);
             this.tbInfo7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo7.Name = "tbInfo7";
             this.tbInfo7.Size = new System.Drawing.Size(177, 26);
@@ -183,7 +184,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label3.Location = new System.Drawing.Point(43, 145);
+            this.label3.Location = new System.Drawing.Point(43, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 20);
             this.label3.TabIndex = 131;
@@ -192,7 +193,7 @@
             // tbInfo5
             // 
             this.tbInfo5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo5.Location = new System.Drawing.Point(394, 79);
+            this.tbInfo5.Location = new System.Drawing.Point(394, 86);
             this.tbInfo5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo5.Name = "tbInfo5";
             this.tbInfo5.Size = new System.Drawing.Size(177, 26);
@@ -202,7 +203,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label4.Location = new System.Drawing.Point(303, 82);
+            this.label4.Location = new System.Drawing.Point(303, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 20);
             this.label4.TabIndex = 137;
@@ -211,7 +212,7 @@
             // tbInfo4
             // 
             this.tbInfo4.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo4.Location = new System.Drawing.Point(120, 79);
+            this.tbInfo4.Location = new System.Drawing.Point(120, 86);
             this.tbInfo4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo4.Name = "tbInfo4";
             this.tbInfo4.Size = new System.Drawing.Size(177, 26);
@@ -221,7 +222,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label5.Location = new System.Drawing.Point(29, 82);
+            this.label5.Location = new System.Drawing.Point(29, 89);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(85, 20);
             this.label5.TabIndex = 135;
@@ -231,7 +232,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label13.Location = new System.Drawing.Point(43, 51);
+            this.label13.Location = new System.Drawing.Point(43, 55);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 20);
             this.label13.TabIndex = 115;
@@ -240,7 +241,7 @@
             // tbInfo2
             // 
             this.tbInfo2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo2.Location = new System.Drawing.Point(120, 48);
+            this.tbInfo2.Location = new System.Drawing.Point(120, 52);
             this.tbInfo2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo2.Name = "tbInfo2";
             this.tbInfo2.Size = new System.Drawing.Size(177, 26);
@@ -250,7 +251,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label6.Location = new System.Drawing.Point(29, 176);
+            this.label6.Location = new System.Drawing.Point(29, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 20);
             this.label6.TabIndex = 139;
@@ -266,9 +267,9 @@
             this.PasswordGroupBox.Controls.Add(this.OldPasswordTextBox);
             this.PasswordGroupBox.Controls.Add(this.label14);
             this.PasswordGroupBox.Enabled = false;
-            this.PasswordGroupBox.Location = new System.Drawing.Point(32, 242);
+            this.PasswordGroupBox.Location = new System.Drawing.Point(32, 262);
             this.PasswordGroupBox.Name = "PasswordGroupBox";
-            this.PasswordGroupBox.Size = new System.Drawing.Size(281, 172);
+            this.PasswordGroupBox.Size = new System.Drawing.Size(281, 186);
             this.PasswordGroupBox.TabIndex = 143;
             this.PasswordGroupBox.TabStop = false;
             // 
@@ -277,9 +278,9 @@
             this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
             this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 127);
+            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 142);
             this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
-            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 33);
+            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 30);
             this.ChangePasswordQQButton.TabIndex = 23;
             this.ChangePasswordQQButton.Text = "修改";
             this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -289,7 +290,7 @@
             // NewPasswordTextBox2
             // 
             this.NewPasswordTextBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.NewPasswordTextBox2.Location = new System.Drawing.Point(118, 94);
+            this.NewPasswordTextBox2.Location = new System.Drawing.Point(118, 102);
             this.NewPasswordTextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewPasswordTextBox2.Name = "NewPasswordTextBox2";
             this.NewPasswordTextBox2.Size = new System.Drawing.Size(147, 26);
@@ -300,7 +301,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label7.Location = new System.Drawing.Point(24, 97);
+            this.label7.Location = new System.Drawing.Point(24, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 155;
@@ -310,7 +311,7 @@
             // NewPasswordTextBox
             // 
             this.NewPasswordTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.NewPasswordTextBox.Location = new System.Drawing.Point(118, 60);
+            this.NewPasswordTextBox.Location = new System.Drawing.Point(118, 65);
             this.NewPasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NewPasswordTextBox.Name = "NewPasswordTextBox";
             this.NewPasswordTextBox.Size = new System.Drawing.Size(147, 26);
@@ -321,7 +322,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label11.Location = new System.Drawing.Point(38, 63);
+            this.label11.Location = new System.Drawing.Point(38, 68);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 20);
             this.label11.TabIndex = 153;
@@ -331,7 +332,7 @@
             // OldPasswordTextBox
             // 
             this.OldPasswordTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.OldPasswordTextBox.Location = new System.Drawing.Point(118, 26);
+            this.OldPasswordTextBox.Location = new System.Drawing.Point(118, 28);
             this.OldPasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OldPasswordTextBox.Name = "OldPasswordTextBox";
             this.OldPasswordTextBox.Size = new System.Drawing.Size(147, 26);
@@ -342,7 +343,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label14.Location = new System.Drawing.Point(38, 29);
+            this.label14.Location = new System.Drawing.Point(38, 31);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(65, 20);
             this.label14.TabIndex = 151;
@@ -354,7 +355,7 @@
             this.ChangePasswordCheckBox.AutoSize = true;
             this.ChangePasswordCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.ChangePasswordCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.ChangePasswordCheckBox.Location = new System.Drawing.Point(32, 215);
+            this.ChangePasswordCheckBox.Location = new System.Drawing.Point(32, 233);
             this.ChangePasswordCheckBox.Name = "ChangePasswordCheckBox";
             this.ChangePasswordCheckBox.Size = new System.Drawing.Size(75, 21);
             this.ChangePasswordCheckBox.TabIndex = 158;
@@ -365,7 +366,7 @@
             // tbInfo9
             // 
             this.tbInfo9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo9.Location = new System.Drawing.Point(120, 174);
+            this.tbInfo9.Location = new System.Drawing.Point(120, 189);
             this.tbInfo9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo9.Name = "tbInfo9";
             this.tbInfo9.Size = new System.Drawing.Size(177, 26);
@@ -374,7 +375,7 @@
             // tbInfo10
             // 
             this.tbInfo10.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbInfo10.Location = new System.Drawing.Point(394, 176);
+            this.tbInfo10.Location = new System.Drawing.Point(394, 191);
             this.tbInfo10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbInfo10.Name = "tbInfo10";
             this.tbInfo10.Size = new System.Drawing.Size(177, 26);
@@ -384,7 +385,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label8.Location = new System.Drawing.Point(343, 179);
+            this.label8.Location = new System.Drawing.Point(343, 194);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 20);
             this.label8.TabIndex = 160;
@@ -394,34 +395,51 @@
             // 
             this.ChangePasswordLabel.AutoSize = true;
             this.ChangePasswordLabel.ForeColor = System.Drawing.Color.Red;
-            this.ChangePasswordLabel.Location = new System.Drawing.Point(118, 219);
+            this.ChangePasswordLabel.Location = new System.Drawing.Point(118, 237);
             this.ChangePasswordLabel.Name = "ChangePasswordLabel";
-            this.ChangePasswordLabel.Size = new System.Drawing.Size(0, 12);
+            this.ChangePasswordLabel.Size = new System.Drawing.Size(0, 13);
             this.ChangePasswordLabel.TabIndex = 161;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Location = new System.Drawing.Point(329, 242);
+            this.groupBox1.Controls.Add(this.SignqqButton);
+            this.groupBox1.Controls.Add(this.SignPictureBox);
+            this.groupBox1.Location = new System.Drawing.Point(329, 262);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 172);
+            this.groupBox1.Size = new System.Drawing.Size(242, 186);
             this.groupBox1.TabIndex = 162;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "电子签名";
             // 
-            // pictureBox1
+            // SignPictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(18, 60);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(207, 100);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.SignPictureBox.BackColor = System.Drawing.Color.White;
+            this.SignPictureBox.Location = new System.Drawing.Point(18, 31);
+            this.SignPictureBox.Name = "SignPictureBox";
+            this.SignPictureBox.Size = new System.Drawing.Size(208, 98);
+            this.SignPictureBox.TabIndex = 2;
+            this.SignPictureBox.TabStop = false;
+            this.SignPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.SignPictureBox_Paint);
+            // 
+            // SignqqButton
+            // 
+            this.SignqqButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.SignqqButton.Image = ((System.Drawing.Image)(resources.GetObject("SignqqButton.Image")));
+            this.SignqqButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.SignqqButton.Location = new System.Drawing.Point(115, 142);
+            this.SignqqButton.Name = "SignqqButton";
+            this.SignqqButton.Size = new System.Drawing.Size(111, 30);
+            this.SignqqButton.TabIndex = 156;
+            this.SignqqButton.Text = "设置签名";
+            this.SignqqButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SignqqButton.UseVisualStyleBackColor = true;
+            this.SignqqButton.Click += new System.EventHandler(this.SignqqButton_Click);
             // 
             // Setting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 488);
+            this.ClientSize = new System.Drawing.Size(597, 529);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ChangePasswordLabel);
             this.Controls.Add(this.tbInfo10);
@@ -455,7 +473,7 @@
             this.PasswordGroupBox.ResumeLayout(false);
             this.PasswordGroupBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SignPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,6 +514,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label ChangePasswordLabel;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox SignPictureBox;
+        private ControlExs.QQButton SignqqButton;
     }
 }

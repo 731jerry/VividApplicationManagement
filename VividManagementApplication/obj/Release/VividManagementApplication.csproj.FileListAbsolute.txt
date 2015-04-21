@@ -73,11 +73,6 @@ Z:\VividApplicationManagement\VividManagementApplication\obj\Release\VividManage
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe.config
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.exe
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.pdb
-C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe.config
-C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.exe
-C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.pdb
-C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.exe
-C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\VividManagementApplication.pdb
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\ControlExs.dll
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\MySql.Data.dll
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
@@ -136,3 +131,9 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\管账宝.pdb
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.FrmSignature.resources
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe.config
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Signature.resources

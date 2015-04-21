@@ -14,6 +14,7 @@ namespace VividManagementApplication
     public partial class Setting : Form
     {
         private Boolean isChangedPassword = false;
+
         public Setting()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace VividManagementApplication
             tbInfo9.Text = MainWindow.COMPANY_OWNER;
             tbInfo10.Text = MainWindow.QQ;
 
+           
         }
 
         private void ChangePasswordCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -90,6 +92,7 @@ namespace VividManagementApplication
                 NewPasswordTextBox2.Clear();
             }
         }
+
         /// <summary>
         /// 保存数据
         /// </summary>
@@ -138,17 +141,29 @@ namespace VividManagementApplication
         }
        
         Bitmap bitmap;
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+       
+        private void SignPictureBox_Paint(object sender, PaintEventArgs e)
         {
             if (bitmap != null)
             {
-                e.Graphics.DrawImage(bitmap, 0, 0, this.pictureBox1.Width, this.pictureBox1.Height);
-                this.pictureBox1.Image = bitmap;
-                byte[] temp = BitmapToBytes(bitmap);
-                label2.Text = Convert.ToBase64String(temp);
+                e.Graphics.DrawImage(bitmap, 0, 0, this.SignPictureBox.Width, this.SignPictureBox.Height);
+                this.SignPictureBox.Image = bitmap;
+                //byte[] temp = BitmapToBytes(bitmap);
+                //label2.Text = Convert.ToBase64String(temp);
             }
         }
-       
+
+        private void SignqqButton_Click(object sender, EventArgs e)
+        {
+            // 如果未签名则开启签名
+            Signature fm = new Signature();
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                bitmap = fm.SavedBitmap;
+                this.SignPictureBox.Invalidate();
+            }
+        }
+
         //byte[] 转换 Bitmap
         public static Bitmap BytesToBitmap(byte[] Bytes)
         {
@@ -193,5 +208,6 @@ namespace VividManagementApplication
                 ms.Close();
             }
         }
+
     }
 }
