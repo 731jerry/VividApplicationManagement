@@ -205,7 +205,9 @@ namespace VividManagementApplication
         {
             if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
             {
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
                 DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
             }
             else
             {
