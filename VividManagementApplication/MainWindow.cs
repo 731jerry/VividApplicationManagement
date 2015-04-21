@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Threading;
 using ControlExs;
 using System.Drawing.Drawing2D;
 using System.Web;
@@ -64,10 +64,14 @@ namespace VividManagementApplication
         public static String UPDATE_VERSION_URL = "http://www.vividapp.net/Project/GZB/Update/version.txt"; // 更新app版本的文件地址
         public static String UPDATE_VERSION_LOG_URL = "http://www.vividapp.net/Project/GZB/Update/versionlog.txt"; // 更新app版本记录的文件地址
 
+        System.Timers.Timer updateDataTimersTimer;
+
         string dataBaseFilePrefix;
+
         public MainWindow()
         {
             InitializeComponent();
+            //Control.CheckForIllegalCrossThreadCalls = false;//这一行是关键 
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -116,8 +120,37 @@ namespace VividManagementApplication
 
                 // 广告计时器
                 //commerceTimer.Enabled = true;
-                // 更新数据库计时器
+
+                #region 更新数据库计时器
+                //DownloadFileWithNotice();
+
                 updateDataTimer.Enabled = true;
+
+                //Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
+                //t.Start();
+
+                //updateDataTimersTimer = new System.Timers.Timer(1000);
+                //updateDataTimersTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateDataTimersTimer_Elapsed);//到达时间的时候执行事件；  
+                //updateDataTimersTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；  
+                //updateDataTimersTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
+                //if (this.IsDisposed)
+                //{
+                //    updateDataTimersTimer.Stop();
+                //}  
+
+                //using (BackgroundWorker bw = new BackgroundWorker())
+                //{
+                //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+                //    bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+                //    bw.RunWorkerAsync("Hello World");
+                //}
+
+                //this.Invoke(new MethodInvoker(() =>
+                //{
+                //    DownloadFileWithNotice();
+                //}));
+                #endregion
+
                 #endregion
 
                 #region 窗体滚动通知初始化
@@ -186,12 +219,45 @@ namespace VividManagementApplication
         }
 
         #region 上传下载数据库文件 同步数据库
+        private void updateDataTimersTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (!this.InvokeRequired)
+            {
+                DownloadFileWithNotice();
+            }
+            else
+            {
+                this.Invoke(new MethodInvoker(() => { DownloadFileWithNotice(); }));
+            }
+        }
+
+        private void DownloadFileWithNoticeWithObject(object obj)
+        {
+            DownloadFileWithNotice();
+        }
+
+        void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
+            //e.Result = e.Argument;//这里只是简单的把参数当做结果返回，当然您也可以在这里做复杂的处理后，再返回自己想要的结果(这里的操作是在另一个线程上完成的)
+            //DownloadFileWithNotice();
+        }
+
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //这时后台线程已经完成，并返回了主线程，所以可以直接使用UI控件了
+            //this.textBox1.Text = e.Result.ToString();
+            //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
+            DownloadFileWithNotice();
+        }
+
         private void updateDataTimer_Tick(object sender, EventArgs e)
         {
             updateDataTimer.Enabled = false;
             // 暂时备份
             DownloadFileWithNotice();
         }
+
         private void backupData_Click(object sender, EventArgs e)
         {
             pbUploadDownloadFile.Visible = true;
