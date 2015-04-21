@@ -475,8 +475,8 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
-                    //checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfID, tbHTghfID, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
-                    checkValidateControls = new List<Control>() { HTtbID };
+                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfID, tbHTghfID, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
+                    //checkValidateControls = new List<Control>() { HTtbID };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
                     detailedHeightDis = 60;
@@ -1120,29 +1120,6 @@ namespace VividManagementApplication
                 default:
                     break;
                 case 0:// 购买
-                    tbHTxsfName.Text = MainWindow.COMPANY_NAME;
-                    tbHTxsfAddress.Text = MainWindow.ADDRESS;
-                    tbHTxsfPresenter.Text = MainWindow.COMPANY_OWNER;
-                    tbHTxsfFax.Text = MainWindow.FAX;
-                    tbHTxsfPhone.Text = MainWindow.PHONE;
-                    tbHTxsfEmail.Text = MainWindow.EMAIL;
-                    tbHTxsfBankName.Text = MainWindow.BANK_NAME;
-                    tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
-                    tbHTxsfID.Items.Clear();
-
-                    // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
-                    //tbHTghfID.SelectedIndex = 0;
-                    tbHTghfName.Text = "";
-                    tbHTghfAddress.Text = "";
-                    tbHTghfPresenter.Text = "";
-                    tbHTghfFax.Text = "";
-                    tbHTghfPhone.Text = "";
-                    tbHTghfEmail.Text = "";
-                    tbHTghfBankName.Text = "";
-                    tbHTghfBankNumber.Text = "";
-                    break;
-                case 1:// 销售
                     tbHTghfName.Text = MainWindow.COMPANY_NAME;
                     tbHTghfAddress.Text = MainWindow.ADDRESS;
                     tbHTghfPresenter.Text = MainWindow.COMPANY_OWNER;
@@ -1165,27 +1142,56 @@ namespace VividManagementApplication
                     tbHTxsfBankName.Text = "";
                     tbHTxsfBankNumber.Text = "";
                     break;
+                case 1:// 销售
+                    tbHTxsfName.Text = MainWindow.COMPANY_NAME;
+                    tbHTxsfAddress.Text = MainWindow.ADDRESS;
+                    tbHTxsfPresenter.Text = MainWindow.COMPANY_OWNER;
+                    tbHTxsfFax.Text = MainWindow.FAX;
+                    tbHTxsfPhone.Text = MainWindow.PHONE;
+                    tbHTxsfEmail.Text = MainWindow.EMAIL;
+                    tbHTxsfBankName.Text = MainWindow.BANK_NAME;
+                    tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
+                    tbHTxsfID.Items.Clear();
+
+                    // 添加客户编号
+                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
+                    //tbHTghfID.SelectedIndex = 0;
+                    tbHTghfName.Text = "";
+                    tbHTghfAddress.Text = "";
+                    tbHTghfPresenter.Text = "";
+                    tbHTghfFax.Text = "";
+                    tbHTghfPhone.Text = "";
+                    tbHTghfEmail.Text = "";
+                    tbHTghfBankName.Text = "";
+                    tbHTghfBankNumber.Text = "";
+                    break;
             }
         }
 
         private void tbHTxsfID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
+            if (!tbHTxsfID.Text.Equals(""))
+            {
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTxsfName, tbHTxsfAddress, tbHTxsfPresenter, tbHTxsfFax, tbHTxsfPhone, tbHTxsfEmail, tbHTxsfBankName, tbHTxsfBankNumber },
-                    DatabaseConnections.GetInstence().LocalGetOneRowDataById(
-                    "clients",
-                    new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
-                    "clientID", tbHTxsfID.Text).ToList<String>());
+                        DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                        "clients",
+                        new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
+                        "clientID", tbHTxsfID.Text).ToList<String>());
+            }
         }
 
         private void tbHTghfID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
+            if (!tbHTghfID.Text.Equals(""))
+            {
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTghfName, tbHTghfAddress, tbHTghfPresenter, tbHTghfFax, tbHTghfPhone, tbHTghfEmail, tbHTghfBankName, tbHTghfBankNumber },
-                         DatabaseConnections.GetInstence().LocalGetOneRowDataById(
-                         "clients",
-                         new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
-                         "clientID", tbHTghfID.Text).ToList<String>());
+                             DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                             "clients",
+                             new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
+                             "clientID", tbHTghfID.Text).ToList<String>());
+            }
         }
 
         private void addItemsToCombox(List<String> items, ComboBox cb)
@@ -2386,8 +2392,6 @@ namespace VividManagementApplication
         {
             tbClient2Tooltip.Hide(tbClient2);
         }
-
-
 
 
 

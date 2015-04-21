@@ -246,42 +246,24 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.DetailedHTPanel = new System.Windows.Forms.Panel();
             this.tbHTghfID = new System.Windows.Forms.ComboBox();
-            this.tbHTxsfID = new System.Windows.Forms.ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label94 = new System.Windows.Forms.Label();
             this.textBox75 = new System.Windows.Forms.TextBox();
             this.tbHTghfBankNumber = new System.Windows.Forms.TextBox();
-            this.textBox77 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfBankNumber = new System.Windows.Forms.TextBox();
             this.textBox511 = new System.Windows.Forms.TextBox();
             this.tbHTghfBankName = new System.Windows.Forms.TextBox();
-            this.textBox513 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfBankName = new System.Windows.Forms.TextBox();
             this.textBox507 = new System.Windows.Forms.TextBox();
             this.tbHTghfEmail = new System.Windows.Forms.TextBox();
             this.textBox509 = new System.Windows.Forms.TextBox();
             this.tbHTghfFax = new System.Windows.Forms.TextBox();
-            this.textBox503 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfEmail = new System.Windows.Forms.TextBox();
-            this.textBox505 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfFax = new System.Windows.Forms.TextBox();
             this.textBox495 = new System.Windows.Forms.TextBox();
             this.tbHTghfPhone = new System.Windows.Forms.TextBox();
-            this.textBox497 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfPhone = new System.Windows.Forms.TextBox();
             this.textBox499 = new System.Windows.Forms.TextBox();
             this.tbHTghfPresenter = new System.Windows.Forms.TextBox();
-            this.textBox501 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfPresenter = new System.Windows.Forms.TextBox();
             this.textBox491 = new System.Windows.Forms.TextBox();
             this.tbHTghfAddress = new System.Windows.Forms.TextBox();
-            this.textBox493 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfAddress = new System.Windows.Forms.TextBox();
             this.textBox489 = new System.Windows.Forms.TextBox();
             this.tbHTghfName = new System.Windows.Forms.TextBox();
-            this.textBox488 = new System.Windows.Forms.TextBox();
-            this.tbHTxsfName = new System.Windows.Forms.TextBox();
             this.PanelHT = new System.Windows.Forms.Panel();
             this.cbHTGoodsA0 = new System.Windows.Forms.TextBox();
             this.cbHTGoodsE0 = new System.Windows.Forms.TextBox();
@@ -368,6 +350,25 @@
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.PreviewPrintButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tbHTxsfID = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox77 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfBankNumber = new System.Windows.Forms.TextBox();
+            this.textBox513 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfBankName = new System.Windows.Forms.TextBox();
+            this.textBox503 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfEmail = new System.Windows.Forms.TextBox();
+            this.textBox505 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfFax = new System.Windows.Forms.TextBox();
+            this.textBox497 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfPhone = new System.Windows.Forms.TextBox();
+            this.textBox501 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfPresenter = new System.Windows.Forms.TextBox();
+            this.textBox493 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfAddress = new System.Windows.Forms.TextBox();
+            this.textBox488 = new System.Windows.Forms.TextBox();
+            this.tbHTxsfName = new System.Windows.Forms.TextBox();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -391,6 +392,7 @@
             this.DetailedTabView.Controls.Add(this.tabPage2);
             this.DetailedTabView.Controls.Add(this.tabPage3);
             this.DetailedTabView.Controls.Add(this.tabPage4);
+            this.DetailedTabView.Controls.Add(this.tabPage5);
             this.DetailedTabView.Location = new System.Drawing.Point(10, 1);
             this.DetailedTabView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DetailedTabView.Name = "DetailedTabView";
@@ -2837,43 +2839,43 @@
             // 
             // DetailedHTPanel
             // 
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfID);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfID);
-            this.DetailedHTPanel.Controls.Add(this.textBox3);
             this.DetailedHTPanel.Controls.Add(this.textBox1);
-            this.DetailedHTPanel.Controls.Add(this.label94);
-            this.DetailedHTPanel.Controls.Add(this.textBox75);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfBankNumber);
             this.DetailedHTPanel.Controls.Add(this.textBox77);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfBankNumber);
-            this.DetailedHTPanel.Controls.Add(this.textBox511);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfBankName);
             this.DetailedHTPanel.Controls.Add(this.textBox513);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfBankName);
-            this.DetailedHTPanel.Controls.Add(this.textBox507);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfEmail);
-            this.DetailedHTPanel.Controls.Add(this.textBox509);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfFax);
             this.DetailedHTPanel.Controls.Add(this.textBox503);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfEmail);
             this.DetailedHTPanel.Controls.Add(this.textBox505);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfFax);
-            this.DetailedHTPanel.Controls.Add(this.textBox495);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfPhone);
             this.DetailedHTPanel.Controls.Add(this.textBox497);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfPhone);
-            this.DetailedHTPanel.Controls.Add(this.textBox499);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfPresenter);
             this.DetailedHTPanel.Controls.Add(this.textBox501);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfPresenter);
-            this.DetailedHTPanel.Controls.Add(this.textBox491);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfAddress);
             this.DetailedHTPanel.Controls.Add(this.textBox493);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfAddress);
-            this.DetailedHTPanel.Controls.Add(this.textBox489);
-            this.DetailedHTPanel.Controls.Add(this.tbHTghfName);
             this.DetailedHTPanel.Controls.Add(this.textBox488);
             this.DetailedHTPanel.Controls.Add(this.tbHTxsfName);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfID);
+            this.DetailedHTPanel.Controls.Add(this.textBox3);
+            this.DetailedHTPanel.Controls.Add(this.label94);
+            this.DetailedHTPanel.Controls.Add(this.textBox75);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfBankNumber);
+            this.DetailedHTPanel.Controls.Add(this.textBox511);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfBankName);
+            this.DetailedHTPanel.Controls.Add(this.textBox507);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfEmail);
+            this.DetailedHTPanel.Controls.Add(this.textBox509);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfFax);
+            this.DetailedHTPanel.Controls.Add(this.textBox495);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfPhone);
+            this.DetailedHTPanel.Controls.Add(this.textBox499);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfPresenter);
+            this.DetailedHTPanel.Controls.Add(this.textBox491);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfAddress);
+            this.DetailedHTPanel.Controls.Add(this.textBox489);
+            this.DetailedHTPanel.Controls.Add(this.tbHTghfName);
             this.DetailedHTPanel.Controls.Add(this.PanelHT);
             this.DetailedHTPanel.Controls.Add(this.HTcbChoose6);
             this.DetailedHTPanel.Controls.Add(this.label127);
@@ -2905,43 +2907,22 @@
             // 
             this.tbHTghfID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbHTghfID.FormattingEnabled = true;
-            this.tbHTghfID.Location = new System.Drawing.Point(494, 73);
+            this.tbHTghfID.Location = new System.Drawing.Point(97, 82);
             this.tbHTghfID.Name = "tbHTghfID";
             this.tbHTghfID.Size = new System.Drawing.Size(310, 25);
             this.tbHTghfID.TabIndex = 676;
             this.tbHTghfID.SelectedIndexChanged += new System.EventHandler(this.tbHTghfID_SelectedIndexChanged);
             // 
-            // tbHTxsfID
-            // 
-            this.tbHTxsfID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tbHTxsfID.FormattingEnabled = true;
-            this.tbHTxsfID.Location = new System.Drawing.Point(96, 73);
-            this.tbHTxsfID.Name = "tbHTxsfID";
-            this.tbHTxsfID.Size = new System.Drawing.Size(310, 25);
-            this.tbHTxsfID.TabIndex = 675;
-            this.tbHTxsfID.SelectedIndexChanged += new System.EventHandler(this.tbHTxsfID_SelectedIndexChanged);
-            // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.textBox3.Location = new System.Drawing.Point(405, 73);
+            this.textBox3.Location = new System.Drawing.Point(8, 82);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(90, 25);
             this.textBox3.TabIndex = 674;
             this.textBox3.Text = "客户编号";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.textBox1.Location = new System.Drawing.Point(7, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(90, 25);
-            this.textBox1.TabIndex = 673;
-            this.textBox1.Text = "客户编号";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label94
             // 
@@ -2956,7 +2937,7 @@
             // textBox75
             // 
             this.textBox75.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox75.Location = new System.Drawing.Point(405, 197);
+            this.textBox75.Location = new System.Drawing.Point(8, 206);
             this.textBox75.Name = "textBox75";
             this.textBox75.ReadOnly = true;
             this.textBox75.Size = new System.Drawing.Size(90, 21);
@@ -2967,36 +2948,16 @@
             // tbHTghfBankNumber
             // 
             this.tbHTghfBankNumber.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfBankNumber.Location = new System.Drawing.Point(494, 197);
+            this.tbHTghfBankNumber.Location = new System.Drawing.Point(97, 206);
             this.tbHTghfBankNumber.Name = "tbHTghfBankNumber";
             this.tbHTghfBankNumber.ReadOnly = true;
             this.tbHTghfBankNumber.Size = new System.Drawing.Size(310, 21);
             this.tbHTghfBankNumber.TabIndex = 669;
             // 
-            // textBox77
-            // 
-            this.textBox77.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox77.Location = new System.Drawing.Point(7, 197);
-            this.textBox77.Name = "textBox77";
-            this.textBox77.ReadOnly = true;
-            this.textBox77.Size = new System.Drawing.Size(90, 21);
-            this.textBox77.TabIndex = 668;
-            this.textBox77.Text = "账      号";
-            this.textBox77.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfBankNumber
-            // 
-            this.tbHTxsfBankNumber.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfBankNumber.Location = new System.Drawing.Point(96, 197);
-            this.tbHTxsfBankNumber.Name = "tbHTxsfBankNumber";
-            this.tbHTxsfBankNumber.ReadOnly = true;
-            this.tbHTxsfBankNumber.Size = new System.Drawing.Size(310, 21);
-            this.tbHTxsfBankNumber.TabIndex = 667;
-            // 
             // textBox511
             // 
             this.textBox511.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox511.Location = new System.Drawing.Point(405, 177);
+            this.textBox511.Location = new System.Drawing.Point(8, 186);
             this.textBox511.Name = "textBox511";
             this.textBox511.ReadOnly = true;
             this.textBox511.Size = new System.Drawing.Size(90, 21);
@@ -3007,36 +2968,16 @@
             // tbHTghfBankName
             // 
             this.tbHTghfBankName.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfBankName.Location = new System.Drawing.Point(494, 177);
+            this.tbHTghfBankName.Location = new System.Drawing.Point(97, 186);
             this.tbHTghfBankName.Name = "tbHTghfBankName";
             this.tbHTghfBankName.ReadOnly = true;
             this.tbHTghfBankName.Size = new System.Drawing.Size(310, 21);
             this.tbHTghfBankName.TabIndex = 665;
             // 
-            // textBox513
-            // 
-            this.textBox513.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox513.Location = new System.Drawing.Point(7, 177);
-            this.textBox513.Name = "textBox513";
-            this.textBox513.ReadOnly = true;
-            this.textBox513.Size = new System.Drawing.Size(90, 21);
-            this.textBox513.TabIndex = 664;
-            this.textBox513.Text = "开  户  行";
-            this.textBox513.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfBankName
-            // 
-            this.tbHTxsfBankName.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfBankName.Location = new System.Drawing.Point(96, 177);
-            this.tbHTxsfBankName.Name = "tbHTxsfBankName";
-            this.tbHTxsfBankName.ReadOnly = true;
-            this.tbHTxsfBankName.Size = new System.Drawing.Size(310, 21);
-            this.tbHTxsfBankName.TabIndex = 663;
-            // 
             // textBox507
             // 
             this.textBox507.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox507.Location = new System.Drawing.Point(623, 157);
+            this.textBox507.Location = new System.Drawing.Point(226, 166);
             this.textBox507.Name = "textBox507";
             this.textBox507.ReadOnly = true;
             this.textBox507.Size = new System.Drawing.Size(60, 21);
@@ -3047,7 +2988,7 @@
             // tbHTghfEmail
             // 
             this.tbHTghfEmail.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfEmail.Location = new System.Drawing.Point(681, 157);
+            this.tbHTghfEmail.Location = new System.Drawing.Point(284, 166);
             this.tbHTghfEmail.Name = "tbHTghfEmail";
             this.tbHTghfEmail.ReadOnly = true;
             this.tbHTghfEmail.Size = new System.Drawing.Size(123, 21);
@@ -3056,7 +2997,7 @@
             // textBox509
             // 
             this.textBox509.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox509.Location = new System.Drawing.Point(623, 137);
+            this.textBox509.Location = new System.Drawing.Point(226, 146);
             this.textBox509.Name = "textBox509";
             this.textBox509.ReadOnly = true;
             this.textBox509.Size = new System.Drawing.Size(60, 21);
@@ -3067,56 +3008,16 @@
             // tbHTghfFax
             // 
             this.tbHTghfFax.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfFax.Location = new System.Drawing.Point(681, 137);
+            this.tbHTghfFax.Location = new System.Drawing.Point(284, 146);
             this.tbHTghfFax.Name = "tbHTghfFax";
             this.tbHTghfFax.ReadOnly = true;
             this.tbHTghfFax.Size = new System.Drawing.Size(123, 21);
             this.tbHTghfFax.TabIndex = 659;
             // 
-            // textBox503
-            // 
-            this.textBox503.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox503.Location = new System.Drawing.Point(226, 157);
-            this.textBox503.Name = "textBox503";
-            this.textBox503.ReadOnly = true;
-            this.textBox503.Size = new System.Drawing.Size(60, 21);
-            this.textBox503.TabIndex = 658;
-            this.textBox503.Text = "E-mail";
-            this.textBox503.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfEmail
-            // 
-            this.tbHTxsfEmail.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfEmail.Location = new System.Drawing.Point(283, 157);
-            this.tbHTxsfEmail.Name = "tbHTxsfEmail";
-            this.tbHTxsfEmail.ReadOnly = true;
-            this.tbHTxsfEmail.Size = new System.Drawing.Size(123, 21);
-            this.tbHTxsfEmail.TabIndex = 657;
-            // 
-            // textBox505
-            // 
-            this.textBox505.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox505.Location = new System.Drawing.Point(226, 137);
-            this.textBox505.Name = "textBox505";
-            this.textBox505.ReadOnly = true;
-            this.textBox505.Size = new System.Drawing.Size(60, 21);
-            this.textBox505.TabIndex = 656;
-            this.textBox505.Text = "传 真";
-            this.textBox505.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfFax
-            // 
-            this.tbHTxsfFax.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfFax.Location = new System.Drawing.Point(283, 137);
-            this.tbHTxsfFax.Name = "tbHTxsfFax";
-            this.tbHTxsfFax.ReadOnly = true;
-            this.tbHTxsfFax.Size = new System.Drawing.Size(123, 21);
-            this.tbHTxsfFax.TabIndex = 655;
-            // 
             // textBox495
             // 
             this.textBox495.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox495.Location = new System.Drawing.Point(405, 157);
+            this.textBox495.Location = new System.Drawing.Point(8, 166);
             this.textBox495.Name = "textBox495";
             this.textBox495.ReadOnly = true;
             this.textBox495.Size = new System.Drawing.Size(90, 21);
@@ -3127,36 +3028,16 @@
             // tbHTghfPhone
             // 
             this.tbHTghfPhone.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfPhone.Location = new System.Drawing.Point(493, 157);
+            this.tbHTghfPhone.Location = new System.Drawing.Point(96, 166);
             this.tbHTghfPhone.Name = "tbHTghfPhone";
             this.tbHTghfPhone.ReadOnly = true;
             this.tbHTghfPhone.Size = new System.Drawing.Size(131, 21);
             this.tbHTghfPhone.TabIndex = 653;
             // 
-            // textBox497
-            // 
-            this.textBox497.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox497.Location = new System.Drawing.Point(7, 157);
-            this.textBox497.Name = "textBox497";
-            this.textBox497.ReadOnly = true;
-            this.textBox497.Size = new System.Drawing.Size(90, 21);
-            this.textBox497.TabIndex = 652;
-            this.textBox497.Text = "电      话";
-            this.textBox497.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfPhone
-            // 
-            this.tbHTxsfPhone.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfPhone.Location = new System.Drawing.Point(96, 157);
-            this.tbHTxsfPhone.Name = "tbHTxsfPhone";
-            this.tbHTxsfPhone.ReadOnly = true;
-            this.tbHTxsfPhone.Size = new System.Drawing.Size(131, 21);
-            this.tbHTxsfPhone.TabIndex = 651;
-            // 
             // textBox499
             // 
             this.textBox499.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox499.Location = new System.Drawing.Point(405, 137);
+            this.textBox499.Location = new System.Drawing.Point(8, 146);
             this.textBox499.Name = "textBox499";
             this.textBox499.ReadOnly = true;
             this.textBox499.Size = new System.Drawing.Size(90, 21);
@@ -3167,34 +3048,15 @@
             // tbHTghfPresenter
             // 
             this.tbHTghfPresenter.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfPresenter.Location = new System.Drawing.Point(493, 137);
+            this.tbHTghfPresenter.Location = new System.Drawing.Point(96, 146);
             this.tbHTghfPresenter.Name = "tbHTghfPresenter";
             this.tbHTghfPresenter.Size = new System.Drawing.Size(131, 21);
             this.tbHTghfPresenter.TabIndex = 649;
             // 
-            // textBox501
-            // 
-            this.textBox501.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox501.Location = new System.Drawing.Point(7, 137);
-            this.textBox501.Name = "textBox501";
-            this.textBox501.ReadOnly = true;
-            this.textBox501.Size = new System.Drawing.Size(90, 21);
-            this.textBox501.TabIndex = 648;
-            this.textBox501.Text = "法定代表人";
-            this.textBox501.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfPresenter
-            // 
-            this.tbHTxsfPresenter.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfPresenter.Location = new System.Drawing.Point(96, 137);
-            this.tbHTxsfPresenter.Name = "tbHTxsfPresenter";
-            this.tbHTxsfPresenter.Size = new System.Drawing.Size(131, 21);
-            this.tbHTxsfPresenter.TabIndex = 647;
-            // 
             // textBox491
             // 
             this.textBox491.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox491.Location = new System.Drawing.Point(405, 117);
+            this.textBox491.Location = new System.Drawing.Point(8, 126);
             this.textBox491.Name = "textBox491";
             this.textBox491.ReadOnly = true;
             this.textBox491.Size = new System.Drawing.Size(90, 21);
@@ -3205,36 +3067,16 @@
             // tbHTghfAddress
             // 
             this.tbHTghfAddress.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfAddress.Location = new System.Drawing.Point(494, 117);
+            this.tbHTghfAddress.Location = new System.Drawing.Point(97, 126);
             this.tbHTghfAddress.Name = "tbHTghfAddress";
             this.tbHTghfAddress.ReadOnly = true;
             this.tbHTghfAddress.Size = new System.Drawing.Size(310, 21);
             this.tbHTghfAddress.TabIndex = 645;
             // 
-            // textBox493
-            // 
-            this.textBox493.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox493.Location = new System.Drawing.Point(7, 117);
-            this.textBox493.Name = "textBox493";
-            this.textBox493.ReadOnly = true;
-            this.textBox493.Size = new System.Drawing.Size(90, 21);
-            this.textBox493.TabIndex = 644;
-            this.textBox493.Text = "地      址";
-            this.textBox493.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfAddress
-            // 
-            this.tbHTxsfAddress.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfAddress.Location = new System.Drawing.Point(96, 117);
-            this.tbHTxsfAddress.Name = "tbHTxsfAddress";
-            this.tbHTxsfAddress.ReadOnly = true;
-            this.tbHTxsfAddress.Size = new System.Drawing.Size(310, 21);
-            this.tbHTxsfAddress.TabIndex = 643;
-            // 
             // textBox489
             // 
             this.textBox489.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox489.Location = new System.Drawing.Point(405, 97);
+            this.textBox489.Location = new System.Drawing.Point(8, 106);
             this.textBox489.Name = "textBox489";
             this.textBox489.ReadOnly = true;
             this.textBox489.Size = new System.Drawing.Size(90, 21);
@@ -3245,31 +3087,11 @@
             // tbHTghfName
             // 
             this.tbHTghfName.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTghfName.Location = new System.Drawing.Point(494, 97);
+            this.tbHTghfName.Location = new System.Drawing.Point(97, 106);
             this.tbHTghfName.Name = "tbHTghfName";
             this.tbHTghfName.ReadOnly = true;
             this.tbHTghfName.Size = new System.Drawing.Size(310, 21);
             this.tbHTghfName.TabIndex = 641;
-            // 
-            // textBox488
-            // 
-            this.textBox488.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.textBox488.Location = new System.Drawing.Point(7, 97);
-            this.textBox488.Name = "textBox488";
-            this.textBox488.ReadOnly = true;
-            this.textBox488.Size = new System.Drawing.Size(90, 21);
-            this.textBox488.TabIndex = 640;
-            this.textBox488.Text = "销货方名称";
-            this.textBox488.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tbHTxsfName
-            // 
-            this.tbHTxsfName.Font = new System.Drawing.Font("黑体", 8.7F);
-            this.tbHTxsfName.Location = new System.Drawing.Point(96, 97);
-            this.tbHTxsfName.Name = "tbHTxsfName";
-            this.tbHTxsfName.ReadOnly = true;
-            this.tbHTxsfName.Size = new System.Drawing.Size(310, 21);
-            this.tbHTxsfName.TabIndex = 639;
             // 
             // PanelHT
             // 
@@ -4269,6 +4091,196 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(817, 602);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tbHTxsfID
+            // 
+            this.tbHTxsfID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tbHTxsfID.FormattingEnabled = true;
+            this.tbHTxsfID.Location = new System.Drawing.Point(494, 82);
+            this.tbHTxsfID.Name = "tbHTxsfID";
+            this.tbHTxsfID.Size = new System.Drawing.Size(310, 25);
+            this.tbHTxsfID.TabIndex = 694;
+            this.tbHTxsfID.SelectedIndexChanged += new System.EventHandler(this.tbHTxsfID_SelectedIndexChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.textBox1.Location = new System.Drawing.Point(405, 82);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(90, 25);
+            this.textBox1.TabIndex = 693;
+            this.textBox1.Text = "客户编号";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox77
+            // 
+            this.textBox77.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox77.Location = new System.Drawing.Point(405, 206);
+            this.textBox77.Name = "textBox77";
+            this.textBox77.ReadOnly = true;
+            this.textBox77.Size = new System.Drawing.Size(90, 21);
+            this.textBox77.TabIndex = 692;
+            this.textBox77.Text = "账      号";
+            this.textBox77.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfBankNumber
+            // 
+            this.tbHTxsfBankNumber.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfBankNumber.Location = new System.Drawing.Point(494, 206);
+            this.tbHTxsfBankNumber.Name = "tbHTxsfBankNumber";
+            this.tbHTxsfBankNumber.ReadOnly = true;
+            this.tbHTxsfBankNumber.Size = new System.Drawing.Size(310, 21);
+            this.tbHTxsfBankNumber.TabIndex = 691;
+            // 
+            // textBox513
+            // 
+            this.textBox513.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox513.Location = new System.Drawing.Point(405, 186);
+            this.textBox513.Name = "textBox513";
+            this.textBox513.ReadOnly = true;
+            this.textBox513.Size = new System.Drawing.Size(90, 21);
+            this.textBox513.TabIndex = 690;
+            this.textBox513.Text = "开  户  行";
+            this.textBox513.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfBankName
+            // 
+            this.tbHTxsfBankName.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfBankName.Location = new System.Drawing.Point(494, 186);
+            this.tbHTxsfBankName.Name = "tbHTxsfBankName";
+            this.tbHTxsfBankName.ReadOnly = true;
+            this.tbHTxsfBankName.Size = new System.Drawing.Size(310, 21);
+            this.tbHTxsfBankName.TabIndex = 689;
+            // 
+            // textBox503
+            // 
+            this.textBox503.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox503.Location = new System.Drawing.Point(624, 166);
+            this.textBox503.Name = "textBox503";
+            this.textBox503.ReadOnly = true;
+            this.textBox503.Size = new System.Drawing.Size(60, 21);
+            this.textBox503.TabIndex = 688;
+            this.textBox503.Text = "E-mail";
+            this.textBox503.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfEmail
+            // 
+            this.tbHTxsfEmail.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfEmail.Location = new System.Drawing.Point(681, 166);
+            this.tbHTxsfEmail.Name = "tbHTxsfEmail";
+            this.tbHTxsfEmail.ReadOnly = true;
+            this.tbHTxsfEmail.Size = new System.Drawing.Size(123, 21);
+            this.tbHTxsfEmail.TabIndex = 687;
+            // 
+            // textBox505
+            // 
+            this.textBox505.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox505.Location = new System.Drawing.Point(624, 146);
+            this.textBox505.Name = "textBox505";
+            this.textBox505.ReadOnly = true;
+            this.textBox505.Size = new System.Drawing.Size(60, 21);
+            this.textBox505.TabIndex = 686;
+            this.textBox505.Text = "传 真";
+            this.textBox505.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfFax
+            // 
+            this.tbHTxsfFax.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfFax.Location = new System.Drawing.Point(681, 146);
+            this.tbHTxsfFax.Name = "tbHTxsfFax";
+            this.tbHTxsfFax.ReadOnly = true;
+            this.tbHTxsfFax.Size = new System.Drawing.Size(123, 21);
+            this.tbHTxsfFax.TabIndex = 685;
+            // 
+            // textBox497
+            // 
+            this.textBox497.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox497.Location = new System.Drawing.Point(405, 166);
+            this.textBox497.Name = "textBox497";
+            this.textBox497.ReadOnly = true;
+            this.textBox497.Size = new System.Drawing.Size(90, 21);
+            this.textBox497.TabIndex = 684;
+            this.textBox497.Text = "电      话";
+            this.textBox497.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfPhone
+            // 
+            this.tbHTxsfPhone.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfPhone.Location = new System.Drawing.Point(494, 166);
+            this.tbHTxsfPhone.Name = "tbHTxsfPhone";
+            this.tbHTxsfPhone.ReadOnly = true;
+            this.tbHTxsfPhone.Size = new System.Drawing.Size(131, 21);
+            this.tbHTxsfPhone.TabIndex = 683;
+            // 
+            // textBox501
+            // 
+            this.textBox501.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox501.Location = new System.Drawing.Point(405, 146);
+            this.textBox501.Name = "textBox501";
+            this.textBox501.ReadOnly = true;
+            this.textBox501.Size = new System.Drawing.Size(90, 21);
+            this.textBox501.TabIndex = 682;
+            this.textBox501.Text = "法定代表人";
+            this.textBox501.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfPresenter
+            // 
+            this.tbHTxsfPresenter.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfPresenter.Location = new System.Drawing.Point(494, 146);
+            this.tbHTxsfPresenter.Name = "tbHTxsfPresenter";
+            this.tbHTxsfPresenter.Size = new System.Drawing.Size(131, 21);
+            this.tbHTxsfPresenter.TabIndex = 681;
+            // 
+            // textBox493
+            // 
+            this.textBox493.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox493.Location = new System.Drawing.Point(405, 126);
+            this.textBox493.Name = "textBox493";
+            this.textBox493.ReadOnly = true;
+            this.textBox493.Size = new System.Drawing.Size(90, 21);
+            this.textBox493.TabIndex = 680;
+            this.textBox493.Text = "地      址";
+            this.textBox493.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfAddress
+            // 
+            this.tbHTxsfAddress.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfAddress.Location = new System.Drawing.Point(494, 126);
+            this.tbHTxsfAddress.Name = "tbHTxsfAddress";
+            this.tbHTxsfAddress.ReadOnly = true;
+            this.tbHTxsfAddress.Size = new System.Drawing.Size(310, 21);
+            this.tbHTxsfAddress.TabIndex = 679;
+            // 
+            // textBox488
+            // 
+            this.textBox488.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.textBox488.Location = new System.Drawing.Point(405, 106);
+            this.textBox488.Name = "textBox488";
+            this.textBox488.ReadOnly = true;
+            this.textBox488.Size = new System.Drawing.Size(90, 21);
+            this.textBox488.TabIndex = 678;
+            this.textBox488.Text = "销货方名称";
+            this.textBox488.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbHTxsfName
+            // 
+            this.tbHTxsfName.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.tbHTxsfName.Location = new System.Drawing.Point(494, 106);
+            this.tbHTxsfName.Name = "tbHTxsfName";
+            this.tbHTxsfName.ReadOnly = true;
+            this.tbHTxsfName.Size = new System.Drawing.Size(310, 21);
+            this.tbHTxsfName.TabIndex = 677;
+            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -4603,40 +4615,22 @@
         private System.Windows.Forms.Label label94;
         private System.Windows.Forms.TextBox textBox75;
         private System.Windows.Forms.TextBox tbHTghfBankNumber;
-        private System.Windows.Forms.TextBox textBox77;
-        private System.Windows.Forms.TextBox tbHTxsfBankNumber;
         private System.Windows.Forms.TextBox textBox511;
         private System.Windows.Forms.TextBox tbHTghfBankName;
-        private System.Windows.Forms.TextBox textBox513;
-        private System.Windows.Forms.TextBox tbHTxsfBankName;
         private System.Windows.Forms.TextBox textBox507;
         private System.Windows.Forms.TextBox tbHTghfEmail;
         private System.Windows.Forms.TextBox textBox509;
         private System.Windows.Forms.TextBox tbHTghfFax;
-        private System.Windows.Forms.TextBox textBox503;
-        private System.Windows.Forms.TextBox tbHTxsfEmail;
-        private System.Windows.Forms.TextBox textBox505;
-        private System.Windows.Forms.TextBox tbHTxsfFax;
         private System.Windows.Forms.TextBox textBox495;
         private System.Windows.Forms.TextBox tbHTghfPhone;
-        private System.Windows.Forms.TextBox textBox497;
-        private System.Windows.Forms.TextBox tbHTxsfPhone;
         private System.Windows.Forms.TextBox textBox499;
         private System.Windows.Forms.TextBox tbHTghfPresenter;
-        private System.Windows.Forms.TextBox textBox501;
-        private System.Windows.Forms.TextBox tbHTxsfPresenter;
         private System.Windows.Forms.TextBox textBox491;
         private System.Windows.Forms.TextBox tbHTghfAddress;
-        private System.Windows.Forms.TextBox textBox493;
-        private System.Windows.Forms.TextBox tbHTxsfAddress;
         private System.Windows.Forms.TextBox textBox489;
         private System.Windows.Forms.TextBox tbHTghfName;
-        private System.Windows.Forms.TextBox textBox488;
-        private System.Windows.Forms.TextBox tbHTxsfName;
         private System.Windows.Forms.ComboBox tbHTghfID;
-        private System.Windows.Forms.ComboBox tbHTxsfID;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox cbHTGoodsA0;
         private System.Windows.Forms.TextBox cbHTGoodsE0;
         private System.Windows.Forms.TextBox cbHTGoodsB0;
@@ -4657,5 +4651,24 @@
         private System.Windows.Forms.TextBox tbClient8;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.ComboBox tbHTxsfID;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox77;
+        private System.Windows.Forms.TextBox tbHTxsfBankNumber;
+        private System.Windows.Forms.TextBox textBox513;
+        private System.Windows.Forms.TextBox tbHTxsfBankName;
+        private System.Windows.Forms.TextBox textBox503;
+        private System.Windows.Forms.TextBox tbHTxsfEmail;
+        private System.Windows.Forms.TextBox textBox505;
+        private System.Windows.Forms.TextBox tbHTxsfFax;
+        private System.Windows.Forms.TextBox textBox497;
+        private System.Windows.Forms.TextBox tbHTxsfPhone;
+        private System.Windows.Forms.TextBox textBox501;
+        private System.Windows.Forms.TextBox tbHTxsfPresenter;
+        private System.Windows.Forms.TextBox textBox493;
+        private System.Windows.Forms.TextBox tbHTxsfAddress;
+        private System.Windows.Forms.TextBox textBox488;
+        private System.Windows.Forms.TextBox tbHTxsfName;
+        private System.Windows.Forms.TabPage tabPage5;
     }
 }
