@@ -79,11 +79,19 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.keepOnlineTimer = new System.Windows.Forms.Timer(this.components);
             this.pbUploadDownloadLabel = new System.Windows.Forms.Label();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyBlinkTimer = new System.Windows.Forms.Timer(this.components);
+            this.notifyImageList = new System.Windows.Forms.ImageList(this.components);
+            this.qqButton1 = new ControlExs.QQButton();
+            this.notifyIconContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showWindow = new System.Windows.Forms.ToolStripMenuItem();
+            this.exit = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
             this.NavPanel.SuspendLayout();
             this.notificationPanel.SuspendLayout();
+            this.notifyIconContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbExpireTime
@@ -125,6 +133,7 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.PrintButton);
             this.ContentPanel.Controls.Add(this.settingQQButton);
             this.ContentPanel.Controls.Add(this.mainDGVTitle);
@@ -456,6 +465,49 @@
             this.pbUploadDownloadLabel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pbUploadDownloadLabel.Name = "pbUploadDownloadLabel";
             // 
+            // notifyIcon
+            // 
+            resources.ApplyResources(this.notifyIcon, "notifyIcon");
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
+            // notifyBlinkTimer
+            // 
+            this.notifyBlinkTimer.Interval = 450;
+            this.notifyBlinkTimer.Tick += new System.EventHandler(this.notifyBlinkTimer_Tick);
+            // 
+            // notifyImageList
+            // 
+            this.notifyImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("notifyImageList.ImageStream")));
+            this.notifyImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.notifyImageList.Images.SetKeyName(0, "facebook.ico");
+            this.notifyImageList.Images.SetKeyName(1, "empty.ico");
+            // 
+            // qqButton1
+            // 
+            resources.ApplyResources(this.qqButton1, "qqButton1");
+            this.qqButton1.Name = "qqButton1";
+            this.qqButton1.UseVisualStyleBackColor = true;
+            this.qqButton1.Click += new System.EventHandler(this.btnFlicker_Click);
+            // 
+            // notifyIconContextMenuStrip
+            // 
+            this.notifyIconContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showWindow,
+            this.exit});
+            this.notifyIconContextMenuStrip.Name = "contextMenuStrip";
+            resources.ApplyResources(this.notifyIconContextMenuStrip, "notifyIconContextMenuStrip");
+            // 
+            // showWindow
+            // 
+            this.showWindow.Name = "showWindow";
+            resources.ApplyResources(this.showWindow, "showWindow");
+            // 
+            // exit
+            // 
+            this.exit.Name = "exit";
+            resources.ApplyResources(this.exit, "exit");
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -481,6 +533,7 @@
             this.NavPanel.PerformLayout();
             this.notificationPanel.ResumeLayout(false);
             this.notificationPanel.PerformLayout();
+            this.notifyIconContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -536,6 +589,13 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Timer keepOnlineTimer;
         private System.Windows.Forms.Label pbUploadDownloadLabel;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Timer notifyBlinkTimer;
+        private System.Windows.Forms.ImageList notifyImageList;
+        private ControlExs.QQButton qqButton1;
+        private System.Windows.Forms.ContextMenuStrip notifyIconContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem showWindow;
+        private System.Windows.Forms.ToolStripMenuItem exit;
     }
 }
 

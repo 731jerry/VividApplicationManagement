@@ -137,3 +137,4 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Signature.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache

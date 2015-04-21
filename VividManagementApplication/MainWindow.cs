@@ -183,6 +183,9 @@ namespace VividManagementApplication
                 lbExpireTime.Text = EXPIRETIME.ToLongDateString();
                 keepOnlineTimer.Enabled = true;
                 #endregion
+
+                // 状态栏通知
+                SetNotifyIcon(currentImageIndex);
             }
             else
             {
@@ -1153,6 +1156,86 @@ namespace VividManagementApplication
 
         #endregion
 
+        #region 状态栏通知
+        private int currentImageIndex = 0;  // 当前通知栏图标在ImageList中的索引
 
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            // 最小化窗体时，隐藏任务栏
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Hide();
+            }
+        }
+
+        private void ShowMainWindow()
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            this.Activate();
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ShowMainWindow();
+            }
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            notifyIcon_MouseClick(sender, e);
+        }
+
+        /// <summary>
+        /// 通知图标-->显示主窗体
+        /// </summary>
+        private void showWindow_Click(object sender, EventArgs e)
+        {
+            ShowMainWindow();
+        }
+
+        /// <summary>
+        /// 通知图标-->退出
+        /// </summary>
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void notifyBlinkTimer_Tick(object sender, EventArgs e)
+        {
+            currentImageIndex = 1 - currentImageIndex;
+            SetNotifyIcon(currentImageIndex);
+        }
+
+        private void btnFlicker_Click(object sender, EventArgs e)
+        {
+            if (this.notifyBlinkTimer.Enabled)
+            {
+               // this.btnFlicker.Text = "闪动图标";
+                this.notifyBlinkTimer.Enabled = false;
+                SetNotifyIcon(0);
+            }
+            else
+            {
+               // this.btnFlicker.Text = "停止闪动";
+                this.notifyBlinkTimer.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// 设置托盘显示的图标
+        /// </summary>
+        /// <param name="index">图像列表中图片的索引</param>
+        private void SetNotifyIcon(int index)
+        {
+            Image img = this.notifyImageList.Images[index];
+            Bitmap b = new Bitmap(img);
+            Icon icon = Icon.FromHandle(b.GetHicon());
+            this.notifyIcon.Icon = icon;
+        }
+        #endregion
     }
 }

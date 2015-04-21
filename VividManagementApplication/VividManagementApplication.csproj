@@ -167,7 +167,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\empty.ico" />
+    <Content Include="Images\Exit.png" />
+    <Content Include="Images\facebook.ico" />
+    <Content Include="Images\ShowWindow.png" />
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\Exit.png" />
+    <None Include="Resources\ShowWindow.png" />
     <Content Include="System.Data.SQLite.DLL" />
   </ItemGroup>
   <ItemGroup>
