@@ -136,3 +136,4 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Signature.resources
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache

@@ -125,7 +125,7 @@ namespace VividManagementApplication
                 //DownloadFileWithNotice();
 
                 updateDataTimer.Enabled = true;
-
+                
                 //Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
                 //t.Start();
 

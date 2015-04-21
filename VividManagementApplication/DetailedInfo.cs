@@ -524,7 +524,7 @@ namespace VividManagementApplication
                             HTcbName.SelectedIndex = int.Parse(data[2].ToString());
                             HTtbID.Text = data[3].ToString();
                             HTtbDate.Text = Convert.ToDateTime(data[4]).ToLongDateString();
-                            if (HTcbName.SelectedIndex == 0) //购买合同
+                            if (HTcbName.SelectedIndex == 1) //购买合同
                             {
                                 tbHTghfID.Text = data[5].ToString();
                                 // 自己公司

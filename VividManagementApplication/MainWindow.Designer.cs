@@ -390,7 +390,7 @@
             // 
             // updateDataTimer
             // 
-            this.updateDataTimer.Interval = 3000;
+            this.updateDataTimer.Interval = 5000;
             this.updateDataTimer.Tick += new System.EventHandler(this.updateDataTimer_Tick);
             // 
             // tmrShows
