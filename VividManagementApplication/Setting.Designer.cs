@@ -62,8 +62,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.ChangePasswordLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SignPictureBox = new System.Windows.Forms.PictureBox();
             this.SignqqButton = new ControlExs.QQButton();
+            this.SignPictureBox = new System.Windows.Forms.PictureBox();
             this.PasswordGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignPictureBox)).BeginInit();
@@ -411,16 +411,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "电子签名";
             // 
-            // SignPictureBox
-            // 
-            this.SignPictureBox.BackColor = System.Drawing.Color.White;
-            this.SignPictureBox.Location = new System.Drawing.Point(18, 31);
-            this.SignPictureBox.Name = "SignPictureBox";
-            this.SignPictureBox.Size = new System.Drawing.Size(208, 98);
-            this.SignPictureBox.TabIndex = 2;
-            this.SignPictureBox.TabStop = false;
-            this.SignPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.SignPictureBox_Paint);
-            // 
             // SignqqButton
             // 
             this.SignqqButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
@@ -434,6 +424,17 @@
             this.SignqqButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SignqqButton.UseVisualStyleBackColor = true;
             this.SignqqButton.Click += new System.EventHandler(this.SignqqButton_Click);
+            // 
+            // SignPictureBox
+            // 
+            this.SignPictureBox.BackColor = System.Drawing.Color.White;
+            this.SignPictureBox.Location = new System.Drawing.Point(18, 40);
+            this.SignPictureBox.Name = "SignPictureBox";
+            this.SignPictureBox.Size = new System.Drawing.Size(208, 77);
+            this.SignPictureBox.TabIndex = 2;
+            this.SignPictureBox.TabStop = false;
+            this.SignPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.SignPictureBox_Paint);
+            this.SignPictureBox.Validated += new System.EventHandler(this.SignPictureBox_Validated);
             // 
             // Setting
             // 
