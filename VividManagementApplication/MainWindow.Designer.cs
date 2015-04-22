@@ -37,34 +37,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.PrintButton = new ControlExs.QQButton();
-            this.settingQQButton = new ControlExs.QQButton();
             this.mainDGVTitle = new System.Windows.Forms.Label();
-            this.backupData = new ControlExs.QQButton();
-            this.refeshButton = new ControlExs.QQButton();
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
-            this.ViewButton = new ControlExs.QQButton();
             this.NavPanel = new System.Windows.Forms.Panel();
-            this.listXsButton = new ControlExs.QQButton();
-            this.listHtButton = new ControlExs.QQButton();
-            this.newHtButton = new ControlExs.QQButton();
             this.htRadio = new ControlExs.QQRadioButton();
-            this.listSfzhButton = new ControlExs.QQButton();
-            this.newPzButton = new ControlExs.QQButton();
             this.cwRadio = new ControlExs.QQRadioButton();
-            this.listKhdzButton = new ControlExs.QQButton();
-            this.listCgButton = new ControlExs.QQButton();
-            this.newCgZsButton = new ControlExs.QQButton();
             this.ywRadio = new ControlExs.QQRadioButton();
-            this.listCcdButton = new ControlExs.QQButton();
-            this.listJcdButton = new ControlExs.QQButton();
-            this.listKcButton = new ControlExs.QQButton();
             this.ccRadio = new ControlExs.QQRadioButton();
-            this.listSpButton = new ControlExs.QQButton();
-            this.newSpButton = new ControlExs.QQButton();
             this.spRadio = new ControlExs.QQRadioButton();
-            this.listCxButton = new ControlExs.QQButton();
-            this.newCxButton = new ControlExs.QQButton();
             this.cxRadio = new ControlExs.QQRadioButton();
             this.pbUploadDownloadFile = new System.Windows.Forms.ProgressBar();
             this.updateDataTimer = new System.Windows.Forms.Timer(this.components);
@@ -82,8 +62,29 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyBlinkTimer = new System.Windows.Forms.Timer(this.components);
             this.notifyImageList = new System.Windows.Forms.ImageList(this.components);
-            this.qqButton1 = new ControlExs.QQButton();
             this.notifyIconContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.qqButton2 = new ControlExs.QQButton();
+            this.qqButton1 = new ControlExs.QQButton();
+            this.PrintButton = new ControlExs.QQButton();
+            this.settingQQButton = new ControlExs.QQButton();
+            this.backupData = new ControlExs.QQButton();
+            this.refeshButton = new ControlExs.QQButton();
+            this.ViewButton = new ControlExs.QQButton();
+            this.listXsButton = new ControlExs.QQButton();
+            this.listHtButton = new ControlExs.QQButton();
+            this.newHtButton = new ControlExs.QQButton();
+            this.listSfzhButton = new ControlExs.QQButton();
+            this.newPzButton = new ControlExs.QQButton();
+            this.listKhdzButton = new ControlExs.QQButton();
+            this.listCgButton = new ControlExs.QQButton();
+            this.newCgZsButton = new ControlExs.QQButton();
+            this.listCcdButton = new ControlExs.QQButton();
+            this.listJcdButton = new ControlExs.QQButton();
+            this.listKcButton = new ControlExs.QQButton();
+            this.listSpButton = new ControlExs.QQButton();
+            this.newSpButton = new ControlExs.QQButton();
+            this.listCxButton = new ControlExs.QQButton();
+            this.newCxButton = new ControlExs.QQButton();
             this.showWindow = new System.Windows.Forms.ToolStripMenuItem();
             this.exit = new System.Windows.Forms.ToolStripMenuItem();
             this.MainPanel.SuspendLayout();
@@ -133,6 +134,7 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ContentPanel.Controls.Add(this.qqButton2);
             this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.PrintButton);
             this.ContentPanel.Controls.Add(this.settingQQButton);
@@ -144,38 +146,10 @@
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.Name = "ContentPanel";
             // 
-            // PrintButton
-            // 
-            resources.ApplyResources(this.PrintButton, "PrintButton");
-            this.PrintButton.Name = "PrintButton";
-            this.PrintButton.UseVisualStyleBackColor = true;
-            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
-            // 
-            // settingQQButton
-            // 
-            resources.ApplyResources(this.settingQQButton, "settingQQButton");
-            this.settingQQButton.Name = "settingQQButton";
-            this.settingQQButton.UseVisualStyleBackColor = true;
-            this.settingQQButton.Click += new System.EventHandler(this.settingQQButton_Click);
-            // 
             // mainDGVTitle
             // 
             resources.ApplyResources(this.mainDGVTitle, "mainDGVTitle");
             this.mainDGVTitle.Name = "mainDGVTitle";
-            // 
-            // backupData
-            // 
-            resources.ApplyResources(this.backupData, "backupData");
-            this.backupData.Name = "backupData";
-            this.backupData.UseVisualStyleBackColor = true;
-            this.backupData.Click += new System.EventHandler(this.backupData_Click);
-            // 
-            // refeshButton
-            // 
-            resources.ApplyResources(this.refeshButton, "refeshButton");
-            this.refeshButton.Name = "refeshButton";
-            this.refeshButton.UseVisualStyleBackColor = true;
-            this.refeshButton.Click += new System.EventHandler(this.refeshButton_Click);
             // 
             // MainDataGridView
             // 
@@ -191,13 +165,6 @@
             this.MainDataGridView.RowTemplate.Height = 23;
             this.MainDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.MainDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.MainDataGridView_CellMouseDoubleClick);
-            // 
-            // ViewButton
-            // 
-            resources.ApplyResources(this.ViewButton, "ViewButton");
-            this.ViewButton.Name = "ViewButton";
-            this.ViewButton.UseVisualStyleBackColor = true;
-            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
             // 
             // NavPanel
             // 
@@ -227,27 +194,6 @@
             resources.ApplyResources(this.NavPanel, "NavPanel");
             this.NavPanel.Name = "NavPanel";
             // 
-            // listXsButton
-            // 
-            resources.ApplyResources(this.listXsButton, "listXsButton");
-            this.listXsButton.Name = "listXsButton";
-            this.listXsButton.UseVisualStyleBackColor = true;
-            this.listXsButton.Click += new System.EventHandler(this.listXsButton_Click);
-            // 
-            // listHtButton
-            // 
-            resources.ApplyResources(this.listHtButton, "listHtButton");
-            this.listHtButton.Name = "listHtButton";
-            this.listHtButton.UseVisualStyleBackColor = true;
-            this.listHtButton.Click += new System.EventHandler(this.listHtButton_Click);
-            // 
-            // newHtButton
-            // 
-            resources.ApplyResources(this.newHtButton, "newHtButton");
-            this.newHtButton.Name = "newHtButton";
-            this.newHtButton.UseVisualStyleBackColor = true;
-            this.newHtButton.Click += new System.EventHandler(this.newHtButton_Click);
-            // 
             // htRadio
             // 
             resources.ApplyResources(this.htRadio, "htRadio");
@@ -257,20 +203,6 @@
             this.htRadio.TabStop = true;
             this.htRadio.UseVisualStyleBackColor = false;
             this.htRadio.CheckedChanged += new System.EventHandler(this.htRadio_CheckedChanged);
-            // 
-            // listSfzhButton
-            // 
-            resources.ApplyResources(this.listSfzhButton, "listSfzhButton");
-            this.listSfzhButton.Name = "listSfzhButton";
-            this.listSfzhButton.UseVisualStyleBackColor = true;
-            this.listSfzhButton.Click += new System.EventHandler(this.listSfzhButton_Click);
-            // 
-            // newPzButton
-            // 
-            resources.ApplyResources(this.newPzButton, "newPzButton");
-            this.newPzButton.Name = "newPzButton";
-            this.newPzButton.UseVisualStyleBackColor = true;
-            this.newPzButton.Click += new System.EventHandler(this.newPzButton_Click);
             // 
             // cwRadio
             // 
@@ -282,27 +214,6 @@
             this.cwRadio.UseVisualStyleBackColor = false;
             this.cwRadio.CheckedChanged += new System.EventHandler(this.cwRadio_CheckedChanged);
             // 
-            // listKhdzButton
-            // 
-            resources.ApplyResources(this.listKhdzButton, "listKhdzButton");
-            this.listKhdzButton.Name = "listKhdzButton";
-            this.listKhdzButton.UseVisualStyleBackColor = true;
-            this.listKhdzButton.Click += new System.EventHandler(this.listKhdzButton_Click);
-            // 
-            // listCgButton
-            // 
-            resources.ApplyResources(this.listCgButton, "listCgButton");
-            this.listCgButton.Name = "listCgButton";
-            this.listCgButton.UseVisualStyleBackColor = true;
-            this.listCgButton.Click += new System.EventHandler(this.listCgXsButton_Click);
-            // 
-            // newCgZsButton
-            // 
-            resources.ApplyResources(this.newCgZsButton, "newCgZsButton");
-            this.newCgZsButton.Name = "newCgZsButton";
-            this.newCgZsButton.UseVisualStyleBackColor = true;
-            this.newCgZsButton.Click += new System.EventHandler(this.newCgZsButton_Click);
-            // 
             // ywRadio
             // 
             resources.ApplyResources(this.ywRadio, "ywRadio");
@@ -312,27 +223,6 @@
             this.ywRadio.TabStop = true;
             this.ywRadio.UseVisualStyleBackColor = false;
             this.ywRadio.CheckedChanged += new System.EventHandler(this.ywRadio_CheckedChanged);
-            // 
-            // listCcdButton
-            // 
-            resources.ApplyResources(this.listCcdButton, "listCcdButton");
-            this.listCcdButton.Name = "listCcdButton";
-            this.listCcdButton.UseVisualStyleBackColor = true;
-            this.listCcdButton.Click += new System.EventHandler(this.listCcdButton_Click);
-            // 
-            // listJcdButton
-            // 
-            resources.ApplyResources(this.listJcdButton, "listJcdButton");
-            this.listJcdButton.Name = "listJcdButton";
-            this.listJcdButton.UseVisualStyleBackColor = true;
-            this.listJcdButton.Click += new System.EventHandler(this.listJcdButton_Click);
-            // 
-            // listKcButton
-            // 
-            resources.ApplyResources(this.listKcButton, "listKcButton");
-            this.listKcButton.Name = "listKcButton";
-            this.listKcButton.UseVisualStyleBackColor = true;
-            this.listKcButton.Click += new System.EventHandler(this.listKcButton_Click);
             // 
             // ccRadio
             // 
@@ -344,20 +234,6 @@
             this.ccRadio.UseVisualStyleBackColor = false;
             this.ccRadio.CheckedChanged += new System.EventHandler(this.ccRadio_CheckedChanged);
             // 
-            // listSpButton
-            // 
-            resources.ApplyResources(this.listSpButton, "listSpButton");
-            this.listSpButton.Name = "listSpButton";
-            this.listSpButton.UseVisualStyleBackColor = true;
-            this.listSpButton.Click += new System.EventHandler(this.listSpButton_Click);
-            // 
-            // newSpButton
-            // 
-            resources.ApplyResources(this.newSpButton, "newSpButton");
-            this.newSpButton.Name = "newSpButton";
-            this.newSpButton.UseVisualStyleBackColor = true;
-            this.newSpButton.Click += new System.EventHandler(this.newSpButton_Click);
-            // 
             // spRadio
             // 
             resources.ApplyResources(this.spRadio, "spRadio");
@@ -367,20 +243,6 @@
             this.spRadio.TabStop = true;
             this.spRadio.UseVisualStyleBackColor = false;
             this.spRadio.CheckedChanged += new System.EventHandler(this.spRadio_CheckedChanged);
-            // 
-            // listCxButton
-            // 
-            resources.ApplyResources(this.listCxButton, "listCxButton");
-            this.listCxButton.Name = "listCxButton";
-            this.listCxButton.UseVisualStyleBackColor = true;
-            this.listCxButton.Click += new System.EventHandler(this.listCxButton_Click);
-            // 
-            // newCxButton
-            // 
-            resources.ApplyResources(this.newCxButton, "newCxButton");
-            this.newCxButton.Name = "newCxButton";
-            this.newCxButton.UseVisualStyleBackColor = true;
-            this.newCxButton.Click += new System.EventHandler(this.newCxButton_Click);
             // 
             // cxRadio
             // 
@@ -467,6 +329,7 @@
             // 
             // notifyIcon
             // 
+            this.notifyIcon.ContextMenuStrip = this.notifyIconContextMenuStrip;
             resources.ApplyResources(this.notifyIcon, "notifyIcon");
             this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
@@ -480,15 +343,8 @@
             // 
             this.notifyImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("notifyImageList.ImageStream")));
             this.notifyImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.notifyImageList.Images.SetKeyName(0, "facebook.ico");
+            this.notifyImageList.Images.SetKeyName(0, "notifyIcon.ico");
             this.notifyImageList.Images.SetKeyName(1, "empty.ico");
-            // 
-            // qqButton1
-            // 
-            resources.ApplyResources(this.qqButton1, "qqButton1");
-            this.qqButton1.Name = "qqButton1";
-            this.qqButton1.UseVisualStyleBackColor = true;
-            this.qqButton1.Click += new System.EventHandler(this.btnFlicker_Click);
             // 
             // notifyIconContextMenuStrip
             // 
@@ -498,15 +354,173 @@
             this.notifyIconContextMenuStrip.Name = "contextMenuStrip";
             resources.ApplyResources(this.notifyIconContextMenuStrip, "notifyIconContextMenuStrip");
             // 
+            // qqButton2
+            // 
+            resources.ApplyResources(this.qqButton2, "qqButton2");
+            this.qqButton2.Name = "qqButton2";
+            this.qqButton2.UseVisualStyleBackColor = true;
+            this.qqButton2.Click += new System.EventHandler(this.qqButton2_Click);
+            // 
+            // qqButton1
+            // 
+            resources.ApplyResources(this.qqButton1, "qqButton1");
+            this.qqButton1.Name = "qqButton1";
+            this.qqButton1.UseVisualStyleBackColor = true;
+            this.qqButton1.Click += new System.EventHandler(this.btnFlicker_Click);
+            // 
+            // PrintButton
+            // 
+            resources.ApplyResources(this.PrintButton, "PrintButton");
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+            // 
+            // settingQQButton
+            // 
+            resources.ApplyResources(this.settingQQButton, "settingQQButton");
+            this.settingQQButton.Name = "settingQQButton";
+            this.settingQQButton.UseVisualStyleBackColor = true;
+            this.settingQQButton.Click += new System.EventHandler(this.settingQQButton_Click);
+            // 
+            // backupData
+            // 
+            resources.ApplyResources(this.backupData, "backupData");
+            this.backupData.Name = "backupData";
+            this.backupData.UseVisualStyleBackColor = true;
+            this.backupData.Click += new System.EventHandler(this.backupData_Click);
+            // 
+            // refeshButton
+            // 
+            resources.ApplyResources(this.refeshButton, "refeshButton");
+            this.refeshButton.Name = "refeshButton";
+            this.refeshButton.UseVisualStyleBackColor = true;
+            this.refeshButton.Click += new System.EventHandler(this.refeshButton_Click);
+            // 
+            // ViewButton
+            // 
+            resources.ApplyResources(this.ViewButton, "ViewButton");
+            this.ViewButton.Name = "ViewButton";
+            this.ViewButton.UseVisualStyleBackColor = true;
+            this.ViewButton.Click += new System.EventHandler(this.ViewButton_Click);
+            // 
+            // listXsButton
+            // 
+            resources.ApplyResources(this.listXsButton, "listXsButton");
+            this.listXsButton.Name = "listXsButton";
+            this.listXsButton.UseVisualStyleBackColor = true;
+            this.listXsButton.Click += new System.EventHandler(this.listXsButton_Click);
+            // 
+            // listHtButton
+            // 
+            resources.ApplyResources(this.listHtButton, "listHtButton");
+            this.listHtButton.Name = "listHtButton";
+            this.listHtButton.UseVisualStyleBackColor = true;
+            this.listHtButton.Click += new System.EventHandler(this.listHtButton_Click);
+            // 
+            // newHtButton
+            // 
+            resources.ApplyResources(this.newHtButton, "newHtButton");
+            this.newHtButton.Name = "newHtButton";
+            this.newHtButton.UseVisualStyleBackColor = true;
+            this.newHtButton.Click += new System.EventHandler(this.newHtButton_Click);
+            // 
+            // listSfzhButton
+            // 
+            resources.ApplyResources(this.listSfzhButton, "listSfzhButton");
+            this.listSfzhButton.Name = "listSfzhButton";
+            this.listSfzhButton.UseVisualStyleBackColor = true;
+            this.listSfzhButton.Click += new System.EventHandler(this.listSfzhButton_Click);
+            // 
+            // newPzButton
+            // 
+            resources.ApplyResources(this.newPzButton, "newPzButton");
+            this.newPzButton.Name = "newPzButton";
+            this.newPzButton.UseVisualStyleBackColor = true;
+            this.newPzButton.Click += new System.EventHandler(this.newPzButton_Click);
+            // 
+            // listKhdzButton
+            // 
+            resources.ApplyResources(this.listKhdzButton, "listKhdzButton");
+            this.listKhdzButton.Name = "listKhdzButton";
+            this.listKhdzButton.UseVisualStyleBackColor = true;
+            this.listKhdzButton.Click += new System.EventHandler(this.listKhdzButton_Click);
+            // 
+            // listCgButton
+            // 
+            resources.ApplyResources(this.listCgButton, "listCgButton");
+            this.listCgButton.Name = "listCgButton";
+            this.listCgButton.UseVisualStyleBackColor = true;
+            this.listCgButton.Click += new System.EventHandler(this.listCgXsButton_Click);
+            // 
+            // newCgZsButton
+            // 
+            resources.ApplyResources(this.newCgZsButton, "newCgZsButton");
+            this.newCgZsButton.Name = "newCgZsButton";
+            this.newCgZsButton.UseVisualStyleBackColor = true;
+            this.newCgZsButton.Click += new System.EventHandler(this.newCgZsButton_Click);
+            // 
+            // listCcdButton
+            // 
+            resources.ApplyResources(this.listCcdButton, "listCcdButton");
+            this.listCcdButton.Name = "listCcdButton";
+            this.listCcdButton.UseVisualStyleBackColor = true;
+            this.listCcdButton.Click += new System.EventHandler(this.listCcdButton_Click);
+            // 
+            // listJcdButton
+            // 
+            resources.ApplyResources(this.listJcdButton, "listJcdButton");
+            this.listJcdButton.Name = "listJcdButton";
+            this.listJcdButton.UseVisualStyleBackColor = true;
+            this.listJcdButton.Click += new System.EventHandler(this.listJcdButton_Click);
+            // 
+            // listKcButton
+            // 
+            resources.ApplyResources(this.listKcButton, "listKcButton");
+            this.listKcButton.Name = "listKcButton";
+            this.listKcButton.UseVisualStyleBackColor = true;
+            this.listKcButton.Click += new System.EventHandler(this.listKcButton_Click);
+            // 
+            // listSpButton
+            // 
+            resources.ApplyResources(this.listSpButton, "listSpButton");
+            this.listSpButton.Name = "listSpButton";
+            this.listSpButton.UseVisualStyleBackColor = true;
+            this.listSpButton.Click += new System.EventHandler(this.listSpButton_Click);
+            // 
+            // newSpButton
+            // 
+            resources.ApplyResources(this.newSpButton, "newSpButton");
+            this.newSpButton.Name = "newSpButton";
+            this.newSpButton.UseVisualStyleBackColor = true;
+            this.newSpButton.Click += new System.EventHandler(this.newSpButton_Click);
+            // 
+            // listCxButton
+            // 
+            resources.ApplyResources(this.listCxButton, "listCxButton");
+            this.listCxButton.Name = "listCxButton";
+            this.listCxButton.UseVisualStyleBackColor = true;
+            this.listCxButton.Click += new System.EventHandler(this.listCxButton_Click);
+            // 
+            // newCxButton
+            // 
+            resources.ApplyResources(this.newCxButton, "newCxButton");
+            this.newCxButton.Name = "newCxButton";
+            this.newCxButton.UseVisualStyleBackColor = true;
+            this.newCxButton.Click += new System.EventHandler(this.newCxButton_Click);
+            // 
             // showWindow
             // 
+            this.showWindow.Image = global::VividManagementApplication.Properties.Resources.ShowWindow;
             this.showWindow.Name = "showWindow";
             resources.ApplyResources(this.showWindow, "showWindow");
+            this.showWindow.Click += new System.EventHandler(this.showWindow_Click);
             // 
             // exit
             // 
+            this.exit.Image = global::VividManagementApplication.Properties.Resources.Exit;
             this.exit.Name = "exit";
             resources.ApplyResources(this.exit, "exit");
+            this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // MainWindow
             // 
@@ -596,6 +610,7 @@
         private System.Windows.Forms.ContextMenuStrip notifyIconContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem showWindow;
         private System.Windows.Forms.ToolStripMenuItem exit;
+        private ControlExs.QQButton qqButton2;
     }
 }
 

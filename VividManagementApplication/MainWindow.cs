@@ -76,6 +76,7 @@ namespace VividManagementApplication
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
+            notifyIcon.Visible = false;
             this.Visible = false;
 
             #region 软件版本
@@ -125,7 +126,7 @@ namespace VividManagementApplication
                 //DownloadFileWithNotice();
 
                 updateDataTimer.Enabled = true;
-                
+
                 //Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
                 //t.Start();
 
@@ -185,6 +186,7 @@ namespace VividManagementApplication
                 #endregion
 
                 // 状态栏通知
+                notifyIcon.Visible = true;
                 SetNotifyIcon(currentImageIndex);
             }
             else
@@ -1214,13 +1216,13 @@ namespace VividManagementApplication
         {
             if (this.notifyBlinkTimer.Enabled)
             {
-               // this.btnFlicker.Text = "闪动图标";
+                // this.btnFlicker.Text = "闪动图标";
                 this.notifyBlinkTimer.Enabled = false;
                 SetNotifyIcon(0);
             }
             else
             {
-               // this.btnFlicker.Text = "停止闪动";
+                // this.btnFlicker.Text = "停止闪动";
                 this.notifyBlinkTimer.Enabled = true;
             }
         }
@@ -1235,6 +1237,19 @@ namespace VividManagementApplication
             Bitmap b = new Bitmap(img);
             Icon icon = Icon.FromHandle(b.GetHicon());
             this.notifyIcon.Icon = icon;
+        }
+
+        private void qqButton2_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem("通知",VividManagementApplication.Properties.Resources.Signature);
+            newMenuItem.Click += new EventHandler(mnuCopy_Click);
+            notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
+            //notifyIconContextMenuStrip.Items.AddRange(new ToolStripItem[] { newMenuItem });
+        }
+
+        private void mnuCopy_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ahah");
         }
         #endregion
     }
