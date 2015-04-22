@@ -5,8 +5,8 @@
 !define VERSION_NAME "精华版"
 !define PRODUCT_NAME_ENG "GZB"
 !define APP_NAME "管账宝"
-!define PRODUCT_VERSION "1.1.4"
-!define PRODUCT_PUBLISHER "唯达科技有限公司"
+!define PRODUCT_VERSION "1.1.5"
+!define PRODUCT_PUBLISHER "唯达软件科技有限公司"
 !define INSTALL_LOCATION "c:\GZB"
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
 !define PRODUCT_WEB_SITE "http://www.vividapp.net"
@@ -84,7 +84,7 @@ SectionEnd
 
 Section -Post
   WriteUninstaller "$INSTDIR\uninstall.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninstall.exe"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\config\img\icon.ico"
@@ -94,10 +94,14 @@ Section -Post
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "VersionName" "${VERSION_NAME}"
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
 
+	;NSIS 卸载程序的注册键值
 	;http://blog.sina.com.cn/s/blog_407c173601007v2n.html
-	;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" "InstallLocation" "$INSTDIR"
-  ;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" "DisplayIcon" "CYY\config\img\icon.ico"
-  ;WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" "Publisher" "彩盈盈网络科技有限公司"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "DisplayName" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "InstallLocation" "$INSTDIR"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "UninstallString" "$INSTDIR\UnInstall.exe"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "DisplayIcon" "${PRODUCT_NAME_ENG}\config\img\install.ico"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "DisplayVersion" "${PRODUCT_VERSION}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "Publisher" "${PRODUCT_PUBLISHER}"
 SectionEnd
 
 /******************************
