@@ -78,6 +78,7 @@ namespace VividManagementApplication
         {
             notifyIcon.Visible = false;
             this.Visible = false;
+            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
             #region 软件版本
             productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);
@@ -382,7 +383,8 @@ namespace VividManagementApplication
 
             DateTime localFileModifiedTime = File.GetLastWriteTime(LOCAL_DATABASE_LOCATION);
             DateTime onlineFileModifiedTime = gameFileResponse.LastModified;
-
+            gameFile.Abort();
+            gameFileResponse.Close();
             if (localFileModifiedTime >= onlineFileModifiedTime)
             {
                 if (isDownload)
@@ -940,7 +942,20 @@ namespace VividManagementApplication
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
                 UploadFileWithNotice("关闭前同步数据库!");
+
+                if (notifyIcon != null)
+                {
+                    notifyIcon.Visible = false;
+                    notifyIcon.Icon = null; // required to make icon disappear
+                    notifyIcon.Dispose();
+                    notifyIcon = null;
+                }
             }
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void settingQQButton_Click(object sender, EventArgs e)
