@@ -89,7 +89,7 @@ namespace VividManagementApplication
                     MainWindow.FAX = dataReader["fax"].ToString();
                     MainWindow.QQ = dataReader["QQ"].ToString();
                     MainWindow.EMAIL = dataReader["email"].ToString();
-                    MainWindow.ADDTIME = dataReader["addtime"].ToString();
+                    MainWindow.ADDTIME = DateTime.Parse(dataReader["addtime"].ToString());
                     MainWindow.NOTIFICATION = dataReader["notification"].ToString();
                     MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
                     MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());

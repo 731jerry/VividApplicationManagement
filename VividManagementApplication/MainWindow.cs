@@ -40,7 +40,7 @@ namespace VividManagementApplication
         public static String FAX = "";
         public static String QQ = "";
         public static String EMAIL = "";
-        public static String ADDTIME = "";
+        public static DateTime ADDTIME = new DateTime();
         public static String NOTIFICATION = "";
         public static DateTime EXPIRETIME = new DateTime();
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
@@ -117,7 +117,7 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 窗体用户信息初始化
-                lbUserName.Text = USER_ID;
+                lbUserName.Text = REAL_NAME + "(" + USER_ID + ")";
                 dataBaseFilePrefix = USER_ID + "_data.txt";
 
                 // 广告计时器
@@ -182,8 +182,12 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 初始化登录信息
-                lbExpireTime.Text = EXPIRETIME.ToLongDateString();
+                lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
                 keepOnlineTimer.Enabled = true;
+                TimeSpan ts = EXPIRETIME - ADDTIME;
+                UserDegreeLabel.Text = "VIP" + (ts.Days % 365 + 1).ToString();
+
+                UserDegreeLabel.Location = new Point(lbUserName.Location.X + lbUserName.Size.Width + 20, UserDegreeLabel.Location.Y);
                 #endregion
 
                 // 状态栏通知
@@ -560,6 +564,10 @@ namespace VividManagementApplication
                 }
             }
             this.MainDataGridView.Columns[0].HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+            if (this.MainDataGridView.Rows.Count <= 0)
+            {
+                ViewButton.Enabled = false;
+            }
         }
 
         // 收支汇总表
@@ -601,6 +609,10 @@ namespace VividManagementApplication
                 }
             }
             // this.MainDataGridView.Columns[2].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+            if (this.MainDataGridView.Rows.Count <= 0)
+            {
+                ViewButton.Enabled = false;
+            }
         }
 
         // DataGridView双击
@@ -1306,5 +1318,10 @@ namespace VividManagementApplication
             MessageBox.Show("ahah");
         }
         #endregion
+
+        private void ExtendExpireLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+        }
     }
 }
