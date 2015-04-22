@@ -1332,7 +1332,12 @@ namespace VividManagementApplication
         //
         private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+            if (!dzGZBId.Equals(""))
+            {
+                remoteSignCheckBox.Visible = true;
+                remoteSignCheckBox.Enabled = true;
+            }
         }
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
@@ -2391,6 +2396,11 @@ namespace VividManagementApplication
         private void tbClient2_MouseLeave(object sender, EventArgs e)
         {
             tbClient2Tooltip.Hide(tbClient2);
+        }
+
+        private void DetailedDanziPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 
