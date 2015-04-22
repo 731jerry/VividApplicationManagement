@@ -271,26 +271,31 @@ namespace VividManagementApplication
                                 if ((JSONObject)json["1"] != null)
                                 {
                                     JCDcbA.Text = ((JSONObject)json["1"])["goodsID"].ToString().Equals("") ? "" : ((JSONObject)json["1"])["goodsID"].ToString();
+                                    AJCDtb4.Text = ((JSONObject)json["1"])["price"].ToString().Equals("") ? "" : ((JSONObject)json["1"])["price"].ToString();
                                     AJCDtb5.Text = ((JSONObject)json["1"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["1"])["goodsAmount"].ToString();
                                 }
                                 if ((JSONObject)json["2"] != null)
                                 {
                                     JCDcbB.Text = ((JSONObject)json["2"])["goodsID"].Equals("") ? "" : ((JSONObject)json["2"])["goodsID"].ToString();
+                                    BJCDtb4.Text = ((JSONObject)json["2"])["price"].Equals("无") ? "" : ((JSONObject)json["2"])["price"].ToString();
                                     BJCDtb5.Text = ((JSONObject)json["2"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["2"])["goodsAmount"].ToString();
                                 }
                                 if ((JSONObject)json["3"] != null)
                                 {
                                     JCDcbC.Text = ((JSONObject)json["3"])["goodsID"].Equals("") ? "" : ((JSONObject)json["3"])["goodsID"].ToString();
+                                    CJCDtb4.Text = ((JSONObject)json["3"])["price"].Equals("无") ? "" : ((JSONObject)json["3"])["price"].ToString();
                                     CJCDtb5.Text = ((JSONObject)json["3"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["3"])["goodsAmount"].ToString();
                                 }
                                 if ((JSONObject)json["4"] != null)
                                 {
                                     JCDcbD.Text = ((JSONObject)json["4"])["goodsID"].Equals("") ? "" : ((JSONObject)json["4"])["goodsID"].ToString();
+                                    DJCDtb4.Text = ((JSONObject)json["4"])["price"].Equals("无") ? "" : ((JSONObject)json["4"])["price"].ToString();
                                     DJCDtb5.Text = ((JSONObject)json["4"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["4"])["goodsAmount"].ToString();
                                 }
                                 if ((JSONObject)json["5"] != null)
                                 {
                                     JCDcbE.Text = ((JSONObject)json["5"])["goodsID"].Equals("") ? "" : ((JSONObject)json["5"])["goodsID"].ToString();
+                                    EJCDtb4.Text = ((JSONObject)json["5"])["price"].Equals("无") ? "" : ((JSONObject)json["5"])["price"].ToString();
                                     EJCDtb5.Text = ((JSONObject)json["5"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["5"])["goodsAmount"].ToString();
                                 }
                             }
@@ -674,13 +679,13 @@ namespace VividManagementApplication
                     if ((MainWindow.CURRENT_TAB == 3) || (MainWindow.CURRENT_TAB == 4)) // 进仓单 出仓单
                     {
                         String jsonData = ControlValueTransitToJson(
-                            new List<String>() { "goodsID", "goodsAmount" },
+                            new List<String>() { "goodsID", "price", "goodsAmount" },
                             new List<List<Control>>() {
-                                new List<Control> (){JCDcbA, AJCDtb5 } ,
-                                new List<Control> (){JCDcbB, BJCDtb5 } ,
-                                new List<Control> (){JCDcbC, CJCDtb5 } ,
-                                new List<Control> (){JCDcbD, DJCDtb5 } ,
-                                new List<Control> (){JCDcbE, EJCDtb5 } 
+                                new List<Control> (){JCDcbA, AJCDtb4,AJCDtb5 } ,
+                                new List<Control> (){JCDcbB, BJCDtb4,BJCDtb5 } ,
+                                new List<Control> (){JCDcbC, CJCDtb4,CJCDtb5 } ,
+                                new List<Control> (){JCDcbD, DJCDtb4,DJCDtb5 } ,
+                                new List<Control> (){JCDcbE, EJCDtb4,EJCDtb5 } 
                                 }
                             );
 
@@ -1250,12 +1255,16 @@ namespace VividManagementApplication
             {
                 if (JCDcbA.Text.Equals(""))
                 {
+                    AJCDtb4.ReadOnly = true;
                     AJCDtb5.ReadOnly = true;
+                    AJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6 });
                 }
                 else
                 {
+                    AJCDtb4.ReadOnly = false;
                     AJCDtb5.ReadOnly = false;
+                    AJCDtb5.BackColor = SystemColors.Window;
                     JCCDSetControlsValue(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4 }, AJCDtb5, JCDcbA);
                 }
             }
@@ -1267,12 +1276,16 @@ namespace VividManagementApplication
             {
                 if (JCDcbB.Text.Equals(""))
                 {
+                    BJCDtb4.ReadOnly = true;
                     BJCDtb5.ReadOnly = true;
+                    BJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6 });
                 }
                 else
                 {
+                    BJCDtb4.ReadOnly = false;
                     BJCDtb5.ReadOnly = false;
+                    BJCDtb5.BackColor = SystemColors.Window;
                     JCCDSetControlsValue(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4 }, BJCDtb5, JCDcbB);
                 }
             }
@@ -1284,12 +1297,16 @@ namespace VividManagementApplication
             {
                 if (JCDcbC.Text.Equals(""))
                 {
+                    CJCDtb4.ReadOnly = true;
                     CJCDtb5.ReadOnly = true;
+                    CJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6 });
                 }
                 else
                 {
+                    CJCDtb4.ReadOnly = false;
                     CJCDtb5.ReadOnly = false;
+                    CJCDtb5.BackColor = SystemColors.Window;
                     JCCDSetControlsValue(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4 }, CJCDtb5, JCDcbC);
                 }
             }
@@ -1301,12 +1318,16 @@ namespace VividManagementApplication
             {
                 if (JCDcbD.Text.Equals(""))
                 {
+                    DJCDtb4.ReadOnly = true;
                     DJCDtb5.ReadOnly = true;
+                    DJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6 });
                 }
                 else
                 {
+                    DJCDtb4.ReadOnly = false;
                     DJCDtb5.ReadOnly = false;
+                    DJCDtb5.BackColor = SystemColors.Window;
                     JCCDSetControlsValue(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4 }, DJCDtb5, JCDcbD);
                 }
             }
@@ -1318,12 +1339,16 @@ namespace VividManagementApplication
             {
                 if (JCDcbE.Text.Equals(""))
                 {
+                    EJCDtb4.ReadOnly = true;
                     EJCDtb5.ReadOnly = true;
+                    EJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6 });
                 }
                 else
                 {
+                    EJCDtb4.ReadOnly = false;
                     EJCDtb5.ReadOnly = false;
+                    EJCDtb5.BackColor = SystemColors.Window;
                     JCCDSetControlsValue(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4 }, EJCDtb5, JCDcbE);
                 }
             }
