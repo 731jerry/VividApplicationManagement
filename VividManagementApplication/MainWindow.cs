@@ -276,9 +276,12 @@ namespace VividManagementApplication
         {
             if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
             {
-                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
-                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                if (ifUpdateDatabasecheckLastModifiedTime(true))
+                {
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                }
             }
             else
             {
@@ -321,7 +324,10 @@ namespace VividManagementApplication
             UploadMoreInfo = moreInfo;
             if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
             {
-                UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                if (ifUpdateDatabasecheckLastModifiedTime(false))
+                {
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                }
             }
         }
 
@@ -366,6 +372,39 @@ namespace VividManagementApplication
             catch (System.Net.WebException)
             {
                 return false;
+            }
+        }
+
+        private bool ifUpdateDatabasecheckLastModifiedTime(bool isDownload)
+        {
+            HttpWebRequest gameFile = (HttpWebRequest)WebRequest.Create(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix);
+            HttpWebResponse gameFileResponse = (HttpWebResponse)gameFile.GetResponse();
+
+            DateTime localFileModifiedTime = File.GetLastWriteTime(LOCAL_DATABASE_LOCATION);
+            DateTime onlineFileModifiedTime = gameFileResponse.LastModified;
+
+            if (localFileModifiedTime >= onlineFileModifiedTime)
+            {
+                if (isDownload)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                //Download new Update
+                if (isDownload)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -1241,7 +1280,7 @@ namespace VividManagementApplication
 
         private void qqButton2_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem newMenuItem = new ToolStripMenuItem("通知",VividManagementApplication.Properties.Resources.Signature);
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem("通知", VividManagementApplication.Properties.Resources.Signature);
             newMenuItem.Click += new EventHandler(mnuCopy_Click);
             notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
             //notifyIconContextMenuStrip.Items.AddRange(new ToolStripItem[] { newMenuItem });
