@@ -183,5 +183,12 @@ namespace VividManagementApplication
             checkUpdateApp();
         }
 
+        // 
+        private void productLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.productLinkLabel.LinkVisited = true;
+            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+        }
+
     }
 }

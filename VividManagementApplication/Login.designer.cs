@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbAccount = new System.Windows.Forms.TextBox();
             this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.productLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // LoadCyy
@@ -44,10 +45,10 @@
             this.LoadCyy.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.LoadCyy.Image = ((System.Drawing.Image)(resources.GetObject("LoadCyy.Image")));
             this.LoadCyy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LoadCyy.Location = new System.Drawing.Point(96, 298);
+            this.LoadCyy.Location = new System.Drawing.Point(123, 298);
             this.LoadCyy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LoadCyy.Name = "LoadCyy";
-            this.LoadCyy.Size = new System.Drawing.Size(193, 33);
+            this.LoadCyy.Size = new System.Drawing.Size(157, 33);
             this.LoadCyy.TabIndex = 3;
             this.LoadCyy.Text = "  登      录";
             this.LoadCyy.UseVisualStyleBackColor = true;
@@ -56,7 +57,7 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.tbPassword.Location = new System.Drawing.Point(132, 250);
+            this.tbPassword.Location = new System.Drawing.Point(123, 250);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPassword.MaxLength = 12;
             this.tbPassword.Name = "tbPassword";
@@ -71,7 +72,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(94, 255);
+            this.label2.Location = new System.Drawing.Point(85, 255);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 15;
@@ -83,7 +84,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(94, 218);
+            this.label1.Location = new System.Drawing.Point(85, 218);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 14;
@@ -92,7 +93,7 @@
             // cbAccount
             // 
             this.cbAccount.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbAccount.Location = new System.Drawing.Point(132, 216);
+            this.cbAccount.Location = new System.Drawing.Point(123, 216);
             this.cbAccount.MaxLength = 8;
             this.cbAccount.Name = "cbAccount";
             this.cbAccount.Size = new System.Drawing.Size(157, 25);
@@ -103,11 +104,24 @@
             this.UpdateTimer.Interval = 500;
             this.UpdateTimer.Tick += new System.EventHandler(this.UpdateTimer_Tick);
             // 
+            // productLinkLabel
+            // 
+            this.productLinkLabel.AutoSize = true;
+            this.productLinkLabel.Font = new System.Drawing.Font("黑体", 9F);
+            this.productLinkLabel.Location = new System.Drawing.Point(119, 351);
+            this.productLinkLabel.Name = "productLinkLabel";
+            this.productLinkLabel.Size = new System.Drawing.Size(163, 12);
+            this.productLinkLabel.TabIndex = 16;
+            this.productLinkLabel.TabStop = true;
+            this.productLinkLabel.Text = "©唯达软件有限公司版权所有©";
+            this.productLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.productLinkLabel_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 372);
+            this.Controls.Add(this.productLinkLabel);
             this.Controls.Add(this.cbAccount);
             this.Controls.Add(this.LoadCyy);
             this.Controls.Add(this.tbPassword);
@@ -132,5 +146,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox cbAccount;
         private System.Windows.Forms.Timer UpdateTimer;
+        private System.Windows.Forms.LinkLabel productLinkLabel;
     }
 }
