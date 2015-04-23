@@ -280,7 +280,7 @@ namespace VividManagementApplication
 
         private void backupData_Click(object sender, EventArgs e)
         {
-            pbUploadDownloadFile.Visible = true;
+            visibleUploadDownloadGroup(true);
             UploadFileWithNotice("手动同步数据库！");
         }
 
@@ -321,6 +321,7 @@ namespace VividManagementApplication
 
         private void DownloadFileCompleteCallback(Object sender, AsyncCompletedEventArgs e)
         {
+            visibleUploadDownloadGroup(false);
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);   //正常捕获
@@ -330,7 +331,6 @@ namespace VividManagementApplication
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
                 MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
             }
-            visibleUploadDownloadGroup(false);
         }
 
         // 上传
@@ -339,7 +339,14 @@ namespace VividManagementApplication
             UploadMoreInfo = moreInfo;
             if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
             {
-                if (ifUpdateDatabasecheckLastModifiedTime(false))
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                {
+                    if (ifUpdateDatabasecheckLastModifiedTime(false))
+                    {
+                        UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                    }
+                }
+                else
                 {
                     UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
                 }
@@ -365,6 +372,7 @@ namespace VividManagementApplication
 
         private void UploadFileCompleteCallback(Object sender, UploadFileCompletedEventArgs e)
         {
+            visibleUploadDownloadGroup(false);
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);   //正常捕获
@@ -373,7 +381,6 @@ namespace VividManagementApplication
             {
                 MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
             }
-            visibleUploadDownloadGroup(false);
         }
 
         // 检测远程文件是否存在
