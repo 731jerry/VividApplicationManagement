@@ -360,7 +360,6 @@
             this.label118 = new System.Windows.Forms.Label();
             this.label137 = new System.Windows.Forms.Label();
             this.HTcbName = new System.Windows.Forms.ComboBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -392,7 +391,6 @@
             this.DetailedTabView.Controls.Add(this.tabPage2);
             this.DetailedTabView.Controls.Add(this.tabPage3);
             this.DetailedTabView.Controls.Add(this.tabPage4);
-            this.DetailedTabView.Controls.Add(this.tabPage5);
             this.DetailedTabView.Location = new System.Drawing.Point(10, 1);
             this.DetailedTabView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DetailedTabView.Name = "DetailedTabView";
@@ -4071,9 +4069,9 @@
             this.label126.Font = new System.Drawing.Font("黑体", 8.7F);
             this.label126.Location = new System.Drawing.Point(614, 17);
             this.label126.Name = "label126";
-            this.label126.Size = new System.Drawing.Size(65, 12);
+            this.label126.Size = new System.Drawing.Size(71, 12);
             this.label126.TabIndex = 628;
-            this.label126.Text = "签约地点：";
+            this.label126.Text = "*签约地点：";
             // 
             // HTtbDate
             // 
@@ -4197,16 +4195,6 @@
             this.HTcbName.Size = new System.Drawing.Size(95, 20);
             this.HTcbName.TabIndex = 582;
             this.HTcbName.SelectedIndexChanged += new System.EventHandler(this.HTcbName_SelectedIndexChanged);
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 26);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(817, 602);
-            this.tabPage5.TabIndex = 5;
-            this.tabPage5.Text = "tabPage5";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // printDialog1
             // 
@@ -4669,6 +4657,5 @@
         private System.Windows.Forms.TextBox tbHTxsfAddress;
         private System.Windows.Forms.TextBox textBox488;
         private System.Windows.Forms.TextBox tbHTxsfName;
-        private System.Windows.Forms.TabPage tabPage5;
     }
 }

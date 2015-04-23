@@ -480,7 +480,7 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
-                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfID, tbHTghfID, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
+                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
                     //checkValidateControls = new List<Control>() { HTtbID };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
@@ -540,6 +540,8 @@ namespace VividManagementApplication
                                 tbHTxsfEmail.Text = MainWindow.EMAIL;
                                 tbHTxsfBankName.Text = MainWindow.BANK_NAME;
                                 tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
+                                tbHTghfID.Enabled = true;
+                                tbHTxsfID.Enabled = false;
                                 tbHTxsfID.Items.Clear();
                             }
                             else
@@ -554,6 +556,8 @@ namespace VividManagementApplication
                                 tbHTghfEmail.Text = MainWindow.EMAIL;
                                 tbHTghfBankName.Text = MainWindow.BANK_NAME;
                                 tbHTghfBankNumber.Text = MainWindow.BANK_CARD;
+                                tbHTghfID.Enabled = false;
+                                tbHTxsfID.Enabled = true;
                                 tbHTghfID.Items.Clear();
                             }
 
@@ -1133,6 +1137,8 @@ namespace VividManagementApplication
                     tbHTghfEmail.Text = MainWindow.EMAIL;
                     tbHTghfBankName.Text = MainWindow.BANK_NAME;
                     tbHTghfBankNumber.Text = MainWindow.BANK_CARD;
+                    tbHTghfID.Enabled = false;
+                    tbHTxsfID.Enabled = true;
                     tbHTghfID.Items.Clear();
 
                     // 添加客户编号
@@ -1156,6 +1162,8 @@ namespace VividManagementApplication
                     tbHTxsfEmail.Text = MainWindow.EMAIL;
                     tbHTxsfBankName.Text = MainWindow.BANK_NAME;
                     tbHTxsfBankNumber.Text = MainWindow.BANK_CARD;
+                    tbHTghfID.Enabled = true;
+                    tbHTxsfID.Enabled = false;
                     tbHTxsfID.Items.Clear();
 
                     // 添加客户编号
