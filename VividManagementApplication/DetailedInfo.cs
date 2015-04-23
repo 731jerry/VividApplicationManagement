@@ -1789,7 +1789,7 @@ namespace VividManagementApplication
             g.DrawString("总金额：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 156 + y + fontDisY + tableY - 20);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, 156 + y + tableY - 20, 617, tbDz3.Height);
-            g.DrawString(tbDz3.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY - 20);
+            g.DrawString(tbDz3.Text.Equals("") ? "" : tbDz3.Text.Split('=')[1], tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY - 20);
 
             if (isJCCD)
             {
@@ -1938,7 +1938,7 @@ namespace VividManagementApplication
             g.DrawString("总金额：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 156 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, 156 + y + tableY - 20, 617, tbPz3.Height);
-            g.DrawString(SumtbPz.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY);
+            g.DrawString(SumtbPz.Text.Equals("") ? "" : SumtbPz.Text.Split('=')[1], f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 733, 104);
             g.DrawString("备注：\n" + tbPz3.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
@@ -2011,7 +2011,7 @@ namespace VividManagementApplication
             //
             g.DrawString("购货方：", f4, new SolidBrush(Color.Black), 40 + x, 80 + y);
             fontSize = g.MeasureString("购货方：", f4);
-            g.DrawString(tbHTxsfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 80 + y);
+            g.DrawString(tbHTghfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 80 + y);
 
             g.DrawString("合同编号：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 80 + y);
             fontSize = g.MeasureString("合同编号：", f4);
@@ -2025,7 +2025,7 @@ namespace VividManagementApplication
             // 
             g.DrawString("销货方：", f4, new SolidBrush(Color.Black), 40 + x, 120 + y);
             fontSize = g.MeasureString("销货方：", f4);
-            g.DrawString(tbHTghfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
+            g.DrawString(tbHTxsfName.Text, f5, new SolidBrush(Color.Black), 40 + fontSize.Width + x, 120 + y);
 
             g.DrawString("签约地点：", f4, new SolidBrush(Color.Black), 150 + pageWidth / 2 + x, 120 + y);
             fontSize = g.MeasureString("签约地点：", f4);
@@ -2291,23 +2291,21 @@ namespace VividManagementApplication
             g.DrawString("帐    号：", f4, new SolidBrush(Color.Black), 40 + x + 10 + recWidth, KuangY9);
             //框内文字
 
-            g.DrawString(tbHTxsfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15, KuangY2);
-            g.DrawString(tbHTxsfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY3);
-            g.DrawString(tbHTxsfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY4);
-            g.DrawString(tbHTxsfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY5);
-            g.DrawString(tbHTxsfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY6);
-            g.DrawString(tbHTxsfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY8);
-            g.DrawString(tbHTxsfBankNumber.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY9);
+            g.DrawString(tbHTghfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15, KuangY2);
+            g.DrawString(tbHTghfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY3);
+            g.DrawString(tbHTghfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY4);
+            g.DrawString(tbHTghfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY5);
+            g.DrawString(tbHTghfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY6);
+            g.DrawString(tbHTghfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY8);
+            g.DrawString(tbHTghfBankNumber.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY9);
 
-            g.DrawString(tbHTghfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15 + recWidth, KuangY2);
-            g.DrawString(tbHTghfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY3);
-            g.DrawString(tbHTghfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY4);
-            g.DrawString(tbHTghfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY5);
-            g.DrawString(tbHTghfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY6);
-            g.DrawString(tbHTghfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY8);
-            g.DrawString(tbHTghfBankNumber.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY9);
-
-
+            g.DrawString(tbHTxsfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15 + recWidth, KuangY2);
+            g.DrawString(tbHTxsfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY3);
+            g.DrawString(tbHTxsfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY4);
+            g.DrawString(tbHTxsfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY5);
+            g.DrawString(tbHTxsfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY6);
+            g.DrawString(tbHTxsfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY8);
+            g.DrawString(tbHTxsfBankNumber.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY9);
 
             // 水印
             //g.DrawString("合同版本由唯达软件提供提    ", f6, new SolidBrush(Color.Red), 40, 35);
