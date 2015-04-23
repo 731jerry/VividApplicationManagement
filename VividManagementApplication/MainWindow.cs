@@ -593,7 +593,7 @@ namespace VividManagementApplication
             string order = " ORDER BY id ASC "; // 顺序
             this.MainDataGridView.Columns.Clear();
             this.MainDataGridView.Rows.Clear();
-            int tempBalance = COMPANY_BALANCE;
+            float tempBalance = COMPANY_BALANCE;
 
             this.MainDataGridView.Columns.AddRange(dgvcArray);
             ClearDataGridViewColumnSortOrder(dgvcArray.Length);
@@ -605,11 +605,11 @@ namespace VividManagementApplication
                 {
                     if ((resultsList[i][2].Equals("收款凭证")) || resultsList[i][2].Equals("还款凭证"))
                     {
-                        tempBalance += int.Parse(resultsList[i][4]);
+                        tempBalance += float.Parse(resultsList[i][4]);
                     }
                     else
                     {
-                        tempBalance -= int.Parse(resultsList[i][4]);
+                        tempBalance -= float.Parse(resultsList[i][4]);
                     }
                     resultsList[i][5] = tempBalance.ToString();
                 }

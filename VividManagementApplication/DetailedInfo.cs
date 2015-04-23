@@ -346,7 +346,7 @@ namespace VividManagementApplication
                     queryArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
                     controlsPreName = "tbPz";
                     indexCount = 11;
-                    mainID = tbDz2.Text;
+                    mainID = tbPz2.Text;
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbPz1);
@@ -403,8 +403,8 @@ namespace VividManagementApplication
 
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
 
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag", "leixing" }, baseName, ItemId);
-                            DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "cast(modifyTime as VARCHAR)", "jsonData", "discardFlag", "leixing" }, baseName, ItemId);
+                            PzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             if (int.Parse(data[2]) == 0)
                             {
                                 DiscardCheckBox.Checked = false;
@@ -887,7 +887,7 @@ namespace VividManagementApplication
                             //queryStringArray = new String[] { "pzID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { tbPz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                         }
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, tbPz2.Text);
                     }
                     else if (MainWindow.CURRENT_TAB == 6)  // 合同
                     {
@@ -1521,10 +1521,17 @@ namespace VividManagementApplication
         {
             if (APztb1.SelectedIndex == 0)
             {
+                APztb2.Text = "";
+                APztb3.Text = "";
                 APztb2.ReadOnly = true;
                 APztb3.ReadOnly = true;
             }
-            else
+            else if (APztb1.SelectedIndex == 1)
+            {
+                APztb2.ReadOnly = true;
+                APztb3.ReadOnly = true;
+            }
+            else if (APztb1.SelectedIndex > 1)
             {
                 APztb2.ReadOnly = false;
                 APztb3.ReadOnly = false;
@@ -1535,10 +1542,17 @@ namespace VividManagementApplication
         {
             if (BPztb1.SelectedIndex == 0)
             {
+                BPztb2.Text = "";
+                BPztb3.Text = "";
                 BPztb2.ReadOnly = true;
-                APztb3.ReadOnly = true;
+                BPztb3.ReadOnly = true;
             }
-            else
+            else if (BPztb1.SelectedIndex == 1)
+            {
+                BPztb2.ReadOnly = true;
+                BPztb3.ReadOnly = true;
+            }
+            else if (BPztb1.SelectedIndex > 1)
             {
                 BPztb2.ReadOnly = false;
                 BPztb3.ReadOnly = false;
@@ -1549,10 +1563,17 @@ namespace VividManagementApplication
         {
             if (CPztb1.SelectedIndex == 0)
             {
+                CPztb2.Text = "";
+                CPztb3.Text = "";
                 CPztb2.ReadOnly = true;
                 CPztb3.ReadOnly = true;
             }
-            else
+            else if (CPztb1.SelectedIndex == 1)
+            {
+                CPztb2.ReadOnly = true;
+                CPztb3.ReadOnly = true;
+            }
+            else if (CPztb1.SelectedIndex > 1)
             {
                 CPztb2.ReadOnly = false;
                 CPztb3.ReadOnly = false;
@@ -1563,10 +1584,17 @@ namespace VividManagementApplication
         {
             if (DPztb1.SelectedIndex == 0)
             {
+                DPztb2.Text = "";
+                DPztb3.Text = "";
                 DPztb2.ReadOnly = true;
                 DPztb3.ReadOnly = true;
             }
-            else
+            else if (DPztb1.SelectedIndex == 1)
+            {
+                DPztb2.ReadOnly = true;
+                DPztb3.ReadOnly = true;
+            }
+            else if (DPztb1.SelectedIndex > 1)
             {
                 DPztb2.ReadOnly = false;
                 DPztb3.ReadOnly = false;
@@ -1577,10 +1605,17 @@ namespace VividManagementApplication
         {
             if (EPztb1.SelectedIndex == 0)
             {
+                EPztb2.Text = "";
+                EPztb3.Text = "";
                 EPztb2.ReadOnly = true;
                 EPztb3.ReadOnly = true;
             }
-            else
+            else if (EPztb1.SelectedIndex == 1)
+            {
+                EPztb2.ReadOnly = true;
+                EPztb3.ReadOnly = true;
+            }
+            else if (EPztb1.SelectedIndex > 1)
             {
                 EPztb2.ReadOnly = false;
                 EPztb3.ReadOnly = false;

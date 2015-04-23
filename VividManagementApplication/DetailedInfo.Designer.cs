@@ -2235,6 +2235,7 @@
             this.EPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.EPztb1.FormattingEnabled = true;
             this.EPztb1.Items.AddRange(new object[] {
+            "",
             "现金",
             "银行卡",
             "其他"});
@@ -2259,6 +2260,7 @@
             this.DPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.DPztb1.FormattingEnabled = true;
             this.DPztb1.Items.AddRange(new object[] {
+            "",
             "现金",
             "银行卡",
             "其他"});
@@ -2286,6 +2288,7 @@
             this.CPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.CPztb1.FormattingEnabled = true;
             this.CPztb1.Items.AddRange(new object[] {
+            "",
             "现金",
             "银行卡",
             "其他"});
@@ -2310,6 +2313,7 @@
             this.BPztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.BPztb1.FormattingEnabled = true;
             this.BPztb1.Items.AddRange(new object[] {
+            "",
             "现金",
             "银行卡",
             "其他"});
@@ -2337,6 +2341,7 @@
             this.APztb1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.APztb1.FormattingEnabled = true;
             this.APztb1.Items.AddRange(new object[] {
+            "",
             "现金",
             "银行卡",
             "其他"});

@@ -1,3 +1,162 @@
+2015/4/23 21:21:21-无法查看详细
+###异常消息Message: 该字符串未被识别为有效的 DateTime。
+###当前异常StackTrace:    在 System.DateTimeParse.ParseExactMultiple(String s, String[] formats, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   在 System.DateTime.ParseExact(String s, String[] formats, IFormatProvider provider, DateTimeStyles style)
+   在 System.Data.SQLite.SQLiteConvert.ToDateTime(String dateText)
+   在 System.Data.SQLite.SQLiteConvert.ToDateTime(IntPtr ptr, Int32 len)
+   在 System.Data.SQLite.SQLite3.GetDateTime(SQLiteStatement stmt, Int32 index)
+   在 System.Data.SQLite.SQLite3.GetValue(SQLiteStatement stmt, Int32 index, SQLiteType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 345
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 406
+===================================================
+
+2015/4/23 21:20:21-无法查看详细
+###异常消息Message: 该字符串未被识别为有效的 DateTime。
+###当前异常StackTrace:    在 System.DateTimeParse.ParseExactMultiple(String s, String[] formats, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   在 System.DateTime.ParseExact(String s, String[] formats, IFormatProvider provider, DateTimeStyles style)
+   在 System.Data.SQLite.SQLiteConvert.ToDateTime(String dateText)
+   在 System.Data.SQLite.SQLiteConvert.ToDateTime(IntPtr ptr, Int32 len)
+   在 System.Data.SQLite.SQLite3.GetDateTime(SQLiteStatement stmt, Int32 index)
+   在 System.Data.SQLite.SQLite3.GetValue(SQLiteStatement stmt, Int32 index, SQLiteType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 345
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 406
+===================================================
+
+2015/4/23 21:18:46-无法查看详细
+###异常消息Message: 该字符串未被识别为有效的 DateTime。
+###当前异常StackTrace:    在 System.DateTimeParse.ParseExactMultiple(String s, String[] formats, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   在 System.DateTime.ParseExact(String s, String[] formats, IFormatProvider provider, DateTimeStyles style)
+   在 System.Data.SQLite.SQLiteConvert.ToDateTime(String dateText)
+   在 System.Data.SQLite.SQLiteConvert.ToDateTime(IntPtr ptr, Int32 len)
+   在 System.Data.SQLite.SQLite3.GetDateTime(SQLiteStatement stmt, Int32 index)
+   在 System.Data.SQLite.SQLite3.GetValue(SQLiteStatement stmt, Int32 index, SQLiteType typ)
+   在 System.Data.SQLite.SQLiteDataReader.GetValue(Int32 i)
+   在 System.Data.SQLite.SQLiteDataReader.get_Item(String name)
+   在 VividManagementApplication.DatabaseConnections.LocalGetOneRowDataById(String table, String[] query, String baseName, String id) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DatabaseConnections.cs:行号 345
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 406
+===================================================
+
+2015/4/23 21:16:27-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 21:08:19-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 21:03:22-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 20:58:18-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 20:56:23-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 20:55:49-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 20:55:35-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 20:55:13-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
+2015/4/23 20:54:32-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 608
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 809
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 951
+===================================================
+
 2015/4/20 19:37:19-
 ###异常消息Message: SQLite error
 table clients has no column named gzbID
