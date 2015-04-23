@@ -79,7 +79,7 @@ namespace VividManagementApplication
         {
             notifyIcon.Visible = false;
             this.Visible = false;
-            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
+            //Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
             #region 软件版本
             productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);
@@ -1286,7 +1286,10 @@ namespace VividManagementApplication
         /// </summary>
         private void exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("确认要退出管账宝?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                Application.Exit();
+            }
         }
 
         private void notifyBlinkTimer_Tick(object sender, EventArgs e)
