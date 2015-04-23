@@ -141,6 +141,7 @@ namespace VividManagementApplication
                         MessageBox.Show("请先输入客户信息!", "提示");
                         break;
                     }
+                    tbDz1.Items.Insert(0, "使用选择器...");
 
                     // 添加商品编号
                     JCDcbA.Items.Add("");
@@ -214,7 +215,7 @@ namespace VividManagementApplication
                         danziComboBox.SelectedIndex = 0;
 
                         DzDateTextBox.Text = DateTime.Now.ToLongDateString();
-                        tbDz1.SelectedIndex = 0;
+                        //tbDz1.SelectedIndex = 0;
                         DiscardCheckBox.Visible = false;
 
                         // 自动生成ID
@@ -355,6 +356,8 @@ namespace VividManagementApplication
                         break;
                     }
 
+                    tbPz1.Items.Insert(0, "使用选择器...");
+
                     canPrint = true;
                     if (ItemId.Equals("-1"))
                     {
@@ -368,7 +371,7 @@ namespace VividManagementApplication
                         pzComboBox.SelectedIndex = 0;
 
                         PzDateTextBox.Text = DateTime.Now.ToLongDateString();
-                        tbPz1.SelectedIndex = 0;
+                        //tbPz1.SelectedIndex = 0;
                         DiscardCheckBox.Visible = false;
 
                         // 自动生成ID
@@ -1143,6 +1146,7 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTxsfID);
+                    tbHTxsfID.Items.Insert(0, "使用选择器...");
                     //tbHTxsfID.SelectedIndex = 0;
                     tbHTxsfName.Text = "";
                     tbHTxsfAddress.Text = "";
@@ -1168,6 +1172,7 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
+                    tbHTghfID.Items.Insert(0, "使用选择器...");
                     //tbHTghfID.SelectedIndex = 0;
                     tbHTghfName.Text = "";
                     tbHTghfAddress.Text = "";
@@ -1183,7 +1188,7 @@ namespace VividManagementApplication
 
         private void tbHTxsfID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!tbHTxsfID.Text.Equals(""))
+            if (!tbHTxsfID.Text.Equals("") && tbHTxsfID.SelectedIndex > 0)
             {
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTxsfName, tbHTxsfAddress, tbHTxsfPresenter, tbHTxsfFax, tbHTxsfPhone, tbHTxsfEmail, tbHTxsfBankName, tbHTxsfBankNumber },
@@ -1192,11 +1197,15 @@ namespace VividManagementApplication
                         new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                         "clientID", tbHTxsfID.Text).ToList<String>());
             }
+            if (tbHTxsfID.SelectedIndex == 0)
+            {
+                InitClientPicker(tbHTxsfID);
+            }
         }
 
         private void tbHTghfID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!tbHTghfID.Text.Equals(""))
+            if (!tbHTghfID.Text.Equals("") && tbHTghfID.SelectedIndex > 0)
             {
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTghfName, tbHTghfAddress, tbHTghfPresenter, tbHTghfFax, tbHTghfPhone, tbHTghfEmail, tbHTghfBankName, tbHTghfBankNumber },
@@ -1204,6 +1213,10 @@ namespace VividManagementApplication
                              "clients",
                              new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                              "clientID", tbHTghfID.Text).ToList<String>());
+            }
+            if (tbHTghfID.SelectedIndex == 0)
+            {
+                InitClientPicker(tbHTghfID);
             }
         }
 
@@ -1362,15 +1375,47 @@ namespace VividManagementApplication
             }
         }
 
-        //
+        /// <summary>
+        /// 启用客户选择器
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// 
+        private void InitClientPicker(ComboBox cbPicker)
+        {
+            ClientPicker cp = new ClientPicker();
+            if (cp.ShowDialog() == DialogResult.OK)
+            {
+                cbPicker.Text = cp.selectedClientID;
+            }
+            else
+            {
+                cbPicker.SelectedIndex = -1;
+            }
+        }
+
         private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+            if (tbDz1.SelectedIndex > 0)
+            {
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+            }
+            else if (tbDz1.SelectedIndex == 0)
+            {
+                InitClientPicker(tbDz1);
+            }
         }
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
+            if (tbPz1.SelectedIndex > 0)
+            {
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
+            }
+            else if (tbPz1.SelectedIndex == 0)
+            {
+                InitClientPicker(tbPz1);
+            }
         }
 
         /// <summary>

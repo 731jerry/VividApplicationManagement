@@ -138,3 +138,4 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
