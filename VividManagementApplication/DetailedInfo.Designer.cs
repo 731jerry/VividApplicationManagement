@@ -1945,6 +1945,7 @@
             this.tbDz3.Size = new System.Drawing.Size(639, 26);
             this.tbDz3.TabIndex = 219;
             this.tbDz3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbDz3.TextChanged += new System.EventHandler(this.tbDz3_TextChanged);
             // 
             // label19
             // 

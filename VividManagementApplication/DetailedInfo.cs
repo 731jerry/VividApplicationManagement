@@ -1426,14 +1426,13 @@ namespace VividManagementApplication
         ///
         private void calculateSmallSum(Control left, Control right, Control result)
         {
-            int test1, test2;
-            if (left.Text.Equals("") || right.Text.Equals("") || !int.TryParse(left.Text, out test1) || !int.TryParse(right.Text, out test2))
+            float test1, test2;
+            if (left.Text.Equals("") || right.Text.Equals("") || !float.TryParse(left.Text, out test1) || !float.TryParse(right.Text, out test2))
             {
-
             }
             else
             {
-                result.Text = (int.Parse(left.Text) * int.Parse(right.Text)).ToString();
+                result.Text = (float.Parse(left.Text) * float.Parse(right.Text)).ToString();
             }
         }
         private void AJCDtb5_TextChanged(object sender, EventArgs e)
@@ -1469,12 +1468,12 @@ namespace VividManagementApplication
         /// 
         private void SetTotalSum(List<Control> conList, Control resultControl)
         {
-            int sum = 0;
+            float sum = 0;
             foreach (Control con in conList)
             {
                 if (!con.Text.Equals(""))
                 {
-                    sum += int.Parse(con.Text);
+                    sum += float.Parse(con.Text);
                 }
             }
             resultControl.Text = sum.ToString() + "=" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
@@ -2469,6 +2468,14 @@ namespace VividManagementApplication
         private void tbClient2_MouseLeave(object sender, EventArgs e)
         {
             tbClient2Tooltip.Hide(tbClient2);
+        }
+
+        private void tbDz3_TextChanged(object sender, EventArgs e)
+        {
+            if (danziComboBox.SelectedIndex == 1)
+            {
+                tbDz9.Text = tbDz3.Text.Split('=')[0];
+            }
         }
 
 

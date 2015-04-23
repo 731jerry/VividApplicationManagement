@@ -1340,5 +1340,10 @@ namespace VividManagementApplication
         {
             System.Diagnostics.Process.Start("http://www.vividapp.net/");
         }
+
+        private void lbUserName_Click(object sender, EventArgs e)
+        {
+            settingQQButton.PerformClick();
+        }
     }
 }

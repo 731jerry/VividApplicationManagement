@@ -115,8 +115,10 @@
             // 
             resources.ApplyResources(this.lbUserName, "lbUserName");
             this.lbUserName.BackColor = System.Drawing.Color.Transparent;
+            this.lbUserName.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbUserName.ForeColor = System.Drawing.Color.Blue;
             this.lbUserName.Name = "lbUserName";
+            this.lbUserName.Click += new System.EventHandler(this.lbUserName_Click);
             // 
             // label4
             // 
