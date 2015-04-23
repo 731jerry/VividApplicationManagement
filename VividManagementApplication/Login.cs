@@ -38,19 +38,22 @@ namespace VividManagementApplication
 
             if (!MainWindow.IS_PASSWORD_CORRECT)
             {
+                this.Text = windowText;
                 MessageBox.Show("帐号或者密码错误, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (FormBasicFeatrues.GetInstence().ConvertDateTimeToTimestamp(MainWindow.EXPIRETIME) < FormBasicFeatrues.GetInstence().ConvertDateTimeToTimestamp(DateTime.Now))
                 {
-                    MessageBox.Show("您的账户以到期, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Text = windowText;
+                    MessageBox.Show("您的账户以到期, 请与管理员联系!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
                     if (MainWindow.IS_USER_ONLINE)
                     {
-                        MessageBox.Show("此用户已在某处登录, 因为用户数据隐私的问题, 此版本不允许重复登录, 如有错误, 请与管理员联系!", "错误", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Text = windowText;
+                        MessageBox.Show("此用户已在某处登录, 因为用户数据隐私的问题, 此版本不允许重复登录, 如有错误, 请与管理员联系!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -166,7 +169,7 @@ namespace VividManagementApplication
             }
             catch (Exception exe)
             {
-                MessageBox.Show("检测最新版本失败!" + exe.Message, "错误");
+                MessageBox.Show("系统检测到您使用的是最新版本!", "提示");
             }
             this.Text = windowText;
             LoadCyy.Enabled = true;

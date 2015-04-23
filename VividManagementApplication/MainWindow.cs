@@ -29,9 +29,9 @@ namespace VividManagementApplication
         public static String ID = "";
         public static String USER_ID = "";
         public static String PASSWORD_HASH = "";
-        public static String REAL_NAME = "";
         public static String WORKLOADS = "";
         public static String COMPANY_NAME = "";
+        public static String COMPANY_NICKNAME = "";
         public static String COMPANY_OWNER = "";
         public static String ADDRESS = "";
         public static String BANK_NAME = "";
@@ -43,6 +43,7 @@ namespace VividManagementApplication
         public static DateTime ADDTIME = new DateTime();
         public static String NOTIFICATION = "";
         public static DateTime EXPIRETIME = new DateTime();
+        public static String SIGNATURE = "";
         public static int COMPANY_BALANCE = 0; // 公司结余暂存
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
@@ -117,7 +118,7 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 窗体用户信息初始化
-                lbUserName.Text = REAL_NAME + "(" + USER_ID + ")";
+                lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
                 dataBaseFilePrefix = USER_ID + "_data.txt";
 
                 // 广告计时器
@@ -193,6 +194,15 @@ namespace VividManagementApplication
                 // 状态栏通知
                 notifyIcon.Visible = true;
                 SetNotifyIcon(currentImageIndex);
+
+                #region 初始化企业基本信息设置
+                if (COMPANY_NAME.Equals("") || SIGNATURE.Equals("") || COMPANY_NICKNAME.Equals("") || PHONE.Equals("") || ADDRESS.Equals("") || BANK_NAME.Equals("") || BANK_CARD.Equals(""))
+                {
+                    Setting st = new Setting();
+                    st.Text = "初始化用户信息";
+                    st.ShowDialog();
+                }
+                #endregion
             }
             else
             {

@@ -57,7 +57,7 @@ namespace VividManagementApplication
             string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
 
             StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(id),id,userid,password,realname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(addtime as char) as addtime,GZB_expiretime,GZB_isonline,notification,companyBalance FROM users WHERE userid = '");
+                    @"SELECT Count(id),id,userid,password,companyNickname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(addtime as char) as addtime,GZB_expiretime,GZB_isonline,notification,companyBalance,GZB_signature FROM users WHERE userid = '");
             sbSQL.Append(acc);
             sbSQL.Append(@"'");
             sbSQL.Append(@" AND password = '");
@@ -78,7 +78,7 @@ namespace VividManagementApplication
                     MainWindow.ID = dataReader["id"].ToString();
                     MainWindow.USER_ID = dataReader["userid"].ToString();
                     MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
-                    MainWindow.REAL_NAME = dataReader["realname"].ToString();
+                    MainWindow.COMPANY_NICKNAME = dataReader["companyNickname"].ToString();
                     MainWindow.WORKLOADS = dataReader["workloads"].ToString();
                     MainWindow.COMPANY_NAME = dataReader["company"].ToString();
                     MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
@@ -94,6 +94,7 @@ namespace VividManagementApplication
                     MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
                     MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
                     MainWindow.COMPANY_BALANCE = int.Parse(dataReader["companyBalance"].ToString());
+                    MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
                     //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
                 }
             }
