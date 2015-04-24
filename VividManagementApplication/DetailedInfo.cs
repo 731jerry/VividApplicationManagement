@@ -2328,7 +2328,7 @@ namespace VividManagementApplication
 
             g.DrawString(tbHTghfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15, KuangY2);
             g.DrawString(tbHTghfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY3);
-            g.DrawString(tbHTghfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY4);
+            g.DrawString((tbHTghfAddress.Text.Length > 22) ? tbHTghfAddress.Text.Insert(22, "\n") : tbHTghfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY4);
             g.DrawString(tbHTghfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY5);
             g.DrawString(tbHTghfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY6);
             g.DrawString(tbHTghfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50, KuangY8);
@@ -2336,7 +2336,7 @@ namespace VividManagementApplication
 
             g.DrawString(tbHTxsfName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 15 + recWidth, KuangY2);
             g.DrawString(tbHTxsfPresenter.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY3);
-            g.DrawString(tbHTxsfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY4);
+            g.DrawString((tbHTxsfAddress.Text.Length > 22) ? tbHTxsfAddress.Text.Insert(22, "\n") : tbHTxsfAddress.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY4);
             g.DrawString(tbHTxsfPhone.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY5);
             g.DrawString(tbHTxsfFax.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY6);
             g.DrawString(tbHTxsfBankName.Text, f4, new SolidBrush(Color.Black), x + recWidth / 2 - 50 + recWidth, KuangY8);
