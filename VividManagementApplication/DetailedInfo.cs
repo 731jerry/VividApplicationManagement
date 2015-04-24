@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using ControlExs;
 
 namespace VividManagementApplication
@@ -1643,6 +1642,7 @@ namespace VividManagementApplication
         {
             //e.PageSettings.PaperSize = new System.Drawing.Printing.PaperSize("A4", 850, 1100);
             //FormBasicFeatrues.GetInstence().PrintPageSet(panel6, 15, 0, null, e);
+
             switch (printFlag)
             {
                 default:
@@ -1674,6 +1674,7 @@ namespace VividManagementApplication
                     break;
             }
         }
+
         // 通用preview
         private void SetPrintPreview(int flag, int pageHeight)
         {
