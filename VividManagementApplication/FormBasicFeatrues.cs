@@ -241,6 +241,18 @@ namespace VividManagementApplication
             return resultString;
         }
 
+        // 根据特定字长设置字体大小 一行
+        public Font setStringFontByLongestSize(float longestWidthSize, Font ft, String oriStr, Graphics g)
+        {
+            SizeF fontSize = g.MeasureString(oriStr, ft);
+            for (; (fontSize.Width >= longestWidthSize) && (fontSize.Width > 0); )
+            {
+                ft = new Font(ft.Name, ft.SizeInPoints - 0.1f);
+                fontSize = g.MeasureString(oriStr, ft);
+            }
+            return ft;
+        }
+
         // 金额的大小写转换
         public string MoneyToUpper(string strAmount)
         {

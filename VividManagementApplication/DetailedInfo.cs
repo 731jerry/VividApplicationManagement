@@ -1811,7 +1811,9 @@ namespace VividManagementApplication
             g.DrawString("联系地址：", dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, tableY - 26 + y + fontDisY - 20);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, tableY - 26 + y - 20, 268, dzAddress.Height);
-            g.DrawString(dzAddress.Text, dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, tableY - 26 + y + fontDisY - 20);
+            // g.DrawString(dzAddress.Text, dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, tableY - 26 + y + fontDisY - 20);
+            Font fontTemp = FormBasicFeatrues.GetInstence().setStringFontByLongestSize(268, dzAddress.Font, dzAddress.Text, g);
+            g.DrawString(dzAddress.Text, fontTemp, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, tableY - 26 + y - 20 + dzAddress.Height / 2 - fontTemp.Height / 2);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 384, tableY - 26 + y - 20, 111, dzContact.Height);
             g.DrawString("联系电话：", dzContact.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 384 + fontDisX, tableY - 26 + y + fontDisY - 20);
@@ -1960,7 +1962,9 @@ namespace VividManagementApplication
             g.DrawString("联系地址：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, tableY - 26 + y + fontDisY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, tableY - 26 + y - 20, 268, dzAddress.Height);
-            g.DrawString(pzAddress.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, tableY - 26 + y + fontDisY);
+            //g.DrawString(pzAddress.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, tableY - 26 + y + fontDisY);
+            Font fontTemp = FormBasicFeatrues.GetInstence().setStringFontByLongestSize(268, pzAddress.Font, pzAddress.Text, g);
+            g.DrawString(pzAddress.Text, fontTemp, new SolidBrush(pzAddress.ForeColor), tableX + x + 116, tableY - 26 + y - 20 + pzAddress.Height / 2 - fontTemp.Height / 2);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 384, tableY - 26 + y - 20, 111, dzContact.Height);
             g.DrawString("联系电话：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + 384 + fontDisX, tableY - 26 + y + fontDisY);
