@@ -80,12 +80,13 @@ namespace VividManagementApplication
             notifyIcon.Visible = false;
             this.Visible = false;
             //Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
+            String loginWindowLabel = "登录";
 
             #region 软件版本
-            productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);
-            String loginWindowLabel = "登录";
+           
             try
             {
+                productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);
                 CURRENT_APP_NAME = productKey.GetValue("DisplayName").ToString();
                 CURRENT_APP_VERSION_NAME = productKey.GetValue("VersionName").ToString(); ;
                 CURRENT_APP_VERSION_ID = productKey.GetValue("DisplayVersion").ToString();

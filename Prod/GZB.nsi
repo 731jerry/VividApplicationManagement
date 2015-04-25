@@ -11,6 +11,7 @@
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
 !define PRODUCT_WEB_SITE "http://www.vividapp.net"
 !define PRODUCT_BUILD_KEY "Software\VividApp\${PRODUCT_NAME_ENG}\"
+!define PRODUCT_BUILD_ROOT_KEY "HKCU"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
@@ -85,13 +86,9 @@ SectionEnd
 
 Section -Post
   WriteUninstaller "$INSTDIR\uninstall.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "DisplayName" "${PRODUCT_NAME}"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "VersionName" "${VERSION_NAME}"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
-
-  ;WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
-  ;WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "VersionName" "${VERSION_NAME}"
-  ;WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
+  WriteRegStr ${PRODUCT_BUILD_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "DisplayName" "${PRODUCT_NAME}"
+  WriteRegStr ${PRODUCT_BUILD_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "VersionName" "${VERSION_NAME}"
+  WriteRegStr ${PRODUCT_BUILD_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
 
 	;NSIS Ð¶ÔØ³ÌÐòµÄ×¢²á¼üÖµ
 	;http://blog.sina.com.cn/s/blog_407c173601007v2n.html
