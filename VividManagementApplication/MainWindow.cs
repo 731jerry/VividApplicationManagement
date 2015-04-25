@@ -44,7 +44,7 @@ namespace VividManagementApplication
         public static String NOTIFICATION = "";
         public static DateTime EXPIRETIME = new DateTime();
         public static String SIGNATURE = "";
-        public static int COMPANY_BALANCE = 0; // 公司结余暂存
+        public static float COMPANY_BALANCE = 0f; // 公司结余暂存
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
         public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
@@ -830,9 +830,9 @@ namespace VividManagementApplication
             this.MainDataGridView.Columns.Clear();
 
             Filter flt = new Filter();
-            flt.ShowDialog();
+            flt.Text = "请筛选...";
 
-            if (flt.FilterOKClickedIndex == 1) // OK键
+            if (flt.ShowDialog() == System.Windows.Forms.DialogResult.OK) // OK键
             {
                 clientIDFromFilter = flt.clientID.Text;
                 clientNameFromFilter = flt.clientName.Text;
@@ -856,7 +856,7 @@ namespace VividManagementApplication
 
                 Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-                int tempBalance = COMPANY_BALANCE;
+                float tempBalance = COMPANY_BALANCE;
 
                 DataGridViewColumn[] dgvcArray = new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 };
                 this.MainDataGridView.Columns.AddRange(dgvcArray);
@@ -874,11 +874,11 @@ namespace VividManagementApplication
                 {
                     if ((resultsList[i][2].Equals("收款凭证")) || resultsList[i][2].Equals("还款凭证"))
                     {
-                        tempBalance += int.Parse(resultsList[i][4]);
+                        tempBalance += float.Parse(resultsList[i][4]);
                     }
                     else
                     {
-                        tempBalance -= int.Parse(resultsList[i][4]);
+                        tempBalance -= float.Parse(resultsList[i][4]);
                     }
                     resultsList[i][5] = tempBalance.ToString();
                 }
@@ -888,12 +888,9 @@ namespace VividManagementApplication
                     this.MainDataGridView.Rows.Add(resultsList[j]);
                 }
             }
-            else if (flt.FilterOKClickedIndex == 0) // 取消键
+            else // 取消键
             {
                 listSfzhButton.PerformClick(); // 切换到收付汇总表
-            }
-            else
-            {
             }
         }
 

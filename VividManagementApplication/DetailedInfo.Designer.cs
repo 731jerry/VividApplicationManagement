@@ -369,12 +369,9 @@ namespace VividManagementApplication
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.PreviewPrintButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
-<<<<<<< HEAD
-=======
             this.remoteSignCheckBox = new ControlExs.QQCheckBox();
             this.dzGZBId = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
->>>>>>> 远程签单
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -4296,8 +4293,6 @@ namespace VividManagementApplication
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-<<<<<<< HEAD
-=======
             // remoteSignCheckBox
             // 
             this.remoteSignCheckBox.AutoSize = true;
@@ -4332,7 +4327,6 @@ namespace VividManagementApplication
             this.label17.TabIndex = 331;
             this.label17.Text = "管账宝帐号：";
             // 
->>>>>>> 远程签单
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -4722,12 +4716,9 @@ namespace VividManagementApplication
         private System.Windows.Forms.TextBox tbHTxsfAddress;
         private System.Windows.Forms.TextBox textBox488;
         private System.Windows.Forms.TextBox tbHTxsfName;
-<<<<<<< HEAD
-=======
         private System.Windows.Forms.TabPage tabPage5;
         private ControlExs.QQCheckBox remoteSignCheckBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox dzGZBId;
->>>>>>> 远程签单
     }
 }

@@ -93,7 +93,7 @@ namespace VividManagementApplication
                     MainWindow.NOTIFICATION = dataReader["notification"].ToString();
                     MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
                     MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
-                    MainWindow.COMPANY_BALANCE = int.Parse(dataReader["companyBalance"].ToString());
+                    MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
                     MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
                     //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
                 }

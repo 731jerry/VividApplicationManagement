@@ -1402,14 +1402,15 @@ namespace VividManagementApplication
             else if (tbDz1.SelectedIndex == 0)
             {
                 InitClientPicker(tbDz1);
-=======
+
             FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
             if (!dzGZBId.Equals(""))
             {
                 remoteSignCheckBox.Visible = true;
                 remoteSignCheckBox.Enabled = true;
->>>>>>> 远程签单
+
             }
+        }
         }
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
@@ -2515,23 +2516,17 @@ namespace VividManagementApplication
             tbClient2Tooltip.Hide(tbClient2);
         }
 
-<<<<<<< HEAD
         private void tbDz3_TextChanged(object sender, EventArgs e)
         {
             if (danziComboBox.SelectedIndex == 1)
             {
                 tbDz9.Text = tbDz3.Text.Split('=')[0];
             }
-=======
+        }
         private void DetailedDanziPanel_Paint(object sender, PaintEventArgs e)
         {
 
->>>>>>> 远程签单
         }
-
-
-
-
 
     }
 }

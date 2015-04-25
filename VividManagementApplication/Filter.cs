@@ -12,8 +12,6 @@ namespace VividManagementApplication
 {
     public partial class Filter : Form
     {
-        public int FilterOKClickedIndex = -1; // Filter窗口
-
         public Filter()
         {
             InitializeComponent();
@@ -31,13 +29,12 @@ namespace VividManagementApplication
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            FilterOKClickedIndex = 1;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Close();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            FilterOKClickedIndex = 0;
             this.Close();
         }
 
