@@ -5,12 +5,13 @@
 !define VERSION_NAME "精华版"
 !define PRODUCT_NAME_ENG "GZB"
 !define APP_NAME "管账宝"
-!define PRODUCT_VERSION "1.1.8"
+!define PRODUCT_VERSION "1.1.9"
 !define PRODUCT_PUBLISHER "唯达软件科技有限公司"
 !define INSTALL_LOCATION "c:\GZB"
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
 !define PRODUCT_WEB_SITE "http://www.vividapp.net"
-!define PRODUCT_UNINST_KEY "Software\VividApp\${PRODUCT_NAME_ENG}\"
+!define PRODUCT_BUILD_KEY "Software\VividApp\${PRODUCT_NAME_ENG}\"
+!define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
 SetCompressor lzma
@@ -84,24 +85,23 @@ SectionEnd
 
 Section -Post
   WriteUninstaller "$INSTDIR\uninstall.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninstall.exe"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\config\img\icon.ico"
-  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "DisplayName" "${PRODUCT_NAME}"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "VersionName" "${VERSION_NAME}"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
 
-  WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
-  WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "VersionName" "${VERSION_NAME}"
-  WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
+  ;WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME}"
+  ;WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "VersionName" "${VERSION_NAME}"
+  ;WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
 
 	;NSIS 卸载程序的注册键值
 	;http://blog.sina.com.cn/s/blog_407c173601007v2n.html
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "DisplayName" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "InstallLocation" "$INSTDIR"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "UninstallString" "$INSTDIR\UnInstall.exe"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "DisplayIcon" "${PRODUCT_NAME_ENG}\config\img\install.ico"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "DisplayVersion" "${PRODUCT_VERSION}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME_ENG}" "Publisher" "${PRODUCT_PUBLISHER}"
+	WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "${PRODUCT_NAME} ${PRODUCT_VERSION}"
+	WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "InstallLocation" "$INSTDIR"
+	WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\UnInstall.exe"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayIcon" "$INSTDIR\config\img\install.ico"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayVersion" "${PRODUCT_VERSION}"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
+  WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "URLInfoAbout" "${PRODUCT_WEB_SITE}"
 SectionEnd
 
 /******************************
@@ -109,21 +109,24 @@ SectionEnd
  ******************************/
 
 Section Uninstall
+
   Delete "$INSTDIR\uninstall.exe"
-
-  Delete "$SMPROGRAMS\${PRODUCT_PUBLISHER}\Uninstall.lnk"
-
+  Delete "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk"
 	Delete "$DESKTOP\${PRODUCT_NAME}.lnk"
-
+	Delete "$SMPROGRAMS\${PRODUCT_PUBLISHER}\Uninstall.lnk"
+	Delete "$SMPROGRAMS\${PRODUCT_PUBLISHER}\${PRODUCT_NAME}.lnk"
 	Delete "$SMPROGRAMS\${PRODUCT_NAME}.lnk"
+	Delete "$SMPROGRAMS\${PRODUCT_PUBLISHER}.lnk"
+	Delete "$SMPROGRAMS\${PRODUCT_NAME}.lnk"
+	Delete "$QUICKLAUNCH.lnk"
+  Delete "$DESKTOP.lnk"
 
   RMDir "$SMPROGRAMS\${PRODUCT_PUBLISHER}"
-
   RMDir /r "${INSTALL_LOCATION}"
-
   RMDir "$INSTDIR"
 
-  DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_BUILD_KEY}"
+	DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   SetAutoClose true
 SectionEnd
 
@@ -139,31 +142,3 @@ Function un.onUninstSuccess
   MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) 已成功地从您的计算机移除。"
 FunctionEnd
 
-Var UNINSTALL_PROG
-Var OLD_VER
-Var OLD_PATH
-
-
-Function un.onInit.backup
-  ClearErrors
-  ReadRegStr $UNINSTALL_PROG ${PRODUCT_UNINST_ROOT_KEY} ${PRODUCT_UNINST_KEY} "Software\VividApp\${PRODUCT_NAME_ENG}"
-  IfErrors  done
-
-  ReadRegStr $OLD_VER ${PRODUCT_UNINST_ROOT_KEY} ${PRODUCT_UNINST_KEY} "Software\VividApp\${PRODUCT_NAME_ENG}"
-  MessageBox MB_YESNOCANCEL|MB_ICONQUESTION \
-    "检测到本机已经安装 $(^Name) ${PRODUCT_VERSION}?\
-    $\n$\n是否先卸载已安装的版本?" \
-      /SD IDYES \
-      IDYES uninstall \
-      IDNO done
-  Abort
-
-uninstall:
-  StrCpy $OLD_PATH $UNINSTALL_PROG -10
-  ExecWait '"$UNINSTALL_PROG" /S _?=$OLD_PATH' $0
-  DetailPrint "uninstall.exe returned $0"
-  Delete "$UNINSTALL_PROG"
-  RMDir $OLD_PATH
-
-done:
-FunctionEnd
