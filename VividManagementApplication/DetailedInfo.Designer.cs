@@ -1,4 +1,4 @@
-﻿namespace VividManagementApplication
+namespace VividManagementApplication
 {
     partial class DetailedInfo
     {
@@ -360,6 +360,7 @@
             this.label118 = new System.Windows.Forms.Label();
             this.label137 = new System.Windows.Forms.Label();
             this.HTcbName = new System.Windows.Forms.ComboBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
@@ -368,6 +369,12 @@
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.PreviewPrintButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
+<<<<<<< HEAD
+=======
+            this.remoteSignCheckBox = new ControlExs.QQCheckBox();
+            this.dzGZBId = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+>>>>>>> 远程签单
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -391,6 +398,7 @@
             this.DetailedTabView.Controls.Add(this.tabPage2);
             this.DetailedTabView.Controls.Add(this.tabPage3);
             this.DetailedTabView.Controls.Add(this.tabPage4);
+            this.DetailedTabView.Controls.Add(this.tabPage5);
             this.DetailedTabView.Location = new System.Drawing.Point(10, 1);
             this.DetailedTabView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DetailedTabView.Name = "DetailedTabView";
@@ -1134,6 +1142,8 @@
             // 
             // DetailedDanziPanel
             // 
+            this.DetailedDanziPanel.Controls.Add(this.label17);
+            this.DetailedDanziPanel.Controls.Add(this.dzGZBId);
             this.DetailedDanziPanel.Controls.Add(this.tbDz8);
             this.DetailedDanziPanel.Controls.Add(this.label50);
             this.DetailedDanziPanel.Controls.Add(this.tbDz11);
@@ -1174,6 +1184,7 @@
             this.DetailedDanziPanel.Name = "DetailedDanziPanel";
             this.DetailedDanziPanel.Size = new System.Drawing.Size(780, 544);
             this.DetailedDanziPanel.TabIndex = 70;
+            this.DetailedDanziPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DetailedDanziPanel_Paint);
             // 
             // tbDz8
             // 
@@ -1377,7 +1388,7 @@
             this.PanelDZ.Controls.Add(this.textBox157);
             this.PanelDZ.Controls.Add(this.textBox158);
             this.PanelDZ.Controls.Add(this.textBox159);
-            this.PanelDZ.Location = new System.Drawing.Point(31, 139);
+            this.PanelDZ.Location = new System.Drawing.Point(31, 147);
             this.PanelDZ.Name = "PanelDZ";
             this.PanelDZ.Size = new System.Drawing.Size(737, 158);
             this.PanelDZ.TabIndex = 230;
@@ -1930,7 +1941,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(335, 109);
+            this.label15.Location = new System.Drawing.Point(349, 108);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 20);
             this.label15.TabIndex = 237;
@@ -1952,7 +1963,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(335, 76);
+            this.label19.Location = new System.Drawing.Point(349, 75);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(79, 20);
             this.label19.TabIndex = 236;
@@ -2068,7 +2079,7 @@
             this.danziComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.danziComboBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.danziComboBox.FormattingEnabled = true;
-            this.danziComboBox.Location = new System.Drawing.Point(19, 21);
+            this.danziComboBox.Location = new System.Drawing.Point(19, 9);
             this.danziComboBox.Name = "danziComboBox";
             this.danziComboBox.Size = new System.Drawing.Size(86, 28);
             this.danziComboBox.TabIndex = 201;
@@ -2079,7 +2090,7 @@
             this.tbDz1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tbDz1.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz1.FormattingEnabled = true;
-            this.tbDz1.Location = new System.Drawing.Point(110, 60);
+            this.tbDz1.Location = new System.Drawing.Point(123, 43);
             this.tbDz1.Name = "tbDz1";
             this.tbDz1.Size = new System.Drawing.Size(120, 28);
             this.tbDz1.TabIndex = 202;
@@ -2099,7 +2110,7 @@
             // tbDz2
             // 
             this.tbDz2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz2.Location = new System.Drawing.Point(110, 94);
+            this.tbDz2.Location = new System.Drawing.Point(123, 109);
             this.tbDz2.Name = "tbDz2";
             this.tbDz2.ReadOnly = true;
             this.tbDz2.Size = new System.Drawing.Size(120, 26);
@@ -2110,7 +2121,7 @@
             this.label62.AutoSize = true;
             this.label62.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label62.ForeColor = System.Drawing.Color.Black;
-            this.label62.Location = new System.Drawing.Point(35, 97);
+            this.label62.Location = new System.Drawing.Point(43, 112);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(79, 20);
             this.label62.TabIndex = 98;
@@ -2121,7 +2132,7 @@
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label63.ForeColor = System.Drawing.Color.Red;
-            this.label63.Location = new System.Drawing.Point(27, 64);
+            this.label63.Location = new System.Drawing.Point(37, 47);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(85, 20);
             this.label63.TabIndex = 91;
@@ -4202,6 +4213,16 @@
             this.HTcbName.TabIndex = 582;
             this.HTcbName.SelectedIndexChanged += new System.EventHandler(this.HTcbName_SelectedIndexChanged);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(817, 602);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "tabPage5";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
             // printDialog1
             // 
             this.printDialog1.UseEXDialog = true;
@@ -4242,7 +4263,7 @@
             this.DiscardCheckBox.AutoSize = true;
             this.DiscardCheckBox.BackColor = System.Drawing.Color.Transparent;
             this.DiscardCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.DiscardCheckBox.Location = new System.Drawing.Point(618, 659);
+            this.DiscardCheckBox.Location = new System.Drawing.Point(507, 659);
             this.DiscardCheckBox.Name = "DiscardCheckBox";
             this.DiscardCheckBox.Size = new System.Drawing.Size(51, 21);
             this.DiscardCheckBox.TabIndex = 318;
@@ -4275,11 +4296,49 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+<<<<<<< HEAD
+=======
+            // remoteSignCheckBox
+            // 
+            this.remoteSignCheckBox.AutoSize = true;
+            this.remoteSignCheckBox.BackColor = System.Drawing.Color.Transparent;
+            this.remoteSignCheckBox.Enabled = false;
+            this.remoteSignCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.remoteSignCheckBox.Location = new System.Drawing.Point(606, 659);
+            this.remoteSignCheckBox.Name = "remoteSignCheckBox";
+            this.remoteSignCheckBox.Size = new System.Drawing.Size(75, 21);
+            this.remoteSignCheckBox.TabIndex = 320;
+            this.remoteSignCheckBox.Text = "远程签单";
+            this.remoteSignCheckBox.UseVisualStyleBackColor = false;
+            this.remoteSignCheckBox.Visible = false;
+            // 
+            // dzGZBId
+            // 
+            this.dzGZBId.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.dzGZBId.Location = new System.Drawing.Point(123, 77);
+            this.dzGZBId.Name = "dzGZBId";
+            this.dzGZBId.ReadOnly = true;
+            this.dzGZBId.Size = new System.Drawing.Size(120, 26);
+            this.dzGZBId.TabIndex = 330;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label17.ForeColor = System.Drawing.Color.Green;
+            this.label17.Location = new System.Drawing.Point(29, 79);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(93, 20);
+            this.label17.TabIndex = 331;
+            this.label17.Text = "管账宝帐号：";
+            // 
+>>>>>>> 远程签单
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 698);
+            this.Controls.Add(this.remoteSignCheckBox);
             this.Controls.Add(this.DiscardLabel);
             this.Controls.Add(this.DiscardCheckBox);
             this.Controls.Add(this.PreviewPrintButton);
@@ -4663,5 +4722,12 @@
         private System.Windows.Forms.TextBox tbHTxsfAddress;
         private System.Windows.Forms.TextBox textBox488;
         private System.Windows.Forms.TextBox tbHTxsfName;
+<<<<<<< HEAD
+=======
+        private System.Windows.Forms.TabPage tabPage5;
+        private ControlExs.QQCheckBox remoteSignCheckBox;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox dzGZBId;
+>>>>>>> 远程签单
     }
 }
