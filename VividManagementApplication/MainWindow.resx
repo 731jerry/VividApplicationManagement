@@ -703,6 +703,72 @@
   <data name="&gt;&gt;ContentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="qqButton3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="qqButton3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="qqButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 566</value>
+  </data>
+  <data name="qqButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 20</value>
+  </data>
+  <data name="qqButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="qqButton3.Text" xml:space="preserve">
+    <value>签单列表</value>
+  </data>
+  <data name="qqButton3.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>TextBeforeImage</value>
+  </data>
+  <data name="&gt;&gt;qqButton3.Name" xml:space="preserve">
+    <value>qqButton3</value>
+  </data>
+  <data name="&gt;&gt;qqButton3.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;qqButton3.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;qqButton3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="qqRadioButton1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="qqRadioButton1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt, style=Bold</value>
+  </data>
+  <data name="qqRadioButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="qqRadioButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 542</value>
+  </data>
+  <data name="qqRadioButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 19</value>
+  </data>
+  <data name="qqRadioButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>58</value>
+  </data>
+  <data name="qqRadioButton1.Text" xml:space="preserve">
+    <value>远程签单</value>
+  </data>
+  <data name="&gt;&gt;qqRadioButton1.Name" xml:space="preserve">
+    <value>qqRadioButton1</value>
+  </data>
+  <data name="&gt;&gt;qqRadioButton1.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;qqRadioButton1.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;qqRadioButton1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="listXsButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
@@ -734,7 +800,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listXsButton.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="listHtButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -767,7 +833,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listHtButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="newHtButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -800,7 +866,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;newHtButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="htRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -833,7 +899,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;htRadio.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="listSfzhButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -866,7 +932,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listSfzhButton.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="newPzButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -899,7 +965,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;newPzButton.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="cwRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -932,7 +998,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;cwRadio.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="listKhdzButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -965,7 +1031,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listKhdzButton.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="listCgButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -998,7 +1064,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listCgButton.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="newCgZsButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1031,7 +1097,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;newCgZsButton.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="ywRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1064,7 +1130,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;ywRadio.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>12</value>
   </data>
   <data name="listCcdButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1097,7 +1163,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listCcdButton.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>13</value>
   </data>
   <data name="listJcdButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1130,7 +1196,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listJcdButton.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>14</value>
   </data>
   <data name="listKcButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1163,7 +1229,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listKcButton.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>15</value>
   </data>
   <data name="ccRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1196,7 +1262,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;ccRadio.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>16</value>
   </data>
   <data name="listSpButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1229,7 +1295,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listSpButton.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>17</value>
   </data>
   <data name="newSpButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1262,7 +1328,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;newSpButton.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>18</value>
   </data>
   <data name="spRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1295,7 +1361,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;spRadio.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>19</value>
   </data>
   <data name="listCxButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1328,7 +1394,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;listCxButton.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>20</value>
   </data>
   <data name="newCxButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -1361,7 +1427,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;newCxButton.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>21</value>
   </data>
   <data name="cxRadio.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1394,7 +1460,7 @@
     <value>NavPanel</value>
   </data>
   <data name="&gt;&gt;cxRadio.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>22</value>
   </data>
   <data name="NavPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>

@@ -89,6 +89,8 @@
             this.notifyImageList = new System.Windows.Forms.ImageList(this.components);
             this.ExtendExpireLinkLabel = new System.Windows.Forms.LinkLabel();
             this.UserDegreeLabel = new System.Windows.Forms.Label();
+            this.qqButton3 = new ControlExs.QQButton();
+            this.qqRadioButton1 = new ControlExs.QQRadioButton();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -223,6 +225,8 @@
             // 
             this.NavPanel.BackColor = System.Drawing.Color.Transparent;
             this.NavPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.NavPanel.Controls.Add(this.qqButton3);
+            this.NavPanel.Controls.Add(this.qqRadioButton1);
             this.NavPanel.Controls.Add(this.listXsButton);
             this.NavPanel.Controls.Add(this.listHtButton);
             this.NavPanel.Controls.Add(this.newHtButton);
@@ -541,6 +545,21 @@
             this.UserDegreeLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.UserDegreeLabel.Name = "UserDegreeLabel";
             // 
+            // qqButton3
+            // 
+            resources.ApplyResources(this.qqButton3, "qqButton3");
+            this.qqButton3.Name = "qqButton3";
+            this.qqButton3.UseVisualStyleBackColor = true;
+            // 
+            // qqRadioButton1
+            // 
+            resources.ApplyResources(this.qqRadioButton1, "qqRadioButton1");
+            this.qqRadioButton1.BackColor = System.Drawing.Color.Transparent;
+            this.qqRadioButton1.Checked = true;
+            this.qqRadioButton1.Name = "qqRadioButton1";
+            this.qqRadioButton1.TabStop = true;
+            this.qqRadioButton1.UseVisualStyleBackColor = false;
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -634,6 +653,8 @@
         private ControlExs.QQButton qqButton2;
         private System.Windows.Forms.LinkLabel ExtendExpireLinkLabel;
         private System.Windows.Forms.Label UserDegreeLabel;
+        private ControlExs.QQButton qqButton3;
+        private ControlExs.QQRadioButton qqRadioButton1;
     }
 }
 

@@ -77,11 +77,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillSign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillSign.Designer.cs">
+      <DependentUpon>BillSign.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientPicker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientPicker.Designer.cs">
       <DependentUpon>ClientPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmPassword.Designer.cs">
+      <DependentUpon>ConfirmPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseConnections.cs" />
     <Compile Include="DetailedInfo.cs">
@@ -131,8 +143,14 @@
     <Compile Include="update.Designer.cs">
       <DependentUpon>update.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillSign.resx">
+      <DependentUpon>BillSign.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientPicker.resx">
       <DependentUpon>ClientPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmPassword.resx">
+      <DependentUpon>ConfirmPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DetailedInfo.resx">
       <DependentUpon>DetailedInfo.cs</DependentUpon>

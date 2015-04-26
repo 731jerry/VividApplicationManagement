@@ -33,8 +33,6 @@
             this.tbInfo1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.SaveButton = new ControlExs.QQButton();
-            this.CancelQQButton = new ControlExs.QQButton();
             this.tbInfo3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbInfo8 = new System.Windows.Forms.TextBox();
@@ -49,7 +47,6 @@
             this.tbInfo2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.PasswordGroupBox = new System.Windows.Forms.GroupBox();
-            this.ChangePasswordQQButton = new ControlExs.QQButton();
             this.NewPasswordTextBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.NewPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -64,6 +61,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SignPictureShowBox = new System.Windows.Forms.PictureBox();
             this.SignqqButton = new ControlExs.QQButton();
+            this.ChangePasswordQQButton = new ControlExs.QQButton();
+            this.CancelQQButton = new ControlExs.QQButton();
+            this.SaveButton = new ControlExs.QQButton();
             this.PasswordGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignPictureShowBox)).BeginInit();
@@ -106,32 +106,6 @@
             this.label39.Size = new System.Drawing.Size(85, 20);
             this.label39.TabIndex = 114;
             this.label39.Text = "*公司名称：";
-            // 
-            // SaveButton
-            // 
-            this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
-            this.SaveButton.Location = new System.Drawing.Point(33, 441);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(91, 28);
-            this.SaveButton.TabIndex = 24;
-            this.SaveButton.Text = "保存";
-            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // CancelQQButton
-            // 
-            this.CancelQQButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.CancelQQButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelQQButton.Image")));
-            this.CancelQQButton.Location = new System.Drawing.Point(480, 441);
-            this.CancelQQButton.Name = "CancelQQButton";
-            this.CancelQQButton.Size = new System.Drawing.Size(91, 28);
-            this.CancelQQButton.TabIndex = 25;
-            this.CancelQQButton.Text = "取消";
-            this.CancelQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.CancelQQButton.UseVisualStyleBackColor = true;
-            this.CancelQQButton.Click += new System.EventHandler(this.CancelQQButton_Click);
             // 
             // tbInfo3
             // 
@@ -272,20 +246,6 @@
             this.PasswordGroupBox.Size = new System.Drawing.Size(281, 172);
             this.PasswordGroupBox.TabIndex = 143;
             this.PasswordGroupBox.TabStop = false;
-            // 
-            // ChangePasswordQQButton
-            // 
-            this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
-            this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 131);
-            this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
-            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 28);
-            this.ChangePasswordQQButton.TabIndex = 23;
-            this.ChangePasswordQQButton.Text = "修改";
-            this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ChangePasswordQQButton.UseVisualStyleBackColor = true;
-            this.ChangePasswordQQButton.Click += new System.EventHandler(this.ChangePasswordQQButton_Click);
             // 
             // NewPasswordTextBox2
             // 
@@ -433,6 +393,46 @@
             this.SignqqButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SignqqButton.UseVisualStyleBackColor = true;
             this.SignqqButton.Click += new System.EventHandler(this.SignqqButton_Click);
+            // 
+            // ChangePasswordQQButton
+            // 
+            this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
+            this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 131);
+            this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
+            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 28);
+            this.ChangePasswordQQButton.TabIndex = 23;
+            this.ChangePasswordQQButton.Text = "修改";
+            this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ChangePasswordQQButton.UseVisualStyleBackColor = true;
+            this.ChangePasswordQQButton.Click += new System.EventHandler(this.ChangePasswordQQButton_Click);
+            // 
+            // CancelQQButton
+            // 
+            this.CancelQQButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.CancelQQButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelQQButton.Image")));
+            this.CancelQQButton.Location = new System.Drawing.Point(480, 441);
+            this.CancelQQButton.Name = "CancelQQButton";
+            this.CancelQQButton.Size = new System.Drawing.Size(91, 28);
+            this.CancelQQButton.TabIndex = 25;
+            this.CancelQQButton.Text = "取消";
+            this.CancelQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.CancelQQButton.UseVisualStyleBackColor = true;
+            this.CancelQQButton.Click += new System.EventHandler(this.CancelQQButton_Click);
+            // 
+            // SaveButton
+            // 
+            this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
+            this.SaveButton.Location = new System.Drawing.Point(33, 441);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(91, 28);
+            this.SaveButton.TabIndex = 24;
+            this.SaveButton.Text = "保存";
+            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // Setting
             // 

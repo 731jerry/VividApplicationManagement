@@ -678,6 +678,15 @@ namespace VividManagementApplication
         // 保存按钮
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            // 远程签单
+            if (remoteSignCheckBox.Checked)
+            {
+                if (MessageBox.Show("已检测到对方客户也是管账宝会员用户,是否确认发送远程签单请求?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                {
+
+                }
+            }
+
             try
             {
                 if (FormBasicFeatrues.GetInstence().isPassValidateControls(checkValidateControls))
@@ -1403,14 +1412,14 @@ namespace VividManagementApplication
             {
                 InitClientPicker(tbDz1);
 
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
-            if (!dzGZBId.Equals(""))
-            {
-                remoteSignCheckBox.Visible = true;
-                remoteSignCheckBox.Enabled = true;
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+                if (!dzGZBId.Equals(""))
+                {
+                    remoteSignCheckBox.Visible = true;
+                    remoteSignCheckBox.Enabled = true;
 
+                }
             }
-        }
         }
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
