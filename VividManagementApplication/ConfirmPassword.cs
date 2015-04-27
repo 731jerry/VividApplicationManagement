@@ -18,10 +18,17 @@ namespace VividManagementApplication
             InitializeComponent();
         }
 
-        private void SaveButton_Click(object sender, EventArgs e)
+        private void ConfirmPasswordButton_Click(object sender, EventArgs e)
         {
-            password = confirmPasswordText.Text;
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            if (MainWindow.PASSWORD_HASH.Equals(FormBasicFeatrues.GetInstence().GetMd5HashFromString(confirmPasswordText.Text)))
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("验证密码错误!", "提示");
+                confirmPasswordText.Text = "";
+            }
         }
     }
 }

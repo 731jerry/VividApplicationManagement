@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmPassword));
             this.label1 = new System.Windows.Forms.Label();
             this.confirmPasswordText = new System.Windows.Forms.TextBox();
-            this.SaveButton = new ControlExs.QQButton();
+            this.ConfirmPasswordButton = new ControlExs.QQButton();
             this.SuspendLayout();
             // 
             // label1
@@ -54,25 +54,25 @@
             this.confirmPasswordText.TabIndex = 156;
             this.confirmPasswordText.UseSystemPasswordChar = true;
             // 
-            // SaveButton
+            // ConfirmPasswordButton
             // 
-            this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
-            this.SaveButton.Location = new System.Drawing.Point(155, 85);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(91, 28);
-            this.SaveButton.TabIndex = 157;
-            this.SaveButton.Text = "保存";
-            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.ConfirmPasswordButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.ConfirmPasswordButton.Image = ((System.Drawing.Image)(resources.GetObject("ConfirmPasswordButton.Image")));
+            this.ConfirmPasswordButton.Location = new System.Drawing.Point(155, 85);
+            this.ConfirmPasswordButton.Name = "ConfirmPasswordButton";
+            this.ConfirmPasswordButton.Size = new System.Drawing.Size(91, 28);
+            this.ConfirmPasswordButton.TabIndex = 157;
+            this.ConfirmPasswordButton.Text = "确认";
+            this.ConfirmPasswordButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ConfirmPasswordButton.UseVisualStyleBackColor = true;
+            this.ConfirmPasswordButton.Click += new System.EventHandler(this.ConfirmPasswordButton_Click);
             // 
             // ConfirmPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 128);
-            this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.ConfirmPasswordButton);
             this.Controls.Add(this.confirmPasswordText);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -90,6 +90,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox confirmPasswordText;
-        private ControlExs.QQButton SaveButton;
+        private ControlExs.QQButton ConfirmPasswordButton;
     }
 }

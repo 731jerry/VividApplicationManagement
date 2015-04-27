@@ -678,15 +678,6 @@ namespace VividManagementApplication
         // 保存按钮
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            // 远程签单
-            if (remoteSignCheckBox.Checked)
-            {
-                if (MessageBox.Show("已检测到对方客户也是管账宝会员用户,是否确认发送远程签单请求?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
-                {
-
-                }
-            }
-
             try
             {
                 if (FormBasicFeatrues.GetInstence().isPassValidateControls(checkValidateControls))
@@ -1765,6 +1756,7 @@ namespace VividManagementApplication
             }
         }
 
+        Bitmap printBitmap;
         // 打印单子 进仓单 出仓单 采购单 销售单
         private void PrintDZ(int x, int y, Boolean isJCCD, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -2532,9 +2524,21 @@ namespace VividManagementApplication
                 tbDz9.Text = tbDz3.Text.Split('=')[0];
             }
         }
-        private void DetailedDanziPanel_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void remoteSignButton_Click(object sender, EventArgs e)
+        {
+            // 远程签单
+            if (remoteSignButton.Enabled)
+            {
+                if (MessageBox.Show("已检测到对方客户也是管账宝会员用户,是否确认发送远程签单请求?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
+                {
+                    ConfirmPassword cp = new ConfirmPassword();
+                    if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
         }
 
     }

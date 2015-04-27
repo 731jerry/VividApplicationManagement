@@ -101,6 +101,8 @@ namespace VividManagementApplication
             this.tbGoods1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DetailedDanziPanel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dzGZBId = new System.Windows.Forms.TextBox();
             this.tbDz8 = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.tbDz11 = new System.Windows.Forms.TextBox();
@@ -369,9 +371,7 @@ namespace VividManagementApplication
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.PreviewPrintButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
-            this.remoteSignCheckBox = new ControlExs.QQCheckBox();
-            this.dzGZBId = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.remoteSignButton = new ControlExs.QQButton();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -1181,7 +1181,26 @@ namespace VividManagementApplication
             this.DetailedDanziPanel.Name = "DetailedDanziPanel";
             this.DetailedDanziPanel.Size = new System.Drawing.Size(780, 544);
             this.DetailedDanziPanel.TabIndex = 70;
-            this.DetailedDanziPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DetailedDanziPanel_Paint);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label17.ForeColor = System.Drawing.Color.Green;
+            this.label17.Location = new System.Drawing.Point(29, 79);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(93, 20);
+            this.label17.TabIndex = 331;
+            this.label17.Text = "管账宝帐号：";
+            // 
+            // dzGZBId
+            // 
+            this.dzGZBId.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.dzGZBId.Location = new System.Drawing.Point(123, 77);
+            this.dzGZBId.Name = "dzGZBId";
+            this.dzGZBId.ReadOnly = true;
+            this.dzGZBId.Size = new System.Drawing.Size(120, 26);
+            this.dzGZBId.TabIndex = 330;
             // 
             // tbDz8
             // 
@@ -4293,46 +4312,25 @@ namespace VividManagementApplication
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // remoteSignCheckBox
+            // remoteSignButton
             // 
-            this.remoteSignCheckBox.AutoSize = true;
-            this.remoteSignCheckBox.BackColor = System.Drawing.Color.Transparent;
-            this.remoteSignCheckBox.Enabled = false;
-            this.remoteSignCheckBox.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.remoteSignCheckBox.Location = new System.Drawing.Point(606, 659);
-            this.remoteSignCheckBox.Name = "remoteSignCheckBox";
-            this.remoteSignCheckBox.Size = new System.Drawing.Size(75, 21);
-            this.remoteSignCheckBox.TabIndex = 320;
-            this.remoteSignCheckBox.Text = "远程签单";
-            this.remoteSignCheckBox.UseVisualStyleBackColor = false;
-            this.remoteSignCheckBox.Visible = false;
-            // 
-            // dzGZBId
-            // 
-            this.dzGZBId.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.dzGZBId.Location = new System.Drawing.Point(123, 77);
-            this.dzGZBId.Name = "dzGZBId";
-            this.dzGZBId.ReadOnly = true;
-            this.dzGZBId.Size = new System.Drawing.Size(120, 26);
-            this.dzGZBId.TabIndex = 330;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label17.ForeColor = System.Drawing.Color.Green;
-            this.label17.Location = new System.Drawing.Point(29, 79);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(93, 20);
-            this.label17.TabIndex = 331;
-            this.label17.Text = "管账宝帐号：";
+            this.remoteSignButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.remoteSignButton.Image = ((System.Drawing.Image)(resources.GetObject("remoteSignButton.Image")));
+            this.remoteSignButton.Location = new System.Drawing.Point(622, 653);
+            this.remoteSignButton.Name = "remoteSignButton";
+            this.remoteSignButton.Size = new System.Drawing.Size(91, 30);
+            this.remoteSignButton.TabIndex = 321;
+            this.remoteSignButton.Text = "远程签单";
+            this.remoteSignButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.remoteSignButton.UseVisualStyleBackColor = true;
+            this.remoteSignButton.Click += new System.EventHandler(this.remoteSignButton_Click);
             // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 698);
-            this.Controls.Add(this.remoteSignCheckBox);
+            this.Controls.Add(this.remoteSignButton);
             this.Controls.Add(this.DiscardLabel);
             this.Controls.Add(this.DiscardCheckBox);
             this.Controls.Add(this.PreviewPrintButton);
@@ -4347,7 +4345,7 @@ namespace VividManagementApplication
             this.Name = "DetailedInfo";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DetailedInfo";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.DetailedInfo_Load);
             this.DetailedTabView.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
@@ -4717,8 +4715,8 @@ namespace VividManagementApplication
         private System.Windows.Forms.TextBox textBox488;
         private System.Windows.Forms.TextBox tbHTxsfName;
         private System.Windows.Forms.TabPage tabPage5;
-        private ControlExs.QQCheckBox remoteSignCheckBox;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox dzGZBId;
+        private ControlExs.QQButton remoteSignButton;
     }
 }
