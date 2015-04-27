@@ -1406,8 +1406,8 @@ namespace VividManagementApplication
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
                 if (!dzGZBId.Equals(""))
                 {
-                    remoteSignCheckBox.Visible = true;
-                    remoteSignCheckBox.Enabled = true;
+                    remoteSignButton.Visible = true;
+                    remoteSignButton.Enabled = true;
 
                 }
             }
