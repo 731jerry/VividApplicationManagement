@@ -310,6 +310,8 @@ namespace VividManagementApplication
             _btnPrint.Enabled = _btnPageSetup.Enabled = true;
         }
 
+        public String gzbIDString = "";
+        public String companyNickNameStirng = "";
         // 发送远程签单
         private void sendRemoteSignToolStripButton_Click(object sender, EventArgs e)
         {
@@ -322,6 +324,8 @@ namespace VividManagementApplication
 
             BillSign bs = new BillSign();
             bs.isSendSign = true;
+            bs.gzbIDStirng = gzbIDString;
+            bs.companyNickNameStirng = companyNickNameStirng;
             bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
             //bs.signImage = MainWindow.SIGN_BITMAP;
             bs.ShowDialog();

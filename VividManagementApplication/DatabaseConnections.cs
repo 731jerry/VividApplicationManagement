@@ -103,9 +103,22 @@ namespace VividManagementApplication
             OnlineDbClose();
         }
 
-        // 修改数据
-        public void OnlineUpdateData(string table, string[] query, string[] value, string id)
+        // 插入数据
+        public int OnlineInsertData(String table, String query, String value)
         {
+            int affectedRows;
+            OnlineDbOpen();
+            String SQLforGeneral = "INSERT INTO " + table + " (" + query + ") VALUES(" + value + ")";
+            MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
+            affectedRows = cmdInsert.ExecuteNonQuery();
+            OnlineDbClose();
+            return affectedRows;
+        }
+
+        // 修改数据
+        public int OnlineUpdateData(string table, string[] query, string[] value, string id)
+        {
+            int affectedRows;
             string innerSQL = "";
 
             for (int i = 0; i < query.Length; i++)
@@ -119,8 +132,9 @@ namespace VividManagementApplication
             OnlineDbOpen();
             string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
             MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
-            cmdInsert.ExecuteNonQuery();
+           affectedRows= cmdInsert.ExecuteNonQuery();
             OnlineDbClose();
+            return affectedRows;
         }
 
         // 修改原始数据

@@ -944,22 +944,23 @@ namespace VividManagementApplication
         private void listQdButton_Click(object sender, EventArgs e)
         {
             refeshButton.Enabled = true;
-            ViewButton.Enabled = false;
+            ViewButton.Enabled = true;
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listQdButton;
             CURRENT_TAB = 7;
             mainDGVTitle.Text = listQdButton.Text;
             Column1.HeaderText = "发送人";
-            Column2.HeaderText = "发送人公司名称";
-            Column3.HeaderText = "是否已签";
-            Column4.HeaderText = "操作时间";
+            Column2.HeaderText = "发送人";
+            Column3.HeaderText = "发送人公司名称";
+            Column4.HeaderText = "是否已签";
+            Column5.HeaderText = "操作时间";
 
-            Column3.Width = 80;
-            Column4.Width = 130;
+            Column4.Width = 80;
+            Column5.Width = 130;
 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "remoteSign", -1,
-                new string[] { "fromGZBID", "companyNickName", "case when isSigned = '0' then '还未签' else '已签' end as 'isSigned'", "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "remoteSign", -1,
+                new string[] { "Id", "fromGZBID", "companyNickName", "case when isSigned = '0' then '还未签' else '已签' end as 'isSigned'", "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
         }
         #endregion
 
@@ -1352,6 +1353,7 @@ namespace VividManagementApplication
             else
             {
                 this.notifyBlinkTimer.Enabled = false;
+                SetNotifyIcon(0);
             }
         }
 

@@ -1316,10 +1316,10 @@ namespace VividManagementApplication
             // 
             this.dzContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.dzContact.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.dzContact.Location = new System.Drawing.Point(432, 43);
+            this.dzContact.Location = new System.Drawing.Point(432, 40);
             this.dzContact.Name = "dzContact";
             this.dzContact.ReadOnly = true;
-            this.dzContact.Size = new System.Drawing.Size(109, 26);
+            this.dzContact.Size = new System.Drawing.Size(149, 26);
             this.dzContact.TabIndex = 240;
             // 
             // dzPhone
@@ -1347,7 +1347,7 @@ namespace VividManagementApplication
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(570, 43);
+            this.label5.Location = new System.Drawing.Point(582, 43);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 20);
             this.label5.TabIndex = 239;

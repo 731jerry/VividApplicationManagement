@@ -31,7 +31,7 @@ namespace VividManagementApplication
             tbInfo10.Text = MainWindow.QQ;
             if (!MainWindow.SIGNATURE.Equals(""))
             {
-                compressedBitmap = Base64StringToImage(MainWindow.SIGNATURE);
+                compressedBitmap = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
                 //Console.WriteLine("之前:" + MainWindow.SIGNATURE);
                 //Console.WriteLine("之后:" + ImgToBase64String(compressedBitmap));
                 SignPictureShowBox.Image = compressedBitmap;
@@ -64,18 +64,20 @@ namespace VividManagementApplication
                 {
                     try
                     {
-                        DatabaseConnections.GetInstence().OnlineUpdateData(
-                                                                            "users",
-                                                                            new string[] { "password" },
-                                                                            new string[] { FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), NewPasswordTextBox.Text) },
-                                                                            MainWindow.ID);
-                        OldPasswordTextBox.Clear();
-                        NewPasswordTextBox.Clear();
-                        NewPasswordTextBox2.Clear();
-                        MessageBox.Show("修改密码成功!下次登录时候您将需要使用新密码!", "成功");
-                        //MainWindow.PASSWORD_HASH = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), NewPasswordTextBox.Text);
-                        ChangePasswordCheckBox.Checked = false;
-                        isChangedPassword = true;
+                        if (DatabaseConnections.GetInstence().OnlineUpdateData(
+                                                                              "users",
+                                                                              new string[] { "password" },
+                                                                              new string[] { FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), NewPasswordTextBox.Text) },
+                                                                              MainWindow.ID) > 0)
+                        {
+                            OldPasswordTextBox.Clear();
+                            NewPasswordTextBox.Clear();
+                            NewPasswordTextBox2.Clear();
+                            MessageBox.Show("修改密码成功!下次登录时候您将需要使用新密码!", "成功");
+                            //MainWindow.PASSWORD_HASH = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), NewPasswordTextBox.Text);
+                            ChangePasswordCheckBox.Checked = false;
+                            isChangedPassword = true;
+                        }
                     }
                     catch (Exception ee)
                     {
@@ -110,31 +112,35 @@ namespace VividManagementApplication
             {
                 try
                 {
-                    DatabaseConnections.GetInstence().OnlineUpdateData(
-                                                                           "users",
-                                                                           new string[] { "company", "companyNickname", "phone", "email", "fax", "address", "bankname", "bankcard", "companyowner", "QQ" },
-                                                                           new string[] { tbInfo1.Text, tbInfo2.Text, tbInfo3.Text, tbInfo4.Text, tbInfo5.Text, tbInfo6.Text, tbInfo7.Text, tbInfo8.Text, tbInfo9.Text, tbInfo10.Text },
-                                                                           MainWindow.ID);
-                    MessageBox.Show("修改用户信息成功!", "成功!");
-                    MainWindow.COMPANY_NAME = tbInfo1.Text;
-                    MainWindow.COMPANY_NICKNAME = tbInfo2.Text;
-                    MainWindow.PHONE = tbInfo3.Text;
-                    MainWindow.EMAIL = tbInfo4.Text;
-                    MainWindow.FAX = tbInfo5.Text;
-                    MainWindow.ADDRESS = tbInfo6.Text;
-                    MainWindow.BANK_NAME = tbInfo7.Text;
-                    MainWindow.BANK_CARD = tbInfo8.Text;
-                    MainWindow.COMPANY_OWNER = tbInfo9.Text;
-                    MainWindow.QQ = tbInfo10.Text;
+                    if (DatabaseConnections.GetInstence().OnlineUpdateData(
+                                                                            "users",
+                                                                            new string[] { "company", "companyNickname", "phone", "email", "fax", "address", "bankname", "bankcard", "companyowner", "QQ" },
+                                                                            new string[] { tbInfo1.Text, tbInfo2.Text, tbInfo3.Text, tbInfo4.Text, tbInfo5.Text, tbInfo6.Text, tbInfo7.Text, tbInfo8.Text, tbInfo9.Text, tbInfo10.Text },
+                                                                            MainWindow.ID) > 0)
+                    {
+                        MessageBox.Show("修改用户信息成功!", "成功!");
+                        MainWindow.COMPANY_NAME = tbInfo1.Text;
+                        MainWindow.COMPANY_NICKNAME = tbInfo2.Text;
+                        MainWindow.PHONE = tbInfo3.Text;
+                        MainWindow.EMAIL = tbInfo4.Text;
+                        MainWindow.FAX = tbInfo5.Text;
+                        MainWindow.ADDRESS = tbInfo6.Text;
+                        MainWindow.BANK_NAME = tbInfo7.Text;
+                        MainWindow.BANK_CARD = tbInfo8.Text;
+                        MainWindow.COMPANY_OWNER = tbInfo9.Text;
+                        MainWindow.QQ = tbInfo10.Text;
+                    }
 
                     if (isChangedSignature)
                     {
                         //GZB_signature
-                        String signatureString = ImgToBase64String(compressedBitmap);
+                        String signatureString = FormBasicFeatrues.GetInstence().ImgToBase64String(compressedBitmap);
                         if (!signatureString.Equals(""))
                         {
-                            DatabaseConnections.GetInstence().OnlineUpdateData("users", new string[] { "GZB_signature" }, new string[] { signatureString }, MainWindow.ID);
-                            MainWindow.SIGNATURE = signatureString;
+                            if (DatabaseConnections.GetInstence().OnlineUpdateData("users", new string[] { "GZB_signature" }, new string[] { signatureString }, MainWindow.ID) > 0)
+                            {
+                                MainWindow.SIGNATURE = signatureString;
+                            }
                         }
                     }
                     this.Close();
@@ -190,45 +196,6 @@ namespace VividManagementApplication
                 compressedBitmap = new Bitmap(fm.SavedBitmap, new Size(this.SignPictureShowBox.Width, this.SignPictureShowBox.Height));
                 // this.SignPictureShowBox.Invalidate();
                 this.SignPictureShowBox.Image = compressedBitmap;
-            }
-        }
-
-        //图片 转为    base64编码的文本
-        private String ImgToBase64String(Bitmap btmp)
-        {
-            try
-            {
-                MemoryStream ms = new MemoryStream();
-                btmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                byte[] arr = new byte[ms.Length];
-                ms.Position = 0;
-                ms.Read(arr, 0, (int)ms.Length);
-                ms.Close();
-                String strbaser64 = Convert.ToBase64String(arr);
-                return strbaser64;
-            }
-            catch (Exception ex)
-            {
-                return ("ImgToBase64String 转换失败\nException:" + ex.Message);
-            }
-        }
-
-        //base64编码的文本 转为    图片
-        private Bitmap Base64StringToImage(String inputStr)
-        {
-            Bitmap btmp = null;
-            try
-            {
-                byte[] arr = Convert.FromBase64String(inputStr);
-                MemoryStream ms = new MemoryStream(arr);
-                btmp = new Bitmap(ms);
-                ms.Close();
-                return btmp;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Base64StringToImage 转换失败\nException：" + ex.Message);
-                return btmp;
             }
         }
 

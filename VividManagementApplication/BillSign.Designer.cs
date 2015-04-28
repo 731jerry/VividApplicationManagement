@@ -104,6 +104,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "BillSign";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "电子签单";
             this.Load += new System.EventHandler(this.BillSign_Load);

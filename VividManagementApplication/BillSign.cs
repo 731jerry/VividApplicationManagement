@@ -14,6 +14,9 @@ namespace VividManagementApplication
     {
         public Image signImage;
         public Boolean isSendSign = false;
+        public String gzbIDStirng = "";
+        public String companyNickNameStirng = "";
+        public String remoteSignId = "";
 
         public BillSign()
         {
@@ -24,14 +27,24 @@ namespace VividManagementApplication
         {
             if (isSendSign)
             {// 发送请求
-
+                if (DatabaseConnections.GetInstence().OnlineInsertData("gzb_remotesign",
+                    "fromGZBID,toGZBID,companyNickName,sendTime,signValue",
+                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNickNameStirng + "','" + DateTime.Now + "','" + FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)) + "'") > 0)
+                {
+                    MessageBox.Show("发送请求成功!", "提示");
+                    this.Close();
+                }
             }
             else
             {// 确认签名
                 ConfirmPassword cp = new ConfirmPassword();
                 if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    //cp.password
+                    if (DatabaseConnections.GetInstence().OnlineUpdateData("remoteSign", new String[] { "isSigned" }, new String[] { "1" }, remoteSignId) > 0)
+                    {
+                        MessageBox.Show("远程签名成功!", "提示");
+                        this.Close();
+                    }
                 }
             }
         }

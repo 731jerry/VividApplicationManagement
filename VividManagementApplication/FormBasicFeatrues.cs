@@ -994,5 +994,47 @@ namespace VividManagementApplication
             }
         }
         #endregion
+
+        #region bitmap String互转
+
+        //图片 转为 base64编码的文本
+        public String ImgToBase64String(Bitmap btmp)
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                btmp.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+                byte[] arr = new byte[ms.Length];
+                ms.Position = 0;
+                ms.Read(arr, 0, (int)ms.Length);
+                ms.Close();
+                String strbaser64 = Convert.ToBase64String(arr);
+                return strbaser64;
+            }
+            catch (Exception ex)
+            {
+                return ("ImgToBase64String 转换失败\nException:" + ex.Message);
+            }
+        }
+
+        //base64编码的文本 转为    图片
+        public Bitmap Base64StringToImage(String inputStr)
+        {
+            Bitmap btmp = null;
+            try
+            {
+                byte[] arr = Convert.FromBase64String(inputStr);
+                MemoryStream ms = new MemoryStream(arr);
+                btmp = new Bitmap(ms);
+                ms.Close();
+                return btmp;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Base64StringToImage 转换失败\nException：" + ex.Message);
+                return btmp;
+            }
+        }
+        #endregion
     }
 }

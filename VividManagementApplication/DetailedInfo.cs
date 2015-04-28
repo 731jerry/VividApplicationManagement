@@ -1397,7 +1397,7 @@ namespace VividManagementApplication
         {
             if (tbDz1.SelectedIndex > 0)
             {
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
             }
             else if (tbDz1.SelectedIndex == 0)
             {
@@ -1706,6 +1706,8 @@ namespace VividManagementApplication
                 dlg.WindowState = FormWindowState.Maximized;
                 if (!dzGZBId.Equals(""))
                 {
+                    dlg.gzbIDString = dzGZBId.Text;
+                    dlg.companyNickNameStirng = dzContact.Text;
                     dlg.sendRemoteSignToolStripButton.Enabled = true;
                 }
                 dlg.ShowDialog(this);
