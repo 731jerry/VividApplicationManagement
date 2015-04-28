@@ -1693,11 +1693,20 @@ namespace VividManagementApplication
             pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
             pageHeight = this.printDocument1.DefaultPageSettings.PaperSize.Height;
 
-            //注意指定其Document(获取或设置要预览的文档)属性
-            this.printPreviewDialog1.Document = this.printDocument1;
-            //ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
-            this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
-            this.printPreviewDialog1.ShowDialog();
+            ////注意指定其Document(获取或设置要预览的文档)属性
+            //this.printPreviewDialog1.Document = this.printDocument1;
+            ////ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
+            //this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
+            //this.printPreviewDialog1.ShowDialog();
+
+
+            using (var dlg = new CoolPrintPreviewDialog())
+            {
+                dlg.Document = this.printDocument1;
+                dlg.WindowState = FormWindowState.Maximized;
+                dlg.ShowDialog(this);
+            }
+
         }
 
         private void PrintGeneral(int x, int y, Panel innerPanel, System.Drawing.Printing.PrintPageEventArgs e)
@@ -1756,7 +1765,6 @@ namespace VividManagementApplication
             }
         }
 
-        Bitmap printBitmap;
         // 打印单子 进仓单 出仓单 采购单 销售单
         private void PrintDZ(int x, int y, Boolean isJCCD, System.Drawing.Printing.PrintPageEventArgs e)
         {

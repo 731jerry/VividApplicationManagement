@@ -120,7 +120,6 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Signature.resources
-C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe.config
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
@@ -140,3 +139,7 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
+C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
