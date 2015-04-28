@@ -1664,6 +1664,7 @@ namespace VividManagementApplication
                 case 2: // 采购销售单
                     //PrintCGXSD(0, 0, yewuPanel, e);
                     PrintDZ(0, 30, false, e);
+
                     break;
                 case 3: // 采购销售列表
                     //PrintWithDGV(0, 0, panel15, dgvCGXS, 30, e);

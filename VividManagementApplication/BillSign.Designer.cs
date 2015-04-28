@@ -44,35 +44,35 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.btnSave);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(765, 47);
+            this.panel1.Size = new System.Drawing.Size(620, 51);
             this.panel1.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(15, 17);
+            this.label1.Location = new System.Drawing.Point(15, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(215, 12);
+            this.label1.Size = new System.Drawing.Size(212, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "注意：如需签名请点击\"确认签单\"按钮!";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(675, 12);
+            this.btnClear.Location = new System.Drawing.Point(534, 12);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(75, 25);
             this.btnClear.TabIndex = 1;
             this.btnClear.Text = "取消";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(554, 12);
+            this.btnSave.Location = new System.Drawing.Point(413, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 25);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "确认签单";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -85,17 +85,18 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SignPictureBox.BackColor = System.Drawing.Color.White;
             this.SignPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.SignPictureBox.Location = new System.Drawing.Point(12, 67);
+            this.SignPictureBox.Location = new System.Drawing.Point(12, 73);
             this.SignPictureBox.Name = "SignPictureBox";
-            this.SignPictureBox.Size = new System.Drawing.Size(765, 450);
+            this.SignPictureBox.Size = new System.Drawing.Size(620, 420);
+            this.SignPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.SignPictureBox.TabIndex = 5;
             this.SignPictureBox.TabStop = false;
             // 
             // BillSign
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 529);
+            this.ClientSize = new System.Drawing.Size(644, 505);
             this.Controls.Add(this.SignPictureBox);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -104,6 +105,7 @@
             this.Name = "BillSign";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "电子签单";
+            this.Load += new System.EventHandler(this.BillSign_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignPictureBox)).EndInit();

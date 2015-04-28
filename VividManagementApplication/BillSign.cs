@@ -12,6 +12,8 @@ namespace VividManagementApplication
 {
     public partial class BillSign : Form
     {
+        public Image signImage;
+
         public BillSign()
         {
             InitializeComponent();
@@ -24,6 +26,14 @@ namespace VividManagementApplication
             {
                 //cp.password
 
+            }
+        }
+
+        private void BillSign_Load(object sender, EventArgs e)
+        {
+            if (signImage != null)
+            {
+                SignPictureBox.Image = signImage;
             }
         }
     }

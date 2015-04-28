@@ -46,6 +46,10 @@ namespace VividManagementApplication
         public static String SIGNATURE = "";
         public static float COMPANY_BALANCE = 0f; // 公司结余暂存
 
+        public static Bitmap SIGN_BITMAP = null;
+        public static String SIGN_IMAGE_NAME = "sign.bmp";
+        public static String SIGN_IMAGE_LOCATION = Environment.CurrentDirectory + "\\temp\\" + SIGN_IMAGE_NAME;
+
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
         public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
         public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/GZB/Users/";
@@ -65,7 +69,7 @@ namespace VividManagementApplication
         public static String UPDATE_VERSION_URL = "http://www.vividapp.net/Project/GZB/Update/version.txt"; // 更新app版本的文件地址
         public static String UPDATE_VERSION_LOG_URL = "http://www.vividapp.net/Project/GZB/Update/versionlog.txt"; // 更新app版本记录的文件地址
 
-        System.Timers.Timer updateDataTimersTimer;
+        //System.Timers.Timer updateDataTimersTimer;
 
         string dataBaseFilePrefix;
 
@@ -83,7 +87,7 @@ namespace VividManagementApplication
             String loginWindowLabel = "登录";
 
             #region 软件版本
-           
+
             try
             {
                 productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.Drawing.Imaging;
 using System.Text;
 using System.Windows.Forms;
 
@@ -312,8 +313,19 @@ namespace VividManagementApplication
         // 发送远程签单
         private void sendRemoteSignToolStripButton_Click(object sender, EventArgs e)
         {
+            PrintDocument doc = this.Document;
+            PrintController controller = new PrintControllerFile();
+            //PrintController controller = new PrintControllerFile(ImageFormat.Bmp, 0.75f, 1L, MainWindow.SIGN_IMAGE_LOCATION);
+            //doc.PrintController = new PrintControllerWithStatusDialog( controller, "Exporting" );
+            doc.PrintController = controller;
+            doc.Print();
 
+            BillSign bs = new BillSign();
+            //bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
+            bs.signImage = MainWindow.SIGN_BITMAP;
+            bs.ShowDialog();
         }
+
 
         #endregion
     }
