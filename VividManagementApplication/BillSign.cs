@@ -40,7 +40,7 @@ namespace VividManagementApplication
                 ConfirmPassword cp = new ConfirmPassword();
                 if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (DatabaseConnections.GetInstence().OnlineUpdateData("remoteSign", new String[] { "isSigned" }, new String[] { "1" }, remoteSignId) > 0)
+                    if (DatabaseConnections.GetInstence().OnlineUpdateData("remoteSign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString() }, remoteSignId) > 0)
                     {
                         MessageBox.Show("远程签名成功!", "提示");
                         this.Close();
