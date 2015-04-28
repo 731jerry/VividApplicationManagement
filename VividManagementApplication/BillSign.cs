@@ -13,6 +13,7 @@ namespace VividManagementApplication
     public partial class BillSign : Form
     {
         public Image signImage;
+        public Boolean isSendSign = false;
 
         public BillSign()
         {
@@ -21,11 +22,17 @@ namespace VividManagementApplication
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ConfirmPassword cp = new ConfirmPassword();
-            if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                //cp.password
+            if (isSendSign)
+            {// 发送请求
 
+            }
+            else
+            {// 确认签名
+                ConfirmPassword cp = new ConfirmPassword();
+                if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    //cp.password
+                }
             }
         }
 
@@ -35,6 +42,20 @@ namespace VividManagementApplication
             {
                 SignPictureBox.Image = signImage;
             }
+
+            if (isSendSign)
+            {
+                btnSave.Text = "发送请求";
+            }
+            else
+            {
+                btnSave.Text = "确认签名";
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

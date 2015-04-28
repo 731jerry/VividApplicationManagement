@@ -314,15 +314,16 @@ namespace VividManagementApplication
         private void sendRemoteSignToolStripButton_Click(object sender, EventArgs e)
         {
             PrintDocument doc = this.Document;
-            PrintController controller = new PrintControllerFile();
-            //PrintController controller = new PrintControllerFile(ImageFormat.Bmp, 0.75f, 1L, MainWindow.SIGN_IMAGE_LOCATION);
+            //PrintController controller = new PrintControllerFile();
+            PrintController controller = new PrintControllerFile(ImageFormat.Jpeg, 1f, 100L, MainWindow.SIGN_IMAGE_LOCATION);
             //doc.PrintController = new PrintControllerWithStatusDialog( controller, "Exporting" );
             doc.PrintController = controller;
             doc.Print();
 
             BillSign bs = new BillSign();
-            //bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
-            bs.signImage = MainWindow.SIGN_BITMAP;
+            bs.isSendSign = true;
+            bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
+            //bs.signImage = MainWindow.SIGN_BITMAP;
             bs.ShowDialog();
         }
 

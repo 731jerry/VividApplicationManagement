@@ -371,7 +371,6 @@ namespace VividManagementApplication
             this.DiscardCheckBox = new ControlExs.QQCheckBox();
             this.PreviewPrintButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
-            this.remoteSignButton = new ControlExs.QQButton();
             this.DetailedTabView.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.DetailedClientPanel.SuspendLayout();
@@ -4312,25 +4311,11 @@ namespace VividManagementApplication
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // remoteSignButton
-            // 
-            this.remoteSignButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.remoteSignButton.Image = ((System.Drawing.Image)(resources.GetObject("remoteSignButton.Image")));
-            this.remoteSignButton.Location = new System.Drawing.Point(622, 653);
-            this.remoteSignButton.Name = "remoteSignButton";
-            this.remoteSignButton.Size = new System.Drawing.Size(91, 30);
-            this.remoteSignButton.TabIndex = 321;
-            this.remoteSignButton.Text = "远程签单";
-            this.remoteSignButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.remoteSignButton.UseVisualStyleBackColor = true;
-            this.remoteSignButton.Click += new System.EventHandler(this.remoteSignButton_Click);
-            // 
             // DetailedInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 698);
-            this.Controls.Add(this.remoteSignButton);
             this.Controls.Add(this.DiscardLabel);
             this.Controls.Add(this.DiscardCheckBox);
             this.Controls.Add(this.PreviewPrintButton);
@@ -4717,6 +4702,5 @@ namespace VividManagementApplication
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox dzGZBId;
-        private ControlExs.QQButton remoteSignButton;
     }
 }

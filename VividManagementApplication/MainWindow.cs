@@ -47,7 +47,7 @@ namespace VividManagementApplication
         public static float COMPANY_BALANCE = 0f; // 公司结余暂存
 
         public static Bitmap SIGN_BITMAP = null;
-        public static String SIGN_IMAGE_NAME = "sign.bmp";
+        public static String SIGN_IMAGE_NAME = "sign";
         public static String SIGN_IMAGE_LOCATION = Environment.CurrentDirectory + "\\temp\\" + SIGN_IMAGE_NAME;
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
@@ -70,6 +70,7 @@ namespace VividManagementApplication
         public static String UPDATE_VERSION_LOG_URL = "http://www.vividapp.net/Project/GZB/Update/versionlog.txt"; // 更新app版本记录的文件地址
 
         //System.Timers.Timer updateDataTimersTimer;
+        System.Timers.Timer updateRemoteSignTimer;
 
         string dataBaseFilePrefix;
 
@@ -157,6 +158,17 @@ namespace VividManagementApplication
                 //{
                 //    DownloadFileWithNotice();
                 //}));
+                #endregion
+
+                #region 更新远程签单数据
+                updateRemoteSignTimer = new System.Timers.Timer(10000);
+                updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
+                updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
+                updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
+                if (this.IsDisposed)
+                {
+                    updateRemoteSignTimer.Stop();
+                }
                 #endregion
 
                 #endregion
@@ -543,6 +555,13 @@ namespace VividManagementApplication
             ableSubButtons(new List<QQButton>() { newHtButton, listHtButton }, htRadio);
             listHtButton.PerformClick();
         }
+
+        private void QdRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            CURRENT_TAB = 7;
+            ableSubButtons(new List<QQButton>() { listQdButton }, QdRadio);
+            listQdButton.PerformClick();
+        }
         #endregion
 
         #region 创建MainDataGridView表格
@@ -610,11 +629,11 @@ namespace VividManagementApplication
                 {
                     if ((resultsList[i][2].Equals("收款凭证")) || resultsList[i][2].Equals("还款凭证"))
                     {
-                        tempBalance += float.Parse(resultsList[i][4]);
+                        tempBalance += float.Parse(resultsList[i][4].Equals("") ? "0" : resultsList[i][4]);
                     }
                     else
                     {
-                        tempBalance -= float.Parse(resultsList[i][4]);
+                        tempBalance -= float.Parse(resultsList[i][4].Equals("") ? "0" : resultsList[i][4]);
                     }
                     resultsList[i][5] = tempBalance.ToString();
                 }
@@ -918,6 +937,29 @@ namespace VividManagementApplication
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "htList", 5,
                 new string[] { "htID", "htDate", "leixing", "companyName", "sum", "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
+        }
+
+        // 签单列表
+
+        private void listQdButton_Click(object sender, EventArgs e)
+        {
+            refeshButton.Enabled = true;
+            ViewButton.Enabled = false;
+            PrintButton.Enabled = false;
+            CURRENT_LIST_BUTTON = listQdButton;
+            CURRENT_TAB = 7;
+            mainDGVTitle.Text = listQdButton.Text;
+            Column1.HeaderText = "发送人";
+            Column2.HeaderText = "发送人公司名称";
+            Column3.HeaderText = "是否已签";
+            Column4.HeaderText = "操作时间";
+
+            Column3.Width = 80;
+            Column4.Width = 130;
+
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 }, "remoteSign", -1,
+                new string[] { "fromGZBID", "companyNickName", "case when isSigned = '0' then '还未签' else '已签' end as 'isSigned'", "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
         }
         #endregion
 
@@ -1300,6 +1342,19 @@ namespace VividManagementApplication
             SetNotifyIcon(currentImageIndex);
         }
 
+        public void notifyBlink(Boolean isBlink)
+        {
+            if (isBlink)
+            {
+                this.notifyBlinkTimer.Enabled = true;
+                SetNotifyIcon(0);
+            }
+            else
+            {
+                this.notifyBlinkTimer.Enabled = false;
+            }
+        }
+
         private void btnFlicker_Click(object sender, EventArgs e)
         {
             if (this.notifyBlinkTimer.Enabled)
@@ -1327,17 +1382,29 @@ namespace VividManagementApplication
             this.notifyIcon.Icon = icon;
         }
 
-        private void qqButton2_Click(object sender, EventArgs e)
+        List<String> notifyItemTagList = new List<string>();
+        public void addNotifyItem(String id, String sender)
         {
-            ToolStripMenuItem newMenuItem = new ToolStripMenuItem("通知", VividManagementApplication.Properties.Resources.Signature);
-            newMenuItem.Click += new EventHandler(mnuCopy_Click);
-            notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
-            //notifyIconContextMenuStrip.Items.AddRange(new ToolStripItem[] { newMenuItem });
+            if (!notifyItemTagList.Contains(id))
+            {
+                ToolStripMenuItem newMenuItem = new ToolStripMenuItem(sender + "远程签单请求", VividManagementApplication.Properties.Resources.Signature);
+                newMenuItem.Tag = sender;
+                newMenuItem.Click += new EventHandler(mnuCopy_Click);
+                notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
+                notifyBlink(true);
+                notifyItemTagList.Add(id);
+                //notifyIconContextMenuStrip.Items.AddRange(new ToolStripItem[] { newMenuItem });
+            }
         }
 
         private void mnuCopy_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ahah");
+            MessageBox.Show("发送人:" + (sender as ToolStripMenuItem).Tag);
+            notifyIconContextMenuStrip.Items.Remove((sender as ToolStripMenuItem));
+            if (notifyIconContextMenuStrip.Items.Count < 3)
+            {
+                notifyBlink(false);
+            }
         }
         #endregion
 
@@ -1350,5 +1417,36 @@ namespace VividManagementApplication
         {
             settingQQButton.PerformClick();
         }
+
+        #region 远程签单
+        private void updateRemoteSignTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (!this.InvokeRequired)
+            {
+                checkRemoteSignList();
+            }
+            else
+            {
+                this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
+            }
+        }
+
+        private void checkRemoteSignList()
+        {
+            // 检测网上
+            List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, "AND isSigned=0");
+            if (remoteSignList.Count != 0)
+            {
+                foreach (List<String> item in remoteSignList)
+                {
+                    addNotifyItem(item[1], item[0]);
+                    DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
+                }
+            }
+
+        #endregion
+        }
+
+
     }
 }

@@ -37,8 +37,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.qqButton2 = new ControlExs.QQButton();
-            this.qqButton1 = new ControlExs.QQButton();
             this.PrintButton = new ControlExs.QQButton();
             this.settingQQButton = new ControlExs.QQButton();
             this.mainDGVTitle = new System.Windows.Forms.Label();
@@ -47,6 +45,8 @@
             this.MainDataGridView = new System.Windows.Forms.DataGridView();
             this.ViewButton = new ControlExs.QQButton();
             this.NavPanel = new System.Windows.Forms.Panel();
+            this.listQdButton = new ControlExs.QQButton();
+            this.QdRadio = new ControlExs.QQRadioButton();
             this.listXsButton = new ControlExs.QQButton();
             this.listHtButton = new ControlExs.QQButton();
             this.newHtButton = new ControlExs.QQButton();
@@ -89,8 +89,6 @@
             this.notifyImageList = new System.Windows.Forms.ImageList(this.components);
             this.ExtendExpireLinkLabel = new System.Windows.Forms.LinkLabel();
             this.UserDegreeLabel = new System.Windows.Forms.Label();
-            this.qqButton3 = new ControlExs.QQButton();
-            this.qqRadioButton1 = new ControlExs.QQRadioButton();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -140,8 +138,6 @@
             // 
             this.ContentPanel.BackColor = System.Drawing.Color.Transparent;
             this.ContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ContentPanel.Controls.Add(this.qqButton2);
-            this.ContentPanel.Controls.Add(this.qqButton1);
             this.ContentPanel.Controls.Add(this.PrintButton);
             this.ContentPanel.Controls.Add(this.settingQQButton);
             this.ContentPanel.Controls.Add(this.mainDGVTitle);
@@ -151,20 +147,6 @@
             this.ContentPanel.Controls.Add(this.ViewButton);
             resources.ApplyResources(this.ContentPanel, "ContentPanel");
             this.ContentPanel.Name = "ContentPanel";
-            // 
-            // qqButton2
-            // 
-            resources.ApplyResources(this.qqButton2, "qqButton2");
-            this.qqButton2.Name = "qqButton2";
-            this.qqButton2.UseVisualStyleBackColor = true;
-            this.qqButton2.Click += new System.EventHandler(this.qqButton2_Click);
-            // 
-            // qqButton1
-            // 
-            resources.ApplyResources(this.qqButton1, "qqButton1");
-            this.qqButton1.Name = "qqButton1";
-            this.qqButton1.UseVisualStyleBackColor = true;
-            this.qqButton1.Click += new System.EventHandler(this.btnFlicker_Click);
             // 
             // PrintButton
             // 
@@ -225,8 +207,8 @@
             // 
             this.NavPanel.BackColor = System.Drawing.Color.Transparent;
             this.NavPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.NavPanel.Controls.Add(this.qqButton3);
-            this.NavPanel.Controls.Add(this.qqRadioButton1);
+            this.NavPanel.Controls.Add(this.listQdButton);
+            this.NavPanel.Controls.Add(this.QdRadio);
             this.NavPanel.Controls.Add(this.listXsButton);
             this.NavPanel.Controls.Add(this.listHtButton);
             this.NavPanel.Controls.Add(this.newHtButton);
@@ -250,6 +232,23 @@
             this.NavPanel.Controls.Add(this.cxRadio);
             resources.ApplyResources(this.NavPanel, "NavPanel");
             this.NavPanel.Name = "NavPanel";
+            // 
+            // listQdButton
+            // 
+            resources.ApplyResources(this.listQdButton, "listQdButton");
+            this.listQdButton.Name = "listQdButton";
+            this.listQdButton.UseVisualStyleBackColor = true;
+            this.listQdButton.Click += new System.EventHandler(this.listQdButton_Click);
+            // 
+            // QdRadio
+            // 
+            resources.ApplyResources(this.QdRadio, "QdRadio");
+            this.QdRadio.BackColor = System.Drawing.Color.Transparent;
+            this.QdRadio.Checked = true;
+            this.QdRadio.Name = "QdRadio";
+            this.QdRadio.TabStop = true;
+            this.QdRadio.UseVisualStyleBackColor = false;
+            this.QdRadio.CheckedChanged += new System.EventHandler(this.QdRadio_CheckedChanged);
             // 
             // listXsButton
             // 
@@ -520,7 +519,7 @@
             // 
             // notifyBlinkTimer
             // 
-            this.notifyBlinkTimer.Interval = 450;
+            this.notifyBlinkTimer.Interval = 400;
             this.notifyBlinkTimer.Tick += new System.EventHandler(this.notifyBlinkTimer_Tick);
             // 
             // notifyImageList
@@ -544,21 +543,6 @@
             this.UserDegreeLabel.BackColor = System.Drawing.Color.Transparent;
             this.UserDegreeLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.UserDegreeLabel.Name = "UserDegreeLabel";
-            // 
-            // qqButton3
-            // 
-            resources.ApplyResources(this.qqButton3, "qqButton3");
-            this.qqButton3.Name = "qqButton3";
-            this.qqButton3.UseVisualStyleBackColor = true;
-            // 
-            // qqRadioButton1
-            // 
-            resources.ApplyResources(this.qqRadioButton1, "qqRadioButton1");
-            this.qqRadioButton1.BackColor = System.Drawing.Color.Transparent;
-            this.qqRadioButton1.Checked = true;
-            this.qqRadioButton1.Name = "qqRadioButton1";
-            this.qqRadioButton1.TabStop = true;
-            this.qqRadioButton1.UseVisualStyleBackColor = false;
             // 
             // MainWindow
             // 
@@ -646,15 +630,13 @@
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Timer notifyBlinkTimer;
         private System.Windows.Forms.ImageList notifyImageList;
-        private ControlExs.QQButton qqButton1;
         private System.Windows.Forms.ContextMenuStrip notifyIconContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem showWindow;
         private System.Windows.Forms.ToolStripMenuItem exit;
-        private ControlExs.QQButton qqButton2;
         private System.Windows.Forms.LinkLabel ExtendExpireLinkLabel;
         private System.Windows.Forms.Label UserDegreeLabel;
-        private ControlExs.QQButton qqButton3;
-        private ControlExs.QQRadioButton qqRadioButton1;
+        private ControlExs.QQButton listQdButton;
+        private ControlExs.QQRadioButton QdRadio;
     }
 }
 

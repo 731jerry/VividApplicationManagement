@@ -77,7 +77,7 @@
             this.sendRemoteSignToolStripButton});
             this._toolStrip.Location = new System.Drawing.Point(0, 0);
             this._toolStrip.Name = "_toolStrip";
-            this._toolStrip.Size = new System.Drawing.Size(658, 25);
+            this._toolStrip.Size = new System.Drawing.Size(1041, 25);
             this._toolStrip.TabIndex = 1;
             this._toolStrip.Text = "toolStrip1";
             // 
@@ -133,81 +133,81 @@
             // 
             this._itemActualSize.Image = ((System.Drawing.Image)(resources.GetObject("_itemActualSize.Image")));
             this._itemActualSize.Name = "_itemActualSize";
-            this._itemActualSize.Size = new System.Drawing.Size(152, 22);
+            this._itemActualSize.Size = new System.Drawing.Size(124, 22);
             this._itemActualSize.Text = "原始大小";
             // 
             // _itemFullPage
             // 
             this._itemFullPage.Image = ((System.Drawing.Image)(resources.GetObject("_itemFullPage.Image")));
             this._itemFullPage.Name = "_itemFullPage";
-            this._itemFullPage.Size = new System.Drawing.Size(152, 22);
+            this._itemFullPage.Size = new System.Drawing.Size(124, 22);
             this._itemFullPage.Text = "全页";
             // 
             // _itemPageWidth
             // 
             this._itemPageWidth.Image = ((System.Drawing.Image)(resources.GetObject("_itemPageWidth.Image")));
             this._itemPageWidth.Name = "_itemPageWidth";
-            this._itemPageWidth.Size = new System.Drawing.Size(152, 22);
+            this._itemPageWidth.Size = new System.Drawing.Size(124, 22);
             this._itemPageWidth.Text = "页宽";
             // 
             // _itemTwoPages
             // 
             this._itemTwoPages.Image = ((System.Drawing.Image)(resources.GetObject("_itemTwoPages.Image")));
             this._itemTwoPages.Name = "_itemTwoPages";
-            this._itemTwoPages.Size = new System.Drawing.Size(152, 22);
+            this._itemTwoPages.Size = new System.Drawing.Size(124, 22);
             this._itemTwoPages.Text = "双页模式";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(121, 6);
             // 
             // _item500
             // 
             this._item500.Name = "_item500";
-            this._item500.Size = new System.Drawing.Size(152, 22);
+            this._item500.Size = new System.Drawing.Size(124, 22);
             this._item500.Text = "500%";
             // 
             // _item200
             // 
             this._item200.Name = "_item200";
-            this._item200.Size = new System.Drawing.Size(152, 22);
+            this._item200.Size = new System.Drawing.Size(124, 22);
             this._item200.Text = "200%";
             // 
             // _item150
             // 
             this._item150.Name = "_item150";
-            this._item150.Size = new System.Drawing.Size(152, 22);
+            this._item150.Size = new System.Drawing.Size(124, 22);
             this._item150.Text = "150%";
             // 
             // _item100
             // 
             this._item100.Name = "_item100";
-            this._item100.Size = new System.Drawing.Size(152, 22);
+            this._item100.Size = new System.Drawing.Size(124, 22);
             this._item100.Text = "100%";
             // 
             // _item75
             // 
             this._item75.Name = "_item75";
-            this._item75.Size = new System.Drawing.Size(152, 22);
+            this._item75.Size = new System.Drawing.Size(124, 22);
             this._item75.Text = "75%";
             // 
             // _item50
             // 
             this._item50.Name = "_item50";
-            this._item50.Size = new System.Drawing.Size(152, 22);
+            this._item50.Size = new System.Drawing.Size(124, 22);
             this._item50.Text = "50%";
             // 
             // _item25
             // 
             this._item25.Name = "_item25";
-            this._item25.Size = new System.Drawing.Size(152, 22);
+            this._item25.Size = new System.Drawing.Size(124, 22);
             this._item25.Text = "25%";
             // 
             // _item10
             // 
             this._item10.Name = "_item10";
-            this._item10.Size = new System.Drawing.Size(152, 22);
+            this._item10.Size = new System.Drawing.Size(124, 22);
             this._item10.Text = "10%";
             // 
             // _btnFirst
@@ -275,6 +275,7 @@
             // sendRemoteSignToolStripButton
             // 
             this.sendRemoteSignToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sendRemoteSignToolStripButton.Enabled = false;
             this.sendRemoteSignToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sendRemoteSignToolStripButton.Image")));
             this.sendRemoteSignToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sendRemoteSignToolStripButton.Name = "sendRemoteSignToolStripButton";
@@ -289,7 +290,7 @@
             this._preview.Document = null;
             this._preview.Location = new System.Drawing.Point(0, 25);
             this._preview.Name = "_preview";
-            this._preview.Size = new System.Drawing.Size(658, 530);
+            this._preview.Size = new System.Drawing.Size(1041, 705);
             this._preview.TabIndex = 2;
             this._preview.StartPageChanged += new System.EventHandler(this._preview_StartPageChanged);
             this._preview.PageCountChanged += new System.EventHandler(this._preview_PageCountChanged);
@@ -298,7 +299,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(658, 555);
+            this.ClientSize = new System.Drawing.Size(1041, 730);
             this.Controls.Add(this._preview);
             this.Controls.Add(this._toolStrip);
             this.Name = "CoolPrintPreviewDialog";
@@ -341,7 +342,7 @@
         private System.Windows.Forms.ToolStripButton _btnLast;
         private System.Windows.Forms.ToolStripSeparator _separator;
         private CoolPrintPreviewControl _preview;
-        private System.Windows.Forms.ToolStripButton sendRemoteSignToolStripButton;
+        public System.Windows.Forms.ToolStripButton sendRemoteSignToolStripButton;
 
     }
 }

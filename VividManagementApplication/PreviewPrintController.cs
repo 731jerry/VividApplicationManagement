@@ -70,7 +70,7 @@ namespace VividManagementApplication
         private ImageFormat _Format = null;
         private float _Scale = 1f;
         private long _Quality = 75L;
-        private string _Output = String.Empty;
+        private string _Output = Environment.CurrentDirectory;
 
         private ImageCodecInfo _Codec = null;
         private int _Page = 0;
@@ -86,6 +86,10 @@ namespace VividManagementApplication
             _isPrintToImageFile = false;
 
             _Codec = PrintControllerFormat.GetImageCodecInfo(_Format);
+            string dir = Path.GetDirectoryName(_Output);
+            if (dir.Length > 0)
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
         }
 
         public PrintControllerFile(ImageFormat format, float scale, long quality, string output)

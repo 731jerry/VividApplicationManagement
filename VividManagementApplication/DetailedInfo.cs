@@ -1406,8 +1406,8 @@ namespace VividManagementApplication
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
                 if (!dzGZBId.Equals(""))
                 {
-                    remoteSignButton.Visible = true;
-                    remoteSignButton.Enabled = true;
+                    //remoteSignButton.Visible = true;
+                    //remoteSignButton.Enabled = true;
 
                 }
             }
@@ -1700,11 +1700,14 @@ namespace VividManagementApplication
             //this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
             //this.printPreviewDialog1.ShowDialog();
 
-
             using (var dlg = new CoolPrintPreviewDialog())
             {
                 dlg.Document = this.printDocument1;
                 dlg.WindowState = FormWindowState.Maximized;
+                if (!dzGZBId.Equals(""))
+                {
+                    dlg.sendRemoteSignToolStripButton.Enabled = true;
+                }
                 dlg.ShowDialog(this);
             }
 
@@ -2537,7 +2540,7 @@ namespace VividManagementApplication
         private void remoteSignButton_Click(object sender, EventArgs e)
         {
             // 远程签单
-            if (remoteSignButton.Enabled)
+            //  if (remoteSignButton.Enabled)
             {
                 if (MessageBox.Show("已检测到对方客户也是管账宝会员用户,是否确认发送远程签单请求?", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                 {

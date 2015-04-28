@@ -1,3 +1,15 @@
+2015/4/28 20:19:11-
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.MainWindow.CreateMainDataGridViewPZ(DataGridViewColumn[] dgvcArray, String table, String[] queryArray) 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 613
+   在 VividManagementApplication.MainWindow.listSfzhButton_Click(Object sender, EventArgs e) 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\MainWindow.cs:行号 814
+   在 System.Windows.Forms.Control.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.OnClick(EventArgs e)
+   在 System.Windows.Forms.Button.PerformClick()
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 c:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 950
+===================================================
+
 2015/4/23 21:21:21-无法查看详细
 ###异常消息Message: 该字符串未被识别为有效的 DateTime。
 ###当前异常StackTrace:    在 System.DateTimeParse.ParseExactMultiple(String s, String[] formats, DateTimeFormatInfo dtfi, DateTimeStyles style)

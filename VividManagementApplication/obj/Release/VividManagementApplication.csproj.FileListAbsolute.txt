@@ -113,7 +113,6 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\管账宝.exe
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\管账宝.pdb
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
-\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.FrmSignature.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe.config
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
@@ -143,3 +142,8 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Signature.resources

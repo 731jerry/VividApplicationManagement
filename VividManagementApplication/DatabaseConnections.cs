@@ -165,6 +165,41 @@ namespace VividManagementApplication
             return resultsStringList;
         }
 
+        public List<List<String>> OnlineGetRowsDataById(String table, List<String> query, String baseName, String id, String condition)
+        {
+            // ORDER BY id ASC
+            String innerSQL = "";
+
+            for (int i = 0; i < query.Count; i++)
+            {
+                innerSQL += query[i] + ",";
+            }
+            if (!innerSQL.Equals(""))
+            {
+                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+            }
+            String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "' " + condition;//建表语句  
+            OnlineDbOpen();
+            MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
+            cmdCreateTable.CommandText = sql;
+            MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+            //String[] resultsStringArray = new String[query.Count];
+            List<List<String>> resultsStringList = new List<List<String>>();
+
+            while (dataReader.Read())
+            {
+                List<String> temp = new List<string>();
+                for (int i = 0; i < query.Count; i++)
+                {
+                    temp.Add(dataReader[query[i]].ToString());
+                }
+                resultsStringList.Add(temp);
+            }
+            dataReader.Close();
+            OnlineDbClose();
+            return resultsStringList;
+        }
+
         #endregion
 
         #region 本地
@@ -286,6 +321,39 @@ namespace VividManagementApplication
         }
 
         // 插入或更新数据
+        public int LocalReplaceIntoDataReturnAffectRows(string table, string[] query, string[] value, string id)
+        {
+            int returnAffectRows = -1;
+            string innerQuerySQL = "";
+
+            for (int i = 0; i < query.Length; i++)
+            {
+                innerQuerySQL += query[i] + ",";
+            }
+            if (!innerQuerySQL.Equals(""))
+            {
+                innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
+            }
+
+            string innerVauleSQL = "";
+            for (int i = 0; i < value.Length; i++)
+            {
+                innerVauleSQL += "'" + value[i] + "',";
+            }
+            if (!innerVauleSQL.Equals(""))
+            {
+                innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
+            }
+
+            LocalDbOpen();
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
+                                       " VALUES(" + innerVauleSQL + ")";
+            returnAffectRows = cmdInsert.ExecuteNonQuery();
+            LocalDbClose();
+            return returnAffectRows;
+        }
+
         public void LocalReplaceIntoData(string table, string[] query, string[] value, string id)
         {
             string innerQuerySQL = "";
