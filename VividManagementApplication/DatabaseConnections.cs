@@ -34,12 +34,13 @@ namespace VividManagementApplication
         {
             try
             {
-                if (onlineSqlConnection.State != ConnectionState.Open)
+                if (onlineSqlConnection.State == ConnectionState.Open)
                 {
-                    onlineSqlConnection.Open();
+                    onlineSqlConnection.Close();
                 }
+                onlineSqlConnection.Open();
             }
-            catch (Exception ex)
+            catch
             {
                 //RecordLog("无法打开连接!\r\nTargetSite: " + ex.TargetSite + "\r\n" + ex.ToString());
                 //System.Windows.Forms.MessageBox.Show(ex.Message, "无法打开数据库连接！");
@@ -132,18 +133,20 @@ namespace VividManagementApplication
             OnlineDbOpen();
             string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
             MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
-           affectedRows= cmdInsert.ExecuteNonQuery();
+            affectedRows = cmdInsert.ExecuteNonQuery();
             OnlineDbClose();
             return affectedRows;
         }
 
         // 修改原始数据
-        public void OnlineUpdateDataFromOriginalSQL(String sql)
+        public int OnlineUpdateDataFromOriginalSQL(String sql)
         {
+            int affectedRows;
             OnlineDbOpen();
             MySqlCommand cmdInsert = new MySqlCommand(sql, onlineSqlConnection);
-            cmdInsert.ExecuteNonQuery();
+            affectedRows = cmdInsert.ExecuteNonQuery();
             OnlineDbClose();
+            return affectedRows;
         }
 
         public List<String> OnlineGetOneRowDataById(String table, List<String> query, String baseName, String id)
@@ -243,7 +246,7 @@ namespace VividManagementApplication
                                 CREATE TABLE IF NOT EXISTS xsdList (id INTEGER PRIMARY KEY AUTOINCREMENT, xsdID VARCHAR UNIQUE, clientID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, kxQq VARCHAR, kxXq VARCHAR, kxJf VARCHAR, kxSq VARCHAR, kxDay VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
 
                                 -- Table: htList
-                                CREATE TABLE IF NOT EXISTS htList (id INTEGER PRIMARY KEY AUTOINCREMENT, htID VARCHAR UNIQUE, leixing VARCHAR, htDate VARCHAR, clientID VARCHAR, companyName VARCHAR, jsonData VARCHAR (255), sum VARCHAR, option VARCHAR, discardFlag INT (2), addtime VARCHAR, modifyTime VARCHAR);
+                                CREATE TABLE IF NOT EXISTS htList (id INTEGER PRIMARY KEY AUTOINCREMENT, htID VARCHAR UNIQUE, leixing VARCHAR, htLocation VARCHAR, htDate VARCHAR, clientID VARCHAR, companyName VARCHAR, jsonData VARCHAR (255), sum VARCHAR, option VARCHAR, discardFlag INT (2), addtime VARCHAR, modifyTime VARCHAR);
 
                                 -- Table: ccdList
                                 CREATE TABLE IF NOT EXISTS ccdList (id INTEGER PRIMARY KEY AUTOINCREMENT, ccdID VARCHAR UNIQUE, clientID VARCHAR, cgxsID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
@@ -253,9 +256,6 @@ namespace VividManagementApplication
 
                                 -- Table: pzList
                                 CREATE TABLE IF NOT EXISTS pzList (id INTEGER PRIMARY KEY AUTOINCREMENT, pzID VARCHAR UNIQUE, leixing VARCHAR, clientID VARCHAR, companyName VARCHAR, zhaiyao VARCHAR (100), jsonData VARCHAR (255), operateMoney VARCHAR, remaintingMoney VARCHAR, beizhu VARCHAR, discardFlag INT (2), addtime DATETIME, modifyTime DATETIME);
-
-                                -- Table: config
-                                CREATE TABLE IF NOT EXISTS config (id INTEGER PRIMARY KEY AUTOINCREMENT, configKey VARCHAR, configValue VARCHAR);
 
                                 -- Table: remoteSign
                                 CREATE TABLE IF NOT EXISTS remoteSign (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, fromGZBID VARCHAR (100), toGZBID VARCHAR (100), companyNickName VARCHAR (255), isSigned INT, signValue TEXT (300000), sendTime DATETIME, signTime DATETIME);

@@ -143,6 +143,7 @@ namespace VividManagementApplication
                 {
                     // print selected page range
                     _preview.Print();
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }
             }
         }
@@ -312,6 +313,7 @@ namespace VividManagementApplication
 
         public String gzbIDString = "";
         public String companyNickNameStirng = "";
+
         // 发送远程签单
         private void sendRemoteSignToolStripButton_Click(object sender, EventArgs e)
         {
@@ -330,8 +332,6 @@ namespace VividManagementApplication
             //bs.signImage = MainWindow.SIGN_BITMAP;
             bs.ShowDialog();
         }
-
-
         #endregion
     }
 }

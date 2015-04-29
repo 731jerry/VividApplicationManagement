@@ -29,10 +29,10 @@ namespace VividManagementApplication
             {
                 DatabaseConnections.GetInstence().UserLogin(cbAccount.Text, tbPassword.Text);
             }
-            catch (Exception exc)
+            catch
             {
                 this.Text = windowText;
-                MessageBox.Show("登录错误!" + exc.Message, "错误");
+                MessageBox.Show("登录错误!", "错误");
                 return;
             }
 

@@ -116,11 +116,8 @@ namespace VividManagementApplication
             if (MainWindow.IS_LOGED_IN)
             {
                 #region 初始化数据库
-                if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
-                {
-                    DatabaseConnections.GetInstence().LocalCreateDatabase();
-                }
-                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
+                t.Start();
                 #endregion
 
                 #region 窗体用户信息初始化
@@ -131,9 +128,7 @@ namespace VividManagementApplication
                 //commerceTimer.Enabled = true;
 
                 #region 更新数据库计时器
-                //DownloadFileWithNotice();
-
-                updateDataTimer.Enabled = true;
+                //updateDataTimer.Enabled = true;
 
                 //Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
                 //t.Start();
@@ -162,7 +157,7 @@ namespace VividManagementApplication
 
                 #region 更新远程签单数据
                 //remoteSignTimer.Enabled = true;
-                updateRemoteSignTimer = new System.Timers.Timer(10000);
+                updateRemoteSignTimer = new System.Timers.Timer(13000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
                 updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
@@ -191,10 +186,9 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 初始化客户列表
-                cxRadio.Checked = false;
-                cxRadio.Checked = true;
+                //cxRadio.Checked = true;
                 //cxRadio.PerformClick();
-                listCxButton.PerformClick();
+                //listCxButton.PerformClick();
                 //ViewButton.Enabled = false;
                 //refeshButton.Enabled = false;
                 //PrintButton.Enabled = false;
@@ -228,6 +222,34 @@ namespace VividManagementApplication
                 this.Close();
             }
         }
+
+        // 初始化本地数据库
+        private void InitLocalDataBaseWithObject(object obj)
+        {
+            visibleUploadDownloadGroup(true);
+            if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
+            {
+                DatabaseConnections.GetInstence().LocalCreateDatabase();
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                {
+                    MainPanel.Enabled = false;
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                    MainPanel.Enabled = true;
+                }
+                else
+                {
+                    UploadFileWithNotice("初次同步, ");
+                }
+            }
+            else
+            {
+                DownloadFileWithNotice();
+            }
+        }
+
 
         // MainWindow 窗口固定
         private void MainWindow_Resize(object sender, EventArgs e)
@@ -298,11 +320,6 @@ namespace VividManagementApplication
             }
         }
 
-        private void DownloadFileWithNoticeWithObject(object obj)
-        {
-            DownloadFileWithNotice();
-        }
-
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
@@ -322,12 +339,25 @@ namespace VividManagementApplication
         {
             updateDataTimer.Enabled = false;
             // 暂时备份
+            //DownloadFileWithNotice();
+            Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
+            t.Start();
+        }
+
+        private void DownloadFileWithNoticeWithObject(object obj)
+        {
             DownloadFileWithNotice();
         }
 
         private void backupData_Click(object sender, EventArgs e)
         {
             visibleUploadDownloadGroup(true);
+            Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObjectBackupData));
+            t.Start();
+        }
+
+        private void DownloadFileWithNoticeWithObjectBackupData(object obj)
+        {
             UploadFileWithNotice("手动同步数据库！");
         }
 
@@ -336,24 +366,18 @@ namespace VividManagementApplication
         // 下载
         private void DownloadFileWithNotice()
         {
-            if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+            if (ifUpdateDatabasecheckLastModifiedTime(true))
             {
-                if (ifUpdateDatabasecheckLastModifiedTime(true))
-                {
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                }
-            }
-            else
-            {
-                UploadFileWithNotice("初次同步, ");
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
             }
         }
 
         private void DownloadFile(String uriString, String fileNamePath)
         {
             visibleUploadDownloadGroup(true);
+            pbUploadDownloadFile.Value = 0;
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
@@ -376,6 +400,7 @@ namespace VividManagementApplication
             else
             {
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
             }
         }
@@ -403,6 +428,7 @@ namespace VividManagementApplication
         private void UploadFile(String fileNamePath, String uriString)
         {
             visibleUploadDownloadGroup(true);
+            pbUploadDownloadFile.Value = 0;
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
             client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
@@ -505,7 +531,6 @@ namespace VividManagementApplication
         private void visibleUploadDownloadGroup(Boolean visible)
         {
             pbUploadDownloadFile.Visible = visible;
-            pbUploadDownloadFile.Value = 0;
             pbUploadDownloadLabel.Visible = visible;
             //pbUploadDownloadLabel.Text = notice;
         }
@@ -1068,7 +1093,9 @@ namespace VividManagementApplication
             if (MainWindow.IS_LOGED_IN)
             {
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
+                if (DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'") > 0)
+                {
+                }
                 UploadFileWithNotice("关闭前同步数据库!");
 
                 if (notifyIcon != null)
@@ -1334,7 +1361,11 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW(), GZB_logonmins = GZB_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
+                try
+                {
+                    DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW(), GZB_logonmins = GZB_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
+                }
+                catch { return; }
             }
         }
 
@@ -1478,27 +1509,38 @@ namespace VividManagementApplication
         #region 远程签单
         private void updateRemoteSignTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (!this.InvokeRequired)
-            {
-                checkRemoteSignList();
-            }
-            else
-            {
-                this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
-            }
+            //if (!this.InvokeRequired)
+            //{
+            //    checkRemoteSignList();
+            //}
+            //else
+            //{
+            //    this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
+            //}
+            Thread t = new Thread(new ParameterizedThreadStart(checkRemoteSignListWithObject));
+            t.Start();
+        }
+
+        private void checkRemoteSignListWithObject(object obj)
+        {
+            checkRemoteSignList();
         }
 
         private void checkRemoteSignList()
         {
-            List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " or toGZBID='" + MainWindow.USER_ID + "'");
-            if (remoteSignList.Count != 0)
+            try
             {
-                foreach (List<String> item in remoteSignList)
+                List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " or toGZBID='" + MainWindow.USER_ID + "'");
+                if (remoteSignList.Count != 0)
                 {
-                    addNotifyItem(item[1], item[0]);
-                    DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
+                    foreach (List<String> item in remoteSignList)
+                    {
+                        addNotifyItem(item[1], item[0]);
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
+                    }
                 }
             }
+            catch { return; }
         }
 
         private void remoteSignTimer_Tick(object sender, EventArgs e)

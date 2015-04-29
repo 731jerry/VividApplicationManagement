@@ -948,6 +948,7 @@ namespace VividManagementApplication
             }
         }
 
+        // 打印预览按钮
         private void PreviewPrintButton_Click(object sender, EventArgs e)
         {
             int printFlag = 0;
@@ -1671,32 +1672,41 @@ namespace VividManagementApplication
         // 通用preview
         private void SetPrintPreview(int flag, int pageHeight)
         {
-            printFlag = flag;
-
-            this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, pageHeight);
-
-            pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
-            pageHeight = this.printDocument1.DefaultPageSettings.PaperSize.Height;
-
-            ////注意指定其Document(获取或设置要预览的文档)属性
-            //this.printPreviewDialog1.Document = this.printDocument1;
-            ////ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
-            //this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
-            //this.printPreviewDialog1.ShowDialog();
-
-            using (var dlg = new CoolPrintPreviewDialog())
+            if (FormBasicFeatrues.GetInstence().isPassValidateControls(checkValidateControls))
             {
-                dlg.Document = this.printDocument1;
-                dlg.WindowState = FormWindowState.Maximized;
-                if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 0))
-                {
-                    dlg.sendRemoteSignToolStripButton.Enabled = true;
-                    dlg.gzbIDString = dzGZBId.Text;
-                    dlg.companyNickNameStirng = dzContact.Text;
-                }
-                dlg.ShowDialog(this);
-            }
+                printFlag = flag;
 
+                this.printDocument1.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("custom", this.printDocument1.DefaultPageSettings.PaperSize.Width, pageHeight);
+
+                pageWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width;
+                pageHeight = this.printDocument1.DefaultPageSettings.PaperSize.Height;
+
+                ////注意指定其Document(获取或设置要预览的文档)属性
+                //this.printPreviewDialog1.Document = this.printDocument1;
+                ////ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
+                //this.printPreviewDialog1.WindowState = FormWindowState.Maximized;
+                //this.printPreviewDialog1.ShowDialog();
+
+                using (var dlg = new CoolPrintPreviewDialog())
+                {
+                    dlg.Document = this.printDocument1;
+                    dlg.WindowState = FormWindowState.Maximized;
+                    if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 0))
+                    {
+                        dlg.sendRemoteSignToolStripButton.Enabled = true;
+                        dlg.gzbIDString = dzGZBId.Text;
+                        dlg.companyNickNameStirng = dzCompany.Text;
+                    }
+                    if (dlg.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        SaveButton.PerformClick();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("请先填入必填项目再打印预览!", "提示");
+            }
         }
 
         private void PrintGeneral(int x, int y, Panel innerPanel, System.Drawing.Printing.PrintPageEventArgs e)
@@ -1731,27 +1741,6 @@ namespace VividManagementApplication
                     g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + x, tx.Top + y + 5);
                     g.DrawRectangle(new Pen(Color.Black), tx.Left + x, tx.Top + y, tx.Width - 1, tx.Height - 1);
                 }
-                /*
-                if (item is DataGridView)
-                {
-                    DataGridView tx = (item as DataGridView);
-                    for (int i = 0; i < tx.ColumnCount; i++)
-                    {
-                        for (int j = 0; j < tx.RowCount; j++)
-                        {
-                            g.DrawString(tx.Rows[j].Cells[i].Value.ToString(), tx.Font, new SolidBrush(item.ForeColor), tx.Left + x, tx.Top + y);
-                        }
-                    }
-                }
-                */
-                /*
-                if (dgv != null)
-                {
-                    int iX = 35;
-                    int iY = 140;
-                    PrintDataGridView.Print(dgv, true, e, ref iX, ref iY);
-                }
-                 */
             }
         }
 
@@ -1990,14 +1979,6 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 733, 104);
             g.DrawString("备注：\n" + tbPz3.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
 
-            //g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY, 281, 78);
-            //g.DrawString("发票号码", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY);
-            //g.DrawString("增值税：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY);
-            //g.DrawString("普通发票：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY);
-
-            //g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 260 + y + tableY, 281, 26);
-            //g.DrawString("附件凭证 " + tbDz7.Text + " 张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY);
-
             g.DrawString("对方送货人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY);
             g.DrawString("业务经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY);
             g.DrawString("仓库验收人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 - 190, 300 + y + fontDisY + tableY);
@@ -2084,17 +2065,6 @@ namespace VividManagementApplication
             // 
             g.DrawString("1、交易内容（品名、规格、数量、单位、单价、金额、交（提）货日期）：", f4, new SolidBrush(Color.Black), 40 + x, 200 + y);
 
-            /*
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 220 + y, 40, 30);
-            g.DrawString("货号", f4, new SolidBrush(Color.Black), 40 + x, 225 + y);
-
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 250 + y, 40, 30);
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 280 + y, 40, 30);
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 310 + y, 40, 30);
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 340 + y, 40, 30);
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 370 + y, 40, 30);
-            g.DrawRectangle(new Pen(Color.Black), 40 + x, 400 + y, 40, 30);
-             */
             int htWidth = (pageWidth - 60 * 2) / 7;
             int htHeight = 37;
             int a = 40;
@@ -2215,50 +2185,6 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 3 * htHeight, htWidth + 108 - 2, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 4 * htHeight, htWidth + 108 - 2, htHeight);
             g.DrawRectangle(new Pen(Color.Black), a + 6 * htWidth + x - 108 + 2, b + y + 5 * htHeight, htWidth + 108 - 2, htHeight);
-
-            /*
-             * //第八列
-            g.DrawRectangle(new Pen(Color.Black), 40 + 7*htWidth + x, 223 + y, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 2 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 3 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 4 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 7 * htWidth + x, 223 + y + 5 * htHeight, htWidth, htHeight);
-            //第九列
-            g.DrawRectangle(new Pen(Color.Black), 40 + 8*htWidth + x, 223 + y, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 2 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 3 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 4 * htHeight, htWidth, htHeight);
-            g.DrawRectangle(new Pen(Color.Black), 40 + 8 * htWidth + x, 223 + y + 5 * htHeight, htWidth, htHeight);
-            /*
-            /*
-            int fontDisX = 3;
-            int fontDisY = 3;
-            foreach (Control item in PanelHT.Controls)
-            {
-                if (item is Label)
-                {
-                    Control tx = (item as Control);
-                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + 20 + x, tx.Top + 240 + y);
-                }
-                if (item is TextBox)
-                {
-                    TextBox tx = (item as TextBox);
-                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Location.X + 36 + x, tx.Location.Y + 240+ y + fontDisY);
-                    if (tx.BorderStyle == BorderStyle.FixedSingle)
-                    {
-                        g.DrawRectangle(new Pen(Color.Black), tx.Left + 20 + x, tx.Top + 240 + y, tx.Width, tx.Height);
-                    }
-                }
-                if (item is ComboBox)
-                {
-                    ComboBox tx = (item as ComboBox);
-                    g.DrawString(tx.Text, tx.Font, new SolidBrush(tx.ForeColor), tx.Left + 40 + x + fontDisX, tx.Top + 240 + y + fontDisY);
-                    g.DrawRectangle(new Pen(Color.Black), tx.Left + 20 + x, tx.Top + 240 + y, tx.Width, 25);
-                }
-            }
-            */
 
             // 
             g.DrawString("2、质量标准及验收方法：", f4, new SolidBrush(Color.Black), 40 + x, 465 + y);
