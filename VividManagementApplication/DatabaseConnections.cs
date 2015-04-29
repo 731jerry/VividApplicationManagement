@@ -257,6 +257,9 @@ namespace VividManagementApplication
                                 -- Table: config
                                 CREATE TABLE IF NOT EXISTS config (id INTEGER PRIMARY KEY AUTOINCREMENT, configKey VARCHAR, configValue VARCHAR);
 
+                                -- Table: remoteSign
+                                CREATE TABLE IF NOT EXISTS remoteSign (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, fromGZBID VARCHAR (100), toGZBID VARCHAR (100), companyNickName VARCHAR (255), isSigned INT, signValue TEXT (300000), sendTime DATETIME, signTime DATETIME);
+
                                 --COMMIT TRANSACTION;";//建表语句  
             SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
             cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  

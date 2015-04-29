@@ -323,7 +323,7 @@ namespace VividManagementApplication
             doc.Print();
 
             BillSign bs = new BillSign();
-            bs.isSendSign = true;
+            bs.isSendRequest = true;
             bs.gzbIDStirng = gzbIDString;
             bs.companyNickNameStirng = companyNickNameStirng;
             bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);

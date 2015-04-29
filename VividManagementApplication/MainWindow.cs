@@ -161,7 +161,7 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 更新远程签单数据
-                updateRemoteSignTimer = new System.Timers.Timer(10000);
+                updateRemoteSignTimer = new System.Timers.Timer(5000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
                 updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
@@ -246,12 +246,41 @@ namespace VividManagementApplication
         {
             if (MainDataGridView.Rows.Count > 0)
             {
-                DetailedInfo di = new DetailedInfo();
-                //di.ShowIcon = false;
-                //di.ItemId = this.MainListView.SelectedItems[0].Text;
-                di.ItemId = this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString();
-                di.Text = "查看" + di.ItemId;
-                di.ShowDialog();
+                if (CURRENT_TAB == 7)
+                {
+                    ViewRemoteSignDetail(this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString());
+                }
+                else
+                {
+                    DetailedInfo di = new DetailedInfo();
+                    di.ItemId = this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                    di.Text = "查看" + di.ItemId;
+                    di.ShowDialog();
+                }
+            }
+        }
+
+        private void ViewRemoteSignDetail(String remoteSignId)
+        {
+            if (!remoteSignId.Equals(""))
+            {
+                BillSign bs = new BillSign();
+                bs.isSendRequest = false;
+                bs.remoteSignId = remoteSignId;
+                String[] resultArray = DatabaseConnections.GetInstence().LocalGetOneRowDataById("remoteSign", new String[] { "fromGZBID", "toGZBID", "companyNickName", "signValue", "isSigned" }, "Id", remoteSignId);
+                if (resultArray.Length > 0)
+                {
+                    bs.gzbIDStirng = resultArray[0];
+                    bs.companyNickNameStirng = resultArray[2];
+                    bs.Text = resultArray[2] + "发来的电子签单";
+                    bs.signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(resultArray[3]));
+                    bs.isSigned = resultArray[4].Equals("0") ? false : true;
+                }
+                if (bs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    checkRemoteSignList();
+                    ViewButton.PerformClick();
+                }
             }
         }
 
@@ -949,18 +978,26 @@ namespace VividManagementApplication
             CURRENT_LIST_BUTTON = listQdButton;
             CURRENT_TAB = 7;
             mainDGVTitle.Text = listQdButton.Text;
-            Column1.HeaderText = "发送人";
-            Column2.HeaderText = "发送人";
-            Column3.HeaderText = "发送人公司名称";
-            Column4.HeaderText = "是否已签";
-            Column5.HeaderText = "操作时间";
+            Column1.HeaderText = "ID";
+            Column2.HeaderText = "操作方式";
+            Column3.HeaderText = "对方ID";
+            Column4.HeaderText = "对方公司名称";
+            Column5.HeaderText = "是否已签";
+            Column6.HeaderText = "操作时间";
 
-            Column4.Width = 80;
-            Column5.Width = 130;
+            Column5.Width = 80;
+            Column6.Width = 120;
 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "remoteSign", -1,
-                new string[] { "Id", "fromGZBID", "companyNickName", "case when isSigned = '0' then '还未签' else '已签' end as 'isSigned'", "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            checkRemoteSignList();
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "remoteSign", -1,
+                new string[] { 
+                    "Id", 
+                    "case when fromGZBID = '"+MainWindow.USER_ID+"' then '发送' else '接收' end as 'operation'",
+                    "case when fromGZBID = '"+MainWindow.USER_ID+"' then toGZBID else fromGZBID end as 'peerID'", 
+                    "companyNickName", 
+                    "case when isSigned = '0' then '还未签' else '已签' end as 'isSigned'", 
+                    "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
         }
         #endregion
 
@@ -1391,7 +1428,7 @@ namespace VividManagementApplication
             {
                 ToolStripMenuItem newMenuItem = new ToolStripMenuItem(sender + "远程签单请求", VividManagementApplication.Properties.Resources.Signature);
                 newMenuItem.Tag = sender;
-                newMenuItem.Click += new EventHandler(mnuCopy_Click);
+                newMenuItem.Click += new EventHandler(mnuNotify_Click);
                 notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
                 notifyBlink(true);
                 notifyItemTagList.Add(id);
@@ -1399,9 +1436,10 @@ namespace VividManagementApplication
             }
         }
 
-        private void mnuCopy_Click(object sender, EventArgs e)
+        private void mnuNotify_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("发送人:" + (sender as ToolStripMenuItem).Tag);
+            //MessageBox.Show("发送人:" + (sender as ToolStripMenuItem).Tag);
+            ViewRemoteSignDetail((sender as ToolStripMenuItem).Tag.ToString());
             notifyIconContextMenuStrip.Items.Remove((sender as ToolStripMenuItem));
             if (notifyIconContextMenuStrip.Items.Count < 3)
             {
@@ -1436,13 +1474,13 @@ namespace VividManagementApplication
         private void checkRemoteSignList()
         {
             // 检测网上
-            List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, "AND isSigned=0");
+            List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " or toGZBID='" + MainWindow.USER_ID + "'");
             if (remoteSignList.Count != 0)
             {
                 foreach (List<String> item in remoteSignList)
                 {
                     addNotifyItem(item[1], item[0]);
-                    DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
+                    DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                 }
             }
 

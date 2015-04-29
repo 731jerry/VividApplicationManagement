@@ -12,11 +12,12 @@ namespace VividManagementApplication
 {
     public partial class BillSign : Form
     {
-        public Image signImage;
-        public Boolean isSendSign = false;
+        public Boolean isSendRequest = false;
+        public String remoteSignId = "";
         public String gzbIDStirng = "";
         public String companyNickNameStirng = "";
-        public String remoteSignId = "";
+        public Image signImage;
+        public Boolean isSigned = false;
 
         public BillSign()
         {
@@ -25,11 +26,11 @@ namespace VividManagementApplication
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (isSendSign)
+            if (isSendRequest)
             {// 发送请求
                 if (DatabaseConnections.GetInstence().OnlineInsertData("gzb_remotesign",
                     "fromGZBID,toGZBID,companyNickName,sendTime,signValue",
-                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNickNameStirng + "','" + DateTime.Now + "','" + FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)) + "'") > 0)
+                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNickNameStirng + "','" + DateTime.Now + "','" + FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage))) + "'") > 0)
                 {
                     MessageBox.Show("发送请求成功!", "提示");
                     this.Close();
@@ -40,10 +41,10 @@ namespace VividManagementApplication
                 ConfirmPassword cp = new ConfirmPassword();
                 if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (DatabaseConnections.GetInstence().OnlineUpdateData("remoteSign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString() }, remoteSignId) > 0)
+                    if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString() }, remoteSignId) > 0)
                     {
                         MessageBox.Show("远程签名成功!", "提示");
-                        this.Close();
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
                     }
                 }
             }
@@ -56,13 +57,21 @@ namespace VividManagementApplication
                 SignPictureBox.Image = signImage;
             }
 
-            if (isSendSign)
+            if (isSendRequest)
             {
                 btnSave.Text = "发送请求";
             }
             else
             {
                 btnSave.Text = "确认签名";
+            }
+
+            if (isSigned)
+            {
+                btnSave.Enabled = false;
+            }
+            else {
+                btnSave.Enabled = true;
             }
         }
 
