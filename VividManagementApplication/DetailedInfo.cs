@@ -83,7 +83,6 @@ namespace VividManagementApplication
                             this.Close();
                         }
                     }
-
                     break;
                 case 2:
                     checkValidateControls = new List<Control>() { tbGoods1, tbGoods3, tbGoods4, tbGoods5 };
@@ -124,7 +123,7 @@ namespace VividManagementApplication
                 case 3:
                 case 4:
                     // 进仓单 出仓单 采购单 销售单
-                    checkValidateControls = new List<Control>() { tbDz2 };
+                    checkValidateControls = new List<Control>() { tbDz1, tbDz2, tbDz3 };
                     detailedPanel = DetailedDanziPanel;
 
                     controlsPreName = "tbDz";
@@ -299,30 +298,6 @@ namespace VividManagementApplication
                                     EJCDtb5.Text = ((JSONObject)json["5"])["goodsAmount"].Equals("无") ? "" : ((JSONObject)json["5"])["goodsAmount"].ToString();
                                 }
                             }
-
-                            // 不可编辑控件
-                            /*
-                            tbDz1.Enabled = false;
-                            JCDcbA.Enabled = false;
-                            JCDcbB.Enabled = false;
-                            JCDcbC.Enabled = false;
-                            JCDcbD.Enabled = false;
-                            JCDcbE.Enabled = false;
-                            AJCDtb5.Enabled = false;
-                            BJCDtb5.Enabled = false;
-                            CJCDtb5.Enabled = false;
-                            DJCDtb5.Enabled = false;
-                            EJCDtb5.Enabled = false;
-                            tbDz4.Enabled = false;
-                            tbDz5.Enabled = false;
-                            tbDz6.Enabled = false;
-                            tbDz7.Enabled = false;
-                            tbDz8.Enabled = false;
-                            tbDz9.Enabled = false;
-                            tbDz10.Enabled = false;
-                            tbDz11.Enabled = false;
-                            tbDz12.Enabled = false;
-                             */
                             DetailedDanziPanel.Enabled = false;
                             DiscardCheckBox.Enabled = true;
                         }
@@ -336,7 +311,7 @@ namespace VividManagementApplication
                     break;
                 case 5:
                     // 收款凭证 付款凭证 领款凭证 还款凭证 报销凭证
-                    checkValidateControls = new List<Control>() { tbPz2 };
+                    checkValidateControls = new List<Control>() { tbPz1, tbPz2, SumtbPz };
                     detailedPanel = DetailedPZPanel;
                     detailedHeightDis = 250;
 
@@ -482,7 +457,7 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
-                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfPresenter, tbHTghfPresenter, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
+                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfPresenter, tbHTghfPresenter, SumHtTextbox, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
                     //checkValidateControls = new List<Control>() { HTtbID };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
@@ -526,10 +501,11 @@ namespace VividManagementApplication
                         HTcbName.Enabled = false;
                         try
                         {
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag", "option" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag", "option", "htLocation" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             HTcbName.SelectedIndex = int.Parse(data[2].ToString());
                             HTtbID.Text = data[3].ToString();
+                            HTtbLocation.Text = data[8].ToString();
                             HTtbDate.Text = Convert.ToDateTime(data[4]).ToLongDateString();
                             if (HTcbName.SelectedIndex == 1) //购买合同
                             {
@@ -777,7 +753,7 @@ namespace VividManagementApplication
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(), DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
                             //}
                         }
                         else
@@ -906,11 +882,20 @@ namespace VividManagementApplication
                         String[] resultStringArray;
                         if (ItemId.Equals("-1"))
                         {
-                            queryStringArray = new string[] { "htID", "leixing", "htDate", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modifyTime", "option" };
-                            resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, 
-                               (HTcbName.SelectedIndex == 0) ?tbHTghfID.Text:tbHTxsfID.Text,  (HTcbName.SelectedIndex == 0) ?tbHTghfName.Text:tbHTxsfName.Text,
+                            queryStringArray = new string[] { "htID", "leixing", "htDate", "htLocation", "clientID", "companyName", "jsonData", "sum", "discardFlag", "addtime", "modifyTime", "option" };
+                            resultStringArray = new String[] {  
+                                HTtbID.Text, 
+                                HTcbName.SelectedIndex.ToString(),  
+                                HTtbDate.Text, 
+                                HTtbLocation.Text,
+                               (HTcbName.SelectedIndex == 0) ?tbHTxsfID.Text:tbHTghfID.Text,  
+                               (HTcbName.SelectedIndex == 0) ?tbHTxsfName.Text:tbHTghfName.Text,
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(),  DateTime.Now.ToString(),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
+                                SumHtTextbox.Text.Split('=')[0], 
+                                (DiscardCheckBox.Checked?"1":"0"), 
+                                DateTime.Now.ToString(),  
+                                DateTime.Now.ToString(),
+                                HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                             // 保存法人信息
                             if (HTcbName.SelectedIndex == 0)
                             {
