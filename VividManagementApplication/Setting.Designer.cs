@@ -47,6 +47,7 @@
             this.tbInfo2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.PasswordGroupBox = new System.Windows.Forms.GroupBox();
+            this.ChangePasswordQQButton = new ControlExs.QQButton();
             this.NewPasswordTextBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.NewPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -61,7 +62,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SignPictureShowBox = new System.Windows.Forms.PictureBox();
             this.SignqqButton = new ControlExs.QQButton();
-            this.ChangePasswordQQButton = new ControlExs.QQButton();
             this.CancelQQButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
             this.PasswordGroupBox.SuspendLayout();
@@ -247,6 +247,20 @@
             this.PasswordGroupBox.TabIndex = 143;
             this.PasswordGroupBox.TabStop = false;
             // 
+            // ChangePasswordQQButton
+            // 
+            this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
+            this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 131);
+            this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
+            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 28);
+            this.ChangePasswordQQButton.TabIndex = 23;
+            this.ChangePasswordQQButton.Text = "修改";
+            this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ChangePasswordQQButton.UseVisualStyleBackColor = true;
+            this.ChangePasswordQQButton.Click += new System.EventHandler(this.ChangePasswordQQButton_Click);
+            // 
             // NewPasswordTextBox2
             // 
             this.NewPasswordTextBox2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
@@ -393,20 +407,6 @@
             this.SignqqButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SignqqButton.UseVisualStyleBackColor = true;
             this.SignqqButton.Click += new System.EventHandler(this.SignqqButton_Click);
-            // 
-            // ChangePasswordQQButton
-            // 
-            this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
-            this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 131);
-            this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
-            this.ChangePasswordQQButton.Size = new System.Drawing.Size(111, 28);
-            this.ChangePasswordQQButton.TabIndex = 23;
-            this.ChangePasswordQQButton.Text = "修改";
-            this.ChangePasswordQQButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ChangePasswordQQButton.UseVisualStyleBackColor = true;
-            this.ChangePasswordQQButton.Click += new System.EventHandler(this.ChangePasswordQQButton_Click);
             // 
             // CancelQQButton
             // 
