@@ -41,10 +41,19 @@ namespace VividManagementApplication
                 ConfirmPassword cp = new ConfirmPassword();
                 if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString() }, remoteSignId) > 0)
+                    Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
+                    if (_signImage != null)
                     {
-                        MessageBox.Show("远程签名成功!", "提示");
-                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        using (Graphics gr = Graphics.FromImage(SignPictureBox.Image))
+                        {
+                            gr.DrawImage(_signImage, new Rectangle(150, 480, 104, 36));
+                        }
+                        SignPictureBox.Invalidate();
+                        if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString() }, remoteSignId) > 0)
+                        {
+                            MessageBox.Show("远程签名成功!", "提示");
+                            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                        }
                     }
                 }
             }
@@ -60,6 +69,15 @@ namespace VividManagementApplication
             if (isSendRequest)
             {
                 btnSave.Text = "发送请求";
+                Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
+                if (_signImage != null)
+                {
+                    using (Graphics gr = Graphics.FromImage(SignPictureBox.Image))
+                    {
+                        gr.DrawImage(_signImage, new Rectangle(420, 480, 104, 36));
+                    }
+                    SignPictureBox.Invalidate();
+                }
             }
             else
             {
@@ -70,7 +88,8 @@ namespace VividManagementApplication
             {
                 btnSave.Enabled = false;
             }
-            else {
+            else
+            {
                 btnSave.Enabled = true;
             }
         }

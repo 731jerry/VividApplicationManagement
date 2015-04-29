@@ -89,6 +89,7 @@
             this.notifyImageList = new System.Windows.Forms.ImageList(this.components);
             this.ExtendExpireLinkLabel = new System.Windows.Forms.LinkLabel();
             this.UserDegreeLabel = new System.Windows.Forms.Label();
+            this.remoteSignTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -544,6 +545,11 @@
             this.UserDegreeLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.UserDegreeLabel.Name = "UserDegreeLabel";
             // 
+            // remoteSignTimer
+            // 
+            this.remoteSignTimer.Interval = 5000;
+            this.remoteSignTimer.Tick += new System.EventHandler(this.remoteSignTimer_Tick);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -637,6 +643,7 @@
         private System.Windows.Forms.Label UserDegreeLabel;
         private ControlExs.QQButton listQdButton;
         private ControlExs.QQRadioButton QdRadio;
+        private System.Windows.Forms.Timer remoteSignTimer;
     }
 }
 

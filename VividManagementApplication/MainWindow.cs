@@ -161,7 +161,8 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 更新远程签单数据
-                updateRemoteSignTimer = new System.Timers.Timer(5000);
+                //remoteSignTimer.Enabled = true;
+                updateRemoteSignTimer = new System.Timers.Timer(10000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
                 updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
@@ -446,7 +447,23 @@ namespace VividManagementApplication
         private bool ifUpdateDatabasecheckLastModifiedTime(bool isDownload)
         {
             HttpWebRequest gameFile = (HttpWebRequest)WebRequest.Create(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix);
-            HttpWebResponse gameFileResponse = (HttpWebResponse)gameFile.GetResponse();
+            gameFile.Timeout = 5000;
+            HttpWebResponse gameFileResponse;
+            try
+            {
+                gameFileResponse = (HttpWebResponse)gameFile.GetResponse();
+            }
+            catch
+            {
+                if (isDownload)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
 
             DateTime localFileModifiedTime = File.GetLastWriteTime(LOCAL_DATABASE_LOCATION);
             DateTime onlineFileModifiedTime = gameFileResponse.LastModified;
@@ -1473,7 +1490,6 @@ namespace VividManagementApplication
 
         private void checkRemoteSignList()
         {
-            // 检测网上
             List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " or toGZBID='" + MainWindow.USER_ID + "'");
             if (remoteSignList.Count != 0)
             {
@@ -1483,10 +1499,13 @@ namespace VividManagementApplication
                     DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                 }
             }
-
-        #endregion
         }
 
+        private void remoteSignTimer_Tick(object sender, EventArgs e)
+        {
+            checkRemoteSignList();
+        }
 
+        #endregion
     }
 }
