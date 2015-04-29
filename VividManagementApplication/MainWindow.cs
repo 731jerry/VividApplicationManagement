@@ -117,7 +117,7 @@ namespace VividManagementApplication
             {
                 #region 初始化数据库
                 Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
-                t.Start();
+                t.Start(true);
                 #endregion
 
                 #region 窗体用户信息初始化
@@ -226,7 +226,7 @@ namespace VividManagementApplication
         // 初始化本地数据库
         private void InitLocalDataBaseWithObject(object obj)
         {
-            visibleUploadDownloadGroup(true);
+            visibleUploadDownloadGroup((bool)obj);
             if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
                 DatabaseConnections.GetInstence().LocalCreateDatabase();
@@ -452,7 +452,8 @@ namespace VividManagementApplication
             }
             else
             {
-                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
+                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功"); 
             }
         }
 
