@@ -1234,7 +1234,8 @@ namespace VividManagementApplication
             else
             { // 出仓单
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
-                hintControl.EmptyTextTip = "库存:" + DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
+                String remainCount = DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
+                hintControl.EmptyTextTip = "库存:" + (remainCount.Equals("") ? "0" : remainCount);
             }
         }
 

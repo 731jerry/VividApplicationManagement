@@ -77,7 +77,7 @@ namespace VividManagementApplication
         public MainWindow()
         {
             InitializeComponent();
-            //Control.CheckForIllegalCrossThreadCalls = false;//这一行是关键 
+            Control.CheckForIllegalCrossThreadCalls = false;//这一行是关键 
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -100,10 +100,8 @@ namespace VividManagementApplication
 
                 this.Text = CURRENT_APP_NAME + " " + CURRENT_APP_VERSION_NAME + "v" + CURRENT_APP_VERSION_ID;
             }
-            catch (Exception exc)
-            {
+            catch { }
 
-            }
             #endregion
 
             #region 登录
@@ -117,7 +115,8 @@ namespace VividManagementApplication
             {
                 #region 初始化数据库
                 Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
-                t.Start(true);
+                t.Start();
+                t.DisableComObjectEagerCleanup();
                 #endregion
 
                 #region 窗体用户信息初始化
@@ -132,6 +131,7 @@ namespace VividManagementApplication
 
                 //Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
                 //t.Start();
+                //t.DisableComObjectEagerCleanup();
 
                 //updateDataTimersTimer = new System.Timers.Timer(1000);
                 //updateDataTimersTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateDataTimersTimer_Elapsed);//到达时间的时候执行事件；  
@@ -226,7 +226,7 @@ namespace VividManagementApplication
         // 初始化本地数据库
         private void InitLocalDataBaseWithObject(object obj)
         {
-            visibleUploadDownloadGroup((bool)obj);
+            visibleUploadDownloadGroup(true);
             if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
                 DatabaseConnections.GetInstence().LocalCreateDatabase();
@@ -342,6 +342,7 @@ namespace VividManagementApplication
             //DownloadFileWithNotice();
             Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
             t.Start();
+            t.DisableComObjectEagerCleanup();
         }
 
         private void DownloadFileWithNoticeWithObject(object obj)
@@ -354,6 +355,7 @@ namespace VividManagementApplication
             visibleUploadDownloadGroup(true);
             Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObjectBackupData));
             t.Start();
+            t.DisableComObjectEagerCleanup();
         }
 
         private void DownloadFileWithNoticeWithObjectBackupData(object obj)
@@ -573,6 +575,19 @@ namespace VividManagementApplication
 
         private void refeshButton_Click(object sender, EventArgs e)
         {
+            if (CURRENT_LIST_BUTTON == listQdButton)
+            {
+                Thread t = new Thread(new ParameterizedThreadStart(refreshCheckRemoteSignListWithObject));
+                t.Start();
+                t.DisableComObjectEagerCleanup();
+                return;
+            }
+            CURRENT_LIST_BUTTON.PerformClick();
+            MessageBox.Show("刷新成功！");
+        }
+
+        private void refreshCheckRemoteSignListWithObject(object obj) {
+            checkRemoteSignList();
             CURRENT_LIST_BUTTON.PerformClick();
             MessageBox.Show("刷新成功！");
         }
@@ -1032,7 +1047,7 @@ namespace VividManagementApplication
             Column6.Width = 120;
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            checkRemoteSignList();
+            //checkRemoteSignList();
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "remoteSign", -1,
                 new string[] { 
                     "Id", 
@@ -1521,6 +1536,7 @@ namespace VividManagementApplication
             //}
             Thread t = new Thread(new ParameterizedThreadStart(checkRemoteSignListWithObject));
             t.Start();
+            t.DisableComObjectEagerCleanup();
         }
 
         private void checkRemoteSignListWithObject(object obj)

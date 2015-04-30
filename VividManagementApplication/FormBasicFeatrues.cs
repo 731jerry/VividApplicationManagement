@@ -794,7 +794,7 @@ namespace VividManagementApplication
                     }
 
                 }
-                catch (Exception ex) { }
+                catch { }
                 finally
                 {
                     fs.Close();

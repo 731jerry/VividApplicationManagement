@@ -113,6 +113,7 @@ namespace VividManagementApplication
 
             Thread t = new Thread(new ParameterizedThreadStart(checkUpadteAppWithObj));
             t.Start();
+            t.DisableComObjectEagerCleanup();
         }
 
         private void checkUpadteAppWithObj(object obj)
@@ -167,7 +168,7 @@ namespace VividManagementApplication
                     }
                 }
             }
-            catch (Exception exe)
+            catch 
             {
                 MessageBox.Show("系统检测到您使用的是最新版本!", "提示");
             }
