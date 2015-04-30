@@ -1436,13 +1436,9 @@ namespace VividManagementApplication
             else if (tbDz1.SelectedIndex == 0)
             {
                 InitClientPicker(tbDz1);
-
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
-                if (!dzGZBId.Equals(""))
+                if (tbDz1.SelectedIndex != -1)
                 {
-                    //remoteSignButton.Visible = true;
-                    //remoteSignButton.Enabled = true;
-
+                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
                 }
             }
         }
