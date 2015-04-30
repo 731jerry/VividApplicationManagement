@@ -85,7 +85,7 @@ namespace VividManagementApplication
                     }
                     break;
                 case 2:
-                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods3, tbGoods4, tbGoods5 };
+                    checkValidateControls = new List<Control>() { tbGoods1, tbGoods3, tbGoods4, tbGoods5, tbGoods11, tbGoods12, tbGoods15 };
                     detailedHeightDis = 250;
                     detailedPanel = DetailedGoodsPanel;
 
@@ -107,7 +107,7 @@ namespace VividManagementApplication
                     }
                     else
                     {
-                        tbGoods11.ReadOnly = true;
+                        // tbGoods11.ReadOnly = true; 初期存量
                         try
                         {
                             FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));

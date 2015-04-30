@@ -858,9 +858,9 @@ namespace VividManagementApplication
             // tbGoods15
             // 
             this.tbGoods15.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbGoods15.Location = new System.Drawing.Point(373, 227);
+            this.tbGoods15.Location = new System.Drawing.Point(375, 227);
             this.tbGoods15.Name = "tbGoods15";
-            this.tbGoods15.Size = new System.Drawing.Size(150, 26);
+            this.tbGoods15.Size = new System.Drawing.Size(148, 26);
             this.tbGoods15.TabIndex = 215;
             this.tbGoods15.TextChanged += new System.EventHandler(this.tbGoods15_TextChanged);
             this.tbGoods15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -887,9 +887,9 @@ namespace VividManagementApplication
             // tbGoods12
             // 
             this.tbGoods12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbGoods12.Location = new System.Drawing.Point(373, 194);
+            this.tbGoods12.Location = new System.Drawing.Point(375, 194);
             this.tbGoods12.Name = "tbGoods12";
-            this.tbGoods12.Size = new System.Drawing.Size(150, 26);
+            this.tbGoods12.Size = new System.Drawing.Size(148, 26);
             this.tbGoods12.TabIndex = 212;
             this.tbGoods12.TextChanged += new System.EventHandler(this.tbGoods12_TextChanged);
             this.tbGoods12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
@@ -966,7 +966,7 @@ namespace VividManagementApplication
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label38.ForeColor = System.Drawing.Color.Red;
-            this.label38.Location = new System.Drawing.Point(529, 231);
+            this.label38.Location = new System.Drawing.Point(533, 231);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(79, 20);
             this.label38.TabIndex = 159;
@@ -979,15 +979,15 @@ namespace VividManagementApplication
             this.label37.ForeColor = System.Drawing.Color.Red;
             this.label37.Location = new System.Drawing.Point(294, 231);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(79, 20);
+            this.label37.Size = new System.Drawing.Size(85, 20);
             this.label37.TabIndex = 158;
-            this.label37.Text = "当前售价：";
+            this.label37.Text = "*当前售价：";
             // 
             // label36
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label36.Location = new System.Drawing.Point(529, 198);
+            this.label36.Location = new System.Drawing.Point(533, 198);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(79, 20);
             this.label36.TabIndex = 156;
@@ -999,9 +999,9 @@ namespace VividManagementApplication
             this.label35.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label35.Location = new System.Drawing.Point(294, 198);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(79, 20);
+            this.label35.Size = new System.Drawing.Size(85, 20);
             this.label35.TabIndex = 157;
-            this.label35.Text = "进货单价：";
+            this.label35.Text = "*进货单价：";
             // 
             // label34
             // 
@@ -1048,11 +1048,11 @@ namespace VividManagementApplication
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label27.Location = new System.Drawing.Point(24, 197);
+            this.label27.Location = new System.Drawing.Point(18, 197);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 20);
+            this.label27.Size = new System.Drawing.Size(85, 20);
             this.label27.TabIndex = 151;
-            this.label27.Text = "期初数量：";
+            this.label27.Text = "*期初数量：";
             // 
             // label28
             // 
