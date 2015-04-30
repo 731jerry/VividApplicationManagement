@@ -27,16 +27,18 @@ namespace VividManagementApplication
         private void ClientPicker_Load(object sender, EventArgs e)
         {
             Column1.HeaderText = "客户编号";
-            Column2.HeaderText = "公司名称";
-            Column3.HeaderText = "联系地址";
+            Column2.HeaderText = "客户类型";
+            Column3.HeaderText = "公司名称";
             Column4.HeaderText = "联系人";
             Column5.HeaderText = "联系电话";
 
             Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", -1,
-                new string[] { "clientID", "company", "address", "companyOwner", "phone" });
+                new string[] { "clientID", 
+                    "case when type = '0' then 'A 供应商' when type = '1' then 'B 销售商' else 'C 其他' end as 'type'", 
+                    "company", "companyOwner", "phone" });
         }
 
         private void CreateMainDataGridView(DataGridViewColumn[] dgvcArray, string table, int discardFlagIndex, string[] queryArray)

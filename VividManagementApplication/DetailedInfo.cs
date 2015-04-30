@@ -748,6 +748,17 @@ namespace VividManagementApplication
                             }
                             #endregion
 
+                            #region 更新客户应收应付
+                            if (danziComboBox.SelectedIndex == 0) //采购
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay+" + tbDz3.Text.Split('=')[0] }, false, "clientID", tbDz1.Text);
+                            }
+                            else if (danziComboBox.SelectedIndex == 1) //销售
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive+" + tbDz3.Text.Split('=')[0] }, false, "clientID", tbDz1.Text);
+                            }
+                            #endregion
+
                             queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
                             resultStringArray = new String[] { 
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
@@ -834,6 +845,14 @@ namespace VividManagementApplication
                     }
                     else if (MainWindow.CURRENT_TAB == 5)  // 凭证
                     {
+                        /*
+                         收款凭证
+                         付款凭证
+                         领款凭证
+                         还款凭证 报销用的
+                         报销凭证
+                         */
+
                         String jsonData = ControlValueTransitToJson(
                                                    new List<String>() { "zhaiyao", "operateMoney", "payWay", "payNumber", "payCount" },
                                                    new List<List<Control>>() {
@@ -857,6 +876,15 @@ namespace VividManagementApplication
                                 pzCompany.Text,
                                 jsonData, SumtbPz.Text.Split('=')[0],
                                 "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(), DateTime.Now.ToString()};
+
+                            if (pzComboBox.SelectedIndex == 0) //收款
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('=')[0] }, false, "clientID", tbPz1.Text);
+                            }
+                            else if (pzComboBox.SelectedIndex == 1) //付款
+                            {
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('=')[0] }, false, "clientID", tbPz1.Text);
+                            }
                         }
                         else
                         {
@@ -2541,7 +2569,7 @@ namespace VividManagementApplication
 
         private void tbDz8_TextChanged(object sender, EventArgs e)
         {
-            if (danziComboBox.SelectedIndex==0)
+            if (danziComboBox.SelectedIndex == 0)
             {
                 tbDz8.Text = "";
             }
