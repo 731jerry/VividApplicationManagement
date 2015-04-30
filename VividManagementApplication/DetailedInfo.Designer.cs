@@ -33,6 +33,10 @@ namespace VividManagementApplication
             this.DetailedTabView = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.DetailedClientPanel = new System.Windows.Forms.Panel();
+            this.tbClient16 = new System.Windows.Forms.TextBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.tbClient15 = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
             this.tbClient9 = new System.Windows.Forms.TextBox();
             this.tbClient8 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
@@ -41,7 +45,7 @@ namespace VividManagementApplication
             this.label22 = new System.Windows.Forms.Label();
             this.tbClient13 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.tbClient15 = new System.Windows.Forms.TextBox();
+            this.tClient17 = new System.Windows.Forms.TextBox();
             this.tbClient3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbClient14 = new System.Windows.Forms.TextBox();
@@ -414,6 +418,10 @@ namespace VividManagementApplication
             // 
             // DetailedClientPanel
             // 
+            this.DetailedClientPanel.Controls.Add(this.tbClient16);
+            this.DetailedClientPanel.Controls.Add(this.label58);
+            this.DetailedClientPanel.Controls.Add(this.tbClient15);
+            this.DetailedClientPanel.Controls.Add(this.label59);
             this.DetailedClientPanel.Controls.Add(this.tbClient9);
             this.DetailedClientPanel.Controls.Add(this.tbClient8);
             this.DetailedClientPanel.Controls.Add(this.label23);
@@ -422,7 +430,7 @@ namespace VividManagementApplication
             this.DetailedClientPanel.Controls.Add(this.label22);
             this.DetailedClientPanel.Controls.Add(this.tbClient13);
             this.DetailedClientPanel.Controls.Add(this.label14);
-            this.DetailedClientPanel.Controls.Add(this.tbClient15);
+            this.DetailedClientPanel.Controls.Add(this.tClient17);
             this.DetailedClientPanel.Controls.Add(this.tbClient3);
             this.DetailedClientPanel.Controls.Add(this.label3);
             this.DetailedClientPanel.Controls.Add(this.tbClient14);
@@ -448,6 +456,50 @@ namespace VividManagementApplication
             this.DetailedClientPanel.Name = "DetailedClientPanel";
             this.DetailedClientPanel.Size = new System.Drawing.Size(780, 400);
             this.DetailedClientPanel.TabIndex = 0;
+            // 
+            // tbClient16
+            // 
+            this.tbClient16.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient16.Location = new System.Drawing.Point(520, 261);
+            this.tbClient16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient16.Name = "tbClient16";
+            this.tbClient16.ReadOnly = true;
+            this.tbClient16.Size = new System.Drawing.Size(240, 26);
+            this.tbClient16.TabIndex = 116;
+            this.tbClient16.Text = "0";
+            this.tbClient16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label58.Location = new System.Drawing.Point(430, 264);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(79, 20);
+            this.label58.TabIndex = 125;
+            this.label58.Text = "客户应收：";
+            // 
+            // tbClient15
+            // 
+            this.tbClient15.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient15.Location = new System.Drawing.Point(125, 261);
+            this.tbClient15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient15.Name = "tbClient15";
+            this.tbClient15.ReadOnly = true;
+            this.tbClient15.Size = new System.Drawing.Size(253, 26);
+            this.tbClient15.TabIndex = 115;
+            this.tbClient15.Text = "0";
+            this.tbClient15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.label59.Location = new System.Drawing.Point(34, 264);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(79, 20);
+            this.label59.TabIndex = 122;
+            this.label59.Text = "客户应付：";
             // 
             // tbClient9
             // 
@@ -530,15 +582,15 @@ namespace VividManagementApplication
             this.label14.TabIndex = 114;
             this.label14.Text = "*银行帐号：";
             // 
-            // tbClient15
+            // tClient17
             // 
-            this.tbClient15.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbClient15.Location = new System.Drawing.Point(125, 261);
-            this.tbClient15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tbClient15.Multiline = true;
-            this.tbClient15.Name = "tbClient15";
-            this.tbClient15.Size = new System.Drawing.Size(635, 101);
-            this.tbClient15.TabIndex = 115;
+            this.tClient17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tClient17.Location = new System.Drawing.Point(125, 297);
+            this.tClient17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tClient17.Multiline = true;
+            this.tClient17.Name = "tClient17";
+            this.tClient17.Size = new System.Drawing.Size(635, 72);
+            this.tClient17.TabIndex = 117;
             // 
             // tbClient3
             // 
@@ -662,7 +714,7 @@ namespace VividManagementApplication
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label6.Location = new System.Drawing.Point(40, 261);
+            this.label6.Location = new System.Drawing.Point(40, 297);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 86;
@@ -839,10 +891,10 @@ namespace VividManagementApplication
             // tbGoods17
             // 
             this.tbGoods17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbGoods17.Location = new System.Drawing.Point(109, 260);
+            this.tbGoods17.Location = new System.Drawing.Point(109, 262);
             this.tbGoods17.Multiline = true;
             this.tbGoods17.Name = "tbGoods17";
-            this.tbGoods17.Size = new System.Drawing.Size(654, 114);
+            this.tbGoods17.Size = new System.Drawing.Size(654, 118);
             this.tbGoods17.TabIndex = 217;
             // 
             // tbGoods16
@@ -1027,7 +1079,7 @@ namespace VividManagementApplication
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label25.Location = new System.Drawing.Point(24, 263);
+            this.label25.Location = new System.Drawing.Point(24, 265);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(79, 20);
             this.label25.TabIndex = 153;
@@ -1204,9 +1256,11 @@ namespace VividManagementApplication
             this.tbDz8.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz8.Location = new System.Drawing.Point(277, 427);
             this.tbDz8.Name = "tbDz8";
+            this.tbDz8.ReadOnly = true;
             this.tbDz8.Size = new System.Drawing.Size(97, 26);
             this.tbDz8.TabIndex = 324;
             this.tbDz8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbDz8.TextChanged += new System.EventHandler(this.tbDz8_TextChanged);
             this.tbDz8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // label50
@@ -1224,6 +1278,7 @@ namespace VividManagementApplication
             this.tbDz11.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz11.Location = new System.Drawing.Point(665, 464);
             this.tbDz11.Name = "tbDz11";
+            this.tbDz11.ReadOnly = true;
             this.tbDz11.Size = new System.Drawing.Size(97, 26);
             this.tbDz11.TabIndex = 327;
             this.tbDz11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1237,6 +1292,7 @@ namespace VividManagementApplication
             this.tbDz10.Size = new System.Drawing.Size(97, 26);
             this.tbDz10.TabIndex = 326;
             this.tbDz10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbDz10.TextChanged += new System.EventHandler(this.tbDz10_TextChanged);
             this.tbDz10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // label49
@@ -1272,7 +1328,7 @@ namespace VividManagementApplication
             // tbDz12
             // 
             this.tbDz12.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tbDz12.Location = new System.Drawing.Point(129, 493);
+            this.tbDz12.Location = new System.Drawing.Point(130, 496);
             this.tbDz12.Name = "tbDz12";
             this.tbDz12.Size = new System.Drawing.Size(97, 26);
             this.tbDz12.TabIndex = 328;
@@ -1294,9 +1350,11 @@ namespace VividManagementApplication
             this.tbDz9.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbDz9.Location = new System.Drawing.Point(665, 427);
             this.tbDz9.Name = "tbDz9";
+            this.tbDz9.ReadOnly = true;
             this.tbDz9.Size = new System.Drawing.Size(97, 26);
             this.tbDz9.TabIndex = 325;
             this.tbDz9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbDz9.TextChanged += new System.EventHandler(this.tbDz9_TextChanged);
             this.tbDz9.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.numberInputOnly_KeyPress);
             // 
             // label4
@@ -4379,7 +4437,7 @@ namespace VividManagementApplication
         private ControlExs.QQButton PreviewPrintButton;
         private ControlExs.QQButton SaveButton;
         private System.Windows.Forms.Panel DetailedClientPanel;
-        private System.Windows.Forms.TextBox tbClient15;
+        private System.Windows.Forms.TextBox tClient17;
         private System.Windows.Forms.ComboBox tbClient3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbClient14;
@@ -4694,5 +4752,9 @@ namespace VividManagementApplication
         private System.Windows.Forms.TextBox tbHTxsfName;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox dzGZBId;
+        private System.Windows.Forms.TextBox tbClient16;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox tbClient15;
+        private System.Windows.Forms.Label label59;
     }
 }

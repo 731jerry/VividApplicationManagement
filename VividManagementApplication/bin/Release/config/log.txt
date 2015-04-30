@@ -1,3 +1,24 @@
+2015/4/30 21:24:40-
+###异常消息Message: 未将对象引用设置到对象的实例。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 945
+===================================================
+
+2015/4/30 21:22:00-
+###异常消息Message: 未将对象引用设置到对象的实例。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 945
+===================================================
+
+2015/4/30 21:11:42-
+###异常消息Message: 未将对象引用设置到对象的实例。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 945
+===================================================
+
+2015/4/30 21:09:42-
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.FormBasicFeatrues.GetControlsVaule(String PreName, Panel panelPlatform, Int32 indexCount) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 564
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 933
+===================================================
+
 2015/4/28 20:19:11-
 ###异常消息Message: 输入字符串的格式不正确。
 ###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)

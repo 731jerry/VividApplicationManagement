@@ -237,7 +237,7 @@ namespace VividManagementApplication
                                 CREATE TABLE IF NOT EXISTS goods (id INTEGER PRIMARY KEY AUTOINCREMENT, goodId VARCHAR UNIQUE, name VARCHAR (250), guige VARCHAR (250), unit VARCHAR (50), dengji VARCHAR (50), storageName VARCHAR (50), storageManager VARCHAR (100), storageManagerPhone VARCHAR (50), storageLocation VARCHAR (50), storageAddress VARCHAR (250), initalCount VARCHAR DEFAULT (0), purchasePrice VARCHAR (50), purchaseTotal VARCHAR (100), currentCount VARCHAR (100), currentTotal VARCHAR (150), currntsalesPrice VARCHAR (100), beizhu VARCHAR (250), addtime VARCHAR, modifyDate VARCHAR);
 
                                 -- Table: clients
-                                CREATE TABLE IF NOT EXISTS clients (id INTEGER PRIMARY KEY AUTOINCREMENT, clientID VARCHAR UNIQUE, gzbID VARCHAR, type VARCHAR, company VARCHAR (50), companyOwner VARCHAR, address VARCHAR (250), phone VARCHAR (20), fax VARCHAR, QQ VARCHAR, taxNumber VARCHAR (100), email VARCHAR (50), bankName VARCHAR (100), bankCard VARCHAR (50), PrivateAccount VARCHAR (200), shouldPay VARCHAR, shouldReceive VARCHAR, beizhu VARCHAR (250), addtime VARCHAR, modifyDate VARCHAR);
+                                CREATE TABLE IF NOT EXISTS clients (id INTEGER PRIMARY KEY AUTOINCREMENT, clientID VARCHAR UNIQUE, gzbID VARCHAR, type VARCHAR, company VARCHAR (50), companyOwner VARCHAR, address VARCHAR (250), phone VARCHAR (20), fax VARCHAR, QQ VARCHAR, taxNumber VARCHAR (100), email VARCHAR (50), bankName VARCHAR (100), bankCard VARCHAR (50), PrivateAccount VARCHAR (200), shouldPay VARCHAR DEFAULT (0), shouldReceive VARCHAR DEFAULT (0), beizhu VARCHAR (250), addtime VARCHAR, modifyDate VARCHAR);
 
                                 -- Table: cgdList
                                 CREATE TABLE IF NOT EXISTS cgdList (id INTEGER PRIMARY KEY AUTOINCREMENT, cgdID VARCHAR UNIQUE, clientID VARCHAR, companyName VARCHAR, goodsName VARCHAR, jsonData VARCHAR (255), discardFlag INT (2), sum VARCHAR, beizhu VARCHAR (50), fpPu VARCHAR, fpZeng VARCHAR, fpCount VARCHAR, kxQq VARCHAR, kxXq VARCHAR, kxJf VARCHAR, kxSq VARCHAR, kxDay VARCHAR, addtime VARCHAR, modifyTime VARCHAR);
@@ -261,6 +261,7 @@ namespace VividManagementApplication
                                 CREATE TABLE IF NOT EXISTS remoteSign (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, fromGZBID VARCHAR (100), toGZBID VARCHAR (100), companyNickName VARCHAR (255), isSigned INT, signValue TEXT (300000), sendTime DATETIME, signTime DATETIME);
 
                                 --COMMIT TRANSACTION;";//建表语句  
+
             SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
             cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
             LocalDbClose();

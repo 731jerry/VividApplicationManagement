@@ -186,12 +186,7 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 初始化客户列表
-                //cxRadio.Checked = true;
-                //cxRadio.PerformClick();
-                //listCxButton.PerformClick();
-                //ViewButton.Enabled = false;
-                //refeshButton.Enabled = false;
-                //PrintButton.Enabled = false;
+                listCxButton.PerformClick();
                 #endregion
 
                 #region 初始化登录信息
@@ -756,23 +751,27 @@ namespace VividManagementApplication
         // 客户管理
         private void listCxButton_Click(object sender, EventArgs e)
         {
-            refeshButton.Enabled = true;
-            ViewButton.Enabled = true;
-            PrintButton.Enabled = false;
-            CURRENT_LIST_BUTTON = listCxButton;
-            CURRENT_TAB = 1;
-            mainDGVTitle.Text = listCxButton.Text;
-            Column1.HeaderText = "客户编号";
-            Column2.HeaderText = "公司名称";
-            Column3.HeaderText = "联系地址";
-            Column4.HeaderText = "联系人";
-            Column5.HeaderText = "联系电话";
+            try
+            {
+                refeshButton.Enabled = true;
+                ViewButton.Enabled = true;
+                PrintButton.Enabled = false;
+                CURRENT_LIST_BUTTON = listCxButton;
+                CURRENT_TAB = 1;
+                mainDGVTitle.Text = listCxButton.Text;
+                Column1.HeaderText = "客户编号";
+                Column2.HeaderText = "公司名称";
+                Column3.HeaderText = "联系地址";
+                Column4.HeaderText = "联系人";
+                Column5.HeaderText = "联系电话";
 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", -1,
-                new string[] { "clientID", "company", "address", "companyOwner", "phone" });
+                CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", -1,
+                    new string[] { "clientID", "company", "address", "companyOwner", "phone" });
+            }
+            catch { return; };
         }
 
         // 商品管理

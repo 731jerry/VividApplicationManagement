@@ -56,9 +56,9 @@ namespace VividManagementApplication
 
                     table = "clients";
                     baseName = "clientID";
-                    queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "beizhu" };
+                    queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldPay", "shouldReceive", "beizhu" };
                     controlsPreName = "tbClient";
-                    indexCount = 15;
+                    indexCount = 17;
                     mainID = tbClient1.Text;
 
                     canPrint = false;
@@ -1011,6 +1011,13 @@ namespace VividManagementApplication
             tbDz10.Enabled = isEnabled;
             tbDz11.Enabled = isEnabled;
             tbDz12.Enabled = isEnabled;
+            if (!isEnabled)
+            {
+                tbDz8.Text = "";
+                tbDz9.Text = "";
+                tbDz10.Text = "";
+                tbDz11.Text = "";
+            }
         }
 
         // 进仓单 出仓单 采购单 销售单
@@ -1021,6 +1028,8 @@ namespace VividManagementApplication
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbC);
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbD);
             FormBasicFeatrues.GetInstence().reTriggleCombox(JCDcbE);
+
+            FormBasicFeatrues.GetInstence().reTriggleCombox(tbDz1);
 
             if (MainWindow.CURRENT_TAB == 3) //仓储管理
             {
@@ -1394,7 +1403,7 @@ namespace VividManagementApplication
         {
             if (tbDz1.SelectedIndex > 0)
             {
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress, tbDz8 }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address", "shouldPay" }, "clientID", tbDz1.Text).ToList<String>());
             }
             else if (tbDz1.SelectedIndex == 0)
             {
@@ -2498,6 +2507,10 @@ namespace VividManagementApplication
             {
                 tbDz9.Text = tbDz3.Text.Split('=')[0];
             }
+            else
+            {
+                tbDz9.Text = "";
+            }
         }
 
         private void remoteSignButton_Click(object sender, EventArgs e)
@@ -2513,6 +2526,24 @@ namespace VividManagementApplication
 
                     }
                 }
+            }
+        }
+
+        private void tbDz10_TextChanged(object sender, EventArgs e)
+        {
+            tbDz11.Text = (float.Parse(tbDz8.Text.Equals("") ? "0" : tbDz8.Text) + float.Parse(tbDz9.Text.Equals("") ? "0" : tbDz9.Text) - float.Parse(tbDz10.Text.Equals("") ? "0" : tbDz10.Text)).ToString();
+        }
+
+        private void tbDz9_TextChanged(object sender, EventArgs e)
+        {
+            tbDz11.Text = (float.Parse(tbDz8.Text.Equals("") ? "0" : tbDz8.Text) + float.Parse(tbDz9.Text.Equals("") ? "0" : tbDz9.Text) - float.Parse(tbDz10.Text.Equals("") ? "0" : tbDz10.Text)).ToString();
+        }
+
+        private void tbDz8_TextChanged(object sender, EventArgs e)
+        {
+            if (danziComboBox.SelectedIndex==0)
+            {
+                tbDz8.Text = "";
             }
         }
 
