@@ -962,7 +962,7 @@ namespace VividManagementApplication
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
                     + ",zhaiyao"
                     + ",operateMoney,remaintingMoney FROM pzList WHERE clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
-                    + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToShortDateString() + "' AND '" + flt.toDate.Value.ToShortDateString() + "')"
+                    + " AND (modifyTime BETWEEN '" + flt.fromDate.Value + "' AND '" + flt.toDate.Value.AddDays(1) + "')"
                     + " ORDER BY modifyTime ASC",
                     new String[] { "pzID", "modifyTime", "leixing", "zhaiyao", "operateMoney", "remaintingMoney" });
 
@@ -1072,6 +1072,7 @@ namespace VividManagementApplication
 
         private void newPzButton_Click(object sender, EventArgs e)
         {
+            MainWindow.CURRENT_LIST_BUTTON = listSfzhButton;
             CURRENT_TAB = 5;
             CreateDetailedWindow();
         }

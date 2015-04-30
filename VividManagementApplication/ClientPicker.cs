@@ -38,6 +38,7 @@ namespace VividManagementApplication
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", -1,
                 new string[] { "clientID", "company", "address", "companyOwner", "phone" });
         }
+
         private void CreateMainDataGridView(DataGridViewColumn[] dgvcArray, string table, int discardFlagIndex, string[] queryArray)
         {
             string order = " ORDER BY id ASC ";

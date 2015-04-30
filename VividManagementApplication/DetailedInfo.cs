@@ -718,7 +718,7 @@ namespace VividManagementApplication
                             String[] queryStringArrayDZ = new String[] { "clientID", baseNameDZ, "cgxsID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                             String[] resultStringArrayDZ = new String[] { 
                                 tbDz1.Text, DatabaseConnections.GetInstence().LocalAutoincreaseID(tableDZ, baseNameDZ), tbDz2.Text, dzCompany.Text, 
-                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                                AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
                                 tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
 
@@ -751,7 +751,7 @@ namespace VividManagementApplication
                             queryStringArray = new String[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
                             resultStringArray = new String[] { 
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
-                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
+                                AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
                                 tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(), DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
                             //}
@@ -848,15 +848,25 @@ namespace VividManagementApplication
                         String[] resultStringArray;
                         if (ItemId.Equals("-1"))
                         {
-                            queryStringArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
-                            resultStringArray = new String[] {  tbPz1.Text, tbPz2.Text, pzComboBox.SelectedIndex.ToString(),  pzCompany.Text,
+                            queryStringArray = new string[] { "clientID", "pzID", "zhaiyao", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "addtime", "modifyTime" };
+                            resultStringArray = new String[] {  
+                                tbPz1.Text, 
+                                tbPz2.Text, 
+                                PzcbA.Text+" "+PzcbB.Text+" "+PzcbC.Text+" "+PzcbD.Text+" "+PzcbE.Text,
+                                pzComboBox.SelectedIndex.ToString(),  
+                                pzCompany.Text,
                                 jsonData, SumtbPz.Text.Split('=')[0],
                                 "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(), DateTime.Now.ToString()};
                         }
                         else
                         {
-                            queryStringArray = new string[] { "clientID", "pzID", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "modifyTime" };
-                            resultStringArray = new String[] {  tbPz1.Text, tbPz2.Text, pzComboBox.SelectedIndex.ToString(),  pzCompany.Text,
+                            queryStringArray = new string[] { "clientID", "pzID", "zhaiyao", "leixing", "companyName", "jsonData", "operateMoney", "remaintingMoney", "beizhu", "discardFlag", "modifyTime" };
+                            resultStringArray = new String[] {  
+                                tbPz1.Text, 
+                                tbPz2.Text, 
+                                PzcbA.Text+" "+PzcbB.Text+" "+PzcbC.Text+" "+PzcbD.Text+" "+PzcbE.Text,
+                                pzComboBox.SelectedIndex.ToString(),  
+                                pzCompany.Text,
                                 jsonData, SumtbPz.Text.Split('=')[0],
                                 "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString()};
                             //queryStringArray = new String[] { "pzID", "discardFlag", "modifyTime" };
@@ -1408,6 +1418,46 @@ namespace VividManagementApplication
             else if (tbPz1.SelectedIndex == 0)
             {
                 InitClientPicker(tbPz1);
+            }
+        }
+
+        private void PzcbA_TextChanged(object sender, EventArgs e)
+        {
+            if (APztb1.SelectedIndex != 1)
+            {
+                APztb1.SelectedIndex = 1;
+            }
+        }
+
+        private void PzcbB_TextChanged(object sender, EventArgs e)
+        {
+            if (BPztb1.SelectedIndex != 1)
+            {
+                BPztb1.SelectedIndex = 1;
+            }
+        }
+
+        private void PzcbC_TextChanged(object sender, EventArgs e)
+        {
+            if (CPztb1.SelectedIndex != 1)
+            {
+                CPztb1.SelectedIndex = 1;
+            }
+        }
+
+        private void PzcbD_TextChanged(object sender, EventArgs e)
+        {
+            if (DPztb1.SelectedIndex != 1)
+            {
+                DPztb1.SelectedIndex = 1;
+            }
+        }
+
+        private void PzcbE_TextChanged(object sender, EventArgs e)
+        {
+            if (EPztb1.SelectedIndex != 1)
+            {
+                EPztb1.SelectedIndex = 1;
             }
         }
 

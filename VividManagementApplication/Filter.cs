@@ -19,7 +19,7 @@ namespace VividManagementApplication
 
         private void Filter_Load(object sender, EventArgs e)
         {
-            fromDate.Text = DateTime.Now.ToShortDateString();
+            fromDate.Text = DateTime.Now.AddDays(-7).ToShortDateString();
             toDate.Text = DateTime.Now.ToShortDateString();
 
             addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), clientID);

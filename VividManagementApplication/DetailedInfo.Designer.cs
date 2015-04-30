@@ -2277,6 +2277,7 @@ namespace VividManagementApplication
             this.PzcbE.Name = "PzcbE";
             this.PzcbE.Size = new System.Drawing.Size(200, 26);
             this.PzcbE.TabIndex = 70;
+            this.PzcbE.TextChanged += new System.EventHandler(this.PzcbE_TextChanged);
             // 
             // DPztb1
             // 
@@ -2330,6 +2331,7 @@ namespace VividManagementApplication
             this.PzcbD.Name = "PzcbD";
             this.PzcbD.Size = new System.Drawing.Size(200, 26);
             this.PzcbD.TabIndex = 65;
+            this.PzcbD.TextChanged += new System.EventHandler(this.PzcbD_TextChanged);
             // 
             // BPztb1
             // 
@@ -2383,6 +2385,7 @@ namespace VividManagementApplication
             this.PzcbC.Name = "PzcbC";
             this.PzcbC.Size = new System.Drawing.Size(200, 26);
             this.PzcbC.TabIndex = 60;
+            this.PzcbC.TextChanged += new System.EventHandler(this.PzcbC_TextChanged);
             // 
             // textBox59
             // 
@@ -2404,6 +2407,7 @@ namespace VividManagementApplication
             this.PzcbB.Name = "PzcbB";
             this.PzcbB.Size = new System.Drawing.Size(200, 26);
             this.PzcbB.TabIndex = 55;
+            this.PzcbB.TextChanged += new System.EventHandler(this.PzcbB_TextChanged);
             // 
             // textBox61
             // 
@@ -2425,6 +2429,7 @@ namespace VividManagementApplication
             this.PzcbA.Name = "PzcbA";
             this.PzcbA.Size = new System.Drawing.Size(200, 26);
             this.PzcbA.TabIndex = 50;
+            this.PzcbA.TextChanged += new System.EventHandler(this.PzcbA_TextChanged);
             // 
             // textBox63
             // 
