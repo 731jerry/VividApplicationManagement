@@ -221,7 +221,6 @@ namespace VividManagementApplication
         // 初始化本地数据库
         private void InitLocalDataBaseWithObject(object obj)
         {
-            visibleUploadDownloadGroup(true);
             if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
                 DatabaseConnections.GetInstence().LocalCreateDatabase();
@@ -347,7 +346,9 @@ namespace VividManagementApplication
 
         private void backupData_Click(object sender, EventArgs e)
         {
-            visibleUploadDownloadGroup(true);
+            //visibleUploadDownloadGroup(true);
+            SetpbUploadDownloadLabel(true);
+            SetpbUploadDownloadFile(true, 0);
             Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObjectBackupData));
             t.Start();
             t.DisableComObjectEagerCleanup();
@@ -358,7 +359,7 @@ namespace VividManagementApplication
             UploadFileWithNotice("手动同步数据库！");
         }
 
-        String UploadMoreInfo;
+       public static String UploadMoreInfo;
 
         // 下载
         private void DownloadFileWithNotice()
@@ -373,8 +374,10 @@ namespace VividManagementApplication
 
         private void DownloadFile(String uriString, String fileNamePath)
         {
-            visibleUploadDownloadGroup(true);
-            pbUploadDownloadFile.Value = 0;
+            //visibleUploadDownloadGroup(true);
+            SetpbUploadDownloadLabel(true);
+            SetpbUploadDownloadFile(true, 0);
+
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
@@ -384,12 +387,16 @@ namespace VividManagementApplication
         }
         private void DownloadProgressCallback(object sender, System.Net.DownloadProgressChangedEventArgs e)
         {
-            pbUploadDownloadFile.Value = e.ProgressPercentage;
+            //pbUploadDownloadFile.Value = e.ProgressPercentage;
+            SetpbUploadDownloadFile(true, e.ProgressPercentage);
         }
 
         private void DownloadFileCompleteCallback(Object sender, AsyncCompletedEventArgs e)
         {
-            visibleUploadDownloadGroup(false);
+            //visibleUploadDownloadGroup(false);
+            SetpbUploadDownloadLabel(false);
+            SetpbUploadDownloadFile(false, 0);
+
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);   //正常捕获
@@ -424,8 +431,10 @@ namespace VividManagementApplication
 
         private void UploadFile(String fileNamePath, String uriString)
         {
-            visibleUploadDownloadGroup(true);
-            pbUploadDownloadFile.Value = 0;
+            //visibleUploadDownloadGroup(true);
+            SetpbUploadDownloadLabel(true);
+            SetpbUploadDownloadFile(true, 0);
+
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
             client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
@@ -437,12 +446,16 @@ namespace VividManagementApplication
         }
         private void UploadProgressCallback(object sender, System.Net.UploadProgressChangedEventArgs e)
         {
-            pbUploadDownloadFile.Value = e.ProgressPercentage;
+            //pbUploadDownloadFile.Value = e.ProgressPercentage;
+            SetpbUploadDownloadFile(true, e.ProgressPercentage);
         }
 
         private void UploadFileCompleteCallback(Object sender, UploadFileCompletedEventArgs e)
         {
-            visibleUploadDownloadGroup(false);
+            //visibleUploadDownloadGroup(false);
+            SetpbUploadDownloadLabel(false);
+            SetpbUploadDownloadFile(false, 0);
+
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message);   //正常捕获
@@ -450,7 +463,7 @@ namespace VividManagementApplication
             else
             {
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
-                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功"); 
+                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
             }
         }
 
@@ -528,10 +541,45 @@ namespace VividManagementApplication
         // 提示消息能否看到
         private void visibleUploadDownloadGroup(Boolean visible)
         {
-            pbUploadDownloadFile.Visible = visible;
             pbUploadDownloadLabel.Visible = visible;
+            pbUploadDownloadFile.Visible = visible;
             //pbUploadDownloadLabel.Text = notice;
         }
+
+        // label
+        delegate void SetpbUploadDownloadLabelCallback(Boolean visible);
+        private void SetpbUploadDownloadLabel(Boolean visible)
+        {
+            if (this.pbUploadDownloadLabel.InvokeRequired)
+            {
+                SetpbUploadDownloadLabelCallback d = new SetpbUploadDownloadLabelCallback(SetpbUploadDownloadLabel);
+                this.Invoke(d, new object[] { visible });
+            }
+            else
+            {
+                this.pbUploadDownloadLabel.Visible = visible;
+            }
+        }
+
+        // lable
+        delegate void SetpbUploadDownloadFileCallback(Boolean visible, int percentage);
+        private void SetpbUploadDownloadFile(Boolean visible, int percentage)
+        {
+            if (this.pbUploadDownloadFile.InvokeRequired)
+            {
+                SetpbUploadDownloadFileCallback d = new SetpbUploadDownloadFileCallback(SetpbUploadDownloadFile);
+                this.Invoke(d, new object[] { visible, percentage });
+            }
+            else
+            {
+                this.pbUploadDownloadFile.Visible = visible;
+                this.pbUploadDownloadFile.Value = percentage;
+            }
+        }
+
+
+
+
         #endregion
 
         private void tmrShows_Tick(object sender, EventArgs e)
@@ -581,7 +629,8 @@ namespace VividManagementApplication
             MessageBox.Show("刷新成功！");
         }
 
-        private void refreshCheckRemoteSignListWithObject(object obj) {
+        private void refreshCheckRemoteSignListWithObject(object obj)
+        {
             checkRemoteSignList();
             CURRENT_LIST_BUTTON.PerformClick();
             MessageBox.Show("刷新成功！");
