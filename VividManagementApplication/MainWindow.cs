@@ -349,14 +349,14 @@ namespace VividManagementApplication
             //visibleUploadDownloadGroup(true);
             SetpbUploadDownloadLabel(true);
             SetpbUploadDownloadFile(true, 0);
-            Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObjectBackupData));
-            t.Start();
+            Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
+            t.Start("手动同步数据库！");
             t.DisableComObjectEagerCleanup();
         }
 
-        private void DownloadFileWithNoticeWithObjectBackupData(object obj)
+        private void UploadFileWithNoticeWithObjectBackupData(object obj)
         {
-            UploadFileWithNotice("手动同步数据库！");
+            UploadFileWithNotice(obj.ToString());
         }
 
        public static String UploadMoreInfo;
@@ -1157,11 +1157,9 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                if (DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'") > 0)
-                {
-                }
-                UploadFileWithNotice("关闭前同步数据库!");
+                Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
+                t.Start("关闭前同步!");
+                t.DisableComObjectEagerCleanup();
 
                 if (notifyIcon != null)
                 {
@@ -1170,6 +1168,8 @@ namespace VividManagementApplication
                     notifyIcon.Dispose();
                     notifyIcon = null;
                 }
+                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
             }
         }
 
