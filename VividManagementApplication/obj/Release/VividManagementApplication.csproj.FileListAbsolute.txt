@@ -147,3 +147,6 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\b
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources

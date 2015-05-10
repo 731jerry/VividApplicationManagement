@@ -696,6 +696,7 @@ namespace VividManagementApplication
             this.tbClient1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient1.MaxLength = 10;
             this.tbClient1.Name = "tbClient1";
+            this.tbClient1.ReadOnly = true;
             this.tbClient1.Size = new System.Drawing.Size(154, 26);
             this.tbClient1.TabIndex = 101;
             this.tbClient1.Validated += new System.EventHandler(this.TextBoxCheckIfDuplicate_Validated);

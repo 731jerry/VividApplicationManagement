@@ -114,9 +114,11 @@ namespace VividManagementApplication
             if (MainWindow.IS_LOGED_IN)
             {
                 #region 初始化数据库
-                Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
-                t.Start();
-                t.DisableComObjectEagerCleanup();
+                //Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
+                //t.Start();
+                //t.DisableComObjectEagerCleanup();
+                DatabaseConnections.GetInstence().LocalCreateDatabase();
+
                 #endregion
 
                 #region 窗体用户信息初始化
@@ -221,10 +223,19 @@ namespace VividManagementApplication
         // 初始化本地数据库
         private void InitLocalDataBaseWithObject(object obj)
         {
-            if (!File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
+            if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
-                DatabaseConnections.GetInstence().LocalCreateDatabase();
-                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                {
+                    DownloadFileWithNotice();
+                }
+                else
+                {
+                    UploadFileWithNotice("");
+                }
+            }
+            else
+            {
                 if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
                 {
                     MainPanel.Enabled = false;
@@ -235,12 +246,10 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    DatabaseConnections.GetInstence().LocalCreateDatabase();
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     UploadFileWithNotice("初次同步, ");
                 }
-            }
-            else
-            {
-                DownloadFileWithNotice();
             }
         }
 
@@ -359,7 +368,7 @@ namespace VividManagementApplication
             UploadFileWithNotice(obj.ToString());
         }
 
-       public static String UploadMoreInfo;
+        public static String UploadMoreInfo;
 
         // 下载
         private void DownloadFileWithNotice()

@@ -552,7 +552,7 @@ namespace VividManagementApplication
             }
 
             LocalDbClose();
-            return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 10, "0");
+            return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 6, "0");
         }
         #endregion
 
