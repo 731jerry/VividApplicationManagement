@@ -130,7 +130,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbExpireTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 37</value>
+    <value>82, 41</value>
   </data>
   <data name="lbExpireTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 16</value>
@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbExpireTime.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>6</value>
   </data>
   <data name="label112.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -163,7 +163,7 @@
     <value>NoControl</value>
   </data>
   <data name="label112.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 37</value>
+    <value>12, 41</value>
   </data>
   <data name="label112.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 16</value>
@@ -184,7 +184,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>7</value>
   </data>
   <data name="lbUserName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -196,7 +196,7 @@
     <value>NoControl</value>
   </data>
   <data name="lbUserName.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 8</value>
+    <value>87, 12</value>
   </data>
   <data name="lbUserName.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 18</value>
@@ -217,7 +217,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;lbUserName.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>8</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -229,7 +229,7 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 8</value>
+    <value>11, 12</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 18</value>
@@ -250,7 +250,163 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.Name" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.Parent" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;NavPanel.Name" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;NavPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NavPanel.Parent" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;NavPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 68</value>
+  </data>
+  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1051, 591</value>
+  </data>
+  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;PrintButton.Name" xml:space="preserve">
+    <value>PrintButton</value>
+  </data>
+  <data name="&gt;&gt;PrintButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;PrintButton.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;PrintButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;settingQQButton.Name" xml:space="preserve">
+    <value>settingQQButton</value>
+  </data>
+  <data name="&gt;&gt;settingQQButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;settingQQButton.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;settingQQButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;mainDGVTitle.Name" xml:space="preserve">
+    <value>mainDGVTitle</value>
+  </data>
+  <data name="&gt;&gt;mainDGVTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;mainDGVTitle.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;mainDGVTitle.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;backupData.Name" xml:space="preserve">
+    <value>backupData</value>
+  </data>
+  <data name="&gt;&gt;backupData.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;backupData.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;backupData.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;refeshButton.Name" xml:space="preserve">
+    <value>refeshButton</value>
+  </data>
+  <data name="&gt;&gt;refeshButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;refeshButton.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;refeshButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;MainDataGridView.Name" xml:space="preserve">
+    <value>MainDataGridView</value>
+  </data>
+  <data name="&gt;&gt;MainDataGridView.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainDataGridView.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;MainDataGridView.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;ViewButton.Name" xml:space="preserve">
+    <value>ViewButton</value>
+  </data>
+  <data name="&gt;&gt;ViewButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ViewButton.Parent" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;ViewButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="ContentPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="ContentPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 0</value>
+  </data>
+  <data name="ContentPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 9, 10, 0</value>
+  </data>
+  <data name="ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>905, 591</value>
+  </data>
+  <data name="ContentPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.Name" xml:space="preserve">
+    <value>ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.Parent" xml:space="preserve">
+    <value>MainPanel</value>
+  </data>
+  <data name="&gt;&gt;ContentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="PrintButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>微软雅黑, 9pt</value>
@@ -503,7 +659,7 @@
     <value>10, 66</value>
   </data>
   <data name="MainDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>878, 529</value>
+    <value>878, 512</value>
   </data>
   <data name="MainDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>36</value>
@@ -572,32 +728,305 @@
   <data name="&gt;&gt;ViewButton.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="ContentPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
+  <data name="&gt;&gt;listQdButton.Name" xml:space="preserve">
+    <value>listQdButton</value>
   </data>
-  <data name="ContentPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>146, 0</value>
+  <data name="&gt;&gt;listQdButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="ContentPanel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 9, 10, 0</value>
+  <data name="&gt;&gt;listQdButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
   </data>
-  <data name="ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>905, 602</value>
+  <data name="&gt;&gt;listQdButton.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="ContentPanel.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;QdRadio.Name" xml:space="preserve">
+    <value>QdRadio</value>
+  </data>
+  <data name="&gt;&gt;QdRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;QdRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;QdRadio.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;listXsButton.Name" xml:space="preserve">
+    <value>listXsButton</value>
+  </data>
+  <data name="&gt;&gt;listXsButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listXsButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listXsButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;listHtButton.Name" xml:space="preserve">
+    <value>listHtButton</value>
+  </data>
+  <data name="&gt;&gt;listHtButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listHtButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listHtButton.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;newHtButton.Name" xml:space="preserve">
+    <value>newHtButton</value>
+  </data>
+  <data name="&gt;&gt;newHtButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;newHtButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;newHtButton.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;htRadio.Name" xml:space="preserve">
+    <value>htRadio</value>
+  </data>
+  <data name="&gt;&gt;htRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;htRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;htRadio.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;listSfzhButton.Name" xml:space="preserve">
+    <value>listSfzhButton</value>
+  </data>
+  <data name="&gt;&gt;listSfzhButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listSfzhButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listSfzhButton.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;newPzButton.Name" xml:space="preserve">
+    <value>newPzButton</value>
+  </data>
+  <data name="&gt;&gt;newPzButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;newPzButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;newPzButton.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;ContentPanel.Name" xml:space="preserve">
-    <value>ContentPanel</value>
+  <data name="&gt;&gt;cwRadio.Name" xml:space="preserve">
+    <value>cwRadio</value>
   </data>
-  <data name="&gt;&gt;ContentPanel.Type" xml:space="preserve">
+  <data name="&gt;&gt;cwRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cwRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;cwRadio.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;listKhdzButton.Name" xml:space="preserve">
+    <value>listKhdzButton</value>
+  </data>
+  <data name="&gt;&gt;listKhdzButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listKhdzButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listKhdzButton.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;listCgButton.Name" xml:space="preserve">
+    <value>listCgButton</value>
+  </data>
+  <data name="&gt;&gt;listCgButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listCgButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listCgButton.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;newCgZsButton.Name" xml:space="preserve">
+    <value>newCgZsButton</value>
+  </data>
+  <data name="&gt;&gt;newCgZsButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;newCgZsButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;newCgZsButton.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;ywRadio.Name" xml:space="preserve">
+    <value>ywRadio</value>
+  </data>
+  <data name="&gt;&gt;ywRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ywRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;ywRadio.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;listCcdButton.Name" xml:space="preserve">
+    <value>listCcdButton</value>
+  </data>
+  <data name="&gt;&gt;listCcdButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listCcdButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listCcdButton.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;listJcdButton.Name" xml:space="preserve">
+    <value>listJcdButton</value>
+  </data>
+  <data name="&gt;&gt;listJcdButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listJcdButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listJcdButton.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;listKcButton.Name" xml:space="preserve">
+    <value>listKcButton</value>
+  </data>
+  <data name="&gt;&gt;listKcButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listKcButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listKcButton.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;ccRadio.Name" xml:space="preserve">
+    <value>ccRadio</value>
+  </data>
+  <data name="&gt;&gt;ccRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;ccRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;ccRadio.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;listSpButton.Name" xml:space="preserve">
+    <value>listSpButton</value>
+  </data>
+  <data name="&gt;&gt;listSpButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listSpButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listSpButton.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;newSpButton.Name" xml:space="preserve">
+    <value>newSpButton</value>
+  </data>
+  <data name="&gt;&gt;newSpButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;newSpButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;newSpButton.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;spRadio.Name" xml:space="preserve">
+    <value>spRadio</value>
+  </data>
+  <data name="&gt;&gt;spRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;spRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;spRadio.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;listCxButton.Name" xml:space="preserve">
+    <value>listCxButton</value>
+  </data>
+  <data name="&gt;&gt;listCxButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;listCxButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;listCxButton.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;newCxButton.Name" xml:space="preserve">
+    <value>newCxButton</value>
+  </data>
+  <data name="&gt;&gt;newCxButton.Type" xml:space="preserve">
+    <value>ControlExs.QQButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;newCxButton.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;newCxButton.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;cxRadio.Name" xml:space="preserve">
+    <value>cxRadio</value>
+  </data>
+  <data name="&gt;&gt;cxRadio.Type" xml:space="preserve">
+    <value>ControlExs.QQRadioButton, ControlExs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;cxRadio.Parent" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;cxRadio.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="NavPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="NavPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="NavPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 591</value>
+  </data>
+  <data name="NavPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;NavPanel.Name" xml:space="preserve">
+    <value>NavPanel</value>
+  </data>
+  <data name="&gt;&gt;NavPanel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ContentPanel.Parent" xml:space="preserve">
+  <data name="&gt;&gt;NavPanel.Parent" xml:space="preserve">
     <value>MainPanel</value>
   </data>
-  <data name="&gt;&gt;ContentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;NavPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="listQdButton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -606,7 +1035,7 @@
     <value>NoControl</value>
   </data>
   <data name="listQdButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 566</value>
+    <value>31, 558</value>
   </data>
   <data name="listQdButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -642,7 +1071,7 @@
     <value>NoControl</value>
   </data>
   <data name="QdRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 542</value>
+    <value>16, 534</value>
   </data>
   <data name="QdRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -672,7 +1101,7 @@
     <value>NoControl</value>
   </data>
   <data name="listXsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 338</value>
+    <value>26, 330</value>
   </data>
   <data name="listXsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -705,7 +1134,7 @@
     <value>NoControl</value>
   </data>
   <data name="listHtButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 516</value>
+    <value>26, 508</value>
   </data>
   <data name="listHtButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -738,7 +1167,7 @@
     <value>NoControl</value>
   </data>
   <data name="newHtButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 490</value>
+    <value>26, 482</value>
   </data>
   <data name="newHtButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -774,7 +1203,7 @@
     <value>NoControl</value>
   </data>
   <data name="htRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 466</value>
+    <value>11, 458</value>
   </data>
   <data name="htRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -804,7 +1233,7 @@
     <value>NoControl</value>
   </data>
   <data name="listSfzhButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 414</value>
+    <value>26, 406</value>
   </data>
   <data name="listSfzhButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -837,7 +1266,7 @@
     <value>NoControl</value>
   </data>
   <data name="newPzButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 388</value>
+    <value>26, 380</value>
   </data>
   <data name="newPzButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -873,7 +1302,7 @@
     <value>NoControl</value>
   </data>
   <data name="cwRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 364</value>
+    <value>11, 356</value>
   </data>
   <data name="cwRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -903,7 +1332,7 @@
     <value>NoControl</value>
   </data>
   <data name="listKhdzButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 440</value>
+    <value>26, 432</value>
   </data>
   <data name="listKhdzButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -936,7 +1365,7 @@
     <value>NoControl</value>
   </data>
   <data name="listCgButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 312</value>
+    <value>26, 304</value>
   </data>
   <data name="listCgButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -969,7 +1398,7 @@
     <value>NoControl</value>
   </data>
   <data name="newCgZsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 286</value>
+    <value>26, 278</value>
   </data>
   <data name="newCgZsButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1005,7 +1434,7 @@
     <value>NoControl</value>
   </data>
   <data name="ywRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 263</value>
+    <value>11, 255</value>
   </data>
   <data name="ywRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -1035,7 +1464,7 @@
     <value>NoControl</value>
   </data>
   <data name="listCcdButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 237</value>
+    <value>26, 229</value>
   </data>
   <data name="listCcdButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1068,7 +1497,7 @@
     <value>NoControl</value>
   </data>
   <data name="listJcdButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 211</value>
+    <value>26, 203</value>
   </data>
   <data name="listJcdButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1101,7 +1530,7 @@
     <value>NoControl</value>
   </data>
   <data name="listKcButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 186</value>
+    <value>26, 178</value>
   </data>
   <data name="listKcButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1137,7 +1566,7 @@
     <value>NoControl</value>
   </data>
   <data name="ccRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 161</value>
+    <value>11, 153</value>
   </data>
   <data name="ccRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -1167,7 +1596,7 @@
     <value>NoControl</value>
   </data>
   <data name="listSpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 136</value>
+    <value>26, 128</value>
   </data>
   <data name="listSpButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1200,7 +1629,7 @@
     <value>NoControl</value>
   </data>
   <data name="newSpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 110</value>
+    <value>26, 102</value>
   </data>
   <data name="newSpButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1236,7 +1665,7 @@
     <value>NoControl</value>
   </data>
   <data name="spRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 86</value>
+    <value>11, 78</value>
   </data>
   <data name="spRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -1266,7 +1695,7 @@
     <value>NoControl</value>
   </data>
   <data name="listCxButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 61</value>
+    <value>26, 53</value>
   </data>
   <data name="listCxButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1299,7 +1728,7 @@
     <value>NoControl</value>
   </data>
   <data name="newCxButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 35</value>
+    <value>26, 27</value>
   </data>
   <data name="newCxButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 20</value>
@@ -1335,7 +1764,7 @@
     <value>NoControl</value>
   </data>
   <data name="cxRadio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 11</value>
+    <value>11, 3</value>
   </data>
   <data name="cxRadio.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 19</value>
@@ -1358,84 +1787,57 @@
   <data name="&gt;&gt;cxRadio.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="NavPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="NavPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="NavPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 602</value>
-  </data>
-  <data name="NavPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;NavPanel.Name" xml:space="preserve">
-    <value>NavPanel</value>
-  </data>
-  <data name="&gt;&gt;NavPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;NavPanel.Parent" xml:space="preserve">
-    <value>MainPanel</value>
-  </data>
-  <data name="&gt;&gt;NavPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="MainPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 57</value>
-  </data>
-  <data name="MainPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1051, 602</value>
-  </data>
-  <data name="MainPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Name" xml:space="preserve">
-    <value>MainPanel</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;MainPanel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="pbUploadDownloadFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pbUploadDownloadFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>417, 37</value>
-  </data>
-  <data name="pbUploadDownloadFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 20</value>
-  </data>
-  <data name="pbUploadDownloadFile.TabIndex" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="pbUploadDownloadFile.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadFile.Name" xml:space="preserve">
-    <value>pbUploadDownloadFile</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadFile.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadFile.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <metadata name="updateDataTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
   <metadata name="tmrShows.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>281, 17</value>
   </metadata>
+  <data name="&gt;&gt;lblSHOWS2.Name" xml:space="preserve">
+    <value>lblSHOWS2</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS2.Parent" xml:space="preserve">
+    <value>notificationPanel</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS.Name" xml:space="preserve">
+    <value>lblSHOWS</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS.Parent" xml:space="preserve">
+    <value>notificationPanel</value>
+  </data>
+  <data name="&gt;&gt;lblSHOWS.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="notificationPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>397, 20</value>
+  </data>
+  <data name="notificationPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>644, 30</value>
+  </data>
+  <data name="notificationPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>40</value>
+  </data>
+  <data name="&gt;&gt;notificationPanel.Name" xml:space="preserve">
+    <value>notificationPanel</value>
+  </data>
+  <data name="&gt;&gt;notificationPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;notificationPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;notificationPanel.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="lblSHOWS2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1502,27 +1904,6 @@
   <data name="&gt;&gt;lblSHOWS.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="notificationPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>397, 7</value>
-  </data>
-  <data name="notificationPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>644, 30</value>
-  </data>
-  <data name="notificationPanel.TabIndex" type="System.Int32, mscorlib">
-    <value>40</value>
-  </data>
-  <data name="&gt;&gt;notificationPanel.Name" xml:space="preserve">
-    <value>notificationPanel</value>
-  </data>
-  <data name="&gt;&gt;notificationPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;notificationPanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;notificationPanel.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <metadata name="commerceTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>391, 17</value>
   </metadata>
@@ -1534,7 +1915,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAA0
-        CwAAAk1TRnQBSQFMAgEBAwEAAcgBAQHIAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CwAAAk1TRnQBSQFMAgEBAwEAAdABAQHQAQEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1790,62 +2171,14 @@
   <metadata name="keepOnlineTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 55</value>
   </metadata>
-  <data name="pbUploadDownloadLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="pbUploadDownloadLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>黑体, 10pt</value>
-  </data>
-  <data name="pbUploadDownloadLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="pbUploadDownloadLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>299, 40</value>
-  </data>
-  <data name="pbUploadDownloadLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 14</value>
-  </data>
-  <data name="pbUploadDownloadLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="pbUploadDownloadLabel.Text" xml:space="preserve">
-    <value>正在同步数据...</value>
-  </data>
-  <data name="pbUploadDownloadLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadLabel.Name" xml:space="preserve">
-    <value>pbUploadDownloadLabel</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;pbUploadDownloadLabel.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <metadata name="notifyIcon.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>170, 55</value>
   </metadata>
   <metadata name="notifyIconContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>290, 53</value>
   </metadata>
-  <data name="showWindow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="showWindow.Text" xml:space="preserve">
-    <value>显示主窗体</value>
-  </data>
-  <data name="exit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 22</value>
-  </data>
-  <data name="exit.Text" xml:space="preserve">
-    <value>退出</value>
-  </data>
   <data name="notifyIconContextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 48</value>
+    <value>137, 48</value>
   </data>
   <data name="&gt;&gt;notifyIconContextMenuStrip.Name" xml:space="preserve">
     <value>notifyIconContextMenuStrip</value>
@@ -1859,6 +2192,18 @@
   <data name="notifyIcon.Visible" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="showWindow.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="showWindow.Text" xml:space="preserve">
+    <value>显示主窗体</value>
+  </data>
+  <data name="exit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 22</value>
+  </data>
+  <data name="exit.Text" xml:space="preserve">
+    <value>退出</value>
+  </data>
   <metadata name="notifyBlinkTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>500, 55</value>
   </metadata>
@@ -1870,7 +2215,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAu
-        CAAAAk1TRnQBSQFMAgEBAgEAAWgBAAFoAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        CAAAAk1TRnQBSQFMAgEBAgEAAXABAAFwAQABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAARADAAEBAQABCAYAAQQYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1911,7 +2256,7 @@
     <value>True</value>
   </data>
   <data name="ExtendExpireLinkLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 35</value>
+    <value>244, 39</value>
   </data>
   <data name="ExtendExpireLinkLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 15</value>
@@ -1941,7 +2286,7 @@
     <value>NoControl</value>
   </data>
   <data name="UserDegreeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 10</value>
+    <value>244, 14</value>
   </data>
   <data name="UserDegreeLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 15</value>
@@ -1970,29 +2315,44 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>945, 55</value>
   </metadata>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
+  <data name="StatusToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 17</value>
   </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
+  <data name="StatusToolStripStatusLabel.Text" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
+  </data>
+  <data name="toolStripStatusLabel4.Text" xml:space="preserve">
+    <value>        </value>
+  </data>
+  <data name="NotifyToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 17</value>
+  </data>
+  <data name="NotifyToolStripStatusLabel.Text" xml:space="preserve">
+    <value>消息</value>
   </data>
   <data name="toolStripStatusLabel2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>674, 17</value>
+    <value>932, 17</value>
   </data>
-  <data name="toolStripStatusLabel3.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>Yes</value>
+  <data name="pbUploadDownloadToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 17</value>
   </data>
-  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 17</value>
+  <data name="pbUploadDownloadToolStripStatusLabel.Text" xml:space="preserve">
+    <value>正在同步数据...</value>
   </data>
-  <data name="toolStripStatusLabel3.Text" xml:space="preserve">
-    <value>toolStripStatusLabel3</value>
+  <data name="pbUploadDownloadToolStripStatusLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 16</value>
+  <data name="pbUploadDownloadFileToolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 16</value>
+  </data>
+  <data name="pbUploadDownloadFileToolStripProgressBar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 662</value>
@@ -2016,7 +2376,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2126,17 +2486,11 @@
   <data name="&gt;&gt;remoteSignTimer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Timer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
-    <value>toolStripStatusLabel1</value>
+  <data name="&gt;&gt;NotifyToolStripStatusLabel.Name" xml:space="preserve">
+    <value>NotifyToolStripStatusLabel</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
+  <data name="&gt;&gt;NotifyToolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripProgressBar1.Name" xml:space="preserve">
-    <value>toolStripProgressBar1</value>
-  </data>
-  <data name="&gt;&gt;toolStripProgressBar1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel2.Name" xml:space="preserve">
     <value>toolStripStatusLabel2</value>
@@ -2144,10 +2498,28 @@
   <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel3.Name" xml:space="preserve">
-    <value>toolStripStatusLabel3</value>
+  <data name="&gt;&gt;pbUploadDownloadToolStripStatusLabel.Name" xml:space="preserve">
+    <value>pbUploadDownloadToolStripStatusLabel</value>
   </data>
-  <data name="&gt;&gt;toolStripStatusLabel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;pbUploadDownloadToolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pbUploadDownloadFileToolStripProgressBar.Name" xml:space="preserve">
+    <value>pbUploadDownloadFileToolStripProgressBar</value>
+  </data>
+  <data name="&gt;&gt;pbUploadDownloadFileToolStripProgressBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripProgressBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StatusToolStripStatusLabel.Name" xml:space="preserve">
+    <value>StatusToolStripStatusLabel</value>
+  </data>
+  <data name="&gt;&gt;StatusToolStripStatusLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel4.Name" xml:space="preserve">
+    <value>toolStripStatusLabel4</value>
+  </data>
+  <data name="&gt;&gt;toolStripStatusLabel4.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

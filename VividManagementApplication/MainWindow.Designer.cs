@@ -68,7 +68,6 @@
             this.listCxButton = new ControlExs.QQButton();
             this.newCxButton = new ControlExs.QQButton();
             this.cxRadio = new ControlExs.QQRadioButton();
-            this.pbUploadDownloadFile = new System.Windows.Forms.ProgressBar();
             this.updateDataTimer = new System.Windows.Forms.Timer(this.components);
             this.tmrShows = new System.Windows.Forms.Timer(this.components);
             this.notificationPanel = new System.Windows.Forms.Panel();
@@ -80,7 +79,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.keepOnlineTimer = new System.Windows.Forms.Timer(this.components);
-            this.pbUploadDownloadLabel = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyIconContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showWindow = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,10 +89,12 @@
             this.UserDegreeLabel = new System.Windows.Forms.Label();
             this.remoteSignTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.NotifyToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pbUploadDownloadToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pbUploadDownloadFileToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.StatusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -422,11 +422,6 @@
             this.cxRadio.UseVisualStyleBackColor = false;
             this.cxRadio.CheckedChanged += new System.EventHandler(this.cxRadio_CheckedChanged);
             // 
-            // pbUploadDownloadFile
-            // 
-            resources.ApplyResources(this.pbUploadDownloadFile, "pbUploadDownloadFile");
-            this.pbUploadDownloadFile.Name = "pbUploadDownloadFile";
-            // 
             // updateDataTimer
             // 
             this.updateDataTimer.Interval = 3500;
@@ -487,13 +482,6 @@
             // 
             this.keepOnlineTimer.Interval = 60000;
             this.keepOnlineTimer.Tick += new System.EventHandler(this.keepOnlineTimer_Tick);
-            // 
-            // pbUploadDownloadLabel
-            // 
-            resources.ApplyResources(this.pbUploadDownloadLabel, "pbUploadDownloadLabel");
-            this.pbUploadDownloadLabel.BackColor = System.Drawing.Color.Transparent;
-            this.pbUploadDownloadLabel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pbUploadDownloadLabel.Name = "pbUploadDownloadLabel";
             // 
             // notifyIcon
             // 
@@ -559,22 +547,20 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
+            this.StatusToolStripStatusLabel,
+            this.toolStripStatusLabel4,
+            this.NotifyToolStripStatusLabel,
             this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.toolStripProgressBar1});
+            this.pbUploadDownloadToolStripStatusLabel,
+            this.pbUploadDownloadFileToolStripProgressBar});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
-            // toolStripStatusLabel1
+            // NotifyToolStripStatusLabel
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            resources.ApplyResources(this.toolStripProgressBar1, "toolStripProgressBar1");
+            this.NotifyToolStripStatusLabel.Name = "NotifyToolStripStatusLabel";
+            resources.ApplyResources(this.NotifyToolStripStatusLabel, "NotifyToolStripStatusLabel");
             // 
             // toolStripStatusLabel2
             // 
@@ -582,10 +568,26 @@
             resources.ApplyResources(this.toolStripStatusLabel2, "toolStripStatusLabel2");
             this.toolStripStatusLabel2.Spring = true;
             // 
-            // toolStripStatusLabel3
+            // pbUploadDownloadToolStripStatusLabel
             // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            resources.ApplyResources(this.toolStripStatusLabel3, "toolStripStatusLabel3");
+            this.pbUploadDownloadToolStripStatusLabel.Name = "pbUploadDownloadToolStripStatusLabel";
+            resources.ApplyResources(this.pbUploadDownloadToolStripStatusLabel, "pbUploadDownloadToolStripStatusLabel");
+            // 
+            // pbUploadDownloadFileToolStripProgressBar
+            // 
+            this.pbUploadDownloadFileToolStripProgressBar.Name = "pbUploadDownloadFileToolStripProgressBar";
+            resources.ApplyResources(this.pbUploadDownloadFileToolStripProgressBar, "pbUploadDownloadFileToolStripProgressBar");
+            // 
+            // StatusToolStripStatusLabel
+            // 
+            this.StatusToolStripStatusLabel.Name = "StatusToolStripStatusLabel";
+            resources.ApplyResources(this.StatusToolStripStatusLabel, "StatusToolStripStatusLabel");
+            this.StatusToolStripStatusLabel.TextChanged += new System.EventHandler(this.StatusToolStripStatusLabel_TextChanged);
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            resources.ApplyResources(this.toolStripStatusLabel4, "toolStripStatusLabel4");
             // 
             // MainWindow
             // 
@@ -594,9 +596,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.UserDegreeLabel);
             this.Controls.Add(this.ExtendExpireLinkLabel);
-            this.Controls.Add(this.pbUploadDownloadLabel);
             this.Controls.Add(this.notificationPanel);
-            this.Controls.Add(this.pbUploadDownloadFile);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.lbExpireTime);
             this.Controls.Add(this.label112);
@@ -636,7 +636,6 @@
         private System.Windows.Forms.DataGridView MainDataGridView;
         private ControlExs.QQButton refeshButton;
         private ControlExs.QQButton backupData;
-        private System.Windows.Forms.ProgressBar pbUploadDownloadFile;
         private System.Windows.Forms.Timer updateDataTimer;
         private System.Windows.Forms.Timer tmrShows;
         private System.Windows.Forms.Panel notificationPanel;
@@ -672,7 +671,6 @@
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Timer keepOnlineTimer;
-        private System.Windows.Forms.Label pbUploadDownloadLabel;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Timer notifyBlinkTimer;
         private System.Windows.Forms.ImageList notifyImageList;
@@ -685,10 +683,12 @@
         private ControlExs.QQRadioButton QdRadio;
         private System.Windows.Forms.Timer remoteSignTimer;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel NotifyToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripProgressBar pbUploadDownloadFileToolStripProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel pbUploadDownloadToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel StatusToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
     }
 }
 

@@ -71,6 +71,7 @@ namespace VividManagementApplication
 
         //System.Timers.Timer updateDataTimersTimer;
         System.Timers.Timer updateRemoteSignTimer;
+        System.Timers.Timer lablTextChangeTimer; // 状态栏信息修改Timer
 
         string dataBaseFilePrefix;
 
@@ -212,6 +213,8 @@ namespace VividManagementApplication
                     st.ShowDialog();
                 }
                 #endregion
+
+                lablTextChangeTimer = new System.Timers.Timer(5000);
             }
             else
             {
@@ -414,7 +417,8 @@ namespace VividManagementApplication
             {
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                //MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                StatusToolStripStatusLabel.Text = UploadMoreInfo + "同步成功!";
             }
         }
 
@@ -472,7 +476,8 @@ namespace VividManagementApplication
             else
             {
                 FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
-                MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                //MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
+                StatusToolStripStatusLabel.Text = UploadMoreInfo + "同步成功!";
             }
         }
 
@@ -550,8 +555,8 @@ namespace VividManagementApplication
         // 提示消息能否看到
         private void visibleUploadDownloadGroup(Boolean visible)
         {
-            pbUploadDownloadLabel.Visible = visible;
-            pbUploadDownloadFile.Visible = visible;
+            pbUploadDownloadToolStripStatusLabel.Visible = visible;
+            pbUploadDownloadFileToolStripProgressBar.Visible = visible;
             //pbUploadDownloadLabel.Text = notice;
         }
 
@@ -559,31 +564,38 @@ namespace VividManagementApplication
         delegate void SetpbUploadDownloadLabelCallback(Boolean visible);
         private void SetpbUploadDownloadLabel(Boolean visible)
         {
-            if (this.pbUploadDownloadLabel.InvokeRequired)
-            {
-                SetpbUploadDownloadLabelCallback d = new SetpbUploadDownloadLabelCallback(SetpbUploadDownloadLabel);
-                this.Invoke(d, new object[] { visible });
-            }
-            else
-            {
-                this.pbUploadDownloadLabel.Visible = visible;
-            }
+            this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
+            /*
+                        if (this.pbUploadDownloadToolStripStatusLabel.InvokeRequired)
+                        {
+                            SetpbUploadDownloadLabelCallback d = new SetpbUploadDownloadLabelCallback(SetpbUploadDownloadLabel);
+                            this.Invoke(d, new object[] { visible });
+                        }
+                        else
+                        {
+                            this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
+                        }
+             */
         }
 
         // lable
         delegate void SetpbUploadDownloadFileCallback(Boolean visible, int percentage);
         private void SetpbUploadDownloadFile(Boolean visible, int percentage)
         {
-            if (this.pbUploadDownloadFile.InvokeRequired)
-            {
-                SetpbUploadDownloadFileCallback d = new SetpbUploadDownloadFileCallback(SetpbUploadDownloadFile);
-                this.Invoke(d, new object[] { visible, percentage });
-            }
-            else
-            {
-                this.pbUploadDownloadFile.Visible = visible;
-                this.pbUploadDownloadFile.Value = percentage;
-            }
+            this.pbUploadDownloadFileToolStripProgressBar.Visible = visible;
+            this.pbUploadDownloadFileToolStripProgressBar.Value = percentage;
+            /*
+                        if (this.pbUploadDownloadFileToolStripProgressBar.InvokeRequired)
+                        {
+                            SetpbUploadDownloadFileCallback d = new SetpbUploadDownloadFileCallback(SetpbUploadDownloadFile);
+                            this.Invoke(d, new object[] { visible, percentage });
+                        }
+                        else
+                        {
+                            this.pbUploadDownloadFileToolStripProgressBar.Visible = visible;
+                            this.pbUploadDownloadFileToolStripProgressBar.Value = percentage;
+                        }
+            */
         }
 
 
@@ -635,14 +647,16 @@ namespace VividManagementApplication
                 return;
             }
             CURRENT_LIST_BUTTON.PerformClick();
-            MessageBox.Show("刷新成功！");
+            //MessageBox.Show("刷新成功！");
+            StatusToolStripStatusLabel.Text = "刷新成功！";
         }
 
         private void refreshCheckRemoteSignListWithObject(object obj)
         {
             checkRemoteSignList();
             CURRENT_LIST_BUTTON.PerformClick();
-            MessageBox.Show("刷新成功！");
+            //MessageBox.Show("刷新成功！");
+            StatusToolStripStatusLabel.Text = "刷新成功！";
         }
 
         #region 左侧栏选择
@@ -1624,5 +1638,21 @@ namespace VividManagementApplication
         }
 
         #endregion
+
+        private void StatusToolStripStatusLabel_TextChanged(object sender, EventArgs e)
+        {
+            lablTextChangeTimer.Elapsed += new System.Timers.ElapsedEventHandler(SetStatusToolStripStatusLabel);//到达时间的时候执行事件；  
+            lablTextChangeTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；  
+            lablTextChangeTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
+            if (this.IsDisposed)
+            {
+                lablTextChangeTimer.Stop();
+            }
+        }
+        private void SetStatusToolStripStatusLabel(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            StatusToolStripStatusLabel.Text = "消息";
+            lablTextChangeTimer.Enabled = false;
+        }
     }
 }
