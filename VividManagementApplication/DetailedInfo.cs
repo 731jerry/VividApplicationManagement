@@ -139,7 +139,8 @@ namespace VividManagementApplication
                         MessageBox.Show("请先输入客户信息!", "提示");
                         break;
                     }
-                    tbDz1.Items.Insert(0, "使用选择器...");
+                    tbDz1.Items.Insert(0, "");
+                    tbDz1.Items.Insert(1, "使用选择器...");
 
                     // 添加商品编号
                     JCDcbA.Items.Add("");
@@ -147,6 +148,11 @@ namespace VividManagementApplication
                     JCDcbC.Items.Add("");
                     JCDcbD.Items.Add("");
                     JCDcbE.Items.Add("");
+                    JCDcbA.Items.Insert(1, "使用选择器...");
+                    JCDcbB.Items.Insert(1, "使用选择器...");
+                    JCDcbC.Items.Insert(1, "使用选择器...");
+                    JCDcbD.Items.Insert(1, "使用选择器...");
+                    JCDcbE.Items.Insert(1, "使用选择器...");
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbA);
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbB);
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbC);
@@ -330,7 +336,8 @@ namespace VividManagementApplication
                         break;
                     }
 
-                    tbPz1.Items.Insert(0, "使用选择器...");
+                    tbPz1.Items.Insert(0, "");
+                    tbPz1.Items.Insert(1, "使用选择器...");
 
                     canPrint = true;
                     if (ItemId.Equals("-1"))
@@ -463,12 +470,20 @@ namespace VividManagementApplication
                     detailedLocationY = 80;
                     detailedHeightDis = 60;
 
+                    //tbHTxsfID.Items.Insert(0, "使用选择器...");
+                    //tbHTghfID.Items.Insert(0, "使用选择器...");
+
                     // 添加商品编号
                     cbHTGoodsNameA.Items.Add("");
                     cbHTGoodsNameB.Items.Add("");
                     cbHTGoodsNameC.Items.Add("");
                     cbHTGoodsNameD.Items.Add("");
                     cbHTGoodsNameE.Items.Add("");
+                    cbHTGoodsNameA.Items.Insert(1, "使用选择器...");
+                    cbHTGoodsNameB.Items.Insert(1, "使用选择器...");
+                    cbHTGoodsNameC.Items.Insert(1, "使用选择器...");
+                    cbHTGoodsNameD.Items.Insert(1, "使用选择器...");
+                    cbHTGoodsNameE.Items.Insert(1, "使用选择器...");
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameA);
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameB);
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameC);
@@ -1178,7 +1193,8 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTxsfID);
-                    tbHTxsfID.Items.Insert(0, "使用选择器...");
+                    tbHTxsfID.Items.Insert(0, "");
+                    tbHTxsfID.Items.Insert(1, "使用选择器...");
                     //tbHTxsfID.SelectedIndex = 0;
                     tbHTxsfName.Text = "";
                     tbHTxsfAddress.Text = "";
@@ -1204,7 +1220,8 @@ namespace VividManagementApplication
 
                     // 添加客户编号
                     addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
-                    tbHTghfID.Items.Insert(0, "使用选择器...");
+                    tbHTghfID.Items.Insert(0, "");
+                    tbHTghfID.Items.Insert(1, "使用选择器...");
                     //tbHTghfID.SelectedIndex = 0;
                     tbHTghfName.Text = "";
                     tbHTghfAddress.Text = "";
@@ -1220,35 +1237,63 @@ namespace VividManagementApplication
 
         private void tbHTxsfID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!tbHTxsfID.Text.Equals("") && tbHTxsfID.SelectedIndex > 0)
+            if (tbHTxsfID.SelectedIndex != -1)
             {
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
+                if (tbHTxsfID.Text.Equals(""))
+                {
+                    tbHTxsfName.Text = "";
+                    tbHTxsfAddress.Text = "";
+                    tbHTxsfPresenter.Text = "";
+                    tbHTxsfFax.Text = "";
+                    tbHTxsfPhone.Text = "";
+                    tbHTxsfEmail.Text = "";
+                    tbHTxsfBankName.Text = "";
+                    tbHTxsfBankNumber.Text = "";
+                }
+                if (tbHTxsfID.SelectedIndex == 1)
+                {
+                    InitPicker(tbHTxsfID, true);
+                }
+                else if (tbHTxsfID.SelectedIndex > 1)
+                {
+                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTxsfName, tbHTxsfAddress, tbHTxsfPresenter, tbHTxsfFax, tbHTxsfPhone, tbHTxsfEmail, tbHTxsfBankName, tbHTxsfBankNumber },
-                        DatabaseConnections.GetInstence().LocalGetOneRowDataById(
-                        "clients",
-                        new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
-                        "clientID", tbHTxsfID.Text).ToList<String>());
-            }
-            if (tbHTxsfID.SelectedIndex == 0)
-            {
-                InitClientPicker(tbHTxsfID);
+                            DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                            "clients",
+                            new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
+                            "clientID", tbHTxsfID.Text).ToList<String>());
+                }
             }
         }
 
         private void tbHTghfID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!tbHTghfID.Text.Equals("") && tbHTghfID.SelectedIndex > 0)
+            if (tbHTghfID.SelectedIndex != -1)
             {
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
+                if (tbHTghfID.Text.Equals(""))
+                {
+                    tbHTghfName.Text = "";
+                    tbHTghfAddress.Text = "";
+                    tbHTghfPresenter.Text = "";
+                    tbHTghfFax.Text = "";
+                    tbHTghfPhone.Text = "";
+                    tbHTghfEmail.Text = "";
+                    tbHTghfBankName.Text = "";
+                    tbHTghfBankNumber.Text = "";
+                }
+                if (tbHTghfID.SelectedIndex == 1)
+                {
+                    InitPicker(tbHTghfID, true);
+                }
+                else if (tbHTghfID.SelectedIndex > 1)
+                {
+                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTghfName, tbHTghfAddress, tbHTghfPresenter, tbHTghfFax, tbHTghfPhone, tbHTghfEmail, tbHTghfBankName, tbHTghfBankNumber },
                              DatabaseConnections.GetInstence().LocalGetOneRowDataById(
                              "clients",
                              new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                              "clientID", tbHTghfID.Text).ToList<String>());
-            }
-            if (tbHTghfID.SelectedIndex == 0)
-            {
-                InitClientPicker(tbHTghfID);
+                }
             }
         }
 
@@ -1314,6 +1359,10 @@ namespace VividManagementApplication
                     AJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { AJCDtb0, AJCDtb1, AJCDtb2, AJCDtb3, AJCDtb4, AJCDtb5, AJCDtb6 });
                 }
+                else if (JCDcbA.SelectedIndex == 1)
+                {
+                    InitPicker(JCDcbA, false);
+                }
                 else
                 {
                     AJCDtb4.ReadOnly = false;
@@ -1334,6 +1383,10 @@ namespace VividManagementApplication
                     BJCDtb5.ReadOnly = true;
                     BJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { BJCDtb0, BJCDtb1, BJCDtb2, BJCDtb3, BJCDtb4, BJCDtb5, BJCDtb6 });
+                }
+                else if (JCDcbB.SelectedIndex == 1)
+                {
+                    InitPicker(JCDcbB, false);
                 }
                 else
                 {
@@ -1356,6 +1409,10 @@ namespace VividManagementApplication
                     CJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { CJCDtb0, CJCDtb1, CJCDtb2, CJCDtb3, CJCDtb4, CJCDtb5, CJCDtb6 });
                 }
+                else if (JCDcbC.SelectedIndex == 1)
+                {
+                    InitPicker(JCDcbC, false);
+                }
                 else
                 {
                     CJCDtb4.ReadOnly = false;
@@ -1376,6 +1433,10 @@ namespace VividManagementApplication
                     DJCDtb5.ReadOnly = true;
                     DJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { DJCDtb0, DJCDtb1, DJCDtb2, DJCDtb3, DJCDtb4, DJCDtb5, DJCDtb6 });
+                }
+                else if (JCDcbD.SelectedIndex == 1)
+                {
+                    InitPicker(JCDcbD, false);
                 }
                 else
                 {
@@ -1398,6 +1459,10 @@ namespace VividManagementApplication
                     EJCDtb5.BackColor = SystemColors.Control;
                     clearControlValueByList(new List<Control>() { EJCDtb0, EJCDtb1, EJCDtb2, EJCDtb3, EJCDtb4, EJCDtb5, EJCDtb6 });
                 }
+                else if (JCDcbE.SelectedIndex == 1)
+                {
+                    InitPicker(JCDcbE, false);
+                }
                 else
                 {
                     EJCDtb4.ReadOnly = false;
@@ -1409,49 +1474,59 @@ namespace VividManagementApplication
         }
 
         /// <summary>
-        /// 启用客户选择器
+        /// 启用客户商品选择器
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         /// 
-        private void InitClientPicker(ComboBox cbPicker)
+        private void InitPicker(ComboBox cbPicker, Boolean isClient)
         {
-            ClientPicker cp = new ClientPicker();
+            Picker cp = new Picker();
+            cp.isClient = isClient;
             if (cp.ShowDialog() == DialogResult.OK)
             {
                 cbPicker.Text = cp.selectedClientID;
             }
             else
             {
-                cbPicker.SelectedIndex = -1;
+                cbPicker.SelectedIndex = 0;
             }
         }
 
         private void tbDz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tbDz1.SelectedIndex > 0)
+            if (tbDz1.SelectedIndex > 1)
             {
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress, tbDz8 }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address", "shouldPay" }, "clientID", tbDz1.Text).ToList<String>());
             }
             else if (tbDz1.SelectedIndex == 0)
             {
-                InitClientPicker(tbDz1);
-                if (tbDz1.SelectedIndex != -1)
-                {
-                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address" }, "clientID", tbDz1.Text).ToList<String>());
-                }
+                dzContact.Clear();
+                dzPhone.Clear();
+                dzCompany.Clear();
+                dzAddress.Clear();
+            }
+            else if (tbDz1.SelectedIndex == 1)
+            { 
+                InitPicker(tbDz1, true);
             }
         }
 
         private void tbPz1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tbPz1.SelectedIndex > 0)
+            if (tbPz1.SelectedIndex > 1)
             {
                 FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
             }
             else if (tbPz1.SelectedIndex == 0)
             {
-                InitClientPicker(tbPz1);
+                pzContact.Clear();
+                pzPhone.Clear();
+                pzCompany.Clear();
+                pzAddress.Clear();
+            }
+            else if (tbPz1.SelectedIndex == 1) { 
+                InitPicker(tbPz1, true);
             }
         }
 
@@ -2388,6 +2463,10 @@ namespace VividManagementApplication
                     cbHTGoodsA7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsA0, cbHTGoodsA1, cbHTGoodsA2, cbHTGoodsA3, cbHTGoodsA4, cbHTGoodsA5, cbHTGoodsA6, cbHTGoodsA7 });
                 }
+                else if (cbHTGoodsNameA.SelectedIndex == 1)
+                {
+                    InitPicker(cbHTGoodsNameA, false);
+                }
                 else
                 {
                     cbHTGoodsA5.ReadOnly = false;
@@ -2406,6 +2485,10 @@ namespace VividManagementApplication
                     cbHTGoodsB5.ReadOnly = true;
                     cbHTGoodsB7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsB0, cbHTGoodsB1, cbHTGoodsB2, cbHTGoodsB3, cbHTGoodsB4, cbHTGoodsB5, cbHTGoodsB6, cbHTGoodsB7 });
+                }
+                else if (cbHTGoodsNameB.SelectedIndex == 1)
+                {
+                    InitPicker(cbHTGoodsNameB, false);
                 }
                 else
                 {
@@ -2426,6 +2509,10 @@ namespace VividManagementApplication
                     cbHTGoodsC7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsC0, cbHTGoodsC1, cbHTGoodsC2, cbHTGoodsC3, cbHTGoodsC4, cbHTGoodsC5, cbHTGoodsC6, cbHTGoodsC7 });
                 }
+                else if (cbHTGoodsNameC.SelectedIndex == 1)
+                {
+                    InitPicker(cbHTGoodsNameC, false);
+                }
                 else
                 {
                     cbHTGoodsC5.ReadOnly = false;
@@ -2445,6 +2532,10 @@ namespace VividManagementApplication
                     cbHTGoodsD7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsD0, cbHTGoodsD1, cbHTGoodsD2, cbHTGoodsD3, cbHTGoodsD4, cbHTGoodsD5, cbHTGoodsD6, cbHTGoodsD7 });
                 }
+                else if (cbHTGoodsNameD.SelectedIndex == 1)
+                {
+                    InitPicker(cbHTGoodsNameD, false);
+                }
                 else
                 {
                     cbHTGoodsD5.ReadOnly = false;
@@ -2463,6 +2554,10 @@ namespace VividManagementApplication
                     cbHTGoodsE5.ReadOnly = true;
                     cbHTGoodsE7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsE0, cbHTGoodsE1, cbHTGoodsE2, cbHTGoodsE3, cbHTGoodsE4, cbHTGoodsE5, cbHTGoodsE6, cbHTGoodsE7 });
+                }
+                else if (cbHTGoodsNameE.SelectedIndex == 1)
+                {
+                    InitPicker(cbHTGoodsNameE, false);
                 }
                 else
                 {

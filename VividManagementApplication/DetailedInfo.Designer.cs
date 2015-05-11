@@ -463,7 +463,6 @@ namespace VividManagementApplication
             this.tbClient16.Location = new System.Drawing.Point(520, 261);
             this.tbClient16.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient16.Name = "tbClient16";
-            this.tbClient16.ReadOnly = true;
             this.tbClient16.Size = new System.Drawing.Size(240, 26);
             this.tbClient16.TabIndex = 116;
             this.tbClient16.Text = "0";
@@ -485,7 +484,6 @@ namespace VividManagementApplication
             this.tbClient15.Location = new System.Drawing.Point(125, 261);
             this.tbClient15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient15.Name = "tbClient15";
-            this.tbClient15.ReadOnly = true;
             this.tbClient15.Size = new System.Drawing.Size(253, 26);
             this.tbClient15.TabIndex = 115;
             this.tbClient15.Text = "0";

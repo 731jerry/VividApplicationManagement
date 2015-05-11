@@ -158,7 +158,6 @@ D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\MyS
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
-D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DetailedInfo.resources
@@ -172,3 +171,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
+D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources

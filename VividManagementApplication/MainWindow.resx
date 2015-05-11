@@ -2315,17 +2315,29 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>945, 55</value>
   </metadata>
-  <data name="StatusToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 17</value>
+  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 662</value>
   </data>
-  <data name="StatusToolStripStatusLabel.Text" xml:space="preserve">
-    <value>状态</value>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1051, 22</value>
   </data>
-  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 17</value>
+  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
   </data>
-  <data name="toolStripStatusLabel4.Text" xml:space="preserve">
-    <value>        </value>
+  <data name="statusStrip1.Text" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="NotifyToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 17</value>
@@ -2354,29 +2366,17 @@
   <data name="pbUploadDownloadFileToolStripProgressBar.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 662</value>
+  <data name="StatusToolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 17</value>
   </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1051, 22</value>
+  <data name="StatusToolStripStatusLabel.Text" xml:space="preserve">
+    <value>状态</value>
   </data>
-  <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
+  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 17</value>
   </data>
-  <data name="statusStrip1.Text" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Name" xml:space="preserve">
-    <value>statusStrip1</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="toolStripStatusLabel4.Text" xml:space="preserve">
+    <value>        </value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

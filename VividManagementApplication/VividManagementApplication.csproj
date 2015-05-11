@@ -84,11 +84,11 @@
     <Compile Include="BillSign.Designer.cs">
       <DependentUpon>BillSign.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientPicker.cs">
+    <Compile Include="Picker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientPicker.Designer.cs">
-      <DependentUpon>ClientPicker.cs</DependentUpon>
+    <Compile Include="Picker.Designer.cs">
+      <DependentUpon>Picker.cs</DependentUpon>
     </Compile>
     <Compile Include="ConfirmPassword.cs">
       <SubType>Form</SubType>
@@ -158,8 +158,8 @@
     <EmbeddedResource Include="BillSign.resx">
       <DependentUpon>BillSign.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientPicker.resx">
-      <DependentUpon>ClientPicker.cs</DependentUpon>
+    <EmbeddedResource Include="Picker.resx">
+      <DependentUpon>Picker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmPassword.resx">
       <DependentUpon>ConfirmPassword.cs</DependentUpon>

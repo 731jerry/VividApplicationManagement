@@ -42,6 +42,7 @@ namespace VividManagementApplication
         public static String EMAIL = "";
         public static DateTime ADDTIME = new DateTime();
         public static String NOTIFICATION = "";
+        public static int DEGREE = 0;
         public static DateTime EXPIRETIME = new DateTime();
         public static String SIGNATURE = "";
         public static float COMPANY_BALANCE = 0f; // 公司结余暂存
