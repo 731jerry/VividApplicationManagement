@@ -160,6 +160,11 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 更新远程签单数据
+                // 检测未处理签单的个数
+                Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheck));
+                tt.Start();
+                tt.DisableComObjectEagerCleanup();
+
                 //remoteSignTimer.Enabled = true;
                 updateRemoteSignTimer = new System.Timers.Timer(13000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
@@ -1113,20 +1118,23 @@ namespace VividManagementApplication
             Column3.HeaderText = "对方ID";
             Column4.HeaderText = "对方公司名称";
             Column5.HeaderText = "是否已签";
-            Column6.HeaderText = "操作时间";
+            Column6.HeaderText = "备注";
+            Column7.HeaderText = "操作时间";
 
             Column5.Width = 80;
             Column6.Width = 120;
+            Column7.Width = 120;
 
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             //checkRemoteSignList();
-            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 }, "remoteSign", -1,
+            CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "remoteSign", -1,
                 new string[] { 
                     "Id", 
                     "case when fromGZBID = '"+MainWindow.USER_ID+"' then '发送' else '接收' end as 'operation'",
                     "case when fromGZBID = '"+MainWindow.USER_ID+"' then toGZBID else fromGZBID end as 'peerID'", 
                     "companyNickName", 
-                    "case when isSigned = '0' then '还未签' else '已签' end as 'isSigned'", 
+                    "case when isSigned = '1' then '已签' when isSigned ='-1' then '拒签'  else '未处理' end as 'isSigned'", 
+                    "refusedMessage",
                     "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
         }
         #endregion
@@ -1181,9 +1189,9 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
-                t.Start("关闭前同步!");
-                t.DisableComObjectEagerCleanup();
+                //Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
+                //t.Start("关闭前同步!");
+                //t.DisableComObjectEagerCleanup();
 
                 if (notifyIcon != null)
                 {
@@ -1596,6 +1604,13 @@ namespace VividManagementApplication
         }
 
         #region 远程签单
+
+        private void updateRemoteSignUndealedCountCheck(Object obj)
+        {
+            List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
+            NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理远程签单";
+        }
+
         private void updateRemoteSignTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             //if (!this.InvokeRequired)
@@ -1620,7 +1635,10 @@ namespace VividManagementApplication
         {
             try
             {
-                List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " or toGZBID='" + MainWindow.USER_ID + "'");
+                List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
+                List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
+                NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理远程签单";
+
                 if (remoteSignList.Count != 0)
                 {
                     foreach (List<String> item in remoteSignList)

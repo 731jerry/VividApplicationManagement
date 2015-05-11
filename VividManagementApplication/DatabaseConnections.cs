@@ -259,7 +259,7 @@ namespace VividManagementApplication
                                 CREATE TABLE IF NOT EXISTS pzList (id INTEGER PRIMARY KEY AUTOINCREMENT, pzID VARCHAR UNIQUE, leixing VARCHAR, clientID VARCHAR, companyName VARCHAR, zhaiyao VARCHAR (100), jsonData VARCHAR (255), operateMoney VARCHAR, remaintingMoney VARCHAR, beizhu VARCHAR, discardFlag INT (2), addtime DATETIME, modifyTime DATETIME);
 
                                 -- Table: remoteSign
-                                CREATE TABLE IF NOT EXISTS remoteSign (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, fromGZBID VARCHAR (100), toGZBID VARCHAR (100), companyNickName VARCHAR (255), isSigned INT, signValue TEXT (300000), sendTime DATETIME, signTime DATETIME);
+                                CREATE TABLE IF NOT EXISTS remoteSign (id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, fromGZBID VARCHAR (100), toGZBID VARCHAR (100), companyNickName VARCHAR (255), isSigned INT, signValue TEXT (300000), refusedMessage VARCHAR (288), sendTime DATETIME, signTime DATETIME);
 
                                 --COMMIT TRANSACTION;";//建表语句  
 

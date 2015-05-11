@@ -24,7 +24,44 @@ namespace VividManagementApplication
             InitializeComponent();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BillSign_Load(object sender, EventArgs e)
+        {
+            if (signImage != null)
+            {
+                SignPictureBox.Image = signImage;
+            }
+
+            if (isSendRequest)
+            {
+                OKButton.Text = "发送请求";
+                RefuseButton.Text = "取消";
+                Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
+                if (_signImage != null)
+                {
+                    using (Graphics gr = Graphics.FromImage(SignPictureBox.Image))
+                    {
+                        gr.DrawImage(_signImage, new Rectangle(420, 480, 104, 36));
+                    }
+                    SignPictureBox.Invalidate();
+                }
+            }
+            else
+            {
+                OKButton.Text = "确认签名";
+                RefuseButton.Text = "拒绝";
+            }
+
+            if (isSigned)
+            {
+                OKButton.Enabled = false;
+            }
+            else
+            {
+                OKButton.Enabled = true;
+            }
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
         {
             if (isSendRequest)
             {// 发送请求
@@ -59,44 +96,28 @@ namespace VividManagementApplication
             }
         }
 
-        private void BillSign_Load(object sender, EventArgs e)
-        {
-            if (signImage != null)
-            {
-                SignPictureBox.Image = signImage;
-            }
 
+
+        private void RefuseButton_Click(object sender, EventArgs e)
+        {
             if (isSendRequest)
-            {
-                btnSave.Text = "发送请求";
-                Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
-                if (_signImage != null)
+            {// 发送请求
+                this.Close();
+            }
+            else
+            {// 确认签名
+                InputMessage im = new InputMessage();
+                if (im.ShowDialog() == DialogResult.OK)
                 {
-                    using (Graphics gr = Graphics.FromImage(SignPictureBox.Image))
+                    if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "refusedMessage", "signTime" }, new String[] { "-1", im.detailMessage, DateTime.Now.ToString() }, remoteSignId) > 0)
                     {
-                        gr.DrawImage(_signImage, new Rectangle(420, 480, 104, 36));
+                        MessageBox.Show("发送拒签成功!", "提示");
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
                     }
-                    SignPictureBox.Invalidate();
                 }
             }
-            else
-            {
-                btnSave.Text = "确认签名";
-            }
-
-            if (isSigned)
-            {
-                btnSave.Enabled = false;
-            }
-            else
-            {
-                btnSave.Enabled = true;
-            }
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
     }
 }

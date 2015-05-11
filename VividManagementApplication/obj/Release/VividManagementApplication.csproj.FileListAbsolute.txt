@@ -172,3 +172,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
+D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
