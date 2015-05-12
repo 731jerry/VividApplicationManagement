@@ -110,7 +110,6 @@ Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\MySql.Data.dll
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
-\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.DetailedInfo.resources
@@ -173,3 +172,5 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources

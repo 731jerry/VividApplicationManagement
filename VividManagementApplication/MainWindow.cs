@@ -115,10 +115,18 @@ namespace VividManagementApplication
 
             if (MainWindow.IS_LOGED_IN)
             {
-                #region 初始化数据库
-                //Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
-                //t.Start();
-                //t.DisableComObjectEagerCleanup();
+                #region 初始化数据库 备份数据库
+                if (DEGREE > 0)
+                {
+                    Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
+                    t.Start();
+                    t.DisableComObjectEagerCleanup();
+                }
+                else
+                {
+                    backupData.Enabled = false;
+                }
+
                 DatabaseConnections.GetInstence().LocalCreateDatabase();
 
                 #endregion
@@ -126,38 +134,6 @@ namespace VividManagementApplication
                 #region 窗体用户信息初始化
                 lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
                 dataBaseFilePrefix = USER_ID + "_data.txt";
-
-                // 广告计时器
-                //commerceTimer.Enabled = true;
-
-                #region 更新数据库计时器
-                //updateDataTimer.Enabled = true;
-
-                //Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
-                //t.Start();
-                //t.DisableComObjectEagerCleanup();
-
-                //updateDataTimersTimer = new System.Timers.Timer(1000);
-                //updateDataTimersTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateDataTimersTimer_Elapsed);//到达时间的时候执行事件；  
-                //updateDataTimersTimer.AutoReset = false;//设置是执行一次（false）还是一直执行(true)；  
-                //updateDataTimersTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
-                //if (this.IsDisposed)
-                //{
-                //    updateDataTimersTimer.Stop();
-                //}  
-
-                //using (BackgroundWorker bw = new BackgroundWorker())
-                //{
-                //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
-                //    bw.DoWork += new DoWorkEventHandler(bw_DoWork);
-                //    bw.RunWorkerAsync("Hello World");
-                //}
-
-                //this.Invoke(new MethodInvoker(() =>
-                //{
-                //    DownloadFileWithNotice();
-                //}));
-                #endregion
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
@@ -320,43 +296,6 @@ namespace VividManagementApplication
         }
 
         #region 上传下载数据库文件 同步数据库
-        private void updateDataTimersTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (!this.InvokeRequired)
-            {
-                DownloadFileWithNotice();
-            }
-            else
-            {
-                this.Invoke(new MethodInvoker(() => { DownloadFileWithNotice(); }));
-            }
-        }
-
-        void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
-            //e.Result = e.Argument;//这里只是简单的把参数当做结果返回，当然您也可以在这里做复杂的处理后，再返回自己想要的结果(这里的操作是在另一个线程上完成的)
-            //DownloadFileWithNotice();
-        }
-
-        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            //这时后台线程已经完成，并返回了主线程，所以可以直接使用UI控件了
-            //this.textBox1.Text = e.Result.ToString();
-            //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
-            DownloadFileWithNotice();
-        }
-
-        private void updateDataTimer_Tick(object sender, EventArgs e)
-        {
-            updateDataTimer.Enabled = false;
-            // 暂时备份
-            //DownloadFileWithNotice();
-            Thread t = new Thread(new ParameterizedThreadStart(DownloadFileWithNoticeWithObject));
-            t.Start();
-            t.DisableComObjectEagerCleanup();
-        }
-
         private void DownloadFileWithNoticeWithObject(object obj)
         {
             DownloadFileWithNotice();
@@ -604,9 +543,6 @@ namespace VividManagementApplication
             */
         }
 
-
-
-
         #endregion
 
         private void tmrShows_Tick(object sender, EventArgs e)
@@ -629,18 +565,6 @@ namespace VividManagementApplication
                 else
                     lblSHOWS2.Left = lblSHOWS2.Width + lblSHOWS.Left;
             }
-        }
-
-        private void commerceTimer_Tick(object sender, EventArgs e)
-        {
-            //Image[] images = new Image[2] { Image.FromFile(System.Environment.CurrentDirectory + @"\config\commerce\commerce1.png"), Image.FromFile(System.Environment.CurrentDirectory + @"\config\commerce\commerce2.png") };
-            //CommercePictureBox.Image = images[0];
-            //ImageClass.DanRu(new Bitmap(images[0]), CommercePictureBox);
-            //CommercePictureBox.Image = images[1];
-            //ImageClass.KuoSan(new Bitmap(images[1]), CommercePictureBox);
-            //CommercePictureBox.Image = images[0];
-            //System.Threading.Thread.Sleep(1000);
-            //CommercePictureBox.Image = images[1];
         }
 
         private void refeshButton_Click(object sender, EventArgs e)

@@ -68,12 +68,10 @@
             this.listCxButton = new ControlExs.QQButton();
             this.newCxButton = new ControlExs.QQButton();
             this.cxRadio = new ControlExs.QQRadioButton();
-            this.updateDataTimer = new System.Windows.Forms.Timer(this.components);
             this.tmrShows = new System.Windows.Forms.Timer(this.components);
             this.notificationPanel = new System.Windows.Forms.Panel();
             this.lblSHOWS2 = new System.Windows.Forms.Label();
             this.lblSHOWS = new System.Windows.Forms.Label();
-            this.commerceTimer = new System.Windows.Forms.Timer(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -89,12 +87,12 @@
             this.UserDegreeLabel = new System.Windows.Forms.Label();
             this.remoteSignTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.StatusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.NotifyToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadFileToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.StatusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -422,11 +420,6 @@
             this.cxRadio.UseVisualStyleBackColor = false;
             this.cxRadio.CheckedChanged += new System.EventHandler(this.cxRadio_CheckedChanged);
             // 
-            // updateDataTimer
-            // 
-            this.updateDataTimer.Interval = 3500;
-            this.updateDataTimer.Tick += new System.EventHandler(this.updateDataTimer_Tick);
-            // 
             // tmrShows
             // 
             this.tmrShows.Tick += new System.EventHandler(this.tmrShows_Tick);
@@ -450,11 +443,6 @@
             resources.ApplyResources(this.lblSHOWS, "lblSHOWS");
             this.lblSHOWS.ForeColor = System.Drawing.Color.Red;
             this.lblSHOWS.Name = "lblSHOWS";
-            // 
-            // commerceTimer
-            // 
-            this.commerceTimer.Interval = 1000;
-            this.commerceTimer.Tick += new System.EventHandler(this.commerceTimer_Tick);
             // 
             // imageList1
             // 
@@ -557,6 +545,17 @@
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             // 
+            // StatusToolStripStatusLabel
+            // 
+            this.StatusToolStripStatusLabel.Name = "StatusToolStripStatusLabel";
+            resources.ApplyResources(this.StatusToolStripStatusLabel, "StatusToolStripStatusLabel");
+            this.StatusToolStripStatusLabel.TextChanged += new System.EventHandler(this.StatusToolStripStatusLabel_TextChanged);
+            // 
+            // toolStripStatusLabel4
+            // 
+            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
+            resources.ApplyResources(this.toolStripStatusLabel4, "toolStripStatusLabel4");
+            // 
             // NotifyToolStripStatusLabel
             // 
             this.NotifyToolStripStatusLabel.Name = "NotifyToolStripStatusLabel";
@@ -577,17 +576,6 @@
             // 
             this.pbUploadDownloadFileToolStripProgressBar.Name = "pbUploadDownloadFileToolStripProgressBar";
             resources.ApplyResources(this.pbUploadDownloadFileToolStripProgressBar, "pbUploadDownloadFileToolStripProgressBar");
-            // 
-            // StatusToolStripStatusLabel
-            // 
-            this.StatusToolStripStatusLabel.Name = "StatusToolStripStatusLabel";
-            resources.ApplyResources(this.StatusToolStripStatusLabel, "StatusToolStripStatusLabel");
-            this.StatusToolStripStatusLabel.TextChanged += new System.EventHandler(this.StatusToolStripStatusLabel_TextChanged);
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            resources.ApplyResources(this.toolStripStatusLabel4, "toolStripStatusLabel4");
             // 
             // MainWindow
             // 
@@ -636,12 +624,10 @@
         private System.Windows.Forms.DataGridView MainDataGridView;
         private ControlExs.QQButton refeshButton;
         private ControlExs.QQButton backupData;
-        private System.Windows.Forms.Timer updateDataTimer;
         private System.Windows.Forms.Timer tmrShows;
         private System.Windows.Forms.Panel notificationPanel;
         private System.Windows.Forms.Label lblSHOWS2;
         private System.Windows.Forms.Label lblSHOWS;
-        private System.Windows.Forms.Timer commerceTimer;
         private System.Windows.Forms.ImageList imageList1;
         private ControlExs.QQButton listHtButton;
         private ControlExs.QQButton newHtButton;

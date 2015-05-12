@@ -1864,7 +1864,7 @@ namespace VividManagementApplication
             }
             else
             {
-                MessageBox.Show("请先填入必填项目再打印预览!", "提示");
+                MessageBox.Show("请先填入必填项目再打开预览!", "提示");
             }
         }
 
@@ -2019,12 +2019,13 @@ namespace VividManagementApplication
                 }
             }
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY - 20, 281, 78);
-            g.DrawString("发票号码", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY - 20);
-            g.DrawString("增值税：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY - 20);
-            g.DrawString("普通发票：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY - 20);
+            g.DrawString("发票号码：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY - 20);
+            g.DrawString("增：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY - 20);
+            g.DrawString("普：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY - 20);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 260 + y + tableY - 20, 281, 26);
-            g.DrawString("附件凭证 " + tbDz7.Text + " 张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY - 20);
+            g.DrawString("附件凭证： " + tbDz7.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY - 20);
+            g.DrawString("张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 582 + fontDisX, 260 + y + fontDisY + tableY - 20);
 
             g.DrawString("对方送货人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY - 20);
             g.DrawString("业务经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY - 20);
