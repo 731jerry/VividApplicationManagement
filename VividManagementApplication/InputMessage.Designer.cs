@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputMessage));
             this.panel1 = new System.Windows.Forms.Panel();
             this.OKButton = new ControlExs.QQButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,18 +41,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.OKButton);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 11);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(514, 50);
+            this.panel1.Size = new System.Drawing.Size(514, 46);
             this.panel1.TabIndex = 5;
             // 
             // OKButton
             // 
             this.OKButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.OKButton.Image = ((System.Drawing.Image)(resources.GetObject("OKButton.Image")));
-            this.OKButton.Location = new System.Drawing.Point(411, 9);
+            this.OKButton.Location = new System.Drawing.Point(411, 8);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(91, 30);
+            this.OKButton.Size = new System.Drawing.Size(91, 28);
             this.OKButton.TabIndex = 23;
             this.OKButton.Text = "确认";
             this.OKButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -64,25 +62,25 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(15, 18);
+            this.label1.Location = new System.Drawing.Point(15, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.Size = new System.Drawing.Size(137, 12);
             this.label1.TabIndex = 2;
             this.label1.Text = "注意：请输入拒签理由！";
             // 
             // detailedMessageTextbox
             // 
-            this.detailedMessageTextbox.Location = new System.Drawing.Point(12, 68);
+            this.detailedMessageTextbox.Location = new System.Drawing.Point(12, 63);
             this.detailedMessageTextbox.Multiline = true;
             this.detailedMessageTextbox.Name = "detailedMessageTextbox";
-            this.detailedMessageTextbox.Size = new System.Drawing.Size(514, 151);
+            this.detailedMessageTextbox.Size = new System.Drawing.Size(514, 140);
             this.detailedMessageTextbox.TabIndex = 6;
             // 
             // InputMessage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 231);
+            this.ClientSize = new System.Drawing.Size(538, 213);
             this.Controls.Add(this.detailedMessageTextbox);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

@@ -575,7 +575,11 @@ namespace VividManagementApplication
             System.Media.SoundPlayer media = new System.Media.SoundPlayer(filename);
             media.Play();
         }
-
+        public void SoundPlay(Stream stream)
+        {
+            System.Media.SoundPlayer media = new System.Media.SoundPlayer(stream);
+            media.Play();
+        }
         /// <summary>
         /// 检测是否有必填
         /// </summary>

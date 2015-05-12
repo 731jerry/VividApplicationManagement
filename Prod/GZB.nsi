@@ -5,7 +5,7 @@
 !define VERSION_NAME "精华版"
 !define PRODUCT_NAME_ENG "GZB"
 !define APP_NAME "管账宝"
-!define PRODUCT_VERSION "1.2.6"
+!define PRODUCT_VERSION "1.3.0"
 !define PRODUCT_PUBLISHER "唯达软件科技有限公司"
 !define INSTALL_LOCATION "c:\GZB"
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
@@ -24,7 +24,7 @@ SetCompressor lzma
 !define MUI_ABORTWARNING
 ; MUI Settings / Icons
 ; 安装包图标
-!define MUI_ICON "${PRODUCT_NAME_ENG}\config\img\install.ico"
+!define MUI_ICON "config\img\install.ico"
 ;!define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 ;!define MUI_ICON "${NSISDIR}\Contrib\Graphics\Icons\orange-install.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\orange-uninstall.ico"
@@ -42,7 +42,7 @@ SetCompressor lzma
 ; 欢迎页面
 !insertmacro MUI_PAGE_WELCOME
 ; 许可协议页面
-!insertmacro MUI_PAGE_LICENSE "${PRODUCT_NAME_ENG}\config\lic.txt"
+!insertmacro MUI_PAGE_LICENSE "config\lic.txt"
 ; 安装目录选择页面
 ;!insertmacro MUI_PAGE_DIRECTORY
 ; 安装过程页面

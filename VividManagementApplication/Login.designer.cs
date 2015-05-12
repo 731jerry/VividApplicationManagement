@@ -31,7 +31,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.LoadCyy = new System.Windows.Forms.Button();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,22 +38,9 @@
             this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.productLinkLabel = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LoadCyy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // LoadCyy
-            // 
-            this.LoadCyy.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.LoadCyy.Image = ((System.Drawing.Image)(resources.GetObject("LoadCyy.Image")));
-            this.LoadCyy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LoadCyy.Location = new System.Drawing.Point(123, 275);
-            this.LoadCyy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.LoadCyy.Name = "LoadCyy";
-            this.LoadCyy.Size = new System.Drawing.Size(157, 30);
-            this.LoadCyy.TabIndex = 3;
-            this.LoadCyy.Text = "  登      录";
-            this.LoadCyy.UseVisualStyleBackColor = true;
-            this.LoadCyy.Click += new System.EventHandler(this.LoadCyy_Click);
             // 
             // tbPassword
             // 
@@ -120,12 +106,27 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(390, 183);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
+            // 
+            // LoadCyy
+            // 
+            this.LoadCyy.Font = new System.Drawing.Font("微软雅黑", 10F);
+            this.LoadCyy.Image = ((System.Drawing.Image)(resources.GetObject("LoadCyy.Image")));
+            this.LoadCyy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LoadCyy.Location = new System.Drawing.Point(123, 275);
+            this.LoadCyy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.LoadCyy.Name = "LoadCyy";
+            this.LoadCyy.Size = new System.Drawing.Size(157, 30);
+            this.LoadCyy.TabIndex = 3;
+            this.LoadCyy.Text = "  登      录";
+            this.LoadCyy.UseVisualStyleBackColor = true;
+            this.LoadCyy.Click += new System.EventHandler(this.LoadCyy_Click);
             // 
             // Login
             // 

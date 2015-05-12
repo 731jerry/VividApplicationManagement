@@ -118,7 +118,7 @@ namespace VividManagementApplication
                 #region 初始化数据库 备份数据库
                 if (DEGREE > 0)
                 {
-                    Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
+                    Thread t = new Thread(new ThreadStart(InitLocalDataBase));
                     t.Start();
                     t.DisableComObjectEagerCleanup();
                 }
@@ -137,12 +137,12 @@ namespace VividManagementApplication
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
-                Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheck));
+                Thread tt = new Thread(new ThreadStart(updateRemoteSignUndealedCountCheck));
                 tt.Start();
                 tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
-                updateRemoteSignTimer = new System.Timers.Timer(13000);
+                updateRemoteSignTimer = new System.Timers.Timer(5000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
                 updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
@@ -207,6 +207,10 @@ namespace VividManagementApplication
 
         // 初始化本地数据库
         private void InitLocalDataBaseWithObject(object obj)
+        {
+            InitLocalDataBase();
+        }
+        private void InitLocalDataBase()
         {
             if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
@@ -360,7 +364,7 @@ namespace VividManagementApplication
             }
             else
             {
-                FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
+                FormBasicFeatrues.GetInstence().SoundPlay(VividManagementApplication.Properties.Resources.complete);
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 //MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
                 StatusToolStripStatusLabel.Text = UploadMoreInfo + "同步成功!";
@@ -1113,10 +1117,6 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                //Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
-                //t.Start("关闭前同步!");
-                //t.DisableComObjectEagerCleanup();
-
                 if (notifyIcon != null)
                 {
                     notifyIcon.Visible = false;
@@ -1124,6 +1124,17 @@ namespace VividManagementApplication
                     notifyIcon.Dispose();
                     notifyIcon = null;
                 }
+
+                updateRemoteSignTimer.Dispose();
+                lablTextChangeTimer.Dispose();
+               // DatabaseConnections.GetInstence().LocalDbClose();
+               // DatabaseConnections.GetInstence().OnlineDbClose();
+
+                //Thread t = new Thread(new ThreadStart(UploadFileWithNoticeWithObjectBackupData));
+                //t.Start("关闭前同步!");
+                //t.DisableComObjectEagerCleanup();
+
+                this.Dispose(true);
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
             }
@@ -1529,7 +1540,11 @@ namespace VividManagementApplication
 
         #region 远程签单
 
-        private void updateRemoteSignUndealedCountCheck(Object obj)
+        private void updateRemoteSignUndealedCountCheckWithObject(Object obj)
+        {
+            updateRemoteSignUndealedCountCheck();
+        }
+        private void updateRemoteSignUndealedCountCheck()
         {
             List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
             NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理远程签单";
@@ -1545,7 +1560,7 @@ namespace VividManagementApplication
             //{
             //    this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
             //}
-            Thread t = new Thread(new ParameterizedThreadStart(checkRemoteSignListWithObject));
+            Thread t = new Thread(new ThreadStart(checkRemoteSignList));
             t.Start();
             t.DisableComObjectEagerCleanup();
         }
@@ -1575,11 +1590,6 @@ namespace VividManagementApplication
             catch { return; }
         }
 
-        private void remoteSignTimer_Tick(object sender, EventArgs e)
-        {
-            checkRemoteSignList();
-        }
-
         #endregion
 
         private void StatusToolStripStatusLabel_TextChanged(object sender, EventArgs e)
@@ -1597,5 +1607,6 @@ namespace VividManagementApplication
             StatusToolStripStatusLabel.Text = "消息";
             lablTextChangeTimer.Enabled = false;
         }
+
     }
 }

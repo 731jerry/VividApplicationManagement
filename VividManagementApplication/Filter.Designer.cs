@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Filter));
             this.toDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
@@ -44,7 +43,7 @@
             // toDate
             // 
             this.toDate.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.toDate.Location = new System.Drawing.Point(319, 55);
+            this.toDate.Location = new System.Drawing.Point(319, 51);
             this.toDate.Name = "toDate";
             this.toDate.Size = new System.Drawing.Size(139, 26);
             this.toDate.TabIndex = 319;
@@ -55,7 +54,7 @@
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(287, 58);
+            this.label3.Location = new System.Drawing.Point(287, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 20);
             this.label3.TabIndex = 318;
@@ -64,7 +63,7 @@
             // fromDate
             // 
             this.fromDate.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.fromDate.Location = new System.Drawing.Point(84, 55);
+            this.fromDate.Location = new System.Drawing.Point(84, 51);
             this.fromDate.Name = "fromDate";
             this.fromDate.Size = new System.Drawing.Size(139, 26);
             this.fromDate.TabIndex = 317;
@@ -75,7 +74,7 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(52, 58);
+            this.label2.Location = new System.Drawing.Point(52, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 20);
             this.label2.TabIndex = 316;
@@ -86,7 +85,7 @@
             this.clientName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clientName.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.clientName.FormattingEnabled = true;
-            this.clientName.Location = new System.Drawing.Point(319, 12);
+            this.clientName.Location = new System.Drawing.Point(319, 11);
             this.clientName.Name = "clientName";
             this.clientName.Size = new System.Drawing.Size(185, 28);
             this.clientName.TabIndex = 315;
@@ -97,7 +96,7 @@
             this.label19.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(245, 16);
+            this.label19.Location = new System.Drawing.Point(245, 15);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(68, 20);
             this.label19.TabIndex = 314;
@@ -108,7 +107,7 @@
             this.clientID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clientID.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.clientID.FormattingEnabled = true;
-            this.clientID.Location = new System.Drawing.Point(84, 12);
+            this.clientID.Location = new System.Drawing.Point(84, 11);
             this.clientID.Name = "clientID";
             this.clientID.Size = new System.Drawing.Size(139, 28);
             this.clientID.TabIndex = 313;
@@ -120,7 +119,7 @@
             this.label63.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label63.ForeColor = System.Drawing.Color.Black;
             this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label63.Location = new System.Drawing.Point(10, 16);
+            this.label63.Location = new System.Drawing.Point(10, 15);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(68, 20);
             this.label63.TabIndex = 312;
@@ -129,10 +128,9 @@
             // OKButton
             // 
             this.OKButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.OKButton.Image = ((System.Drawing.Image)(resources.GetObject("OKButton.Image")));
-            this.OKButton.Location = new System.Drawing.Point(14, 119);
+            this.OKButton.Location = new System.Drawing.Point(14, 110);
             this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(91, 30);
+            this.OKButton.Size = new System.Drawing.Size(91, 28);
             this.OKButton.TabIndex = 320;
             this.OKButton.Text = "确定";
             this.OKButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -142,10 +140,9 @@
             // CancelButton
             // 
             this.CancelButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.CancelButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelButton.Image")));
-            this.CancelButton.Location = new System.Drawing.Point(413, 119);
+            this.CancelButton.Location = new System.Drawing.Point(413, 110);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(91, 30);
+            this.CancelButton.Size = new System.Drawing.Size(91, 28);
             this.CancelButton.TabIndex = 321;
             this.CancelButton.Text = "取消";
             this.CancelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -154,9 +151,9 @@
             // 
             // Filter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 161);
+            this.ClientSize = new System.Drawing.Size(520, 149);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.toDate);

@@ -85,7 +85,6 @@
             this.notifyImageList = new System.Windows.Forms.ImageList(this.components);
             this.ExtendExpireLinkLabel = new System.Windows.Forms.LinkLabel();
             this.UserDegreeLabel = new System.Windows.Forms.Label();
-            this.remoteSignTimer = new System.Windows.Forms.Timer(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -527,11 +526,6 @@
             this.UserDegreeLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.UserDegreeLabel.Name = "UserDegreeLabel";
             // 
-            // remoteSignTimer
-            // 
-            this.remoteSignTimer.Interval = 5000;
-            this.remoteSignTimer.Tick += new System.EventHandler(this.remoteSignTimer_Tick);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -667,7 +661,6 @@
         private System.Windows.Forms.Label UserDegreeLabel;
         private ControlExs.QQButton listQdButton;
         private ControlExs.QQRadioButton QdRadio;
-        private System.Windows.Forms.Timer remoteSignTimer;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel NotifyToolStripStatusLabel;
         private System.Windows.Forms.ToolStripProgressBar pbUploadDownloadFileToolStripProgressBar;

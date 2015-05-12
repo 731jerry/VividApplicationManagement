@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             this.tbInfo6 = new System.Windows.Forms.TextBox();
             this.tbInfo1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -250,7 +249,6 @@
             // ChangePasswordQQButton
             // 
             this.ChangePasswordQQButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.ChangePasswordQQButton.Image = ((System.Drawing.Image)(resources.GetObject("ChangePasswordQQButton.Image")));
             this.ChangePasswordQQButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ChangePasswordQQButton.Location = new System.Drawing.Point(154, 131);
             this.ChangePasswordQQButton.Name = "ChangePasswordQQButton";
@@ -397,7 +395,6 @@
             // SignqqButton
             // 
             this.SignqqButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.SignqqButton.Image = ((System.Drawing.Image)(resources.GetObject("SignqqButton.Image")));
             this.SignqqButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.SignqqButton.Location = new System.Drawing.Point(115, 131);
             this.SignqqButton.Name = "SignqqButton";
@@ -411,7 +408,6 @@
             // CancelQQButton
             // 
             this.CancelQQButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.CancelQQButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelQQButton.Image")));
             this.CancelQQButton.Location = new System.Drawing.Point(480, 441);
             this.CancelQQButton.Name = "CancelQQButton";
             this.CancelQQButton.Size = new System.Drawing.Size(91, 28);
@@ -424,7 +420,6 @@
             // SaveButton
             // 
             this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
             this.SaveButton.Location = new System.Drawing.Point(33, 441);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(91, 28);

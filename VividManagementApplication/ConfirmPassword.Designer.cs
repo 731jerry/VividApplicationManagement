@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmPassword));
             this.label1 = new System.Windows.Forms.Label();
             this.confirmPasswordText = new System.Windows.Forms.TextBox();
             this.ConfirmPasswordButton = new ControlExs.QQButton();
@@ -57,7 +56,6 @@
             // ConfirmPasswordButton
             // 
             this.ConfirmPasswordButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.ConfirmPasswordButton.Image = ((System.Drawing.Image)(resources.GetObject("ConfirmPasswordButton.Image")));
             this.ConfirmPasswordButton.Location = new System.Drawing.Point(155, 85);
             this.ConfirmPasswordButton.Name = "ConfirmPasswordButton";
             this.ConfirmPasswordButton.Size = new System.Drawing.Size(91, 28);

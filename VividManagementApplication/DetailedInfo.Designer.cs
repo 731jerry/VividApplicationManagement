@@ -4338,7 +4338,6 @@ namespace VividManagementApplication
             // PreviewPrintButton
             // 
             this.PreviewPrintButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.PreviewPrintButton.Image = ((System.Drawing.Image)(resources.GetObject("PreviewPrintButton.Image")));
             this.PreviewPrintButton.Location = new System.Drawing.Point(32, 653);
             this.PreviewPrintButton.Name = "PreviewPrintButton";
             this.PreviewPrintButton.Size = new System.Drawing.Size(101, 30);
@@ -4351,7 +4350,6 @@ namespace VividManagementApplication
             // SaveButton
             // 
             this.SaveButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.SaveButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveButton.Image")));
             this.SaveButton.Location = new System.Drawing.Point(727, 653);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(91, 30);
