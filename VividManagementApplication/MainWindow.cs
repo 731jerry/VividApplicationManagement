@@ -1127,8 +1127,7 @@ namespace VividManagementApplication
 
                 updateRemoteSignTimer.Dispose();
                 lablTextChangeTimer.Dispose();
-               // DatabaseConnections.GetInstence().LocalDbClose();
-               // DatabaseConnections.GetInstence().OnlineDbClose();
+                DatabaseConnections.GetInstence().LocalDbClose();
 
                 //Thread t = new Thread(new ThreadStart(UploadFileWithNoticeWithObjectBackupData));
                 //t.Start("关闭前同步!");
@@ -1137,6 +1136,7 @@ namespace VividManagementApplication
                 this.Dispose(true);
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
+                DatabaseConnections.GetInstence().OnlineDbClose();
             }
         }
 
