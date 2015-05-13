@@ -32,20 +32,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.fromDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.clientName = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.clientID = new System.Windows.Forms.ComboBox();
             this.label63 = new System.Windows.Forms.Label();
             this.OKButton = new ControlExs.QQButton();
             this.CancelButton = new ControlExs.QQButton();
+            this.DzTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.clientName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // toDate
             // 
             this.toDate.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.toDate.Location = new System.Drawing.Point(319, 51);
+            this.toDate.Location = new System.Drawing.Point(332, 107);
             this.toDate.Name = "toDate";
-            this.toDate.Size = new System.Drawing.Size(139, 26);
+            this.toDate.Size = new System.Drawing.Size(154, 26);
             this.toDate.TabIndex = 319;
             // 
             // label3
@@ -54,7 +55,7 @@
             this.label3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(287, 54);
+            this.label3.Location = new System.Drawing.Point(300, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 20);
             this.label3.TabIndex = 318;
@@ -63,9 +64,9 @@
             // fromDate
             // 
             this.fromDate.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.fromDate.Location = new System.Drawing.Point(84, 51);
+            this.fromDate.Location = new System.Drawing.Point(332, 66);
             this.fromDate.Name = "fromDate";
-            this.fromDate.Size = new System.Drawing.Size(139, 26);
+            this.fromDate.Size = new System.Drawing.Size(154, 26);
             this.fromDate.TabIndex = 317;
             // 
             // label2
@@ -74,21 +75,11 @@
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(52, 54);
+            this.label2.Location = new System.Drawing.Point(300, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(26, 20);
             this.label2.TabIndex = 316;
             this.label2.Text = "从:";
-            // 
-            // clientName
-            // 
-            this.clientName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.clientName.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.clientName.FormattingEnabled = true;
-            this.clientName.Location = new System.Drawing.Point(319, 11);
-            this.clientName.Name = "clientName";
-            this.clientName.Size = new System.Drawing.Size(185, 28);
-            this.clientName.TabIndex = 315;
             // 
             // label19
             // 
@@ -96,7 +87,7 @@
             this.label19.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label19.Location = new System.Drawing.Point(245, 15);
+            this.label19.Location = new System.Drawing.Point(258, 26);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(68, 20);
             this.label19.TabIndex = 314;
@@ -107,9 +98,9 @@
             this.clientID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.clientID.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.clientID.FormattingEnabled = true;
-            this.clientID.Location = new System.Drawing.Point(84, 11);
+            this.clientID.Location = new System.Drawing.Point(103, 21);
             this.clientID.Name = "clientID";
-            this.clientID.Size = new System.Drawing.Size(139, 28);
+            this.clientID.Size = new System.Drawing.Size(122, 28);
             this.clientID.TabIndex = 313;
             this.clientID.SelectedIndexChanged += new System.EventHandler(this.clientID_SelectedIndexChanged);
             // 
@@ -119,7 +110,7 @@
             this.label63.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.label63.ForeColor = System.Drawing.Color.Black;
             this.label63.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label63.Location = new System.Drawing.Point(10, 15);
+            this.label63.Location = new System.Drawing.Point(29, 25);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(68, 20);
             this.label63.TabIndex = 312;
@@ -128,7 +119,7 @@
             // OKButton
             // 
             this.OKButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.OKButton.Location = new System.Drawing.Point(14, 110);
+            this.OKButton.Location = new System.Drawing.Point(33, 150);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(91, 28);
             this.OKButton.TabIndex = 320;
@@ -140,7 +131,7 @@
             // CancelButton
             // 
             this.CancelButton.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.CancelButton.Location = new System.Drawing.Point(413, 110);
+            this.CancelButton.Location = new System.Drawing.Point(395, 150);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(91, 28);
             this.CancelButton.TabIndex = 321;
@@ -149,18 +140,40 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // DzTypeComboBox
+            // 
+            this.DzTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DzTypeComboBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.DzTypeComboBox.FormattingEnabled = true;
+            this.DzTypeComboBox.Items.AddRange(new object[] {
+            "应收对账单",
+            "应付对账单"});
+            this.DzTypeComboBox.Location = new System.Drawing.Point(33, 81);
+            this.DzTypeComboBox.Name = "DzTypeComboBox";
+            this.DzTypeComboBox.Size = new System.Drawing.Size(192, 28);
+            this.DzTypeComboBox.TabIndex = 323;
+            // 
+            // clientName
+            // 
+            this.clientName.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.clientName.Location = new System.Drawing.Point(332, 23);
+            this.clientName.Name = "clientName";
+            this.clientName.Size = new System.Drawing.Size(154, 26);
+            this.clientName.TabIndex = 324;
+            // 
             // Filter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 149);
+            this.ClientSize = new System.Drawing.Size(520, 204);
+            this.Controls.Add(this.clientName);
+            this.Controls.Add(this.DzTypeComboBox);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.toDate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fromDate);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.clientName);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.clientID);
             this.Controls.Add(this.label63);
@@ -183,11 +196,12 @@
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.DateTimePicker fromDate;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.ComboBox clientName;
         private System.Windows.Forms.Label label19;
         public System.Windows.Forms.ComboBox clientID;
         private System.Windows.Forms.Label label63;
         public ControlExs.QQButton OKButton;
         public ControlExs.QQButton CancelButton;
+        public System.Windows.Forms.ComboBox DzTypeComboBox;
+        public System.Windows.Forms.TextBox clientName;
     }
 }

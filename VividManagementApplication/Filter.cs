@@ -21,11 +21,15 @@ namespace VividManagementApplication
         {
             fromDate.Text = DateTime.Now.AddDays(-7).ToShortDateString();
             toDate.Text = DateTime.Now.ToShortDateString();
+            DzTypeComboBox.SelectedIndex = 0;
+
+            clientID.Items.Add("");
+            clientID.Items.Insert(1, "使用选择器...");
 
             addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), clientID);
-            if (clientID.Items.Count>0)
+            if (clientID.Items.Count > 2)
             {
-            clientID.SelectedIndex = 0;
+                clientID.SelectedIndex = 2;
             }
         }
 
@@ -50,9 +54,30 @@ namespace VividManagementApplication
 
         private void clientID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clientName.Items.Clear();
-            FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { clientName }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "company" }, "clientID", clientID.Text).ToList<String>());
-            clientName.SelectedIndex = 0;
+            if (clientID.SelectedIndex != -1)
+            {
+                if (clientID.Text.Equals(""))
+                {
+                    clientName.Clear();
+                }
+                else if (clientID.SelectedIndex == 1)
+                {
+                    Picker cp = new Picker();
+                    cp.isClient = true;
+                    if (cp.ShowDialog() == DialogResult.OK)
+                    {
+                        clientID.Text = cp.selectedClientID;
+                    }
+                    else
+                    {
+                        clientID.SelectedIndex = 0;
+                    }
+                }
+                else
+                {
+                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { clientName }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "company" }, "clientID", clientID.Text).ToList<String>());
+                }
+            }
         }
 
     }

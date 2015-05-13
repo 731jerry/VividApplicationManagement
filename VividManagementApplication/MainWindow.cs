@@ -118,7 +118,7 @@ namespace VividManagementApplication
                 #region 初始化数据库 备份数据库
                 if (DEGREE > 0)
                 {
-                    Thread t = new Thread(new ThreadStart(InitLocalDataBase));
+                    Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
                     t.Start();
                     t.DisableComObjectEagerCleanup();
                 }
@@ -137,7 +137,7 @@ namespace VividManagementApplication
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
-                Thread tt = new Thread(new ThreadStart(updateRemoteSignUndealedCountCheck));
+                Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
                 tt.Start();
                 tt.DisableComObjectEagerCleanup();
 
@@ -977,13 +977,35 @@ namespace VividManagementApplication
                 DataGridViewColumn[] dgvcArray = new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 };
                 this.MainDataGridView.Columns.AddRange(dgvcArray);
                 ClearDataGridViewColumnSortOrder(dgvcArray.Length);
+
+                String dzTypeInDatabase, dzTypeID, dzTypeName, leixingLimitation;
+                if (flt.DzTypeComboBox.SelectedIndex == 0)
+                {
+                    dzTypeInDatabase = "xsdList";
+                    dzTypeID = "xsdID";
+                    dzTypeName = "销售凭证";
+                    leixingLimitation = " (leixing = '0' OR leixing = '2') AND ";
+                }
+                else
+                {
+                    dzTypeInDatabase = "cgdList";
+                    dzTypeID = "cgdID";
+                    dzTypeName = "采购凭证";
+                    leixingLimitation = " (leixing = '1' OR leixing = '3') AND ";
+                }
+
+                String limitation = "clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
+                    + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' AND '" + flt.toDate.Value.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss") + "')";
+
                 List<string[]> resultsList = DatabaseConnections.GetInstence().LocalGetDataFromOriginalSQL(
                     "SELECT pzID, cast (modifyTime as VARCHAR) as modifyTime"
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
                     + ",zhaiyao"
-                    + ",operateMoney,remaintingMoney FROM pzList WHERE clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
-                    + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' AND '" + flt.toDate.Value.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss") + "')"
-                    + " ORDER BY modifyTime ASC",
+                    + ",operateMoney,remaintingMoney FROM pzList "
+                    + "WHERE " + leixingLimitation + limitation
+                    + " UNION "
+                    + " SELECT " + dzTypeID + " as pzID ,cast (modifyTime as VARCHAR), '" + dzTypeName + "'as leixing, companyName as zhaiyao, sum as operateMoney, 0 as remaintingMoney FROM " + dzTypeInDatabase
+                    + " WHERE " + limitation + " ORDER BY modifyTime ASC",
                     new String[] { "pzID", "modifyTime", "leixing", "zhaiyao", "operateMoney", "remaintingMoney" });
 
                 for (int i = 0; i < resultsList.Count; i++)
@@ -1129,7 +1151,7 @@ namespace VividManagementApplication
                 lablTextChangeTimer.Dispose();
                 DatabaseConnections.GetInstence().LocalDbClose();
 
-                //Thread t = new Thread(new ThreadStart(UploadFileWithNoticeWithObjectBackupData));
+                //Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
                 //t.Start("关闭前同步!");
                 //t.DisableComObjectEagerCleanup();
 
@@ -1560,7 +1582,7 @@ namespace VividManagementApplication
             //{
             //    this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
             //}
-            Thread t = new Thread(new ThreadStart(checkRemoteSignList));
+            Thread t = new Thread(new ParameterizedThreadStart(checkRemoteSignListWithObject));
             t.Start();
             t.DisableComObjectEagerCleanup();
         }

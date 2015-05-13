@@ -2693,7 +2693,7 @@ namespace VividManagementApplication
             this.textBox38.ReadOnly = true;
             this.textBox38.Size = new System.Drawing.Size(148, 26);
             this.textBox38.TabIndex = 284;
-            this.textBox38.Text = "收 款 金 额";
+            this.textBox38.Text = "金     额";
             this.textBox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // APztb2

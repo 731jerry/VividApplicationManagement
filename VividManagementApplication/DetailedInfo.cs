@@ -348,7 +348,6 @@ namespace VividManagementApplication
                         pzComboBox.Items.Add("付款凭证");
                         pzComboBox.Items.Add("领款凭证");
                         pzComboBox.Items.Add("还款凭证");
-                        pzComboBox.Items.Add("报销凭证");
                         pzComboBox.SelectedIndex = 0;
 
                         PzDateTextBox.Text = DateTime.Now.ToLongDateString();
@@ -366,7 +365,6 @@ namespace VividManagementApplication
                         pzComboBox.Items.Add("付款凭证");
                         pzComboBox.Items.Add("领款凭证");
                         pzComboBox.Items.Add("还款凭证");
-                        pzComboBox.Items.Add("报销凭证");
 
                         try
                         {
@@ -864,8 +862,7 @@ namespace VividManagementApplication
                          收款凭证
                          付款凭证
                          领款凭证
-                         还款凭证 报销用的
-                         报销凭证
+                         还款凭证
                          */
 
                         String jsonData = ControlValueTransitToJson(
@@ -1151,9 +1148,6 @@ namespace VividManagementApplication
                     break;
                 case 3:// 还款凭证
                     lbPzTitle.Text = "还 款 凭 证";
-                    break;
-                case 4:// 报销凭证
-                    lbPzTitle.Text = "报 销 凭 证";
                     break;
             }
         }
