@@ -916,7 +916,7 @@ namespace VividManagementApplication
             Column1.HeaderText = "凭证号码";
             Column2.HeaderText = "日期";
             Column3.HeaderText = "凭证类型";
-            Column4.HeaderText = "对方单位名称";
+            Column4.HeaderText = "对方单位";
             Column5.HeaderText = "交易金额";
             Column6.HeaderText = "结余金额";
             Column7.HeaderText = "作废标识";
@@ -982,7 +982,7 @@ namespace VividManagementApplication
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
                     + ",zhaiyao"
                     + ",operateMoney,remaintingMoney FROM pzList WHERE clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
-                    + " AND (modifyTime BETWEEN '" + flt.fromDate.Value + "' AND '" + flt.toDate.Value.AddDays(1) + "')"
+                    + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' AND '" + flt.toDate.Value.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss") + "')"
                     + " ORDER BY modifyTime ASC",
                     new String[] { "pzID", "modifyTime", "leixing", "zhaiyao", "operateMoney", "remaintingMoney" });
 

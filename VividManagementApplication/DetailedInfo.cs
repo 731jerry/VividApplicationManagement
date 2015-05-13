@@ -735,7 +735,7 @@ namespace VividManagementApplication
                                 tbDz1.Text, DatabaseConnections.GetInstence().LocalAutoincreaseID(tableDZ, baseNameDZ), tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
 
                             DatabaseConnections.GetInstence().LocalReplaceIntoData(tableDZ, queryStringArrayDZ, resultStringArrayDZ, mainID);
                             #endregion
@@ -779,7 +779,7 @@ namespace VividManagementApplication
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString(), DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
                             //}
                         }
                         else
@@ -791,7 +791,7 @@ namespace VividManagementApplication
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString()};
+                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
                                 //queryStringArray = new String[] { baseName, "discardFlag", "modifyTime" };
                                 //resultStringArray = new String[] { tbDz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                             }
@@ -802,7 +802,7 @@ namespace VividManagementApplication
                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                jsonData, 
-                               tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString(), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                               tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
                                 //queryStringArray = new String[] { baseName, "discardFlag", "modifyTime" };
                                 //resultStringArray = new String[] { tbDz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                             }
@@ -826,7 +826,7 @@ namespace VividManagementApplication
                                 }
 
                                 String[] queryStringArrayDZModi = new String[] { "discardFlag", "modifyTime" };
-                                String[] resultStringArrayDZModi = new String[] { (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
+                                String[] resultStringArrayDZModi = new String[] { (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
 
                                 DatabaseConnections.GetInstence().LocalUpdateData(tableDZModi, queryStringArrayDZModi, resultStringArrayDZModi, true, baseNameDZModi, tbDz2.Text);
                                 #endregion
@@ -890,7 +890,7 @@ namespace VividManagementApplication
                                 pzComboBox.SelectedIndex.ToString(),  
                                 pzCompany.Text,
                                 jsonData, SumtbPz.Text.Split('=')[0],
-                                "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(), DateTime.Now.ToString()};
+                                "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
 
                             if (pzComboBox.SelectedIndex == 0) //收款
                             {
@@ -911,7 +911,7 @@ namespace VividManagementApplication
                                 pzComboBox.SelectedIndex.ToString(),  
                                 pzCompany.Text,
                                 jsonData, SumtbPz.Text.Split('=')[0],
-                                "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString()};
+                                "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
                             //queryStringArray = new String[] { "pzID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { tbPz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                         }
@@ -946,8 +946,8 @@ namespace VividManagementApplication
                                 jsonData,
                                 SumHtTextbox.Text.Split('=')[0], 
                                 (DiscardCheckBox.Checked?"1":"0"), 
-                                DateTime.Now.ToString(),  
-                                DateTime.Now.ToString(),
+                                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),  
+                                DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                                 HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                             // 保存法人信息
                             if (HTcbName.SelectedIndex == 0)
@@ -965,7 +965,7 @@ namespace VividManagementApplication
                             resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, 
                                 (HTcbName.SelectedIndex == 0) ?tbHTghfID.Text:tbHTxsfID.Text,  (HTcbName.SelectedIndex == 0) ?tbHTghfName.Text:tbHTxsfName.Text,
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString(),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
+                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                             //queryStringArray = new String[] { "htID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { HTtbID.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                         }

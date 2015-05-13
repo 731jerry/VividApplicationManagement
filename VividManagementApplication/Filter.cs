@@ -23,8 +23,10 @@ namespace VividManagementApplication
             toDate.Text = DateTime.Now.ToShortDateString();
 
             addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), clientID);
+            if (clientID.Items.Count>0)
+            {
             clientID.SelectedIndex = 0;
-
+            }
         }
 
         private void OKButton_Click(object sender, EventArgs e)

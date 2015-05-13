@@ -7,7 +7,6 @@
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Debug\System.Data.SQLite.DLL
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.BillSign.resources
-\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.ClientPicker.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.ConfirmPassword.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.CoolPrintPreviewDialog.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.DetailedInfo.resources
@@ -21,3 +20,5 @@
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.csproj.GenerateResource.Cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\管账宝.exe
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\管账宝.pdb
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.InputMessage.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.Picker.resources
