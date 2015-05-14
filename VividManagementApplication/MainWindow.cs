@@ -936,6 +936,7 @@ namespace VividManagementApplication
         private String clientIDFromFilter = "";
         private String clientNameFromFilter = "";
 
+        private Boolean isYS = false;
         // 客户对账单
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
@@ -981,6 +982,7 @@ namespace VividManagementApplication
                 String dzTypeInDatabase, dzTypeID, dzTypeName, leixingLimitation;
                 if (flt.DzTypeComboBox.SelectedIndex == 0)
                 {
+                    isYS = true;
                     dzTypeInDatabase = "xsdList";
                     dzTypeID = "xsdID";
                     dzTypeName = "销售凭证";
@@ -988,6 +990,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    isYS = false;
                     dzTypeInDatabase = "cgdList";
                     dzTypeID = "cgdID";
                     dzTypeName = "采购凭证";
@@ -1204,6 +1207,7 @@ namespace VividManagementApplication
             //objPPdialog.ShowDialog();
             if (MainDataGridView.Rows.Count > 0)
             {
+                SetDZDPrintFormat();
                 //注意指定其Document(获取或设置要预览的文档)属性
                 this.printPreviewDialog1.Document = this.printDocument1;
                 //ShowDialog方法：将窗体显示为模式对话框，并将当前活动窗口设置为它的所有者
@@ -1215,6 +1219,77 @@ namespace VividManagementApplication
                 MessageBox.Show("表格数据缺失, 不能打印", "错误");
             }
         }
+
+        DataGridView DZDPrintingDGV;
+        private void SetDZDPrintFormat()
+        {
+            //MainDataGridView.Columns[1].ValueType = Type.datetime;
+           this.MainDataGridView.Columns[1].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+            DataGridView tempDGV = new DataGridView();
+           tempDGV= CopyDataGridView(MainDataGridView);
+           tempDGV.Columns.Add(new DataGridViewTextBoxColumn());
+           tempDGV.Columns[0].HeaderText = "序";
+           tempDGV.Columns[1].HeaderText = "日 期";
+           tempDGV.Columns[2].HeaderText = "凭证号";
+           tempDGV.Columns[3].HeaderText = "摘  要";
+           tempDGV.Columns[4].HeaderText = isYS ? "应收金额(元)" : "应付金额(元)";
+           tempDGV.Columns[5].HeaderText = isYS ? "已收金额(元)" : "已付金额(元)";
+           tempDGV.Columns[6].HeaderText = "结余金额(元)";
+
+           tempDGV.Columns[0].Width = 50;
+           tempDGV.Columns[1].Width = 90;
+
+           DZDPrintingDGV = CopyDataGridView(tempDGV);
+            for (int i = 0; i < MainDataGridView.Rows.Count; i++)
+            {
+                String leixing = tempDGV.Rows[i].Cells[2].Value.ToString().Substring(0, 1);
+                DZDPrintingDGV.Rows[i].Cells[0].Value = (i + 1).ToString();
+                DZDPrintingDGV.Rows[i].Cells[1].Value = DateTime.Parse(tempDGV.Rows[i].Cells[1].Value.ToString()).ToShortDateString();
+                DZDPrintingDGV.Rows[i].Cells[2].Value = leixing + tempDGV.Rows[i].Cells[0].Value.ToString();
+                DZDPrintingDGV.Rows[i].Cells[3].Value = tempDGV.Rows[i].Cells[3].Value.ToString();
+                DZDPrintingDGV.Rows[i].Cells[4].Value = isYS ? ((leixing.Equals("收") ? "" : tempDGV.Rows[i].Cells[4].Value.ToString())) : (leixing.Equals("付") ? "" : tempDGV.Rows[i].Cells[4].Value.ToString());
+                DZDPrintingDGV.Rows[i].Cells[5].Value = isYS ? ((leixing.Equals("收") ? tempDGV.Rows[i].Cells[4].Value.ToString() : "")) : (leixing.Equals("付") ? tempDGV.Rows[i].Cells[4].Value.ToString() : "");
+                DZDPrintingDGV.Rows[i].Cells[6].Value = tempDGV.Rows[i].Cells[5].Value.ToString();
+            }
+        }
+
+        private DataGridView CopyDataGridView(DataGridView dgv_org)
+        {
+            DataGridView dgv_copy = new DataGridView();
+            try
+            {
+                if (dgv_copy.Columns.Count == 0)
+                {
+                    foreach (DataGridViewColumn dgvc in dgv_org.Columns)
+                    {
+                        dgv_copy.Columns.Add(dgvc.Clone() as DataGridViewColumn);
+                    }
+                }
+
+                DataGridViewRow row = new DataGridViewRow();
+
+                for (int i = 0; i < dgv_org.Rows.Count; i++)
+                {
+                    row = (DataGridViewRow)dgv_org.Rows[i].Clone();
+                    int intColIndex = 0;
+                    foreach (DataGridViewCell cell in dgv_org.Rows[i].Cells)
+                    {
+                        row.Cells[intColIndex].Value = cell.Value;
+                        intColIndex++;
+                    }
+                    dgv_copy.Rows.Add(row);
+                }
+                dgv_copy.AllowUserToAddRows = false;
+                dgv_copy.Refresh();
+
+            }
+            catch
+            {
+                //ShowExceptionErrorMsg("Copy DataGridViw", ex);
+            }
+            return dgv_copy;
+        }
+
         #endregion
 
         #region Begin Print Event Handler
@@ -1241,7 +1316,7 @@ namespace VividManagementApplication
 
                 // Calculating Total Widths
                 iTotalWidth = 0;
-                foreach (DataGridViewColumn dgvGridCol in MainDataGridView.Columns)
+                foreach (DataGridViewColumn dgvGridCol in DZDPrintingDGV.Columns)
                 {
                     iTotalWidth += dgvGridCol.Width;
                 }
@@ -1274,7 +1349,7 @@ namespace VividManagementApplication
                 //For the first page to print set the cell width and header height
                 if (bFirstPage)
                 {
-                    foreach (DataGridViewColumn GridCol in MainDataGridView.Columns)
+                    foreach (DataGridViewColumn GridCol in DZDPrintingDGV.Columns)
                     {
                         iTmpWidth = (int)(Math.Floor((double)((double)GridCol.Width /
                                        (double)iTotalWidth * (double)iTotalWidth *
@@ -1290,9 +1365,9 @@ namespace VividManagementApplication
                     }
                 }
                 //Loop till all the grid rows not get printed
-                while (iRow <= MainDataGridView.Rows.Count - 1)
+                while (iRow <= DZDPrintingDGV.Rows.Count - 1)
                 {
-                    DataGridViewRow GridRow = MainDataGridView.Rows[iRow];
+                    DataGridViewRow GridRow = DZDPrintingDGV.Rows[iRow];
                     //Set the cell height
                     iCellHeight = GridRow.Height + 8; // 表格高度 原本是5
                     int iCount = 0;
@@ -1324,7 +1399,7 @@ namespace VividManagementApplication
                             // 页码
                             pageIndex++;
                             fontSize = e.Graphics.MeasureString("- " + pageIndex.ToString() + " -", new Font("微软雅黑", 12));
-                            e.Graphics.DrawString("- " + pageIndex.ToString() + " -", new Font(MainDataGridView.Font, FontStyle.Bold),
+                            e.Graphics.DrawString("- " + pageIndex.ToString() + " -", new Font(DZDPrintingDGV.Font, FontStyle.Bold),
                                    Brushes.Black, this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2,
                                    this.printDocument1.DefaultPageSettings.PaperSize.Height - 45);
 
@@ -1335,22 +1410,22 @@ namespace VividManagementApplication
                                 this.printDocument1.DefaultPageSettings.PaperSize.Height - 65);
 
                             //Draw Header
-                            e.Graphics.DrawString(leftString, new Font(MainDataGridView.Font, FontStyle.Bold),
+                            e.Graphics.DrawString(leftString, new Font(DZDPrintingDGV.Font, FontStyle.Bold),
                                     Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top -
-                                    e.Graphics.MeasureString(leftString, new Font(MainDataGridView.Font,
+                                    e.Graphics.MeasureString(leftString, new Font(DZDPrintingDGV.Font,
                                     FontStyle.Bold), e.MarginBounds.Width).Height + 15);
 
                             //Draw Date
-                            e.Graphics.DrawString(rightString, new Font(MainDataGridView.Font, FontStyle.Bold),
+                            e.Graphics.DrawString(rightString, new Font(DZDPrintingDGV.Font, FontStyle.Bold),
                                     Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width -
-                                    e.Graphics.MeasureString(rightString, new Font(MainDataGridView.Font,
+                                    e.Graphics.MeasureString(rightString, new Font(DZDPrintingDGV.Font,
                                     FontStyle.Bold), e.MarginBounds.Width).Width), e.MarginBounds.Top -
-                                    e.Graphics.MeasureString(leftString, new Font(new Font(MainDataGridView.Font,
+                                    e.Graphics.MeasureString(leftString, new Font(new Font(DZDPrintingDGV.Font,
                                     FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height + 15);
 
                             //Draw Columns                 
                             iTopMargin = e.MarginBounds.Top + 20; // 表格位置 原本为0
-                            foreach (DataGridViewColumn GridCol in MainDataGridView.Columns)
+                            foreach (DataGridViewColumn GridCol in DZDPrintingDGV.Columns)
                             {
                                 e.Graphics.FillRectangle(new SolidBrush(Color.LightGray),
                                     new Rectangle((int)arrColumnLefts[iCount], iTopMargin,
