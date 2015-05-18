@@ -51,7 +51,7 @@ namespace VividManagementApplication
         public static String SIGN_IMAGE_NAME = "sign";
         public static String SIGN_IMAGE_LOCATION = Environment.CurrentDirectory + "\\temp\\" + SIGN_IMAGE_NAME;
 
-        public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\data.db";
+        public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
         public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
         public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/GZB/Users/";
         public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/GZB/Users/";
@@ -115,6 +115,13 @@ namespace VividManagementApplication
 
             if (MainWindow.IS_LOGED_IN)
             {
+                #region 窗体用户信息初始化
+                lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
+                dataBaseFilePrefix = USER_ID + "_data.txt";
+
+                LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
+                #endregion
+
                 #region 初始化数据库 备份数据库
                 if (DEGREE > 0)
                 {
@@ -127,13 +134,11 @@ namespace VividManagementApplication
                     backupData.Enabled = false;
                 }
 
-                DatabaseConnections.GetInstence().LocalCreateDatabase();
+                DatabaseConnections.GetInstence().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
 
                 #endregion
 
-                #region 窗体用户信息初始化
-                lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
-                dataBaseFilePrefix = USER_ID + "_data.txt";
+                
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
@@ -150,8 +155,6 @@ namespace VividManagementApplication
                 {
                     updateRemoteSignTimer.Stop();
                 }
-                #endregion
-
                 #endregion
 
                 #region 窗体滚动通知初始化
@@ -235,7 +238,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
-                    DatabaseConnections.GetInstence().LocalCreateDatabase();
+                    DatabaseConnections.GetInstence().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     UploadFileWithNotice("初次同步, ");
                 }
@@ -424,7 +427,8 @@ namespace VividManagementApplication
             }
             else
             {
-                FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
+                //FormBasicFeatrues.GetInstence().SoundPlay(System.Environment.CurrentDirectory + @"\config\complete.wav");
+                FormBasicFeatrues.GetInstence().SoundPlay(VividManagementApplication.Properties.Resources.complete);
                 //MessageBox.Show(UploadMoreInfo + "同步成功!", "成功");
                 StatusToolStripStatusLabel.Text = UploadMoreInfo + "同步成功!";
             }

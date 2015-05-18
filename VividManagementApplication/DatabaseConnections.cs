@@ -223,8 +223,9 @@ namespace VividManagementApplication
         #region 本地
         private SQLiteConnection localSqlConnectionCommand = new SQLiteConnection("Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION);
 
-        public void LocalCreateDatabase()
+        public void LocalCreateDatabase(String databaseName)
         {
+            localSqlConnectionCommand = new SQLiteConnection("Data Source =" + databaseName);
             LocalDbOpen();
             string sql = @" --
                                 -- File generated with SQLiteStudio v3.0.3 on 周四 4月 9 14:58:30 2015
