@@ -130,7 +130,6 @@ C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\o
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe.config
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
-D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\ControlExs.dll
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\MySql.Data.dll
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
@@ -148,7 +147,6 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.update.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
-D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\管账宝.exe.config
