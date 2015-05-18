@@ -138,7 +138,7 @@ namespace VividManagementApplication
 
                 #endregion
 
-                
+
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
@@ -517,38 +517,53 @@ namespace VividManagementApplication
         delegate void SetpbUploadDownloadLabelCallback(Boolean visible);
         private void SetpbUploadDownloadLabel(Boolean visible)
         {
-            this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
+            //this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
             /*
-                        if (this.pbUploadDownloadToolStripStatusLabel.InvokeRequired)
-                        {
-                            SetpbUploadDownloadLabelCallback d = new SetpbUploadDownloadLabelCallback(SetpbUploadDownloadLabel);
-                            this.Invoke(d, new object[] { visible });
-                        }
-                        else
-                        {
-                            this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
-                        }
+            if (this.pbUploadDownloadToolStripStatusLabel.InvokeRequired)
+            {
+                SetpbUploadDownloadLabelCallback d = new SetpbUploadDownloadLabelCallback(SetpbUploadDownloadLabel);
+                this.Invoke(d, new object[] { visible });
+            }
+            else
+            {
+                this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
+            }
              */
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate()
+                {
+                    this.pbUploadDownloadToolStripStatusLabel.Visible = visible;
+                }));
+            }
         }
 
         // lable
         delegate void SetpbUploadDownloadFileCallback(Boolean visible, int percentage);
         private void SetpbUploadDownloadFile(Boolean visible, int percentage)
         {
-            this.pbUploadDownloadFileToolStripProgressBar.Visible = visible;
-            this.pbUploadDownloadFileToolStripProgressBar.Value = percentage;
+            //this.pbUploadDownloadFileToolStripProgressBar.Visible = visible;
+            //this.pbUploadDownloadFileToolStripProgressBar.Value = percentage;
             /*
-                        if (this.pbUploadDownloadFileToolStripProgressBar.InvokeRequired)
-                        {
-                            SetpbUploadDownloadFileCallback d = new SetpbUploadDownloadFileCallback(SetpbUploadDownloadFile);
-                            this.Invoke(d, new object[] { visible, percentage });
-                        }
-                        else
-                        {
-                            this.pbUploadDownloadFileToolStripProgressBar.Visible = visible;
-                            this.pbUploadDownloadFileToolStripProgressBar.Value = percentage;
-                        }
-            */
+            if (this.pbUploadDownloadFileToolStripProgressBar.ProgressBar.InvokeRequired)
+            {
+                SetpbUploadDownloadFileCallback d = new SetpbUploadDownloadFileCallback(SetpbUploadDownloadFile);
+                this.Invoke(d, new object[] { visible, percentage });
+            }
+            else
+            {
+                this.pbUploadDownloadFileToolStripProgressBar.ProgressBar.Visible = visible;
+                this.pbUploadDownloadFileToolStripProgressBar.ProgressBar.Value = percentage;
+            }
+             */
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(delegate()
+                {
+                    this.pbUploadDownloadFileToolStripProgressBar.ProgressBar.Visible = visible;
+                    this.pbUploadDownloadFileToolStripProgressBar.ProgressBar.Value = percentage;
+                }));
+            }
         }
 
         #endregion
@@ -1228,22 +1243,22 @@ namespace VividManagementApplication
         private void SetDZDPrintFormat()
         {
             //MainDataGridView.Columns[1].ValueType = Type.datetime;
-           this.MainDataGridView.Columns[1].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+            this.MainDataGridView.Columns[1].HeaderCell.SortGlyphDirection = SortOrder.Descending;
             DataGridView tempDGV = new DataGridView();
-           tempDGV= CopyDataGridView(MainDataGridView);
-           tempDGV.Columns.Add(new DataGridViewTextBoxColumn());
-           tempDGV.Columns[0].HeaderText = "序";
-           tempDGV.Columns[1].HeaderText = "日 期";
-           tempDGV.Columns[2].HeaderText = "凭证号";
-           tempDGV.Columns[3].HeaderText = "摘  要";
-           tempDGV.Columns[4].HeaderText = isYS ? "应收金额(元)" : "应付金额(元)";
-           tempDGV.Columns[5].HeaderText = isYS ? "已收金额(元)" : "已付金额(元)";
-           tempDGV.Columns[6].HeaderText = "结余金额(元)";
+            tempDGV = CopyDataGridView(MainDataGridView);
+            tempDGV.Columns.Add(new DataGridViewTextBoxColumn());
+            tempDGV.Columns[0].HeaderText = "序";
+            tempDGV.Columns[1].HeaderText = "日 期";
+            tempDGV.Columns[2].HeaderText = "凭证号";
+            tempDGV.Columns[3].HeaderText = "摘  要";
+            tempDGV.Columns[4].HeaderText = isYS ? "应收金额(元)" : "应付金额(元)";
+            tempDGV.Columns[5].HeaderText = isYS ? "已收金额(元)" : "已付金额(元)";
+            tempDGV.Columns[6].HeaderText = "结余金额(元)";
 
-           tempDGV.Columns[0].Width = 50;
-           tempDGV.Columns[1].Width = 90;
+            tempDGV.Columns[0].Width = 50;
+            tempDGV.Columns[1].Width = 90;
 
-           DZDPrintingDGV = CopyDataGridView(tempDGV);
+            DZDPrintingDGV = CopyDataGridView(tempDGV);
             for (int i = 0; i < MainDataGridView.Rows.Count; i++)
             {
                 String leixing = tempDGV.Rows[i].Cells[2].Value.ToString().Substring(0, 1);
