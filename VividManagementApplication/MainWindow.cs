@@ -52,6 +52,7 @@ namespace VividManagementApplication
         public static String SIGN_IMAGE_LOCATION = Environment.CurrentDirectory + "\\temp\\" + SIGN_IMAGE_NAME;
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
+        public static String LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\temp.db";
         public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
         public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/GZB/Users/";
         public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/GZB/Users/";
@@ -125,9 +126,10 @@ namespace VividManagementApplication
                 #region 初始化数据库 备份数据库
                 if (DEGREE > 0)
                 {
-                    Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
-                    t.Start();
-                    t.DisableComObjectEagerCleanup();
+                    //Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
+                    //t.Start();
+                    //t.DisableComObjectEagerCleanup();
+                    SyncDatabaseStarter();
                 }
                 else
                 {
@@ -138,8 +140,6 @@ namespace VividManagementApplication
 
                 #endregion
 
-
-
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
                 Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
@@ -147,7 +147,7 @@ namespace VividManagementApplication
                 tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
-                updateRemoteSignTimer = new System.Timers.Timer(5000);
+                updateRemoteSignTimer = new System.Timers.Timer(11000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
                 updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
@@ -245,6 +245,59 @@ namespace VividManagementApplication
             }
         }
 
+        // 同步数据库
+        private void SyncDatabaseStarter()
+        {
+            Thread t = new Thread(new ParameterizedThreadStart(SyncDatabaseWithObject));
+            t.Start();
+            t.DisableComObjectEagerCleanup();
+        }
+
+        private void SyncDatabaseWithObject(object obj)
+        {
+            if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
+            {
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                {
+                    if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
+                    {
+                        if (ifUpdateDatabasecheckLastModifiedTime(true))
+                        {
+                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                            DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                        }
+                        else
+                        {
+                            System.IO.File.Copy(LOCAL_DATABASE_LOCATION, LOCAL_DATABASE_LOCATION_COPY, true);
+                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION_COPY, FileAttributes.Hidden);
+                            UploadFile(LOCAL_DATABASE_LOCATION_COPY, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                        }
+                    }
+                }
+                else
+                {
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                }
+            }
+            else
+            {
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                {
+                    MainPanel.Enabled = false;
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                    MainPanel.Enabled = true;
+                }
+                else
+                {
+                    DatabaseConnections.GetInstence().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                }
+            }
+        }
 
         // MainWindow 窗口固定
         private void MainWindow_Resize(object sender, EventArgs e)
@@ -310,12 +363,15 @@ namespace VividManagementApplication
 
         private void backupData_Click(object sender, EventArgs e)
         {
+            /*
             //visibleUploadDownloadGroup(true);
             SetpbUploadDownloadLabel(true);
             SetpbUploadDownloadFile(true, 0);
             Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
             t.Start("手动同步数据库！");
             t.DisableComObjectEagerCleanup();
+             */
+            SyncDatabaseStarter();
         }
 
         private void UploadFileWithNoticeWithObjectBackupData(object obj)
@@ -363,7 +419,8 @@ namespace VividManagementApplication
 
             if (e.Error != null)
             {
-                MessageBox.Show(e.Error.Message);   //正常捕获
+                //MessageBox.Show(e.Error.Message);   //正常捕获
+                MessageBox.Show("数据已同步(下载)", "提示");
             }
             else
             {
@@ -404,6 +461,7 @@ namespace VividManagementApplication
             Uri uri = new Uri(uriString);
             client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
             client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
+            DatabaseConnections.GetInstence().LocalDbClose();
             client.UploadFileAsync(uri, "STOR", fileNamePath);
             // client.Proxy = WebRequest.DefaultWebProxy;
             //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
@@ -423,7 +481,8 @@ namespace VividManagementApplication
 
             if (e.Error != null)
             {
-                MessageBox.Show(e.Error.Message);   //正常捕获
+                //MessageBox.Show(e.Error.Message);   //正常捕获
+                MessageBox.Show("数据已同步(上传)", "提示");
             }
             else
             {
