@@ -42,7 +42,7 @@ namespace VividManagementApplication
         public static String EMAIL = "";
         public static DateTime ADDTIME = new DateTime();
         public static String NOTIFICATION = "";
-        public static int DEGREE = 0;
+        public static int DEGREE = 0; // 是否付费
         public static DateTime EXPIRETIME = new DateTime();
         public static String SIGNATURE = "";
         public static float COMPANY_BALANCE = 0f; // 公司结余暂存
@@ -52,7 +52,7 @@ namespace VividManagementApplication
         public static String SIGN_IMAGE_LOCATION = Environment.CurrentDirectory + "\\temp\\" + SIGN_IMAGE_NAME;
 
         public static String LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
-        public static String LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\temp.db";
+        public static String LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\temp.gzb";
         public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
         public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/GZB/Users/";
         public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/GZB/Users/";
@@ -75,7 +75,7 @@ namespace VividManagementApplication
         System.Timers.Timer updateRemoteSignTimer;
         System.Timers.Timer lablTextChangeTimer; // 状态栏信息修改Timer
 
-        string dataBaseFilePrefix;
+        string onlineDataBaseFilePrefix;
 
         public MainWindow()
         {
@@ -91,7 +91,6 @@ namespace VividManagementApplication
             String loginWindowLabel = "登录";
 
             #region 软件版本
-
             try
             {
                 productKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey(PRODUCT_REG_KEY);
@@ -118,7 +117,7 @@ namespace VividManagementApplication
             {
                 #region 窗体用户信息初始化
                 lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
-                dataBaseFilePrefix = USER_ID + "_data.txt";
+                onlineDataBaseFilePrefix = USER_ID + "_online.db";
 
                 LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
                 #endregion
@@ -147,7 +146,7 @@ namespace VividManagementApplication
                 tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
-                updateRemoteSignTimer = new System.Timers.Timer(11000);
+                updateRemoteSignTimer = new System.Timers.Timer(45000);
                 updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
                 updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
@@ -181,7 +180,15 @@ namespace VividManagementApplication
                 lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
                 keepOnlineTimer.Enabled = true;
                 TimeSpan ts = EXPIRETIME - ADDTIME;
-                UserDegreeLabel.Text = "VIP" + (ts.Days % 365 + 1).ToString();
+                if (DEGREE == 0)
+                {
+                    UserDegreeLabel.Text = "免费版用户";
+                }
+                else
+                {
+                    int disDays = ts.Days / 365;
+                    UserDegreeLabel.Text = "VIP" + (disDays + 1).ToString();
+                }
 
                 UserDegreeLabel.Location = new Point(lbUserName.Location.X + lbUserName.Size.Width + 20, UserDegreeLabel.Location.Y);
                 #endregion
@@ -217,7 +224,7 @@ namespace VividManagementApplication
         {
             if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     DownloadFileWithNotice();
                 }
@@ -228,11 +235,11 @@ namespace VividManagementApplication
             }
             else
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     MainPanel.Enabled = false;
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     MainPanel.Enabled = true;
                 }
@@ -257,36 +264,35 @@ namespace VividManagementApplication
         {
             if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
                     {
                         if (ifUpdateDatabasecheckLastModifiedTime(true))
                         {
                             File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                            DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                            DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
                             File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                         }
                         else
                         {
                             System.IO.File.Copy(LOCAL_DATABASE_LOCATION, LOCAL_DATABASE_LOCATION_COPY, true);
-                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION_COPY, FileAttributes.Hidden);
-                            UploadFile(LOCAL_DATABASE_LOCATION_COPY, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                            UploadFile(LOCAL_DATABASE_LOCATION_COPY, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                         }
                     }
                 }
                 else
                 {
-                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                 }
             }
             else
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     MainPanel.Enabled = false;
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     MainPanel.Enabled = true;
                 }
@@ -294,7 +300,7 @@ namespace VividManagementApplication
                 {
                     DatabaseConnections.GetInstence().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                 }
             }
         }
@@ -387,7 +393,7 @@ namespace VividManagementApplication
             if (ifUpdateDatabasecheckLastModifiedTime(true))
             {
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                DownloadFile(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
             }
         }
@@ -437,16 +443,16 @@ namespace VividManagementApplication
             UploadMoreInfo = moreInfo;
             if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix))
+                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     if (ifUpdateDatabasecheckLastModifiedTime(false))
                     {
-                        UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                        UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                     }
                 }
                 else
                 {
-                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + dataBaseFilePrefix);
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                 }
             }
         }
@@ -509,7 +515,7 @@ namespace VividManagementApplication
 
         private bool ifUpdateDatabasecheckLastModifiedTime(bool isDownload)
         {
-            HttpWebRequest gameFile = (HttpWebRequest)WebRequest.Create(ONLINE_DATABASE_LOCATION_DIR + dataBaseFilePrefix);
+            HttpWebRequest gameFile = (HttpWebRequest)WebRequest.Create(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix);
             gameFile.Timeout = 5000;
             HttpWebResponse gameFileResponse;
             try

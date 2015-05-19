@@ -58,7 +58,7 @@ namespace VividManagementApplication
             string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
 
             StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(id),id,userid,password,companyNickname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(addtime as char) as addtime,GZB_degree,GZB_expiretime,GZB_isonline,notification,companyBalance,GZB_signature FROM users WHERE userid = '");
+                    @"SELECT Count(id),id,userid,password,companyNickname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(GZB_addtime as char) as GZB_addtime,GZB_degree,GZB_expiretime,GZB_isonline,notification,companyBalance,GZB_signature FROM users WHERE userid = '");
             sbSQL.Append(acc);
             sbSQL.Append(@"'");
             sbSQL.Append(@" AND password = '");
@@ -90,10 +90,10 @@ namespace VividManagementApplication
                     MainWindow.FAX = dataReader["fax"].ToString();
                     MainWindow.QQ = dataReader["QQ"].ToString();
                     MainWindow.EMAIL = dataReader["email"].ToString();
-                    MainWindow.ADDTIME = DateTime.Parse(dataReader["addtime"].ToString());
                     MainWindow.NOTIFICATION = dataReader["notification"].ToString();
-                    MainWindow.DEGREE =int.Parse(dataReader["GZB_degree"].ToString());
                     MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
+                    MainWindow.DEGREE =int.Parse(dataReader["GZB_degree"].ToString());
+                    MainWindow.ADDTIME = DateTime.Parse(dataReader["GZB_addtime"].ToString());
                     MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
                     MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
                     MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
