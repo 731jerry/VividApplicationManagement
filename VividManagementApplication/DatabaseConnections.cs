@@ -398,10 +398,12 @@ namespace VividManagementApplication
             }
 
             LocalDbOpen();
+            SQLiteTransaction transaction = localSqlConnectionCommand.BeginTransaction();
             SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
             cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
                                        " VALUES(" + innerVauleSQL + ")";
             cmdInsert.ExecuteNonQuery();
+            transaction.Commit();
             LocalDbClose();
         }
 

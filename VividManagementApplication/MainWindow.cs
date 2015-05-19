@@ -1246,6 +1246,8 @@ namespace VividManagementApplication
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 DatabaseConnections.GetInstence().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
                 DatabaseConnections.GetInstence().OnlineDbClose();
+
+                Application.Exit();
             }
         }
 

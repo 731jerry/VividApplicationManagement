@@ -194,5 +194,17 @@ namespace VividManagementApplication
             System.Diagnostics.Process.Start("http://www.vividapp.net/");
         }
 
+        private void regLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.regLinkLabel.LinkVisited = true;
+            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+        }
+
+        private void findPwdLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.findPwdLinkLabel.LinkVisited = true;
+            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+        }
+
     }
 }

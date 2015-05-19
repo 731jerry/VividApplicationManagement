@@ -39,6 +39,8 @@
             this.productLinkLabel = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoadCyy = new System.Windows.Forms.Button();
+            this.regLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.findPwdLinkLabel = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +130,37 @@
             this.LoadCyy.UseVisualStyleBackColor = true;
             this.LoadCyy.Click += new System.EventHandler(this.LoadCyy_Click);
             // 
+            // regLinkLabel
+            // 
+            this.regLinkLabel.AutoSize = true;
+            this.regLinkLabel.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.regLinkLabel.Location = new System.Drawing.Point(286, 211);
+            this.regLinkLabel.Name = "regLinkLabel";
+            this.regLinkLabel.Size = new System.Drawing.Size(56, 17);
+            this.regLinkLabel.TabIndex = 18;
+            this.regLinkLabel.TabStop = true;
+            this.regLinkLabel.Text = "注册用户";
+            this.regLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.regLinkLabel_LinkClicked);
+            // 
+            // findPwdLinkLabel
+            // 
+            this.findPwdLinkLabel.AutoSize = true;
+            this.findPwdLinkLabel.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.findPwdLinkLabel.Location = new System.Drawing.Point(286, 241);
+            this.findPwdLinkLabel.Name = "findPwdLinkLabel";
+            this.findPwdLinkLabel.Size = new System.Drawing.Size(56, 17);
+            this.findPwdLinkLabel.TabIndex = 19;
+            this.findPwdLinkLabel.TabStop = true;
+            this.findPwdLinkLabel.Text = "找回密码";
+            this.findPwdLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.findPwdLinkLabel_LinkClicked);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(390, 366);
+            this.Controls.Add(this.findPwdLinkLabel);
+            this.Controls.Add(this.regLinkLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.productLinkLabel);
             this.Controls.Add(this.cbAccount);
@@ -163,5 +191,7 @@
         private System.Windows.Forms.Timer UpdateTimer;
         private System.Windows.Forms.LinkLabel productLinkLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel regLinkLabel;
+        private System.Windows.Forms.LinkLabel findPwdLinkLabel;
     }
 }
