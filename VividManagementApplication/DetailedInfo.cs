@@ -232,7 +232,7 @@ namespace VividManagementApplication
                             List<String> queryList = queryArray.ToList();
                             queryList.Remove("companyName");
                             queryList.Remove("jsonData");
-                            queryList.Remove("sum");
+                            queryList.Remove("goodsName");
                             queryList.Remove("addtime");
                             queryList.Remove("modifyTime");
                             queryList.Remove("discardFlag");
@@ -1107,6 +1107,8 @@ namespace VividManagementApplication
                         // 自动生成ID
                         tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                         enableDetailedUnderCaigou(false);
+                        tbDz12.Text = "";
+                        tbDz10.Text = "";
                         break;
                     case 1://销售单
                         lbDzTitle.Text = "商品（货物）销售单";
@@ -1116,6 +1118,8 @@ namespace VividManagementApplication
                         // 自动生成ID
                         tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
                         enableDetailedUnderCaigou(true);
+                        tbDz12.Text = "7";
+                        tbDz10.Text = "0";
                         break;
                 }
             }
@@ -1908,6 +1912,8 @@ namespace VividManagementApplication
             Font f3 = new Font("微软雅黑", 11);
             Font f4 = new Font("微软雅黑", 8);
             Font f5 = new Font("微软雅黑", 10.5f);
+            Font f6 = new Font("微软雅黑", 7);
+            Font f7 = new Font("微软雅黑", 6);
 
             int fontDisX = 3;
             int fontDisY = 3;
@@ -1987,43 +1993,50 @@ namespace VividManagementApplication
             {
                 if (danziComboBox.SelectedIndex == 0)
                 {
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 452, 104);
-                    g.DrawString("备注：\n" + tbDz4.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 560, 104);
+                    g.DrawString("注：\n（1）本期采购单具有替代\"进仓通知单\"的作用，自动导入关联数据并生成进仓单。" + tbDz4.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 560, 182 + y + tableY - 20, 173, 78);
+                    g.DrawString("发票号码：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 560 + fontDisX, 182 + y + fontDisY + tableY - 20);
+                    g.DrawString("增：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 560 + fontDisX, 208 + y + fontDisY + tableY - 20);
+                    g.DrawString("普：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 560 + fontDisX, 234 + y + fontDisY + tableY - 20);
+
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 560, 260 + y + tableY - 20, 173, 26);
+                    g.DrawString("附件凭证： " + tbDz7.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 560 + fontDisX, 260 + y + fontDisY + tableY - 20);
+                    g.DrawString("张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 700 + fontDisX, 260 + y + fontDisY + tableY - 20);
                 }
                 else
                 {
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 452, 104);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 226, tbDz8.Height);
-                    g.DrawString("原前帐 购货方尚欠销货方货款(元): " + tbDz8.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + 6 - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 183, tbDz8.Height);
+                    g.DrawString("原前帐，购货方尚欠销货方货款(元)：￥" + tbDz8.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 3, 182 + y + tableY + 6 - 20);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY - 20, 226, tbDz9.Height);
-                    g.DrawString("今日(本销货单)新增欠款(元): " + tbDz9.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + 6 - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 183, 182 + y + tableY - 20, 183, tbDz9.Height);
+                    g.DrawString("今日(本销货单)新增欠款(元)：￥" + tbDz9.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 186, 182 + y + tableY + 6 - 20);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY + tbDz8.Height - 20, 226, tbDz10.Height);
-                    g.DrawString("购货方今日支付销货方货款(元): " + tbDz10.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x, 182 + y + tableY + tbDz8.Height + 6 - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x+366, 182 + y + tableY  - 20, 168, tbDz10.Height);
+                    g.DrawString("购货方今日支付销货方货款(元)：￥" + tbDz10.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 369, 182 + y + tableY + 6 - 20);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height - 20, 226, tbDz11.Height);
-                    g.DrawString("至今日止购货方尚欠销货方货款(元): " + tbDz11.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + 6 - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 535, 182 + y + tableY  - 20, 198, tbDz11.Height);
+                    g.DrawString("至今日止购货方尚欠销货方货款(元)：￥" + tbDz11.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 537, 182 + y + tableY + 6 - 20);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height - 20, 226, tbDz12.Height);
-                    g.DrawString("赊欠期限(天): " + tbDz12.Text, f4, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height + 6 - 20);
+                    //g.DrawRectangle(new Pen(Color.Black), tableX + x + 230, 182 + y + tableY + tbDz9.Height + tbDz11.Height - 20, 230, tbDz12.Height);
+                    //g.DrawString("赊欠期限(天): " + tbDz12.Text, f6, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height + 6 - 20);
 
-                    g.DrawString("备注：\n" + tbDz4.Text, tbDz4.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + tableY + tbDz9.Height + tbDz11.Height - 20);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x, 208 + y + tableY - 20, 733, 85);
+                    String beizhu = "注："+tbDz4.Text+"\n"
+                                         +"一、上述货物经购货方验收合格并已收妥，除双方另有书面约定外，双方承认本销售单具有替代购销合同的作用和法律效力。\n"
+                                         +"二、在购货方赊欠或拖欠销货方货款时，所欠货款则自动转为购货方向销货方借款。本销售单替代并与欠（借）款凭据具有同等的作用和法律效力。\n"
+                                         +"三、货款结算期限，除双方麟游书面约定外，自销货方交货之日起 "+tbDz12.Text+" 天内付清。购货方若逾期支付，则依合同法承担违约责任。\n"
+                                         +"四、遇有争议，应友好协商，若协商不成，则由销货方所在地人民法院处理。\n"
+                                         +"五、本销售单经双方盖章或经办人签字（含电子签名）后即为生效。\n";
+                    g.DrawString(beizhu , f6, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX+3, 185 + y + tableY + tbDz9.Height - 20);
                 }
             }
-            g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 182 + y + tableY - 20, 281, 78);
-            g.DrawString("发票号码：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 182 + y + fontDisY + tableY - 20);
-            g.DrawString("增：" + tbDz5.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 208 + y + fontDisY + tableY - 20);
-            g.DrawString("普：" + tbDz6.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 234 + y + fontDisY + tableY - 20);
+            
 
-            g.DrawRectangle(new Pen(Color.Black), tableX + x + 452, 260 + y + tableY - 20, 281, 26);
-            g.DrawString("附件凭证： " + tbDz7.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 452 + fontDisX, 260 + y + fontDisY + tableY - 20);
-            g.DrawString("张", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 582 + fontDisX, 260 + y + fontDisY + tableY - 20);
-
-            g.DrawString("对方送货人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY - 20);
-            g.DrawString("业务经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY - 20);
-            g.DrawString("仓库验收人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 - 190, 300 + y + fontDisY + tableY - 20);
+            g.DrawString("对方办理人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY - 20);
+            g.DrawString("我方经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY - 20);
+            g.DrawString("我方核准人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 - 190, 300 + y + fontDisY + tableY - 20);
 
             foreach (Control item in PanelDZ.Controls)
             {
@@ -2133,9 +2146,9 @@ namespace VividManagementApplication
             g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 733, 104);
             g.DrawString("备注：\n" + tbPz3.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
 
-            g.DrawString("对方送货人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY);
-            g.DrawString("业务经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY);
-            g.DrawString("仓库验收人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 - 190, 300 + y + fontDisY + tableY);
+            g.DrawString("对方办理人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY);
+            g.DrawString("我方经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY);
+            g.DrawString("我方核准人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 - 190, 300 + y + fontDisY + tableY);
 
             foreach (Control item in pzPanel.Controls)
             {

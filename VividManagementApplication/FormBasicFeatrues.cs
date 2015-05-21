@@ -500,16 +500,23 @@ namespace VividManagementApplication
                                 if (item is ComboBox)
                                 {
                                     int intParsed;
-                                    Boolean isInt = int.TryParse(finalValues[i], out intParsed);
-                                    if (isInt && ((item as ComboBox).Items.Count > intParsed))
+                                    if (finalValues[i].Equals(""))
                                     {
-                                        // 是数字  
-                                        (item as ComboBox).SelectedIndex = intParsed;
+                                        item.Text = finalValues[i];
                                     }
                                     else
                                     {
-                                        // 不是数字
-                                        item.Text = finalValues[i];
+                                        Boolean isInt = int.TryParse(finalValues[i], out intParsed);
+                                        if ((isInt && ((item as ComboBox).Items.Count > intParsed) && !item.Name.Equals("tbDz1") && !item.Name.Equals("tbPz1")))
+                                        {
+                                            // 是数字  
+                                            (item as ComboBox).SelectedIndex = intParsed;
+                                        }
+                                        else
+                                        {
+                                            // 不是数字
+                                            item.Text = finalValues[i];
+                                        }
                                     }
                                 }
                                 else

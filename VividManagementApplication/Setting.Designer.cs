@@ -461,6 +461,8 @@
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label39);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Setting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户信息设置";

@@ -1,1 +1,161 @@
+2015/5/21 21:58:23-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2664
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2633
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:55:48-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2664
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2633
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:54:52-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2664
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2633
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:52:53-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2664
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2633
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 517
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:50:19-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2664
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2633
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 517
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:42:49-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2664
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2633
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 517
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:06:26-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2655
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2624
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 517
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/21 21:06:22-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.ParseSingle(String value, NumberStyles options, NumberFormatInfo numfmt)
+   在 System.Single.Parse(String s)
+   在 VividManagementApplication.DetailedInfo.tbDz9_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2655
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 2624
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\FormBasicFeatrues.cs:行号 517
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
 ﻿
