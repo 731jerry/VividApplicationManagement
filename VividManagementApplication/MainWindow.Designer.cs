@@ -552,6 +552,7 @@
             // 
             // NotifyToolStripStatusLabel
             // 
+            this.NotifyToolStripStatusLabel.ForeColor = System.Drawing.Color.Red;
             this.NotifyToolStripStatusLabel.Name = "NotifyToolStripStatusLabel";
             resources.ApplyResources(this.NotifyToolStripStatusLabel, "NotifyToolStripStatusLabel");
             // 

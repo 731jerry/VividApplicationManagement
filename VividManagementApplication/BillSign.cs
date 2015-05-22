@@ -67,7 +67,7 @@ namespace VividManagementApplication
             {// 发送请求
                 if (DatabaseConnections.GetInstence().OnlineInsertData("gzb_remotesign",
                     "fromGZBID,toGZBID,companyNickName,sendTime,signValue",
-                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNickNameStirng + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage))) + "'") > 0)
+                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNickNameStirng + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" +FormBasicFeatrues.GetInstence().CompressString( FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)))) + "'") > 0)
                 {
                     MessageBox.Show("发送请求成功!", "提示");
                     this.Close();

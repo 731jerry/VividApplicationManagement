@@ -350,7 +350,7 @@ namespace VividManagementApplication
                     bs.gzbIDStirng = resultArray[0];
                     bs.companyNickNameStirng = resultArray[2];
                     bs.Text = resultArray[2] + "发来的电子签单";
-                    bs.signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(resultArray[3]));
+                    bs.signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(resultArray[3])));
                     bs.isSigned = resultArray[4].Equals("0") ? false : true;
                 }
                 if (bs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -1769,7 +1769,7 @@ namespace VividManagementApplication
         private void updateRemoteSignUndealedCountCheck()
         {
             List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
-            NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理远程签单";
+            NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理信息";
         }
 
         private void updateRemoteSignTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)

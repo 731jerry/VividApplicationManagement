@@ -1848,7 +1848,8 @@ namespace VividManagementApplication
                 using (var dlg = new CoolPrintPreviewDialog())
                 {
                     dlg.Document = this.printDocument1;
-                    dlg.WindowState = FormWindowState.Maximized;
+                    //dlg.WindowState = FormWindowState.Maximized;
+                    dlg.Size = new Size(800, 600);
                     if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 0))
                     {
                         dlg.sendRemoteSignToolStripButton.Enabled = true;
@@ -2468,6 +2469,7 @@ namespace VividManagementApplication
             {
                 if (cbHTGoodsNameA.Text.Equals(""))
                 {
+                    cbHTGoodsA4.ReadOnly = true;
                     cbHTGoodsA5.ReadOnly = true;
                     cbHTGoodsA7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsA0, cbHTGoodsA1, cbHTGoodsA2, cbHTGoodsA3, cbHTGoodsA4, cbHTGoodsA5, cbHTGoodsA6, cbHTGoodsA7 });
@@ -2478,6 +2480,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    cbHTGoodsA4.ReadOnly = false;
                     cbHTGoodsA5.ReadOnly = false;
                     cbHTGoodsA7.ReadOnly = false;
                     HtSetControlsValue(new List<Control>() { cbHTGoodsA0, cbHTGoodsA1, cbHTGoodsA2, cbHTGoodsA3, cbHTGoodsA4 }, cbHTGoodsNameA);
@@ -2491,6 +2494,7 @@ namespace VividManagementApplication
             {
                 if (cbHTGoodsNameB.Text.Equals(""))
                 {
+                    cbHTGoodsB4.ReadOnly = true;
                     cbHTGoodsB5.ReadOnly = true;
                     cbHTGoodsB7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsB0, cbHTGoodsB1, cbHTGoodsB2, cbHTGoodsB3, cbHTGoodsB4, cbHTGoodsB5, cbHTGoodsB6, cbHTGoodsB7 });
@@ -2501,6 +2505,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    cbHTGoodsB4.ReadOnly = false;
                     cbHTGoodsB5.ReadOnly = false;
                     cbHTGoodsB7.ReadOnly = false;
                     HtSetControlsValue(new List<Control>() { cbHTGoodsB0, cbHTGoodsB1, cbHTGoodsB2, cbHTGoodsB3, cbHTGoodsB4 }, cbHTGoodsNameB);
@@ -2514,6 +2519,7 @@ namespace VividManagementApplication
             {
                 if (cbHTGoodsNameC.Text.Equals(""))
                 {
+                    cbHTGoodsC4.ReadOnly = true;
                     cbHTGoodsC5.ReadOnly = true;
                     cbHTGoodsC7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsC0, cbHTGoodsC1, cbHTGoodsC2, cbHTGoodsC3, cbHTGoodsC4, cbHTGoodsC5, cbHTGoodsC6, cbHTGoodsC7 });
@@ -2524,6 +2530,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    cbHTGoodsC4.ReadOnly = false;
                     cbHTGoodsC5.ReadOnly = false;
                     cbHTGoodsC7.ReadOnly = false;
                     HtSetControlsValue(new List<Control>() { cbHTGoodsC0, cbHTGoodsC1, cbHTGoodsC2, cbHTGoodsC3, cbHTGoodsC4 }, cbHTGoodsNameC);
@@ -2537,6 +2544,7 @@ namespace VividManagementApplication
             {
                 if (cbHTGoodsNameD.Text.Equals(""))
                 {
+                    cbHTGoodsD4.ReadOnly = true;
                     cbHTGoodsD5.ReadOnly = true;
                     cbHTGoodsD7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsD0, cbHTGoodsD1, cbHTGoodsD2, cbHTGoodsD3, cbHTGoodsD4, cbHTGoodsD5, cbHTGoodsD6, cbHTGoodsD7 });
@@ -2547,6 +2555,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    cbHTGoodsD4.ReadOnly = false;
                     cbHTGoodsD5.ReadOnly = false;
                     cbHTGoodsD7.ReadOnly = false;
                     HtSetControlsValue(new List<Control>() { cbHTGoodsD0, cbHTGoodsD1, cbHTGoodsD2, cbHTGoodsD3, cbHTGoodsD4 }, cbHTGoodsNameD);
@@ -2560,6 +2569,7 @@ namespace VividManagementApplication
             {
                 if (cbHTGoodsNameE.Text.Equals(""))
                 {
+                    cbHTGoodsE4.ReadOnly = true;
                     cbHTGoodsE5.ReadOnly = true;
                     cbHTGoodsE7.ReadOnly = true;
                     clearControlValueByList(new List<Control>() { cbHTGoodsE0, cbHTGoodsE1, cbHTGoodsE2, cbHTGoodsE3, cbHTGoodsE4, cbHTGoodsE5, cbHTGoodsE6, cbHTGoodsE7 });
@@ -2570,6 +2580,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    cbHTGoodsE4.ReadOnly = false;
                     cbHTGoodsE5.ReadOnly = false;
                     cbHTGoodsE7.ReadOnly = false;
                     HtSetControlsValue(new List<Control>() { cbHTGoodsE0, cbHTGoodsE1, cbHTGoodsE2, cbHTGoodsE3, cbHTGoodsE4 }, cbHTGoodsNameE);
