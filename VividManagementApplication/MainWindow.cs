@@ -1322,10 +1322,16 @@ namespace VividManagementApplication
             tempDGV.Columns[5].HeaderText = isYS ? "已收金额(元)" : "已付金额(元)";
             tempDGV.Columns[6].HeaderText = "结余金额(元)";
 
-            tempDGV.Columns[0].Width = 50;
-            tempDGV.Columns[1].Width = 90;
+            tempDGV.Columns[0].Width = 30;
+            tempDGV.Columns[1].Width = 55;
+            //tempDGV.Columns[2].Width = 60;
+            //tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tempDGV.Columns[4].Width = 60;
+            tempDGV.Columns[5].Width = 60;
+            tempDGV.Columns[6].Width = 60;
 
             DZDPrintingDGV = CopyDataGridView(tempDGV);
+            float yingTotal = 0, yiTotal = 0, yuTotal = 0;
             for (int i = 0; i < MainDataGridView.Rows.Count; i++)
             {
                 String leixing = tempDGV.Rows[i].Cells[2].Value.ToString().Substring(0, 1);
@@ -1336,7 +1342,18 @@ namespace VividManagementApplication
                 DZDPrintingDGV.Rows[i].Cells[4].Value = isYS ? ((leixing.Equals("收") ? "" : tempDGV.Rows[i].Cells[4].Value.ToString())) : (leixing.Equals("付") ? "" : tempDGV.Rows[i].Cells[4].Value.ToString());
                 DZDPrintingDGV.Rows[i].Cells[5].Value = isYS ? ((leixing.Equals("收") ? tempDGV.Rows[i].Cells[4].Value.ToString() : "")) : (leixing.Equals("付") ? tempDGV.Rows[i].Cells[4].Value.ToString() : "");
                 DZDPrintingDGV.Rows[i].Cells[6].Value = tempDGV.Rows[i].Cells[5].Value.ToString();
+                yingTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[4].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[4].Value.ToString());
+                yiTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[5].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[5].Value.ToString());
+                yuTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[6].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[6].Value.ToString());
             }
+            DZDPrintingDGV.Rows.Add("结算", "", "", "", "￥" + yingTotal, "￥" + yiTotal, "￥" + yuTotal);
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[0].ToolTipText = "1";
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[1].ToolTipText = "0";
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[2].ToolTipText = "0";
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[3].ToolTipText = "0";
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[4].ToolTipText = "2";
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[5].ToolTipText = "2";
+            DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[6].ToolTipText = "2";
         }
 
         private DataGridView CopyDataGridView(DataGridView dgv_org)
@@ -1536,14 +1553,36 @@ namespace VividManagementApplication
                         {
                             if (Cel.Value != null)
                             {
-                                e.Graphics.DrawString(Cel.Value.ToString(), Cel.InheritedStyle.Font,
-                                            new SolidBrush(Cel.InheritedStyle.ForeColor),
-                                            new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
-                                            (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
+                                if (Cel.ToolTipText.Equals("2"))
+                                {
+                                    // 下划线
+                                    e.Graphics.DrawString(Cel.Value.ToString(), new System.Drawing.Font(Cel.InheritedStyle.Font.Name, Cel.InheritedStyle.Font.Size, FontStyle.Underline),
+                                                new SolidBrush(Cel.InheritedStyle.ForeColor),
+                                                new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
+                                                (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
+                                }
+                                else
+                                {
+                                    e.Graphics.DrawString(Cel.Value.ToString(), Cel.InheritedStyle.Font,
+                                                new SolidBrush(Cel.InheritedStyle.ForeColor),
+                                                new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
+                                                (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
+                                }
                             }
                             //Drawing Cells Borders 
-                            e.Graphics.DrawRectangle(Pens.Black, new Rectangle((int)arrColumnLefts[iCount],
-                                    iTopMargin, (int)arrColumnWidths[iCount], iCellHeight));
+                            if (Cel.ToolTipText.Equals("0"))
+                            {
+                            }
+                            else if (Cel.ToolTipText.Equals("1"))
+                            {
+                                e.Graphics.DrawLine(Pens.Black, new Point((int)arrColumnLefts[iCount], iTopMargin), new Point((int)arrColumnLefts[iCount], iTopMargin + iCellHeight));
+                                e.Graphics.DrawLine(Pens.Black, new Point((int)arrColumnLefts[iCount], iTopMargin + iCellHeight), new Point((int)arrColumnLefts[4], iTopMargin + iCellHeight));
+                            }
+                            else
+                            {
+                                e.Graphics.DrawRectangle(Pens.Black, new Rectangle((int)arrColumnLefts[iCount],
+                                        iTopMargin, (int)arrColumnWidths[iCount], iCellHeight));
+                            }
 
                             iCount++;
                         }

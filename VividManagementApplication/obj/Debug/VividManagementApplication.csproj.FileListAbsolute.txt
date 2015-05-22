@@ -44,3 +44,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\Vivid
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csproj.GenerateResource.Cache
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\管账宝.exe
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\管账宝.pdb
+D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csprojResolveAssemblyReference.cache

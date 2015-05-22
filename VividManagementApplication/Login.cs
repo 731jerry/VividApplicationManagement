@@ -168,7 +168,7 @@ namespace VividManagementApplication
                     }
                 }
             }
-            catch 
+            catch
             {
                 MessageBox.Show("系统检测到您使用的是最新版本!", "提示");
             }
@@ -197,13 +197,16 @@ namespace VividManagementApplication
         private void regLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.regLinkLabel.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+            System.Diagnostics.Process.Start("http://www.vividapp.net/GZB_register.php");
         }
 
         private void findPwdLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.findPwdLinkLabel.LinkVisited = true;
-            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+            if (DialogResult.OK == MessageBox.Show("如果忘记密码，请与客服联系！", "提示", MessageBoxButtons.OKCancel))
+            {
+                System.Diagnostics.Process.Start("http://www.vividapp.net/GZB_product.php");
+            }
         }
 
     }
