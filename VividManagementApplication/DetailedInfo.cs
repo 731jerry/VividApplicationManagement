@@ -696,7 +696,7 @@ namespace VividManagementApplication
                             //    tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                             //    AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                             //    jsonData, 
-                            //    tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
+                            //    tbDz3.Text.Split('￥')[1], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString(),   DateTime.Now.ToString()};
                             //}
                             //else
                             //{
@@ -733,7 +733,7 @@ namespace VividManagementApplication
                                 tbDz1.Text, DatabaseConnections.GetInstence().LocalAutoincreaseID(tableDZ, baseNameDZ), tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
+                                tbDz3.Text.Split('￥')[1], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
 
                             DatabaseConnections.GetInstence().LocalReplaceIntoData(tableDZ, queryStringArrayDZ, resultStringArrayDZ, mainID);
                             #endregion
@@ -764,11 +764,11 @@ namespace VividManagementApplication
                             #region 更新客户应收应付
                             if (danziComboBox.SelectedIndex == 0) //采购
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay+" + tbDz3.Text.Split('=')[0] }, false, "clientID", tbDz1.Text);
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay+" + tbDz3.Text.Split('￥')[1] }, false, "clientID", tbDz1.Text);
                             }
                             else if (danziComboBox.SelectedIndex == 1) //销售
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive+" + tbDz3.Text.Split('=')[0] }, false, "clientID", tbDz1.Text);
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive+" + tbDz3.Text.Split('￥')[1] }, false, "clientID", tbDz1.Text);
                             }
                             #endregion
 
@@ -777,7 +777,7 @@ namespace VividManagementApplication
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                                tbDz3.Text.Split('￥')[1], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
                             //}
                         }
                         else
@@ -789,7 +789,7 @@ namespace VividManagementApplication
                                 tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                 jsonData, 
-                                tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
+                                tbDz3.Text.Split('￥')[1], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
                                 //queryStringArray = new String[] { baseName, "discardFlag", "modifyTime" };
                                 //resultStringArray = new String[] { tbDz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                             }
@@ -800,7 +800,7 @@ namespace VividManagementApplication
                                tbDz1.Text,tbDz2.Text, dzCompany.Text, 
                                AJCDtb0.Text+","+BJCDtb0.Text+","+CJCDtb0.Text+","+DJCDtb0.Text+","+EJCDtb0.Text,
                                jsonData, 
-                               tbDz3.Text.Split('=')[0], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
+                               tbDz3.Text.Split('￥')[1], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), tbDz8.Text,tbDz9.Text, tbDz10.Text,tbDz11.Text,tbDz12.Text};
                                 //queryStringArray = new String[] { baseName, "discardFlag", "modifyTime" };
                                 //resultStringArray = new String[] { tbDz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                             }
@@ -886,16 +886,16 @@ namespace VividManagementApplication
                                 PzcbA.Text+" "+PzcbB.Text+" "+PzcbC.Text+" "+PzcbD.Text+" "+PzcbE.Text,
                                 pzComboBox.SelectedIndex.ToString(),  
                                 pzCompany.Text,
-                                jsonData, SumtbPz.Text.Split('=')[0],
+                                jsonData, SumtbPz.Text.Split('￥')[1],
                                 "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
 
                             if (pzComboBox.SelectedIndex == 0) //收款
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('=')[0] }, false, "clientID", tbPz1.Text);
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
                             }
                             else if (pzComboBox.SelectedIndex == 1) //付款
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('=')[0] }, false, "clientID", tbPz1.Text);
+                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
                             }
                         }
                         else
@@ -907,7 +907,7 @@ namespace VividManagementApplication
                                 PzcbA.Text+" "+PzcbB.Text+" "+PzcbC.Text+" "+PzcbD.Text+" "+PzcbE.Text,
                                 pzComboBox.SelectedIndex.ToString(),  
                                 pzCompany.Text,
-                                jsonData, SumtbPz.Text.Split('=')[0],
+                                jsonData, SumtbPz.Text.Split('￥')[1],
                                 "",  tbPz3.Text,  (DiscardCheckBox.Checked?"1":"0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
                             //queryStringArray = new String[] { "pzID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { tbPz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
@@ -941,7 +941,7 @@ namespace VividManagementApplication
                                (HTcbName.SelectedIndex == 0) ?tbHTxsfID.Text:tbHTghfID.Text,  
                                (HTcbName.SelectedIndex == 0) ?tbHTxsfName.Text:tbHTghfName.Text,
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0], 
+                                SumHtTextbox.Text.Split('￥')[1], 
                                 (DiscardCheckBox.Checked?"1":"0"), 
                                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),  
                                 DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
@@ -962,7 +962,7 @@ namespace VividManagementApplication
                             resultStringArray = new String[] {  HTtbID.Text, HTcbName.SelectedIndex.ToString(),  HTtbDate.Text, 
                                 (HTcbName.SelectedIndex == 0) ?tbHTghfID.Text:tbHTxsfID.Text,  (HTcbName.SelectedIndex == 0) ?tbHTghfName.Text:tbHTxsfName.Text,
                                 jsonData,
-                                SumHtTextbox.Text.Split('=')[0], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
+                                SumHtTextbox.Text.Split('￥')[1], (DiscardCheckBox.Checked?"1":"0"),  DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),HTcbChoose2.SelectedIndex+","+HTcbChoose3.SelectedIndex+","+HTcbChoose4.SelectedIndex+","+HTcbChoose5.SelectedIndex+","+HTcbChoose6.SelectedIndex+","+HTcbChoose7.SelectedIndex};
                             //queryStringArray = new String[] { "htID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { HTtbID.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                         }
@@ -1505,7 +1505,7 @@ namespace VividManagementApplication
                 dzAddress.Clear();
             }
             else if (tbDz1.SelectedIndex == 1)
-            { 
+            {
                 InitPicker(tbDz1, true);
             }
         }
@@ -1523,7 +1523,8 @@ namespace VividManagementApplication
                 pzCompany.Clear();
                 pzAddress.Clear();
             }
-            else if (tbPz1.SelectedIndex == 1) { 
+            else if (tbPz1.SelectedIndex == 1)
+            {
                 InitPicker(tbPz1, true);
             }
         }
@@ -1626,7 +1627,7 @@ namespace VividManagementApplication
                     sum += float.Parse(con.Text);
                 }
             }
-            resultControl.Text = sum.ToString() + "=" + FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString());
+            resultControl.Text = FormBasicFeatrues.GetInstence().MoneyToUpper(sum.ToString()) + "￥" + sum.ToString();
         }
 
         private void calculateSumForDz(object sender, EventArgs e)
@@ -1982,7 +1983,7 @@ namespace VividManagementApplication
             g.DrawString("总金额：", tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 156 + y + fontDisY + tableY - 20);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, 156 + y + tableY - 20, 617, tbDz3.Height);
-            g.DrawString(tbDz3.Text.Equals("") ? "" : tbDz3.Text.Split('=')[1], tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY - 20);
+            g.DrawString(tbDz3.Text.Equals("") ? "" : tbDz3.Text, tbDz3.Font, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY - 20);
 
             if (isJCCD)
             {
@@ -2013,26 +2014,26 @@ namespace VividManagementApplication
                     g.DrawRectangle(new Pen(Color.Black), tableX + x + 183, 182 + y + tableY - 20, 183, tbDz9.Height);
                     g.DrawString("今日(本销货单)新增欠款(元)：￥" + tbDz9.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 186, 182 + y + tableY + 6 - 20);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x+366, 182 + y + tableY  - 20, 168, tbDz10.Height);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 366, 182 + y + tableY - 20, 168, tbDz10.Height);
                     g.DrawString("购货方今日支付销货方货款(元)：￥" + tbDz10.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 369, 182 + y + tableY + 6 - 20);
 
-                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 535, 182 + y + tableY  - 20, 198, tbDz11.Height);
+                    g.DrawRectangle(new Pen(Color.Black), tableX + x + 535, 182 + y + tableY - 20, 198, tbDz11.Height);
                     g.DrawString("至今日止购货方尚欠销货方货款(元)：￥" + tbDz11.Text, f7, new SolidBrush(dzContact.ForeColor), tableX + x + 537, 182 + y + tableY + 6 - 20);
 
                     //g.DrawRectangle(new Pen(Color.Black), tableX + x + 230, 182 + y + tableY + tbDz9.Height + tbDz11.Height - 20, 230, tbDz12.Height);
                     //g.DrawString("赊欠期限(天): " + tbDz12.Text, f6, new SolidBrush(dzContact.ForeColor), tableX + x + 226, 182 + y + tableY + tbDz9.Height + tbDz11.Height + 6 - 20);
 
                     g.DrawRectangle(new Pen(Color.Black), tableX + x, 208 + y + tableY - 20, 733, 85);
-                    String beizhu = "注："+tbDz4.Text+"\n"
-                                         +"一、上述货物经购货方验收合格并已收妥，除双方另有书面约定外，双方承认本销售单具有替代购销合同的作用和法律效力。\n"
-                                         +"二、在购货方赊欠或拖欠销货方货款时，所欠货款则自动转为购货方向销货方借款。本销售单替代并与欠（借）款凭据具有同等的作用和法律效力。\n"
-                                         +"三、货款结算期限，除双方麟游书面约定外，自销货方交货之日起 "+tbDz12.Text+" 天内付清。购货方若逾期支付，则依合同法承担违约责任。\n"
-                                         +"四、遇有争议，应友好协商，若协商不成，则由销货方所在地人民法院处理。\n"
-                                         +"五、本销售单经双方盖章或经办人签字（含电子签名）后即为生效。\n";
-                    g.DrawString(beizhu , f6, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX+3, 185 + y + tableY + tbDz9.Height - 20);
+                    String beizhu = "注：" + tbDz4.Text + "\n"
+                                         + "一、上述货物经购货方验收合格并已收妥，除双方另有书面约定外，双方承认本销售单具有替代购销合同的作用和法律效力。\n"
+                                         + "二、在购货方赊欠或拖欠销货方货款时，所欠货款则自动转为购货方向销货方借款。本销售单替代并与欠（借）款凭据具有同等的作用和法律效力。\n"
+                                         + "三、货款结算期限，除双方麟游书面约定外，自销货方交货之日起 " + tbDz12.Text + " 天内付清。购货方若逾期支付，则依合同法承担违约责任。\n"
+                                         + "四、遇有争议，应友好协商，若协商不成，则由销货方所在地人民法院处理。\n"
+                                         + "五、本销售单经双方盖章或经办人签字（含电子签名）后即为生效。\n";
+                    g.DrawString(beizhu, f6, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX + 3, 185 + y + tableY + tbDz9.Height - 20);
                 }
             }
-            
+
 
             g.DrawString("对方办理人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x, 300 + y + fontDisY + tableY - 20);
             g.DrawString("我方经办人\n（签 字）：", f3, new SolidBrush(Color.Black), tableX + x + 733 / 2 - 90, 300 + y + fontDisY + tableY - 20);
@@ -2141,7 +2142,7 @@ namespace VividManagementApplication
             g.DrawString("总金额：", f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 156 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x + 116, 156 + y + tableY - 20, 617, tbPz3.Height);
-            g.DrawString(SumtbPz.Text.Equals("") ? "" : SumtbPz.Text.Split('=')[1], f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY);
+            g.DrawString(SumtbPz.Text.Equals("") ? "" : SumtbPz.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + 116 + fontDisX, 156 + y + fontDisY + tableY);
 
             g.DrawRectangle(new Pen(Color.Black), tableX + x, 182 + y + tableY - 20, 733, 104);
             g.DrawString("备注：\n" + tbPz3.Text, f5, new SolidBrush(dzContact.ForeColor), tableX + x + fontDisX, 182 + y + fontDisY + tableY);
@@ -2632,7 +2633,7 @@ namespace VividManagementApplication
         {
             if (danziComboBox.SelectedIndex == 1)
             {
-                tbDz9.Text = tbDz3.Text.Split('=')[0];
+                tbDz9.Text = tbDz3.Text.Split('￥')[1];
             }
             else
             {

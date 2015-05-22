@@ -1346,7 +1346,7 @@ namespace VividManagementApplication
                 yiTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[5].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[5].Value.ToString());
                 yuTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[6].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[6].Value.ToString());
             }
-            DZDPrintingDGV.Rows.Add("结算", "", "", "", "￥" + yingTotal, "￥" + yiTotal, "￥" + yuTotal);
+            DZDPrintingDGV.Rows.Add("结算：", "", "", "", "￥ " + yingTotal, "￥ " + yiTotal, "￥ " + yuTotal);
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[0].ToolTipText = "1";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[1].ToolTipText = "0";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[2].ToolTipText = "0";

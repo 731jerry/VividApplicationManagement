@@ -31,7 +31,7 @@ namespace VividManagementApplication
             tbInfo10.Text = MainWindow.QQ;
             if (!MainWindow.SIGNATURE.Equals(""))
             {
-                compressedBitmap = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
+                compressedBitmap = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(MainWindow.SIGNATURE));
                 //Console.WriteLine("之前:" + MainWindow.SIGNATURE);
                 //Console.WriteLine("之后:" + ImgToBase64String(compressedBitmap));
                 SignPictureShowBox.Image = compressedBitmap;
@@ -134,7 +134,7 @@ namespace VividManagementApplication
                     if (isChangedSignature)
                     {
                         //GZB_signature
-                        String signatureString = FormBasicFeatrues.GetInstence().ImgToBase64String(compressedBitmap);
+                        String signatureString = FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(compressedBitmap));
                         if (!signatureString.Equals(""))
                         {
                             if (DatabaseConnections.GetInstence().OnlineUpdateData("users", new string[] { "GZB_signature" }, new string[] { signatureString }, MainWindow.ID) > 0)
