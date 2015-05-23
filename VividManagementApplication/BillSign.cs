@@ -13,9 +13,9 @@ namespace VividManagementApplication
     public partial class BillSign : Form
     {
         public Boolean isSendRequest = false;
-        public String remoteSignId = "";
         public String gzbIDStirng = "";
-        public String companyNickNameStirng = "";
+        public String remoteSignId = "";
+        public String companyNameStirng = "";
         public Image signImage;
         public Boolean isSigned = false;
 
@@ -51,13 +51,15 @@ namespace VividManagementApplication
                 RefuseButton.Text = "拒绝";
             }
 
-            if (isSigned)
+            if (isSigned || gzbIDStirng.Equals(MainWindow.USER_ID))
             {
                 OKButton.Enabled = false;
+                RefuseButton.Enabled = false;
             }
             else
             {
                 OKButton.Enabled = true;
+                RefuseButton.Enabled = true;
             }
         }
 
@@ -67,7 +69,7 @@ namespace VividManagementApplication
             {// 发送请求
                 if (DatabaseConnections.GetInstence().OnlineInsertData("gzb_remotesign",
                     "fromGZBID,toGZBID,companyNickName,sendTime,signValue",
-                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNickNameStirng + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" +FormBasicFeatrues.GetInstence().CompressString( FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)))) + "'") > 0)
+                    "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNameStirng + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)))) + "'") > 0)
                 {
                     MessageBox.Show("发送请求成功!", "提示");
                     this.Close();
@@ -105,7 +107,7 @@ namespace VividManagementApplication
                 this.Close();
             }
             else
-            {// 确认签名
+            {// 
                 InputMessage im = new InputMessage();
                 if (im.ShowDialog() == DialogResult.OK)
                 {

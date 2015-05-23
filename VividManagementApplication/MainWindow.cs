@@ -349,7 +349,8 @@ namespace VividManagementApplication
                 if (resultArray.Length > 0)
                 {
                     bs.gzbIDStirng = resultArray[0];
-                    bs.companyNickNameStirng = resultArray[2];
+                    bs.remoteSignId = resultArray[1];
+                    bs.companyNameStirng = resultArray[2];
                     bs.Text = resultArray[2] + "发来的电子签单";
                     bs.signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(resultArray[3])));
                     bs.isSigned = resultArray[4].Equals("0") ? false : true;
@@ -357,7 +358,7 @@ namespace VividManagementApplication
                 if (bs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     checkRemoteSignList();
-                    ViewButton.PerformClick();
+                    refeshButton.PerformClick();
                 }
             }
         }

@@ -317,20 +317,29 @@ namespace VividManagementApplication
         // 发送远程签单
         private void sendRemoteSignToolStripButton_Click(object sender, EventArgs e)
         {
-            PrintDocument doc = this.Document;
-            //PrintController controller = new PrintControllerFile();
-            PrintController controller = new PrintControllerFile(ImageFormat.Jpeg, 1f, 100L, MainWindow.SIGN_IMAGE_LOCATION);
-            //doc.PrintController = new PrintControllerWithStatusDialog( controller, "Exporting" );
-            doc.PrintController = controller;
-            doc.Print();
+            // 检测远程签单人是否存在
+            List<String> remoteUserInfo = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("users", new List<String>() { "userid", "company" }, "userid", gzbIDString);
+            if (remoteUserInfo.Count>0)
+            {
+                PrintDocument doc = this.Document;
+                //PrintController controller = new PrintControllerFile();
+                PrintController controller = new PrintControllerFile(ImageFormat.Jpeg, 1f, 100L, MainWindow.SIGN_IMAGE_LOCATION);
+                //doc.PrintController = new PrintControllerWithStatusDialog( controller, "Exporting" );
+                doc.PrintController = controller;
+                doc.Print();
 
-            BillSign bs = new BillSign();
-            bs.isSendRequest = true;
-            bs.gzbIDStirng = gzbIDString;
-            bs.companyNickNameStirng = companyNickNameStirng;
-            bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
-            //bs.signImage = MainWindow.SIGN_BITMAP;
-            bs.ShowDialog();
+                BillSign bs = new BillSign();
+                bs.isSendRequest = true;
+                bs.gzbIDStirng = gzbIDString;
+                bs.companyNameStirng = remoteUserInfo[1].ToString();
+                bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
+                //bs.signImage = MainWindow.SIGN_BITMAP;
+                bs.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("系统中不存在此帐号!请核准后再发送!", "提示");
+            }
         }
         #endregion
     }
