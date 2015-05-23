@@ -488,43 +488,44 @@ namespace VividManagementApplication
                 {
                     if (item.Name.Substring(0, PreName.Length).Equals(PreName))
                     {
-                        for (int i = 0; i < finalValues.Length; i++)
+                        //for (int i = 0; i < finalValues.Length; i++)
+                        //{
+                        /*
+                        string testS = item.Name.Substring(PreName.Length, item.Name.Length - PreName.Length);
+                        int test = int.Parse(testS);
+                        if (test == (i + 1))
+                         */
+                        int i = int.Parse(item.Name.Substring(PreName.Length)) - 1;
+                        //if (int.Parse(item.Name.Substring(PreName.Length, item.Name.Length - PreName.Length)) == (i + 1))
+                        //{
+                        if (item is ComboBox)
                         {
-                            /*
-                            string testS = item.Name.Substring(PreName.Length, item.Name.Length - PreName.Length);
-                            int test = int.Parse(testS);
-                            if (test == (i + 1))
-                             */
-                            if (int.Parse(item.Name.Substring(PreName.Length, item.Name.Length - PreName.Length)) == (i + 1))
+                            int intParsed;
+                            if (finalValues[i].Equals(""))
                             {
-                                if (item is ComboBox)
+                                item.Text = finalValues[i];
+                            }
+                            else
+                            {
+                                Boolean isInt = int.TryParse(finalValues[i], out intParsed);
+                                if ((isInt && ((item as ComboBox).Items.Count > intParsed) && !item.Name.Equals("tbDz1") && !item.Name.Equals("tbPz1")))
                                 {
-                                    int intParsed;
-                                    if (finalValues[i].Equals(""))
-                                    {
-                                        item.Text = finalValues[i];
-                                    }
-                                    else
-                                    {
-                                        Boolean isInt = int.TryParse(finalValues[i], out intParsed);
-                                        if ((isInt && ((item as ComboBox).Items.Count > intParsed) && !item.Name.Equals("tbDz1") && !item.Name.Equals("tbPz1")))
-                                        {
-                                            // 是数字  
-                                            (item as ComboBox).SelectedIndex = intParsed;
-                                        }
-                                        else
-                                        {
-                                            // 不是数字
-                                            item.Text = finalValues[i];
-                                        }
-                                    }
+                                    // 是数字  
+                                    (item as ComboBox).SelectedIndex = intParsed;
                                 }
                                 else
                                 {
+                                    // 不是数字
                                     item.Text = finalValues[i];
                                 }
                             }
                         }
+                        else
+                        {
+                            item.Text = finalValues[i];
+                        }
+                        //}
+                        //}
                     }
                 }
             }

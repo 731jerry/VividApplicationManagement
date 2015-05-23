@@ -2644,7 +2644,13 @@ namespace VividManagementApplication
         {
             if (danziComboBox.SelectedIndex == 1)
             {
-                tbDz9.Text = tbDz3.Text.Split('￥')[1];
+                if (tbDz3.Text.Contains('￥'))
+                {
+                    tbDz9.Text = tbDz3.Text.Split('￥')[1];
+                }
+                else {
+                    tbDz9.Text = tbDz3.Text;
+                }
             }
             else
             {

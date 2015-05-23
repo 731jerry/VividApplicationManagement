@@ -1,3 +1,105 @@
+2015/5/23 21:59:29-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 525
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:58:26-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 525
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:55:47-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 498
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:55:15-无法查看详细
+###异常消息Message: 输入字符串的格式不正确。
+###当前异常StackTrace:    在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 498
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:38:25-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:35:55-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:34:48-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:29:20-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
+2015/5/23 21:27:49-无法查看详细
+###异常消息Message: 索引超出了数组界限。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
+   在 System.Windows.Forms.Control.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.TextBoxBase.OnTextChanged(EventArgs e)
+   在 System.Windows.Forms.Control.set_Text(String value)
+   在 System.Windows.Forms.TextBoxBase.set_Text(String value)
+   在 System.Windows.Forms.TextBox.set_Text(String value)
+   在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 524
+   在 VividManagementApplication.DetailedInfo.InitDetailedInfoWindow() 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 251
+===================================================
+
 2015/5/23 13:39:32-无法查看详细
 ###异常消息Message: 索引超出了数组界限。
 ###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647

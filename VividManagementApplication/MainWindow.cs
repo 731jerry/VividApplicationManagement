@@ -976,7 +976,7 @@ namespace VividManagementApplication
             PrintButton.Enabled = false;
             CURRENT_LIST_BUTTON = listXsButton;
             CURRENT_TAB = 4;
-            mainDGVTitle.Text = listCgButton.Text;
+            mainDGVTitle.Text = listXsButton.Text;
             Column1.HeaderText = "凭证号码";
             Column2.HeaderText = "单位名称";
             Column3.HeaderText = "商品名称";
@@ -1015,7 +1015,6 @@ namespace VividManagementApplication
                     "operateMoney", 
                     "remaintingMoney", 
                     "case when discardFlag = '0' then '否' else '已作废' end as 'discardFlag'" });
-
         }
 
         private String clientIDFromFilter = "";
@@ -1092,7 +1091,7 @@ namespace VividManagementApplication
                     + "WHERE " + leixingLimitation + limitation
                     + " UNION "
                     + " SELECT " + dzTypeID + " as pzID ,cast (modifyTime as VARCHAR), '" + dzTypeName + "'as leixing, companyName as zhaiyao, sum as operateMoney, 0 as remaintingMoney FROM " + dzTypeInDatabase
-                    + " WHERE " + limitation + " ORDER BY modifyTime ASC",
+                    + " WHERE " + limitation + " ORDER BY modifyTime DESC",
                     new String[] { "pzID", "modifyTime", "leixing", "zhaiyao", "operateMoney", "remaintingMoney" });
 
                 for (int i = 0; i < resultsList.Count; i++)
