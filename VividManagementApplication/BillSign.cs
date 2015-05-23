@@ -35,7 +35,7 @@ namespace VividManagementApplication
             {
                 OKButton.Text = "发送请求";
                 RefuseButton.Text = "取消";
-                Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
+                Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(MainWindow.SIGNATURE)));
                 if (_signImage != null)
                 {
                     using (Graphics gr = Graphics.FromImage(SignPictureBox.Image))

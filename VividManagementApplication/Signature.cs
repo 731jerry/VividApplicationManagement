@@ -77,5 +77,11 @@ namespace VividManagementApplication
             SignPictureBox.DrawToBitmap(SavedBitmap, new Rectangle(0, 0, SignPictureBox.Width, SignPictureBox.Height));
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
+
+        private void uploadSignPicButton_Click(object sender, EventArgs e)
+        {
+
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+        }
     }
 }

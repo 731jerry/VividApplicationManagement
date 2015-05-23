@@ -1171,6 +1171,7 @@ namespace VividManagementApplication
             this.tbGoods1.Location = new System.Drawing.Point(109, 26);
             this.tbGoods1.MaxLength = 10;
             this.tbGoods1.Name = "tbGoods1";
+            this.tbGoods1.ReadOnly = true;
             this.tbGoods1.Size = new System.Drawing.Size(179, 26);
             this.tbGoods1.TabIndex = 201;
             this.tbGoods1.Validated += new System.EventHandler(this.TextBoxCheckIfDuplicate_Validated);

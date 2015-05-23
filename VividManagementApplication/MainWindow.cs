@@ -193,6 +193,8 @@ namespace VividManagementApplication
                 UserDegreeLabel.Location = new Point(lbUserName.Location.X + lbUserName.Size.Width + 20, UserDegreeLabel.Location.Y);
                 #endregion
 
+                lablTextChangeTimer = new System.Timers.Timer(5000);
+
                 // 状态栏通知
                 notifyIcon.Visible = true;
                 SetNotifyIcon(currentImageIndex);
@@ -206,7 +208,6 @@ namespace VividManagementApplication
                 }
                 #endregion
 
-                lablTextChangeTimer = new System.Timers.Timer(5000);
             }
             else
             {
@@ -1047,7 +1048,6 @@ namespace VividManagementApplication
                 Column4.HeaderText = "摘要";
                 Column5.HeaderText = "交易金额";
                 Column6.HeaderText = "结余金额";
-
                 Column1.Width = 200;
                 Column2.Width = 200;
                 Column3.Width = 100;
@@ -1112,6 +1112,9 @@ namespace VividManagementApplication
                 {
                     this.MainDataGridView.Rows.Add(resultsList[j]);
                 }
+
+                mainDGVTitle.Text = flt.DzTypeComboBox.Text;
+
             }
             else // 取消键
             {

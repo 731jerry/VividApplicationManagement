@@ -146,8 +146,8 @@
             this.DzTypeComboBox.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.DzTypeComboBox.FormattingEnabled = true;
             this.DzTypeComboBox.Items.AddRange(new object[] {
-            "应收对账单",
-            "应付对账单"});
+            "应收款对账单",
+            "应付款对账单"});
             this.DzTypeComboBox.Location = new System.Drawing.Point(33, 81);
             this.DzTypeComboBox.Name = "DzTypeComboBox";
             this.DzTypeComboBox.Size = new System.Drawing.Size(192, 28);

@@ -87,7 +87,6 @@ Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\
 Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe.config
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.exe
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\管账宝.pdb
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\ControlExs.dll
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DetailedInfo.resources
@@ -100,8 +99,6 @@ Z:\SourceTree\VividApplicationManagement\VividManagementApplication\obj\Release\
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.update.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.pdb
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.ClientPicker.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 C:\Users\v-jez\Documents\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
@@ -170,3 +167,5 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.update.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\管账宝.exe
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources

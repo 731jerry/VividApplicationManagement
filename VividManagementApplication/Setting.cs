@@ -134,7 +134,7 @@ namespace VividManagementApplication
                     if (isChangedSignature)
                     {
                         //GZB_signature
-                        String signatureString = FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(compressedBitmap));
+                        String signatureString = FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(compressedBitmap)));
                         if (!signatureString.Equals(""))
                         {
                             if (DatabaseConnections.GetInstence().OnlineUpdateData("users", new string[] { "GZB_signature" }, new string[] { signatureString }, MainWindow.ID) > 0)
