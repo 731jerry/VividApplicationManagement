@@ -66,3 +66,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\Vivid
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.Signature.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.update.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csproj.GenerateResource.Cache
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csprojResolveAssemblyReference.cache

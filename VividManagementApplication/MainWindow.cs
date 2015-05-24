@@ -349,7 +349,6 @@ namespace VividManagementApplication
                 if (resultArray.Length > 0)
                 {
                     bs.gzbIDStirng = resultArray[0];
-                    bs.remoteSignId = remoteSignId;
                     bs.companyNameStirng = resultArray[2];
                     bs.Text = resultArray[2] + "发来的电子签单";
                     bs.signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(resultArray[3])));
@@ -841,11 +840,22 @@ namespace VividManagementApplication
             }
         }
 
+        private void ClearMainDataGridView() {
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+        }
+
         // 客户管理
         private void listCxButton_Click(object sender, EventArgs e)
         {
             try
             {
+                ClearMainDataGridView();
                 refeshButton.Enabled = true;
                 ViewButton.Enabled = true;
                 PrintButton.Enabled = false;
@@ -870,6 +880,7 @@ namespace VividManagementApplication
         // 商品管理
         private void listSpButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -893,6 +904,7 @@ namespace VividManagementApplication
         // 库存
         private void listKcButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = false;
             PrintButton.Enabled = false;
@@ -915,6 +927,7 @@ namespace VividManagementApplication
 
         private void listJcdButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -933,6 +946,7 @@ namespace VividManagementApplication
 
         private void listCcdButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -955,6 +969,7 @@ namespace VividManagementApplication
 
         private void listCgXsButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -973,6 +988,7 @@ namespace VividManagementApplication
 
         private void listXsButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -994,6 +1010,7 @@ namespace VividManagementApplication
         // 凭证列表 收付汇总表
         private void listSfzhButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -1026,6 +1043,7 @@ namespace VividManagementApplication
         // 客户对账单
         private void listKhdzButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = false;
             PrintButton.Enabled = true;
@@ -1126,6 +1144,7 @@ namespace VividManagementApplication
         // 合同列表
         private void listHtButton_Click(object sender, EventArgs e)
         {
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -1148,13 +1167,7 @@ namespace VividManagementApplication
 
         private void listQdButton_Click(object sender, EventArgs e)
         {
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
+            ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
