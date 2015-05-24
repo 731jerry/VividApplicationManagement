@@ -31,7 +31,7 @@ namespace VividManagementApplication
             tbInfo10.Text = MainWindow.QQ;
             if (!MainWindow.SIGNATURE.Equals(""))
             {
-                compressedBitmap = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(MainWindow.SIGNATURE));
+                compressedBitmap = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(MainWindow.SIGNATURE)));
                 //Console.WriteLine("之前:" + MainWindow.SIGNATURE);
                 //Console.WriteLine("之后:" + ImgToBase64String(compressedBitmap));
                 SignPictureShowBox.Image = compressedBitmap;

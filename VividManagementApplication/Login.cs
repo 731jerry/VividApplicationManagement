@@ -170,7 +170,7 @@ namespace VividManagementApplication
             }
             catch
             {
-                //MessageBox.Show("系统检测到您使用的是最新版本!", "提示");
+                MessageBox.Show("系统检测到您使用的是最新版本!", "提示");
             }
             this.Text = windowText;
             LoadCyy.Enabled = true;

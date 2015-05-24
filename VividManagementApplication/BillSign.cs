@@ -73,6 +73,7 @@ namespace VividManagementApplication
                 {
                     MessageBox.Show("发送请求成功!", "提示");
                     this.Close();
+                    //this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }
             }
             else
@@ -80,7 +81,7 @@ namespace VividManagementApplication
                 ConfirmPassword cp = new ConfirmPassword();
                 if (cp.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(MainWindow.SIGNATURE);
+                    Image _signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(MainWindow.SIGNATURE)));
                     if (_signImage != null)
                     {
                         using (Graphics gr = Graphics.FromImage(SignPictureBox.Image))
@@ -90,6 +91,8 @@ namespace VividManagementApplication
                         SignPictureBox.Invalidate();
                         if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, remoteSignId) > 0)
                         {
+                            OKButton.Enabled = false;
+                            RefuseButton.Enabled = false;
                             MessageBox.Show("远程签名成功!", "提示");
                             this.DialogResult = System.Windows.Forms.DialogResult.OK;
                         }

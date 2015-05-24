@@ -52,7 +52,6 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\Vivid
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Debug\管账宝.pdb
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Debug\ControlExs.dll
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\bin\Debug\System.Data.SQLite.DLL
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.BillSign.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.InputMessage.resources
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.Picker.resources

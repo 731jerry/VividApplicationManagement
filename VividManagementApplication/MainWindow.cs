@@ -349,7 +349,7 @@ namespace VividManagementApplication
                 if (resultArray.Length > 0)
                 {
                     bs.gzbIDStirng = resultArray[0];
-                    bs.remoteSignId = resultArray[1];
+                    bs.remoteSignId = remoteSignId;
                     bs.companyNameStirng = resultArray[2];
                     bs.Text = resultArray[2] + "发来的电子签单";
                     bs.signImage = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(resultArray[3])));
@@ -357,6 +357,7 @@ namespace VividManagementApplication
                 }
                 if (bs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
+                    bs.Close();
                     checkRemoteSignList();
                     refeshButton.PerformClick();
                 }
@@ -674,7 +675,7 @@ namespace VividManagementApplication
         private void refreshCheckRemoteSignListWithObject(object obj)
         {
             checkRemoteSignList();
-            CURRENT_LIST_BUTTON.PerformClick();
+            //CURRENT_LIST_BUTTON.PerformClick();
             //MessageBox.Show("刷新成功！");
             StatusToolStripStatusLabel.Text = "刷新成功！";
         }
@@ -1147,6 +1148,13 @@ namespace VividManagementApplication
 
         private void listQdButton_Click(object sender, EventArgs e)
         {
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
             PrintButton.Enabled = false;
@@ -1154,28 +1162,33 @@ namespace VividManagementApplication
             CURRENT_TAB = 7;
             mainDGVTitle.Text = listQdButton.Text;
             Column1.HeaderText = "ID";
-            Column2.HeaderText = "操作方式";
-            Column3.HeaderText = "对方ID";
-            Column4.HeaderText = "对方公司名称";
-            Column5.HeaderText = "是否已签";
-            Column6.HeaderText = "备注";
-            Column7.HeaderText = "操作时间";
+            Column2.HeaderText = "操作时间";
+            Column3.HeaderText = "标识";
+            Column4.HeaderText = "对方管账宝ID";
+            Column5.HeaderText = "客户名称";
+            Column6.HeaderText = "备  注";
+            Column7.HeaderText = "状  态";
 
-            Column5.Width = 80;
-            Column6.Width = 120;
-            Column7.Width = 120;
+            Column2.Width = 120;
+            Column3.Width = 60;
+            Column6.Width = 240;
+            Column7.Width = 60;
+            Column1.Visible = false;
+            Column4.Visible = false;
 
-            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            Column5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             //checkRemoteSignList();
             CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "remoteSign", -1,
                 new string[] { 
                     "Id", 
+                    "case when isSigned = '0' then sendTime else signTime end as 'operationTime'",
                     "case when fromGZBID = '"+MainWindow.USER_ID+"' then '发送' else '接收' end as 'operation'",
                     "case when fromGZBID = '"+MainWindow.USER_ID+"' then toGZBID else fromGZBID end as 'peerID'", 
                     "companyNickName", 
-                    "case when isSigned = '1' then '已签' when isSigned ='-1' then '拒签'  else '未处理' end as 'isSigned'", 
                     "refusedMessage",
-                    "case when isSigned = '0' then sendTime else signTime end as 'operationTime'" });
+                    "case when isSigned = '1' then '已签' when isSigned ='-1' then '拒签'  else '未处理' end as 'isSigned'"
+                });
         }
         #endregion
 
@@ -1800,7 +1813,7 @@ namespace VividManagementApplication
             try
             {
                 List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
-                List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
+                List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
                 NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理远程签单";
 
                 if (remoteSignList.Count != 0)

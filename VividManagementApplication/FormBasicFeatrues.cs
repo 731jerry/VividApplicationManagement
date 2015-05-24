@@ -1026,7 +1026,7 @@ namespace VividManagementApplication
             }
             catch (Exception ex)
             {
-                return ("ImgToBase64String 转换失败\nException:" + ex.Message);
+                return ("转换失败\nException:" + ex.Message);
             }
         }
 
@@ -1044,7 +1044,7 @@ namespace VividManagementApplication
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Base64StringToImage 转换失败\nException：" + ex.Message);
+                MessageBox.Show("转换失败\nException：" + ex.Message);
                 return btmp;
             }
         }
