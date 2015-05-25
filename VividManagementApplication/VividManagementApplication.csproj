@@ -84,6 +84,12 @@
     <Compile Include="BillSign.Designer.cs">
       <DependentUpon>BillSign.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataImport.Designer.cs">
+      <DependentUpon>DataImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </Compile>
     <EmbeddedResource Include="BillSign.resx">
       <DependentUpon>BillSign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataImport.resx">
+      <DependentUpon>DataImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputMessage.resx">
       <DependentUpon>InputMessage.cs</DependentUpon>

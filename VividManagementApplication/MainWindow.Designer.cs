@@ -92,6 +92,8 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadFileToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.dataCxImport = new ControlExs.QQButton();
+            this.dataSpImport = new ControlExs.QQButton();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -211,6 +213,8 @@
             // 
             this.NavPanel.BackColor = System.Drawing.Color.Transparent;
             this.NavPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.NavPanel.Controls.Add(this.dataSpImport);
+            this.NavPanel.Controls.Add(this.dataCxImport);
             this.NavPanel.Controls.Add(this.listQdButton);
             this.NavPanel.Controls.Add(this.QdRadio);
             this.NavPanel.Controls.Add(this.listXsButton);
@@ -572,6 +576,20 @@
             this.pbUploadDownloadFileToolStripProgressBar.Name = "pbUploadDownloadFileToolStripProgressBar";
             resources.ApplyResources(this.pbUploadDownloadFileToolStripProgressBar, "pbUploadDownloadFileToolStripProgressBar");
             // 
+            // dataCxImport
+            // 
+            resources.ApplyResources(this.dataCxImport, "dataCxImport");
+            this.dataCxImport.Name = "dataCxImport";
+            this.dataCxImport.UseVisualStyleBackColor = true;
+            this.dataCxImport.Click += new System.EventHandler(this.dataCxImport_Click);
+            // 
+            // dataSpImport
+            // 
+            resources.ApplyResources(this.dataSpImport, "dataSpImport");
+            this.dataSpImport.Name = "dataSpImport";
+            this.dataSpImport.UseVisualStyleBackColor = true;
+            this.dataSpImport.Click += new System.EventHandler(this.dataSpImport_Click);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -669,6 +687,8 @@
         private System.Windows.Forms.ToolStripStatusLabel pbUploadDownloadToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel StatusToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
+        private ControlExs.QQButton dataSpImport;
+        private ControlExs.QQButton dataCxImport;
     }
 }
 

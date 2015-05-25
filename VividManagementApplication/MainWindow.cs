@@ -1236,6 +1236,18 @@ namespace VividManagementApplication
             CreateDetailedWindow();
         }
 
+        // 客户数据 excel导入
+        private void dataCxImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // 商品数据 excel导入
+        private void dataSpImport_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // 新建进出仓单
         private void newJCcButton_Click(object sender, EventArgs e)
         {
@@ -1899,6 +1911,7 @@ namespace VividManagementApplication
             StatusToolStripStatusLabel.Text = "消息";
             lablTextChangeTimer.Enabled = false;
         }
+
 
     }
 }
