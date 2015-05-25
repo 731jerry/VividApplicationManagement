@@ -72,8 +72,8 @@ namespace VividManagementApplication
                     "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNameStirng + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)))) + "'") > 0)
                 {
                     MessageBox.Show("发送请求成功!", "提示");
-                    this.Close();
-                    //this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    //this.Close();
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }
             }
             else

@@ -61,7 +61,7 @@ namespace VividManagementApplication
                 this.Close();
                 Application.Exit();
 
-                Process.Start(System.Environment.CurrentDirectory + @"\new.exe");
+                Process.Start(System.Environment.CurrentDirectory + @"\管账宝更新.exe");
             }
         }
 

@@ -286,9 +286,6 @@ namespace VividManagementApplication
 
         #endregion
 
-        //--------------------------------------------------------------------
-        #region ** job control
-
         void _btnCancel_Click(object sender, EventArgs e)
         {
             if (_preview.IsRendering)
@@ -334,13 +331,15 @@ namespace VividManagementApplication
                 bs.companyNameStirng = remoteUserInfo[1].ToString();
                 bs.signImage = Image.FromFile(MainWindow.SIGN_IMAGE_LOCATION);
                 //bs.signImage = MainWindow.SIGN_BITMAP;
-                bs.ShowDialog();
+                if (bs.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
             }
             else
             {
                 MessageBox.Show("系统中不存在此帐号!请核准后再发送!", "提示");
             }
         }
-        #endregion
     }
 }

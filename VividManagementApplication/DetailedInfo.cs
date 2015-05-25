@@ -462,7 +462,8 @@ namespace VividManagementApplication
                     break;
                 case 6:
                     // 合同
-                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfPresenter, tbHTghfPresenter, SumHtTextbox, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
+                    checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfPresenter, tbHTghfPresenter, SumHtTextbox };
+                    //checkValidateControls = new List<Control>() { HTtbID, HTtbLocation, tbHTxsfPresenter, tbHTghfPresenter, SumHtTextbox, HTcbChoose2, HTcbChoose3, HTcbChoose4, HTcbChoose5, HTcbChoose6, HTcbChoose7 };
                     //checkValidateControls = new List<Control>() { HTtbID };
                     detailedPanel = DetailedHTPanel;
                     detailedLocationY = 80;
@@ -1850,7 +1851,7 @@ namespace VividManagementApplication
                     dlg.Document = this.printDocument1;
                     //dlg.WindowState = FormWindowState.Maximized;
                     dlg.Size = new Size(800, 600);
-                    if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 0))
+                    if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 1))
                     {
                         dlg.sendRemoteSignToolStripButton.Enabled = true;
                         dlg.gzbIDString = dzGZBId.Text;
@@ -2648,7 +2649,8 @@ namespace VividManagementApplication
                 {
                     tbDz9.Text = tbDz3.Text.Split('￥')[1];
                 }
-                else {
+                else
+                {
                     tbDz9.Text = tbDz3.Text;
                 }
             }

@@ -197,6 +197,7 @@ namespace VividManagementApplication
 
                 // 状态栏通知
                 notifyIcon.Visible = true;
+                notifyIcon.Text = "管账宝(" + MainWindow.USER_ID + ")";
                 SetNotifyIcon(currentImageIndex);
 
                 #region 初始化企业基本信息设置
@@ -1113,22 +1114,36 @@ namespace VividManagementApplication
                     + "WHERE " + leixingLimitation + limitation
                     + " UNION "
                     + " SELECT " + dzTypeID + " as pzID ,cast (modifyTime as VARCHAR), '" + dzTypeName + "'as leixing, companyName as zhaiyao, sum as operateMoney, 0 as remaintingMoney FROM " + dzTypeInDatabase
-                    + " WHERE " + limitation + " ORDER BY modifyTime DESC",
+                    + " WHERE " + limitation + " ORDER BY modifyTime ASC",
                     new String[] { "pzID", "modifyTime", "leixing", "zhaiyao", "operateMoney", "remaintingMoney" });
 
                 for (int i = 0; i < resultsList.Count; i++)
                 {
-                    if ((resultsList[i][2].Equals("收款凭证")) || resultsList[i][2].Equals("还款凭证"))
+                    //tempBalance += float.Parse(resultsList[i][4]);
+                    if (isYS)
                     {
-                        tempBalance += float.Parse(resultsList[i][4]);
+                        if (resultsList[i][2].Equals("收款凭证"))
+                        {
+                            tempBalance -= float.Parse(resultsList[i][4]);
+                        }
+                        else
+                        {
+                            tempBalance += float.Parse(resultsList[i][4]);
+                        }
                     }
-                    else
-                    {
-                        tempBalance -= float.Parse(resultsList[i][4]);
+                    else {
+                        if (resultsList[i][2].Equals("采购凭证"))
+                        {
+                            tempBalance += float.Parse(resultsList[i][4]);
+                        }
+                        else
+                        {
+                            tempBalance -= float.Parse(resultsList[i][4]);
+                        }
                     }
                     resultsList[i][5] = tempBalance.ToString();
                 }
-                resultsList.Reverse();
+                //resultsList.Reverse();
                 for (int j = 0; j < resultsList.Count; j++)
                 {
                     this.MainDataGridView.Rows.Add(resultsList[j]);
@@ -1356,7 +1371,7 @@ namespace VividManagementApplication
 
             tempDGV.Columns[0].Width = 30;
             tempDGV.Columns[1].Width = 55;
-            //tempDGV.Columns[2].Width = 60;
+            tempDGV.Columns[2].Width = 60;
             //tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tempDGV.Columns[4].Width = 60;
             tempDGV.Columns[5].Width = 60;
@@ -1378,7 +1393,7 @@ namespace VividManagementApplication
                 yiTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[5].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[5].Value.ToString());
                 yuTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[6].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[6].Value.ToString());
             }
-            DZDPrintingDGV.Rows.Add("结算：", "", "", "", "￥ " + yingTotal, "￥ " + yiTotal, "￥ " + yuTotal);
+            DZDPrintingDGV.Rows.Add("结", "算：", "", "", "￥ " + yingTotal, "￥ " + yiTotal, "￥ " + yuTotal);
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[0].ToolTipText = "1";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[1].ToolTipText = "0";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[2].ToolTipText = "0";
@@ -1386,6 +1401,11 @@ namespace VividManagementApplication
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[4].ToolTipText = "2";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[5].ToolTipText = "2";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[6].ToolTipText = "2";
+
+            DZDPrintingDGV.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DZDPrintingDGV.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DZDPrintingDGV.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DZDPrintingDGV.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private DataGridView CopyDataGridView(DataGridView dgv_org)
@@ -1481,6 +1501,9 @@ namespace VividManagementApplication
                 bool bMorePagesToPrint = false;
                 int iTmpWidth = 0;
 
+                // 文字内部的左偏移
+                int stringLeftMargin = 5;
+
                 //For the first page to print set the cell width and header height
                 if (bFirstPage)
                 {
@@ -1572,7 +1595,7 @@ namespace VividManagementApplication
 
                                 e.Graphics.DrawString(GridCol.HeaderText, GridCol.InheritedStyle.Font,
                                     new SolidBrush(GridCol.InheritedStyle.ForeColor),
-                                    new RectangleF((int)arrColumnLefts[iCount], iTopMargin,
+                                    new RectangleF((int)arrColumnLefts[iCount] + stringLeftMargin, iTopMargin,
                                     (int)arrColumnWidths[iCount], iHeaderHeight), strFormat);
                                 iCount++;
                             }
@@ -1597,7 +1620,7 @@ namespace VividManagementApplication
                                 {
                                     e.Graphics.DrawString(Cel.Value.ToString(), Cel.InheritedStyle.Font,
                                                 new SolidBrush(Cel.InheritedStyle.ForeColor),
-                                                new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
+                                                new RectangleF((int)arrColumnLefts[iCount] + stringLeftMargin, (float)iTopMargin,
                                                 (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
                                 }
                             }
@@ -1718,8 +1741,11 @@ namespace VividManagementApplication
         {
             if (isBlink)
             {
-                this.notifyBlinkTimer.Enabled = true;
-                SetNotifyIcon(0);
+                if (!this.notifyBlinkTimer.Enabled)
+                {
+                    this.notifyBlinkTimer.Enabled = true;
+                    SetNotifyIcon(0);
+                }
             }
             else
             {
@@ -1763,19 +1789,13 @@ namespace VividManagementApplication
             }
         }
 
-        List<String> notifyItemTagList = new List<string>();
         public void addNotifyItem(String id, String sender)
         {
-            if (!notifyItemTagList.Contains(id))
-            {
-                ToolStripMenuItem newMenuItem = new ToolStripMenuItem(sender + "远程签单请求", VividManagementApplication.Properties.Resources.Signature);
-                newMenuItem.Tag = sender;
-                newMenuItem.Click += new EventHandler(mnuNotify_Click);
-                notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
-                notifyBlink(true);
-                notifyItemTagList.Add(id);
-                //notifyIconContextMenuStrip.Items.AddRange(new ToolStripItem[] { newMenuItem });
-            }
+            notifyBlink(true);
+            ToolStripMenuItem newMenuItem = new ToolStripMenuItem(id + "发来远程签单请求", VividManagementApplication.Properties.Resources.Signature);
+            newMenuItem.Tag = sender;
+            newMenuItem.Click += new EventHandler(mnuNotify_Click);
+            notifyIconContextMenuStrip.Items.Insert(1, newMenuItem);
         }
 
         private void mnuNotify_Click(object sender, EventArgs e)
@@ -1847,9 +1867,9 @@ namespace VividManagementApplication
                 {
                     foreach (List<String> item in remoteSignList)
                     {
-                        if (item[4].Equals("0")&&item[2].Equals(MainWindow.USER_ID))
+                        if (item[4].Equals("0") && item[2].Equals(MainWindow.USER_ID))
                         {
-                        addNotifyItem(item[1], item[0]);
+                            addNotifyItem(item[1], item[0]);
                             remoteSignUndealedListCount++;
                         }
                         DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
