@@ -5,7 +5,7 @@
 !define VERSION_NAME "精华版"
 !define PRODUCT_NAME_ENG "GZB"
 !define APP_NAME "管账宝"
-!define PRODUCT_VERSION "1.3.8"
+!define PRODUCT_VERSION "1.3.9"
 !define PRODUCT_PUBLISHER "唯达软件科技有限公司"
 !define INSTALL_LOCATION "c:\GZB"
 !define PRODUCT_DIR_REGKEY "Software\VividApp\${PRODUCT_NAME_ENG}\${APP_NAME}.exe"
