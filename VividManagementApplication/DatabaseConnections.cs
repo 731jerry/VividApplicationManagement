@@ -92,7 +92,7 @@ namespace VividManagementApplication
                     MainWindow.EMAIL = dataReader["email"].ToString();
                     MainWindow.NOTIFICATION = dataReader["notification"].ToString();
                     MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
-                    MainWindow.DEGREE =int.Parse(dataReader["GZB_degree"].ToString());
+                    MainWindow.DEGREE = int.Parse(dataReader["GZB_degree"].ToString());
                     MainWindow.ADDTIME = DateTime.Parse(dataReader["GZB_addtime"].ToString());
                     MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
                     MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
@@ -407,36 +407,50 @@ namespace VividManagementApplication
             LocalDbClose();
         }
 
+        // 清空表
+        public void LocalClearTable(String table)
+        {
+            LocalDbOpen();
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            cmdInsert.CommandText = "DELETE FROM " + table;
+            cmdInsert.ExecuteNonQuery();
+            LocalDbClose();
+        }
 
         public string[] LocalGetOneRowDataById(string table, string[] query, string baseName, string id)
         {
-            // ORDER BY id ASC
-            string innerSQL = "";
+            string[] resultsStringArray = new String[] { };
+            try
+            {
+                // ORDER BY id ASC
+                string innerSQL = "";
 
-            for (int i = 0; i < query.Length; i++)
-            {
-                innerSQL += query[i] + ",";
-            }
-            if (!innerSQL.Equals(""))
-            {
-                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
-            }
-            string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-            LocalDbOpen();
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
-            cmdCreateTable.CommandText = sql;
-            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            string[] resultsStringArray = new string[query.Length];
-
-            while (reader.Read())
-            {
                 for (int i = 0; i < query.Length; i++)
                 {
-                    resultsStringArray[i] = reader[query[i]].ToString();
+                    innerSQL += query[i] + ",";
                 }
+                if (!innerSQL.Equals(""))
+                {
+                    innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+                }
+                string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
+                LocalDbOpen();
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+                cmdCreateTable.CommandText = sql;
+                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                resultsStringArray = new string[query.Length];
+
+                while (reader.Read())
+                {
+                    for (int i = 0; i < query.Length; i++)
+                    {
+                        resultsStringArray[i] = reader[query[i]].ToString();
+                    }
+                }
+                reader.Close();
+                LocalDbClose();
             }
-            reader.Close();
-            LocalDbClose();
+            catch { return resultsStringArray; }
             return resultsStringArray;
         }
 

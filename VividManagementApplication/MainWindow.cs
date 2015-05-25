@@ -659,6 +659,7 @@ namespace VividManagementApplication
 
         private void refeshButton_Click(object sender, EventArgs e)
         {
+            StatusToolStripStatusLabel.Text = "正在刷新...";
             if (CURRENT_LIST_BUTTON == listQdButton)
             {
                 Thread t = new Thread(new ParameterizedThreadStart(refreshCheckRemoteSignListWithObject));
@@ -840,7 +841,8 @@ namespace VividManagementApplication
             }
         }
 
-        private void ClearMainDataGridView() {
+        private void ClearMainDataGridView()
+        {
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -1202,6 +1204,7 @@ namespace VividManagementApplication
                     "refusedMessage",
                     "case when isSigned = '1' then '已签' when isSigned ='-1' then '拒签'  else '未处理' end as 'isSigned'"
                 });
+            this.MainDataGridView.Columns[1].HeaderCell.SortGlyphDirection = SortOrder.Descending;
         }
         #endregion
 
@@ -1752,6 +1755,14 @@ namespace VividManagementApplication
             this.notifyIcon.Icon = icon;
         }
 
+        private void ClearNotifyIconContextMenuStripItems()
+        {
+            for (int i = 0; i < notifyIconContextMenuStrip.Items.Count - 3; i++)
+            {
+                notifyIconContextMenuStrip.Items.RemoveAt(i + 1);
+            }
+        }
+
         List<String> notifyItemTagList = new List<string>();
         public void addNotifyItem(String id, String sender)
         {
@@ -1825,18 +1836,28 @@ namespace VividManagementApplication
         {
             try
             {
-                List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
-                List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
-                NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理远程签单";
+                List<List<String>> remoteSignList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
+                int remoteSignUndealedListCount = 0;
+                //List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
+
+                DatabaseConnections.GetInstence().LocalClearTable("remoteSign");
+                ClearNotifyIconContextMenuStripItems();
 
                 if (remoteSignList.Count != 0)
                 {
                     foreach (List<String> item in remoteSignList)
                     {
+                        if (item[4].Equals("0")&&item[2].Equals(MainWindow.USER_ID))
+                        {
                         addNotifyItem(item[1], item[0]);
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
+                            remoteSignUndealedListCount++;
+                        }
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                     }
                 }
+
+                NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedListCount + "条未处理远程签单";
+                listQdButton.PerformClick();
             }
             catch { return; }
         }

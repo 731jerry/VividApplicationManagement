@@ -89,7 +89,7 @@ namespace VividManagementApplication
                             gr.DrawImage(_signImage, new Rectangle(150, 480, 104, 36));
                         }
                         SignPictureBox.Invalidate();
-                        if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime" }, new String[] { "1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, remoteSignId) > 0)
+                        if (DatabaseConnections.GetInstence().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime", "signValue" }, new String[] { "1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(SignPictureBox.Image)))) }, remoteSignId) > 0)
                         {
                             OKButton.Enabled = false;
                             RefuseButton.Enabled = false;
