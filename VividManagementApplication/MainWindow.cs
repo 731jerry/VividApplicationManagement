@@ -190,7 +190,7 @@ namespace VividManagementApplication
                     UserDegreeLabel.Text = "VIP" + (disDays + 1).ToString();
                 }
 
-                UserDegreeLabel.Location = new Point(lbUserName.Location.X + lbUserName.Size.Width + 20, UserDegreeLabel.Location.Y);
+                UserDegreeLabel.Location = new Point(lbUserName.Location.X + lbUserName.Size.Width + 5, UserDegreeLabel.Location.Y);
                 #endregion
 
                 lablTextChangeTimer = new System.Timers.Timer(5000);
@@ -876,8 +876,9 @@ namespace VividManagementApplication
                 Column4.HeaderText = "联系人";
                 Column5.HeaderText = "联系电话";
 
+                Column2.Width = 200;
                 Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                Column3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
 
                 CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", -1,
                     new string[] { "clientID", "company", "address", "companyOwner", "phone" });
@@ -1139,7 +1140,8 @@ namespace VividManagementApplication
                             tempBalance += float.Parse(resultsList[i][4]);
                         }
                     }
-                    else {
+                    else
+                    {
                         if (resultsList[i][2].Equals("采购凭证"))
                         {
                             tempBalance += float.Parse(resultsList[i][4]);
@@ -1251,7 +1253,7 @@ namespace VividManagementApplication
             di.isTypeCx = true;
             if (di.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                MessageBox.Show("客户信息导入成功！已导入"+di.importedCount+"条客户信息","提示");
+                MessageBox.Show("客户信息导入成功！已导入" + di.importedCount + "条客户信息", "提示");
                 listCxButton.PerformClick();
             }
         }
@@ -1372,6 +1374,9 @@ namespace VividManagementApplication
             //objPPdialog.ShowDialog();
             if (MainDataGridView.Rows.Count > 0)
             {
+                //sprintDocument1.OriginAtMargins = true; //启用页边距
+                //printDocument1.DefaultPageSettings.Margins.Top = 0; //设置顶部页边距 
+                //printDocument1.DefaultPageSettings.Margins.Left = 20; //设置左部页边距
                 SetDZDPrintFormat();
                 //注意指定其Document(获取或设置要预览的文档)属性
                 this.printPreviewDialog1.Document = this.printDocument1;
@@ -1404,7 +1409,7 @@ namespace VividManagementApplication
             tempDGV.Columns[0].Width = 30;
             tempDGV.Columns[1].Width = 75;
             tempDGV.Columns[2].Width = 75;
-            //tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tempDGV.Columns[4].Width = 65;
             tempDGV.Columns[5].Width = 65;
             tempDGV.Columns[6].Width = 65;
@@ -1425,7 +1430,7 @@ namespace VividManagementApplication
                 yiTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[5].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[5].Value.ToString());
                 yuTotal += float.Parse(DZDPrintingDGV.Rows[i].Cells[6].Value.ToString().Equals("") ? "0" : DZDPrintingDGV.Rows[i].Cells[6].Value.ToString());
             }
-            DZDPrintingDGV.Rows.Add("结", "算：", "", "", "￥ " + yingTotal, "￥ " + yiTotal, "￥ " + yuTotal);
+            DZDPrintingDGV.Rows.Add("结", "算：", "", "", "￥" + yingTotal, "￥" + yiTotal, "￥" + yuTotal);
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[0].ToolTipText = "1";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[1].ToolTipText = "0";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[2].ToolTipText = "0";
@@ -1507,6 +1512,7 @@ namespace VividManagementApplication
                 {
                     iTotalWidth += dgvGridCol.Width;
                 }
+                //iTotalWidth = this.printDocument1.DefaultPageSettings.PaperSize.Width-150;
             }
             catch (Exception ex)
             {
@@ -1534,7 +1540,7 @@ namespace VividManagementApplication
                 int iTmpWidth = 0;
 
                 // 文字内部的左偏移
-                int stringLeftMargin = 5;
+                int stringLeftMargin = 3;
 
                 //For the first page to print set the cell width and header height
                 if (bFirstPage)
@@ -1544,6 +1550,7 @@ namespace VividManagementApplication
                         iTmpWidth = (int)(Math.Floor((double)((double)GridCol.Width /
                                        (double)iTotalWidth * (double)iTotalWidth *
                                        ((double)e.MarginBounds.Width / (double)iTotalWidth))));
+
 
                         iHeaderHeight = (int)(e.Graphics.MeasureString(GridCol.HeaderText,
                                     GridCol.InheritedStyle.Font, iTmpWidth).Height) + 11;
@@ -1643,7 +1650,7 @@ namespace VividManagementApplication
                                 if (Cel.ToolTipText.Equals("2"))
                                 {
                                     // 下划线
-                                    e.Graphics.DrawString(Cel.Value.ToString(), new System.Drawing.Font(Cel.InheritedStyle.Font.Name, Cel.InheritedStyle.Font.Size+1, FontStyle.Underline),
+                                    e.Graphics.DrawString(Cel.Value.ToString(), new System.Drawing.Font(Cel.InheritedStyle.Font.Name, Cel.InheritedStyle.Font.Size + 1, FontStyle.Underline),
                                                 new SolidBrush(Cel.InheritedStyle.ForeColor),
                                                 new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
                                                 (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
