@@ -13,6 +13,7 @@ namespace VividManagementApplication
 {
     public partial class DetailedInfo : Form
     {
+        public Boolean isNewWindow = false;
         public string ItemId = "-1";
         public string table = "";
         public string baseName = "id";
@@ -971,7 +972,31 @@ namespace VividManagementApplication
                     }
                     else
                     {
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
+                        //DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
+                        if (MainWindow.CURRENT_TAB == 1)
+                        {
+                            queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldPay", "shouldReceive", "beizhu" };
+                        }
+                        else if (MainWindow.CURRENT_TAB == 2)
+                        {
+                            queryArray = new string[] { baseName, "dengji", "name", "guige", "unit", "storageName", "storageManager", "storageManagerPhone", "storageLocation", "storageAddress", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu" };
+                        }
+                        List<String> queryArrayList = queryArray.ToList();
+                        List<String> resultListString = FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount).ToList(); ;
+                        if (isNewWindow)
+                        {
+                            queryArrayList.Add("addtime");
+                            queryArrayList.Add("modifyTime");
+
+                            resultListString.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                            resultListString.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        }
+                        else
+                        {
+                            queryArrayList.Add("addtime");
+                            resultListString.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                        }
+                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArrayList.ToArray(), resultListString.ToArray(), mainID);
                     }
 
                     if (ItemId.Equals("-1"))

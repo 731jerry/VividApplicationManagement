@@ -316,6 +316,7 @@ namespace VividManagementApplication
         private void CreateDetailedWindow()
         {
             DetailedInfo di = new DetailedInfo();
+            di.isNewWindow = true;
             //di.ShowIcon = false;
             di.Text = "新建";
             di.ShowDialog();
@@ -333,6 +334,7 @@ namespace VividManagementApplication
                 {
                     DetailedInfo di = new DetailedInfo();
                     di.ItemId = this.MainDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+                    di.isNewWindow = false;
                     di.Text = "查看" + di.ItemId;
                     di.ShowDialog();
                 }

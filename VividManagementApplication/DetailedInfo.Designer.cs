@@ -45,7 +45,7 @@ namespace VividManagementApplication
             this.label22 = new System.Windows.Forms.Label();
             this.tbClient13 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.tClient17 = new System.Windows.Forms.TextBox();
+            this.tbClient17 = new System.Windows.Forms.TextBox();
             this.tbClient3 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tbClient14 = new System.Windows.Forms.TextBox();
@@ -430,7 +430,7 @@ namespace VividManagementApplication
             this.DetailedClientPanel.Controls.Add(this.label22);
             this.DetailedClientPanel.Controls.Add(this.tbClient13);
             this.DetailedClientPanel.Controls.Add(this.label14);
-            this.DetailedClientPanel.Controls.Add(this.tClient17);
+            this.DetailedClientPanel.Controls.Add(this.tbClient17);
             this.DetailedClientPanel.Controls.Add(this.tbClient3);
             this.DetailedClientPanel.Controls.Add(this.label3);
             this.DetailedClientPanel.Controls.Add(this.tbClient14);
@@ -580,15 +580,15 @@ namespace VividManagementApplication
             this.label14.TabIndex = 114;
             this.label14.Text = "*银行帐号：";
             // 
-            // tClient17
+            // tbClient17
             // 
-            this.tClient17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.tClient17.Location = new System.Drawing.Point(125, 297);
-            this.tClient17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tClient17.Multiline = true;
-            this.tClient17.Name = "tClient17";
-            this.tClient17.Size = new System.Drawing.Size(635, 72);
-            this.tClient17.TabIndex = 117;
+            this.tbClient17.Font = new System.Drawing.Font("微软雅黑", 10.5F);
+            this.tbClient17.Location = new System.Drawing.Point(125, 297);
+            this.tbClient17.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbClient17.Multiline = true;
+            this.tbClient17.Name = "tbClient17";
+            this.tbClient17.Size = new System.Drawing.Size(635, 72);
+            this.tbClient17.TabIndex = 117;
             // 
             // tbClient3
             // 
@@ -4435,7 +4435,7 @@ namespace VividManagementApplication
         private ControlExs.QQButton PreviewPrintButton;
         private ControlExs.QQButton SaveButton;
         private System.Windows.Forms.Panel DetailedClientPanel;
-        private System.Windows.Forms.TextBox tClient17;
+        private System.Windows.Forms.TextBox tbClient17;
         private System.Windows.Forms.ComboBox tbClient3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbClient14;
