@@ -68,3 +68,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\Vivid
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csproj.GenerateResource.Cache
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.csprojResolveAssemblyReference.cache
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.DataImport.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.DataImport.resources
