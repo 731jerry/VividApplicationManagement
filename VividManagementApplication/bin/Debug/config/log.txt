@@ -1,3 +1,14 @@
+2015/5/26 20:40:44-
+###异常消息Message: SQLite error
+19 values for 17 columns
+###当前异常StackTrace:    在 System.Data.SQLite.SQLite3.Prepare(String strSql, SQLiteStatement previous, String& strRemain)
+   在 System.Data.SQLite.SQLiteCommand.BuildNextCommand()
+   在 System.Data.SQLite.SQLiteCommand.GetStatement(Int32 index)
+   在 System.Data.SQLite.SQLiteCommand.ExecuteNonQuery()
+   在 VividManagementApplication.DatabaseConnections.LocalReplaceIntoData(String table, String[] query, String[] value, String id) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DatabaseConnections.cs:行号 417
+   在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 \\psf\dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\DetailedInfo.cs:行号 974
+===================================================
+
 2015/5/23 21:59:29-无法查看详细
 ###异常消息Message: 索引超出了数组界限。
 ###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.tbDz3_TextChanged(Object sender, EventArgs e) 位置 \\psf\home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 2647
