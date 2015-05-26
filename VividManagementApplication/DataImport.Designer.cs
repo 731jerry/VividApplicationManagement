@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.FilePathTextBox = new System.Windows.Forms.TextBox();
             this.selectFileButton = new ControlExs.QQButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -71,16 +71,16 @@
             this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(15, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(340, 20);
+            this.label2.Size = new System.Drawing.Size(437, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "注意：请先选择excel表格文件, 文件已.xls或者xlx结尾";
+            this.label2.Text = "注意：请先选择 Excel(97-2003) 表格文件，仅支持 .xls 结尾的文件。\r\n";
             // 
-            // textBox1
+            // FilePathTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(71, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(469, 25);
-            this.textBox1.TabIndex = 6;
+            this.FilePathTextBox.Location = new System.Drawing.Point(71, 81);
+            this.FilePathTextBox.Name = "FilePathTextBox";
+            this.FilePathTextBox.Size = new System.Drawing.Size(469, 25);
+            this.FilePathTextBox.TabIndex = 6;
             // 
             // selectFileButton
             // 
@@ -110,7 +110,7 @@
             this.ClientSize = new System.Drawing.Size(652, 168);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.selectFileButton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.FilePathTextBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.importingProgressBar);
@@ -122,6 +122,7 @@
             this.Name = "DataImport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataImport";
+            this.Load += new System.EventHandler(this.DataImport_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -135,7 +136,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox FilePathTextBox;
         private ControlExs.QQButton selectFileButton;
         private System.Windows.Forms.Label label3;
     }

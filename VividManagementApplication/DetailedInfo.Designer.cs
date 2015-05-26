@@ -596,9 +596,9 @@ namespace VividManagementApplication
             this.tbClient3.Font = new System.Drawing.Font("微软雅黑", 10.5F);
             this.tbClient3.FormattingEnabled = true;
             this.tbClient3.Items.AddRange(new object[] {
-            "A 供应商",
-            "B 销售商",
-            "C 其他"});
+            "供应商",
+            "销售商",
+            "其他"});
             this.tbClient3.Location = new System.Drawing.Point(631, 23);
             this.tbClient3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbClient3.Name = "tbClient3";

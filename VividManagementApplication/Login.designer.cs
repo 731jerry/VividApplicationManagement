@@ -47,7 +47,7 @@
             // tbPassword
             // 
             this.tbPassword.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.tbPassword.Location = new System.Drawing.Point(123, 238);
+            this.tbPassword.Location = new System.Drawing.Point(123, 240);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbPassword.MaxLength = 12;
             this.tbPassword.Name = "tbPassword";
@@ -62,7 +62,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(85, 243);
+            this.label2.Location = new System.Drawing.Point(85, 242);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 15;
@@ -74,7 +74,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 10F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(85, 206);
+            this.label1.Location = new System.Drawing.Point(85, 209);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 14;
@@ -83,7 +83,7 @@
             // cbAccount
             // 
             this.cbAccount.Font = new System.Drawing.Font("微软雅黑", 10F);
-            this.cbAccount.Location = new System.Drawing.Point(123, 204);
+            this.cbAccount.Location = new System.Drawing.Point(123, 207);
             this.cbAccount.MaxLength = 8;
             this.cbAccount.Name = "cbAccount";
             this.cbAccount.Size = new System.Drawing.Size(157, 25);
@@ -146,7 +146,7 @@
             // 
             this.findPwdLinkLabel.AutoSize = true;
             this.findPwdLinkLabel.Font = new System.Drawing.Font("微软雅黑", 9F);
-            this.findPwdLinkLabel.Location = new System.Drawing.Point(286, 241);
+            this.findPwdLinkLabel.Location = new System.Drawing.Point(286, 244);
             this.findPwdLinkLabel.Name = "findPwdLinkLabel";
             this.findPwdLinkLabel.Size = new System.Drawing.Size(56, 17);
             this.findPwdLinkLabel.TabIndex = 19;

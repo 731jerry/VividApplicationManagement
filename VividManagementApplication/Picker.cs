@@ -40,7 +40,7 @@ namespace VividManagementApplication
 
                 CreateMainDataGridView(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 }, "clients", -1,
                     new string[] { "clientID", 
-                    "case when type = '0' then 'A 供应商' when type = '1' then 'B 销售商' else 'C 其他' end as 'type'", 
+                    "case when type = '0' then '供应商' when type = '1' then '销售商' else '其他' end as 'type'", 
                     "company", "companyOwner", "phone" });
             }
             else

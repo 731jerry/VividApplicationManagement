@@ -303,6 +303,18 @@ namespace VividManagementApplication
             LocalDbClose();
         }
 
+        public int LocalInsertDataReturnAffectRows(string table, string query, string value)
+        {
+            int returnAffectRows = -1;
+            LocalDbOpen();
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            cmdInsert.CommandText = "INSERT INTO  " + table + "  (" + query + ") " +
+                                       " VALUES(" + value + ")";
+            returnAffectRows = cmdInsert.ExecuteNonQuery();
+            LocalDbClose();
+            return returnAffectRows;
+        }
+
         // 删除数据
         public void LocalDeleteDataByID(string table, int id)
         {

@@ -105,7 +105,7 @@ namespace VividManagementApplication
 
                 }
 
-                using (FileStream fs = new FileStream(System.Environment.CurrentDirectory + @"\new.exe", FileMode.Create, FileAccess.Write))
+                using (FileStream fs = new FileStream(System.Environment.CurrentDirectory + @"\管账宝更新.exe", FileMode.Create, FileAccess.Write))
                 {
                     fs.Write(bufferbyte, 0, bufferbyte.Length);
                 }
@@ -116,7 +116,7 @@ namespace VividManagementApplication
                 this.Close();
                 Application.Exit();
 
-                Process.Start(System.Environment.CurrentDirectory + @"\new.exe");
+                Process.Start(System.Environment.CurrentDirectory + @"\管账宝更新.exe");
             }
             catch (Exception e)
             {
@@ -137,7 +137,7 @@ namespace VividManagementApplication
         {
             timer1.Enabled = false;
             //GetNewVersion();
-            DownloadFile(urlName, System.Environment.CurrentDirectory + @"\new.exe");
+            DownloadFile(urlName, System.Environment.CurrentDirectory + @"\管账宝更新.exe");
         }
 
         private void update_FormClosing(object sender, FormClosingEventArgs e)

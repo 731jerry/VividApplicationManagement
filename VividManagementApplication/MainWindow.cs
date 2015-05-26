@@ -693,14 +693,14 @@ namespace VividManagementApplication
         private void cxRadio_CheckedChanged(object sender, EventArgs e)
         {
             CURRENT_TAB = 1;
-            ableSubButtons(new List<QQButton>() { newCxButton, listCxButton }, cxRadio);
+            ableSubButtons(new List<QQButton>() { newCxButton, listCxButton, dataCxImport }, cxRadio);
             listCxButton.PerformClick(); ;
         }
 
         private void spRadio_CheckedChanged(object sender, EventArgs e)
         {
             CURRENT_TAB = 2;
-            ableSubButtons(new List<QQButton>() { newSpButton, listSpButton }, spRadio);
+            ableSubButtons(new List<QQButton>() { newSpButton, listSpButton, dataSpImport }, spRadio);
             listSpButton.PerformClick();
         }
 
@@ -1239,13 +1239,25 @@ namespace VividManagementApplication
         // 客户数据 excel导入
         private void dataCxImport_Click(object sender, EventArgs e)
         {
-
+            DataImport di = new DataImport();
+            di.isTypeCx = true;
+            if (di.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("客户信息导入成功！已导入"+di.importedCount+"条客户信息","提示");
+                listCxButton.PerformClick();
+            }
         }
 
         // 商品数据 excel导入
         private void dataSpImport_Click(object sender, EventArgs e)
         {
-
+            DataImport di = new DataImport();
+            di.isTypeCx = false;
+            if (di.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("商品信息导入成功！已导入" + di.importedCount + "条商品信息", "提示");
+                listSpButton.PerformClick();
+            }
         }
 
         // 新建进出仓单

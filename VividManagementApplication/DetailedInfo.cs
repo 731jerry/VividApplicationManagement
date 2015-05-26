@@ -58,7 +58,7 @@ namespace VividManagementApplication
                     baseName = "clientID";
                     queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldPay", "shouldReceive", "beizhu" };
                     controlsPreName = "tbClient";
-                    indexCount = 17;
+                    indexCount = 19;
                     mainID = tbClient1.Text;
 
                     canPrint = false;
@@ -93,7 +93,7 @@ namespace VividManagementApplication
                     baseName = "goodID";
                     queryArray = new string[] { baseName, "dengji", "name", "guige", "unit", "storageName", "storageManager", "storageManagerPhone", "storageLocation", "storageAddress", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu" };
                     controlsPreName = "tbGoods";
-                    indexCount = 17;
+                    indexCount = 19;
                     mainID = tbGoods1.Text;
 
                     canPrint = false;
