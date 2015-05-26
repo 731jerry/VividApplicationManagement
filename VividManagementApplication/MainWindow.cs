@@ -668,9 +668,12 @@ namespace VividManagementApplication
                 t.DisableComObjectEagerCleanup();
                 return;
             }
-            CURRENT_LIST_BUTTON.PerformClick();
-            //MessageBox.Show("刷新成功！");
-            StatusToolStripStatusLabel.Text = "刷新成功！";
+            else
+            {
+                CURRENT_LIST_BUTTON.PerformClick();
+                //MessageBox.Show("刷新成功！");
+                StatusToolStripStatusLabel.Text = "刷新成功！";
+            }
         }
 
         private void refreshCheckRemoteSignListWithObject(object obj)
@@ -1397,12 +1400,12 @@ namespace VividManagementApplication
             tempDGV.Columns[6].HeaderText = "结余金额(元)";
 
             tempDGV.Columns[0].Width = 30;
-            tempDGV.Columns[1].Width = 55;
-            tempDGV.Columns[2].Width = 60;
+            tempDGV.Columns[1].Width = 75;
+            tempDGV.Columns[2].Width = 75;
             //tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            tempDGV.Columns[4].Width = 60;
-            tempDGV.Columns[5].Width = 60;
-            tempDGV.Columns[6].Width = 60;
+            tempDGV.Columns[4].Width = 65;
+            tempDGV.Columns[5].Width = 65;
+            tempDGV.Columns[6].Width = 65;
 
             DZDPrintingDGV = CopyDataGridView(tempDGV);
             float yingTotal = 0, yiTotal = 0, yuTotal = 0;
@@ -1429,10 +1432,10 @@ namespace VividManagementApplication
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[5].ToolTipText = "2";
             DZDPrintingDGV.Rows[DZDPrintingDGV.Rows.Count - 1].Cells[6].ToolTipText = "2";
 
-            DZDPrintingDGV.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DZDPrintingDGV.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DZDPrintingDGV.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DZDPrintingDGV.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //DZDPrintingDGV.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //DZDPrintingDGV.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //DZDPrintingDGV.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //DZDPrintingDGV.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private DataGridView CopyDataGridView(DataGridView dgv_org)
@@ -1638,7 +1641,7 @@ namespace VividManagementApplication
                                 if (Cel.ToolTipText.Equals("2"))
                                 {
                                     // 下划线
-                                    e.Graphics.DrawString(Cel.Value.ToString(), new System.Drawing.Font(Cel.InheritedStyle.Font.Name, Cel.InheritedStyle.Font.Size, FontStyle.Underline),
+                                    e.Graphics.DrawString(Cel.Value.ToString(), new System.Drawing.Font(Cel.InheritedStyle.Font.Name, Cel.InheritedStyle.Font.Size+1, FontStyle.Underline),
                                                 new SolidBrush(Cel.InheritedStyle.ForeColor),
                                                 new RectangleF((int)arrColumnLefts[iCount], (float)iTopMargin,
                                                 (int)arrColumnWidths[iCount], (float)iCellHeight), strFormat);
