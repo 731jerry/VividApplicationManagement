@@ -815,7 +815,7 @@ namespace VividManagementApplication
                 }
 
             }
-            resultsList.Reverse();
+            //resultsList.Reverse();
             for (int j = 0; j < resultsList.Count; j++)
             {
                 this.MainDataGridView.Rows.Add(resultsList[j]);
@@ -1028,6 +1028,9 @@ namespace VividManagementApplication
             Column6.HeaderText = "结余金额";
             Column7.HeaderText = "作废标识";
 
+            Column1.Width = 80;
+            Column2.Width = 140;
+
             Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             CreateMainDataGridViewPZ(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 }, "pzList",
                 new string[] { "pzID", 
@@ -1070,10 +1073,10 @@ namespace VividManagementApplication
                 Column4.HeaderText = "摘要";
                 Column5.HeaderText = "交易金额";
                 Column6.HeaderText = "结余金额";
-                Column1.Width = 200;
-                Column2.Width = 200;
+
+                Column1.Width = 80;
+                Column2.Width = 140;
                 Column3.Width = 100;
-                Column4.Width = 100;
                 Column5.Width = 100;
                 Column6.Width = 100;
 
