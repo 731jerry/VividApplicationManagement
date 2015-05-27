@@ -64,7 +64,7 @@ namespace VividManagementApplication
                 {
                     try
                     {
-                        if (DatabaseConnections.GetInstence().OnlineUpdateData(
+                        if (DatabaseConnections.OnlineConnector().OnlineUpdateData(
                                                                               "users",
                                                                               new string[] { "password" },
                                                                               new string[] { FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), NewPasswordTextBox.Text) },
@@ -112,7 +112,7 @@ namespace VividManagementApplication
             {
                 try
                 {
-                    if (DatabaseConnections.GetInstence().OnlineUpdateData(
+                    if (DatabaseConnections.OnlineConnector().OnlineUpdateData(
                                                                             "users",
                                                                             new string[] { "company", "companyNickname", "phone", "email", "fax", "address", "bankname", "bankcard", "companyowner", "QQ" },
                                                                             new string[] { tbInfo1.Text, tbInfo2.Text, tbInfo3.Text, tbInfo4.Text, tbInfo5.Text, tbInfo6.Text, tbInfo7.Text, tbInfo8.Text, tbInfo9.Text, tbInfo10.Text },
@@ -137,7 +137,7 @@ namespace VividManagementApplication
                         String signatureString = FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(compressedBitmap)));
                         if (!signatureString.Equals(""))
                         {
-                            if (DatabaseConnections.GetInstence().OnlineUpdateData("users", new string[] { "GZB_signature" }, new string[] { signatureString }, MainWindow.ID) > 0)
+                            if (DatabaseConnections.OnlineConnector().OnlineUpdateData("users", new string[] { "GZB_signature" }, new string[] { signatureString }, MainWindow.ID) > 0)
                             {
                                 MainWindow.SIGNATURE = signatureString;
                             }

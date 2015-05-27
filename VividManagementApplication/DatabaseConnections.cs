@@ -14,22 +14,62 @@ namespace VividManagementApplication
 {
     class DatabaseConnections
     {
-        private static DatabaseConnections _databaseConnections = null;
+        static MySqlConnection onlineSqlConnection;
+        static SQLiteConnection localSqlConnection;
 
-        public static DatabaseConnections GetInstence()
+        private static DatabaseConnections _onlineConnection = null;
+
+        public static DatabaseConnections OnlineConnector()
         {
-            if (_databaseConnections == null)
+            if (_onlineConnection == null)
             {
-                _databaseConnections = new DatabaseConnections();
+                _onlineConnection = new DatabaseConnections();
+                if (onlineSqlConnection == null)
+                {
+                    onlineSqlConnection = new MySqlConnection(@"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8");
+                    onlineSqlConnection.Open();
+                }
+                if (onlineSqlConnection.State == ConnectionState.Closed)
+                {
+                    onlineSqlConnection.Open();
+                }
+                if (onlineSqlConnection.State == ConnectionState.Broken)
+                {
+                    onlineSqlConnection.Close();
+                    onlineSqlConnection.Open();
+                }
             }
-            return _databaseConnections;
+            return DatabaseConnections._onlineConnection;
+        }
+
+        private static DatabaseConnections _localConnection = null;
+
+        public static DatabaseConnections LocalConnector()
+        {
+            if (_localConnection == null)
+            {
+                _localConnection = new DatabaseConnections();
+                if (localSqlConnection == null)
+                {
+                    localSqlConnection = new SQLiteConnection("Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION);
+                    localSqlConnection.Open();
+                }
+                if (localSqlConnection.State == ConnectionState.Closed)
+                {
+                    localSqlConnection.Open();
+                }
+                if (localSqlConnection.State == ConnectionState.Broken)
+                {
+                    localSqlConnection.Close();
+                    localSqlConnection.Open();
+                }
+            }
+            return DatabaseConnections._localConnection;
         }
 
         #region 联网
         // MySQL
-        private const string onlineSqlConnectionCommand = @"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8";
-        private MySqlConnection onlineSqlConnection = new MySqlConnection(onlineSqlConnectionCommand);
-
+        /*
         public void OnlineDbOpen()
         {
             try
@@ -52,6 +92,7 @@ namespace VividManagementApplication
         {
             onlineSqlConnection.Close();
         }
+        */
 
         public void UserLogin(string acc, string psw)
         {
@@ -68,7 +109,6 @@ namespace VividManagementApplication
             string SQLforGeneral = sbSQL.ToString();
 
             MySqlCommand cmd = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
-            OnlineDbOpen();
             MySqlDataReader dataReader = cmd.ExecuteReader();
 
             while (dataReader.Read())
@@ -102,18 +142,15 @@ namespace VividManagementApplication
             }
 
             dataReader.Close();
-            OnlineDbClose();
         }
 
         // 插入数据
         public int OnlineInsertData(String table, String query, String value)
         {
             int affectedRows;
-            OnlineDbOpen();
             String SQLforGeneral = "INSERT INTO " + table + " (" + query + ") VALUES(" + value + ")";
             MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
             affectedRows = cmdInsert.ExecuteNonQuery();
-            OnlineDbClose();
             return affectedRows;
         }
 
@@ -131,11 +168,9 @@ namespace VividManagementApplication
             {
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
-            OnlineDbOpen();
             string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
             MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
             affectedRows = cmdInsert.ExecuteNonQuery();
-            OnlineDbClose();
             return affectedRows;
         }
 
@@ -143,11 +178,9 @@ namespace VividManagementApplication
         public int OnlineUpdateDataFromOriginalSQL(String sql)
         {
             int affectedRows;
-            OnlineDbOpen();
             MySqlCommand cmdInsert = new MySqlCommand(sql, onlineSqlConnection);
             cmdInsert.CommandTimeout = 0;
             affectedRows = cmdInsert.ExecuteNonQuery();
-            OnlineDbClose();
             return affectedRows;
         }
 
@@ -165,7 +198,6 @@ namespace VividManagementApplication
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
             String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-            OnlineDbOpen();
             MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
             cmdCreateTable.CommandText = sql;
             MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
@@ -180,7 +212,6 @@ namespace VividManagementApplication
                 }
             }
             dataReader.Close();
-            OnlineDbClose();
             return resultsStringList;
         }
 
@@ -198,8 +229,8 @@ namespace VividManagementApplication
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
             String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "' " + condition;//建表语句  
-            OnlineDbOpen();
             MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
+            cmdCreateTable.CommandTimeout = 0;
             cmdCreateTable.CommandText = sql;
             MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
             //String[] resultsStringArray = new String[query.Count];
@@ -215,19 +246,15 @@ namespace VividManagementApplication
                 resultsStringList.Add(temp);
             }
             dataReader.Close();
-            OnlineDbClose();
             return resultsStringList;
         }
 
         #endregion
 
         #region 本地
-        private SQLiteConnection localSqlConnectionCommand = new SQLiteConnection("Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION);
 
         public void LocalCreateDatabase(String databaseName)
         {
-            localSqlConnectionCommand = new SQLiteConnection("Data Source =" + databaseName);
-            LocalDbOpen();
             string sql = @" --
                                 -- File generated with SQLiteStudio v3.0.3 on 周四 4月 9 14:58:30 2015
                                 --
@@ -265,19 +292,18 @@ namespace VividManagementApplication
 
                                 --COMMIT TRANSACTION;";//建表语句  
 
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
             cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
-            LocalDbClose();
         }
-
+        /*
         public void LocalDbOpen()
         {
-            // localSqlConnectionCommand.Open();//打开数据库，若文件不存在会自动创建  
+            // localSqlConnection.Open();//打开数据库，若文件不存在会自动创建  
             try
             {
-                if (localSqlConnectionCommand.State != ConnectionState.Open)
+                if (localSqlConnection.State != ConnectionState.Open)
                 {
-                    localSqlConnectionCommand.Open();
+                    localSqlConnection.Open();
                 }
             }
             catch (Exception ex)
@@ -290,40 +316,35 @@ namespace VividManagementApplication
 
         public void LocalDbClose()
         {
-            localSqlConnectionCommand.Close();
+            localSqlConnection.Close();
         }
+        */
 
         // 插入数据
         public void LocalInsertData(string table, string query, string value)
         {
-            LocalDbOpen();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + query + ") " +
                                        " VALUES(" + value + ")";
             cmdInsert.ExecuteNonQuery();
-            LocalDbClose();
         }
 
         public int LocalInsertDataReturnAffectRows(string table, string query, string value)
         {
             int returnAffectRows = -1;
-            LocalDbOpen();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "INSERT INTO  " + table + "  (" + query + ") " +
                                        " VALUES(" + value + ")";
             returnAffectRows = cmdInsert.ExecuteNonQuery();
-            LocalDbClose();
             return returnAffectRows;
         }
 
         // 删除数据
         public void LocalDeleteDataByID(string table, int id)
         {
-            LocalDbOpen();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "DELETE FROM  " + table + "  WHERE id = " + id;
             cmdInsert.ExecuteNonQuery();
-            LocalDbClose();
         }
 
         // 修改数据
@@ -346,11 +367,9 @@ namespace VividManagementApplication
             {
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
-            LocalDbOpen();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
             cmdInsert.ExecuteNonQuery();
-            LocalDbClose();
         }
 
         // 插入或更新数据
@@ -378,12 +397,10 @@ namespace VividManagementApplication
                 innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
             }
 
-            LocalDbOpen();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
                                        " VALUES(" + innerVauleSQL + ")";
             returnAffectRows = cmdInsert.ExecuteNonQuery();
-            LocalDbClose();
             return returnAffectRows;
         }
 
@@ -410,24 +427,20 @@ namespace VividManagementApplication
                 innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
             }
 
-            LocalDbOpen();
-            SQLiteTransaction transaction = localSqlConnectionCommand.BeginTransaction();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteTransaction transaction = localSqlConnection.BeginTransaction();
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
                                        " VALUES(" + innerVauleSQL + ")";
             cmdInsert.ExecuteNonQuery();
             transaction.Commit();
-            LocalDbClose();
         }
 
         // 清空表
         public void LocalClearTable(String table)
         {
-            LocalDbOpen();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
             cmdInsert.CommandText = "DELETE FROM " + table;
             cmdInsert.ExecuteNonQuery();
-            LocalDbClose();
         }
 
         public int LocalGetCountOfTable(String table, String condition)
@@ -440,8 +453,7 @@ namespace VividManagementApplication
 
             try
             {
-                LocalDbOpen();
-                SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+                SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
                 cmdInsert.CommandText = "SELECT COUNT(*) itemCount FROM " + table;
                 SQLiteDataReader reader = cmdInsert.ExecuteReader();
                 while (reader.Read())
@@ -449,7 +461,6 @@ namespace VividManagementApplication
                     resultCount = int.Parse(reader[0].ToString());
                 }
                 //resultCount = cmdInsert.ExecuteNonQuery();
-                LocalDbClose();
             }
             catch { }
 
@@ -473,8 +484,7 @@ namespace VividManagementApplication
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
                 string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-                LocalDbOpen();
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
                 cmdCreateTable.CommandText = sql;
                 System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
                 resultsStringArray = new string[query.Length];
@@ -487,7 +497,6 @@ namespace VividManagementApplication
                     }
                 }
                 reader.Close();
-                LocalDbClose();
             }
             catch { return resultsStringArray; }
             return resultsStringArray;
@@ -508,8 +517,7 @@ namespace VividManagementApplication
                 innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
             }
             String sql = "SELECT " + innerSQL + " FROM " + table + " " + order;//建表语句  
-            LocalDbOpen();
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
             cmdCreateTable.CommandText = sql;
             System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
             String[] resultsStringArray = new String[query.Length];
@@ -525,15 +533,13 @@ namespace VividManagementApplication
                 resultsStringArray = new String[query.Length];
             }
             reader.Close();
-            LocalDbClose();
             return resultsStringList;
         }
 
         // 最原始的列出数据
         public List<String[]> LocalGetDataFromOriginalSQL(String sql, String[] query)
         {
-            LocalDbOpen();
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
             cmdCreateTable.CommandText = sql;
             System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
             String[] resultsStringArray = new String[query.Length];
@@ -549,7 +555,6 @@ namespace VividManagementApplication
                 resultsStringArray = new String[query.Length];
             }
             reader.Close();
-            LocalDbClose();
             return resultsStringList;
         }
 
@@ -557,8 +562,7 @@ namespace VividManagementApplication
         public List<string> LocalGetIdsOfTable(string table, string baseName, string order)
         {
             string sql = "SELECT " + baseName + " FROM " + table + " " + order;//建表语句  
-            LocalDbOpen();
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
             cmdCreateTable.CommandText = sql;
             System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
             List<string> resultsStringList = new List<string>();
@@ -568,7 +572,6 @@ namespace VividManagementApplication
                 resultsStringList.Add(reader.GetString(0));
             }
             reader.Close();
-            LocalDbClose();
             return resultsStringList;
         }
 
@@ -576,11 +579,9 @@ namespace VividManagementApplication
         public Boolean LocalCheckIfDuplicate(string table, string baseName, string id)
         {
             string sql = "SELECT " + baseName + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-            LocalDbOpen();
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
             cmdCreateTable.CommandText = sql;
             System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            LocalDbClose();
             if (reader.HasRows)
             {
                 return true;
@@ -598,8 +599,7 @@ namespace VividManagementApplication
             // SELECT max(jcdID) as max FROM jcdList 
             // cast(yysid as UNSIGNED INTEGER)
             string sql = "SELECT max(cast(" + baseName + " as UNSIGNED INTEGER)) as max FROM " + table;//建表语句  
-            LocalDbOpen();
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnectionCommand);
+            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
             cmdCreateTable.CommandText = sql;
             System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
 
@@ -608,7 +608,6 @@ namespace VividManagementApplication
                 maxNumber = (int.Parse(reader["max"].ToString().Equals("") ? "0" : reader["max"].ToString()) + 1).ToString();
             }
 
-            LocalDbClose();
             return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 6, "0");
         }
         #endregion

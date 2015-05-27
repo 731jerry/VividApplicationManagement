@@ -68,14 +68,14 @@ namespace VividManagementApplication
                     if (ItemId.Equals("-1"))
                     {
                         // 自动生成ID
-                        tbClient1.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        tbClient1.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                         ItemId = tbClient1.Text;
                     }
                     else
                     {
                         try
                         {
-                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
                         }
                         catch (Exception ex)
                         {
@@ -103,7 +103,7 @@ namespace VividManagementApplication
                     if (ItemId.Equals("-1"))
                     {
                         // 自动生成ID
-                        tbGoods1.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        tbGoods1.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                         ItemId = tbGoods1.Text;
                     }
                     else
@@ -111,7 +111,7 @@ namespace VividManagementApplication
                         // tbGoods11.ReadOnly = true; 初期存量
                         try
                         {
-                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
                         }
                         catch (Exception ex)
                         {
@@ -134,7 +134,7 @@ namespace VividManagementApplication
                     DiscardCheckBox.Visible = true;
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbDz1);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbDz1);
                     if (tbDz1.Items.Count == 0)
                     {
                         MessageBox.Show("请先输入客户信息!", "提示");
@@ -154,11 +154,11 @@ namespace VividManagementApplication
                     JCDcbC.Items.Insert(1, "使用选择器...");
                     JCDcbD.Items.Insert(1, "使用选择器...");
                     JCDcbE.Items.Insert(1, "使用选择器...");
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbA);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbB);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbC);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbD);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbE);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbA);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbB);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbC);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbD);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), JCDcbE);
 
                     canPrint = true;
 
@@ -224,7 +224,7 @@ namespace VividManagementApplication
                         DiscardCheckBox.Visible = false;
 
                         // 自动生成ID
-                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        tbDz2.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                     }
                     else
                     {
@@ -249,9 +249,9 @@ namespace VividManagementApplication
                             }
                             queryArray = queryList.ToArray();
 
-                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
 
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "discardFlag" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             if (int.Parse(data[2]) == 0)
                             {
@@ -330,7 +330,7 @@ namespace VividManagementApplication
                     mainID = tbPz2.Text;
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbPz1);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbPz1);
                     if (tbPz1.Items.Count < 1)
                     {
                         MessageBox.Show("请先输入客户信息!", "提示");
@@ -356,7 +356,7 @@ namespace VividManagementApplication
                         DiscardCheckBox.Visible = false;
 
                         // 自动生成ID
-                        tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        tbPz2.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                     }
                     else
                     {
@@ -381,9 +381,9 @@ namespace VividManagementApplication
                             queryList.Remove("discardFlag");
                             queryArray = queryList.ToArray();
 
-                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
+                            FormBasicFeatrues.GetInstence().SetControlsVaule(controlsPreName, detailedPanel, DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, queryArray, baseName, ItemId));
 
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "cast(modifyTime as VARCHAR)", "jsonData", "discardFlag", "leixing" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, new String[] { "cast(modifyTime as VARCHAR)", "jsonData", "discardFlag", "leixing" }, baseName, ItemId);
                             PzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             if (int.Parse(data[2]) == 0)
                             {
@@ -484,11 +484,11 @@ namespace VividManagementApplication
                     cbHTGoodsNameC.Items.Insert(1, "使用选择器...");
                     cbHTGoodsNameD.Items.Insert(1, "使用选择器...");
                     cbHTGoodsNameE.Items.Insert(1, "使用选择器...");
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameA);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameB);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameC);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameD);
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameE);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameA);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameB);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameC);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameD);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("goods", "goodID", " ORDER BY id ASC "), cbHTGoodsNameE);
 
                     table = "htList";
                     baseName = "htID";
@@ -509,14 +509,14 @@ namespace VividManagementApplication
                         HTtbDate.Text = DateTime.Now.ToLongDateString();
 
                         // 自动生成ID
-                        HTtbID.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        HTtbID.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                     }
                     else
                     {
                         HTcbName.Enabled = false;
                         try
                         {
-                            String[] data = DatabaseConnections.GetInstence().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag", "option", "htLocation" }, baseName, ItemId);
+                            String[] data = DatabaseConnections.LocalConnector().LocalGetOneRowDataById(table, new String[] { "modifyTime", "jsonData", "leixing", "htID", "htDate", "clientID", "discardFlag", "option", "htLocation" }, baseName, ItemId);
                             DzDateTextBox.Text = Convert.ToDateTime(data[0]).ToLongDateString();
                             HTcbName.SelectedIndex = int.Parse(data[2].ToString());
                             HTtbID.Text = data[3].ToString();
@@ -732,45 +732,45 @@ namespace VividManagementApplication
 
                             String[] queryStringArrayDZ = new String[] { "clientID", baseNameDZ, "cgxsID", "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime" };
                             String[] resultStringArrayDZ = new String[] { 
-                                tbDz1.Text, DatabaseConnections.GetInstence().LocalAutoincreaseID(tableDZ, baseNameDZ), tbDz2.Text, dzCompany.Text, 
+                                tbDz1.Text, DatabaseConnections.LocalConnector().LocalAutoincreaseID(tableDZ, baseNameDZ), tbDz2.Text, dzCompany.Text, 
                                 AJCDtb0.Text+" "+BJCDtb0.Text+" "+CJCDtb0.Text+" "+DJCDtb0.Text+" "+EJCDtb0.Text,
                                 jsonData, 
                                 tbDz3.Text.Split('￥')[1], tbDz4.Text,tbDz5.Text, tbDz6.Text, tbDz7.Text,(DiscardCheckBox.Checked?"1":"0"),DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),   DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")};
 
-                            DatabaseConnections.GetInstence().LocalReplaceIntoData(tableDZ, queryStringArrayDZ, resultStringArrayDZ, mainID);
+                            DatabaseConnections.LocalConnector().LocalReplaceIntoData(tableDZ, queryStringArrayDZ, resultStringArrayDZ, mainID);
                             #endregion
 
                             #region 更新到库存信息
                             if (!JCDcbA.Text.Equals("") && !AJCDtb5.Text.Equals(""))
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + AJCDtb5.Text }, false, "goodID", JCDcbA.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + AJCDtb5.Text }, false, "goodID", JCDcbA.Text);
                             }
                             if (!JCDcbB.Text.Equals("") && !BJCDtb5.Text.Equals(""))
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + BJCDtb5.Text }, false, "goodID", JCDcbB.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + BJCDtb5.Text }, false, "goodID", JCDcbB.Text);
                             }
                             if (!JCDcbC.Text.Equals("") && !CJCDtb5.Text.Equals(""))
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + CJCDtb5.Text }, false, "goodID", JCDcbC.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + CJCDtb5.Text }, false, "goodID", JCDcbC.Text);
                             }
                             if (!JCDcbD.Text.Equals("") && !DJCDtb5.Text.Equals(""))
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + DJCDtb5.Text }, false, "goodID", JCDcbD.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + DJCDtb5.Text }, false, "goodID", JCDcbD.Text);
                             }
                             if (!JCDcbE.Text.Equals("") && !EJCDtb5.Text.Equals(""))
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + EJCDtb5.Text }, false, "goodID", JCDcbE.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZ + EJCDtb5.Text }, false, "goodID", JCDcbE.Text);
                             }
                             #endregion
 
                             #region 更新客户应收应付
                             if (danziComboBox.SelectedIndex == 0) //采购
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay+" + tbDz3.Text.Split('￥')[1] }, false, "clientID", tbDz1.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay+" + tbDz3.Text.Split('￥')[1] }, false, "clientID", tbDz1.Text);
                             }
                             else if (danziComboBox.SelectedIndex == 1) //销售
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive+" + tbDz3.Text.Split('￥')[1] }, false, "clientID", tbDz1.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive+" + tbDz3.Text.Split('￥')[1] }, false, "clientID", tbDz1.Text);
                             }
                             #endregion
 
@@ -828,35 +828,35 @@ namespace VividManagementApplication
                                 String[] queryStringArrayDZModi = new String[] { "discardFlag", "modifyTime" };
                                 String[] resultStringArrayDZModi = new String[] { (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") };
 
-                                DatabaseConnections.GetInstence().LocalUpdateData(tableDZModi, queryStringArrayDZModi, resultStringArrayDZModi, true, baseNameDZModi, tbDz2.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData(tableDZModi, queryStringArrayDZModi, resultStringArrayDZModi, true, baseNameDZModi, tbDz2.Text);
                                 #endregion
 
                                 #region 作废标记 更新到库存信息
                                 if (!JCDcbA.Text.Equals("") && !AJCDtb5.Text.Equals(""))
                                 {
-                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + AJCDtb5.Text }, false, "goodID", JCDcbA.Text);
+                                    DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + AJCDtb5.Text }, false, "goodID", JCDcbA.Text);
                                 }
                                 if (!JCDcbB.Text.Equals("") && !BJCDtb5.Text.Equals(""))
                                 {
-                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + BJCDtb5.Text }, false, "goodID", JCDcbB.Text);
+                                    DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + BJCDtb5.Text }, false, "goodID", JCDcbB.Text);
                                 }
                                 if (!JCDcbC.Text.Equals("") && !CJCDtb5.Text.Equals(""))
                                 {
-                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + CJCDtb5.Text }, false, "goodID", JCDcbC.Text);
+                                    DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + CJCDtb5.Text }, false, "goodID", JCDcbC.Text);
                                 }
                                 if (!JCDcbD.Text.Equals("") && !DJCDtb5.Text.Equals(""))
                                 {
-                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + DJCDtb5.Text }, false, "goodID", JCDcbD.Text);
+                                    DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + DJCDtb5.Text }, false, "goodID", JCDcbD.Text);
                                 }
                                 if (!JCDcbE.Text.Equals("") && !EJCDtb5.Text.Equals(""))
                                 {
-                                    DatabaseConnections.GetInstence().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + EJCDtb5.Text }, false, "goodID", JCDcbE.Text);
+                                    DatabaseConnections.LocalConnector().LocalUpdateData("goods", new String[] { "currentCount" }, new String[] { "currentCount" + operatorDZModi + EJCDtb5.Text }, false, "goodID", JCDcbE.Text);
                                 }
                                 #endregion
                             }
                         }
 
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
+                        DatabaseConnections.LocalConnector().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
                     else if (MainWindow.CURRENT_TAB == 5)  // 凭证
                     {
@@ -893,11 +893,11 @@ namespace VividManagementApplication
 
                             if (pzComboBox.SelectedIndex == 0) //收款
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
                             }
                             else if (pzComboBox.SelectedIndex == 1) //付款
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
                             }
                         }
                         else
@@ -914,7 +914,7 @@ namespace VividManagementApplication
                             //queryStringArray = new String[] { "pzID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { tbPz2.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                         }
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, tbPz2.Text);
+                        DatabaseConnections.LocalConnector().LocalReplaceIntoData(table, queryStringArray, resultStringArray, tbPz2.Text);
                     }
                     else if (MainWindow.CURRENT_TAB == 6)  // 合同
                     {
@@ -951,11 +951,11 @@ namespace VividManagementApplication
                             // 保存法人信息
                             if (HTcbName.SelectedIndex == 0)
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTghfPresenter.Text }, true, "clientID", tbHTghfID.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTghfPresenter.Text }, true, "clientID", tbHTghfID.Text);
                             }
                             else
                             {
-                                DatabaseConnections.GetInstence().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTxsfPresenter.Text }, true, "clientID", tbHTxsfID.Text);
+                                DatabaseConnections.LocalConnector().LocalUpdateData("clients", new String[] { "companyOwner" }, new String[] { tbHTxsfPresenter.Text }, true, "clientID", tbHTxsfID.Text);
                             }
                         }
                         else
@@ -968,7 +968,7 @@ namespace VividManagementApplication
                             //queryStringArray = new String[] { "htID", "discardFlag", "modifyTime" };
                             //resultStringArray = new String[] { HTtbID.Text, (DiscardCheckBox.Checked ? "1" : "0"), DateTime.Now.ToString() };
                         }
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
+                        DatabaseConnections.LocalConnector().LocalReplaceIntoData(table, queryStringArray, resultStringArray, mainID);
                     }
                     else
                     {
@@ -996,7 +996,7 @@ namespace VividManagementApplication
                             queryArrayList.Add("addtime");
                             resultListString.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         }
-                        DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArrayList.ToArray(), resultListString.ToArray(), mainID);
+                        DatabaseConnections.LocalConnector().LocalReplaceIntoData(table, queryArrayList.ToArray(), resultListString.ToArray(), mainID);
                     }
 
                     if (ItemId.Equals("-1"))
@@ -1131,7 +1131,7 @@ namespace VividManagementApplication
                         baseName = "cgdID";
                         queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
                         // 自动生成ID
-                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        tbDz2.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                         enableDetailedUnderCaigou(false);
                         tbDz12.Text = "";
                         tbDz10.Text = "";
@@ -1142,7 +1142,7 @@ namespace VividManagementApplication
                         baseName = "xsdID";
                         queryArray = new string[] { "clientID", baseName, "companyName", "goodsName", "jsonData", "sum", "beizhu", "fpPu", "fpZeng", "fpCount", "discardFlag", "addtime", "modifyTime", "kxQq", "kxXq", "kxJf", "kxSq", "kxDay" };
                         // 自动生成ID
-                        tbDz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                        tbDz2.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
                         enableDetailedUnderCaigou(true);
                         tbDz12.Text = "7";
                         tbDz10.Text = "0";
@@ -1161,7 +1161,7 @@ namespace VividManagementApplication
             if (ItemId.Equals("-1"))
             {
                 // 自动生成ID
-                tbPz2.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+                tbPz2.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
             }
             switch (pzComboBox.SelectedIndex)
             {
@@ -1197,7 +1197,7 @@ namespace VividManagementApplication
             FormBasicFeatrues.GetInstence().reTriggleCombox(cbHTGoodsNameE);
 
             // 自动生成ID
-            HTtbID.Text = DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName);
+            HTtbID.Text = DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName);
             switch (HTcbName.SelectedIndex)
             {
                 default:
@@ -1216,7 +1216,7 @@ namespace VividManagementApplication
                     tbHTghfID.Items.Clear();
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTxsfID);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTxsfID);
                     tbHTxsfID.Items.Insert(0, "");
                     tbHTxsfID.Items.Insert(1, "使用选择器...");
                     //tbHTxsfID.SelectedIndex = 0;
@@ -1243,7 +1243,7 @@ namespace VividManagementApplication
                     tbHTxsfID.Items.Clear();
 
                     // 添加客户编号
-                    addItemsToCombox(DatabaseConnections.GetInstence().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
+                    addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), tbHTghfID);
                     tbHTghfID.Items.Insert(0, "");
                     tbHTghfID.Items.Insert(1, "使用选择器...");
                     //tbHTghfID.SelectedIndex = 0;
@@ -1282,7 +1282,7 @@ namespace VividManagementApplication
                 {
                     FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTxsfName, tbHTxsfAddress, tbHTxsfPresenter, tbHTxsfFax, tbHTxsfPhone, tbHTxsfEmail, tbHTxsfBankName, tbHTxsfBankNumber },
-                            DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                            DatabaseConnections.LocalConnector().LocalGetOneRowDataById(
                             "clients",
                             new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                             "clientID", tbHTxsfID.Text).ToList<String>());
@@ -1313,7 +1313,7 @@ namespace VividManagementApplication
                 {
                     FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { 
                     tbHTghfName, tbHTghfAddress, tbHTghfPresenter, tbHTghfFax, tbHTghfPhone, tbHTghfEmail, tbHTghfBankName, tbHTghfBankNumber },
-                             DatabaseConnections.GetInstence().LocalGetOneRowDataById(
+                             DatabaseConnections.LocalConnector().LocalGetOneRowDataById(
                              "clients",
                              new String[] { "company", "address", "companyOwner", "fax", "phone", "email", "bankName", "bankCard" },
                              "clientID", tbHTghfID.Text).ToList<String>());
@@ -1334,13 +1334,13 @@ namespace VividManagementApplication
         {
             if (danziComboBox.SelectedIndex == 0)
             { // 进仓单
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
                 //hintControl.EmptyTextTip = "最大:" + DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
             }
             else
             { // 出仓单
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
-                String remainCount = DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
+                String remainCount = DatabaseConnections.LocalConnector().LocalGetOneRowDataById("goods", new String[] { "currentCount" }, "goodId", byIdControl.Text)[0].ToString();
                 hintControl.EmptyTextTip = "库存:" + (remainCount.Equals("") ? "0" : remainCount);
             }
         }
@@ -1350,11 +1350,11 @@ namespace VividManagementApplication
         {
             if (HTcbName.SelectedIndex == 0)
             { // 购买
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "purchasePrice" }, "goodId", byIdControl.Text).ToList<String>());
             }
             else
             { // 销售
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.GetInstence().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(lcs, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("goods", new String[] { "name", "guige", "dengji", "unit", "currntsalesPrice" }, "goodId", byIdControl.Text).ToList<String>());
             }
         }
 
@@ -1521,7 +1521,7 @@ namespace VividManagementApplication
         {
             if (tbDz1.SelectedIndex > 1)
             {
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress, tbDz8 }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address", "shouldPay" }, "clientID", tbDz1.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { dzGZBId, dzContact, dzPhone, dzCompany, dzAddress, tbDz8 }, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("clients", new String[] { "gzbID", "companyOwner", "phone", "company", "address", "shouldPay" }, "clientID", tbDz1.Text).ToList<String>());
             }
             else if (tbDz1.SelectedIndex == 0)
             {
@@ -1540,7 +1540,7 @@ namespace VividManagementApplication
         {
             if (tbPz1.SelectedIndex > 1)
             {
-                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.GetInstence().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
+                FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { pzContact, pzPhone, pzCompany, pzAddress }, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("clients", new String[] { "companyOwner", "phone", "company", "address" }, "clientID", tbPz1.Text).ToList<String>());
             }
             else if (tbPz1.SelectedIndex == 0)
             {
@@ -1804,7 +1804,7 @@ namespace VividManagementApplication
         {
             if (ItemId.Equals("-1") || !ItemId.Equals((sender as TextBox).Text))
             {
-                if (DatabaseConnections.GetInstence().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
+                if (DatabaseConnections.LocalConnector().LocalCheckIfDuplicate(table, baseName, (sender as TextBox).Text))
                 {
                     MessageBox.Show("您设定的编号已经被占用, 请再次输入", "错误");
                     (sender as TextBox).Text = ItemId.Equals("-1") ? "" : ItemId;

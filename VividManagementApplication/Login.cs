@@ -27,7 +27,7 @@ namespace VividManagementApplication
             this.Text = "正在登录...";
             try
             {
-                DatabaseConnections.GetInstence().UserLogin(cbAccount.Text, tbPassword.Text);
+                DatabaseConnections.OnlineConnector().UserLogin(cbAccount.Text, tbPassword.Text);
             }
             catch
             {
@@ -131,11 +131,11 @@ namespace VividManagementApplication
             {
                 //Console.WriteLine("1 " + DateTime.Now.ToString());
                 // 检测是否有最新版本
-                List<String> updateVersionString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version");
+                List<String> updateVersionString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version");
                 //Console.WriteLine("2 " + DateTime.Now.ToString());
-                List<String> updateVersionLogString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version_log");
+                List<String> updateVersionLogString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version_log");
                 //Console.WriteLine("3 " + DateTime.Now.ToString());
-                List<String> updateAppURLString = DatabaseConnections.GetInstence().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_app_url");
+                List<String> updateAppURLString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_app_url");
                 //Console.WriteLine("4 " + DateTime.Now.ToString());
 
                 String updateVersion = updateVersionString[0];
