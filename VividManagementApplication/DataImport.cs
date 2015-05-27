@@ -28,6 +28,9 @@ namespace VividManagementApplication
 
         private void DataImport_Load(object sender, EventArgs e)
         {
+            // importingProgressBar.Style = ProgressBarStyle.Marquee;
+            importingProgressBar.Style = ProgressBarStyle.Continuous;
+            importingProgressBar.Maximum = 100;
             if (isTypeCx)
             {
                 this.Text = "正在导入客户数据...";
@@ -126,6 +129,7 @@ namespace VividManagementApplication
                 }
                 arrayList.Insert(0, "'" + DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName) + "'");
                 arrayList.Insert(arrayList.Count, "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                importingProgressBar.Value = ((i + 1) / dt.Rows.Count) * 100;
                 DatabaseConnections.LocalConnector().LocalInsertDataReturnAffectRows(table, String.Join(",", queryArray).ToString(), String.Join(",", arrayList));
                 importedCount++;
             }
