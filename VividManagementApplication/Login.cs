@@ -112,8 +112,10 @@ namespace VividManagementApplication
             windowText = this.Text;
 
             Thread t = new Thread(new ParameterizedThreadStart(checkUpadteAppWithObj));
+            t.IsBackground = true;
             t.Start();
             t.DisableComObjectEagerCleanup();
+            //t.Abort();
         }
 
         private void checkUpadteAppWithObj(object obj)

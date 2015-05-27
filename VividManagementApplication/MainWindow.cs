@@ -80,7 +80,7 @@ namespace VividManagementApplication
         public MainWindow()
         {
             InitializeComponent();
-            Control.CheckForIllegalCrossThreadCalls = false;//这一行是关键 
+            //Control.CheckForIllegalCrossThreadCalls = false;//这一行是关键 
         }
 
         private void MainWindow_Load(object sender, EventArgs e)
@@ -142,8 +142,10 @@ namespace VividManagementApplication
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
                 Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
+                tt.IsBackground = true;
                 tt.Start();
                 tt.DisableComObjectEagerCleanup();
+               // tt.Abort();
 
                 //remoteSignTimer.Enabled = true;
                 updateRemoteSignTimer = new System.Timers.Timer(45000);
@@ -258,8 +260,10 @@ namespace VividManagementApplication
         private void SyncDatabaseStarter()
         {
             Thread t = new Thread(new ParameterizedThreadStart(SyncDatabaseWithObject));
+            t.IsBackground = true;
             t.Start();
             t.DisableComObjectEagerCleanup();
+            //t.Abort();
         }
 
         private void SyncDatabaseWithObject(object obj)
@@ -688,8 +692,10 @@ namespace VividManagementApplication
             if (CURRENT_LIST_BUTTON == listQdButton)
             {
                 Thread t = new Thread(new ParameterizedThreadStart(refreshCheckRemoteSignListWithObject));
+                t.IsBackground = true;
                 t.Start();
                 t.DisableComObjectEagerCleanup();
+                //t.Abort();
                 return;
             }
             else
@@ -1889,7 +1895,7 @@ namespace VividManagementApplication
         }
         private void updateRemoteSignUndealedCountCheck()
         {
-            List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
+            List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
             NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理信息";
         }
 
@@ -1904,8 +1910,10 @@ namespace VividManagementApplication
             //    this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
             //}
             Thread t = new Thread(new ParameterizedThreadStart(checkRemoteSignListWithObject));
+            t.IsBackground = true;
             t.Start();
             t.DisableComObjectEagerCleanup();
+           // t.Abort();
         }
 
         private void checkRemoteSignListWithObject(object obj)

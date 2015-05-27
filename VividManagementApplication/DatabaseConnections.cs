@@ -145,6 +145,7 @@ namespace VividManagementApplication
             int affectedRows;
             OnlineDbOpen();
             MySqlCommand cmdInsert = new MySqlCommand(sql, onlineSqlConnection);
+            cmdInsert.CommandTimeout = 0;
             affectedRows = cmdInsert.ExecuteNonQuery();
             OnlineDbClose();
             return affectedRows;
