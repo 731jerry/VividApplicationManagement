@@ -320,6 +320,28 @@ namespace VividManagementApplication
             //di.ShowIcon = false;
             di.Text = "新建";
             di.ShowDialog();
+
+            /*
+            // 是否存在客户和商品信息
+            if (CURRENT_TAB != 1 && CURRENT_TAB != 2)
+            {
+                int SpCount = DatabaseConnections.GetInstence().LocalGetCountOfTable("goods", "");
+                int CxCount = DatabaseConnections.GetInstence().LocalGetCountOfTable("clients", "");
+                if (CxCount > 0 && SpCount > 0)
+                {
+
+                }
+                DetailedInfo di = new DetailedInfo();
+                di.isNewWindow = true;
+                //di.ShowIcon = false;
+                di.Text = "新建";
+                di.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("请先输入客户和客户信息!", "提示");
+            }
+            */ 
         }
 
         private void ViewButton_Click(object sender, EventArgs e)
@@ -1867,7 +1889,7 @@ namespace VividManagementApplication
         }
         private void updateRemoteSignUndealedCountCheck()
         {
-            List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
+            List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "' OR fromGZBID='" + MainWindow.USER_ID + "')");
             NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理信息";
         }
 

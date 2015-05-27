@@ -42,7 +42,7 @@ namespace VividManagementApplication
                 colCount = 8;
                 table = "goods";
                 baseName = "goodID";
-                queryArray = new String[] { baseName, "name","dengji",  "guige", "unit", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu", "addtime" };
+                queryArray = new String[] { baseName, "name", "dengji", "guige", "unit", "initalCount", "purchasePrice", "purchaseTotal", "currentCount", "currntsalesPrice", "currentTotal", "beizhu", "addtime" };
             }
         }
 
@@ -102,29 +102,30 @@ namespace VividManagementApplication
             importingProgressBar.Value = 0;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                    List<String> arrayList = new List<String>();
-                    if (isTypeCx)
+                List<String> arrayList = new List<String>();
+                if (isTypeCx)
+                {
+                    for (int j = 0; j < colCount; j++)
                     {
-                        for (int j = 0; j < colCount; j++)
-                        {
-                            arrayList.Add("'" + dt.Rows[i][j].ToString() + "'");
-                        }
+                        arrayList.Add("'" + dt.Rows[i][j].ToString() + "'");
                     }
-                    else {
-                        arrayList.Add("'" + dt.Rows[i][0].ToString() + "'");
-                        arrayList.Add("'" + dt.Rows[i][1].ToString() + "'");
-                        arrayList.Add("'" + dt.Rows[i][2].ToString() + "'");
-                        arrayList.Add("'" + dt.Rows[i][3].ToString() + "'");
-                        arrayList.Add("'" + dt.Rows[i][4].ToString() + "'");
-                        arrayList.Add("'" + dt.Rows[i][5].ToString() + "'");
-                        arrayList.Add("'" + float.Parse(dt.Rows[i][4].ToString().Trim().Equals("") ? "0.0" : dt.Rows[i][4].ToString()) * float.Parse(dt.Rows[i][5].ToString().Trim().Equals("") ? "0.0" : dt.Rows[i][5].ToString()) + "'");
-                        arrayList.Add("'" + dt.Rows[i][4].ToString() + "'");
-                        arrayList.Add("'" + dt.Rows[i][6].ToString() + "'");
-                        arrayList.Add("'" + float.Parse(dt.Rows[i][4].ToString().Trim().Equals("") ? "0.0" : dt.Rows[i][4].ToString()) * float.Parse(dt.Rows[i][6].ToString().Trim().Equals("") ? "0.0" : dt.Rows[i][6].ToString()) + "'");
-                        arrayList.Add("'" + dt.Rows[i][7].ToString() + "'");
-                    }
-                    arrayList.Insert(0, "'" + DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName) + "'");
-                    arrayList.Insert(arrayList.Count, "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'");
+                }
+                else
+                {
+                    arrayList.Add("'" + dt.Rows[i][0].ToString() + "'");
+                    arrayList.Add("'" + dt.Rows[i][1].ToString() + "'");
+                    arrayList.Add("'" + dt.Rows[i][2].ToString() + "'");
+                    arrayList.Add("'" + dt.Rows[i][3].ToString() + "'");
+                    arrayList.Add("'" + dt.Rows[i][4].ToString() + "'");
+                    arrayList.Add("'" + dt.Rows[i][5].ToString() + "'");
+                    arrayList.Add("'" + checkNumberValue(dt.Rows[i][4].ToString()) * checkNumberValue(dt.Rows[i][5].ToString()) + "'");
+                    arrayList.Add("'" + dt.Rows[i][4].ToString() + "'");
+                    arrayList.Add("'" + dt.Rows[i][6].ToString() + "'");
+                    arrayList.Add("'" + checkNumberValue(dt.Rows[i][4].ToString()) * checkNumberValue(dt.Rows[i][6].ToString()) + "'");
+                    arrayList.Add("'" + dt.Rows[i][7].ToString() + "'");
+                }
+                arrayList.Insert(0, "'" + DatabaseConnections.GetInstence().LocalAutoincreaseID(table, baseName) + "'");
+                arrayList.Insert(arrayList.Count, "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'");
                 DatabaseConnections.GetInstence().LocalInsertDataReturnAffectRows(table, String.Join(",", queryArray).ToString(), String.Join(",", arrayList));
                 importedCount++;
             }
@@ -132,7 +133,19 @@ namespace VividManagementApplication
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
-
+        private float checkNumberValue(String str)
+        {
+            str = str.Trim();
+            float result = 0.0f;
+            if (!str.Equals(""))
+            {
+                if (FormBasicFeatrues.GetInstence().IsNumeric(str))
+                {
+                    result = float.Parse(str);
+                }
+            }
+            return result;
+        }
 
 
     }

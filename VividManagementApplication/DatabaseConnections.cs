@@ -429,6 +429,32 @@ namespace VividManagementApplication
             LocalDbClose();
         }
 
+        public int LocalGetCountOfTable(String table, String condition)
+        {
+            int resultCount = -1;
+            if (!condition.Equals(""))
+            {
+                condition = " WHERE " + condition;
+            }
+
+            try
+            {
+                LocalDbOpen();
+                SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnectionCommand);
+                cmdInsert.CommandText = "SELECT COUNT(*) itemCount FROM " + table;
+                SQLiteDataReader reader = cmdInsert.ExecuteReader();
+                while (reader.Read())
+                {
+                    resultCount = int.Parse(reader[0].ToString());
+                }
+                //resultCount = cmdInsert.ExecuteNonQuery();
+                LocalDbClose();
+            }
+            catch { }
+
+            return resultCount;
+        }
+
         public string[] LocalGetOneRowDataById(string table, string[] query, string baseName, string id)
         {
             string[] resultsStringArray = new String[] { };

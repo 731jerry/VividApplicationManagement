@@ -707,7 +707,6 @@ namespace VividManagementApplication
             return ss;
         }
 
-
         /// <summary>
         /// 比较版本是否需要更新
         /// </summary>
@@ -737,6 +736,20 @@ namespace VividManagementApplication
                 return true;
             }
             return false;
+        }
+
+        // 判断是否是数字
+        public bool IsNumeric(String str)
+        {
+            String pattern = @"^[-]?\d+[.]?\d*$";
+            return Regex.IsMatch(str, pattern);
+        }
+
+        // 判断是否是整数
+        public bool IsIntegerByRegex(String str)
+        {
+            String pattern = @"^\d*$";
+            return Regex.IsMatch(str, pattern);
         }
 
         #region 上传文件
