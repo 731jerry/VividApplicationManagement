@@ -129,19 +129,25 @@ namespace VividManagementApplication
             this.Text = "正在检测更新...";
             try
             {
-                //Console.WriteLine("1 " + DateTime.Now.ToString());
                 // 检测是否有最新版本
-                List<String> updateVersionString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version");
-                //Console.WriteLine("2 " + DateTime.Now.ToString());
-                List<String> updateVersionLogString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version_log");
-                //Console.WriteLine("3 " + DateTime.Now.ToString());
-                List<String> updateAppURLString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_app_url");
-                //Console.WriteLine("4 " + DateTime.Now.ToString());
+                String updateVersion = "";
+                String updateLog = "";
 
-                String updateVersion = updateVersionString[0];
-                String updateLog = updateVersionLogString[0];
+                /*
+                List<String> updateVersionString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version");
+                List<String> updateVersionLogString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version_log");
+                List<String> updateAppURLString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_app_url");
+              
+                 updateVersion = updateVersionString[0];
+                 updateLog = updateVersionLogString[0];
                 MainWindow.UPDATE_APP_URL_DIR = updateAppURLString[0];
-                //string updateVersion = FormBasicFeatrues.GetInstence().getOnlineFile(MainWindow.UPDATE_VERSION_URL);
+                */
+
+                List<List<String>> updateListString = DatabaseConnections.OnlineConnector().OnlineGetRowsDataByCondition("config", new List<string>() {"id", "configValue" }, " WHERE id < 4");
+
+                updateVersion = updateListString[0][1];
+                updateLog = updateListString[1][1];
+                MainWindow.UPDATE_APP_URL_DIR = updateListString[2][1];
 
                 if (!updateVersion.Equals(""))
                 {
