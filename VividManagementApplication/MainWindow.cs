@@ -181,7 +181,7 @@ namespace VividManagementApplication
                 #region 初始化登录信息
                 lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
                 // 更新在线
-                DatabaseConnections.OnlineConnector().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1 WHERE userid = '" + MainWindow.USER_ID + "'");
+                DatabaseConnections.OnlineConnector().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
                 keepOnlineTimer.Enabled = true;
                 TimeSpan ts = EXPIRETIME - ADDTIME;
                 if (DEGREE == 0)
