@@ -202,6 +202,8 @@ namespace VividManagementApplication
                 notifyIcon.Text = "管账宝(" + MainWindow.USER_ID + ")";
                 SetNotifyIcon(currentImageIndex);
 
+                StatusToolStripStatusLabel.Text = "登录成功！";
+
                 #region 初始化企业基本信息设置
                 if (COMPANY_NAME.Equals("") || SIGNATURE.Equals("") || COMPANY_NICKNAME.Equals("") || PHONE.Equals("") || ADDRESS.Equals("") || BANK_NAME.Equals("") || BANK_CARD.Equals(""))
                 {
@@ -1965,7 +1967,7 @@ namespace VividManagementApplication
         }
         private void SetStatusToolStripStatusLabel(object sender, System.Timers.ElapsedEventArgs e)
         {
-            StatusToolStripStatusLabel.Text = "消息";
+            StatusToolStripStatusLabel.Text = "状态";
             lablTextChangeTimer.Enabled = false;
         }
 

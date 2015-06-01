@@ -28,7 +28,7 @@ namespace VividManagementApplication
 
             if (onlineSqlConnection == null)
             {
-                onlineSqlConnection = new MySqlConnection(@"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8");
+                onlineSqlConnection = new MySqlConnection(@"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8;");
                 onlineSqlConnection.Open();
             }
             if (onlineSqlConnection.State == ConnectionState.Closed)
