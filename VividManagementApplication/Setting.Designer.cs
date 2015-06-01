@@ -386,9 +386,9 @@
             // SignPictureShowBox
             // 
             this.SignPictureShowBox.BackColor = System.Drawing.Color.White;
-            this.SignPictureShowBox.Location = new System.Drawing.Point(18, 41);
+            this.SignPictureShowBox.Location = new System.Drawing.Point(37, 26);
             this.SignPictureShowBox.Name = "SignPictureShowBox";
-            this.SignPictureShowBox.Size = new System.Drawing.Size(208, 66);
+            this.SignPictureShowBox.Size = new System.Drawing.Size(176, 91);
             this.SignPictureShowBox.TabIndex = 157;
             this.SignPictureShowBox.TabStop = false;
             // 
@@ -464,6 +464,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Setting";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户信息设置";
             this.PasswordGroupBox.ResumeLayout(false);

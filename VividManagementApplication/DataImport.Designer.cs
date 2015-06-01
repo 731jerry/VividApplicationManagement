@@ -120,6 +120,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DataImport";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataImport";
             this.Load += new System.EventHandler(this.DataImport_Load);

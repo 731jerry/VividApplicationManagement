@@ -30,10 +30,10 @@
         {
             this.SignPictureBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.uploadSignPicButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.uploadSignPicButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SignPictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +46,7 @@
             this.SignPictureBox.BackColor = System.Drawing.Color.White;
             this.SignPictureBox.Location = new System.Drawing.Point(12, 66);
             this.SignPictureBox.Name = "SignPictureBox";
-            this.SignPictureBox.Size = new System.Drawing.Size(688, 302);
+            this.SignPictureBox.Size = new System.Drawing.Size(600, 450);
             this.SignPictureBox.TabIndex = 3;
             this.SignPictureBox.TabStop = false;
             this.SignPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.SignPictureBox_Paint);
@@ -63,22 +63,32 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Location = new System.Drawing.Point(12, 11);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(688, 47);
+            this.panel1.Size = new System.Drawing.Size(600, 47);
             this.panel1.TabIndex = 2;
+            // 
+            // uploadSignPicButton
+            // 
+            this.uploadSignPicButton.Location = new System.Drawing.Point(356, 12);
+            this.uploadSignPicButton.Name = "uploadSignPicButton";
+            this.uploadSignPicButton.Size = new System.Drawing.Size(75, 23);
+            this.uploadSignPicButton.TabIndex = 3;
+            this.uploadSignPicButton.Text = "上传签名图";
+            this.uploadSignPicButton.UseVisualStyleBackColor = true;
+            this.uploadSignPicButton.Click += new System.EventHandler(this.uploadSignPicButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(15, 17);
+            this.label1.Location = new System.Drawing.Point(14, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 12);
+            this.label1.Size = new System.Drawing.Size(323, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "注意：电子签名将被用于远程签单使用！";
+            this.label1.Text = "注意：电子签名将被用于远程签单！请使用4:3比例图上传！";
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(593, 11);
+            this.btnClear.Location = new System.Drawing.Point(518, 12);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 1;
@@ -88,7 +98,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(489, 11);
+            this.btnSave.Location = new System.Drawing.Point(437, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 0;
@@ -96,26 +106,18 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // uploadSignPicButton
-            // 
-            this.uploadSignPicButton.Location = new System.Drawing.Point(385, 12);
-            this.uploadSignPicButton.Name = "uploadSignPicButton";
-            this.uploadSignPicButton.Size = new System.Drawing.Size(75, 23);
-            this.uploadSignPicButton.TabIndex = 3;
-            this.uploadSignPicButton.Text = "上传签名图";
-            this.uploadSignPicButton.UseVisualStyleBackColor = true;
-            this.uploadSignPicButton.Click += new System.EventHandler(this.uploadSignPicButton_Click);
-            // 
             // Signature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 378);
+            this.ClientSize = new System.Drawing.Size(624, 528);
             this.Controls.Add(this.SignPictureBox);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Signature";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "电子签名";
             ((System.ComponentModel.ISupportInitialize)(this.SignPictureBox)).EndInit();

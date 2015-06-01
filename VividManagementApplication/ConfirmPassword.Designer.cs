@@ -77,6 +77,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ConfirmPassword";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "请确认密码...";
             this.ResumeLayout(false);

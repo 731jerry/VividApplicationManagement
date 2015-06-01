@@ -4377,6 +4377,7 @@ namespace VividManagementApplication
             this.MaximumSize = new System.Drawing.Size(1960, 1431);
             this.MinimizeBox = false;
             this.Name = "DetailedInfo";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
