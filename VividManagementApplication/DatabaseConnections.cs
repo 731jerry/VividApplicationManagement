@@ -153,6 +153,7 @@ namespace VividManagementApplication
             String SQLforGeneral = "INSERT INTO " + table + " (" + query + ") VALUES(" + value + ")";
             MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
             affectedRows = cmdInsert.ExecuteNonQuery();
+            onlineSqlConnection.Close();
             return affectedRows;
         }
 
@@ -603,6 +604,7 @@ namespace VividManagementApplication
                 resultsStringArray = new String[query.Length];
             }
             reader.Close();
+            localSqlConnection.Close();
             return resultsStringList;
         }
 
