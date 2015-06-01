@@ -14,59 +14,39 @@ namespace VividManagementApplication
 {
     class DatabaseConnections
     {
-        static MySqlConnection onlineSqlConnection;
-        static SQLiteConnection localSqlConnection;
-
-        private static DatabaseConnections _onlineConnection = null;
-
-        public static DatabaseConnections OnlineConnector()
+        //连接用的字符串  
+        private string onlineConnStr;
+        private string localConnStr;
+        public string OnlineConnStr
         {
-            if (_onlineConnection == null)
-            {
-                _onlineConnection = new DatabaseConnections();
-            }
-
-            if (onlineSqlConnection == null)
-            {
-                onlineSqlConnection = new MySqlConnection(@"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8;");
-                onlineSqlConnection.Open();
-            }
-            if (onlineSqlConnection.State == ConnectionState.Closed)
-            {
-                onlineSqlConnection.Open();
-            }
-            if (onlineSqlConnection.State == ConnectionState.Broken)
-            {
-                onlineSqlConnection.Close();
-                onlineSqlConnection.Open();
-            }
-            return DatabaseConnections._onlineConnection;
+            get { return this.onlineConnStr; }
+            set { this.onlineConnStr = value; }
         }
 
-        private static DatabaseConnections _localConnection = null;
-
-        public static DatabaseConnections LocalConnector()
+        public string LocalConnStr
         {
-            if (_localConnection == null)
-            {
-                _localConnection = new DatabaseConnections();
-            }
+            get { return this.localConnStr; }
+            set { this.localConnStr = value; }
+        }
 
-            if (localSqlConnection == null)
+        private DatabaseConnections()
+        {
+            OnlineConnStr = @"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8;";
+            localConnStr = "Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION;
+        }
+
+        //DbManager单实例  
+        private static DatabaseConnections _instance = null;
+        public static DatabaseConnections Connector
+        {
+            get
             {
-                localSqlConnection = new SQLiteConnection("Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION);
-                localSqlConnection.Open();
+                if (_instance == null)
+                {
+                    _instance = new DatabaseConnections();
+                }
+                return _instance;
             }
-            if (localSqlConnection.State == ConnectionState.Closed)
-            {
-                localSqlConnection.Open();
-            }
-            if (localSqlConnection.State == ConnectionState.Broken)
-            {
-                localSqlConnection.Close();
-                localSqlConnection.Open();
-            }
-            return DatabaseConnections._localConnection;
         }
 
         #region 联网
@@ -98,192 +78,216 @@ namespace VividManagementApplication
 
         public void UserLogin(string acc, string psw)
         {
-            string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
-
-            StringBuilder sbSQL = new StringBuilder(
-                    @"SELECT Count(id),id,userid,password,companyNickname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(GZB_addtime as char) as GZB_addtime,GZB_degree,GZB_expiretime,GZB_isonline,notification,companyBalance,GZB_signature FROM users WHERE userid = '");
-            sbSQL.Append(acc);
-            sbSQL.Append(@"'");
-            sbSQL.Append(@" AND password = '");
-            sbSQL.Append(hash.ToLower());
-            sbSQL.Append(@"'");
-
-            string SQLforGeneral = sbSQL.ToString();
-
-            MySqlCommand cmd = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
-            MySqlDataReader dataReader = cmd.ExecuteReader();
-
-            while (dataReader.Read())
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
             {
-                MainWindow.IS_PASSWORD_CORRECT = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
-                if (MainWindow.IS_PASSWORD_CORRECT)
+                string hash = FormBasicFeatrues.GetInstence().GetMd5Hash(MD5.Create(), psw);
+
+                StringBuilder sbSQL = new StringBuilder(
+                        @"SELECT Count(id),id,userid,password,companyNickname,workloads,company,companyowner,address,bankname,bankcard,phone,fax,QQ,email,cast(GZB_addtime as char) as GZB_addtime,GZB_degree,GZB_expiretime,GZB_isonline,notification,companyBalance,GZB_signature FROM users WHERE userid = '");
+                sbSQL.Append(acc);
+                sbSQL.Append(@"'");
+                sbSQL.Append(@" AND password = '");
+                sbSQL.Append(hash.ToLower());
+                sbSQL.Append(@"'");
+
+                string SQLforGeneral = sbSQL.ToString();
+
+                MySqlCommand cmd = new MySqlCommand(SQLforGeneral, con);
+                con.Open();
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                while (dataReader.Read())
                 {
-                    MainWindow.ID = dataReader["id"].ToString();
-                    MainWindow.USER_ID = dataReader["userid"].ToString();
-                    MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
-                    MainWindow.COMPANY_NICKNAME = dataReader["companyNickname"].ToString();
-                    MainWindow.WORKLOADS = dataReader["workloads"].ToString();
-                    MainWindow.COMPANY_NAME = dataReader["company"].ToString();
-                    MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
-                    MainWindow.ADDRESS = dataReader["address"].ToString();
-                    MainWindow.BANK_NAME = dataReader["bankname"].ToString();
-                    MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
-                    MainWindow.PHONE = dataReader["phone"].ToString();
-                    MainWindow.FAX = dataReader["fax"].ToString();
-                    MainWindow.QQ = dataReader["QQ"].ToString();
-                    MainWindow.EMAIL = dataReader["email"].ToString();
-                    MainWindow.NOTIFICATION = dataReader["notification"].ToString();
-                    MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
-                    MainWindow.DEGREE = int.Parse(dataReader["GZB_degree"].ToString());
-                    MainWindow.ADDTIME = DateTime.Parse(dataReader["GZB_addtime"].ToString());
-                    MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
-                    MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
-                    MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
-                    //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                    MainWindow.IS_PASSWORD_CORRECT = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
+                    if (MainWindow.IS_PASSWORD_CORRECT)
+                    {
+                        MainWindow.ID = dataReader["id"].ToString();
+                        MainWindow.USER_ID = dataReader["userid"].ToString();
+                        MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
+                        MainWindow.COMPANY_NICKNAME = dataReader["companyNickname"].ToString();
+                        MainWindow.WORKLOADS = dataReader["workloads"].ToString();
+                        MainWindow.COMPANY_NAME = dataReader["company"].ToString();
+                        MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
+                        MainWindow.ADDRESS = dataReader["address"].ToString();
+                        MainWindow.BANK_NAME = dataReader["bankname"].ToString();
+                        MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
+                        MainWindow.PHONE = dataReader["phone"].ToString();
+                        MainWindow.FAX = dataReader["fax"].ToString();
+                        MainWindow.QQ = dataReader["QQ"].ToString();
+                        MainWindow.EMAIL = dataReader["email"].ToString();
+                        MainWindow.NOTIFICATION = dataReader["notification"].ToString();
+                        MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
+                        MainWindow.DEGREE = int.Parse(dataReader["GZB_degree"].ToString());
+                        MainWindow.ADDTIME = DateTime.Parse(dataReader["GZB_addtime"].ToString());
+                        MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
+                        MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
+                        MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
+                        //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                    }
                 }
+                dataReader.Close();
             }
-            onlineSqlConnection.Close();
-            dataReader.Close();
         }
 
         // 插入数据
         public int OnlineInsertData(String table, String query, String value)
         {
-            int affectedRows;
-            String SQLforGeneral = "INSERT INTO " + table + " (" + query + ") VALUES(" + value + ")";
-            MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
-            affectedRows = cmdInsert.ExecuteNonQuery();
-            onlineSqlConnection.Close();
+            int affectedRows = -1;
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
+            {
+                String SQLforGeneral = "INSERT INTO " + table + " (" + query + ") VALUES(" + value + ")";
+                MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, con);
+                con.Open();
+                affectedRows = cmdInsert.ExecuteNonQuery();
+            }
             return affectedRows;
         }
 
         // 修改数据
         public int OnlineUpdateData(string table, string[] query, string[] value, string id)
         {
-            int affectedRows;
-            string innerSQL = "";
+            int affectedRows = -1;
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
+            {
+                string innerSQL = "";
 
-            for (int i = 0; i < query.Length; i++)
-            {
-                innerSQL += query[i] + " = '" + value[i] + "',";
+                for (int i = 0; i < query.Length; i++)
+                {
+                    innerSQL += query[i] + " = '" + value[i] + "',";
+                }
+                if (!innerSQL.Equals(""))
+                {
+                    innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+                }
+                string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
+                MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, con);
+                con.Open();
+                affectedRows = cmdInsert.ExecuteNonQuery();
             }
-            if (!innerSQL.Equals(""))
-            {
-                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
-            }
-            string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
-            MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, onlineSqlConnection);
-            affectedRows = cmdInsert.ExecuteNonQuery();
-            onlineSqlConnection.Close();
             return affectedRows;
         }
 
         // 修改原始数据
         public int OnlineUpdateDataFromOriginalSQL(String sql)
         {
-            int affectedRows;
-            MySqlCommand cmdInsert = new MySqlCommand(sql, onlineSqlConnection);
-            cmdInsert.CommandTimeout = 0;
-            affectedRows = cmdInsert.ExecuteNonQuery();
-            onlineSqlConnection.Close();
+            int affectedRows = -1;
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
+            {
+                MySqlCommand cmdInsert = new MySqlCommand(sql, con);
+                cmdInsert.CommandTimeout = 0;
+                con.Open();
+                affectedRows = cmdInsert.ExecuteNonQuery();
+            }
             return affectedRows;
         }
 
         public List<String> OnlineGetOneRowDataById(String table, List<String> query, String baseName, String id)
         {
-            // ORDER BY id ASC
-            String innerSQL = "";
+            List<String> resultsStringList;
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
+            {
+                // ORDER BY id ASC
+                String innerSQL = "";
 
-            for (int i = 0; i < query.Count; i++)
-            {
-                innerSQL += query[i] + ",";
-            }
-            if (!innerSQL.Equals(""))
-            {
-                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
-            }
-            String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-            MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
-            cmdCreateTable.CommandText = sql;
-            MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
-            //String[] resultsStringArray = new String[query.Count];
-            List<String> resultsStringList = new List<string>();
-
-            while (dataReader.Read())
-            {
                 for (int i = 0; i < query.Count; i++)
                 {
-                    resultsStringList.Add(dataReader[query[i]].ToString());
+                    innerSQL += query[i] + ",";
                 }
+                if (!innerSQL.Equals(""))
+                {
+                    innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+                }
+                String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
+                MySqlCommand cmdCreateTable = new MySqlCommand(sql, con);
+                cmdCreateTable.CommandText = sql;
+                con.Open();
+                MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+                //String[] resultsStringArray = new String[query.Count];
+                resultsStringList = new List<string>();
+
+                while (dataReader.Read())
+                {
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        resultsStringList.Add(dataReader[query[i]].ToString());
+                    }
+                }
+                dataReader.Close();
             }
-            dataReader.Close();
-            onlineSqlConnection.Close();
             return resultsStringList;
         }
 
         public List<List<String>> OnlineGetRowsDataById(String table, List<String> query, String baseName, String id, String condition)
         {
-            // ORDER BY id ASC
-            String innerSQL = "";
-
-            /*
-            for (int i = 0; i < query.Count; i++)
+            List<List<String>> resultsStringList;
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
             {
-                innerSQL += query[i] + ",";
-            }
-            if (!innerSQL.Equals(""))
-            {
-                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
-            }
-             */
-            innerSQL = String.Join(",", query);
+                // ORDER BY id ASC
+                String innerSQL = "";
 
-            String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "' " + condition;//建表语句  
-            MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
-            cmdCreateTable.CommandTimeout = 0;
-            cmdCreateTable.CommandText = sql;
-            MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
-            //String[] resultsStringArray = new String[query.Count];
-            List<List<String>> resultsStringList = new List<List<String>>();
-
-            while (dataReader.Read())
-            {
-                List<String> temp = new List<string>();
+                /*
                 for (int i = 0; i < query.Count; i++)
                 {
-                    temp.Add(dataReader[query[i]].ToString());
+                    innerSQL += query[i] + ",";
                 }
-                resultsStringList.Add(temp);
+                if (!innerSQL.Equals(""))
+                {
+                    innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+                }
+                 */
+                innerSQL = String.Join(",", query);
+
+                String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "' " + condition;//建表语句  
+                MySqlCommand cmdCreateTable = new MySqlCommand(sql, con);
+                cmdCreateTable.CommandTimeout = 0;
+                cmdCreateTable.CommandText = sql;
+                con.Open();
+                MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+                //String[] resultsStringArray = new String[query.Count];
+                resultsStringList = new List<List<String>>();
+
+                while (dataReader.Read())
+                {
+                    List<String> temp = new List<string>();
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        temp.Add(dataReader[query[i]].ToString());
+                    }
+                    resultsStringList.Add(temp);
+                }
+                dataReader.Close();
             }
-            dataReader.Close();
-            onlineSqlConnection.Close();
             return resultsStringList;
         }
 
         public List<List<String>> OnlineGetRowsDataByCondition(String table, List<String> query, String condition)
         {
-            // ORDER BY id ASC
-            String innerSQL = String.Join(",", query);
-
-            String sql = "SELECT " + innerSQL + " FROM " + table + condition;//建表语句  
-            MySqlCommand cmdCreateTable = new MySqlCommand(sql, onlineSqlConnection);
-            cmdCreateTable.CommandTimeout = 0;
-            cmdCreateTable.CommandText = sql;
-            MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
-            //String[] resultsStringArray = new String[query.Count];
-            List<List<String>> resultsStringList = new List<List<String>>();
-
-            while (dataReader.Read())
+            List<List<String>> resultsStringList;
+            using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
             {
-                List<String> temp = new List<string>();
-                for (int i = 0; i < query.Count; i++)
+                // ORDER BY id ASC
+                String innerSQL = String.Join(",", query);
+
+                String sql = "SELECT " + innerSQL + " FROM " + table + condition;//建表语句  
+                MySqlCommand cmdCreateTable = new MySqlCommand(sql, con);
+                cmdCreateTable.CommandTimeout = 0;
+                cmdCreateTable.CommandText = sql;
+                con.Open();
+                MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+                //String[] resultsStringArray = new String[query.Count];
+                resultsStringList = new List<List<String>>();
+
+                while (dataReader.Read())
                 {
-                    temp.Add(dataReader[query[i]].ToString());
+                    List<String> temp = new List<string>();
+                    for (int i = 0; i < query.Count; i++)
+                    {
+                        temp.Add(dataReader[query[i]].ToString());
+                    }
+                    resultsStringList.Add(temp);
                 }
-                resultsStringList.Add(temp);
+                dataReader.Close();
             }
-            dataReader.Close();
-            onlineSqlConnection.Close();
             return resultsStringList;
         }
 
@@ -293,7 +297,9 @@ namespace VividManagementApplication
 
         public void LocalCreateDatabase(String databaseName)
         {
-            string sql = @" --
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                string sql = @" --
                                 -- File generated with SQLiteStudio v3.0.3 on 周四 4月 9 14:58:30 2015
                                 --
                                 -- Text encoding used: GBK
@@ -330,19 +336,20 @@ namespace VividManagementApplication
 
                                 --COMMIT TRANSACTION;";//建表语句  
 
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
-            cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
-            localSqlConnection.Close();
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                conn.Open();
+                cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
+            }
         }
         /*
         public void LocalDbOpen()
         {
-            // localSqlConnection.Open();//打开数据库，若文件不存在会自动创建  
+            // conn.Open();//打开数据库，若文件不存在会自动创建  
             try
             {
-                if (localSqlConnection.State != ConnectionState.Open)
+                if (conn.State != ConnectionState.Open)
                 {
-                    localSqlConnection.Open();
+                    conn.Open();
                 }
             }
             catch (Exception ex)
@@ -355,172 +362,234 @@ namespace VividManagementApplication
 
         public void LocalDbClose()
         {
-            localSqlConnection.Close();
+            conn.Close();
         }
         */
 
         // 插入数据
         public void LocalInsertData(string table, string query, string value)
         {
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + query + ") " +
-                                       " VALUES(" + value + ")";
-            cmdInsert.ExecuteNonQuery();
-            localSqlConnection.Close();
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + query + ") " +
+                                           " VALUES(" + value + ")";
+                cmdInsert.ExecuteNonQuery();
+                conn.Close();
+            }
         }
 
         public int LocalInsertDataReturnAffectRows(string table, string query, string value)
         {
             int returnAffectRows = -1;
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "INSERT INTO  " + table + "  (" + query + ") " +
-                                       " VALUES(" + value + ")";
-            returnAffectRows = cmdInsert.ExecuteNonQuery();
-            localSqlConnection.Close();
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "INSERT INTO  " + table + "  (" + query + ") " +
+                                           " VALUES(" + value + ")";
+                conn.Open();
+                returnAffectRows = cmdInsert.ExecuteNonQuery();
+            }
             return returnAffectRows;
         }
 
         // 删除数据
         public void LocalDeleteDataByID(string table, int id)
         {
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "DELETE FROM  " + table + "  WHERE id = " + id;
-            cmdInsert.ExecuteNonQuery();
-            localSqlConnection.Close();
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "DELETE FROM  " + table + "  WHERE id = " + id;
+                conn.Open();
+                cmdInsert.ExecuteNonQuery();
+            }
         }
 
         // 修改数据
         public void LocalUpdateData(string table, string[] query, string[] value, Boolean isValueString, string baseName, string id)
         {
-            string innerSQL = "";
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                string innerSQL = "";
 
-            for (int i = 0; i < query.Length; i++)
-            {
-                if (isValueString)
+                for (int i = 0; i < query.Length; i++)
                 {
-                    innerSQL += query[i] + " = '" + value[i] + "',";
+                    if (isValueString)
+                    {
+                        innerSQL += query[i] + " = '" + value[i] + "',";
+                    }
+                    else
+                    {
+                        innerSQL += query[i] + " = " + value[i] + ",";
+                    }
                 }
-                else
+                if (!innerSQL.Equals(""))
                 {
-                    innerSQL += query[i] + " = " + value[i] + ",";
+                    innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
+                conn.Open();
+                cmdInsert.ExecuteNonQuery();
             }
-            if (!innerSQL.Equals(""))
-            {
-                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
-            }
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
-            cmdInsert.ExecuteNonQuery();
-            localSqlConnection.Close();
         }
 
         // 插入或更新数据
         public int LocalReplaceIntoDataReturnAffectRows(string table, string[] query, string[] value, string id)
         {
             int returnAffectRows = -1;
-            string innerQuerySQL = "";
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                string innerQuerySQL = "";
 
-            for (int i = 0; i < query.Length; i++)
-            {
-                innerQuerySQL += query[i] + ",";
-            }
-            if (!innerQuerySQL.Equals(""))
-            {
-                innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
-            }
+                for (int i = 0; i < query.Length; i++)
+                {
+                    innerQuerySQL += query[i] + ",";
+                }
+                if (!innerQuerySQL.Equals(""))
+                {
+                    innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
+                }
 
-            string innerVauleSQL = "";
-            for (int i = 0; i < value.Length; i++)
-            {
-                innerVauleSQL += "'" + value[i] + "',";
-            }
-            if (!innerVauleSQL.Equals(""))
-            {
-                innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
-            }
+                string innerVauleSQL = "";
+                for (int i = 0; i < value.Length; i++)
+                {
+                    innerVauleSQL += "'" + value[i] + "',";
+                }
+                if (!innerVauleSQL.Equals(""))
+                {
+                    innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
+                }
 
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
-                                       " VALUES(" + innerVauleSQL + ")";
-            returnAffectRows = cmdInsert.ExecuteNonQuery();
-            localSqlConnection.Close();
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
+                                           " VALUES(" + innerVauleSQL + ")";
+                conn.Open();
+                returnAffectRows = cmdInsert.ExecuteNonQuery();
+            }
             return returnAffectRows;
         }
 
         public void LocalReplaceIntoData(string table, string[] query, string[] value, string id)
         {
-            string innerQuerySQL = "";
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                string innerQuerySQL = "";
 
-            for (int i = 0; i < query.Length; i++)
-            {
-                innerQuerySQL += query[i] + ",";
-            }
-            if (!innerQuerySQL.Equals(""))
-            {
-                innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
-            }
+                for (int i = 0; i < query.Length; i++)
+                {
+                    innerQuerySQL += query[i] + ",";
+                }
+                if (!innerQuerySQL.Equals(""))
+                {
+                    innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
+                }
 
-            string innerVauleSQL = "";
-            for (int i = 0; i < value.Length; i++)
-            {
-                innerVauleSQL += "'" + value[i] + "',";
-            }
-            if (!innerVauleSQL.Equals(""))
-            {
-                innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
-            }
+                string innerVauleSQL = "";
+                for (int i = 0; i < value.Length; i++)
+                {
+                    innerVauleSQL += "'" + value[i] + "',";
+                }
+                if (!innerVauleSQL.Equals(""))
+                {
+                    innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
+                }
 
-            SQLiteTransaction transaction = localSqlConnection.BeginTransaction();
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
-                                       " VALUES(" + innerVauleSQL + ")";
-            cmdInsert.ExecuteNonQuery();
-            transaction.Commit();
-            localSqlConnection.Close();
+                SQLiteTransaction transaction = conn.BeginTransaction();
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
+                                           " VALUES(" + innerVauleSQL + ")";
+                conn.Open();
+                cmdInsert.ExecuteNonQuery();
+                transaction.Commit();
+            }
         }
 
         // 清空表
         public void LocalClearTable(String table)
         {
-            SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-            cmdInsert.CommandText = "DELETE FROM " + table;
-            cmdInsert.ExecuteNonQuery();
-            localSqlConnection.Close();
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                cmdInsert.CommandText = "DELETE FROM " + table;
+                conn.Open();
+                cmdInsert.ExecuteNonQuery();
+            }
         }
 
         public int LocalGetCountOfTable(String table, String condition)
         {
             int resultCount = -1;
-            if (!condition.Equals(""))
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                condition = " WHERE " + condition;
-            }
-
-            try
-            {
-                SQLiteCommand cmdInsert = new SQLiteCommand(localSqlConnection);
-                cmdInsert.CommandText = "SELECT COUNT(*) itemCount FROM " + table;
-                SQLiteDataReader reader = cmdInsert.ExecuteReader();
-                while (reader.Read())
+                if (!condition.Equals(""))
                 {
-                    resultCount = int.Parse(reader[0].ToString());
+                    condition = " WHERE " + condition;
                 }
-                //resultCount = cmdInsert.ExecuteNonQuery();
-            }
-            catch { }
 
-            localSqlConnection.Close();
+                try
+                {
+                    SQLiteCommand cmdInsert = new SQLiteCommand(conn);
+                    cmdInsert.CommandText = "SELECT COUNT(*) itemCount FROM " + table;
+                    conn.Open();
+                    SQLiteDataReader reader = cmdInsert.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        resultCount = int.Parse(reader[0].ToString());
+                    }
+                    //resultCount = cmdInsert.ExecuteNonQuery();
+                }
+                catch { conn.Close(); }
+            }
             return resultCount;
         }
 
         public string[] LocalGetOneRowDataById(string table, string[] query, string baseName, string id)
         {
             string[] resultsStringArray = new String[] { };
-            try
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
+            {
+                try
+                {
+                    // ORDER BY id ASC
+                    string innerSQL = "";
+
+                    for (int i = 0; i < query.Length; i++)
+                    {
+                        innerSQL += query[i] + ",";
+                    }
+                    if (!innerSQL.Equals(""))
+                    {
+                        innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
+                    }
+                    string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
+                    SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                    cmdCreateTable.CommandText = sql;
+                    conn.Open();
+                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                    resultsStringArray = new string[query.Length];
+
+                    while (reader.Read())
+                    {
+                        for (int i = 0; i < query.Length; i++)
+                        {
+                            resultsStringArray[i] = reader[query[i]].ToString();
+                        }
+                    }
+                }
+                catch { conn.Close(); return resultsStringArray; }
+            }
+            return resultsStringArray;
+        }
+
+        // 列出数据
+        public List<String[]> LocalGetData(String table, String[] query, String order)
+        {
+            List<String[]> resultsStringList;
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
                 // ORDER BY id ASC
-                string innerSQL = "";
+                String innerSQL = "";
 
                 for (int i = 0; i < query.Length; i++)
                 {
@@ -530,138 +599,118 @@ namespace VividManagementApplication
                 {
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
-                string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
+                String sql = "SELECT " + innerSQL + " FROM " + table + " " + order;//建表语句  
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
                 cmdCreateTable.CommandText = sql;
+                conn.Open();
                 System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-                resultsStringArray = new string[query.Length];
+                String[] resultsStringArray = new String[query.Length];
+                resultsStringList = new List<String[]>();
 
                 while (reader.Read())
                 {
                     for (int i = 0; i < query.Length; i++)
                     {
-                        resultsStringArray[i] = reader[query[i]].ToString();
+                        resultsStringArray[i] = reader[i].ToString();
                     }
+                    resultsStringList.Add(resultsStringArray);
+                    resultsStringArray = new String[query.Length];
                 }
                 reader.Close();
             }
-            catch { return resultsStringArray; }
-            localSqlConnection.Close();
-            return resultsStringArray;
-        }
-
-        // 列出数据
-        public List<String[]> LocalGetData(String table, String[] query, String order)
-        {
-            // ORDER BY id ASC
-            String innerSQL = "";
-
-            for (int i = 0; i < query.Length; i++)
-            {
-                innerSQL += query[i] + ",";
-            }
-            if (!innerSQL.Equals(""))
-            {
-                innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
-            }
-            String sql = "SELECT " + innerSQL + " FROM " + table + " " + order;//建表语句  
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
-            cmdCreateTable.CommandText = sql;
-            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            String[] resultsStringArray = new String[query.Length];
-            List<String[]> resultsStringList = new List<String[]>();
-
-            while (reader.Read())
-            {
-                for (int i = 0; i < query.Length; i++)
-                {
-                    resultsStringArray[i] = reader[i].ToString();
-                }
-                resultsStringList.Add(resultsStringArray);
-                resultsStringArray = new String[query.Length];
-            }
-            reader.Close();
-            localSqlConnection.Close();
             return resultsStringList;
         }
 
         // 最原始的列出数据
         public List<String[]> LocalGetDataFromOriginalSQL(String sql, String[] query)
         {
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
-            cmdCreateTable.CommandText = sql;
-            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            String[] resultsStringArray = new String[query.Length];
-            List<String[]> resultsStringList = new List<String[]>();
-
-            while (reader.Read())
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                for (int i = 0; i < query.Length; i++)
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                cmdCreateTable.CommandText = sql;
+                conn.Open();
+                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                String[] resultsStringArray = new String[query.Length];
+                List<String[]> resultsStringList = new List<String[]>();
+
+                while (reader.Read())
                 {
-                    resultsStringArray[i] = reader[i].ToString();
+                    for (int i = 0; i < query.Length; i++)
+                    {
+                        resultsStringArray[i] = reader[i].ToString();
+                    }
+                    resultsStringList.Add(resultsStringArray);
+                    resultsStringArray = new String[query.Length];
                 }
-                resultsStringList.Add(resultsStringArray);
-                resultsStringArray = new String[query.Length];
+                reader.Close();
+                return resultsStringList;
             }
-            reader.Close();
-            localSqlConnection.Close();
-            return resultsStringList;
         }
 
         // 获取表的id
         public List<string> LocalGetIdsOfTable(string table, string baseName, string order)
         {
-            string sql = "SELECT " + baseName + " FROM " + table + " " + order;//建表语句  
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
-            cmdCreateTable.CommandText = sql;
-            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            List<string> resultsStringList = new List<string>();
-
-            while (reader.Read())
+            List<string> resultsStringList;
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                resultsStringList.Add(reader.GetString(0));
+                string sql = "SELECT " + baseName + " FROM " + table + " " + order;//建表语句  
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                cmdCreateTable.CommandText = sql;
+                conn.Open();
+                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                resultsStringList = new List<string>();
+
+                while (reader.Read())
+                {
+                    resultsStringList.Add(reader.GetString(0));
+                }
+                reader.Close();
             }
-            reader.Close();
-            localSqlConnection.Close();
             return resultsStringList;
         }
 
         // 检测是否重名
         public Boolean LocalCheckIfDuplicate(string table, string baseName, string id)
         {
-            string sql = "SELECT " + baseName + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
-            cmdCreateTable.CommandText = sql;
-            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-            localSqlConnection.Close();
-            if (reader.HasRows)
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                string sql = "SELECT " + baseName + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                cmdCreateTable.CommandText = sql;
+                conn.Open();
+                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
         // 自动生成ID
         public String LocalAutoincreaseID(string table, string baseName)
         {
-            String maxNumber = "";
-            // SELECT max(jcdID) as max FROM jcdList 
-            // cast(yysid as UNSIGNED INTEGER)
-            string sql = "SELECT max(cast(" + baseName + " as UNSIGNED INTEGER)) as max FROM " + table;//建表语句  
-            SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, localSqlConnection);
-            cmdCreateTable.CommandText = sql;
-            System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-
-            while (reader.Read())
+            using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                maxNumber = (int.Parse(reader["max"].ToString().Equals("") ? "0" : reader["max"].ToString()) + 1).ToString();
-            }
+                String maxNumber = "";
+                // SELECT max(jcdID) as max FROM jcdList 
+                // cast(yysid as UNSIGNED INTEGER)
+                string sql = "SELECT max(cast(" + baseName + " as UNSIGNED INTEGER)) as max FROM " + table;//建表语句  
+                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
+                cmdCreateTable.CommandText = sql;
+                conn.Open();
+                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
 
-            localSqlConnection.Close();
-            return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 6, "0");
+                while (reader.Read())
+                {
+                    maxNumber = (int.Parse(reader["max"].ToString().Equals("") ? "0" : reader["max"].ToString()) + 1).ToString();
+                }
+
+                return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 6, "0");
+            }
         }
         #endregion
     }

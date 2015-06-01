@@ -315,7 +315,7 @@ namespace VividManagementApplication
         private void sendRemoteSignToolStripButton_Click(object sender, EventArgs e)
         {
             // 检测远程签单人是否存在
-            List<String> remoteUserInfo = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("users", new List<String>() { "userid", "company" }, "userid", gzbIDString);
+            List<String> remoteUserInfo = DatabaseConnections.Connector.OnlineGetOneRowDataById("users", new List<String>() { "userid", "company" }, "userid", gzbIDString);
             if (remoteUserInfo.Count>0)
             {
                 PrintDocument doc = this.Document;

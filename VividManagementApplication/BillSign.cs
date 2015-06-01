@@ -67,7 +67,7 @@ namespace VividManagementApplication
         {
             if (isSendRequest)
             {// 发送请求
-                if (DatabaseConnections.OnlineConnector().OnlineInsertData("gzb_remotesign",
+                if (DatabaseConnections.Connector.OnlineInsertData("gzb_remotesign",
                     "fromGZBID,toGZBID,companyNickName,sendTime,signValue",
                     "'" + MainWindow.USER_ID + "','" + gzbIDStirng + "','" + companyNameStirng + "','" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','" + FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(signImage)))) + "'") > 0)
                 {
@@ -89,7 +89,7 @@ namespace VividManagementApplication
                             gr.DrawImage(_signImage, new Rectangle(150, 480, 104, 36));
                         }
                         SignPictureBox.Invalidate();
-                        if (DatabaseConnections.OnlineConnector().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime", "signValue" }, new String[] { "1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(SignPictureBox.Image)))) }, remoteSignId) > 0)
+                        if (DatabaseConnections.Connector.OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "signTime", "signValue" }, new String[] { "1", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().CompressString(FormBasicFeatrues.GetInstence().ImgToBase64String(new Bitmap(SignPictureBox.Image)))) }, remoteSignId) > 0)
                         {
                             OKButton.Enabled = false;
                             RefuseButton.Enabled = false;
@@ -114,7 +114,7 @@ namespace VividManagementApplication
                 InputMessage im = new InputMessage();
                 if (im.ShowDialog() == DialogResult.OK)
                 {
-                    if (DatabaseConnections.OnlineConnector().OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "refusedMessage", "signTime" }, new String[] { "-1", im.detailMessage, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, remoteSignId) > 0)
+                    if (DatabaseConnections.Connector.OnlineUpdateData("gzb_remotesign", new String[] { "isSigned", "refusedMessage", "signTime" }, new String[] { "-1", im.detailMessage, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, remoteSignId) > 0)
                     {
                         MessageBox.Show("发送拒签成功!", "提示");
                         this.DialogResult = System.Windows.Forms.DialogResult.OK;

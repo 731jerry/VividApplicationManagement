@@ -26,7 +26,7 @@ namespace VividManagementApplication
             clientID.Items.Add("");
             clientID.Items.Insert(1, "使用选择器...");
 
-            addItemsToCombox(DatabaseConnections.LocalConnector().LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), clientID);
+            addItemsToCombox(DatabaseConnections.Connector.LocalGetIdsOfTable("clients", "clientID", " ORDER BY id ASC "), clientID);
             if (clientID.Items.Count > 2)
             {
                 clientID.SelectedIndex = 2;
@@ -75,7 +75,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
-                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { clientName }, DatabaseConnections.LocalConnector().LocalGetOneRowDataById("clients", new String[] { "company" }, "clientID", clientID.Text).ToList<String>());
+                    FormBasicFeatrues.GetInstence().SetControlsVauleByControlList(new List<Control>() { clientName }, DatabaseConnections.Connector.LocalGetOneRowDataById("clients", new String[] { "company" }, "clientID", clientID.Text).ToList<String>());
                 }
             }
         }

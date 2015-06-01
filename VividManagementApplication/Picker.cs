@@ -64,7 +64,7 @@ namespace VividManagementApplication
             string order = " ORDER BY id ASC ";
 
             this.PickerDataGridView.Columns.AddRange(dgvcArray);
-            List<string[]> resultsList = DatabaseConnections.LocalConnector().LocalGetData(table, queryArray, order);
+            List<string[]> resultsList = DatabaseConnections.Connector.LocalGetData(table, queryArray, order);
             for (int i = 0; i < resultsList.Count; i++)
             {
                 this.PickerDataGridView.Rows.Add(resultsList[i]);

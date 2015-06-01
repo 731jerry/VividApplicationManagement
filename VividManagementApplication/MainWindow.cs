@@ -135,15 +135,15 @@ namespace VividManagementApplication
                     backupData.Enabled = false;
                 }
 
-                DatabaseConnections.LocalConnector().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
+                DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                 #endregion
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
-                //Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
-                //tt.IsBackground = true;
-                //tt.Start();
-                //tt.DisableComObjectEagerCleanup();
+                Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
+                tt.IsBackground = true;
+                tt.Start();
+                tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
                 updateRemoteSignTimer = new System.Timers.Timer(45000);
@@ -179,7 +179,7 @@ namespace VividManagementApplication
                 #region 初始化登录信息
                 lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
                 // 更新在线
-                DatabaseConnections.OnlineConnector().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
+                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
                 keepOnlineTimer.Enabled = true;
                 TimeSpan ts = EXPIRETIME - ADDTIME;
                 if (DEGREE == 0)
@@ -251,7 +251,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
-                    DatabaseConnections.LocalConnector().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
+                    DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     UploadFileWithNotice("初次同步, ");
                 }
@@ -306,7 +306,7 @@ namespace VividManagementApplication
                 }
                 else
                 {
-                    DatabaseConnections.LocalConnector().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
+                    DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                 }
@@ -376,7 +376,7 @@ namespace VividManagementApplication
                 BillSign bs = new BillSign();
                 bs.isSendRequest = false;
                 bs.remoteSignId = remoteSignId;
-                String[] resultArray = DatabaseConnections.LocalConnector().LocalGetOneRowDataById("remoteSign", new String[] { "fromGZBID", "toGZBID", "companyNickName", "signValue", "isSigned" }, "Id", remoteSignId);
+                String[] resultArray = DatabaseConnections.Connector.LocalGetOneRowDataById("remoteSign", new String[] { "fromGZBID", "toGZBID", "companyNickName", "signValue", "isSigned" }, "Id", remoteSignId);
                 if (resultArray.Length > 0)
                 {
                     bs.gzbIDStirng = resultArray[0];
@@ -500,7 +500,7 @@ namespace VividManagementApplication
             Uri uri = new Uri(uriString);
             client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
             client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
-            //DatabaseConnections.LocalConnector().LocalDbClose();
+            //DatabaseConnections.Connector.LocalDbClose();
             client.UploadFileAsync(uri, "STOR", fileNamePath);
             // client.Proxy = WebRequest.DefaultWebProxy;
             //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
@@ -802,7 +802,7 @@ namespace VividManagementApplication
 
             this.MainDataGridView.Columns.AddRange(dgvcArray);
             ClearDataGridViewColumnSortOrder(dgvcArray.Length);
-            List<string[]> resultsList = DatabaseConnections.LocalConnector().LocalGetData(table, queryArray, order);
+            List<string[]> resultsList = DatabaseConnections.Connector.LocalGetData(table, queryArray, order);
             for (int i = 0; i < resultsList.Count; i++)
             {
                 this.MainDataGridView.Rows.Add(resultsList[i]);
@@ -832,7 +832,7 @@ namespace VividManagementApplication
 
             this.MainDataGridView.Columns.AddRange(dgvcArray);
             ClearDataGridViewColumnSortOrder(dgvcArray.Length);
-            List<string[]> resultsList = DatabaseConnections.LocalConnector().LocalGetData(table, queryArray, order);
+            List<string[]> resultsList = DatabaseConnections.Connector.LocalGetData(table, queryArray, order);
 
             for (int i = 0; i < resultsList.Count; i++)
             {
@@ -1145,7 +1145,7 @@ namespace VividManagementApplication
                 String limitation = "clientID = '" + flt.clientID.Text + "' AND discardFlag = 0"
                     + " AND (modifyTime BETWEEN '" + flt.fromDate.Value.ToString("yyyy-MM-dd HH:mm:ss") + "' AND '" + flt.toDate.Value.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss") + "')";
 
-                List<string[]> resultsList = DatabaseConnections.LocalConnector().LocalGetDataFromOriginalSQL(
+                List<string[]> resultsList = DatabaseConnections.Connector.LocalGetDataFromOriginalSQL(
                     "SELECT pzID, cast (modifyTime as VARCHAR) as modifyTime"
                     + ",case when leixing = '0' then '收款凭证' when leixing = '1' then '付款凭证' when leixing = '2' then '领款凭证' when leixing = '3' then '还款凭证' else '报销凭证' end as 'leixing'"
                     + ",zhaiyao"
@@ -1347,7 +1347,7 @@ namespace VividManagementApplication
 
                 updateRemoteSignTimer.Dispose();
                 lablTextChangeTimer.Dispose();
-                //DatabaseConnections.LocalConnector().LocalDbClose();
+                //DatabaseConnections.Connector.LocalDbClose();
 
                 //Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
                 //t.Start("关闭前同步!");
@@ -1355,8 +1355,8 @@ namespace VividManagementApplication
 
                 this.Dispose(true);
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                DatabaseConnections.OnlineConnector().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
-                //DatabaseConnections.OnlineConnector().OnlineDbClose();
+                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
+                //DatabaseConnections.Connector.OnlineDbClose();
 
                 Application.Exit();
             }
@@ -1741,7 +1741,7 @@ namespace VividManagementApplication
             {
                 try
                 {
-                    DatabaseConnections.OnlineConnector().OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW(), GZB_logonmins = GZB_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
+                    DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW(), GZB_logonmins = GZB_logonmins+1 WHERE userid = '" + MainWindow.USER_ID + "'");
                 }
                 catch { return; }
             }
@@ -1897,7 +1897,7 @@ namespace VividManagementApplication
         }
         private void updateRemoteSignUndealedCountCheck()
         {
-            List<List<String>> remoteSignUndealedList = DatabaseConnections.OnlineConnector().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
+            List<List<String>> remoteSignUndealedList = DatabaseConnections.Connector.OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
             NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理信息";
         }
 
@@ -1927,11 +1927,11 @@ namespace VividManagementApplication
         {
             try
             {
-                List<List<String>> remoteSignList = DatabaseConnections.OnlineConnector().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
+                List<List<String>> remoteSignList = DatabaseConnections.Connector.OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
                 int remoteSignUndealedListCount = 0;
                 //List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
 
-                DatabaseConnections.LocalConnector().LocalClearTable("remoteSign");
+                DatabaseConnections.Connector.LocalClearTable("remoteSign");
                 ClearNotifyIconContextMenuStripItems();
 
                 if (remoteSignList.Count != 0)
@@ -1943,7 +1943,7 @@ namespace VividManagementApplication
                             addNotifyItem(item[1], item[0]);
                             remoteSignUndealedListCount++;
                         }
-                        DatabaseConnections.LocalConnector().LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
+                        DatabaseConnections.Connector.LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                     }
                 }
 

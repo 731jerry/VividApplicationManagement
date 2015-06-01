@@ -160,9 +160,9 @@ namespace VividManagementApplication
                     arrayList.Add("'" + checkNumberValue(dt.Rows[i][4].ToString()) * checkNumberValue(dt.Rows[i][6].ToString()) + "'");
                     arrayList.Add("'" + dt.Rows[i][7].ToString() + "'");
                 }
-                arrayList.Insert(0, "'" + DatabaseConnections.LocalConnector().LocalAutoincreaseID(table, baseName) + "'");
+                arrayList.Insert(0, "'" + DatabaseConnections.Connector.LocalAutoincreaseID(table, baseName) + "'");
                 arrayList.Insert(arrayList.Count, "'" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "'");
-                DatabaseConnections.LocalConnector().LocalInsertDataReturnAffectRows(table, String.Join(",", queryArray).ToString(), String.Join(",", arrayList));
+                DatabaseConnections.Connector.LocalInsertDataReturnAffectRows(table, String.Join(",", queryArray).ToString(), String.Join(",", arrayList));
                 importedCount++;
             }
             // importingProgressBar.Value = 100;

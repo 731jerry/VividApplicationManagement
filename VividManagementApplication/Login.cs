@@ -27,7 +27,7 @@ namespace VividManagementApplication
             this.Text = "正在登录...";
             try
             {
-                DatabaseConnections.OnlineConnector().UserLogin(cbAccount.Text, tbPassword.Text);
+                DatabaseConnections.Connector.UserLogin(cbAccount.Text, tbPassword.Text);
             }
             catch
             {
@@ -134,16 +134,16 @@ namespace VividManagementApplication
                 String updateLog = "";
 
                 /*
-                List<String> updateVersionString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version");
-                List<String> updateVersionLogString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version_log");
-                List<String> updateAppURLString = DatabaseConnections.OnlineConnector().OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_app_url");
+                List<String> updateVersionString = DatabaseConnections.Connector.OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version");
+                List<String> updateVersionLogString = DatabaseConnections.Connector.OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_version_log");
+                List<String> updateAppURLString = DatabaseConnections.Connector.OnlineGetOneRowDataById("config", new List<string>() { "configValue" }, "configKey", "GZB_update_app_url");
               
                  updateVersion = updateVersionString[0];
                  updateLog = updateVersionLogString[0];
                 MainWindow.UPDATE_APP_URL_DIR = updateAppURLString[0];
                 */
 
-                List<List<String>> updateListString = DatabaseConnections.OnlineConnector().OnlineGetRowsDataByCondition("config", new List<string>() {"id", "configValue" }, " WHERE id < 4");
+                List<List<String>> updateListString = DatabaseConnections.Connector.OnlineGetRowsDataByCondition("config", new List<string>() {"id", "configValue" }, " WHERE id < 4");
 
                 updateVersion = updateListString[0][1];
                 updateLog = updateListString[1][1];
