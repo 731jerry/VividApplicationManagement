@@ -136,16 +136,14 @@ namespace VividManagementApplication
                 }
 
                 DatabaseConnections.LocalConnector().LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
-
                 #endregion
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
-                Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
-                tt.IsBackground = true;
-                tt.Start();
-                tt.DisableComObjectEagerCleanup();
-               // tt.Abort();
+                //Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
+                //tt.IsBackground = true;
+                //tt.Start();
+                //tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
                 updateRemoteSignTimer = new System.Timers.Timer(45000);

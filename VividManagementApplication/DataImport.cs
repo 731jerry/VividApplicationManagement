@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Threading;
 using System.Data.OleDb;
 
 namespace VividManagementApplication
@@ -28,7 +29,8 @@ namespace VividManagementApplication
 
         private void DataImport_Load(object sender, EventArgs e)
         {
-            // importingProgressBar.Style = ProgressBarStyle.Marquee;
+            //importingProgressBar.Style = ProgressBarStyle.Marquee;
+            //importingProgressBar.Enabled = false;
             importingProgressBar.Style = ProgressBarStyle.Continuous;
             importingProgressBar.Minimum = 0;
             importingProgressBar.Maximum = 100;
@@ -86,7 +88,12 @@ namespace VividManagementApplication
                         if ((dt.Rows.Count > 0) && (dt.Columns.Count == colCount))
                         //if ((dt.Rows.Count > 0))
                         {
-                            importToSqlite(dt);
+                            selectFileButton.Enabled = false;
+                            Thread tt = new Thread(new ParameterizedThreadStart(importToSqliteWithObject));
+                            tt.IsBackground = true;
+                            tt.Start(dt);
+                            tt.DisableComObjectEagerCleanup();
+                            //importToSqlite(dt);
                         }
                         else
                         {
@@ -101,12 +108,36 @@ namespace VividManagementApplication
             }
         }
 
+        private void importToSqliteWithObject(Object obj)
+        {
+            importToSqlite(obj as DataTable);
+        }
+
+        delegate void SetImportingProgressBarCallback(int percentage);
+        private void SetImportingProgressBar(int percentage)
+        {
+            if (this.importingProgressBar.InvokeRequired)
+            {
+                SetImportingProgressBarCallback d = new SetImportingProgressBarCallback(SetImportingProgressBar);
+                this.Invoke(d, new object[] {percentage });
+            }
+            else
+            {
+                //Console.WriteLine(percentage);
+                this.importingProgressBar.Value = percentage;
+            }
+        }
+
         private void importToSqlite(DataTable dt)
         {
-            importingProgressBar.Value = 0;
+            // importingProgressBar.Value = 0;
+            // importingProgressBar.Enabled = true;
+            //SetImportingProgressBar(0);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                importingProgressBar.Value = ((i + 1) / dt.Rows.Count) * 100;
+                //importingProgressBar.Value = ((i + 1) / dt.Rows.Count) * 100;
+                SetImportingProgressBar((((i + 1) * 100) / dt.Rows.Count));
+
                 List<String> arrayList = new List<String>();
                 if (isTypeCx)
                 {
@@ -134,7 +165,9 @@ namespace VividManagementApplication
                 DatabaseConnections.LocalConnector().LocalInsertDataReturnAffectRows(table, String.Join(",", queryArray).ToString(), String.Join(",", arrayList));
                 importedCount++;
             }
-            importingProgressBar.Value = 100;
+            // importingProgressBar.Value = 100;
+            SetImportingProgressBar(100);
+            selectFileButton.Enabled = true;
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
