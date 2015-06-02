@@ -1351,8 +1351,8 @@ namespace VividManagementApplication
                     notifyIcon = null;
                 }
 
-                updateRemoteSignTimer.Dispose();
-                lablTextChangeTimer.Dispose();
+                //updateRemoteSignTimer.Dispose();
+                //lablTextChangeTimer.Dispose();
                 //DatabaseConnections.Connector.LocalDbClose();
 
                 //Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
