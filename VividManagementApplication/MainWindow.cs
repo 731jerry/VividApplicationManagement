@@ -146,14 +146,15 @@ namespace VividManagementApplication
                 tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
-                //updateRemoteSignTimer = new System.Timers.Timer(45000);
-                //updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
-                //updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
-                //updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
-                //if (this.IsDisposed)
-                //{
-                //    updateRemoteSignTimer.Stop();
-                //}
+
+                updateRemoteSignTimer = new System.Timers.Timer(45000);
+                updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
+                updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
+                updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
+                if (this.IsDisposed)
+                {
+                    updateRemoteSignTimer.Stop();
+                }
                 #endregion
 
                 #region 窗体滚动通知初始化
