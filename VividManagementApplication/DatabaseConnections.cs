@@ -15,24 +15,23 @@ namespace VividManagementApplication
     class DatabaseConnections
     {
         //连接用的字符串  
-        private string onlineConnStr;
-        private string localConnStr;
-        public string OnlineConnStr
-        {
-            get { return this.onlineConnStr; }
-            set { this.onlineConnStr = value; }
-        }
+        private static String OnlineConnStr;
+        private static String LocalConnStr;
 
-        public string LocalConnStr
-        {
-            get { return this.localConnStr; }
-            set { this.localConnStr = value; }
-        }
+        //public String OnlineConnStr
+        //{
+        //    get { return this.onlineConnStr; }
+        //    set { this.onlineConnStr = value; }
+        //}
+
+        //public String LocalConnStr
+        //{
+        //    get { return this.localConnStr; }
+        //    set { this.localConnStr = value; }
+        //}
 
         private DatabaseConnections()
         {
-            OnlineConnStr = @"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8;";
-            localConnStr = "Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION;
         }
 
         //DbManager单实例  
@@ -41,6 +40,8 @@ namespace VividManagementApplication
         {
             get
             {
+                OnlineConnStr = @"server=121.42.154.95; user id=vivid; password=vivid; database=vivid;Charset=utf8;";
+                LocalConnStr = "Data Source =" + MainWindow.LOCAL_DATABASE_LOCATION;
                 if (_instance == null)
                 {
                     _instance = new DatabaseConnections();
@@ -475,33 +476,34 @@ namespace VividManagementApplication
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
                 string innerQuerySQL = "";
-
-                for (int i = 0; i < query.Length; i++)
-                {
-                    innerQuerySQL += query[i] + ",";
-                }
-                if (!innerQuerySQL.Equals(""))
-                {
-                    innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
-                }
-
                 string innerVauleSQL = "";
-                for (int i = 0; i < value.Length; i++)
-                {
-                    innerVauleSQL += "'" + value[i] + "',";
-                }
-                if (!innerVauleSQL.Equals(""))
-                {
-                    innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
-                }
 
-                SQLiteTransaction transaction = conn.BeginTransaction();
+                //for (int i = 0; i < query.Length; i++)
+                //{
+                //    innerQuerySQL += query[i] + ",";
+                //}
+                //if (!innerQuerySQL.Equals(""))
+                //{
+                //    innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
+                //}
+
+                //for (int i = 0; i < value.Length; i++)
+                //{
+                //    innerVauleSQL += "'" + value[i] + "',";
+                //}
+                //if (!innerVauleSQL.Equals(""))
+                //{
+                //    innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
+                //}
+                innerQuerySQL = String.Join(",", query);
+                innerVauleSQL = String.Join("','", value);
+                //SQLiteTransaction transaction = conn.BeginTransaction();
                 SQLiteCommand cmdInsert = new SQLiteCommand(conn);
                 cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
-                                           " VALUES(" + innerVauleSQL + ")";
+                                           " VALUES('" + innerVauleSQL + "')";
                 conn.Open();
                 cmdInsert.ExecuteNonQuery();
-                transaction.Commit();
+                //transaction.Commit();
             }
         }
 

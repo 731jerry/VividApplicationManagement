@@ -90,7 +90,7 @@ namespace VividManagementApplication
                         {
                             selectFileButton.Enabled = false;
                             Thread tt = new Thread(new ParameterizedThreadStart(importToSqliteWithObject));
-                            tt.IsBackground = true;
+                            //tt.IsBackground = true;
                             tt.Start(dt);
                             tt.DisableComObjectEagerCleanup();
                             //importToSqlite(dt);

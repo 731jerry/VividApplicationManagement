@@ -119,7 +119,7 @@ namespace VividManagementApplication
                 lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
                 onlineDataBaseFilePrefix = USER_ID + "_online.db";
 
-                LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
+                MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
                 #endregion
 
                 #region 初始化数据库 备份数据库
@@ -135,25 +135,25 @@ namespace VividManagementApplication
                     backupData.Enabled = false;
                 }
 
-                DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
+                //DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                 #endregion
 
                 #region 更新远程签单数据
                 // 检测未处理签单的个数
                 Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
-                tt.IsBackground = true;
+                //tt.IsBackground = true;
                 tt.Start();
                 tt.DisableComObjectEagerCleanup();
 
                 //remoteSignTimer.Enabled = true;
-                updateRemoteSignTimer = new System.Timers.Timer(45000);
-                updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
-                updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
-                updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
-                if (this.IsDisposed)
-                {
-                    updateRemoteSignTimer.Stop();
-                }
+                //updateRemoteSignTimer = new System.Timers.Timer(45000);
+                //updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
+                //updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
+                //updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
+                //if (this.IsDisposed)
+                //{
+                //    updateRemoteSignTimer.Stop();
+                //}
                 #endregion
 
                 #region 窗体滚动通知初始化
@@ -230,7 +230,7 @@ namespace VividManagementApplication
         {
             if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
+                if (UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     DownloadFileWithNotice();
                 }
@@ -241,17 +241,17 @@ namespace VividManagementApplication
             }
             else
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
+                if (UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
                     MainPanel.Enabled = false;
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                    DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, MainWindow.LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     MainPanel.Enabled = true;
                 }
                 else
                 {
-                    DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
+                    DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     UploadFileWithNotice("初次同步, ");
                 }
@@ -262,7 +262,7 @@ namespace VividManagementApplication
         private void SyncDatabaseStarter()
         {
             Thread t = new Thread(new ParameterizedThreadStart(SyncDatabaseWithObject));
-            t.IsBackground = true;
+            //t.IsBackground = true;
             t.Start();
             t.DisableComObjectEagerCleanup();
             //t.Abort();
@@ -296,13 +296,12 @@ namespace VividManagementApplication
             }
             else
             {
+                MainPanel.Enabled = false;
                 if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
                 {
-                    MainPanel.Enabled = false;
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                    //File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
                     DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                    MainPanel.Enabled = true;
                 }
                 else
                 {
@@ -310,6 +309,7 @@ namespace VividManagementApplication
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
                 }
+                MainPanel.Enabled = true;
             }
         }
 
@@ -347,7 +347,7 @@ namespace VividManagementApplication
             {
                 MessageBox.Show("请先输入客户和客户信息!", "提示");
             }
-            */ 
+            */
         }
 
         private void ViewButton_Click(object sender, EventArgs e)
@@ -691,16 +691,16 @@ namespace VividManagementApplication
         private void refeshButton_Click(object sender, EventArgs e)
         {
             StatusToolStripStatusLabel.Text = "正在刷新...";
-            if (CURRENT_LIST_BUTTON == listQdButton)
-            {
-                Thread t = new Thread(new ParameterizedThreadStart(refreshCheckRemoteSignListWithObject));
-                t.IsBackground = true;
-                t.Start();
-                t.DisableComObjectEagerCleanup();
-                //t.Abort();
-                return;
-            }
-            else
+            //if (CURRENT_LIST_BUTTON == listQdButton)
+            //{
+            //    Thread t = new Thread(new ParameterizedThreadStart(refreshCheckRemoteSignListWithObject));
+            //    //t.IsBackground = true;
+            //    t.Start();
+            //    t.DisableComObjectEagerCleanup();
+            //    //t.Abort();
+            //    return;
+            //}
+            //else
             {
                 CURRENT_LIST_BUTTON.PerformClick();
                 //MessageBox.Show("刷新成功！");
@@ -1224,6 +1224,12 @@ namespace VividManagementApplication
 
         private void listQdButton_Click(object sender, EventArgs e)
         {
+            Thread t = new Thread(new ParameterizedThreadStart(refreshCheckRemoteSignListWithObject));
+            //t.IsBackground = true;
+            t.Start();
+            t.DisableComObjectEagerCleanup();
+            //t.Abort();
+
             ClearMainDataGridView();
             refeshButton.Enabled = true;
             ViewButton.Enabled = true;
@@ -1912,10 +1918,10 @@ namespace VividManagementApplication
             //    this.Invoke(new MethodInvoker(() => { checkRemoteSignList(); }));
             //}
             Thread t = new Thread(new ParameterizedThreadStart(checkRemoteSignListWithObject));
-            t.IsBackground = true;
+            //t.IsBackground = true;
             t.Start();
             t.DisableComObjectEagerCleanup();
-           // t.Abort();
+            // t.Abort();
         }
 
         private void checkRemoteSignListWithObject(object obj)
@@ -1948,7 +1954,7 @@ namespace VividManagementApplication
                 }
 
                 NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedListCount + "条未处理远程签单";
-                listQdButton.PerformClick();
+                //listQdButton.PerformClick();
             }
             catch { return; }
         }
