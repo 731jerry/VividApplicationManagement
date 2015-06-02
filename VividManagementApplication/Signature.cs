@@ -82,7 +82,7 @@ namespace VividManagementApplication
         {
             using (OpenFileDialog ofg = new OpenFileDialog())
             {
-                ofg.Filter = "图片文件(*.png)|*.png|图片文件(*.jpg)|*.jpg|图片文件(*.bmp)|*.bmp";
+                ofg.Filter = "图片文件(*.jpg,*.png,*.bmp)|*.jpg;*.png;*.bmp";
                 if (ofg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     btnClear.PerformClick();

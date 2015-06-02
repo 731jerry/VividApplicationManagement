@@ -428,6 +428,7 @@ namespace VividManagementApplication
                 {
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
+
                 SQLiteCommand cmdInsert = new SQLiteCommand(conn);
                 cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
                 conn.Open();
@@ -442,25 +443,27 @@ namespace VividManagementApplication
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
                 string innerQuerySQL = "";
-
-                for (int i = 0; i < query.Length; i++)
-                {
-                    innerQuerySQL += query[i] + ",";
-                }
-                if (!innerQuerySQL.Equals(""))
-                {
-                    innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
-                }
-
                 string innerVauleSQL = "";
-                for (int i = 0; i < value.Length; i++)
-                {
-                    innerVauleSQL += "'" + value[i] + "',";
-                }
-                if (!innerVauleSQL.Equals(""))
-                {
-                    innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
-                }
+
+                //for (int i = 0; i < query.Length; i++)
+                //{
+                //    innerQuerySQL += query[i] + ",";
+                //}
+                //if (!innerQuerySQL.Equals(""))
+                //{
+                //    innerQuerySQL = innerQuerySQL.Substring(0, innerQuerySQL.Length - 1); // 去掉最后的逗号
+                //}
+
+                //for (int i = 0; i < value.Length; i++)
+                //{
+                //    innerVauleSQL += "'" + value[i] + "',";
+                //}
+                //if (!innerVauleSQL.Equals(""))
+                //{
+                //    innerVauleSQL = innerVauleSQL.Substring(0, innerVauleSQL.Length - 1); // 去掉最后的逗号
+                //}
+                innerQuerySQL = String.Join(",", query);
+                innerVauleSQL = String.Join("','", value);
 
                 SQLiteCommand cmdInsert = new SQLiteCommand(conn);
                 cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
