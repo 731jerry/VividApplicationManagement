@@ -472,11 +472,11 @@ namespace VividManagementApplication
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label58.Location = new System.Drawing.Point(430, 264);
+            this.label58.Location = new System.Drawing.Point(449, 264);
             this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(79, 20);
+            this.label58.Size = new System.Drawing.Size(65, 20);
             this.label58.TabIndex = 125;
-            this.label58.Text = "客户应收：";
+            this.label58.Text = "应付款：";
             // 
             // tbClient15
             // 
@@ -493,11 +493,11 @@ namespace VividManagementApplication
             // 
             this.label59.AutoSize = true;
             this.label59.Font = new System.Drawing.Font("微软雅黑", 10.5F);
-            this.label59.Location = new System.Drawing.Point(34, 264);
+            this.label59.Location = new System.Drawing.Point(54, 264);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(79, 20);
+            this.label59.Size = new System.Drawing.Size(65, 20);
             this.label59.TabIndex = 122;
-            this.label59.Text = "客户应付：";
+            this.label59.Text = "应收款：";
             // 
             // tbClient9
             // 

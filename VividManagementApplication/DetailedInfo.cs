@@ -57,7 +57,7 @@ namespace VividManagementApplication
 
                     table = "clients";
                     baseName = "clientID";
-                    queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldPay", "shouldReceive", "beizhu" };
+                    queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldReceive", "shouldPay", "beizhu" };
                     controlsPreName = "tbClient";
                     indexCount = 17;
                     mainID = tbClient1.Text;
@@ -893,11 +893,11 @@ namespace VividManagementApplication
 
                             if (pzComboBox.SelectedIndex == 0) //收款
                             {
-                                DatabaseConnections.Connector.LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
+                                DatabaseConnections.Connector.LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
                             }
                             else if (pzComboBox.SelectedIndex == 1) //付款
                             {
-                                DatabaseConnections.Connector.LocalUpdateData("clients", new String[] { "shouldReceive" }, new String[] { "shouldReceive-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
+                                DatabaseConnections.Connector.LocalUpdateData("clients", new String[] { "shouldPay" }, new String[] { "shouldPay-" + SumtbPz.Text.Split('￥')[1] }, false, "clientID", tbPz1.Text);
                             }
                         }
                         else
@@ -975,7 +975,7 @@ namespace VividManagementApplication
                         //DatabaseConnections.GetInstence().LocalReplaceIntoData(table, queryArray, FormBasicFeatrues.GetInstence().GetControlsVaule(controlsPreName, detailedPanel, indexCount), mainID);
                         if (MainWindow.CURRENT_TAB == 1)
                         {
-                            queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldPay", "shouldReceive", "beizhu" };
+                            queryArray = new string[] { baseName, "gzbID", "type", "company", "companyOwner", "address", "phone", "fax", "QQ", "taxNumber", "email", "bankName", "bankCard", "PrivateAccount", "shouldReceive", "shouldPay", "beizhu" };
                         }
                         else if (MainWindow.CURRENT_TAB == 2)
                         {
