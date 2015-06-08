@@ -22,18 +22,20 @@ namespace VividManagementApplication
         }
 
         public Boolean isExiting = false;
-        private Boolean isNewCreatedDataBase = false;
+
+        private int databaseSyncStart = 75;
+        private int databaseSyncEnd = 95;
 
         private void Loading_Load(object sender, EventArgs e)
         {
             StartTimer.Enabled = true;
             if (!isExiting)
             {
-                LoadingLabel.Text = "正在载入...请稍等...";
+                SetLoadingLabel("正在载入...请稍等...");
             }
             else
             {
-                LoadingLabel.Text = "正在启动数据备份...请稍等...";
+                SetLoadingLabel("正在启动数据备份...请稍等...");
             }
         }
 
@@ -42,25 +44,25 @@ namespace VividManagementApplication
             StartTimer.Enabled = false;
             if (!isExiting)
             {
-                SetLoadingProgressBar(0);
-                // 更新在线
-                LoadingLabel.Text = "正在更新在线状态...";
-                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
                 SetLoadingProgressBar(5);
+                // 更新在线
+                SetLoadingLabel("正在更新在线状态...");
+                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
+                SetLoadingProgressBar(15);
 
                 // 检测未处理签单的个数
-                LoadingLabel.Text = "正在检查远程签单消息...";
-                SetLoadingProgressBar(27);
+                SetLoadingLabel("正在检查远程签单消息...");
+                SetLoadingProgressBar(30);
                 updateRemoteSignUndealedCountCheck();
                 List<List<String>> remoteSignList = updateRemoteSign();
-                LoadingLabel.Text = "检查远程签单消息完成...";
-                SetLoadingProgressBar(75);
+                SetLoadingLabel("检查远程签单消息完成...");
+                SetLoadingProgressBar(60);
 
                 // 初始化数据库 备份数据库
                 if (MainWindow.DEGREE > 0)
                 {
-                    LoadingLabel.Text = "正在同步数据库...";
-                    SetLoadingProgressBar(90);
+                    SetLoadingLabel("正在同步数据库...");
+                    SetLoadingProgressBar(databaseSyncStart);
 
                     Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
                     Boolean isRemoteFileExists = FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
@@ -99,7 +101,7 @@ namespace VividManagementApplication
                 // 初始化数据库 备份数据库
                 if (MainWindow.DEGREE > 0)
                 {
-                    LoadingLabel.Text = "正在同步数据库...";
+                    SetLoadingLabel("正在同步数据库...");
                     //SyncDatabaseStarter();
                     //SyncDataBase();
                 }
@@ -118,8 +120,21 @@ namespace VividManagementApplication
             }
             else
             {
-                //Console.WriteLine(percentage);
                 this.LoadingProgressBar.Value = percentage;
+            }
+        }
+
+        delegate void SetLoadingLabelCallback(String str);
+        private void SetLoadingLabel(String str)
+        {
+            if (this.LoadingLabel.InvokeRequired)
+            {
+                SetLoadingLabelCallback d = new SetLoadingLabelCallback(SetLoadingLabel);
+                this.Invoke(d, new object[] { str });
+            }
+            else
+            {
+                this.LoadingLabel.Text = str;
             }
         }
 
@@ -171,7 +186,7 @@ namespace VividManagementApplication
 
         private void UploadFile(String fileNamePath, String uriString)
         {
-            LoadingLabel.Text = "正在上传数据库...";
+            SetLoadingLabel("正在上传数据库...");
             try
             {
                 WebClient client = new WebClient();
@@ -192,7 +207,8 @@ namespace VividManagementApplication
 
         private void UploadProgressCallback(object sender, System.Net.UploadProgressChangedEventArgs e)
         {
-            LoadingLabel.Text = "正在上传数据库..." + e.ProgressPercentage + "%";
+            SetLoadingLabel("正在上传数据库..." + e.ProgressPercentage + "%");
+            SetLoadingProgressBar(databaseSyncStart + e.ProgressPercentage * (databaseSyncEnd - databaseSyncStart) / 100);
         }
 
         private void UploadFileCompleteCallback(Object sender, UploadFileCompletedEventArgs e)
@@ -203,7 +219,7 @@ namespace VividManagementApplication
             }
             else
             {
-                LoadingLabel.Text = "正在上传数据库完成...";
+                SetLoadingLabel("正在上传数据库完成...");
             }
             SetLoadingProgressBar(99);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -211,7 +227,7 @@ namespace VividManagementApplication
 
         private void DownloadFile(String uriString, String fileNamePath)
         {
-            LoadingLabel.Text = "正在下载数据库...";
+            SetLoadingLabel("正在下载数据库...");
 
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
@@ -224,7 +240,8 @@ namespace VividManagementApplication
 
         private void DownloadProgressCallback(object sender, System.Net.DownloadProgressChangedEventArgs e)
         {
-            LoadingLabel.Text = "正在下载数据库..." + e.ProgressPercentage + "%";
+            SetLoadingLabel("正在下载数据库..." + e.ProgressPercentage + "%");
+            SetLoadingProgressBar(databaseSyncStart+e.ProgressPercentage * (databaseSyncEnd - databaseSyncStart) / 100);
         }
 
         private void DownloadFileCompleteCallback(Object sender, AsyncCompletedEventArgs e)
@@ -236,7 +253,7 @@ namespace VividManagementApplication
             else
             {
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                LoadingLabel.Text = "正在下载数据库完成...";
+                SetLoadingLabel("正在下载数据库完成...");
             }
             SetLoadingProgressBar(99);
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

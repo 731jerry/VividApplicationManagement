@@ -63,7 +63,7 @@ namespace VividManagementApplication
                         MainWindow.ONLINE_DATABASE_FILE_PREFIX = MainWindow.USER_ID + "_online.db"; ;
                         this.Visible = false;
                         Loading lo = new Loading();
-                        if (lo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        if (lo.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                         {
                             (Owner as MainWindow).Visible = true;
                         }
