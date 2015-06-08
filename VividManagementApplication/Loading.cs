@@ -23,6 +23,7 @@ namespace VividManagementApplication
 
         public Boolean isExiting = false;
 
+        private Boolean canClose = false;
         private int databaseSyncStart = 75;
         private int databaseSyncEnd = 95;
 
@@ -31,10 +32,12 @@ namespace VividManagementApplication
             StartTimer.Enabled = true;
             if (!isExiting)
             {
+                this.Text = "正在载入管账宝...";
                 SetLoadingLabel("正在载入...请稍等...");
             }
             else
             {
+                this.Text = "正在关闭软件...";
                 SetLoadingLabel("正在启动数据备份...请稍等...");
             }
         }
@@ -42,9 +45,10 @@ namespace VividManagementApplication
         private void StartTimer_Tick(object sender, EventArgs e)
         {
             StartTimer.Enabled = false;
-            if (!isExiting)
+            SetLoadingProgressBar(5);
+
+            if (!isExiting) // 打开软件时
             {
-                SetLoadingProgressBar(5);
                 // 更新在线
                 SetLoadingLabel("正在更新在线状态...");
                 DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
@@ -72,6 +76,11 @@ namespace VividManagementApplication
                         isLocalFileExists = true;
                     }
 
+                    if (!isLocalFileExists && isRemoteFileExists)
+                    {
+                        DownloadFileDirectly(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
+                    }
+
                     DatabaseConnections.Connector.LocalClearTable("remoteSign");
                     if (remoteSignList.Count != 0)
                     {
@@ -92,22 +101,29 @@ namespace VividManagementApplication
                             DatabaseConnections.Connector.LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                         }
                     }
-                    SetLoadingProgressBar(99);
+                    SetLoadingProgressBar(100);
+                    canClose = true;
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }
             }
-            else
+            else // 关闭软件时
             {
+                // 更新在线状态
+                SetLoadingLabel("正在更新在线状态...");
+                SetLoadingProgressBar(30);
+                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
+
                 // 初始化数据库 备份数据库
                 if (MainWindow.DEGREE > 0)
                 {
                     SetLoadingLabel("正在同步数据库...");
-                    //SyncDatabaseStarter();
-                    //SyncDataBase();
+                    SetLoadingProgressBar(databaseSyncStart);
+                    Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
+                    Boolean isRemoteFileExists = FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+
+                    SyncDataBase(isLocalFileExists, isRemoteFileExists);
                 }
             }
-
-
         }
 
         delegate void SetLoadingProgressBarCallback(int percentage);
@@ -207,7 +223,7 @@ namespace VividManagementApplication
 
         private void UploadProgressCallback(object sender, System.Net.UploadProgressChangedEventArgs e)
         {
-            SetLoadingLabel("正在上传数据库..." + e.ProgressPercentage + "%");
+            SetLoadingLabel("正在上传数据库..." + ((e.ProgressPercentage * 2 > 100) ? 100 : (e.ProgressPercentage * 2)) + "%");
             SetLoadingProgressBar(databaseSyncStart + e.ProgressPercentage * (databaseSyncEnd - databaseSyncStart) / 100);
         }
 
@@ -221,7 +237,8 @@ namespace VividManagementApplication
             {
                 SetLoadingLabel("正在上传数据库完成...");
             }
-            SetLoadingProgressBar(99);
+            SetLoadingProgressBar(100);
+            canClose = true;
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -241,7 +258,7 @@ namespace VividManagementApplication
         private void DownloadProgressCallback(object sender, System.Net.DownloadProgressChangedEventArgs e)
         {
             SetLoadingLabel("正在下载数据库..." + e.ProgressPercentage + "%");
-            SetLoadingProgressBar(databaseSyncStart+e.ProgressPercentage * (databaseSyncEnd - databaseSyncStart) / 100);
+            SetLoadingProgressBar(databaseSyncStart + e.ProgressPercentage * (databaseSyncEnd - databaseSyncStart) / 100);
         }
 
         private void DownloadFileCompleteCallback(Object sender, AsyncCompletedEventArgs e)
@@ -255,9 +272,48 @@ namespace VividManagementApplication
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 SetLoadingLabel("正在下载数据库完成...");
             }
-            SetLoadingProgressBar(99);
+            SetLoadingProgressBar(100);
+            canClose = true;
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
+
+        private void DownloadFileDirectly(String uriString, String fileNamePath)
+        {
+            try
+            {
+                using (WebClient wcClient = new WebClient())
+                {
+                    WebRequest webReq = WebRequest.Create(uriString);
+                    WebResponse webRes = webReq.GetResponse();
+                    long fileLength = webRes.ContentLength;
+
+                    Stream srm = webRes.GetResponseStream();
+                    StreamReader srmReader = new StreamReader(srm);
+
+                    byte[] bufferbyte = new byte[fileLength];
+                    int allByte = (int)bufferbyte.Length;
+                    int startByte = 0;
+                    while (fileLength > 0)
+                    {
+                        Application.DoEvents();
+                        int downByte = srm.Read(bufferbyte, startByte, allByte);
+                        if (downByte == 0) { break; };
+                        startByte += downByte;
+                        allByte -= downByte;
+                    }
+
+                    using (FileStream fs = new FileStream(fileNamePath, FileMode.Create, FileAccess.Write))
+                    {
+                        fs.Write(bufferbyte, 0, bufferbyte.Length);
+                    }
+
+                    srm.Close();
+                    srmReader.Close();
+                }
+            }
+            catch { return; }
+        }
+
         #endregion
 
         #region 远程签单
@@ -278,6 +334,14 @@ namespace VividManagementApplication
             return remoteSignList;
         }
         #endregion
+
+        private void Loading_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!canClose)
+            {
+                e.Cancel = true;
+            }
+        }
 
     }
 }

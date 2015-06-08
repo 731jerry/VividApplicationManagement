@@ -67,7 +67,7 @@
             // 
             // StartTimer
             // 
-            this.StartTimer.Interval = 1500;
+            this.StartTimer.Interval = 500;
             this.StartTimer.Tick += new System.EventHandler(this.StartTimer_Tick);
             // 
             // Loading
@@ -78,11 +78,15 @@
             this.Controls.Add(this.LoadingPictureBox);
             this.Controls.Add(this.LoadingLabel);
             this.Controls.Add(this.LoadingProgressBar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Loading";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "载入中...";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Loading_FormClosing);
             this.Load += new System.EventHandler(this.Loading_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LoadingPictureBox)).EndInit();
             this.ResumeLayout(false);

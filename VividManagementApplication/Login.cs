@@ -61,13 +61,8 @@ namespace VividManagementApplication
                         MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" +MainWindow.USER_ID + "_data.db";
                         MainWindow.LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\"+MainWindow.USER_ID+"_temp.gzb";
                         MainWindow.ONLINE_DATABASE_FILE_PREFIX = MainWindow.USER_ID + "_online.db"; ;
-                        this.Visible = false;
-                        Loading lo = new Loading();
-                        if (lo.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
-                        {
-                            (Owner as MainWindow).Visible = true;
-                        }
-                        //this.Close();
+                        //this.Visible = false;
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
                     }
                 }
             }

@@ -116,7 +116,11 @@ namespace VividManagementApplication
             Login loginWindow = new Login();
             this.Visible = false;
             loginWindow.Text = loginWindowLabel;
-            loginWindow.ShowDialog(this);
+            if (loginWindow.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+            {
+                Loading lo = new Loading();
+                lo.ShowDialog(this);
+            }
             #endregion
 
             if (MainWindow.IS_LOGED_IN)
@@ -1226,28 +1230,18 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                if (notifyIcon != null)
+                Loading lo = new Loading();
+                lo.isExiting = true;
+                if (lo.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                 {
-                    notifyIcon.Visible = false;
-                    notifyIcon.Icon = null; // required to make icon disappear
-                    notifyIcon.Dispose();
-                    notifyIcon = null;
+                    if (notifyIcon != null)
+                    {
+                        notifyIcon.Visible = false;
+                        notifyIcon.Icon = null; // required to make icon disappear
+                        notifyIcon.Dispose();
+                        notifyIcon = null;
+                    }
                 }
-
-                //updateRemoteSignTimer.Dispose();
-                //lablTextChangeTimer.Dispose();
-                //DatabaseConnections.Connector.LocalDbClose();
-
-                //Thread t = new Thread(new ParameterizedThreadStart(UploadFileWithNoticeWithObjectBackupData));
-                //t.Start("关闭前同步!");
-                //t.DisableComObjectEagerCleanup();
-
-                this.Dispose(true);
-                File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 0 WHERE userid = '" + MainWindow.USER_ID + "'");
-                //DatabaseConnections.Connector.OnlineDbClose();
-
-                Application.Exit();
             }
         }
 
