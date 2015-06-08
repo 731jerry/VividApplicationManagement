@@ -58,8 +58,15 @@ namespace VividManagementApplication
                     else
                     {
                         MainWindow.IS_LOGED_IN = true;
+                        MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" +MainWindow.USER_ID + "_data.db";
+                        MainWindow.LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\"+MainWindow.USER_ID+"_temp.gzb";
+                        MainWindow.ONLINE_DATABASE_FILE_PREFIX = MainWindow.USER_ID + "_online.db"; ;
                         this.Visible = false;
-                        (Owner as MainWindow).Visible = true;
+                        Loading lo = new Loading();
+                        if (lo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            (Owner as MainWindow).Visible = true;
+                        }
                         //this.Close();
                     }
                 }
@@ -143,7 +150,7 @@ namespace VividManagementApplication
                 MainWindow.UPDATE_APP_URL_DIR = updateAppURLString[0];
                 */
 
-                List<List<String>> updateListString = DatabaseConnections.Connector.OnlineGetRowsDataByCondition("config", new List<string>() {"id", "configValue" }, " WHERE id < 4");
+                List<List<String>> updateListString = DatabaseConnections.Connector.OnlineGetRowsDataByCondition("config", new List<string>() { "id", "configValue" }, " WHERE id < 4");
 
                 updateVersion = updateListString[0][1];
                 updateLog = updateListString[1][1];

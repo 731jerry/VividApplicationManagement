@@ -1112,5 +1112,77 @@ namespace VividManagementApplication
             }
         }
         #endregion
+
+        // 检测远程文件是否存在
+        public bool UriExists(string url)
+        {
+            try
+            {
+                new System.Net.WebClient().OpenRead(url);
+                return true;
+            }
+            catch (System.Net.WebException)
+            {
+                return false;
+            }
+        }
+
+        public bool ifUpdateDatabasecheckLastModifiedTime(bool isDownload)
+        {
+            HttpWebRequest gameFile = (HttpWebRequest)WebRequest.Create(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+            gameFile.Timeout = 5000;
+            HttpWebResponse gameFileResponse;
+            try
+            {
+                gameFileResponse = (HttpWebResponse)gameFile.GetResponse();
+            }
+            catch
+            {
+                if (isDownload)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+            DateTime localFileModifiedTime = File.GetLastWriteTime(MainWindow.LOCAL_DATABASE_LOCATION);
+            DateTime onlineFileModifiedTime = gameFileResponse.LastModified;
+            gameFile.Abort();
+            gameFileResponse.Close();
+            if (localFileModifiedTime >= onlineFileModifiedTime)
+            {
+                if (isDownload)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                //Download new Update
+                if (isDownload)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        // 获取本地文件大小
+        public long getLocalFileSize(String filePath)
+        {
+            FileInfo fi = new FileInfo(filePath);
+            return fi.Length;
+        }
+
     }
 }

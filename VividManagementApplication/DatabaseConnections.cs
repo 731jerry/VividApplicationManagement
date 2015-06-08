@@ -340,6 +340,7 @@ namespace VividManagementApplication
                 SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
                 conn.Open();
                 cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
+                
             }
         }
         /*
@@ -507,6 +508,7 @@ namespace VividManagementApplication
                 conn.Open();
                 cmdInsert.ExecuteNonQuery();
                 //transaction.Commit();
+                conn.Close();
             }
         }
 

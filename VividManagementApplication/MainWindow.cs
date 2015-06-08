@@ -55,11 +55,14 @@ namespace VividManagementApplication
         public static String LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\temp.gzb";
         public static String ONLINE_DATABASE_FTP_LOCATION_DIR = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/";//"ftp://qyw28051:cyy2014@qyw28051.my3w.com/products/caiYY/backup/"
         public static String ONLINE_DATABASE_LOCATION_DIR = "http://www.vividapp.net/Project/GZB/Users/";
+        public static String ONLINE_DATABASE_FILE_PREFIX = ""; //onlineDataBaseFilePrefix
         public static String ONLINE_DATABASE_BASIC_LOCATION_DIR = "/Project/GZB/Users/";
         public static String ONLINE_FTP_HOSTNAME = "121.42.154.95";
         public static String ONLINE_FTP_DOMAIN = "vividapp.net";
         public static String ONLINE_FTP_USERNAME = "vividappftp";
         public static String ONLINE_FTP_PASSWORD = "vividappftp";
+
+        public static int REMOTE_SIGN_UNDEALED_LIST_COUNT = 0; //remoteSignUndealedListCount
 
         Microsoft.Win32.RegistryKey productKey;
         public static String PRODUCT_REG_KEY = @"Software\VividApp\GZB\";
@@ -75,7 +78,6 @@ namespace VividManagementApplication
         System.Timers.Timer updateRemoteSignTimer;
         System.Timers.Timer lablTextChangeTimer; // 状态栏信息修改Timer
 
-        string onlineDataBaseFilePrefix;
 
         public MainWindow()
         {
@@ -89,6 +91,10 @@ namespace VividManagementApplication
             this.Visible = false;
             //Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
             String loginWindowLabel = "登录";
+
+            updateRemoteSignTimer = new System.Timers.Timer(45000);
+            updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
+            updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
 
             #region 软件版本
             try
@@ -117,44 +123,22 @@ namespace VividManagementApplication
             {
                 #region 窗体用户信息初始化
                 lbUserName.Text = COMPANY_NICKNAME + "(" + USER_ID + ")";
-                onlineDataBaseFilePrefix = USER_ID + "_online.db";
-
-                MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + USER_ID + "_data.db";
-                #endregion
-
-                #region 初始化数据库 备份数据库
-                if (DEGREE > 0)
+                if (MainWindow.DEGREE > 0)
                 {
-                    //Thread t = new Thread(new ParameterizedThreadStart(InitLocalDataBaseWithObject));
-                    //t.Start();
-                    //t.DisableComObjectEagerCleanup();
-                    SyncDatabaseStarter();
                 }
                 else
                 {
                     backupData.Enabled = false;
                 }
 
-                //DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
                 #endregion
 
                 #region 更新远程签单数据
-                // 检测未处理签单的个数
-                Thread tt = new Thread(new ParameterizedThreadStart(updateRemoteSignUndealedCountCheckWithObject));
-                //tt.IsBackground = true;
-                tt.Start();
-                tt.DisableComObjectEagerCleanup();
 
+                NotifyToolStripStatusLabel.Text = "您有" + REMOTE_SIGN_UNDEALED_LIST_COUNT + "条未处理信息";
                 //remoteSignTimer.Enabled = true;
 
-                updateRemoteSignTimer = new System.Timers.Timer(45000);
-                updateRemoteSignTimer.Elapsed += new System.Timers.ElapsedEventHandler(updateRemoteSignTimer_Elapsed);//到达时间的时候执行事件；  
-                updateRemoteSignTimer.AutoReset = true;//设置是执行一次（false）还是一直执行(true)；  
                 updateRemoteSignTimer.Enabled = true;//是否执行System.Timers.Timer.Elapsed事件；  
-                if (this.IsDisposed)
-                {
-                    updateRemoteSignTimer.Stop();
-                }
                 #endregion
 
                 #region 窗体滚动通知初始化
@@ -178,10 +162,8 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 初始化登录信息
-                lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
-                // 更新在线
-                DatabaseConnections.Connector.OnlineUpdateDataFromOriginalSQL("UPDATE users SET GZB_isonline = 1, GZB_lastlogontime = NOW() WHERE userid = '" + MainWindow.USER_ID + "'");
                 keepOnlineTimer.Enabled = true;
+                lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
                 TimeSpan ts = EXPIRETIME - ADDTIME;
                 if (DEGREE == 0)
                 {
@@ -219,98 +201,6 @@ namespace VividManagementApplication
             {
                 this.Visible = false;
                 this.Close();
-            }
-        }
-
-        // 初始化本地数据库
-        private void InitLocalDataBaseWithObject(object obj)
-        {
-            InitLocalDataBase();
-        }
-        private void InitLocalDataBase()
-        {
-            if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
-            {
-                if (UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
-                {
-                    DownloadFileWithNotice();
-                }
-                else
-                {
-                    UploadFileWithNotice("");
-                }
-            }
-            else
-            {
-                if (UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
-                {
-                    MainPanel.Enabled = false;
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                    DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, MainWindow.LOCAL_DATABASE_LOCATION);
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                    MainPanel.Enabled = true;
-                }
-                else
-                {
-                    DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                    UploadFileWithNotice("初次同步, ");
-                }
-            }
-        }
-
-        // 同步数据库
-        private void SyncDatabaseStarter()
-        {
-            Thread t = new Thread(new ParameterizedThreadStart(SyncDatabaseWithObject));
-            //t.IsBackground = true;
-            t.Start();
-            t.DisableComObjectEagerCleanup();
-            //t.Abort();
-        }
-
-        private void SyncDatabaseWithObject(object obj)
-        {
-            if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
-            {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
-                {
-                    if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
-                    {
-                        if (ifUpdateDatabasecheckLastModifiedTime(true))
-                        {
-                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                            DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
-                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                        }
-                        else
-                        {
-                            System.IO.File.Copy(LOCAL_DATABASE_LOCATION, LOCAL_DATABASE_LOCATION_COPY, true);
-                            UploadFile(LOCAL_DATABASE_LOCATION_COPY, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
-                        }
-                    }
-                }
-                else
-                {
-                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
-                }
-            }
-            else
-            {
-                MainPanel.Enabled = false;
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
-                {
-                    //File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                    DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                }
-                else
-                {
-                    DatabaseConnections.Connector.LocalCreateDatabase(LOCAL_DATABASE_LOCATION);
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
-                }
-                MainPanel.Enabled = true;
             }
         }
 
@@ -414,6 +304,58 @@ namespace VividManagementApplication
             SyncDatabaseStarter();
         }
 
+        // 同步数据库
+        private void SyncDatabaseStarter()
+        {
+            Thread t = new Thread(new ParameterizedThreadStart(SyncDatabaseWithObject));
+            //t.IsBackground = true;
+            t.Start();
+            t.DisableComObjectEagerCleanup();
+            //t.Abort();
+        }
+
+        private void SyncDatabaseWithObject(object obj)
+        {
+            if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
+            {
+                if (FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX))
+                {
+                    if (FormBasicFeatrues.GetInstence().getLocalFileSize(MainWindow.LOCAL_DATABASE_LOCATION) > 0)
+                    {
+                        if (FormBasicFeatrues.GetInstence().ifUpdateDatabasecheckLastModifiedTime(true))
+                        {
+                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                            DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
+                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                        }
+                        else
+                        {
+                            System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
+                            UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                        }
+                    }
+                }
+                else
+                {
+                    UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                }
+            }
+            else
+            {
+                if (FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX))
+                {
+                    DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                }
+                else
+                {
+                    DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
+                    UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                }
+            }
+        }
+
         private void UploadFileWithNoticeWithObjectBackupData(object obj)
         {
             UploadFileWithNotice(obj.ToString());
@@ -424,10 +366,10 @@ namespace VividManagementApplication
         // 下载
         private void DownloadFileWithNotice()
         {
-            if (ifUpdateDatabasecheckLastModifiedTime(true))
+            if (FormBasicFeatrues.GetInstence().ifUpdateDatabasecheckLastModifiedTime(true))
             {
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                DownloadFile(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix, LOCAL_DATABASE_LOCATION);
+                DownloadFile(ONLINE_DATABASE_LOCATION_DIR + ONLINE_DATABASE_FILE_PREFIX, LOCAL_DATABASE_LOCATION);
                 File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
             }
         }
@@ -443,8 +385,8 @@ namespace VividManagementApplication
             client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
             client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleteCallback);
             client.DownloadFileAsync(uri, fileNamePath);
-
         }
+
         private void DownloadProgressCallback(object sender, System.Net.DownloadProgressChangedEventArgs e)
         {
             //pbUploadDownloadFile.Value = e.ProgressPercentage;
@@ -475,18 +417,18 @@ namespace VividManagementApplication
         private void UploadFileWithNotice(String moreInfo)
         {
             UploadMoreInfo = moreInfo;
-            if (getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
+            if (FormBasicFeatrues.GetInstence().getLocalFileSize(LOCAL_DATABASE_LOCATION) > 0)
             {
-                if (UriExists(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix))
+                if (FormBasicFeatrues.GetInstence().UriExists(ONLINE_DATABASE_LOCATION_DIR + ONLINE_DATABASE_FILE_PREFIX))
                 {
-                    if (ifUpdateDatabasecheckLastModifiedTime(false))
+                    if (FormBasicFeatrues.GetInstence().ifUpdateDatabasecheckLastModifiedTime(false))
                     {
-                        UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
+                        UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + ONLINE_DATABASE_FILE_PREFIX);
                     }
                 }
                 else
                 {
-                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + onlineDataBaseFilePrefix);
+                    UploadFile(LOCAL_DATABASE_LOCATION, ONLINE_DATABASE_FTP_LOCATION_DIR + ONLINE_DATABASE_FILE_PREFIX);
                 }
             }
         }
@@ -505,8 +447,8 @@ namespace VividManagementApplication
             client.UploadFileAsync(uri, "STOR", fileNamePath);
             // client.Proxy = WebRequest.DefaultWebProxy;
             //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
-
         }
+
         private void UploadProgressCallback(object sender, System.Net.UploadProgressChangedEventArgs e)
         {
             //pbUploadDownloadFile.Value = e.ProgressPercentage;
@@ -533,76 +475,6 @@ namespace VividManagementApplication
             }
         }
 
-        // 检测远程文件是否存在
-        private bool UriExists(string url)
-        {
-            try
-            {
-                new System.Net.WebClient().OpenRead(url);
-                return true;
-            }
-            catch (System.Net.WebException)
-            {
-                return false;
-            }
-        }
-
-        private bool ifUpdateDatabasecheckLastModifiedTime(bool isDownload)
-        {
-            HttpWebRequest gameFile = (HttpWebRequest)WebRequest.Create(ONLINE_DATABASE_LOCATION_DIR + onlineDataBaseFilePrefix);
-            gameFile.Timeout = 5000;
-            HttpWebResponse gameFileResponse;
-            try
-            {
-                gameFileResponse = (HttpWebResponse)gameFile.GetResponse();
-            }
-            catch
-            {
-                if (isDownload)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-
-            DateTime localFileModifiedTime = File.GetLastWriteTime(LOCAL_DATABASE_LOCATION);
-            DateTime onlineFileModifiedTime = gameFileResponse.LastModified;
-            gameFile.Abort();
-            gameFileResponse.Close();
-            if (localFileModifiedTime >= onlineFileModifiedTime)
-            {
-                if (isDownload)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            else
-            {
-                //Download new Update
-                if (isDownload)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
-
-        // 获取本地文件大小
-        private long getLocalFileSize(String filePath)
-        {
-            FileInfo fi = new FileInfo(filePath);
-            return fi.Length;
-        }
 
         // 提示消息能否看到
         private void visibleUploadDownloadGroup(Boolean visible)
@@ -1898,16 +1770,6 @@ namespace VividManagementApplication
 
         #region 远程签单
 
-        private void updateRemoteSignUndealedCountCheckWithObject(Object obj)
-        {
-            updateRemoteSignUndealedCountCheck();
-        }
-        private void updateRemoteSignUndealedCountCheck()
-        {
-            List<List<String>> remoteSignUndealedList = DatabaseConnections.Connector.OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
-            NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedList.Count + "条未处理信息";
-        }
-
         private void updateRemoteSignTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             //if (!this.InvokeRequired)
@@ -1935,7 +1797,8 @@ namespace VividManagementApplication
             try
             {
                 List<List<String>> remoteSignList = DatabaseConnections.Connector.OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
-                int remoteSignUndealedListCount = 0;
+
+                REMOTE_SIGN_UNDEALED_LIST_COUNT = 0;
                 //List<List<String>> remoteSignUndealedList = DatabaseConnections.GetInstence().OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id" }, "isSigned", "0", " AND (toGZBID ='" + MainWindow.USER_ID + "')");
 
                 DatabaseConnections.Connector.LocalClearTable("remoteSign");
@@ -1948,13 +1811,13 @@ namespace VividManagementApplication
                         if (item[4].Equals("0") && item[2].Equals(MainWindow.USER_ID))
                         {
                             addNotifyItem(item[1], item[0]);
-                            remoteSignUndealedListCount++;
+                            REMOTE_SIGN_UNDEALED_LIST_COUNT++;
                         }
                         DatabaseConnections.Connector.LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                     }
                 }
 
-                NotifyToolStripStatusLabel.Text = "您有" + remoteSignUndealedListCount + "条未处理远程签单";
+                NotifyToolStripStatusLabel.Text = "您有" + REMOTE_SIGN_UNDEALED_LIST_COUNT + "条未处理远程签单";
                 //listQdButton.PerformClick();
             }
             catch { return; }

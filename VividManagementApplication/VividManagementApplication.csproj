@@ -96,6 +96,12 @@
     <Compile Include="InputMessage.Designer.cs">
       <DependentUpon>InputMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="Picker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InputMessage.resx">
       <DependentUpon>InputMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Picker.resx">
       <DependentUpon>Picker.cs</DependentUpon>
