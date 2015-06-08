@@ -316,9 +316,12 @@ namespace VividManagementApplication
 
         private void SyncDatabaseWithObject(object obj)
         {
-            if (File.Exists(MainWindow.LOCAL_DATABASE_LOCATION))
+            Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
+            Boolean isRemoteFileExists = FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+
+            if (isLocalFileExists)
             {
-                if (FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX))
+                if (isRemoteFileExists)
                 {
                     if (FormBasicFeatrues.GetInstence().getLocalFileSize(MainWindow.LOCAL_DATABASE_LOCATION) > 0)
                     {
@@ -330,9 +333,16 @@ namespace VividManagementApplication
                         }
                         else
                         {
-                            System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
-                            UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                            //System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
+                            //UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                            UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
                         }
+                    }
+                    else
+                    {
+                        File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                        DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
+                        File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     }
                 }
                 else
@@ -342,7 +352,7 @@ namespace VividManagementApplication
             }
             else
             {
-                if (FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX))
+                if (isRemoteFileExists)
                 {
                     DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
                     File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);

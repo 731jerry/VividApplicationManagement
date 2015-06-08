@@ -93,40 +93,42 @@ namespace VividManagementApplication
 
                 string SQLforGeneral = sbSQL.ToString();
 
-                MySqlCommand cmd = new MySqlCommand(SQLforGeneral, con);
-                con.Open();
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                while (dataReader.Read())
+                using (MySqlCommand cmd = new MySqlCommand(SQLforGeneral, con))
                 {
-                    MainWindow.IS_PASSWORD_CORRECT = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
-                    if (MainWindow.IS_PASSWORD_CORRECT)
+                    con.Open();
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                    while (dataReader.Read())
                     {
-                        MainWindow.ID = dataReader["id"].ToString();
-                        MainWindow.USER_ID = dataReader["userid"].ToString();
-                        MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
-                        MainWindow.COMPANY_NICKNAME = dataReader["companyNickname"].ToString();
-                        MainWindow.WORKLOADS = dataReader["workloads"].ToString();
-                        MainWindow.COMPANY_NAME = dataReader["company"].ToString();
-                        MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
-                        MainWindow.ADDRESS = dataReader["address"].ToString();
-                        MainWindow.BANK_NAME = dataReader["bankname"].ToString();
-                        MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
-                        MainWindow.PHONE = dataReader["phone"].ToString();
-                        MainWindow.FAX = dataReader["fax"].ToString();
-                        MainWindow.QQ = dataReader["QQ"].ToString();
-                        MainWindow.EMAIL = dataReader["email"].ToString();
-                        MainWindow.NOTIFICATION = dataReader["notification"].ToString();
-                        MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
-                        MainWindow.DEGREE = int.Parse(dataReader["GZB_degree"].ToString());
-                        MainWindow.ADDTIME = DateTime.Parse(dataReader["GZB_addtime"].ToString());
-                        MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
-                        MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
-                        MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
-                        //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                        MainWindow.IS_PASSWORD_CORRECT = (int.Parse((dataReader["Count(id)"].ToString() == "") ? "0" : dataReader["Count(id)"].ToString()) == 1) ? true : false;
+                        if (MainWindow.IS_PASSWORD_CORRECT)
+                        {
+                            MainWindow.ID = dataReader["id"].ToString();
+                            MainWindow.USER_ID = dataReader["userid"].ToString();
+                            MainWindow.PASSWORD_HASH = dataReader["password"].ToString();
+                            MainWindow.COMPANY_NICKNAME = dataReader["companyNickname"].ToString();
+                            MainWindow.WORKLOADS = dataReader["workloads"].ToString();
+                            MainWindow.COMPANY_NAME = dataReader["company"].ToString();
+                            MainWindow.COMPANY_OWNER = dataReader["companyowner"].ToString();
+                            MainWindow.ADDRESS = dataReader["address"].ToString();
+                            MainWindow.BANK_NAME = dataReader["bankname"].ToString();
+                            MainWindow.BANK_CARD = dataReader["bankcard"].ToString();
+                            MainWindow.PHONE = dataReader["phone"].ToString();
+                            MainWindow.FAX = dataReader["fax"].ToString();
+                            MainWindow.QQ = dataReader["QQ"].ToString();
+                            MainWindow.EMAIL = dataReader["email"].ToString();
+                            MainWindow.NOTIFICATION = dataReader["notification"].ToString();
+                            MainWindow.IS_USER_ONLINE = (int.Parse(dataReader["GZB_isonline"].ToString().Equals("") ? "0" : dataReader["GZB_isonline"].ToString()) == 0) ? false : true;
+                            MainWindow.DEGREE = int.Parse(dataReader["GZB_degree"].ToString());
+                            MainWindow.ADDTIME = DateTime.Parse(dataReader["GZB_addtime"].ToString());
+                            MainWindow.EXPIRETIME = DateTime.Parse(dataReader["GZB_expiretime"].ToString());
+                            MainWindow.COMPANY_BALANCE = float.Parse(dataReader["companyBalance"].ToString());
+                            MainWindow.SIGNATURE = dataReader["GZB_signature"].ToString();
+                            //MainWindow.LAST_LOGON_TIME = dataReader["lastLogonTime"].ToString().Equals("") ? "首次登录" : dataReader["lastLogonTime"].ToString();
+                        }
                     }
+                    dataReader.Close();
                 }
-                dataReader.Close();
             }
         }
 
@@ -137,9 +139,11 @@ namespace VividManagementApplication
             using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
             {
                 String SQLforGeneral = "INSERT INTO " + table + " (" + query + ") VALUES(" + value + ")";
-                MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, con);
-                con.Open();
-                affectedRows = cmdInsert.ExecuteNonQuery();
+                using (MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, con))
+                {
+                    con.Open();
+                    affectedRows = cmdInsert.ExecuteNonQuery();
+                }
             }
             return affectedRows;
         }
@@ -161,9 +165,11 @@ namespace VividManagementApplication
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
                 string SQLforGeneral = "UPDATE " + table + " SET " + innerSQL + " WHERE id = '" + id + "'";
-                MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, con);
-                con.Open();
-                affectedRows = cmdInsert.ExecuteNonQuery();
+                using (MySqlCommand cmdInsert = new MySqlCommand(SQLforGeneral, con))
+                {
+                    con.Open();
+                    affectedRows = cmdInsert.ExecuteNonQuery();
+                }
             }
             return affectedRows;
         }
@@ -174,10 +180,12 @@ namespace VividManagementApplication
             int affectedRows = -1;
             using (MySqlConnection con = new MySqlConnection(OnlineConnStr))
             {
-                MySqlCommand cmdInsert = new MySqlCommand(sql, con);
-                cmdInsert.CommandTimeout = 0;
-                con.Open();
-                affectedRows = cmdInsert.ExecuteNonQuery();
+                using (MySqlCommand cmdInsert = new MySqlCommand(sql, con))
+                {
+                    cmdInsert.CommandTimeout = 0;
+                    con.Open();
+                    affectedRows = cmdInsert.ExecuteNonQuery();
+                }
             }
             return affectedRows;
         }
@@ -199,21 +207,23 @@ namespace VividManagementApplication
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
                 String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-                MySqlCommand cmdCreateTable = new MySqlCommand(sql, con);
-                cmdCreateTable.CommandText = sql;
-                con.Open();
-                MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
-                //String[] resultsStringArray = new String[query.Count];
-                resultsStringList = new List<string>();
-
-                while (dataReader.Read())
+                using (MySqlCommand cmdCreateTable = new MySqlCommand(sql, con))
                 {
-                    for (int i = 0; i < query.Count; i++)
+                    cmdCreateTable.CommandText = sql;
+                    con.Open();
+                    MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+                    //String[] resultsStringArray = new String[query.Count];
+                    resultsStringList = new List<string>();
+
+                    while (dataReader.Read())
                     {
-                        resultsStringList.Add(dataReader[query[i]].ToString());
+                        for (int i = 0; i < query.Count; i++)
+                        {
+                            resultsStringList.Add(dataReader[query[i]].ToString());
+                        }
                     }
+                    dataReader.Close();
                 }
-                dataReader.Close();
             }
             return resultsStringList;
         }
@@ -239,24 +249,26 @@ namespace VividManagementApplication
                 innerSQL = String.Join(",", query);
 
                 String sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "' " + condition;//建表语句  
-                MySqlCommand cmdCreateTable = new MySqlCommand(sql, con);
-                cmdCreateTable.CommandTimeout = 0;
-                cmdCreateTable.CommandText = sql;
-                con.Open();
-                MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
-                //String[] resultsStringArray = new String[query.Count];
-                resultsStringList = new List<List<String>>();
-
-                while (dataReader.Read())
+                using (MySqlCommand cmdCreateTable = new MySqlCommand(sql, con))
                 {
-                    List<String> temp = new List<string>();
-                    for (int i = 0; i < query.Count; i++)
+                    cmdCreateTable.CommandTimeout = 0;
+                    cmdCreateTable.CommandText = sql;
+                    con.Open();
+                    MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+                    //String[] resultsStringArray = new String[query.Count];
+                    resultsStringList = new List<List<String>>();
+
+                    while (dataReader.Read())
                     {
-                        temp.Add(dataReader[query[i]].ToString());
+                        List<String> temp = new List<string>();
+                        for (int i = 0; i < query.Count; i++)
+                        {
+                            temp.Add(dataReader[query[i]].ToString());
+                        }
+                        resultsStringList.Add(temp);
                     }
-                    resultsStringList.Add(temp);
+                    dataReader.Close();
                 }
-                dataReader.Close();
             }
             return resultsStringList;
         }
@@ -270,24 +282,26 @@ namespace VividManagementApplication
                 String innerSQL = String.Join(",", query);
 
                 String sql = "SELECT " + innerSQL + " FROM " + table + condition;//建表语句  
-                MySqlCommand cmdCreateTable = new MySqlCommand(sql, con);
-                cmdCreateTable.CommandTimeout = 0;
-                cmdCreateTable.CommandText = sql;
-                con.Open();
-                MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
-                //String[] resultsStringArray = new String[query.Count];
-                resultsStringList = new List<List<String>>();
-
-                while (dataReader.Read())
+                using (MySqlCommand cmdCreateTable = new MySqlCommand(sql, con))
                 {
-                    List<String> temp = new List<string>();
-                    for (int i = 0; i < query.Count; i++)
+                    cmdCreateTable.CommandTimeout = 0;
+                    cmdCreateTable.CommandText = sql;
+                    con.Open();
+                    MySqlDataReader dataReader = cmdCreateTable.ExecuteReader();
+                    //String[] resultsStringArray = new String[query.Count];
+                    resultsStringList = new List<List<String>>();
+
+                    while (dataReader.Read())
                     {
-                        temp.Add(dataReader[query[i]].ToString());
+                        List<String> temp = new List<string>();
+                        for (int i = 0; i < query.Count; i++)
+                        {
+                            temp.Add(dataReader[query[i]].ToString());
+                        }
+                        resultsStringList.Add(temp);
                     }
-                    resultsStringList.Add(temp);
+                    dataReader.Close();
                 }
-                dataReader.Close();
             }
             return resultsStringList;
         }
@@ -337,10 +351,11 @@ namespace VividManagementApplication
 
                                 --COMMIT TRANSACTION;";//建表语句  
 
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                conn.Open();
-                cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
-                
+                using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmdCreateTable.ExecuteNonQuery();//如果表不存在，创建数据表  
+                }
             }
         }
         /*
@@ -373,11 +388,13 @@ namespace VividManagementApplication
         {
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + query + ") " +
-                                           " VALUES(" + value + ")";
-                cmdInsert.ExecuteNonQuery();
-                conn.Close();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + query + ") " +
+                                               " VALUES(" + value + ")";
+                    cmdInsert.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
         }
 
@@ -386,11 +403,13 @@ namespace VividManagementApplication
             int returnAffectRows = -1;
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "INSERT INTO  " + table + "  (" + query + ") " +
-                                           " VALUES(" + value + ")";
-                conn.Open();
-                returnAffectRows = cmdInsert.ExecuteNonQuery();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "INSERT INTO  " + table + "  (" + query + ") " +
+                                               " VALUES(" + value + ")";
+                    conn.Open();
+                    returnAffectRows = cmdInsert.ExecuteNonQuery();
+                }
             }
             return returnAffectRows;
         }
@@ -400,10 +419,12 @@ namespace VividManagementApplication
         {
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "DELETE FROM  " + table + "  WHERE id = " + id;
-                conn.Open();
-                cmdInsert.ExecuteNonQuery();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "DELETE FROM  " + table + "  WHERE id = " + id;
+                    conn.Open();
+                    cmdInsert.ExecuteNonQuery();
+                }
             }
         }
 
@@ -430,10 +451,12 @@ namespace VividManagementApplication
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
 
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
-                conn.Open();
-                cmdInsert.ExecuteNonQuery();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "UPDATE " + table + " SET " + innerSQL + " WHERE " + baseName + " = '" + id + "'";
+                    conn.Open();
+                    cmdInsert.ExecuteNonQuery();
+                }
             }
         }
 
@@ -466,11 +489,12 @@ namespace VividManagementApplication
                 innerQuerySQL = String.Join(",", query);
                 innerVauleSQL = String.Join("','", value);
 
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
-                                           " VALUES(" + innerVauleSQL + ")";
-                conn.Open();
-                returnAffectRows = cmdInsert.ExecuteNonQuery();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " + " VALUES(" + innerVauleSQL + ")";
+                    conn.Open();
+                    returnAffectRows = cmdInsert.ExecuteNonQuery();
+                }
             }
             return returnAffectRows;
         }
@@ -502,13 +526,14 @@ namespace VividManagementApplication
                 innerQuerySQL = String.Join(",", query);
                 innerVauleSQL = String.Join("','", value);
                 //SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " +
-                                           " VALUES('" + innerVauleSQL + "')";
-                conn.Open();
-                cmdInsert.ExecuteNonQuery();
-                //transaction.Commit();
-                conn.Close();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "REPLACE INTO  " + table + "  (" + innerQuerySQL + ") " + " VALUES('" + innerVauleSQL + "')";
+                    conn.Open();
+                    cmdInsert.ExecuteNonQuery();
+                    //transaction.Commit();
+                    conn.Close();
+                }
             }
         }
 
@@ -517,10 +542,12 @@ namespace VividManagementApplication
         {
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                cmdInsert.CommandText = "DELETE FROM " + table;
-                conn.Open();
-                cmdInsert.ExecuteNonQuery();
+                using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
+                {
+                    cmdInsert.CommandText = "DELETE FROM " + table;
+                    conn.Open();
+                    cmdInsert.ExecuteNonQuery();
+                }
             }
         }
 
@@ -536,15 +563,17 @@ namespace VividManagementApplication
 
                 try
                 {
-                    SQLiteCommand cmdInsert = new SQLiteCommand(conn);
-                    cmdInsert.CommandText = "SELECT COUNT(*) itemCount FROM " + table;
-                    conn.Open();
-                    SQLiteDataReader reader = cmdInsert.ExecuteReader();
-                    while (reader.Read())
+                    using (SQLiteCommand cmdInsert = new SQLiteCommand(conn))
                     {
-                        resultCount = int.Parse(reader[0].ToString());
+                        cmdInsert.CommandText = "SELECT COUNT(*) itemCount FROM " + table;
+                        conn.Open();
+                        SQLiteDataReader reader = cmdInsert.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            resultCount = int.Parse(reader[0].ToString());
+                        }
+                        //resultCount = cmdInsert.ExecuteNonQuery();
                     }
-                    //resultCount = cmdInsert.ExecuteNonQuery();
                 }
                 catch { conn.Close(); }
             }
@@ -570,17 +599,19 @@ namespace VividManagementApplication
                         innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                     }
                     string sql = "SELECT " + innerSQL + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-                    SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                    cmdCreateTable.CommandText = sql;
-                    conn.Open();
-                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-                    resultsStringArray = new string[query.Length];
-
-                    while (reader.Read())
+                    using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
                     {
-                        for (int i = 0; i < query.Length; i++)
+                        cmdCreateTable.CommandText = sql;
+                        conn.Open();
+                        System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                        resultsStringArray = new string[query.Length];
+
+                        while (reader.Read())
                         {
-                            resultsStringArray[i] = reader[query[i]].ToString();
+                            for (int i = 0; i < query.Length; i++)
+                            {
+                                resultsStringArray[i] = reader[query[i]].ToString();
+                            }
                         }
                     }
                 }
@@ -607,23 +638,25 @@ namespace VividManagementApplication
                     innerSQL = innerSQL.Substring(0, innerSQL.Length - 1); // 去掉最后的逗号
                 }
                 String sql = "SELECT " + innerSQL + " FROM " + table + " " + order;//建表语句  
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                cmdCreateTable.CommandText = sql;
-                conn.Open();
-                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-                String[] resultsStringArray = new String[query.Length];
-                resultsStringList = new List<String[]>();
-
-                while (reader.Read())
+                using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
                 {
-                    for (int i = 0; i < query.Length; i++)
+                    cmdCreateTable.CommandText = sql;
+                    conn.Open();
+                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                    String[] resultsStringArray = new String[query.Length];
+                    resultsStringList = new List<String[]>();
+
+                    while (reader.Read())
                     {
-                        resultsStringArray[i] = reader[i].ToString();
+                        for (int i = 0; i < query.Length; i++)
+                        {
+                            resultsStringArray[i] = reader[i].ToString();
+                        }
+                        resultsStringList.Add(resultsStringArray);
+                        resultsStringArray = new String[query.Length];
                     }
-                    resultsStringList.Add(resultsStringArray);
-                    resultsStringArray = new String[query.Length];
+                    reader.Close();
                 }
-                reader.Close();
             }
             return resultsStringList;
         }
@@ -633,24 +666,26 @@ namespace VividManagementApplication
         {
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                cmdCreateTable.CommandText = sql;
-                conn.Open();
-                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-                String[] resultsStringArray = new String[query.Length];
-                List<String[]> resultsStringList = new List<String[]>();
-
-                while (reader.Read())
+                using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
                 {
-                    for (int i = 0; i < query.Length; i++)
+                    cmdCreateTable.CommandText = sql;
+                    conn.Open();
+                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                    String[] resultsStringArray = new String[query.Length];
+                    List<String[]> resultsStringList = new List<String[]>();
+
+                    while (reader.Read())
                     {
-                        resultsStringArray[i] = reader[i].ToString();
+                        for (int i = 0; i < query.Length; i++)
+                        {
+                            resultsStringArray[i] = reader[i].ToString();
+                        }
+                        resultsStringList.Add(resultsStringArray);
+                        resultsStringArray = new String[query.Length];
                     }
-                    resultsStringList.Add(resultsStringArray);
-                    resultsStringArray = new String[query.Length];
+                    reader.Close();
+                    return resultsStringList;
                 }
-                reader.Close();
-                return resultsStringList;
             }
         }
 
@@ -661,17 +696,19 @@ namespace VividManagementApplication
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
                 string sql = "SELECT " + baseName + " FROM " + table + " " + order;//建表语句  
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                cmdCreateTable.CommandText = sql;
-                conn.Open();
-                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-                resultsStringList = new List<string>();
-
-                while (reader.Read())
+                using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
                 {
-                    resultsStringList.Add(reader.GetString(0));
+                    cmdCreateTable.CommandText = sql;
+                    conn.Open();
+                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                    resultsStringList = new List<string>();
+
+                    while (reader.Read())
+                    {
+                        resultsStringList.Add(reader.GetString(0));
+                    }
+                    reader.Close();
                 }
-                reader.Close();
             }
             return resultsStringList;
         }
@@ -682,17 +719,19 @@ namespace VividManagementApplication
             using (SQLiteConnection conn = new SQLiteConnection(LocalConnStr))
             {
                 string sql = "SELECT " + baseName + " FROM " + table + " WHERE " + baseName + "='" + id + "'";//建表语句  
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                cmdCreateTable.CommandText = sql;
-                conn.Open();
-                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-                if (reader.HasRows)
+                using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    cmdCreateTable.CommandText = sql;
+                    conn.Open();
+                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
         }
@@ -706,17 +745,19 @@ namespace VividManagementApplication
                 // SELECT max(jcdID) as max FROM jcdList 
                 // cast(yysid as UNSIGNED INTEGER)
                 string sql = "SELECT max(cast(" + baseName + " as UNSIGNED INTEGER)) as max FROM " + table;//建表语句  
-                SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn);
-                cmdCreateTable.CommandText = sql;
-                conn.Open();
-                System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
-
-                while (reader.Read())
+                using (SQLiteCommand cmdCreateTable = new SQLiteCommand(sql, conn))
                 {
-                    maxNumber = (int.Parse(reader["max"].ToString().Equals("") ? "0" : reader["max"].ToString()) + 1).ToString();
-                }
+                    cmdCreateTable.CommandText = sql;
+                    conn.Open();
+                    System.Data.SQLite.SQLiteDataReader reader = cmdCreateTable.ExecuteReader();
 
-                return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 6, "0");
+                    while (reader.Read())
+                    {
+                        maxNumber = (int.Parse(reader["max"].ToString().Equals("") ? "0" : reader["max"].ToString()) + 1).ToString();
+                    }
+
+                    return FormBasicFeatrues.GetInstence().FormatID(maxNumber, 6, "0");
+                }
             }
         }
         #endregion

@@ -124,96 +124,6 @@ namespace VividManagementApplication
         }
 
         #region 数据库
-        #region 直接上传下载
-        private void UploadFileDirectly(String fileNamePath, String uriString)
-        {
-            try
-            {
-                WebClient wcClient = new WebClient();
-
-                long fileLength = 0;
-
-                string updateFileUrl = uriString;
-
-                WebRequest webReq = WebRequest.Create(updateFileUrl);
-                WebResponse webRes = webReq.GetResponse();
-                fileLength = webRes.ContentLength;
-
-                Stream srm;
-                StreamWriter srmWriter;
-                srm = webRes.GetResponseStream();
-                srmWriter = new StreamWriter(srm);
-
-                byte[] bufferbyte = new byte[fileLength];
-                int allByte = (int)bufferbyte.Length;
-                int startByte = 0;
-                while (fileLength > 0)
-                {
-                    Application.DoEvents();
-                    int downByte = srm.Read(bufferbyte, startByte, allByte);
-                    if (downByte == 0) { break; };
-                    startByte += downByte;
-                    allByte -= downByte;
-                }
-
-                using (FileStream fs = new FileStream(fileNamePath, FileMode.Create, FileAccess.Write))
-                {
-                    fs.Write(bufferbyte, 0, bufferbyte.Length);
-                }
-
-                srm.Close();
-                srmWriter.Close();
-            }
-            catch (Exception e)
-            {
-                return;
-            }
-        }
-        private void DownloadFileDirectly(String uriString, String fileNamePath)
-        {
-            try
-            {
-                WebClient wcClient = new WebClient();
-
-                long fileLength = 0;
-
-                string updateFileUrl = uriString;
-
-                WebRequest webReq = WebRequest.Create(updateFileUrl);
-                WebResponse webRes = webReq.GetResponse();
-                fileLength = webRes.ContentLength;
-
-                Stream srm;
-                StreamReader srmReader;
-                srm = webRes.GetResponseStream();
-                srmReader = new StreamReader(srm);
-
-                byte[] bufferbyte = new byte[fileLength];
-                int allByte = (int)bufferbyte.Length;
-                int startByte = 0;
-                while (fileLength > 0)
-                {
-                    Application.DoEvents();
-                    int downByte = srm.Read(bufferbyte, startByte, allByte);
-                    if (downByte == 0) { break; };
-                    startByte += downByte;
-                    allByte -= downByte;
-                }
-
-                using (FileStream fs = new FileStream(fileNamePath, FileMode.Create, FileAccess.Write))
-                {
-                    fs.Write(bufferbyte, 0, bufferbyte.Length);
-                }
-
-                srm.Close();
-                srmReader.Close();
-            }
-            catch (Exception e)
-            {
-                return;
-            }
-        }
-        #endregion
 
         // 同步数据库
         private void SyncDataBase(Boolean isLocalFileExists, Boolean isRemoteFileExists)
@@ -232,8 +142,9 @@ namespace VividManagementApplication
                         }
                         else
                         {
-                            System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
-                            UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                            //System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
+                            //UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                            UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
                         }
                     }
                     else
@@ -267,15 +178,15 @@ namespace VividManagementApplication
                 Uri uri = new Uri(uriString);
                 client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
                 client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
+                //DatabaseConnections.Connector.LocalDbClose();
                 client.UploadFileAsync(uri, "STOR", fileNamePath);
-                //client.UploadFile(uri, "STOR", fileNamePath);
                 // client.Proxy = WebRequest.DefaultWebProxy;
                 //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
                 //client.Dispose();
             }
             catch (Exception ee)
             {
-
+                return;
             }
         }
 
