@@ -140,6 +140,8 @@ namespace VividManagementApplication
         delegate void SetLoadingLabelCallback(String str);
         private void SetLoadingLabel(String str)
         {
+            this.Text = str;
+            /*
             if (this.LoadingLabel.InvokeRequired)
             {
                 SetLoadingLabelCallback d = new SetLoadingLabelCallback(SetLoadingLabel);
@@ -149,6 +151,7 @@ namespace VividManagementApplication
             {
                 this.LoadingLabel.Text = str;
             }
+             */ 
         }
 
         #region 数据库

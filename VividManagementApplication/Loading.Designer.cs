@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.LoadingProgressBar = new System.Windows.Forms.ProgressBar();
-            this.LoadingLabel = new System.Windows.Forms.Label();
             this.LoadingPictureBox = new System.Windows.Forms.PictureBox();
             this.StartTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.LoadingPictureBox)).BeginInit();
@@ -38,20 +37,11 @@
             // 
             // LoadingProgressBar
             // 
-            this.LoadingProgressBar.Location = new System.Drawing.Point(0, 271);
+            this.LoadingProgressBar.Location = new System.Drawing.Point(0, 244);
             this.LoadingProgressBar.Name = "LoadingProgressBar";
             this.LoadingProgressBar.Size = new System.Drawing.Size(464, 21);
             this.LoadingProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.LoadingProgressBar.TabIndex = 0;
-            // 
-            // LoadingLabel
-            // 
-            this.LoadingLabel.AutoSize = true;
-            this.LoadingLabel.Location = new System.Drawing.Point(11, 252);
-            this.LoadingLabel.Name = "LoadingLabel";
-            this.LoadingLabel.Size = new System.Drawing.Size(41, 12);
-            this.LoadingLabel.TabIndex = 1;
-            this.LoadingLabel.Text = "label1";
             // 
             // LoadingPictureBox
             // 
@@ -74,10 +64,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 293);
-            this.Controls.Add(this.LoadingPictureBox);
-            this.Controls.Add(this.LoadingLabel);
+            this.ClientSize = new System.Drawing.Size(464, 265);
             this.Controls.Add(this.LoadingProgressBar);
+            this.Controls.Add(this.LoadingPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -90,14 +79,12 @@
             this.Load += new System.EventHandler(this.Loading_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LoadingPictureBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ProgressBar LoadingProgressBar;
-        private System.Windows.Forms.Label LoadingLabel;
         private System.Windows.Forms.PictureBox LoadingPictureBox;
         private System.Windows.Forms.Timer StartTimer;
     }
