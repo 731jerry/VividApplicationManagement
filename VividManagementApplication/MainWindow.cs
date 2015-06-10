@@ -1230,16 +1230,34 @@ namespace VividManagementApplication
         {
             if (MainWindow.IS_LOGED_IN)
             {
-                Loading lo = new Loading();
-                lo.isExiting = true;
-                if (lo.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                if (this.Visible)
                 {
-                    if (notifyIcon != null)
+                    keepOnlineTimer.Enabled = false;
+                    keepOnlineTimer.Dispose();
+
+                    tmrShows.Enabled = false;
+                    tmrShows.Dispose();
+
+                    notifyBlinkTimer.Enabled = false;
+                    notifyBlinkTimer.Dispose();
+
+                    updateRemoteSignTimer.Enabled = false;
+                    updateRemoteSignTimer.Dispose();
+
+                    lablTextChangeTimer.Enabled = false;
+                    lablTextChangeTimer.Dispose();
+
+                    Loading lo = new Loading();
+                    lo.isExiting = true;
+                    if (lo.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
                     {
-                        notifyIcon.Visible = false;
-                        notifyIcon.Icon = null; // required to make icon disappear
-                        notifyIcon.Dispose();
-                        notifyIcon = null;
+                        if (notifyIcon != null)
+                        {
+                            notifyIcon.Visible = false;
+                            notifyIcon.Icon = null; // required to make icon disappear
+                            notifyIcon.Dispose();
+                            notifyIcon = null;
+                        }
                     }
                 }
             }

@@ -80,8 +80,9 @@ namespace VividManagementApplication
                     {
                         DownloadFileDirectly(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
                     }
-
+                       
                     DatabaseConnections.Connector.LocalClearTable("remoteSign");
+                    
                     if (remoteSignList.Count != 0)
                     {
                         foreach (List<String> item in remoteSignList)
@@ -93,6 +94,12 @@ namespace VividManagementApplication
                 }
                 else
                 {
+                    Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
+                    if (!isLocalFileExists)
+                    {
+                        DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
+                    }
+
                     DatabaseConnections.Connector.LocalClearTable("remoteSign");
                     if (remoteSignList.Count != 0)
                     {
