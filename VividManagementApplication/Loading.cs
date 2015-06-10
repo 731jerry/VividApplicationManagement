@@ -38,7 +38,7 @@ namespace VividManagementApplication
             else
             {
                 this.Text = "正在关闭软件...";
-                SetLoadingLabel("正在启动数据备份...请稍等...");
+                SetLoadingLabel("正在关闭...请稍等...");
             }
         }
 
@@ -62,27 +62,24 @@ namespace VividManagementApplication
                 SetLoadingLabel("检查远程签单消息完成...");
                 SetLoadingProgressBar(60);
 
+                SetLoadingLabel("正在检测数据库...");
+                DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
+
                 // 初始化数据库 备份数据库
                 if (MainWindow.DEGREE > 0)
                 {
                     SetLoadingLabel("正在同步数据库...");
                     SetLoadingProgressBar(databaseSyncStart);
 
-                    Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
                     Boolean isRemoteFileExists = FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
-                    if (!isLocalFileExists && !isRemoteFileExists)
-                    {
-                        DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
-                        isLocalFileExists = true;
-                    }
 
-                    if (!isLocalFileExists && isRemoteFileExists)
+                    if (isRemoteFileExists)
                     {
                         DownloadFileDirectly(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
                     }
-                       
+
                     DatabaseConnections.Connector.LocalClearTable("remoteSign");
-                    
+
                     if (remoteSignList.Count != 0)
                     {
                         foreach (List<String> item in remoteSignList)
@@ -90,16 +87,10 @@ namespace VividManagementApplication
                             DatabaseConnections.Connector.LocalReplaceIntoData("remoteSign", (new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }).ToArray(), item.ToArray(), MainWindow.USER_ID);
                         }
                     }
-                    SyncDataBase(isLocalFileExists, isRemoteFileExists);
+                    SyncDataBase(isRemoteFileExists);
                 }
                 else
                 {
-                    Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
-                    if (!isLocalFileExists)
-                    {
-                        DatabaseConnections.Connector.LocalCreateDatabase(MainWindow.LOCAL_DATABASE_LOCATION);
-                    }
-
                     DatabaseConnections.Connector.LocalClearTable("remoteSign");
                     if (remoteSignList.Count != 0)
                     {
@@ -123,12 +114,11 @@ namespace VividManagementApplication
                 // 初始化数据库 备份数据库
                 if (MainWindow.DEGREE > 0)
                 {
-                    SetLoadingLabel("正在同步数据库...");
+                    SetLoadingLabel("正在启动数据备份...请稍等..");
                     SetLoadingProgressBar(databaseSyncStart);
-                    Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
                     Boolean isRemoteFileExists = FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
 
-                    SyncDataBase(isLocalFileExists, isRemoteFileExists);
+                    SyncDataBase(isRemoteFileExists);
                 }
             }
         }
@@ -164,46 +154,35 @@ namespace VividManagementApplication
         #region 数据库
 
         // 同步数据库
-        private void SyncDataBase(Boolean isLocalFileExists, Boolean isRemoteFileExists)
+        private void SyncDataBase(Boolean isRemoteFileExists)
         {
-            if (isLocalFileExists)
+            if (isRemoteFileExists)
             {
-                if (isRemoteFileExists)
+                if (FormBasicFeatrues.GetInstence().getLocalFileSize(MainWindow.LOCAL_DATABASE_LOCATION) > 0)
                 {
-                    if (FormBasicFeatrues.GetInstence().getLocalFileSize(MainWindow.LOCAL_DATABASE_LOCATION) > 0)
-                    {
-                        if (FormBasicFeatrues.GetInstence().ifUpdateDatabasecheckLastModifiedTime(true))
-                        {
-                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
-                            DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
-                            File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                        }
-                        else
-                        {
-                            //System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
-                            //UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
-                            UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
-                        }
-                    }
-                    else
+                    if (FormBasicFeatrues.GetInstence().ifUpdateDatabasecheckLastModifiedTime(true))
                     {
                         File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
                         DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
                         File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                     }
+                    else
+                    {
+                        //System.IO.File.Copy(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.LOCAL_DATABASE_LOCATION_COPY, true);
+                        //UploadFile(MainWindow.LOCAL_DATABASE_LOCATION_COPY, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                        UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                    }
                 }
                 else
                 {
-                    UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Normal);
+                    DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
+                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
                 }
             }
             else
             {
-                if (isRemoteFileExists)
-                {
-                    DownloadFile(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.LOCAL_DATABASE_LOCATION);
-                    File.SetAttributes(MainWindow.LOCAL_DATABASE_LOCATION, FileAttributes.Hidden);
-                }
+                UploadFile(MainWindow.LOCAL_DATABASE_LOCATION, MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
             }
         }
 
