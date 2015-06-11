@@ -161,10 +161,6 @@ namespace VividManagementApplication
                 }
                 #endregion
 
-                #region 初始化客户列表
-                listCxButton.PerformClick();
-                #endregion
-
                 #region 初始化登录信息
                 keepOnlineTimer.Enabled = true;
                 lbExpireTime.Text = "至" + EXPIRETIME.ToLongDateString() + "止";
@@ -200,6 +196,11 @@ namespace VividManagementApplication
                 }
                 #endregion
 
+                #region 初始化客户列表
+                listCxButton.Enabled = true;
+                cxRadio.PerformClick();
+                listCxButton.PerformClick();
+                #endregion
             }
             else
             {

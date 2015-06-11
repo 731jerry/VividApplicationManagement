@@ -1,3 +1,8 @@
+2015/6/11 9:49:52-
+###异常消息Message: 未将对象引用设置到对象的实例。
+###当前异常StackTrace:    在 VividManagementApplication.DetailedInfo.SaveButton_Click(Object sender, EventArgs e) 位置 d:\Project\VividApplicationManagement\VividManagementApplication\DetailedInfo.cs:行号 1011
+===================================================
+
 2015/6/5 10:31:39-无法查看详细
 ###异常消息Message: 索引超出了数组界限。
 ###当前异常StackTrace:    在 VividManagementApplication.FormBasicFeatrues.SetControlsVaule(String PreName, Panel panelPlatform, String[] finalValues) 位置 d:\Project\VividApplicationManagement\VividManagementApplication\FormBasicFeatrues.cs:行号 525

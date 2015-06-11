@@ -1135,6 +1135,7 @@ namespace VividManagementApplication
             try
             {
                 gameFileResponse = (HttpWebResponse)gameFile.GetResponse();
+                gameFileResponse.Close();
             }
             catch
             {

@@ -160,6 +160,7 @@ namespace VividManagementApplication
 
         private void CancelQQButton_Click(object sender, EventArgs e)
         {
+            /*
             if (FormBasicFeatrues.GetInstence().isPassValidateControls(new List<Control>() { tbInfo1, tbInfo2, tbInfo3, tbInfo4, tbInfo5, tbInfo6, tbInfo7, tbInfo8, tbInfo9 }))
             {
                 this.Close();
@@ -168,6 +169,8 @@ namespace VividManagementApplication
             {
                 MessageBox.Show("请先填入必填项(带*项目)!", "提示");
             }
+             */
+            this.Close();
         }
 
         #region 电子签名

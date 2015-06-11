@@ -37,21 +37,21 @@
             // 
             // LoadingProgressBar
             // 
-            this.LoadingProgressBar.Location = new System.Drawing.Point(0, 244);
+            this.LoadingProgressBar.Location = new System.Drawing.Point(9, 251);
             this.LoadingProgressBar.Name = "LoadingProgressBar";
-            this.LoadingProgressBar.Size = new System.Drawing.Size(464, 21);
+            this.LoadingProgressBar.Size = new System.Drawing.Size(484, 20);
             this.LoadingProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.LoadingProgressBar.TabIndex = 0;
             // 
             // LoadingPictureBox
             // 
-            this.LoadingPictureBox.BackgroundImage = global::VividManagementApplication.Properties.Resources.loginpage;
+            this.LoadingPictureBox.BackgroundImage = global::VividManagementApplication.Properties.Resources.LoadingPage;
             this.LoadingPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LoadingPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LoadingPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LoadingPictureBox.InitialImage = null;
             this.LoadingPictureBox.Location = new System.Drawing.Point(0, 0);
             this.LoadingPictureBox.Name = "LoadingPictureBox";
-            this.LoadingPictureBox.Size = new System.Drawing.Size(464, 245);
+            this.LoadingPictureBox.Size = new System.Drawing.Size(500, 281);
             this.LoadingPictureBox.TabIndex = 2;
             this.LoadingPictureBox.TabStop = false;
             // 
@@ -62,9 +62,9 @@
             // 
             // Loading
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 265);
+            this.ClientSize = new System.Drawing.Size(500, 281);
             this.Controls.Add(this.LoadingProgressBar);
             this.Controls.Add(this.LoadingPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
