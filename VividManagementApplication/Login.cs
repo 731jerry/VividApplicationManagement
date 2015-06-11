@@ -10,6 +10,8 @@ using System.IO;
 using ControlExs;
 using System.Threading;
 
+using System.Net;
+
 namespace VividManagementApplication
 {
     public partial class Login : Form
@@ -58,8 +60,8 @@ namespace VividManagementApplication
                     else
                     {
                         MainWindow.IS_LOGED_IN = true;
-                        MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" +MainWindow.USER_ID + "_data.db";
-                        MainWindow.LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\"+MainWindow.USER_ID+"_temp.gzb";
+                        MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + MainWindow.USER_ID + "_data.db";
+                        MainWindow.LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\" + MainWindow.USER_ID + "_temp.gzb";
                         MainWindow.ONLINE_DATABASE_FILE_PREFIX = MainWindow.USER_ID + "_online.db"; ;
                         //this.Visible = false;
                         this.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -219,5 +221,147 @@ namespace VividManagementApplication
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FTPRenameRemoteFile();
+            //FTPtest();
+            //RenameFileName();
+            //string _ftpURL = "121.42.154.95";         //Host URL or address of the FTP server
+            //string _UserName = MainWindow.ONLINE_FTP_USERNAME;             //User Name of the FTP server
+            //string _Password = MainWindow.ONLINE_FTP_PASSWORD;          //Password of the FTP server
+            //string _ftpDirectory = "Project/GZB/Users";      //The directory in FTP server where the file will be uploaded
+            //string _FileName = "test1.csv";         //File name, which one will be uploaded
+            //string _ftpDirectoryProcessed = "Done"; //The directory in FTP server where the file will be moved
+            //MoveFile(_ftpURL, _UserName, _Password, _ftpDirectory, _FileName, _ftpDirectoryProcessed);
+            //RenameTest();
+            //RenameTest();
+        }
+        private void FTPtest() {
+            String path = "ftp://www.vividapp.net/Project/GZB/Users/000003_online.db";
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(path);
+            request.Credentials = new NetworkCredential(MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+            request.Method = WebRequestMethods.Ftp.GetFileSize;
+
+            try
+            {
+                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                MessageBox.Show(response.StatusDescription);
+            }
+            catch (WebException ex)
+            {
+                FtpWebResponse response = (FtpWebResponse)ex.Response;
+                if (response.StatusCode == FtpStatusCode.ActionNotTakenFileUnavailable)
+                {
+                    //Does not exist
+                }
+            }
+        }
+
+        private void FTPRenameRemoteFile()
+        {
+            String path = "ftp://www.vividapp.net/Project/GZB/Users/000003_online.db";
+            //String path = "ftp://vividappftp:vividappftp@www.vividapp.net/Project/GZB/Users/00000004_data.txt";
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://www.vividapp.net/Project/GZB/Users/000003_online_bk.db"));
+            req.Credentials = new NetworkCredential(MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+            req.KeepAlive = false;
+            req.Method = WebRequestMethods.Ftp.Rename; 
+            req.UseBinary = true;
+            req.RenameTo = MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyy-MM-dd-HH:mm:ss") + ".db"; 
+
+            req.GetResponse().Close();
+
+            FtpWebResponse resp = (FtpWebResponse)req.GetResponse();
+            resp.Close();
+
+            //try
+            //{
+            //    using (FtpWebResponse response = (FtpWebResponse)ftpReq.GetResponse())
+            //    {
+            //        // response.Close();
+            //    }
+            //}
+            //catch (Exception ex) { 
+            //}
+        }
+
+        private void RenameFileName()
+        {
+            string currentFilename = "Project/GZB/Users/000003_online.db";
+            string newFilename = MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ".db";
+            FtpWebRequest reqFTP = null;
+            Stream ftpStream = null;
+            try
+            {
+                reqFTP = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://" + "121.42.154.95" + "/" + currentFilename));
+                reqFTP.Method = WebRequestMethods.Ftp.Rename;
+                reqFTP.RenameTo = newFilename;
+                reqFTP.UseBinary = true;
+                reqFTP.Credentials = new NetworkCredential(MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+                FtpWebResponse response = (FtpWebResponse)reqFTP.GetResponse();
+                ftpStream = response.GetResponseStream();
+                ftpStream.Close();
+                response.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ftpStream != null)
+                {
+                    ftpStream.Close();
+                    ftpStream.Dispose();
+                }
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void MoveFile(string ftpURL, string UserName, string Password, string ftpDirectory, string ftpDirectoryProcessed, string FileName)
+        {
+            FtpWebRequest ftpRequest = null;
+            FtpWebResponse ftpResponse = null;
+            try
+            {
+                ftpRequest = (FtpWebRequest)WebRequest.Create(ftpURL + "/" + ftpDirectory + "/" + FileName);
+                ftpRequest.Credentials = new NetworkCredential(UserName, Password);
+                ftpRequest.UseBinary = true;
+                ftpRequest.UsePassive = true;
+                ftpRequest.KeepAlive = true;
+                ftpRequest.Method = WebRequestMethods.Ftp.Rename;
+                ftpRequest.RenameTo = ftpDirectoryProcessed + "/" + FileName;
+                ftpResponse = (FtpWebResponse)ftpRequest.GetResponse();
+                ftpResponse.Close();
+                ftpRequest = null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void RenameTest() {
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://www.vividapp.net/Project/GZB/Users/000003_online.db"));
+            req.Credentials = new NetworkCredential(MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+            req.KeepAlive = false;
+            req.Method = WebRequestMethods.Ftp.Rename;  ///更改这行
+            req.UseBinary = true;
+            req.RenameTo = "000003_online_bk.db";  ///加入这行
+
+            req.GetResponse().Close();
+
+            FtpWebResponse resp = (FtpWebResponse)req.GetResponse();
+            resp.Close();
+            //using (FtpWebResponse Response = (FtpWebResponse)req.GetResponse())
+            //{
+            //    long size = Response.ContentLength;
+            //    using (Stream datastream = Response.GetResponseStream())
+            //    {
+            //        using (StreamReader sr = new StreamReader(datastream))
+            //        {
+            //            sr.ReadToEnd();
+            //            sr.Close();
+            //        }
+            //        datastream.Close();
+            //    }
+            //    Response.Close();
+            //}
+        }
     }
 }
