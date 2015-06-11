@@ -197,9 +197,7 @@ namespace VividManagementApplication
                 #endregion
 
                 #region 初始化客户列表
-                listCxButton.Enabled = true;
-                cxRadio.PerformClick();
-                listCxButton.PerformClick();
+                HasLoginTimer.Enabled = true;
                 #endregion
             }
             else
@@ -207,6 +205,14 @@ namespace VividManagementApplication
                 this.Visible = false;
                 this.Close();
             }
+        }
+
+        // 设置登录后初始值
+        private void HasLoginTimer_Tick(object sender, EventArgs e)
+        {
+            HasLoginTimer.Enabled = false;
+            HasLoginTimer.Dispose();
+            listCxButton.PerformClick();
         }
 
         // MainWindow 窗口固定
@@ -1866,6 +1872,7 @@ namespace VividManagementApplication
             StatusToolStripStatusLabel.Text = "状态";
             lablTextChangeTimer.Enabled = false;
         }
+
 
 
     }

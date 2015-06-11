@@ -94,6 +94,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadFileToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.HasLoginTimer = new System.Windows.Forms.Timer(this.components);
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -590,6 +591,10 @@
             this.pbUploadDownloadFileToolStripProgressBar.Name = "pbUploadDownloadFileToolStripProgressBar";
             resources.ApplyResources(this.pbUploadDownloadFileToolStripProgressBar, "pbUploadDownloadFileToolStripProgressBar");
             // 
+            // HasLoginTimer
+            // 
+            this.HasLoginTimer.Tick += new System.EventHandler(this.HasLoginTimer_Tick);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
@@ -689,6 +694,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private ControlExs.QQButton dataSpImport;
         private ControlExs.QQButton dataCxImport;
+        private System.Windows.Forms.Timer HasLoginTimer;
     }
 }
 
