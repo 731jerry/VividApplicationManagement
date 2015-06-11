@@ -1185,5 +1185,29 @@ namespace VividManagementApplication
             return fi.Length;
         }
 
+        public void FTPRenameRemoteFile(String path, String newFileName)
+        {
+            //String path = MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX;
+            FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(new Uri(path));
+            req.Credentials = new NetworkCredential(MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+            req.KeepAlive = false;
+            req.UseBinary = true;
+            req.Method = WebRequestMethods.Ftp.Rename;
+            //req.RenameTo = MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db";
+            req.RenameTo = newFileName;
+            req.GetResponse().Close();
+            try
+            {
+                using (FtpWebResponse resp = (FtpWebResponse)req.GetResponse())
+                {
+                    resp.Close();
+                    // response.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+        }
     }
 }

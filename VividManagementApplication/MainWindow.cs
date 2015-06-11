@@ -454,6 +454,9 @@ namespace VividManagementApplication
             SetpbUploadDownloadLabel(true);
             SetpbUploadDownloadFile(true, 0);
 
+            //FTPRenameRemoteFile();
+            FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX,MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db");
+
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
             client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);

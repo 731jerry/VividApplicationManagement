@@ -194,19 +194,26 @@ namespace VividManagementApplication
             SetLoadingLabel("正在上传数据库...");
             try
             {
-                WebClient client = new WebClient();
-                Uri uri = new Uri(uriString);
-                client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
-                client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
-                //DatabaseConnections.Connector.LocalDbClose();
-                client.UploadFileAsync(uri, "STOR", fileNamePath);
-                // client.Proxy = WebRequest.DefaultWebProxy;
-                //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
-                //client.Dispose();
+                //FTPRenameRemoteFile(); // 重命名
+                FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db");
+
+                using (WebClient client = new WebClient())
+                {
+                    Uri uri = new Uri(uriString);
+                    client.UploadProgressChanged += new UploadProgressChangedEventHandler(UploadProgressCallback);
+                    client.UploadFileCompleted += new UploadFileCompletedEventHandler(UploadFileCompleteCallback);
+                    //DatabaseConnections.Connector.LocalDbClose();
+                    client.UploadFileAsync(uri, "STOR", fileNamePath);
+                    // client.Proxy = WebRequest.DefaultWebProxy;
+                    //client.Proxy.Credentials = new NetworkCredential(ONLINE_FTP_USERNAME, ONLINE_FTP_PASSWORD, ONLINE_FTP_DOMAIN);
+                    client.Dispose();
+                }
             }
-            catch (Exception ee)
+            catch
             {
-                return;
+                SetLoadingLabel("正在上传数据库错误，请在下次登录时重试...");
+                canClose = true;
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
 
@@ -234,14 +241,24 @@ namespace VividManagementApplication
         private void DownloadFile(String uriString, String fileNamePath)
         {
             SetLoadingLabel("正在下载数据库...");
-
-            WebClient client = new WebClient();
-            Uri uri = new Uri(uriString);
-            client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
-            client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleteCallback);
-            client.DownloadFileAsync(uri, fileNamePath);
-            //client.DownloadFile(uri, fileNamePath);
-            client.Dispose();
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    Uri uri = new Uri(uriString);
+                    client.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
+                    client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadFileCompleteCallback);
+                    client.DownloadFileAsync(uri, fileNamePath);
+                    //client.DownloadFile(uri, fileNamePath);
+                    client.Dispose();
+                }
+            }
+            catch
+            {
+                SetLoadingLabel("正在下载数据库错误，请在下次登录时重试...");
+                canClose = true;
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
         }
 
         private void DownloadProgressCallback(object sender, System.Net.DownloadProgressChangedEventArgs e)

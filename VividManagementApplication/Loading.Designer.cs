@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Loading));
             this.LoadingProgressBar = new System.Windows.Forms.ProgressBar();
             this.LoadingPictureBox = new System.Windows.Forms.PictureBox();
             this.StartTimer = new System.Windows.Forms.Timer(this.components);
@@ -37,9 +38,9 @@
             // 
             // LoadingProgressBar
             // 
-            this.LoadingProgressBar.Location = new System.Drawing.Point(9, 251);
+            this.LoadingProgressBar.Location = new System.Drawing.Point(9, 254);
             this.LoadingProgressBar.Name = "LoadingProgressBar";
-            this.LoadingProgressBar.Size = new System.Drawing.Size(484, 20);
+            this.LoadingProgressBar.Size = new System.Drawing.Size(484, 18);
             this.LoadingProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.LoadingProgressBar.TabIndex = 0;
             // 
@@ -62,17 +63,16 @@
             // 
             // Loading
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 281);
             this.Controls.Add(this.LoadingProgressBar);
             this.Controls.Add(this.LoadingPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Loading";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "载入中...";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Loading_FormClosing);
