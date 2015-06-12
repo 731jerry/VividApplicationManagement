@@ -195,7 +195,10 @@ namespace VividManagementApplication
             try
             {
                 //FTPRenameRemoteFile(); // 重命名
-                FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db");
+                if (!FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db")) {
+                    canClose = true;
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
 
                 using (WebClient client = new WebClient())
                 {

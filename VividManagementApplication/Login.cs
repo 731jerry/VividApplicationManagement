@@ -225,8 +225,10 @@ namespace VividManagementApplication
         {
             //List<String> test = FormBasicFeatrues.GetInstence().GetExtenalIpAndLocation();
             //MessageBox.Show(test[0] + "===" +test[1]);
-            MessageBox.Show(FormBasicFeatrues.GetInstence().GetLocalIpAddress());
+            //MessageBox.Show(FormBasicFeatrues.GetInstence().GetLocalIpAddress());
+            FormBasicFeatrues.GetInstence().Test();
         }
 
+      
     }
 }

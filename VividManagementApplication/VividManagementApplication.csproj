@@ -57,6 +57,9 @@
     <Reference Include="ControlExs">
       <HintPath>.\ControlExs.dll</HintPath>
     </Reference>
+    <Reference Include="ftplib">
+      <HintPath>.\ftplib.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\MySql.Data.dll</HintPath>

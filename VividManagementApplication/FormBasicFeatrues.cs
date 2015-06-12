@@ -12,6 +12,7 @@ using System.IO;
 using System.Web;
 using System.Text.RegularExpressions;
 using System.IO.Compression;
+using FtpLib;
 
 namespace VividManagementApplication
 {
@@ -1185,7 +1186,60 @@ namespace VividManagementApplication
             return fi.Length;
         }
 
-        public void FTPRenameRemoteFile(String path, String newFileName)
+        public List<String> FTPListFiles(String remoteFolder)
+        {
+            List<String> directories = new List<String>();
+            // Get the object used to communicate with the server.
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(remoteFolder);
+            request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+
+            // This example assumes the FTP site uses anonymous logon.
+            request.Credentials = new NetworkCredential(MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+
+            using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
+            {
+
+                Stream responseStream = response.GetResponseStream();
+                using (StreamReader reader = new StreamReader(responseStream))
+                {
+                    Application.DoEvents();
+                    string line = reader.ReadLine();
+                    while (!string.IsNullOrEmpty(line))
+                    {
+                        directories.Add(line);
+                        line = reader.ReadLine();
+                    }
+                    reader.Close();
+                    response.Close();
+                }
+            }
+            return directories;
+        }
+
+        public void Test()
+        {
+            using (FtpConnection ftp = new FtpConnection(MainWindow.ONLINE_FTP_HOSTNAME, MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD))
+            {
+
+                ftp.Open(); /* Open the FTP connection */
+                ftp.Login(); /* Login using previously provided credentials */
+
+                ftp.SetCurrentDirectory("/Project/GZB/Users/");
+                foreach (var dir in ftp.GetDirectories("Users"))
+                {
+                    Console.WriteLine(dir.Name);
+                    Console.WriteLine(dir.CreationTime);
+                    foreach (var file in dir.GetFiles())
+                    {
+                        Console.WriteLine(file.Name);
+                        Console.WriteLine(file.LastAccessTime);
+                    }
+                }
+                
+            }
+        }
+
+        public Boolean FTPRenameRemoteFile(String path, String newFileName)
         {
             //String path = MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX;
             FtpWebRequest req = (FtpWebRequest)FtpWebRequest.Create(new Uri(path));
@@ -1201,12 +1255,12 @@ namespace VividManagementApplication
                 using (FtpWebResponse resp = (FtpWebResponse)req.GetResponse())
                 {
                     resp.Close();
-                    // response.Close();
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                return;
+                return false;
             }
         }
 
