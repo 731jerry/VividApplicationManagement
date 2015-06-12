@@ -1209,5 +1209,45 @@ namespace VividManagementApplication
                 return;
             }
         }
+
+        //获取本地ip地址
+        public String GetLocalIpAddress()
+        {
+            IPAddress[] names = Dns.GetHostAddresses(Dns.GetHostName());
+            if (Dns.GetHostAddresses(Dns.GetHostName()).Length > 1)
+                return Dns.GetHostAddresses(Dns.GetHostName())[1].ToString();
+            else
+                return Dns.GetHostAddresses(Dns.GetHostName())[0].ToString();
+        }
+
+        // 获取外网IP和地址
+        public List<String> GetExtenalIpAndLocation()
+        {
+            try
+            {
+                //从网址中获取本机ip数据
+                using (System.Net.WebClient client = new System.Net.WebClient())
+                {
+                    client.Encoding = System.Text.Encoding.Default;
+                    String reply = client.DownloadString("http://1111.ip138.com/ic.asp");   //"http://www.ip138.com"
+                    //提取外网ip数据 [218.104.71.178]
+                    String IPStartString = "您的IP是：[", IPEndString = "] 来自：";
+                    int IPStart = reply.IndexOf(IPStartString) + IPStartString.Length, IPEnd = reply.IndexOf(IPEndString);
+                    String IP = reply.Substring(IPStart, IPEnd - IPStart);
+
+                    String LocationStartString = "] 来自：", LocationEndString = "</center></body>";
+                    int LocationStart = reply.IndexOf(LocationStartString) + LocationStartString.Length, LocationEnd = reply.IndexOf(LocationEndString);
+                    String Location = reply.Substring(LocationStart, LocationEnd - LocationStart);
+                    if (!IP.Equals("") && !Location.Equals(""))
+                    {
+                        return new List<String>() { IP, Location };
+                    }
+                }
+            }
+            catch (Exception) { }
+            return new List<String>() { "error", "未获取到外网ip" };
+        }
+
+
     }
 }

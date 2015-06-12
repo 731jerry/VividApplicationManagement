@@ -221,5 +221,12 @@ namespace VividManagementApplication
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //List<String> test = FormBasicFeatrues.GetInstence().GetExtenalIpAndLocation();
+            //MessageBox.Show(test[0] + "===" +test[1]);
+            MessageBox.Show(FormBasicFeatrues.GetInstence().GetLocalIpAddress());
+        }
+
     }
 }
