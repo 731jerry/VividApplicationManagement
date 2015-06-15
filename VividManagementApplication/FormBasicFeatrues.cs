@@ -1225,16 +1225,17 @@ namespace VividManagementApplication
                 ftp.Login(); /* Login using previously provided credentials */
 
                 ftp.SetCurrentDirectory("/Project/GZB/Users/");
-                foreach (var dir in ftp.GetDirectories("Users"))
-                {
-                    Console.WriteLine(dir.Name);
-                    Console.WriteLine(dir.CreationTime);
-                    foreach (var file in dir.GetFiles())
-                    {
-                        Console.WriteLine(file.Name);
-                        Console.WriteLine(file.LastAccessTime);
-                    }
-                }
+                Console.WriteLine(ftp.GetCurrentDirectoryInfo().Name);
+                //foreach (var dir in ftp.GetCurrentDirectoryInfo)
+                //{
+                //    Console.WriteLine(dir.Name);
+                //    Console.WriteLine(dir.CreationTime);
+                //    foreach (var file in dir.GetFiles())
+                //    {
+                //        Console.WriteLine(file.Name);
+                //        Console.WriteLine(file.LastAccessTime);
+                //    }
+                //}
                 
             }
         }

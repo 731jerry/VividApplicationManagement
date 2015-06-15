@@ -93,6 +93,8 @@
     <Compile Include="DataImport.Designer.cs">
       <DependentUpon>DataImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTPClient.cs" />
+    <Compile Include="FTPWeb.cs" />
     <Compile Include="InputMessage.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -226,7 +226,38 @@ namespace VividManagementApplication
             //List<String> test = FormBasicFeatrues.GetInstence().GetExtenalIpAndLocation();
             //MessageBox.Show(test[0] + "===" +test[1]);
             //MessageBox.Show(FormBasicFeatrues.GetInstence().GetLocalIpAddress());
-            FormBasicFeatrues.GetInstence().Test();
+            
+            //FormBasicFeatrues.GetInstence().Test();
+            //FTPClient ftpC = new FTPClient(MainWindow.ONLINE_FTP_HOSTNAME, "/Project/GZB/", MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD, 21);
+            //foreach (var item in ftpC.Dir("Users"))
+            //{
+            //    Console.WriteLine(item);
+            //} 
+
+            FtpWeb ftpW = new FtpWeb(MainWindow.ONLINE_FTP_HOSTNAME, "Project/GZB/Users/", MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD);
+            foreach (var item in ftpW.GetFileList("*.db"))
+            {
+                Console.WriteLine(item);
+            }
+            
+        //static void Main()
+        //{
+        //    //string file = "c:\\aq3.gifa";
+        //    //FileInfo fileInf = new FileInfo(file);
+        //    //if (!fileInf.Exists)
+        //    //{
+        //    //    Console.WriteLine(file + " no exists");
+        //    //}
+        //    //else {
+        //    //    Console.WriteLine("yes");
+        //    //}
+        //    //Console.ReadLine();
+        //    FtpWeb fw = new FtpWeb("121.11.65.10", "", "aa1", "aa");
+        //    string[] filePaths = { "c:\\aq3.gif1", "c:\\aq2.gif1", "c:\\bsmain_runtime.log" };
+        //    Console.WriteLine(fw.UploadFile(filePaths));
+        //    Console.ReadLine();
+        //}
+
         }
 
       
