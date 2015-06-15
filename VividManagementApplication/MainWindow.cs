@@ -1242,6 +1242,8 @@ namespace VividManagementApplication
             {
                 if (this.Visible)
                 {
+                    this.Visible = false;
+
                     keepOnlineTimer.Enabled = false;
                     keepOnlineTimer.Dispose();
 

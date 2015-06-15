@@ -146,6 +146,11 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\管账宝.exe
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
+D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DataImport.resources
+\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DataImport.resources
+D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Loading.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\管账宝.exe.config
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\管账宝.exe
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\ControlExs.dll
@@ -153,7 +158,9 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\bin\Release\System.Data.SQLite.DLL
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csprojResolveAssemblyReference.cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.BillSign.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.DataImport.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Loading.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.ConfirmPassword.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.CoolPrintPreviewDialog.resources
@@ -167,10 +174,3 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.update.resources
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.csproj.GenerateResource.Cache
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\管账宝.exe
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.InputMessage.resources
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Picker.resources
-D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DataImport.resources
-\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.DataImport.resources
-\\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.DataImport.resources
-\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Loading.resources
-D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Loading.resources

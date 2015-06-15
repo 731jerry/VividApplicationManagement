@@ -12,7 +12,6 @@ using System.IO;
 using System.Web;
 using System.Text.RegularExpressions;
 using System.IO.Compression;
-using FtpLib;
 
 namespace VividManagementApplication
 {
@@ -1218,26 +1217,7 @@ namespace VividManagementApplication
 
         public void Test()
         {
-            using (FtpConnection ftp = new FtpConnection(MainWindow.ONLINE_FTP_HOSTNAME, MainWindow.ONLINE_FTP_USERNAME, MainWindow.ONLINE_FTP_PASSWORD))
-            {
 
-                ftp.Open(); /* Open the FTP connection */
-                ftp.Login(); /* Login using previously provided credentials */
-
-                ftp.SetCurrentDirectory("/Project/GZB/Users/");
-                Console.WriteLine(ftp.GetCurrentDirectoryInfo().Name);
-                //foreach (var dir in ftp.GetCurrentDirectoryInfo)
-                //{
-                //    Console.WriteLine(dir.Name);
-                //    Console.WriteLine(dir.CreationTime);
-                //    foreach (var file in dir.GetFiles())
-                //    {
-                //        Console.WriteLine(file.Name);
-                //        Console.WriteLine(file.LastAccessTime);
-                //    }
-                //}
-                
-            }
         }
 
         public Boolean FTPRenameRemoteFile(String path, String newFileName)
