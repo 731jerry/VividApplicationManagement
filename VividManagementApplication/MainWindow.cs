@@ -1831,6 +1831,8 @@ namespace VividManagementApplication
         {
             try
             {
+                Application.DoEvents();
+
                 List<List<String>> remoteSignList = DatabaseConnections.Connector.OnlineGetRowsDataById("gzb_remotesign", new List<String>() { "Id", "fromGZBID", "toGZBID", "companyNickName", "isSigned", "signValue", "sendTime", "signTime", "refusedMessage" }, "toGZBID", MainWindow.USER_ID, " OR fromGZBID='" + MainWindow.USER_ID + "'");
 
                 REMOTE_SIGN_UNDEALED_LIST_COUNT = 0;

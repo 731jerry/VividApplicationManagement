@@ -281,6 +281,7 @@
             this.sendRemoteSignToolStripButton.Name = "sendRemoteSignToolStripButton";
             this.sendRemoteSignToolStripButton.Size = new System.Drawing.Size(84, 22);
             this.sendRemoteSignToolStripButton.Text = "发送远程签单";
+            this.sendRemoteSignToolStripButton.ToolTipText = "您需要是付费用户并且接收方为有效的管账宝帐号此功能才能使用!";
             this.sendRemoteSignToolStripButton.Click += new System.EventHandler(this.sendRemoteSignToolStripButton_Click);
             // 
             // _preview

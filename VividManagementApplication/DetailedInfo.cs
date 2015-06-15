@@ -1876,7 +1876,7 @@ namespace VividManagementApplication
                     dlg.Document = this.printDocument1;
                     //dlg.WindowState = FormWindowState.Maximized;
                     dlg.Size = new Size(800, 600);
-                    if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 1))
+                    if (!dzGZBId.Text.Equals("") && (printFlag == 2) && (danziComboBox.SelectedIndex == 1) && (MainWindow.DEGREE > 0))
                     {
                         dlg.sendRemoteSignToolStripButton.Enabled = true;
                         dlg.gzbIDString = dzGZBId.Text;

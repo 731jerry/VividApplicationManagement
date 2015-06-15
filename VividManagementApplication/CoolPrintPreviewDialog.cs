@@ -316,7 +316,7 @@ namespace VividManagementApplication
         {
             // 检测远程签单人是否存在
             List<String> remoteUserInfo = DatabaseConnections.Connector.OnlineGetOneRowDataById("users", new List<String>() { "userid", "company" }, "userid", gzbIDString);
-            if (remoteUserInfo.Count>0)
+            if (remoteUserInfo.Count > 0)
             {
                 PrintDocument doc = this.Document;
                 //PrintController controller = new PrintControllerFile();

@@ -70,6 +70,7 @@
             // 
             // detailedMessageTextbox
             // 
+            this.detailedMessageTextbox.Font = new System.Drawing.Font("宋体", 11F);
             this.detailedMessageTextbox.Location = new System.Drawing.Point(12, 63);
             this.detailedMessageTextbox.Multiline = true;
             this.detailedMessageTextbox.Name = "detailedMessageTextbox";
