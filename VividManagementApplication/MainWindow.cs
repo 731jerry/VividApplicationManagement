@@ -327,6 +327,7 @@ namespace VividManagementApplication
 
         private void SyncDatabaseWithObject(object obj)
         {
+            Application.DoEvents();
             Boolean isLocalFileExists = File.Exists(MainWindow.LOCAL_DATABASE_LOCATION);
             Boolean isRemoteFileExists = FormBasicFeatrues.GetInstence().UriExists(MainWindow.ONLINE_DATABASE_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX);
 
