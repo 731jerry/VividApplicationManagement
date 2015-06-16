@@ -1283,6 +1283,16 @@ namespace VividManagementApplication
             return new List<String>() { "error", "未获取到外网ip" };
         }
 
-
+        public void ContactKF()
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("tencent://message/?uin=2424935927");
+            }
+            catch
+            {
+                MessageBox.Show("请直接联系客服QQ：2424935927或者电话：139-0583-5966", "提示");
+            }
+        }
     }
 }

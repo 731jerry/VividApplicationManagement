@@ -1878,6 +1878,11 @@ namespace VividManagementApplication
             lablTextChangeTimer.Enabled = false;
         }
 
+        private void ContactKFqqButton_Click(object sender, EventArgs e)
+        {
+            FormBasicFeatrues.GetInstence().ContactKF();
+        }
+
 
 
     }

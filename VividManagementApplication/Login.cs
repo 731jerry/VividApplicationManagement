@@ -220,6 +220,11 @@ namespace VividManagementApplication
                 System.Diagnostics.Process.Start("http://www.vividapp.net/GZB_product.php");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
+        
       
     }
 }

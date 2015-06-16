@@ -261,7 +261,9 @@
     <None Include="Resources\notifyIcon.ico" />
     <None Include="Resources\printpreview.png" />
     <None Include="Resources\complete.wav" />
+    <Content Include="Resources\conactKF.png" />
     <Content Include="Resources\LoadingPage.jpg" />
+    <Content Include="Resources\qqKF_meitu_1.png" />
     <Content Include="Resources\Signature.png" />
     <None Include="Resources\view.png" />
     <None Include="Resources\sync.png" />

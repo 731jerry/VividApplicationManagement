@@ -95,6 +95,7 @@
             this.pbUploadDownloadToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pbUploadDownloadFileToolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.HasLoginTimer = new System.Windows.Forms.Timer(this.components);
+            this.ContactKFqqButton = new ControlExs.QQButton();
             this.MainPanel.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGridView)).BeginInit();
@@ -595,10 +596,20 @@
             // 
             this.HasLoginTimer.Tick += new System.EventHandler(this.HasLoginTimer_Tick);
             // 
+            // ContactKFqqButton
+            // 
+            this.ContactKFqqButton.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.ContactKFqqButton, "ContactKFqqButton");
+            this.ContactKFqqButton.Image = global::VividManagementApplication.Properties.Resources.qqKF_meitu_1;
+            this.ContactKFqqButton.Name = "ContactKFqqButton";
+            this.ContactKFqqButton.UseVisualStyleBackColor = false;
+            this.ContactKFqqButton.Click += new System.EventHandler(this.ContactKFqqButton_Click);
+            // 
             // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ContactKFqqButton);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.UserDegreeLabel);
             this.Controls.Add(this.ExtendExpireLinkLabel);
@@ -695,6 +706,7 @@
         private ControlExs.QQButton dataSpImport;
         private ControlExs.QQButton dataCxImport;
         private System.Windows.Forms.Timer HasLoginTimer;
+        private ControlExs.QQButton ContactKFqqButton;
     }
 }
 

@@ -92,6 +92,16 @@ namespace VividManagementApplication.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap conactKF {
+            get {
+                object obj = ResourceManager.GetObject("conactKF", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Exit {
             get {
                 object obj = ResourceManager.GetObject("Exit", resourceCulture);
@@ -155,6 +165,16 @@ namespace VividManagementApplication.Properties {
         internal static System.Drawing.Bitmap printpreview {
             get {
                 object obj = ResourceManager.GetObject("printpreview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap qqKF_meitu_1 {
+            get {
+                object obj = ResourceManager.GetObject("qqKF_meitu_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
