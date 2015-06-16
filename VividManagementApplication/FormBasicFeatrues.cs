@@ -635,6 +635,7 @@ namespace VividManagementApplication
         /// 
         public String addCharIntoString(String addingChar, String oriString)
         {
+            /*
             String newString = "";
             List<String> newStringList = new List<string>();
             if (!oriString.Equals("") || oriString != null)
@@ -653,6 +654,11 @@ namespace VividManagementApplication
                 }
             }
             return newString;
+             */
+            char[] chars = oriString.ToCharArray();
+            //List<String > temp = input.Split().ToList();
+            List<char> temp = chars.ToList();
+            return String.Join(addingChar, temp);
         }
 
         /// <summary>

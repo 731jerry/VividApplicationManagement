@@ -1351,12 +1351,13 @@ namespace VividManagementApplication
             tempDGV.Columns[6].HeaderText = "结余金额(元)";
 
             tempDGV.Columns[0].Width = 30;
-            tempDGV.Columns[1].Width = 75;
-            tempDGV.Columns[2].Width = 75;
-            tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            tempDGV.Columns[4].Width = 65;
-            tempDGV.Columns[5].Width = 65;
-            tempDGV.Columns[6].Width = 65;
+            tempDGV.Columns[1].Width = 110;
+            tempDGV.Columns[2].Width = 100;
+            //tempDGV.Columns[3].Width = 150;
+           // tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tempDGV.Columns[4].Width = 130;
+            tempDGV.Columns[5].Width = 130;
+            tempDGV.Columns[6].Width = 130;
 
             DZDPrintingDGV = CopyDataGridView(tempDGV);
             float yingTotal = 0, yiTotal = 0, yuTotal = 0;
@@ -1545,10 +1546,12 @@ namespace VividManagementApplication
                                    this.printDocument1.DefaultPageSettings.PaperSize.Height - 45);
 
                             // 页脚
+                            /*
                             fontSize = e.Graphics.MeasureString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", new Font("微软雅黑", 7));
                             e.Graphics.DrawString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", new Font("微软雅黑", 7), new SolidBrush(Color.Red),
                                 this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2,
                                 this.printDocument1.DefaultPageSettings.PaperSize.Height - 65);
+                            */
 
                             //Draw Header
                             e.Graphics.DrawString(leftString, new Font(DZDPrintingDGV.Font, FontStyle.Bold),
@@ -1560,7 +1563,7 @@ namespace VividManagementApplication
                             e.Graphics.DrawString(rightString, new Font(DZDPrintingDGV.Font, FontStyle.Bold),
                                     Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width -
                                     e.Graphics.MeasureString(rightString, new Font(DZDPrintingDGV.Font,
-                                    FontStyle.Bold), e.MarginBounds.Width).Width), e.MarginBounds.Top -
+                                    FontStyle.Bold), e.MarginBounds.Width).Width)-5, e.MarginBounds.Top -
                                     e.Graphics.MeasureString(leftString, new Font(new Font(DZDPrintingDGV.Font,
                                     FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height + 15);
 

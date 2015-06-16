@@ -4160,6 +4160,7 @@ namespace VividManagementApplication
             // 
             this.label126.AutoSize = true;
             this.label126.Font = new System.Drawing.Font("黑体", 8.7F);
+            this.label126.ForeColor = System.Drawing.Color.Red;
             this.label126.Location = new System.Drawing.Point(614, 17);
             this.label126.Name = "label126";
             this.label126.Size = new System.Drawing.Size(71, 12);
