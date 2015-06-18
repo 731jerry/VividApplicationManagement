@@ -22,5 +22,17 @@ namespace VividManagementApplication.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string accountName {
+            get {
+                return ((string)(this["accountName"]));
+            }
+            set {
+                this["accountName"] = value;
+            }
+        }
     }
 }

@@ -57,8 +57,19 @@ namespace VividManagementApplication
                 // 检测未处理签单的个数
                 SetLoadingLabel("正在检查远程签单消息...");
                 SetLoadingProgressBar(30);
-                updateRemoteSignUndealedCountCheck();
-                List<List<String>> remoteSignList = updateRemoteSign();
+                List<List<String>> remoteSignList = new List<List<string>>();
+                try
+                {
+                    updateRemoteSignUndealedCountCheck();
+                    remoteSignList = updateRemoteSign();
+                }
+                catch
+                {
+                    SetLoadingProgressBar(100);
+                    canClose = true;
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
+
                 SetLoadingLabel("检查远程签单消息完成...");
                 SetLoadingProgressBar(60);
 

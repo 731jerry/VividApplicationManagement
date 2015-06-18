@@ -9,7 +9,6 @@ using System.Windows.Forms;
 using System.IO;
 using ControlExs;
 using System.Threading;
-
 using System.Net;
 
 namespace VividManagementApplication
@@ -59,6 +58,7 @@ namespace VividManagementApplication
                     }
                     else
                     {
+                        Properties.Settings.Default.accountName = cbAccount.Text;
                         MainWindow.IS_LOGED_IN = true;
                         MainWindow.LOCAL_DATABASE_LOCATION = Environment.CurrentDirectory + "\\data\\" + MainWindow.USER_ID + "_data.db";
                         MainWindow.LOCAL_DATABASE_LOCATION_COPY = Environment.CurrentDirectory + "\\temp\\" + MainWindow.USER_ID + "_temp.gzb";
@@ -112,6 +112,7 @@ namespace VividManagementApplication
 
         private void Login_Load(object sender, EventArgs e)
         {
+            cbAccount.Text = Properties.Settings.Default.accountName;
             //UpdateTimer.Enabled = true;
             windowText = this.Text;
 
@@ -221,6 +222,6 @@ namespace VividManagementApplication
             }
         }
 
-      
+
     }
 }
