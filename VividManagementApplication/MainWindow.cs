@@ -462,7 +462,7 @@ namespace VividManagementApplication
             SetpbUploadDownloadFile(true, 0);
 
             //FTPRenameRemoteFile();
-            FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX,MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db");
+            FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.USER_ID + "_online_" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + ".db");
 
             WebClient client = new WebClient();
             Uri uri = new Uri(uriString);
@@ -1354,7 +1354,7 @@ namespace VividManagementApplication
             tempDGV.Columns[1].Width = 110;
             tempDGV.Columns[2].Width = 100;
             //tempDGV.Columns[3].Width = 150;
-           // tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            // tempDGV.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tempDGV.Columns[4].Width = 130;
             tempDGV.Columns[5].Width = 130;
             tempDGV.Columns[6].Width = 130;
@@ -1546,12 +1546,17 @@ namespace VividManagementApplication
                                    this.printDocument1.DefaultPageSettings.PaperSize.Height - 45);
 
                             // 页脚
-                            /*
-                            fontSize = e.Graphics.MeasureString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", new Font("微软雅黑", 7));
-                            e.Graphics.DrawString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", new Font("微软雅黑", 7), new SolidBrush(Color.Red),
-                                this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2,
-                                this.printDocument1.DefaultPageSettings.PaperSize.Height - 65);
-                            */
+                            if (MainWindow.DEGREE > 0)
+                            {
+
+                            }
+                            else
+                            {
+                                fontSize = e.Graphics.MeasureString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   联系电话: 139-0583-5966   客服QQ: 2424935927", new Font("微软雅黑", 7));
+                                e.Graphics.DrawString("此账单版本由唯达软件系统提供 http://www.vividapp.net/   联系电话: 139-0583-5966   客服QQ: 2424935927", new Font("微软雅黑", 7), new SolidBrush(Color.Red),
+                                                this.printDocument1.DefaultPageSettings.PaperSize.Width / 2 - fontSize.Width / 2,
+                                                this.printDocument1.DefaultPageSettings.PaperSize.Height - 65);
+                            }
 
                             //Draw Header
                             e.Graphics.DrawString(leftString, new Font(DZDPrintingDGV.Font, FontStyle.Bold),
@@ -1563,7 +1568,7 @@ namespace VividManagementApplication
                             e.Graphics.DrawString(rightString, new Font(DZDPrintingDGV.Font, FontStyle.Bold),
                                     Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width -
                                     e.Graphics.MeasureString(rightString, new Font(DZDPrintingDGV.Font,
-                                    FontStyle.Bold), e.MarginBounds.Width).Width)-5, e.MarginBounds.Top -
+                                    FontStyle.Bold), e.MarginBounds.Width).Width) - 5, e.MarginBounds.Top -
                                     e.Graphics.MeasureString(leftString, new Font(new Font(DZDPrintingDGV.Font,
                                     FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height + 15);
 
@@ -1798,7 +1803,7 @@ namespace VividManagementApplication
 
         private void ExtendExpireLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.vividapp.net/");
+            System.Diagnostics.Process.Start("http://www.vividapp.net/GZB_product.php");
         }
 
         private void lbUserName_Click(object sender, EventArgs e)

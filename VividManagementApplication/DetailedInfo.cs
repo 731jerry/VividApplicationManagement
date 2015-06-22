@@ -2480,11 +2480,17 @@ namespace VividManagementApplication
             //g.DrawString("共1页 一式两份", f6, new SolidBrush(Color.Red), pageWidth / 2 - 50, pageHeight - 35);
             //fontSize = g.MeasureString("专业软件定制 888888888", f6);
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, 35);
+            if (MainWindow.DEGREE > 0)
+            {
 
-            //g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, pageHeight - 90);
-            g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, 1045 + y);
-            //g.DrawString("共1页 一式两份", f6, new SolidBrush(Color.Red), pageWidth / 2 - 50, pageHeight - 35);
-            //fontSize = g.MeasureString("专业软件定制 888888888", f6);
+            }
+            else
+            {
+                //g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   软件定制电话: 15024345993   QQ: 70269387", f6, new SolidBrush(Color.Red), 40 + x, pageHeight - 90);
+                g.DrawString("合同版本由唯达软件系统提供 http://www.vividapp.net/   联系电话: 139-0583-5966   客服QQ: 2424935927", f6, new SolidBrush(Color.Red), 40 + x, 1045 + y);
+                //g.DrawString("共1页 一式两份", f6, new SolidBrush(Color.Red), pageWidth / 2 - 50, pageHeight - 35);
+                //fontSize = g.MeasureString("专业软件定制 888888888", f6);
+            }
             //g.DrawString("专业软件定制 888888888", f6, new SolidBrush(Color.Red), pageWidth - fontSize.Width - 40 + x, pageHeight - 50);
         }
         #endregion

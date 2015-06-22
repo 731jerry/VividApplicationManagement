@@ -602,7 +602,7 @@ namespace VividManagementApplication
             Boolean isPass = false;
             foreach (Control ct in cons)
             {
-                if (ct.Text.Equals(""))
+                if (ct.Text.Trim().Equals(""))
                 {
                     return false;
                 }
