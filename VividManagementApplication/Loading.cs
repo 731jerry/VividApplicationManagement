@@ -211,7 +211,7 @@ namespace VividManagementApplication
             try
             {
                 //FTPRenameRemoteFile(); // 重命名
-                if (!FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.USER_ID + "_backup@" + DateTime.Now.ToString("yyyy-MM-dd#HHmmss") + ".db")) {
+                if (!FormBasicFeatrues.GetInstence().FTPRenameRemoteFile(MainWindow.ONLINE_DATABASE_FTP_LOCATION_DIR + MainWindow.ONLINE_DATABASE_FILE_PREFIX, MainWindow.USER_ID + "_backup@" + DateTime.Now.ToString("yyyy-MM-dd&HH-mm-ss") + ".db")) {
                     canClose = true;
                     this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }

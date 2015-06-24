@@ -29,6 +29,11 @@ namespace VividManagementApplication
             tbInfo8.Text = MainWindow.BANK_CARD;
             tbInfo9.Text = MainWindow.COMPANY_OWNER;
             tbInfo10.Text = MainWindow.QQ;
+            if (MainWindow.DEGREE>0)
+            {
+                DatabaseResetqqButton.Visible = true;
+            }
+
             if (!MainWindow.SIGNATURE.Equals(""))
             {
                 compressedBitmap = FormBasicFeatrues.GetInstence().Base64StringToImage(FormBasicFeatrues.GetInstence().DecompressString(FormBasicFeatrues.GetInstence().DecompressString(MainWindow.SIGNATURE)));
@@ -203,6 +208,15 @@ namespace VividManagementApplication
         }
 
         #endregion
+
+        private void DatabaseResetqqButton_Click(object sender, EventArgs e)
+        {
+            Backups bks = new Backups();
+            if (bks.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MessageBox.Show("重置成功!", "提示");
+            }
+        }
 
     }
 }

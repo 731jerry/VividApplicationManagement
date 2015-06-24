@@ -81,6 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Backups.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Backups.Designer.cs">
+      <DependentUpon>Backups.cs</DependentUpon>
+    </Compile>
     <Compile Include="BillSign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,7 @@
     <Compile Include="DataImport.Designer.cs">
       <DependentUpon>DataImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTPConnector.cs" />
     <Compile Include="InputMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +188,9 @@
     <Compile Include="update.Designer.cs">
       <DependentUpon>update.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Backups.resx">
+      <DependentUpon>Backups.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BillSign.resx">
       <DependentUpon>BillSign.cs</DependentUpon>
     </EmbeddedResource>

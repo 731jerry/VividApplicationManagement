@@ -74,3 +74,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Debug\Vivid
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.Loading.resources
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Debug\ftplib.dll
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Debug\VividManagementApplication.Loading.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Debug\VividManagementApplication.Backups.resources

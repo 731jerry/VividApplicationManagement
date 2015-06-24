@@ -176,3 +176,4 @@ D:\Project\VividApplicationManagement\VividManagementApplication\obj\Release\Viv
 \\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\管账宝.exe
 D:\Project\VividApplicationManagement\VividManagementApplication\bin\Release\ftplib.dll
 \\psf\Home\Documents\Programs\Winform\VividApplicationManagement\VividManagementApplication\obj\Release\VividManagementApplication.Loading.resources
+\\psf\Dropbox\财盈盈账务管理系统\VividManagementApplication\VividManagementApplication\obj\Release\VividManagementApplication.Backups.resources

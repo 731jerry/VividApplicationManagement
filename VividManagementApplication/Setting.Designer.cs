@@ -63,6 +63,7 @@
             this.SignqqButton = new ControlExs.QQButton();
             this.CancelQQButton = new ControlExs.QQButton();
             this.SaveButton = new ControlExs.QQButton();
+            this.DatabaseResetqqButton = new ControlExs.QQButton();
             this.PasswordGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignPictureShowBox)).BeginInit();
@@ -429,11 +430,25 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
+            // DatabaseResetqqButton
+            // 
+            this.DatabaseResetqqButton.Font = new System.Drawing.Font("微软雅黑", 9F);
+            this.DatabaseResetqqButton.Location = new System.Drawing.Point(150, 441);
+            this.DatabaseResetqqButton.Name = "DatabaseResetqqButton";
+            this.DatabaseResetqqButton.Size = new System.Drawing.Size(91, 28);
+            this.DatabaseResetqqButton.TabIndex = 163;
+            this.DatabaseResetqqButton.Text = "重置数据库";
+            this.DatabaseResetqqButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.DatabaseResetqqButton.UseVisualStyleBackColor = true;
+            this.DatabaseResetqqButton.Visible = false;
+            this.DatabaseResetqqButton.Click += new System.EventHandler(this.DatabaseResetqqButton_Click);
+            // 
             // Setting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 488);
+            this.Controls.Add(this.DatabaseResetqqButton);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ChangePasswordLabel);
             this.Controls.Add(this.tbInfo10);
@@ -514,5 +529,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private ControlExs.QQButton SignqqButton;
         private System.Windows.Forms.PictureBox SignPictureShowBox;
+        private ControlExs.QQButton DatabaseResetqqButton;
     }
 }
